@@ -1,5 +1,8 @@
 {
-  "pending": [
+  "pending": [],
+  "approved": [],
+  "rejected": [],
+  "completed": [
     {
       "title": "How to Avoid Activation Lock When Buying Used Phones Online (2026 Guide)",
       "excerpt": "Your refurbished iPhone arrives. You're excited. You power it on, and... \"This iPhone is linked to an Apple ID. Sign in with the Apple ID that was used to set up this iPhone.\" Game over. You just bought a $400 paperweight.",
@@ -41,10 +44,9 @@
         "og_description": "Your $400 iPhone arrives locked to someone else's Apple ID. Here's how to spot the warning signs before you buy and avoid getting burned by activation lock."
       },
       "header_image_prompt_id": "prompt_20260311_006",
-      "id": "blog_publish_20260311_200339"
+      "id": "blog_publish_20260311_200339",
+      "status": "published",
+      "shopify_article_id": "gid://shopify/Article/597497839867"
     }
-  ],
-  "approved": [],
-  "rejected": [],
-  "completed": []
+  ]
 }

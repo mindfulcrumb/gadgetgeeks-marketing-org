@@ -104,7 +104,7 @@
       ],
       "word_count": 1456,
       "category": "how_to",
-      "status": "queued_for_publish",
+      "status": "published",
       "qa_score": {
         "rating": "GOOD",
         "total_flags": 3,
@@ -155,14 +155,16 @@
       "qa_reviewed_by": "QUILL",
       "queue_item_id": "blog_20260311_001_queue",
       "prepared_at": "2026-03-11T20:01:00Z",
-      "prepared_by": "PRESS"
+      "prepared_by": "PRESS",
+      "published_at": "2026-03-11T20:58:00Z",
+      "shopify_article_id": "gid://shopify/Article/597497839867"
     }
   ],
   "pipeline_stats": {
     "total_drafted": 1,
     "total_approved": 1,
     "total_rejected": 0,
-    "total_published": 0,
+    "total_published": 1,
     "total_blocked": 0
   },
   "last_draft": "2026-03-11T19:45:00Z",

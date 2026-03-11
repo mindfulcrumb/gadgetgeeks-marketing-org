@@ -40,6 +40,11 @@
       "status": "idle",
       "runs_total": 0
     },
+    "x_intel": {
+      "last_run": null,
+      "status": "idle",
+      "runs_total": 0
+    },
     "gm_report": {
       "last_run": null,
       "status": "idle",

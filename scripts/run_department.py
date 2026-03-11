@@ -104,6 +104,7 @@ DEPARTMENT_CONFIG = {
             "departments/content/calendar.json",
             "departments/content/product-copy-queue.json",
             "departments/intel/customer-language.json",
+            "departments/x-intel/daily-brief.json",
             "config/niche.json",
             "config/copy-rules.json",
         ],
@@ -119,6 +120,7 @@ DEPARTMENT_CONFIG = {
             "departments/email/segments.json",
             "departments/email/ab-tests.json",
             "departments/intel/customer-language.json",
+            "departments/x-intel/daily-brief.json",
             "config/niche.json",
             "config/copy-rules.json",
         ],
@@ -134,6 +136,7 @@ DEPARTMENT_CONFIG = {
             "departments/social/platform-config.json",
             "departments/intel/trends.json",
             "departments/intel/customer-language.json",
+            "departments/x-intel/daily-brief.json",
             "config/niche.json",
             "config/copy-rules.json",
         ],
@@ -168,6 +171,19 @@ DEPARTMENT_CONFIG = {
             "departments/cro/audit-log.md",
         ],
     },
+    "x_intel": {
+        "agent_prompt": "agents/custom/x-intel-agent.md",
+        "context_files": [
+            "departments/x-intel/daily-brief.json",
+            "departments/intel/trends.json",
+            "departments/intel/customer-language.json",
+            "config/niche.json",
+            "config/competitors-list.json",
+        ],
+        "output_files": [
+            "departments/x-intel/daily-brief.json",
+        ],
+    },
     "gm_report": {
         "agent_prompt": "agents/custom/gm-report-agent.md",
         "context_files": [
@@ -176,6 +192,7 @@ DEPARTMENT_CONFIG = {
             "departments/intel/competitors.json",
             "departments/intel/trends.json",
             "departments/intel/customer-language.json",
+            "departments/x-intel/daily-brief.json",
             "departments/seo/keywords.json",
             "departments/seo/opportunities.json",
             "departments/seo/audit-log.md",

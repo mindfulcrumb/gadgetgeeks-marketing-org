@@ -413,9 +413,175 @@ def _cmd_approve(args: list) -> str:
             queue.setdefault("approved", []).append(item)
             queue["pending"].pop(i)
             queue_path.write_text(json.dumps(queue, indent=2), encoding="utf-8")
+
+            # Auto-publish if this is a blog item
+            if item.get("type") == "blog_publish" or "handle" in item:
+                publish_result = _auto_publish_blog(item)
+                return (
+                    f"\u2705 Approved: <b>{item.get('summary', item_id)}</b>\n\n"
+                    f"{publish_result}"
+                )
+
             return f"\u2705 Approved: <b>{item.get('summary', item_id)}</b>"
 
     return f"\u274c Item not found: <code>{item_id}</code>"
+
+
+def _auto_publish_blog(item: dict) -> str:
+    """Auto-publish a blog to Shopify after Telegram approval.
+
+    Fetches the blog content from the pipeline JSON, publishes via
+    Shopify GraphQL articleCreate, updates pipeline status, and
+    sends a Telegram notification with the published URL.
+    """
+    handle = item.get("handle", item.get("slug", ""))
+    if not handle:
+        return "\u26a0\ufe0f No handle found on queue item — skipping auto-publish."
+
+    # --- Load blog from pipeline ---
+    bp_path = REPO_ROOT / "departments" / "content" / "blog-pipeline.json"
+    if not bp_path.exists():
+        return "\u26a0\ufe0f blog-pipeline.json not found — skipping auto-publish."
+
+    bp = json.loads(bp_path.read_text(encoding="utf-8"))
+    blog = None
+    blog_index = None
+    for idx, b in enumerate(bp.get("blogs", [])):
+        if b.get("slug") == handle or b.get("handle") == handle:
+            blog = b
+            blog_index = idx
+            break
+
+    if blog is None:
+        return f"\u26a0\ufe0f Blog with handle <code>{handle}</code> not found in pipeline."
+
+    # --- Get fresh Shopify token ---
+    try:
+        token_resp = requests.post(
+            "https://gadgetgeekspro.myshopify.com/admin/oauth/access_token",
+            data={
+                "grant_type": "client_credentials",
+                "client_id": os.environ.get("SHOPIFY_CLIENT_ID", ""),
+                "client_secret": os.environ.get("SHOPIFY_CLIENT_SECRET", ""),
+            },
+            timeout=15,
+        )
+        token_resp.raise_for_status()
+        shopify_token = token_resp.json().get("access_token")
+        if not shopify_token:
+            return "\u274c Failed to obtain Shopify token — no access_token in response."
+    except Exception as e:
+        return f"\u274c Shopify token error: {e}"
+
+    # --- Generate header image ---
+    header_image_url = ""
+    try:
+        # Import from same directory
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("image_gen", Path(__file__).parent / "image_gen.py")
+        image_gen = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(image_gen)
+        generate_blog_header = image_gen.generate_blog_header
+        upload_to_shopify = image_gen.upload_to_shopify
+        send_message(f"\ud83c\udfa8 Generating header image for <b>{blog['title'][:60]}</b>...")
+        img_result = generate_blog_header(blog["title"], blog.get("category", "refurbished phones"))
+        temp_url = img_result["url"]
+        filename = f"blog-header-{handle}.png"
+        header_image_url = upload_to_shopify(temp_url, filename)
+        send_message(f"\u2705 Header image uploaded to Shopify CDN")
+    except Exception as img_err:
+        send_message(f"\u26a0\ufe0f Image generation skipped: {img_err}")
+
+    # --- Build FAQ schema script tag ---
+    faq_schema = blog.get("faq_schema")
+    faq_schema_script = ""
+    if faq_schema:
+        faq_schema_script = (
+            '\n<script type="application/ld+json">'
+            + json.dumps(faq_schema)
+            + "</script>"
+        )
+
+    # --- Publish via GraphQL ---
+    mutation = """
+mutation articleCreate($article: ArticleCreateInput!) {
+  articleCreate(article: $article) {
+    article { id title handle }
+    userErrors { field message }
+  }
+}
+"""
+    body_html = ""
+    if header_image_url:
+        body_html += f'<img src="{header_image_url}" alt="{blog["title"]}" style="width:100%;margin-bottom:2rem;">\n'
+    body_html += blog["content"] + faq_schema_script
+
+    article_input = {
+        "blogId": "gid://shopify/Blog/88861573371",
+        "title": blog["title"],
+        "handle": blog["slug"],
+        "author": {"name": "Gadget Geeks Team"},
+        "body": body_html,
+        "summary": blog["meta_description"],
+        "tags": ["refurbished-phones", blog.get("category", "guide")],
+        "isPublished": True,
+    }
+    if header_image_url:
+        article_input["image"] = {"url": header_image_url}
+
+    variables = {"article": article_input}
+
+    gql_url = "https://gadgetgeekspro.myshopify.com/admin/api/2026-01/graphql.json"
+    try:
+        gql_resp = requests.post(
+            gql_url,
+            headers={
+                "Content-Type": "application/json",
+                "X-Shopify-Access-Token": shopify_token,
+            },
+            json={"query": mutation, "variables": variables},
+            timeout=30,
+        )
+        gql_resp.raise_for_status()
+        gql_data = gql_resp.json()
+    except Exception as e:
+        return f"\u274c Shopify GraphQL error: {e}"
+
+    # Check for user errors
+    user_errors = (
+        gql_data.get("data", {}).get("articleCreate", {}).get("userErrors", [])
+    )
+    if user_errors:
+        msgs = "; ".join(f"{e['field']}: {e['message']}" for e in user_errors)
+        return f"\u274c Shopify publish failed: {msgs}"
+
+    article = gql_data.get("data", {}).get("articleCreate", {}).get("article", {})
+    article_id = article.get("id", "")
+    article_handle = article.get("handle", blog["slug"])
+    published_url = f"https://gadgetgeekspro.myshopify.com/blogs/news/{article_handle}"
+
+    # --- Update blog-pipeline.json ---
+    bp["blogs"][blog_index]["status"] = "published"
+    bp["blogs"][blog_index]["published_at"] = datetime.now(timezone.utc).isoformat()
+    bp["blogs"][blog_index]["shopify_article_id"] = article_id
+    # Update stats
+    stats = bp.get("pipeline_stats", {})
+    stats["total_published"] = stats.get("total_published", 0) + 1
+    bp["pipeline_stats"] = stats
+    bp_path.write_text(json.dumps(bp, indent=2), encoding="utf-8")
+
+    # --- Send Telegram notification ---
+    send_message(
+        f"\ud83d\ude80 <b>BLOG PUBLISHED</b>\n\n"
+        f"\ud83d\udcdd <b>{blog['title']}</b>\n"
+        f"\ud83d\udd17 <a href=\"{published_url}\">{published_url}</a>\n"
+        f"\ud83c\udff7 ID: <code>{article_id}</code>"
+    )
+
+    return (
+        f"\ud83d\ude80 Blog published!\n"
+        f"\ud83d\udd17 <a href=\"{published_url}\">{published_url}</a>"
+    )
 
 
 def _cmd_reject(args: list) -> str:

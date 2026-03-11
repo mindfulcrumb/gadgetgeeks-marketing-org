@@ -21,6 +21,7 @@ from actions.github_state import read_state, write_state, commit_changes
 from actions.postiz import post_to_social
 from actions.resend_email import send_email
 from actions.shopify_api import query_shopify
+from actions.x_api import run_niche_scan, get_tweet, parse_tweet_url
 
 try:
     import anthropic
@@ -253,6 +254,37 @@ def load_context(dept_config: dict) -> str:
     return "\n".join(context_parts)
 
 
+def fetch_live_x_data() -> str:
+    """Fetch live X/Twitter data for the x_intel department."""
+    if not os.environ.get("X_BEARER_TOKEN"):
+        return "\n=== LIVE X DATA === [SKIPPED — X_BEARER_TOKEN not set]\n"
+
+    try:
+        results = run_niche_scan(max_per_query=10)
+        parts = ["\n=== LIVE X DATA (from X API) ===\n"]
+        for query_name, data in results.items():
+            if "error" in data:
+                parts.append(f"\n--- {query_name} --- ERROR: {data['error']}\n")
+                continue
+            tweets = data.get("data", [])
+            users = {u["id"]: u for u in data.get("includes", {}).get("users", [])}
+            parts.append(f"\n--- {query_name} ({len(tweets)} tweets) ---")
+            for t in tweets:
+                author = users.get(t.get("author_id"), {})
+                metrics = t.get("public_metrics", {})
+                parts.append(
+                    f"@{author.get('username', '?')} ({author.get('name', '?')}):"
+                    f" {t.get('text', '')[:280]}"
+                    f" | likes:{metrics.get('like_count', 0)}"
+                    f" rt:{metrics.get('retweet_count', 0)}"
+                    f" replies:{metrics.get('reply_count', 0)}"
+                    f" | {t.get('created_at', '')}"
+                )
+        return "\n".join(parts) + "\n"
+    except Exception as e:
+        return f"\n=== LIVE X DATA === ERROR: {e}\n"
+
+
 def build_user_message(department: str, context: str) -> str:
     """Build the user message with context and instructions."""
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
@@ -433,6 +465,11 @@ def main():
     # 2. Load context
     print("[2/5] Loading context files...")
     context = load_context(dept_config)
+
+    # Inject live X data for x_intel department
+    if department == "x_intel":
+        print("  Fetching live X/Twitter data...")
+        context += fetch_live_x_data()
 
     # 3. Call Claude API
     print("[3/5] Calling Claude API...")

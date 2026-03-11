@@ -22,6 +22,13 @@ from actions.postiz import post_to_social
 from actions.resend_email import send_email
 from actions.shopify_api import query_shopify
 from actions.x_api import run_niche_scan, get_tweet, parse_tweet_url
+from actions.telegram_bot import (
+    notify_department_start,
+    notify_department_complete,
+    notify_queue_item,
+    notify_error,
+    send_message as tg_send,
+)
 
 try:
     import anthropic
@@ -621,6 +628,12 @@ def main():
     print(f"  Time: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}")
     print(f"{'='*60}")
 
+    # Telegram: notify start
+    try:
+        notify_department_start(department)
+    except Exception as e:
+        print(f"  (Telegram start notify failed: {e})")
+
     # 1. Load agent prompt
     print("\n[1/5] Loading agent prompt...")
     system_prompt = load_agent_prompt(dept_config)
@@ -651,6 +664,10 @@ def main():
                 result = run_content_pipeline(topic=topic, save_to_disk=True)
                 update_master_state(department, True)
                 commit_changes(f"[{department}] CrewAI pipeline run — {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}")
+                try:
+                    notify_department_complete(department, True, file_updates=1, summary=f"CrewAI: {topic}")
+                except Exception:
+                    pass
                 print(f"\n{'='*60}")
                 print(f"  {department.upper()} DEPARTMENT — COMPLETE (CrewAI)")
                 print(f"{'='*60}")
@@ -665,6 +682,10 @@ def main():
     if not api_key:
         print("ERROR: ANTHROPIC_API_KEY not set")
         update_master_state(department, False)
+        try:
+            notify_error(department, "ANTHROPIC_API_KEY not set")
+        except Exception:
+            pass
         sys.exit(1)
 
     client = anthropic.Anthropic(api_key=api_key)
@@ -683,6 +704,10 @@ def main():
     except Exception as e:
         print(f"ERROR calling Claude API: {e}")
         update_master_state(department, False)
+        try:
+            notify_error(department, str(e))
+        except Exception:
+            pass
         sys.exit(1)
 
     # 4. Parse and execute actions
@@ -698,6 +723,24 @@ def main():
     print("[5/5] Updating state and committing...")
     update_master_state(department, True)
     commit_changes(f"[{department}] Automated run — {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}")
+
+    # Telegram: notify completion
+    try:
+        # Build a brief summary from analysis
+        summary = parsed.get("analysis", "")[:300] if parsed.get("analysis") else ""
+        notify_department_complete(
+            department,
+            success=True,
+            file_updates=len(parsed["file_updates"]),
+            queue_items=len(parsed["queue_items"]),
+            social_posts=len(parsed["social_posts"]),
+            summary=summary,
+        )
+        # Notify for each queue item that needs approval
+        for item in parsed["queue_items"]:
+            notify_queue_item(item)
+    except Exception as e:
+        print(f"  (Telegram complete notify failed: {e})")
 
     print(f"\n{'='*60}")
     print(f"  {department.upper()} DEPARTMENT — COMPLETE")

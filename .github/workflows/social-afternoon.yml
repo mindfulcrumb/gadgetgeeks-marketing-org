@@ -22,6 +22,7 @@ jobs:
       - name: Run Social Media Afternoon
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           POSTIZ_API_KEY: ${{ secrets.POSTIZ_API_KEY }}
         run: python scripts/run_department.py social_afternoon
 

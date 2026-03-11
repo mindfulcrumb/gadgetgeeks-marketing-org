@@ -384,6 +384,18 @@ const BLOG_PUBLISHER = {
   dataFlow:{reads:['departments/content/blog-pipeline.json','departments/social/image-prompts.json'],writes:['departments/content/blog-pipeline.json','state/queue.json'],feeds:['You (approval queue)','Shopify (after approval)']},
 };
 
+const TELEGRAM_BOT = {
+  id:'telegram', name:'RELAY', fullName:'Relay Nakamura',
+  title:'Telegram Comms Officer', dept:'Communications',
+  color:'#0088cc', hair:'#1a2a3a', skin:'#d4a574', pants:'#1a1a2a', shoes:'#0a0a1a',
+  schedule:'Every 5 min (polling)', cronDays:[0,1,2,3,4,5,6], cronH:0, cronM:0,
+  stateKeys:['telegram'], deskTile:{x:18,y:1}, roomId:'lobby',
+  tasks:['Poll Telegram for incoming commands','Route /status /queue /blog /approve commands','Send department completion notifications','Send error alerts immediately','Daily org summary at 7:00 UTC','Relay approval requests to owner'],
+  rules:['Respond to ALL messages within 5 min','Send notification on every department run','Error alerts = highest priority','Never expose API keys in messages','Auto-discover chat ID on first /start','Queue approvals flow through Telegram'],
+  apis:[{name:'Telegram Bot API',icon:'✈️',color:'#0088cc'}],
+  dataFlow:{reads:['state/master.json','state/queue.json','departments/content/blog-pipeline.json','departments/social/image-prompts.json'],writes:['config/telegram.json','state/telegram_offset.json','state/queue.json'],feeds:['You (Telegram)','All departments (notifications)']},
+};
+
 const GM = {
   id:'gm', name:'BOSS', fullName:'Boss Morgan',
   title:'General Manager / Enforcer', dept:'Executive',
@@ -396,7 +408,7 @@ const GM = {
   dataFlow:{reads:['state/master.json','state/queue.json','ALL department outputs'],writes:['departments/gm/weekly-report.md','state/queue.json'],feeds:['You (weekly report)']},
 };
 
-const ALL_CHARS = [...EMPLOYEES, X_INTEL, IMAGE_PROMPT, PROMPT_QA, BLOG_WRITER, BLOG_QA, BLOG_PUBLISHER, GM];
+const ALL_CHARS = [...EMPLOYEES, X_INTEL, IMAGE_PROMPT, PROMPT_QA, BLOG_WRITER, BLOG_QA, BLOG_PUBLISHER, TELEGRAM_BOT, GM];
 
 // ═══════════════════════════════════════════
 // POINTS OF INTEREST (where chars go for life sim)

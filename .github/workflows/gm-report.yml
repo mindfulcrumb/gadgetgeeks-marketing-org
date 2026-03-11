@@ -22,6 +22,7 @@ jobs:
       - name: Run GM Weekly Report
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         run: python scripts/run_department.py gm_report
 
       - name: Push changes

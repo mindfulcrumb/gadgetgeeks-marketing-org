@@ -22,6 +22,7 @@ jobs:
       - name: Run Blog Writer
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         run: python scripts/run_department.py blog_writer
 
       - name: Push changes

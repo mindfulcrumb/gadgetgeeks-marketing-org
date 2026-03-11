@@ -79,6 +79,11 @@
       "last_run": "2026-03-11T20:03:39.877966+00:00",
       "status": "ok",
       "runs_total": 2
+    },
+    "telegram": {
+      "last_run": null,
+      "status": "idle",
+      "runs_total": 0
     }
   },
   "created": "2026-03-11",

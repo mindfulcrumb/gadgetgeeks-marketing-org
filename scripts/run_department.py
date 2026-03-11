@@ -558,7 +558,7 @@ def execute_actions(department: str, parsed: dict):
         for item in parsed["queue_items"]:
             item["id"] = f"{department}_{datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')}"
             queue["pending"].append(item)
-            print(f"  Queued: {item.get('summary', 'unknown')} [{item['type']}]")
+            print(f"  Queued: {item.get('summary', 'unknown')} [{item.get('type', 'unknown')}]")
         queue_path.write_text(json.dumps(queue, indent=2, ensure_ascii=False), encoding="utf-8")
 
     # 3. Post to social media (only if Postiz API key is available)

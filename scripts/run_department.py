@@ -45,7 +45,14 @@ MODELS = {
     "gm_report": "claude-opus-4-20250514",
 }
 
-MAX_TOKENS = 4096
+# Per-department token limits (blog pipeline needs more for full content)
+MAX_TOKENS_DEFAULT = 4096
+MAX_TOKENS_OVERRIDE = {
+    "blog_writer": 8192,
+    "blog_qa": 8192,
+    "blog_publish": 8192,
+    "gm_report": 8192,
+}
 
 
 # ---------------------------------------------------------------------------
@@ -626,7 +633,7 @@ def main():
     try:
         message = client.messages.create(
             model=model,
-            max_tokens=MAX_TOKENS,
+            max_tokens=MAX_TOKENS_OVERRIDE.get(department, MAX_TOKENS_DEFAULT),
             system=system_prompt,
             messages=[
                 {"role": "user", "content": build_user_message(department, context)},

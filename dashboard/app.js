@@ -324,6 +324,18 @@ const X_INTEL = {
   dataFlow:{reads:['departments/intel/trends.json','config/niche.json','config/competitors-list.json'],writes:['departments/x-intel/daily-brief.json'],feeds:['Content','Social','Email','SEO']},
 };
 
+const IMAGE_PROMPT = {
+  id:'image_prompts', name:'LENS', fullName:'Lens Nakamura',
+  title:'Visual Director / Image Prompter', dept:'Creative Division',
+  color:'#e879f9', hair:'#2a1a2a', skin:'#c68642', pants:'#3a1a3a', shoes:'#1a0a1a',
+  schedule:'Mon/Wed/Fri 8:19 UTC', cronDays:[1,3,5], cronH:8, cronM:19,
+  stateKeys:['image_prompts'], deskTile:{x:12,y:12}, roomId:'cro',
+  tasks:['Generate photorealistic image prompts for social posts','Product hero shots (Phase One IQ4, 100mm macro)','Lifestyle scenes (Canon R5, 85mm f/1.2, Portra 400)','Sustainability visuals (Leica M11, natural light)','Match prompts to campaign keywords & audience'],
+  rules:['8-layer formula on every prompt','700-1000 chars max — short prompts win','Real camera + lens + film stock always','Skin realism stack on all people','Show real phone brands (iPhone, Samsung, Pixel)','Diverse people — vary age, ethnicity, gender','No text on images — overlays added later','Phone always looks pristine/like-new'],
+  apis:[{name:'Claude API',icon:'🧠',color:'#d97706'},{name:'Image Gen',icon:'🎨',color:'#e879f9'}],
+  dataFlow:{reads:['departments/social/calendar.json','departments/content/calendar.json','departments/x-intel/daily-brief.json','departments/seo/keywords.json'],writes:['departments/social/image-prompts.json'],feeds:['Social','Content','Email']},
+};
+
 const GM = {
   id:'gm', name:'BOSS', fullName:'Boss Morgan',
   title:'General Manager / Enforcer', dept:'Executive',
@@ -336,7 +348,7 @@ const GM = {
   dataFlow:{reads:['state/master.json','state/queue.json','ALL department outputs'],writes:['departments/gm/weekly-report.md','state/queue.json'],feeds:['You (weekly report)']},
 };
 
-const ALL_CHARS = [...EMPLOYEES, X_INTEL, GM];
+const ALL_CHARS = [...EMPLOYEES, X_INTEL, IMAGE_PROMPT, GM];
 
 // ═══════════════════════════════════════════
 // POINTS OF INTEREST (where chars go for life sim)
@@ -548,7 +560,7 @@ function gmPatrolAI() {
   if (gm.actionTimer > 0) return;
 
   // Check for idle employees to visit
-  const allStaff = [...EMPLOYEES, X_INTEL];
+  const allStaff = [...EMPLOYEES, X_INTEL, IMAGE_PROMPT];
   for (const emp of allStaff) {
     const status = getDeptStatus(emp.id);
     if (status === 'idle' || status === 'error') {
@@ -1358,7 +1370,7 @@ function updateHUD() {
   document.getElementById('hud-date').textContent = now.toUTCString().slice(0,16);
   if (!masterState) return;
   let working=0, idle=0;
-  for (const e of [...EMPLOYEES, X_INTEL]) { const s=getDeptStatus(e.id); if(s==='working')working++; else if(s==='idle')idle++; }
+  for (const e of [...EMPLOYEES, X_INTEL, IMAGE_PROMPT]) { const s=getDeptStatus(e.id); if(s==='working')working++; else if(s==='idle')idle++; }
   document.getElementById('hud-working').textContent = working;
   document.getElementById('hud-idle').textContent = idle;
   document.getElementById('hud-queue').textContent = queueState?(queueState.pending||[]).length:0;
@@ -1372,7 +1384,7 @@ function updateScheduleBar() {
   const sched = [
     {t:'05:17',m:317,l:'SEO Deep',d:[1],c:'#0f8'},{t:'06:23',m:383,l:'SEO',d:[0,1,2,3,4,5,6],c:'#0f8'},
     {t:'07:00',m:420,l:'X-Intel',d:[0,1,2,3,4,5,6],c:'#1DA1F2'},
-    {t:'07:03',m:423,l:'GM Report',d:[5],c:'#a6f'},{t:'07:41',m:461,l:'Content',d:[1,3,5],c:'#f84'},
+    {t:'07:03',m:423,l:'GM Report',d:[5],c:'#a6f'},{t:'07:41',m:461,l:'Content',d:[1,3,5],c:'#f84'},{t:'08:19',m:499,l:'LENS',d:[1,3,5],c:'#e879f9'},
     {t:'08:53',m:533,l:'Email',d:[2,4],c:'#fc0'},{t:'09:11',m:551,l:'Social AM',d:[0,1,2,3,4,5,6],c:'#f6a'},
     {t:'10:47',m:647,l:'Intel',d:[1,4],c:'#0cf'},{t:'11:29',m:689,l:'CRO',d:[3],c:'#48f'},
     {t:'16:37',m:997,l:'Social PM',d:[0,1,2,3,4,5,6],c:'#f6a'},{t:'18:51',m:1131,l:'GM Queue',d:[0,1,2,3,4,5,6],c:'#a6f'},

@@ -1,0 +1,36 @@
+name: Image Prompting (LENS)
+on:
+  schedule:
+    - cron: '19 8 * * 1,3,5'  # Mon/Wed/Fri 8:19 AM UTC (after content, before social)
+  workflow_dispatch:
+
+jobs:
+  run-image-prompts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Image Prompting
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python scripts/run_department.py image_prompts
+
+      - name: Push changes
+        run: |
+          git config user.name "Marketing Org Bot"
+          git config user.email "bot@gadgetgeekspro.com"
+          git add -A
+          git diff --cached --quiet || git commit -m "[image-prompts] LENS run — $(date -u '+%Y-%m-%d %H:%M UTC')"
+          for i in 1 2 3; do
+            git pull --rebase origin main || true
+            git push && break || sleep 5
+          done

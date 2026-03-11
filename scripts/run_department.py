@@ -221,6 +221,21 @@ DEPARTMENT_CONFIG = {
             "state/master.json",
         ],
     },
+    "image_prompts": {
+        "agent_prompt": "agents/custom/image-prompting-agent.md",
+        "context_files": [
+            "departments/social/calendar.json",
+            "departments/social/image-prompts.json",
+            "departments/content/calendar.json",
+            "departments/x-intel/daily-brief.json",
+            "departments/intel/trends.json",
+            "departments/seo/keywords.json",
+            "config/niche.json",
+        ],
+        "output_files": [
+            "departments/social/image-prompts.json",
+        ],
+    },
 }
 
 

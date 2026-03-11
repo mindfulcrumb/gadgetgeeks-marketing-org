@@ -1,10 +1,119 @@
 {
-  "date": null,
-  "trending_topics": [],
-  "competitor_signals": [],
-  "customer_voices": [],
-  "content_opportunities": [],
-  "viral_formats": [],
-  "engagement_opportunities": [],
-  "industry_news": []
+  "date": "2026-03-11",
+  "trending_topics": [
+    {
+      "topic": "Sustainability in Tech Purchases",
+      "summary": "Viral tweet (7.5K likes) advocating for refurbished over new purchases to break 'mindless consumer cycle'",
+      "relevance": "high",
+      "opportunity": "Capitalize on anti-consumerism sentiment with sustainability messaging",
+      "for_departments": [
+        "content",
+        "social",
+        "email"
+      ]
+    },
+    {
+      "topic": "iPhone 16 Pricing Reality Check",
+      "summary": "New iPhone 16 listings at 850-950K showing premium pricing gap",
+      "relevance": "high",
+      "opportunity": "Position older models as smart financial choice vs new flagship",
+      "for_departments": [
+        "content",
+        "social"
+      ]
+    },
+    {
+      "topic": "E-waste Awareness Rising",
+      "summary": "Multiple discussions about e-waste management and environmental impact",
+      "relevance": "medium",
+      "opportunity": "Reinforce environmental benefits of choosing refurbished",
+      "for_departments": [
+        "content",
+        "email"
+      ]
+    }
+  ],
+  "competitor_signals": [
+    {
+      "competitor": "Back Market",
+      "signal": "Multiple customer service complaints - non-responsive support, damaged devices sold as 'excellent'",
+      "source": "@OneOptimusPrice, @BeyondGrave, @mrs_johnson909",
+      "action_needed": "Highlight our responsive customer service as differentiator"
+    },
+    {
+      "competitor": "Cashify",
+      "signal": "Customer received iPhone 12 with activation lock, company can't provide original bill to Apple",
+      "source": "@Imrankh37272284",
+      "action_needed": "Create content about our activation lock verification process"
+    }
+  ],
+  "customer_voices": [
+    {
+      "quote_or_paraphrase": "Just bought my first refurbished phone & it is great (& cheaper!). You DON'T need brand new tech every damn year!",
+      "sentiment": "positive",
+      "pain_point_or_desire": "Wants to avoid mindless consumerism while getting quality tech",
+      "source_context": "@HungryBunnie23 - viral sustainability post"
+    },
+    {
+      "quote_or_paraphrase": "After resetting the phone it got stuck on Activation Lock. Apple asks for the original bill, but seller says they don't have it. Now my phone is unusable.",
+      "sentiment": "negative",
+      "pain_point_or_desire": "Fear of buying locked/unusable refurbished devices",
+      "source_context": "@Imrankh37272284 - Cashify customer complaint"
+    },
+    {
+      "quote_or_paraphrase": "Sent me beat up device that won't charge as 'Excellent condition'. Chat support hasn't responded in 2 days.",
+      "sentiment": "negative",
+      "pain_point_or_desire": "Wants accurate condition descriptions and responsive support",
+      "source_context": "@BeyondGrave - Back Market complaint"
+    }
+  ],
+  "content_opportunities": [
+    {
+      "topic": "Activation Lock Prevention Guide",
+      "why_now": "Customer complaints about unusable locked devices",
+      "suggested_angle": "How we verify and prevent activation lock issues",
+      "format": "blog",
+      "urgency": "this_week"
+    },
+    {
+      "topic": "Why Refurbished is the Smart Choice in 2026",
+      "why_now": "Viral sustainability post gaining traction",
+      "suggested_angle": "Break the upgrade cycle - get premium tech without premium waste",
+      "format": "social",
+      "urgency": "today"
+    },
+    {
+      "topic": "Real Customer Service Response Times",
+      "why_now": "Competitors failing at customer support",
+      "suggested_angle": "Compare our response times vs Back Market complaints",
+      "format": "email",
+      "urgency": "this_week"
+    }
+  ],
+  "viral_formats": [
+    {
+      "format": "Anti-consumerism thread about tech purchases",
+      "example": "Thread calling out mindless yearly phone upgrades",
+      "how_to_adapt": "Create thread about breaking phone upgrade cycle with refurbished options"
+    }
+  ],
+  "engagement_opportunities": [
+    {
+      "thread_or_post": "@HungryBunnie23's viral sustainability post",
+      "suggested_reply_angle": "Support the message and offer refurbished as solution",
+      "why": "7.5K+ engaged audience interested in sustainable tech choices"
+    }
+  ],
+  "industry_news": [
+    {
+      "headline": "Back Market facing customer service crisis",
+      "impact_on_us": "Opportunity to highlight our superior support",
+      "action": "Create comparison content showcasing our service standards"
+    },
+    {
+      "headline": "iPhone 16 pricing remains premium (850-950K range)",
+      "impact_on_us": "Reinforces value proposition of older refurbished models",
+      "action": "Position iPhone 13/14 as smart alternative with similar features"
+    }
+  ]
 }

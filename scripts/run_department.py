@@ -236,6 +236,18 @@ DEPARTMENT_CONFIG = {
             "departments/social/image-prompts.json",
         ],
     },
+    "prompt_qa": {
+        "agent_prompt": "agents/custom/prompt-qa-agent.md",
+        "context_files": [
+            "departments/social/image-prompts.json",
+            "agents/custom/image-prompting-agent.md",
+            "agents/custom/department-context.md",
+            "config/niche.json",
+        ],
+        "output_files": [
+            "departments/social/image-prompts.json",
+        ],
+    },
 }
 
 

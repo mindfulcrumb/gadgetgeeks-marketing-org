@@ -1,0 +1,36 @@
+name: Prompt QA Department (FOCUS)
+on:
+  schedule:
+    - cron: '49 8 * * 1,3,5'  # Mon/Wed/Fri 8:49 UTC (30 min after LENS)
+  workflow_dispatch:
+
+jobs:
+  run-prompt-qa:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Prompt QA
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python scripts/run_department.py prompt_qa
+
+      - name: Push changes
+        run: |
+          git config user.name "Marketing Org Bot"
+          git config user.email "bot@gadgetgeekspro.com"
+          git add -A
+          git diff --cached --quiet || git commit -m "[prompt-qa] Automated run — $(date -u '+%Y-%m-%d %H:%M UTC')"
+          for i in 1 2 3; do
+            git pull --rebase origin main || true
+            git push && break || sleep 5
+          done

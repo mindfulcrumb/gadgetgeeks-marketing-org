@@ -336,6 +336,18 @@ const IMAGE_PROMPT = {
   dataFlow:{reads:['departments/social/calendar.json','departments/content/calendar.json','departments/x-intel/daily-brief.json','departments/seo/keywords.json'],writes:['departments/social/image-prompts.json'],feeds:['Social','Content','Email']},
 };
 
+const PROMPT_QA = {
+  id:'prompt_qa', name:'FOCUS', fullName:'Focus Tanaka',
+  title:'Prompt QA Inspector', dept:'Creative Division',
+  color:'#f59e0b', hair:'#1a1a2a', skin:'#d4a574', pants:'#3a2a1a', shoes:'#1a0a0a',
+  schedule:'Mon/Wed/Fri 8:49 UTC', cronDays:[1,3,5], cronH:8, cronM:49,
+  stateKeys:['prompt_qa'], deskTile:{x:10,y:12}, roomId:'cro',
+  tasks:['Run 15-check QA on every image prompt','Verify camera body + lens + film stock','Check skin realism stack on people shots','Validate phone models & correct colors','Score prompts: EXCELLENT / GOOD / NEEDS WORK / BLOCKED','Return failed prompts to LENS with fixes'],
+  rules:['All 15 checks on every prompt — no shortcuts','Never approve without camera body, lens, or negative prompt','Be specific — line-level feedback, not vague','Always provide corrected prompt when fixes needed','Track recurring LENS issues and note patterns','Batch review: check diversity across full set'],
+  apis:[{name:'Claude API',icon:'🧠',color:'#d97706'}],
+  dataFlow:{reads:['departments/social/image-prompts.json','agents/custom/image-prompting-agent.md'],writes:['departments/social/image-prompts.json'],feeds:['Social','Content','Email']},
+};
+
 const GM = {
   id:'gm', name:'BOSS', fullName:'Boss Morgan',
   title:'General Manager / Enforcer', dept:'Executive',
@@ -348,7 +360,7 @@ const GM = {
   dataFlow:{reads:['state/master.json','state/queue.json','ALL department outputs'],writes:['departments/gm/weekly-report.md','state/queue.json'],feeds:['You (weekly report)']},
 };
 
-const ALL_CHARS = [...EMPLOYEES, X_INTEL, IMAGE_PROMPT, GM];
+const ALL_CHARS = [...EMPLOYEES, X_INTEL, IMAGE_PROMPT, PROMPT_QA, GM];
 
 // ═══════════════════════════════════════════
 // POINTS OF INTEREST (where chars go for life sim)
@@ -560,7 +572,7 @@ function gmPatrolAI() {
   if (gm.actionTimer > 0) return;
 
   // Check for idle employees to visit
-  const allStaff = [...EMPLOYEES, X_INTEL, IMAGE_PROMPT];
+  const allStaff = [...EMPLOYEES, X_INTEL, IMAGE_PROMPT, PROMPT_QA];
   for (const emp of allStaff) {
     const status = getDeptStatus(emp.id);
     if (status === 'idle' || status === 'error') {
@@ -1370,7 +1382,7 @@ function updateHUD() {
   document.getElementById('hud-date').textContent = now.toUTCString().slice(0,16);
   if (!masterState) return;
   let working=0, idle=0;
-  for (const e of [...EMPLOYEES, X_INTEL, IMAGE_PROMPT]) { const s=getDeptStatus(e.id); if(s==='working')working++; else if(s==='idle')idle++; }
+  for (const e of [...EMPLOYEES, X_INTEL, IMAGE_PROMPT, PROMPT_QA]) { const s=getDeptStatus(e.id); if(s==='working')working++; else if(s==='idle')idle++; }
   document.getElementById('hud-working').textContent = working;
   document.getElementById('hud-idle').textContent = idle;
   document.getElementById('hud-queue').textContent = queueState?(queueState.pending||[]).length:0;
@@ -1384,7 +1396,7 @@ function updateScheduleBar() {
   const sched = [
     {t:'05:17',m:317,l:'SEO Deep',d:[1],c:'#0f8'},{t:'06:23',m:383,l:'SEO',d:[0,1,2,3,4,5,6],c:'#0f8'},
     {t:'07:00',m:420,l:'X-Intel',d:[0,1,2,3,4,5,6],c:'#1DA1F2'},
-    {t:'07:03',m:423,l:'GM Report',d:[5],c:'#a6f'},{t:'07:41',m:461,l:'Content',d:[1,3,5],c:'#f84'},{t:'08:19',m:499,l:'LENS',d:[1,3,5],c:'#e879f9'},
+    {t:'07:03',m:423,l:'GM Report',d:[5],c:'#a6f'},{t:'07:41',m:461,l:'Content',d:[1,3,5],c:'#f84'},{t:'08:19',m:499,l:'LENS',d:[1,3,5],c:'#e879f9'},{t:'08:49',m:529,l:'FOCUS',d:[1,3,5],c:'#f59e0b'},
     {t:'08:53',m:533,l:'Email',d:[2,4],c:'#fc0'},{t:'09:11',m:551,l:'Social AM',d:[0,1,2,3,4,5,6],c:'#f6a'},
     {t:'10:47',m:647,l:'Intel',d:[1,4],c:'#0cf'},{t:'11:29',m:689,l:'CRO',d:[3],c:'#48f'},
     {t:'16:37',m:997,l:'Social PM',d:[0,1,2,3,4,5,6],c:'#f6a'},{t:'18:51',m:1131,l:'GM Queue',d:[0,1,2,3,4,5,6],c:'#a6f'},
@@ -1409,7 +1421,7 @@ async function loadData() {
   const [m,q] = await Promise.all([fetchJSON('state/master.json'),fetchJSON('state/queue.json')]);
   masterState=m; queueState=q;
   updateSidebar(); updateHUD(); updateScheduleBar();
-  runEnforcer();
+  runEnforcer(); loadImagePrompts();
 }
 
 function runEnforcer() {
@@ -1463,6 +1475,114 @@ function darkenColor(hex,f){return lightenColor(hex,f);}
 function pickRandom(arr){return arr[Math.floor(Math.random()*arr.length)];}
 function addEnforcerLog(type,msg){const t=pad(new Date().getUTCHours())+':'+pad(new Date().getUTCMinutes());enforcerLog.push({type,msg,time:t});if(enforcerLog.length>50)enforcerLog.shift();renderEnforcerLog();}
 function addNotification(type,msg){const el=document.getElementById('notifications');const n=document.createElement('div');n.className=`notif ${type}`;n.textContent=msg;el.appendChild(n);setTimeout(()=>n.remove(),4000);}
+
+// ═══════════════════════════════════════════
+// IMAGE GALLERY
+// ═══════════════════════════════════════════
+let imagePromptsData = null;
+
+async function loadImagePrompts() {
+  imagePromptsData = await fetchJSON('departments/social/image-prompts.json');
+  renderGallery();
+}
+
+function renderGallery() {
+  const statsEl = document.getElementById('gallery-stats');
+  const foldersEl = document.getElementById('gallery-folders');
+  if (!imagePromptsData) {
+    statsEl.innerHTML = '';
+    foldersEl.innerHTML = '<div class="gal-empty">No image prompts yet — LENS hasn\'t run</div>';
+    return;
+  }
+
+  // Stats bar
+  const qa = imagePromptsData.qa_summary || {};
+  const total = (imagePromptsData.prompts||[]).length;
+  const folderTotal = Object.values(imagePromptsData.folders||{}).reduce((s,f) => s + (f.prompts||[]).length, 0);
+  const allTotal = total + folderTotal;
+  statsEl.innerHTML = `
+    <div class="gal-stat"><span class="gal-stat-val" style="color:var(--white)">${allTotal}</span><span class="gal-stat-label">TOTAL</span></div>
+    <div class="gal-stat"><span class="gal-stat-val" style="color:var(--green)">${qa.excellent||0}</span><span class="gal-stat-label">EXCELLENT</span></div>
+    <div class="gal-stat"><span class="gal-stat-val" style="color:var(--cyan)">${qa.good||0}</span><span class="gal-stat-label">GOOD</span></div>
+    <div class="gal-stat"><span class="gal-stat-val" style="color:var(--yellow)">${qa.needs_work||0}</span><span class="gal-stat-label">NEEDS WORK</span></div>
+    <div class="gal-stat"><span class="gal-stat-val" style="color:var(--red)">${qa.blocked||0}</span><span class="gal-stat-label">BLOCKED</span></div>
+  `;
+
+  // Folders
+  const folders = imagePromptsData.folders || {};
+  if (!Object.keys(folders).length && !allTotal) {
+    foldersEl.innerHTML = '<div class="gal-empty">LENS hasn\'t generated prompts yet.<br>Next run will populate folders.</div>';
+    return;
+  }
+
+  // Unfoldered prompts as a pseudo-folder
+  let html = '';
+  if (total > 0) {
+    html += `<div class="gal-folder" data-folder="__root"><span class="gal-folder-count">${total}</span><div class="gal-folder-name">Uncategorized</div><div class="gal-folder-desc">Prompts not yet sorted into folders</div></div>`;
+  }
+  for (const [key, folder] of Object.entries(folders)) {
+    const count = (folder.prompts||[]).length;
+    html += `<div class="gal-folder" data-folder="${key}"><span class="gal-folder-count">${count}</span><div class="gal-folder-name">${folder.label||key}</div><div class="gal-folder-desc">${folder.description||''}</div></div>`;
+  }
+  foldersEl.innerHTML = html;
+
+  // Click handlers
+  foldersEl.querySelectorAll('.gal-folder').forEach(el => {
+    el.addEventListener('click', () => openGalleryFolder(el.dataset.folder));
+  });
+
+  document.getElementById('gallery-back-btn').onclick = () => {
+    document.getElementById('gallery-detail').classList.add('hidden');
+    foldersEl.classList.remove('hidden');
+    statsEl.classList.remove('hidden');
+  };
+}
+
+function openGalleryFolder(folderKey) {
+  const foldersEl = document.getElementById('gallery-folders');
+  const statsEl = document.getElementById('gallery-stats');
+  const detailEl = document.getElementById('gallery-detail');
+  const promptsEl = document.getElementById('gallery-prompts');
+
+  foldersEl.classList.add('hidden');
+  statsEl.classList.add('hidden');
+  detailEl.classList.remove('hidden');
+
+  let prompts;
+  if (folderKey === '__root') {
+    prompts = imagePromptsData.prompts || [];
+  } else {
+    prompts = (imagePromptsData.folders && imagePromptsData.folders[folderKey]) ? imagePromptsData.folders[folderKey].prompts || [] : [];
+  }
+
+  if (!prompts.length) {
+    promptsEl.innerHTML = '<div class="gal-empty">No prompts in this folder yet</div>';
+    return;
+  }
+
+  promptsEl.innerHTML = prompts.map(p => {
+    const rating = (p.rating||p.verdict||'unreviewed').toLowerCase().replace(/[_ ]/g,'');
+    const scoreClass = rating.includes('excellent') ? 'excellent' : rating.includes('good') ? 'good' : rating.includes('need')||rating.includes('fix') ? 'needswork' : rating.includes('block') ? 'blocked' : 'good';
+    const score = p.score != null ? `${p.score}/15` : '--';
+    const promptText = p.prompt || p.corrected_prompt || p.text || JSON.stringify(p).slice(0,300);
+    const platform = p.platform || p.target_platform || '';
+    const aspect = p.aspect_ratio || '';
+    const useCase = p.use_case || folderKey;
+    return `<div class="gal-prompt">
+      <div class="gal-prompt-header">
+        <span class="gal-prompt-id">${p.prompt_id||'—'}</span>
+        <span class="gal-prompt-score gal-score-${scoreClass}">${score} ${(p.rating||p.verdict||'UNREVIEWED').toUpperCase()}</span>
+      </div>
+      <div class="gal-prompt-text">${promptText.length>500?promptText.slice(0,500)+'...':promptText}</div>
+      <div class="gal-prompt-meta">
+        ${platform?`<span class="gal-meta-tag">${platform}</span>`:''}
+        ${aspect?`<span class="gal-meta-tag">${aspect}</span>`:''}
+        ${useCase?`<span class="gal-meta-tag">${useCase}</span>`:''}
+        ${p.camera?`<span class="gal-meta-tag">${p.camera}</span>`:''}
+      </div>
+    </div>`;
+  }).join('');
+}
 
 // ═══════════════════════════════════════════
 // INIT

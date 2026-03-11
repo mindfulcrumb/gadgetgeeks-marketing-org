@@ -252,6 +252,8 @@ const EMPLOYEES = [
     stateKeys:['intel'], deskTile:{x:3,y:6}, roomId:'intel',
     tasks:['Monitor 5 competitor stores','Scrape customer language (Reddit, Amazon)','Detect refurb market trends','Update competitor pricing','Feed insights to SEO + Content'],
     rules:['Never fabricate data','Git audit trail on all findings','Flag urgent moves to GM'],
+    apis:[{name:'Claude API',icon:'🧠',color:'#d97706'},{name:'Web Scraping',icon:'🌐',color:'#0ea5e9'}],
+    dataFlow:{reads:['config/competitors-list.json','config/niche.json'],writes:['departments/intel/competitors.json','departments/intel/trends.json','departments/intel/customer-language.json'],feeds:['SEO','Content','Social','Email']},
   },
   {
     id:'seo', name:'PIXEL', fullName:'Pixel Chen',
@@ -261,6 +263,8 @@ const EMPLOYEES = [
     stateKeys:['seo','seo_weekly'], deskTile:{x:10,y:6}, roomId:'seo',
     tasks:['Daily: optimize top keyword opportunity','Weekly: full keyword research','Audit JSON-LD structured data','Monitor ranking movements','Feed keyword data to Content'],
     rules:['Shopify products READ ONLY','Real Shopify data only','Title < 60, desc < 155 chars'],
+    apis:[{name:'Claude API',icon:'🧠',color:'#d97706'},{name:'Shopify GraphQL',icon:'🛍️',color:'#96bf48'}],
+    dataFlow:{reads:['departments/intel/trends.json','departments/intel/customer-language.json','config/niche.json'],writes:['departments/seo/keywords.json','departments/seo/opportunities.json'],feeds:['Content']},
   },
   {
     id:'content', name:'QUILL', fullName:'Quill Navarro',
@@ -270,6 +274,8 @@ const EMPLOYEES = [
     stateKeys:['content'], deskTile:{x:24,y:6}, roomId:'content',
     tasks:['Write blog posts & guides','Product descriptions from Shopify','Pre-Write Protocol (Schwartz levels)','23-check anti-AI self-audit','Must pass Copy Police scanner'],
     rules:['0 banned words (68 blocklist)','0 AI patterns','Specifics > superlatives','3-round Critic loop on all copy'],
+    apis:[{name:'Claude API',icon:'🧠',color:'#d97706'},{name:'CrewAI Pipeline',icon:'🔗',color:'#7c3aed'}],
+    dataFlow:{reads:['departments/intel/customer-language.json','departments/x-intel/daily-brief.json','departments/seo/keywords.json','config/copy-rules.json'],writes:['departments/content/calendar.json','departments/content/drafts/'],feeds:['Social','Email']},
   },
   {
     id:'email', name:'BEACON', fullName:'Beacon Torres',
@@ -279,6 +285,8 @@ const EMPLOYEES = [
     stateKeys:['email'], deskTile:{x:30,y:6}, roomId:'email',
     tasks:['Design campaigns (welcome, promo, winback)','Plan A/B tests','Segment customers','Anti-AI copy check','Queue for human approval'],
     rules:['NEVER auto-send — queue ONLY','Preview + test send required','Subject < 50 chars','CAN-SPAM compliant'],
+    apis:[{name:'Claude API',icon:'🧠',color:'#d97706'},{name:'Resend',icon:'📧',color:'#00b4d8'},{name:'Shopify GraphQL',icon:'🛍️',color:'#96bf48'}],
+    dataFlow:{reads:['departments/intel/customer-language.json','departments/x-intel/daily-brief.json','config/copy-rules.json'],writes:['departments/email/campaigns.json','departments/email/ab-tests.json'],feeds:['Queue (human approval)']},
   },
   {
     id:'social', name:'VIBE', fullName:'Vibe Santiago',
@@ -288,6 +296,8 @@ const EMPLOYEES = [
     stateKeys:['social_morning','social_afternoon'], deskTile:{x:3,y:12}, roomId:'social',
     tasks:['AM: create 1-2 posts via Postiz','PM: check engagement','Platform-native content','Use Intel customer language','Track top performers'],
     rules:['Platform-specific voice','Brand-safe only','Anti-AI on all content','Per-platform hashtags'],
+    apis:[{name:'Claude API',icon:'🧠',color:'#d97706'},{name:'Postiz',icon:'📱',color:'#e11d48'},{name:'X API v2',icon:'𝕏',color:'#1DA1F2'}],
+    dataFlow:{reads:['departments/intel/trends.json','departments/x-intel/daily-brief.json','departments/content/calendar.json','config/copy-rules.json'],writes:['departments/social/calendar.json','departments/social/engagement-log.md'],feeds:['Postiz → All platforms']},
   },
   {
     id:'cro', name:'METRIC', fullName:'Metric Okafor',
@@ -297,6 +307,8 @@ const EMPLOYEES = [
     stateKeys:['cro'], deskTile:{x:25,y:12}, roomId:'cro',
     tasks:['Analyze Shopify funnel weekly','Design A/B test hypotheses','Review cart abandonment','Benchmark vs 3-5% CVR','Queue UX recommendations'],
     rules:['NEVER edit live store','Hypothesis + metric required','Data-driven only','Queue all changes'],
+    apis:[{name:'Claude API',icon:'🧠',color:'#d97706'},{name:'Shopify GraphQL',icon:'🛍️',color:'#96bf48'}],
+    dataFlow:{reads:['departments/cro/experiments.json','departments/cro/metrics.json','departments/intel/customer-language.json','config/niche.json'],writes:['departments/cro/experiments.json','departments/cro/audit-log.md'],feeds:['Queue (human approval)']},
   },
 ];
 
@@ -308,6 +320,8 @@ const X_INTEL = {
   stateKeys:['x_intel'], deskTile:{x:16,y:6}, roomId:'x_intel',
   tasks:['Monitor X for refurb phone conversations','Track competitor mentions & promotions','Capture customer sentiment & pain points','Spot trending topics & viral formats','Package intel for Content, Social, Email, SEO'],
   rules:['Never fabricate tweets or sources','Paraphrase if exact text unavailable','Tag which departments need each finding','Prioritize actionable intel over noise','Flag time-sensitive opportunities'],
+  apis:[{name:'Claude API',icon:'🧠',color:'#d97706'},{name:'X API v2',icon:'𝕏',color:'#1DA1F2'}],
+  dataFlow:{reads:['departments/intel/trends.json','config/niche.json','config/competitors-list.json'],writes:['departments/x-intel/daily-brief.json'],feeds:['Content','Social','Email','SEO']},
 };
 
 const GM = {
@@ -318,6 +332,8 @@ const GM = {
   stateKeys:['gm_report','gm_queue'], deskTile:{x:28,y:19}, roomId:'gm',
   tasks:['Friday: weekly report (Opus)','Daily: process queue','Monitor dept health','Flag overdue depts','Enforce all safety rules'],
   rules:['Emails NEVER auto-send','Shopify writes need approval','23-check on ALL copy','CRO = read-only','Git trail on everything','Idle past schedule = investigate'],
+  apis:[{name:'Claude Opus',icon:'🧠',color:'#d97706'},{name:'All Dept Data',icon:'📊',color:'#a855f7'}],
+  dataFlow:{reads:['state/master.json','state/queue.json','ALL department outputs'],writes:['departments/gm/weekly-report.md','state/queue.json'],feeds:['You (weekly report)']},
 };
 
 const ALL_CHARS = [...EMPLOYEES, X_INTEL, GM];
@@ -1246,6 +1262,14 @@ function renderEmployeeCard(emp) {
     <div class="emp-task" style="color:#fc0">${nextRun || 'Not scheduled today'}</div>
     <div class="emp-section-title">SCHEDULE</div>
     <div class="emp-task">${emp.schedule}</div>
+    ${emp.apis ? `<div class="emp-section-title">API CONNECTIONS</div>
+    <div class="emp-apis">${emp.apis.map(a => `<div class="emp-api-badge" style="border-color:${a.color}"><span class="api-icon">${a.icon}</span><span class="api-name" style="color:${a.color}">${a.name}</span></div>`).join('')}</div>` : ''}
+    ${emp.dataFlow ? `<div class="emp-section-title">DATA FLOW</div>
+    <div class="emp-dataflow">
+      <div class="df-section"><span class="df-label">READS</span>${emp.dataFlow.reads.map(f => `<div class="df-file">${f.split('/').pop()}</div>`).join('')}</div>
+      <div class="df-section"><span class="df-label">WRITES</span>${emp.dataFlow.writes.map(f => `<div class="df-file df-write">${f.split('/').pop()}</div>`).join('')}</div>
+      <div class="df-section"><span class="df-label">FEEDS</span>${emp.dataFlow.feeds.map(f => `<div class="df-feed">${f}</div>`).join('')}</div>
+    </div>` : ''}
     <div class="emp-section-title">RESPONSIBILITIES</div>
     ${emp.tasks.map(t => `<div class="emp-task">${t}</div>`).join('')}
     <div class="emp-section-title">RULES</div>
@@ -1273,11 +1297,13 @@ function updateSidebar() {
   const dir = document.getElementById('directory-list');
   dir.innerHTML = ALL_CHARS.map(emp => {
     const status = getDeptStatus(emp.id);
+    const apiIcons = (emp.apis||[]).map(a => `<span title="${a.name}" style="font-size:8px">${a.icon}</span>`).join('');
     return `<div class="dir-entry" data-id="${emp.id}">
       <div class="dir-avatar" style="background:${emp.color}"></div>
       <div class="dir-info">
         <div class="dir-name">${emp.name} <span style="color:${emp.color};font-size:6px">${emp.fullName}</span></div>
         <div class="dir-role">${emp.title}</div>
+        <div class="dir-apis">${apiIcons}</div>
       </div>
       <div class="dir-status ${status}"></div>
     </div>`;

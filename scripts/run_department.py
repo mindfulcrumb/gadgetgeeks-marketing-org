@@ -228,6 +228,41 @@ DEPARTMENT_CONFIG = {
 # Core functions
 # ---------------------------------------------------------------------------
 
+def _pick_content_topic() -> str:
+    """Pick a content topic from SEO opportunities, trends, or X intel."""
+    fallbacks = [
+        "refurbished iPhone buying guide 2026",
+        "best budget phones under $300",
+        "refurbished vs new phone comparison",
+        "phone battery health check guide",
+        "eco-friendly phone accessories roundup",
+    ]
+    # Try SEO opportunities first
+    opps_path = REPO_ROOT / "departments" / "seo" / "opportunities.json"
+    if opps_path.exists():
+        try:
+            opps = json.loads(opps_path.read_text(encoding="utf-8"))
+            if isinstance(opps, list) and opps:
+                return opps[0].get("topic", opps[0].get("keyword", fallbacks[0]))
+            if isinstance(opps, dict) and opps.get("opportunities"):
+                return opps["opportunities"][0].get("topic", fallbacks[0])
+        except Exception:
+            pass
+    # Try trends
+    trends_path = REPO_ROOT / "departments" / "intel" / "trends.json"
+    if trends_path.exists():
+        try:
+            trends = json.loads(trends_path.read_text(encoding="utf-8"))
+            if isinstance(trends, list) and trends:
+                return trends[0].get("topic", trends[0].get("trend", fallbacks[0]))
+            if isinstance(trends, dict) and trends.get("trends"):
+                return trends["trends"][0].get("topic", fallbacks[0])
+        except Exception:
+            pass
+    # Fallback: rotate through defaults based on day of month
+    return fallbacks[datetime.now().day % len(fallbacks)]
+
+
 def load_agent_prompt(dept_config: dict) -> str:
     """Load the agent's system prompt from its .md file."""
     prompt_path = REPO_ROOT / dept_config["agent_prompt"]
@@ -470,6 +505,31 @@ def main():
     if department == "x_intel":
         print("  Fetching live X/Twitter data...")
         context += fetch_live_x_data()
+
+    # 2b. Try CrewAI pipeline for content department
+    if department == "content":
+        try:
+            from crewai_content.crew import run_content_pipeline
+            print("  CrewAI pipeline available — using multi-agent content creation")
+            use_crewai = True
+        except ImportError:
+            print("  CrewAI not available — falling back to single-agent mode")
+            use_crewai = False
+
+        if use_crewai:
+            try:
+                topic = _pick_content_topic()
+                print(f"  Topic: {topic}")
+                result = run_content_pipeline(topic=topic, save_to_disk=True)
+                update_master_state(department, True)
+                commit_changes(f"[{department}] CrewAI pipeline run — {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}")
+                print(f"\n{'='*60}")
+                print(f"  {department.upper()} DEPARTMENT — COMPLETE (CrewAI)")
+                print(f"{'='*60}")
+                return
+            except Exception as e:
+                print(f"  CrewAI pipeline failed: {e}")
+                print("  Falling back to single-agent mode...")
 
     # 3. Call Claude API
     print("[3/5] Calling Claude API...")

@@ -235,8 +235,8 @@ def list_calls(limit: int = 50) -> list:
 CALL_SCRIPTS = {
     "abandoned_cart": {
         "name": "GadgetGeeks Abandoned Cart Recovery",
-        "first_message": "Hey! This is Alex from Gadget Geeks Pro. I noticed you were looking at some great phones on our site — just wanted to check if you had any questions before the deal expires.",
-        "system_prompt": """You are Alex, a friendly sales associate at Gadget Geeks Pro, a refurbished phone store.
+        "first_message": "Hey! This is Xavier from Gadget Geeks Pro. Just a heads up, this call may be recorded for quality purposes. I noticed you were looking at some great phones on our site — just wanted to check if you had any questions before the deal expires.",
+        "system_prompt": """You are Xavier, a friendly sales associate at Gadget Geeks Pro, a refurbished phone store.
 
 You're calling customers who left items in their cart. Your goal is to answer any questions and help them complete their purchase.
 
@@ -272,8 +272,8 @@ RULES:
 
     "review_request": {
         "name": "GadgetGeeks Review Request",
-        "first_message": "Hi there! This is Sam from Gadget Geeks Pro. I'm calling to check how your new phone is working out — and if you had a quick moment, we'd love to hear about your experience.",
-        "system_prompt": """You are Sam, a customer success associate at Gadget Geeks Pro.
+        "first_message": "Hi there! This is Xavier from Gadget Geeks Pro. Quick note, this call may be recorded for quality purposes. I'm calling to check how your new phone is working out — and if you had a quick moment, we'd love to hear about your experience.",
+        "system_prompt": """You are Xavier, a customer success associate at Gadget Geeks Pro.
 
 You're calling customers who purchased 7-14 days ago to check on their experience and request a review.
 
@@ -299,8 +299,8 @@ RULES:
 
     "winback": {
         "name": "GadgetGeeks Win-Back",
-        "first_message": "Hey! This is Jordan from Gadget Geeks Pro. It's been a while since we heard from you, and I wanted to let you know about some deals we've got on the latest refurbished phones.",
-        "system_prompt": """You are Jordan, a sales associate at Gadget Geeks Pro.
+        "first_message": "Hey! This is Xavier from Gadget Geeks Pro. Just so you know, this call may be recorded for quality purposes. It's been a while since we heard from you, and I wanted to let you know about some deals we've got on the latest refurbished phones.",
+        "system_prompt": """You are Xavier, a sales associate at Gadget Geeks Pro.
 
 You're calling customers who haven't purchased in 60+ days to re-engage them.
 
@@ -325,8 +325,8 @@ RULES:
 
     "b2b_outreach": {
         "name": "GadgetGeeks B2B Outreach",
-        "first_message": "Hi, this is Morgan from Gadget Geeks Pro. We supply refurbished phones to businesses at wholesale pricing — I was wondering if your company has ever considered refurbished devices for your team?",
-        "system_prompt": """You are Morgan, the B2B sales lead at Gadget Geeks Pro.
+        "first_message": "Hi, this is Xavier from Gadget Geeks Pro. Just a heads up, this call may be recorded for quality purposes. We supply refurbished phones to businesses at wholesale pricing — I was wondering if your company has ever considered refurbished devices for your team?",
+        "system_prompt": """You are Xavier, the B2B sales lead at Gadget Geeks Pro.
 
 You're cold-calling businesses to pitch bulk refurbished phone deals.
 

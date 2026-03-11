@@ -1,0 +1,35 @@
+name: General Manager — Daily Queue Processing
+on:
+  schedule:
+    - cron: '51 18 * * *'  # Daily 6:51 PM UTC
+  workflow_dispatch:
+
+jobs:
+  run-gm-queue:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run GM Queue Processing
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          POSTIZ_API_KEY: ${{ secrets.POSTIZ_API_KEY }}
+        run: python scripts/run_department.py gm_queue
+
+      - name: Push changes
+        run: |
+          git config user.name "Marketing Org Bot"
+          git config user.email "bot@gadgetgeekspro.com"
+          git add -A
+          git diff --cached --quiet || git commit -m "[gm] Queue processing — $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git push

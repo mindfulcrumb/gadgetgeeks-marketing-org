@@ -1,0 +1,10 @@
+{
+  "snapshots": [],
+  "targets": {
+    "conversion_rate": 0.035,
+    "shopify_average": 0.014,
+    "cart_abandonment_target": 0.65,
+    "aov_target": 150
+  },
+  "last_updated": null
+}

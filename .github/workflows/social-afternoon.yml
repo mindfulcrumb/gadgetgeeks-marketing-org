@@ -1,0 +1,34 @@
+name: Social Media (Afternoon — Engagement Check)
+on:
+  schedule:
+    - cron: '37 16 * * *'  # Daily 4:37 PM UTC
+  workflow_dispatch:
+
+jobs:
+  run-social-afternoon:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Social Media Afternoon
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          POSTIZ_API_KEY: ${{ secrets.POSTIZ_API_KEY }}
+        run: python scripts/run_department.py social_afternoon
+
+      - name: Push changes
+        run: |
+          git config user.name "Marketing Org Bot"
+          git config user.email "bot@gadgetgeekspro.com"
+          git add -A
+          git diff --cached --quiet || git commit -m "[social] Afternoon run — $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git push

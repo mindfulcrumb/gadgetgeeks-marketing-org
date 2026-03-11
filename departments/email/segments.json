@@ -1,0 +1,10 @@
+{
+  "segments": [
+    { "name": "all_customers", "description": "All customers who have placed at least one order", "query": "orders_count > 0" },
+    { "name": "repeat_buyers", "description": "Customers with 2+ orders", "query": "orders_count >= 2" },
+    { "name": "cart_abandoners", "description": "Customers who abandoned checkout in last 30 days", "query": "abandoned_checkout_last_30d" },
+    { "name": "inactive_30d", "description": "Customers with no activity in 30 days", "query": "last_order_date < 30_days_ago" },
+    { "name": "high_value", "description": "Customers with total spend > $200", "query": "total_spent > 200" }
+  ],
+  "last_updated": null
+}

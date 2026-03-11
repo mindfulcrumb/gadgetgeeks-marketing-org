@@ -1,0 +1,34 @@
+{
+  "store": {
+    "name": "Gadget Geeks Pro",
+    "url": "https://gadgetgeekspro.myshopify.com",
+    "domain": "gadgetgeekspro.myshopify.com"
+  },
+  "niche": "Refurbished phones, tablets, smartwatches + accessories (cases, chargers, cables, bundles)",
+  "target_audience": {
+    "primary": "Budget-conscious tech buyers aged 18-45 who want quality devices without paying full price",
+    "secondary": "Eco-conscious consumers who prefer refurbished over new for sustainability",
+    "pain_points": [
+      "New phones are too expensive",
+      "Worried about quality of used/refurbished devices",
+      "Don't know which accessories are compatible",
+      "Fear of buying a lemon with no warranty"
+    ],
+    "desires": [
+      "Premium phone at 40-60% off retail",
+      "Confidence that the device works perfectly",
+      "Warranty and return protection",
+      "Complete bundle deals (phone + case + charger)"
+    ]
+  },
+  "brand_voice": {
+    "tone": "Confident, knowledgeable, no-BS. Like a tech-savvy friend who knows the deals.",
+    "avoid": "Corporate speak, overly formal language, AI-sounding copy",
+    "use": "Specific numbers, real customer language, direct CTAs"
+  },
+  "products": {
+    "categories": ["Refurbished iPhones", "Refurbished Samsung Galaxy", "Refurbished iPads", "Refurbished Apple Watch", "Phone Cases", "Chargers & Cables", "Bundles"],
+    "price_range": "$49 - $899",
+    "usp": "Certified refurbished with warranty, graded A/B/C, bundle deals save 20-30%"
+  }
+}

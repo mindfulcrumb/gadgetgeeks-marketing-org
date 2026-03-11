@@ -1,0 +1,200 @@
+{
+  "version": "1.0.0",
+  "source": "copy-police-scanner.py (The Closer Edition)",
+  "total_checks": 25,
+  "instructions": "Before outputting ANY marketing copy, self-audit against ALL rules below. If any rule is violated, rewrite before returning output.",
+
+  "banned_words": [
+    "delve", "delves", "delving", "tapestry", "paramount",
+    "foster", "fosters", "fostering", "plethora", "multifaceted",
+    "intersection", "reimagine", "reimagined", "holistic", "vibrant",
+    "robust", "seamless", "cutting-edge", "game-changer", "game-changing",
+    "synergy", "synergistic", "leverage", "utilize", "utilized", "utilizing",
+    "facilitate", "facilitated", "demonstrate", "demonstrated",
+    "craft", "crafted", "crafting", "curate", "curated", "curating",
+    "pivotal", "testament", "underscore", "underscores",
+    "embark", "embarking", "navigate", "landscape",
+    "elevate", "elevated", "elevating", "empower", "empowered", "empowering",
+    "streamline", "streamlined", "spearhead", "spearheaded",
+    "harness", "harnessed", "harnessing", "bolster", "bolstered",
+    "endeavor", "endeavors", "meticulous", "meticulously",
+    "comprehensive", "intricate", "moreover", "furthermore",
+    "consequently", "nevertheless", "notwithstanding", "aforementioned",
+    "unparalleled", "groundbreaking", "transformative",
+    "revolutionize", "revolutionized", "unlock", "unlocking",
+    "skyrocket", "innovative", "paradigm", "synergize", "optimal", "optimize",
+    "nuanced", "ensure", "ensures", "ensuring",
+    "journey", "revolutionary"
+  ],
+
+  "banned_phrases": [
+    "it's important to note", "in today's world", "in today's fast-paced",
+    "in conclusion", "it is worth noting", "one must consider",
+    "this is a testament", "at the end of the day", "moving forward",
+    "going forward", "in the realm of", "in the world of",
+    "with that being said", "that being said", "it goes without saying",
+    "needless to say", "more importantly", "last but not least",
+    "without further ado", "a wealth of", "the fact of the matter",
+    "allow me to", "i would like to", "feel free to", "don't hesitate to",
+    "as previously mentioned", "as i mentioned earlier",
+    "please note that", "it should be noted", "rest assured",
+    "whether you're a", "look no further", "takes it to the next level",
+    "not just any", "let's dive in",
+    "without breaking the bank", "ready to take",
+    "but what if i told you", "say goodbye to", "say hello to",
+    "are you tired of", "here's the breakdown", "here's what nobody tells you"
+  ],
+
+  "checks": [
+    {
+      "id": 1,
+      "name": "Banned Words",
+      "severity": "critical",
+      "rule": "Zero tolerance for any word in the banned_words list. Replace with plain, specific alternatives."
+    },
+    {
+      "id": 2,
+      "name": "Banned Phrases",
+      "severity": "critical",
+      "rule": "Zero tolerance for any phrase in the banned_phrases list. Cut or rewrite completely."
+    },
+    {
+      "id": 3,
+      "name": "Negation Dance",
+      "severity": "critical",
+      "rule": "Never use 'It's not X. It's Y.' reframing pattern. State what it IS directly."
+    },
+    {
+      "id": 4,
+      "name": "Triple Parallel Pattern",
+      "severity": "critical",
+      "rule": "Never use three consecutive sentences starting with the same word pattern (No/Every/More/Less/Better/Without/Stop/Start). Break one or reduce to two."
+    },
+    {
+      "id": 5,
+      "name": "Definition Opener",
+      "severity": "critical",
+      "rule": "Never open with definitions ('X is the art/practice/process of...'). Start with pain, a bold claim, or a story."
+    },
+    {
+      "id": 6,
+      "name": "Uniform Bullet Length",
+      "severity": "warning",
+      "rule": "Bullet points must vary in length. Mix short fragments with longer explanations. Never make all bullets the same word count."
+    },
+    {
+      "id": 7,
+      "name": "Transition Starters",
+      "severity": "critical",
+      "rule": "Never start a line with: firstly, secondly, furthermore, moreover, additionally, finally, in summary, consequently, therefore, hence. Start with substance."
+    },
+    {
+      "id": 8,
+      "name": "Summary/Recap Ending",
+      "severity": "critical",
+      "rule": "Never end with 'in summary', 'to recap', 'as we've seen', 'we've covered', 'all in all'. Just stop or look forward. Never recap."
+    },
+    {
+      "id": 9,
+      "name": "Hedging",
+      "severity": "critical",
+      "rule": "Never hedge: 'some might argue', 'could potentially', 'results may vary', 'in some cases'. Have an opinion. Own it."
+    },
+    {
+      "id": 10,
+      "name": "Vague Superlatives",
+      "severity": "warning",
+      "rule": "Never use 2+ vague superlatives (significant, remarkable, incredible, amazing, outstanding, exceptional, world-class, best-in-class). Every claim needs proof: number, testimonial, or named source."
+    },
+    {
+      "id": 11,
+      "name": "Uniform Paragraph Length",
+      "severity": "warning",
+      "rule": "Paragraphs must vary in length. Force at least one single-sentence paragraph per section."
+    },
+    {
+      "id": 12,
+      "name": "Sentence Length Variation (MOST IMPORTANT)",
+      "severity": "critical",
+      "rule": "Mix sentence lengths aggressively. Include at least 2 sentences under 6 words ('Works every time.' 'That changed everything.'). Include at least 1 sentence over 20 words. Standard deviation of sentence lengths must be 5+. This is the #1 AI detection signal."
+    },
+    {
+      "id": 13,
+      "name": "Strategic Imperfection",
+      "severity": "critical",
+      "rule": "Include at least one of: sentence fragment, em-dash, casual word (honestly, look, damn), And/But sentence starter. Zero imperfections = AI detection."
+    },
+    {
+      "id": 14,
+      "name": "Rhetorical Questions",
+      "severity": "warning",
+      "rule": "Include 2-3 rhetorical questions in any copy over 500 characters. They create internal dialogue."
+    },
+    {
+      "id": 15,
+      "name": "Contractions",
+      "severity": "critical",
+      "rule": "Use contractions everywhere (don't, won't, can't, isn't, you're, it's, that's). Zero contractions = instant AI flag."
+    },
+    {
+      "id": 16,
+      "name": "Features Without Benefits",
+      "severity": "warning",
+      "rule": "Never list pure features. Every feature needs a benefit chain: Feature -> Benefit -> So What. Use bridges: 'so you', 'which means', 'giving you', 'because'."
+    },
+    {
+      "id": 17,
+      "name": "Loss Aversion Framing",
+      "severity": "warning",
+      "rule": "Frame savings as loss prevention, not gains. 'Stop wasting $X/month' > 'Save $X/month'. Pain of losing is 2.5x stronger than gain."
+    },
+    {
+      "id": 18,
+      "name": "Offer Engineering",
+      "severity": "warning",
+      "rule": "Complete offers need: price anchor (was/originally), guarantee (money-back/risk-free), deadline (limited/countdown), bonus stack (free included/you also get)."
+    },
+    {
+      "id": 19,
+      "name": "Review Voice Uniformity",
+      "severity": "critical",
+      "rule": "If including reviews/testimonials: vary length wildly (one 8 words, another 50). Never use the same skeptic-to-convert arc more than once."
+    },
+    {
+      "id": 20,
+      "name": "Bucket Brigade",
+      "severity": "warning",
+      "rule": "Include open-loop phrases between sections: 'and here's', 'but that's not all', 'here's the thing', 'what most people miss'. Creates slippery slope readability."
+    },
+    {
+      "id": 21,
+      "name": "Mechanism Explanation",
+      "severity": "warning",
+      "rule": "Every technical term needs a 'which means' or 'because' explanation. Don't name-drop specs without explaining WHY they matter to the buyer."
+    },
+    {
+      "id": 22,
+      "name": "Active Voice",
+      "severity": "warning",
+      "rule": "Minimize passive voice ('is made', 'was given', 'are found'). Max 2 passive constructions per piece. Active voice throughout."
+    },
+    {
+      "id": 23,
+      "name": "Lazy Patterns",
+      "severity": "warning",
+      "rule": "Max 4 'Your X.' sentence starters. Max 2 exclamation marks per piece. Vary your openings."
+    },
+    {
+      "id": 24,
+      "name": "Period-Conjunction Fragments",
+      "severity": "critical",
+      "rule": "Never write 'Sentence. And continuation.' or 'Sentence. But more.' Use a comma to connect naturally: 'Sentence, and continuation.' AI fragments with periods; humans flow with commas."
+    },
+    {
+      "id": 25,
+      "name": "Staccato Machine-Gun Fragments",
+      "severity": "critical",
+      "rule": "Never write 3+ consecutive short fragments separated by periods ('No blender. No subscription. Open the box.'). Humans connect ideas with commas in flowing sentences."
+    }
+  ]
+}

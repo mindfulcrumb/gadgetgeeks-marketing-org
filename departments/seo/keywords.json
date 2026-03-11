@@ -1,0 +1,15 @@
+{
+  "keywords": [
+    { "term": "refurbished iphone", "priority": "high", "volume_estimate": "high", "current_ranking": null },
+    { "term": "pre-owned samsung galaxy", "priority": "high", "volume_estimate": "medium", "current_ranking": null },
+    { "term": "certified refurbished phones", "priority": "high", "volume_estimate": "high", "current_ranking": null },
+    { "term": "refurbished ipad", "priority": "medium", "volume_estimate": "medium", "current_ranking": null },
+    { "term": "phone accessories bundle", "priority": "medium", "volume_estimate": "medium", "current_ranking": null },
+    { "term": "cheap refurbished phones", "priority": "high", "volume_estimate": "high", "current_ranking": null },
+    { "term": "refurbished apple watch", "priority": "medium", "volume_estimate": "medium", "current_ranking": null },
+    { "term": "phone case charger bundle", "priority": "medium", "volume_estimate": "low", "current_ranking": null },
+    { "term": "buy used phones online", "priority": "high", "volume_estimate": "high", "current_ranking": null },
+    { "term": "refurbished phone warranty", "priority": "medium", "volume_estimate": "low", "current_ranking": null }
+  ],
+  "last_updated": null
+}

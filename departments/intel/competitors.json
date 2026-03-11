@@ -1,0 +1,39 @@
+{
+  "competitors": [
+    {
+      "name": "Back Market",
+      "url": "https://www.backmarket.com",
+      "category": "refurbished electronics marketplace",
+      "last_checked": null,
+      "notes": "Major competitor — certified refurbished, warranty, wide catalog"
+    },
+    {
+      "name": "Gazelle",
+      "url": "https://www.gazelle.com",
+      "category": "refurbished phones/tablets",
+      "last_checked": null,
+      "notes": "Premium positioning, 30-day returns"
+    },
+    {
+      "name": "Decluttr",
+      "url": "https://www.decluttr.com",
+      "category": "refurbished tech + trade-in",
+      "last_checked": null,
+      "notes": "Buy and sell used tech, strong trade-in funnel"
+    },
+    {
+      "name": "Swappa",
+      "url": "https://swappa.com",
+      "category": "peer-to-peer used electronics",
+      "last_checked": null,
+      "notes": "Marketplace model, user-to-user sales"
+    },
+    {
+      "name": "RefurbMe",
+      "url": "https://www.refurb.me",
+      "category": "refurbished price comparison",
+      "last_checked": null,
+      "notes": "Aggregator — compare refurbished prices across vendors"
+    }
+  ]
+}

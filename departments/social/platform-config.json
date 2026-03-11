@@ -1,0 +1,20 @@
+{
+  "platforms": ["twitter", "instagram", "facebook", "tiktok", "pinterest", "reddit", "linkedin"],
+  "posting_times": {
+    "twitter": "09:00",
+    "instagram": "11:00",
+    "facebook": "10:00",
+    "tiktok": "19:00",
+    "pinterest": "20:00",
+    "reddit": "08:00",
+    "linkedin": "09:30"
+  },
+  "hashtags": {
+    "default": ["#refurbished", "#techdeals", "#sustainabletech", "#phonedeal"],
+    "iphone": ["#iphone", "#apple", "#refurbishediphone"],
+    "samsung": ["#samsung", "#galaxy", "#androiddeals"],
+    "accessories": ["#phonecase", "#techgadgets", "#phoneaccessories"]
+  },
+  "daily_post_budget": 15,
+  "last_updated": null
+}

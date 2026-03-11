@@ -1,0 +1,35 @@
+name: SEO Department (Weekly Deep Audit)
+on:
+  schedule:
+    - cron: '17 5 * * 1'  # Monday 5:17 AM UTC
+  workflow_dispatch:
+
+jobs:
+  run-seo-weekly:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run SEO Weekly Deep
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          SHOPIFY_STORE: ${{ secrets.SHOPIFY_STORE }}
+          SHOPIFY_ACCESS_TOKEN: ${{ secrets.SHOPIFY_ACCESS_TOKEN }}
+        run: python scripts/run_department.py seo_weekly
+
+      - name: Push changes
+        run: |
+          git config user.name "Marketing Org Bot"
+          git config user.email "bot@gadgetgeekspro.com"
+          git add -A
+          git diff --cached --quiet || git commit -m "[seo-weekly] Deep audit — $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git push

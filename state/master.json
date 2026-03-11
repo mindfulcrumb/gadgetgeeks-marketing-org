@@ -1,0 +1,16 @@
+{
+  "departments": {
+    "intel": { "last_run": null, "status": "idle", "runs_total": 0 },
+    "seo": { "last_run": null, "status": "idle", "runs_total": 0 },
+    "seo_weekly": { "last_run": null, "status": "idle", "runs_total": 0 },
+    "content": { "last_run": null, "status": "idle", "runs_total": 0 },
+    "email": { "last_run": null, "status": "idle", "runs_total": 0 },
+    "social_morning": { "last_run": null, "status": "idle", "runs_total": 0 },
+    "social_afternoon": { "last_run": null, "status": "idle", "runs_total": 0 },
+    "cro": { "last_run": null, "status": "idle", "runs_total": 0 },
+    "gm_report": { "last_run": null, "status": "idle", "runs_total": 0 },
+    "gm_queue": { "last_run": null, "status": "idle", "runs_total": 0 }
+  },
+  "created": "2026-03-11",
+  "version": "1.0.0"
+}

@@ -1,0 +1,466 @@
+#!/usr/bin/env python3
+"""
+Core engine for the Gadget Geeks Marketing Organization.
+Each GitHub Actions workflow calls this script with a department name.
+It loads the department's agent prompt, reads context files, calls Claude API,
+parses actions from the response, and commits updated state back to the repo.
+"""
+
+import os
+import sys
+import json
+import re
+import subprocess
+from datetime import datetime, timezone
+from pathlib import Path
+
+# Add parent dir to path for imports
+sys.path.insert(0, str(Path(__file__).parent))
+
+from actions.github_state import read_state, write_state, commit_changes
+from actions.postiz import post_to_social
+from actions.resend_email import send_email
+from actions.shopify_api import query_shopify
+
+try:
+    import anthropic
+except ImportError:
+    print("ERROR: anthropic package not installed. Run: pip install anthropic")
+    sys.exit(1)
+
+
+# ---------------------------------------------------------------------------
+# Configuration
+# ---------------------------------------------------------------------------
+REPO_ROOT = Path(__file__).parent.parent
+DEPARTMENTS_DIR = REPO_ROOT / "departments"
+AGENTS_DIR = REPO_ROOT / "agents"
+CONFIG_DIR = REPO_ROOT / "config"
+STATE_DIR = REPO_ROOT / "state"
+
+# Model selection: opus for GM weekly report, sonnet for everything else
+MODELS = {
+    "default": "claude-sonnet-4-20250514",
+    "gm_report": "claude-opus-4-20250514",
+}
+
+MAX_TOKENS = 4096
+
+
+# ---------------------------------------------------------------------------
+# Department definitions: what each department reads and which agent prompt
+# ---------------------------------------------------------------------------
+DEPARTMENT_CONFIG = {
+    "intel": {
+        "agent_prompt": "agents/custom/intel-agent.md",
+        "context_files": [
+            "departments/intel/competitors.json",
+            "departments/intel/trends.json",
+            "departments/intel/customer-language.json",
+            "config/niche.json",
+            "config/competitors-list.json",
+        ],
+        "output_files": [
+            "departments/intel/competitors.json",
+            "departments/intel/trends.json",
+            "departments/intel/customer-language.json",
+        ],
+    },
+    "seo": {
+        "agent_prompt": "agents/custom/seo-agent.md",
+        "context_files": [
+            "departments/seo/keywords.json",
+            "departments/seo/opportunities.json",
+            "departments/intel/trends.json",
+            "departments/intel/customer-language.json",
+            "config/niche.json",
+        ],
+        "output_files": [
+            "departments/seo/keywords.json",
+            "departments/seo/opportunities.json",
+            "departments/seo/audit-log.md",
+            "departments/content/product-copy-queue.json",
+        ],
+    },
+    "seo_weekly": {
+        "agent_prompt": "agents/custom/seo-weekly-agent.md",
+        "context_files": [
+            "departments/seo/keywords.json",
+            "departments/seo/opportunities.json",
+            "departments/seo/audit-log.md",
+            "departments/intel/trends.json",
+            "departments/intel/customer-language.json",
+            "config/niche.json",
+        ],
+        "output_files": [
+            "departments/seo/keywords.json",
+            "departments/seo/opportunities.json",
+            "departments/seo/audit-log.md",
+        ],
+    },
+    "content": {
+        "agent_prompt": "agents/custom/content-agent.md",
+        "context_files": [
+            "departments/content/calendar.json",
+            "departments/content/product-copy-queue.json",
+            "departments/intel/customer-language.json",
+            "config/niche.json",
+            "config/copy-rules.json",
+        ],
+        "output_files": [
+            "departments/content/calendar.json",
+            "departments/content/product-copy-queue.json",
+        ],
+    },
+    "email": {
+        "agent_prompt": "agents/custom/email-marketing-agent.md",
+        "context_files": [
+            "departments/email/campaigns.json",
+            "departments/email/segments.json",
+            "departments/email/ab-tests.json",
+            "departments/intel/customer-language.json",
+            "config/niche.json",
+            "config/copy-rules.json",
+        ],
+        "output_files": [
+            "departments/email/campaigns.json",
+            "departments/email/ab-tests.json",
+        ],
+    },
+    "social_morning": {
+        "agent_prompt": "agents/custom/social-morning-agent.md",
+        "context_files": [
+            "departments/social/calendar.json",
+            "departments/social/platform-config.json",
+            "departments/intel/trends.json",
+            "departments/intel/customer-language.json",
+            "config/niche.json",
+            "config/copy-rules.json",
+        ],
+        "output_files": [
+            "departments/social/calendar.json",
+        ],
+    },
+    "social_afternoon": {
+        "agent_prompt": "agents/custom/social-afternoon-agent.md",
+        "context_files": [
+            "departments/social/calendar.json",
+            "departments/social/engagement-log.md",
+            "departments/social/platform-config.json",
+        ],
+        "output_files": [
+            "departments/social/calendar.json",
+            "departments/social/engagement-log.md",
+        ],
+    },
+    "cro": {
+        "agent_prompt": "agents/custom/cro-agent.md",
+        "context_files": [
+            "departments/cro/experiments.json",
+            "departments/cro/metrics.json",
+            "departments/cro/audit-log.md",
+            "departments/intel/customer-language.json",
+            "config/niche.json",
+        ],
+        "output_files": [
+            "departments/cro/experiments.json",
+            "departments/cro/metrics.json",
+            "departments/cro/audit-log.md",
+        ],
+    },
+    "gm_report": {
+        "agent_prompt": "agents/custom/gm-report-agent.md",
+        "context_files": [
+            "state/master.json",
+            "state/queue.json",
+            "departments/intel/competitors.json",
+            "departments/intel/trends.json",
+            "departments/intel/customer-language.json",
+            "departments/seo/keywords.json",
+            "departments/seo/opportunities.json",
+            "departments/seo/audit-log.md",
+            "departments/content/calendar.json",
+            "departments/email/campaigns.json",
+            "departments/email/ab-tests.json",
+            "departments/social/calendar.json",
+            "departments/social/engagement-log.md",
+            "departments/cro/experiments.json",
+            "departments/cro/metrics.json",
+            "config/niche.json",
+        ],
+        "output_files": [
+            "departments/gm/weekly-report.md",
+        ],
+    },
+    "gm_queue": {
+        "agent_prompt": "agents/custom/gm-queue-agent.md",
+        "context_files": [
+            "state/queue.json",
+            "state/master.json",
+        ],
+        "output_files": [
+            "state/queue.json",
+            "state/master.json",
+        ],
+    },
+}
+
+
+# ---------------------------------------------------------------------------
+# Core functions
+# ---------------------------------------------------------------------------
+
+def load_agent_prompt(dept_config: dict) -> str:
+    """Load the agent's system prompt from its .md file."""
+    prompt_path = REPO_ROOT / dept_config["agent_prompt"]
+    if not prompt_path.exists():
+        # Fallback: check original agency-agents directories
+        alt_path = REPO_ROOT / "marketing" / prompt_path.name
+        if alt_path.exists():
+            return alt_path.read_text(encoding="utf-8")
+        print(f"WARNING: Agent prompt not found at {prompt_path}")
+        return f"You are a marketing department agent. Follow the instructions in your context."
+    return prompt_path.read_text(encoding="utf-8")
+
+
+def load_context(dept_config: dict) -> str:
+    """Load all context files and format them for the prompt."""
+    context_parts = []
+    for file_path in dept_config["context_files"]:
+        full_path = REPO_ROOT / file_path
+        if full_path.exists():
+            content = full_path.read_text(encoding="utf-8")
+            context_parts.append(f"=== FILE: {file_path} ===\n{content}\n")
+        else:
+            context_parts.append(f"=== FILE: {file_path} === [EMPTY - not yet created]\n")
+    return "\n".join(context_parts)
+
+
+def build_user_message(department: str, context: str) -> str:
+    """Build the user message with context and instructions."""
+    now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+    return f"""Current time: {now}
+Department: {department}
+
+Here is your current context (state files from the repository):
+
+{context}
+
+---
+
+Execute your department's tasks now. Read the context above carefully.
+
+IMPORTANT: Return your response in this exact format:
+
+1. First, write your analysis and work in plain text.
+
+2. Then, output any file updates as JSON blocks wrapped in ```json tags with a special header comment:
+```json
+// UPDATE: path/to/file.json
+{{ "the": "updated content" }}
+```
+
+3. For any actions that need human approval (emails to send, product descriptions to update on Shopify, theme changes), add them to the queue:
+```json
+// QUEUE_ITEM
+{{
+  "type": "email|product_copy|theme_change|social_post",
+  "department": "{department}",
+  "summary": "Brief description",
+  "details": {{ }},
+  "created": "{now}"
+}}
+```
+
+4. For social media posts to publish immediately via Postiz:
+```json
+// SOCIAL_POST
+{{
+  "content": "The post text",
+  "platforms": ["twitter", "instagram", "facebook"],
+  "media_url": null
+}}
+```
+"""
+
+
+def parse_response(response_text: str) -> dict:
+    """Parse Claude's response into file updates, queue items, and social posts."""
+    result = {
+        "analysis": "",
+        "file_updates": [],
+        "queue_items": [],
+        "social_posts": [],
+    }
+
+    # Extract JSON blocks with headers
+    json_blocks = re.findall(
+        r'```json\s*\n\s*//\s*(UPDATE|QUEUE_ITEM|SOCIAL_POST):?\s*(.*?)\n(.*?)```',
+        response_text,
+        re.DOTALL,
+    )
+
+    for block_type, header, content in json_blocks:
+        content = content.strip()
+        try:
+            data = json.loads(content)
+        except json.JSONDecodeError:
+            print(f"WARNING: Failed to parse JSON block ({block_type}): {content[:100]}...")
+            continue
+
+        if block_type == "UPDATE":
+            file_path = header.strip()
+            result["file_updates"].append({"path": file_path, "data": data})
+        elif block_type == "QUEUE_ITEM":
+            result["queue_items"].append(data)
+        elif block_type == "SOCIAL_POST":
+            result["social_posts"].append(data)
+
+    # Everything outside JSON blocks is analysis
+    analysis = re.sub(r'```json.*?```', '', response_text, flags=re.DOTALL).strip()
+    result["analysis"] = analysis
+
+    return result
+
+
+def execute_actions(department: str, parsed: dict):
+    """Execute parsed actions: write files, add to queue, post to social."""
+
+    # 1. Write file updates
+    for update in parsed["file_updates"]:
+        file_path = REPO_ROOT / update["path"]
+        file_path.parent.mkdir(parents=True, exist_ok=True)
+        if isinstance(update["data"], (dict, list)):
+            file_path.write_text(
+                json.dumps(update["data"], indent=2, ensure_ascii=False),
+                encoding="utf-8",
+            )
+        else:
+            file_path.write_text(str(update["data"]), encoding="utf-8")
+        print(f"  Updated: {update['path']}")
+
+    # 2. Add queue items
+    if parsed["queue_items"]:
+        queue_path = STATE_DIR / "queue.json"
+        queue = json.loads(queue_path.read_text(encoding="utf-8"))
+        for item in parsed["queue_items"]:
+            item["id"] = f"{department}_{datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')}"
+            queue["pending"].append(item)
+            print(f"  Queued: {item.get('summary', 'unknown')} [{item['type']}]")
+        queue_path.write_text(json.dumps(queue, indent=2, ensure_ascii=False), encoding="utf-8")
+
+    # 3. Post to social media (only if Postiz API key is available)
+    postiz_key = os.environ.get("POSTIZ_API_KEY")
+    for post in parsed["social_posts"]:
+        if postiz_key:
+            try:
+                post_to_social(
+                    content=post["content"],
+                    platforms=post.get("platforms", []),
+                    media_url=post.get("media_url"),
+                    api_key=postiz_key,
+                )
+                print(f"  Posted to social: {post['content'][:60]}...")
+            except Exception as e:
+                print(f"  ERROR posting to social: {e}")
+        else:
+            print(f"  SKIPPED social post (no POSTIZ_API_KEY): {post['content'][:60]}...")
+
+
+def update_master_state(department: str, success: bool):
+    """Update master.json with run timestamp and status."""
+    master_path = STATE_DIR / "master.json"
+    master = json.loads(master_path.read_text(encoding="utf-8"))
+    now = datetime.now(timezone.utc).isoformat()
+
+    if department not in master["departments"]:
+        master["departments"][department] = {"last_run": None, "status": "idle", "runs_total": 0}
+
+    master["departments"][department]["last_run"] = now
+    master["departments"][department]["status"] = "ok" if success else "error"
+    master["departments"][department]["runs_total"] += 1
+
+    master_path.write_text(json.dumps(master, indent=2, ensure_ascii=False), encoding="utf-8")
+
+
+# ---------------------------------------------------------------------------
+# Main
+# ---------------------------------------------------------------------------
+
+def main():
+    if len(sys.argv) < 2:
+        print("Usage: python run_department.py <department_name>")
+        print(f"Available: {', '.join(DEPARTMENT_CONFIG.keys())}")
+        sys.exit(1)
+
+    department = sys.argv[1]
+
+    if department not in DEPARTMENT_CONFIG:
+        print(f"ERROR: Unknown department '{department}'")
+        print(f"Available: {', '.join(DEPARTMENT_CONFIG.keys())}")
+        sys.exit(1)
+
+    dept_config = DEPARTMENT_CONFIG[department]
+    model = MODELS.get(department, MODELS["default"])
+
+    print(f"{'='*60}")
+    print(f"  MARKETING ORG — {department.upper()} DEPARTMENT")
+    print(f"  Model: {model}")
+    print(f"  Time: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}")
+    print(f"{'='*60}")
+
+    # 1. Load agent prompt
+    print("\n[1/5] Loading agent prompt...")
+    system_prompt = load_agent_prompt(dept_config)
+
+    # 2. Load context
+    print("[2/5] Loading context files...")
+    context = load_context(dept_config)
+
+    # 3. Call Claude API
+    print("[3/5] Calling Claude API...")
+    api_key = os.environ.get("ANTHROPIC_API_KEY")
+    if not api_key:
+        print("ERROR: ANTHROPIC_API_KEY not set")
+        update_master_state(department, False)
+        sys.exit(1)
+
+    client = anthropic.Anthropic(api_key=api_key)
+
+    try:
+        message = client.messages.create(
+            model=model,
+            max_tokens=MAX_TOKENS,
+            system=system_prompt,
+            messages=[
+                {"role": "user", "content": build_user_message(department, context)},
+            ],
+        )
+        response_text = message.content[0].text
+        print(f"  Response: {len(response_text)} chars, {message.usage.output_tokens} tokens")
+    except Exception as e:
+        print(f"ERROR calling Claude API: {e}")
+        update_master_state(department, False)
+        sys.exit(1)
+
+    # 4. Parse and execute actions
+    print("[4/5] Parsing response and executing actions...")
+    parsed = parse_response(response_text)
+    print(f"  File updates: {len(parsed['file_updates'])}")
+    print(f"  Queue items: {len(parsed['queue_items'])}")
+    print(f"  Social posts: {len(parsed['social_posts'])}")
+
+    execute_actions(department, parsed)
+
+    # 5. Update master state and commit
+    print("[5/5] Updating state and committing...")
+    update_master_state(department, True)
+    commit_changes(f"[{department}] Automated run — {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}")
+
+    print(f"\n{'='*60}")
+    print(f"  {department.upper()} DEPARTMENT — COMPLETE")
+    print(f"{'='*60}")
+
+
+if __name__ == "__main__":
+    main()

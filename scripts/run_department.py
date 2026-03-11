@@ -586,6 +586,58 @@ def execute_actions(department: str, parsed: dict):
             print(f"  SKIPPED social post (no POSTIZ_API_KEY): {post['content'][:60]}...")
 
 
+def process_approved_emails(parsed: dict):
+    """Check if GM queue approved any emails and send them via Resend."""
+    resend_key = os.environ.get("RESEND_API_KEY")
+    if not resend_key:
+        return
+
+    queue_path = STATE_DIR / "queue.json"
+    if not queue_path.exists():
+        return
+
+    queue = json.loads(queue_path.read_text(encoding="utf-8"))
+    sent_count = 0
+
+    for item in queue.get("approved", []):
+        if item.get("type") != "email" or item.get("sent"):
+            continue
+        details = item.get("details", {})
+        to = details.get("to") or details.get("segment_emails", [])
+        subject = details.get("subject") or details.get("subject_a", "")
+        html_body = details.get("html_body") or details.get("body", "")
+
+        if not to or not subject or not html_body:
+            print(f"  SKIPPED email {item.get('id')}: missing to/subject/body")
+            continue
+
+        try:
+            send_email(
+                to=to,
+                subject=subject,
+                html_body=html_body,
+                api_key=resend_key,
+            )
+            item["sent"] = True
+            item["sent_at"] = datetime.now(timezone.utc).isoformat()
+            sent_count += 1
+            print(f"  SENT email: {subject[:60]}...")
+            try:
+                tg_send(f"\u2709\ufe0f <b>Email sent!</b>\n\nSubject: {subject}\nTo: {to if isinstance(to, str) else f'{len(to)} recipients'}")
+            except Exception:
+                pass
+        except Exception as e:
+            print(f"  ERROR sending email {item.get('id')}: {e}")
+            try:
+                notify_error("email", f"Failed to send: {subject[:40]}... — {e}")
+            except Exception:
+                pass
+
+    if sent_count:
+        queue_path.write_text(json.dumps(queue, indent=2, ensure_ascii=False), encoding="utf-8")
+        print(f"  Sent {sent_count} approved email(s) via Resend")
+
+
 def update_master_state(department: str, success: bool):
     """Update master.json with run timestamp and status."""
     master_path = STATE_DIR / "master.json"
@@ -718,6 +770,10 @@ def main():
     print(f"  Social posts: {len(parsed['social_posts'])}")
 
     execute_actions(department, parsed)
+
+    # 4b. If GM queue run, check for approved emails to send
+    if department == "gm_queue":
+        process_approved_emails(parsed)
 
     # 5. Update master state and commit
     print("[5/5] Updating state and committing...")

@@ -104,30 +104,66 @@
       ],
       "word_count": 1456,
       "category": "how_to",
-      "status": "draft_ready",
+      "status": "qa_approved",
+      "qa_score": {
+        "rating": "GOOD",
+        "total_flags": 3,
+        "tier1_banned_words": 0,
+        "banned_phrases": 0,
+        "structural_flags": 0,
+        "rhythm_sd": 6.3,
+        "burstiness_ratio": "4.2:1",
+        "contraction_rate": 67,
+        "passive_count": 2,
+        "seo_pass": true,
+        "internal_links": 5,
+        "word_count": 1456
+      },
+      "qa_warnings": [
+        {
+          "check": 6,
+          "location": "FAQ section",
+          "issue": "uniform bullet lengths in questions section",
+          "fix": "vary FAQ answer lengths - mix short and detailed explanations"
+        },
+        {
+          "check": 12,
+          "location": "throughout",
+          "issue": "contraction rate 67% (target 75%+)",
+          "fix": "add more contractions: 'you are' → 'you're', 'will not' → 'won't'"
+        },
+        {
+          "check": 13,
+          "location": "para 4",
+          "issue": "8% statistic needs source",
+          "fix": "add source or change to 'thousands of buyers monthly'"
+        }
+      ],
       "anti_ai_audit": {
         "banned_words": 0,
         "structural_tells": 0,
         "sentence_variance": true,
         "contractions_used": true,
         "rhetorical_questions": 2,
-        "strategic_imperfections": 2,
-        "customer_language_phrases": 6,
+        "strategic_imperfections": 4,
+        "customer_language_phrases": 8,
         "result": "PASS"
       },
       "created": "2026-03-11T19:45:00Z",
-      "scheduled_publish": "2026-03-12T09:30:00Z"
+      "scheduled_publish": "2026-03-12T09:30:00Z",
+      "qa_reviewed_at": "2026-03-11T19:50:00Z",
+      "qa_reviewed_by": "QUILL"
     }
   ],
   "pipeline_stats": {
     "total_drafted": 1,
-    "total_approved": 0,
+    "total_approved": 1,
     "total_rejected": 0,
     "total_published": 0,
     "total_blocked": 0
   },
   "last_draft": "2026-03-11T19:45:00Z",
-  "last_review": null,
+  "last_review": "2026-03-11T19:50:00Z",
   "last_publish": null,
   "notes": "Blog pipeline: SCRIBE drafts → QUILL QA reviews → LENS generates images → PRESS publishes to Shopify. Each blog moves through statuses: draft_ready → qa_approved/qa_rejected/qa_blocked → images_requested → queued_for_publish → published."
 }

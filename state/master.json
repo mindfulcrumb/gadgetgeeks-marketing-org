@@ -71,9 +71,9 @@
       "runs_total": 1
     },
     "blog_qa": {
-      "last_run": "2026-03-11T19:48:59.302494+00:00",
+      "last_run": "2026-03-11T19:52:17.548000+00:00",
       "status": "ok",
-      "runs_total": 1
+      "runs_total": 2
     },
     "blog_publish": {
       "last_run": null,

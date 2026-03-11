@@ -1,10 +1,18 @@
 {
-  "snapshots": [],
+  "snapshots": [
+    {
+      "date": "2026-03-11",
+      "conversion_rate": null,
+      "cart_abandonment": null,
+      "aov": null,
+      "notes": "Initial CRO audit - baseline data needed from Shopify Analytics"
+    }
+  ],
   "targets": {
     "conversion_rate": 0.035,
     "shopify_average": 0.014,
     "cart_abandonment_target": 0.65,
     "aov_target": 150
   },
-  "last_updated": null
+  "last_updated": "2026-03-11 19:11 UTC"
 }

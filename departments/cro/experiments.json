@@ -1,4 +1,46 @@
 {
-  "experiments": [],
-  "last_updated": null
+  "experiments": [
+    {
+      "id": "trust-signals-product-page",
+      "name": "Product Page Trust Enhancement",
+      "hypothesis": "Adding battery health badges and quality guarantees will increase add-to-cart rate",
+      "status": "queued",
+      "priority": "high",
+      "expected_lift": "15-25%",
+      "target_metric": "product_page_conversion",
+      "customer_language_used": [
+        "battery still lasts all day",
+        "looks brand new"
+      ],
+      "created": "2026-03-11 19:11 UTC"
+    },
+    {
+      "id": "cart-bundle-upsells",
+      "name": "Cart Bundle Upsells",
+      "hypothesis": "Case + charger bundles at cart will increase AOV and reduce abandonment",
+      "status": "queued",
+      "priority": "high",
+      "expected_lift": "20-30% AOV, 10% cart abandonment reduction",
+      "target_metric": "aov_and_cart_abandonment",
+      "customer_language_used": [
+        "complete bundle deals",
+        "save money"
+      ],
+      "created": "2026-03-11 19:11 UTC"
+    },
+    {
+      "id": "checkout-trust-copy",
+      "name": "Checkout Trust Optimization",
+      "hypothesis": "Quality promise copy at checkout reduces purchase friction",
+      "status": "queued",
+      "priority": "high",
+      "expected_lift": "8-12%",
+      "target_metric": "checkout_completion",
+      "customer_language_used": [
+        "same features for way less money"
+      ],
+      "created": "2026-03-11 19:11 UTC"
+    }
+  ],
+  "last_updated": "2026-03-11 19:11 UTC"
 }

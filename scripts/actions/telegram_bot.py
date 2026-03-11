@@ -485,9 +485,10 @@ def _auto_publish_blog(item: dict) -> str:
         upload_to_shopify = image_gen.upload_to_shopify
         send_message(f"\ud83c\udfa8 Generating header image for <b>{blog['title'][:60]}</b>...")
         img_result = generate_blog_header(blog["title"], blog.get("category", "refurbished phones"))
-        temp_url = img_result["url"]
         filename = f"blog-header-{handle}.png"
-        header_image_url = upload_to_shopify(temp_url, filename)
+        header_image_url = upload_to_shopify(
+            img_result["image_bytes"], filename, img_result.get("mime_type", "image/png")
+        )
         send_message(f"\u2705 Header image uploaded to Shopify CDN")
     except Exception as img_err:
         send_message(f"\u26a0\ufe0f Image generation skipped: {img_err}")

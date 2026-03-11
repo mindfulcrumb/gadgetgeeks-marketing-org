@@ -37,7 +37,7 @@ jobs:
           SHOPIFY_ACCESS_TOKEN: ${{ steps.shopify.outputs.token }}
           SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
           SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: python scripts/actions/telegram_bot.py poll
 
       - name: Push changes

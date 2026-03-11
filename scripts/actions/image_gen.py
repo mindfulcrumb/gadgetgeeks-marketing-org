@@ -1,60 +1,67 @@
 """
 Image generation wrapper for GadgetGeeks Marketing Organization.
 
-Uses OpenAI DALL-E 3 for generation and Shopify's staged uploads for hosting.
+Uses Google Gemini API (Imagen 3) for generation and Shopify staged uploads for hosting.
 """
 
+import base64
 import json
 import os
 import requests
 from datetime import datetime, timezone
 
 
+GEMINI_API_BASE = "https://generativelanguage.googleapis.com/v1beta"
+
+
 # ---------------------------------------------------------------------------
-# DALL-E 3 generation
+# Imagen 3 generation via Gemini API
 # ---------------------------------------------------------------------------
 
-def generate_image(
-    prompt: str,
-    size: str = "1792x1024",
-    quality: str = "hd",
-) -> dict:
-    """Generate an image using OpenAI DALL-E 3.
+def generate_image(prompt: str, aspect_ratio: str = "16:9") -> dict:
+    """Generate an image using Google Imagen 3 via the Gemini API.
 
     Args:
-        prompt:  Text description of the image to generate.
-        size:    Image dimensions — "1024x1024", "1792x1024", or "1024x1792".
-        quality: "standard" or "hd".
+        prompt:       Text description of the image to generate.
+        aspect_ratio: "1:1", "16:9", "9:16", "4:3", or "3:4".
 
     Returns:
-        {"url": "<temporary_url>", "revised_prompt": "<model_revised_prompt>"}
+        {"image_bytes": bytes, "mime_type": str}
     """
-    api_key = os.environ.get("OPENAI_API_KEY", "")
+    api_key = os.environ.get("GEMINI_API_KEY", "")
     if not api_key:
-        raise ValueError("OPENAI_API_KEY environment variable is not set")
+        raise ValueError("GEMINI_API_KEY environment variable is not set")
 
+    url = f"{GEMINI_API_BASE}/models/imagen-3.0-generate-002:predict"
     resp = requests.post(
-        "https://api.openai.com/v1/images/generations",
-        headers={
-            "Authorization": f"Bearer {api_key}",
-            "Content-Type": "application/json",
-        },
+        url,
+        params={"key": api_key},
+        headers={"Content-Type": "application/json"},
         json={
-            "model": "dall-e-3",
-            "prompt": prompt,
-            "size": size,
-            "quality": quality,
-            "n": 1,
+            "instances": [{"prompt": prompt}],
+            "parameters": {
+                "sampleCount": 1,
+                "aspectRatio": aspect_ratio,
+            },
         },
         timeout=120,
     )
     resp.raise_for_status()
     data = resp.json()
 
-    image_data = data["data"][0]
+    predictions = data.get("predictions", [])
+    if not predictions:
+        raise RuntimeError(f"Imagen returned no predictions: {data}")
+
+    image_b64 = predictions[0].get("bytesBase64Encoded", "")
+    mime_type = predictions[0].get("mimeType", "image/png")
+
+    if not image_b64:
+        raise RuntimeError("Imagen returned empty image data")
+
     return {
-        "url": image_data["url"],
-        "revised_prompt": image_data.get("revised_prompt", prompt),
+        "image_bytes": base64.b64decode(image_b64),
+        "mime_type": mime_type,
     }
 
 
@@ -63,14 +70,10 @@ def generate_image(
 # ---------------------------------------------------------------------------
 
 def generate_blog_header(blog_title: str, blog_topic: str) -> dict:
-    """Generate a photorealistic blog header image for a given blog post.
-
-    Args:
-        blog_title: The title of the blog post.
-        blog_topic: A short description of the blog's topic/category.
+    """Generate a photorealistic blog header image.
 
     Returns:
-        {"url": "<temporary_url>", "revised_prompt": "<model_revised_prompt>"}
+        {"image_bytes": bytes, "mime_type": str}
     """
     prompt = (
         f"Photorealistic editorial photograph for a tech blog article titled "
@@ -80,9 +83,9 @@ def generate_blog_header(blog_title: str, blog_topic: str) -> dict:
         f"Shallow depth of field, shot on Sony A7IV with 35mm f/1.4 lens. "
         f"Muted color palette with a slight teal-and-amber grade. "
         f"No text, no watermarks, no logos. "
-        f"Suitable as a wide 16:9 blog header image."
+        f"Wide 16:9 blog header image."
     )
-    return generate_image(prompt, size="1792x1024", quality="hd")
+    return generate_image(prompt, aspect_ratio="16:9")
 
 
 # ---------------------------------------------------------------------------
@@ -141,25 +144,21 @@ def _shopify_graphql(query: str, variables: dict = None, token: str = None) -> d
     return data.get("data", data)
 
 
-def upload_to_shopify(image_url: str, filename: str) -> str:
-    """Download an image from a URL and upload it to Shopify Files via staged uploads.
+def upload_to_shopify(image_bytes: bytes, filename: str,
+                      content_type: str = "image/png") -> str:
+    """Upload raw image bytes to Shopify Files via staged uploads.
 
     Args:
-        image_url: Public URL of the image to upload.
-        filename:  Desired filename (e.g. "blog-header-activation-lock.png").
+        image_bytes:  Raw image bytes.
+        filename:     Desired filename (e.g. "blog-header-activation-lock.png").
+        content_type: MIME type of the image.
 
     Returns:
         The Shopify CDN URL of the uploaded file.
     """
     token = _get_shopify_token()
 
-    # --- Step 1: Download the image ---
-    img_resp = requests.get(image_url, timeout=60)
-    img_resp.raise_for_status()
-    image_bytes = img_resp.content
-    content_type = img_resp.headers.get("Content-Type", "image/png")
-
-    # --- Step 2: Create a staged upload target ---
+    # --- Step 1: Create a staged upload target ---
     staged_mutation = """
 mutation stagedUploadsCreate($input: [StagedUploadInput!]!) {
   stagedUploadsCreate(input: $input) {
@@ -202,7 +201,7 @@ mutation stagedUploadsCreate($input: [StagedUploadInput!]!) {
     resource_url = target["resourceUrl"]
     params = {p["name"]: p["value"] for p in target.get("parameters", [])}
 
-    # --- Step 3: Upload to the staged target ---
+    # --- Step 2: Upload to the staged target ---
     files = {"file": (filename, image_bytes, content_type)}
     upload_resp = requests.post(
         upload_url,
@@ -212,7 +211,7 @@ mutation stagedUploadsCreate($input: [StagedUploadInput!]!) {
     )
     upload_resp.raise_for_status()
 
-    # --- Step 4: Create the file in Shopify ---
+    # --- Step 3: Create the file in Shopify ---
     file_create_mutation = """
 mutation fileCreate($files: [FileCreateInput!]!) {
   fileCreate(files: $files) {
@@ -248,7 +247,6 @@ mutation fileCreate($files: [FileCreateInput!]!) {
     if not created_files:
         raise RuntimeError("No files returned from fileCreate")
 
-    # The CDN URL may be in .image.url for MediaImage types
     cdn_url = ""
     f = created_files[0]
     if "image" in f and f["image"]:

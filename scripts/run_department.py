@@ -248,6 +248,47 @@ DEPARTMENT_CONFIG = {
             "departments/social/image-prompts.json",
         ],
     },
+    "blog_writer": {
+        "agent_prompt": "agents/custom/blog-writer-agent.md",
+        "context_files": [
+            "departments/content/blog-pipeline.json",
+            "departments/content/calendar.json",
+            "departments/intel/trends.json",
+            "departments/intel/customer-language.json",
+            "departments/x-intel/daily-brief.json",
+            "departments/seo/keywords.json",
+            "departments/seo/opportunities.json",
+            "config/niche.json",
+            "config/copy-rules.json",
+        ],
+        "output_files": [
+            "departments/content/blog-pipeline.json",
+        ],
+    },
+    "blog_qa": {
+        "agent_prompt": "agents/custom/blog-copy-qa-agent.md",
+        "context_files": [
+            "departments/content/blog-pipeline.json",
+            "config/copy-rules.json",
+            "config/niche.json",
+            "agents/custom/department-context.md",
+        ],
+        "output_files": [
+            "departments/content/blog-pipeline.json",
+        ],
+    },
+    "blog_publish": {
+        "agent_prompt": "agents/custom/blog-publisher-agent.md",
+        "context_files": [
+            "departments/content/blog-pipeline.json",
+            "departments/social/image-prompts.json",
+            "config/niche.json",
+        ],
+        "output_files": [
+            "departments/content/blog-pipeline.json",
+            "state/queue.json",
+        ],
+    },
 }
 
 

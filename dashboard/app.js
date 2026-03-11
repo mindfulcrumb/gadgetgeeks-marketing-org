@@ -348,6 +348,42 @@ const PROMPT_QA = {
   dataFlow:{reads:['departments/social/image-prompts.json','agents/custom/image-prompting-agent.md'],writes:['departments/social/image-prompts.json'],feeds:['Social','Content','Email']},
 };
 
+const BLOG_WRITER = {
+  id:'blog_writer', name:'SCRIBE', fullName:'Scribe Delacroix',
+  title:'Blog Writer', dept:'Content Division',
+  color:'#10b981', hair:'#3a2a1a', skin:'#f0c8a0', pants:'#1a3a2a', shoes:'#0a1a0a',
+  schedule:'Mon/Wed/Fri 9:30 UTC', cronDays:[1,3,5], cronH:9, cronM:30,
+  stateKeys:['blog_writer'], deskTile:{x:23,y:5}, roomId:'content',
+  tasks:['Read intel trends, SEO keywords, customer language','Write 1200-2000 word SEO-optimized blog posts','Internal links to products (iPhone, Galaxy, Pixel)','Structure: H1, meta desc, H2/H3, FAQ schema','Match brand voice — confident, anti-corporate','Pass blog to QUILL for anti-AI review'],
+  rules:['Every blog targets specific SEO keywords','Use real customer language from intel','Specific numbers beat vague claims','One clear CTA per post','NO AI-generated copy tells','3+ internal product links minimum'],
+  apis:[{name:'Claude API',icon:'🧠',color:'#d97706'}],
+  dataFlow:{reads:['departments/intel/trends.json','departments/seo/keywords.json','departments/x-intel/daily-brief.json','departments/intel/customer-language.json'],writes:['departments/content/blog-pipeline.json'],feeds:['QUILL (QA)','PRESS (publish)']},
+};
+
+const BLOG_QA = {
+  id:'blog_qa', name:'QUILL', fullName:'Quill Okafor',
+  title:'Blog Copy Police', dept:'Content Division',
+  color:'#ef4444', hair:'#1a1a1a', skin:'#8d5524', pants:'#2a1a1a', shoes:'#0a0505',
+  schedule:'Mon/Wed/Fri 10:00 UTC', cronDays:[1,3,5], cronH:10, cronM:0,
+  stateKeys:['blog_qa'], deskTile:{x:25,y:5}, roomId:'content',
+  tasks:['Run 23-check anti-AI audit on every blog draft','Check banned words (60+) and phrases (40+)','Verify sentence rhythm variance & burstiness','Ensure brand voice — not corporate, not AI','Check SEO: title tags, meta desc, keyword density','Approve, reject, or block with specific fixes'],
+  rules:['23 checks on EVERY blog — no exceptions','Zero banned words or it fails','Sentence length must vary 5-25 words','Must have contractions and conversational tone','EXCELLENT ships, NEEDS WORK returns to SCRIBE','BLOCKED = full rewrite required'],
+  apis:[{name:'Claude API',icon:'🧠',color:'#d97706'}],
+  dataFlow:{reads:['departments/content/blog-pipeline.json','config/copy-rules.json'],writes:['departments/content/blog-pipeline.json'],feeds:['PRESS (publish)','SCRIBE (fixes)']},
+};
+
+const BLOG_PUBLISHER = {
+  id:'blog_publish', name:'PRESS', fullName:'Press Hawthorne',
+  title:'Blog Publisher', dept:'Publishing Division',
+  color:'#6366f1', hair:'#2a1a3a', skin:'#e0c8a0', pants:'#1a1a3a', shoes:'#0a0a1a',
+  schedule:'Mon/Wed/Fri 10:30 UTC', cronDays:[1,3,5], cronH:10, cronM:30,
+  stateKeys:['blog_publish'], deskTile:{x:30,y:12}, roomId:'cro',
+  tasks:['Take QA-approved blogs from pipeline','Format HTML for Shopify Blog API','Add structured data (Article, FAQ, Breadcrumb)','Insert internal links to product pages','Add related products section','Queue for human approval before publishing'],
+  rules:['NEVER auto-publish — always queue for approval','Every blog gets Article + FAQ schema','3+ internal product links required','Proper og:tags and SEO metadata','Image prompt reference for header','Shopify publish only after human approves'],
+  apis:[{name:'Claude API',icon:'🧠',color:'#d97706'},{name:'Shopify API',icon:'🛍️',color:'#96bf48'}],
+  dataFlow:{reads:['departments/content/blog-pipeline.json','departments/social/image-prompts.json'],writes:['departments/content/blog-pipeline.json','state/queue.json'],feeds:['You (approval queue)','Shopify (after approval)']},
+};
+
 const GM = {
   id:'gm', name:'BOSS', fullName:'Boss Morgan',
   title:'General Manager / Enforcer', dept:'Executive',
@@ -360,7 +396,7 @@ const GM = {
   dataFlow:{reads:['state/master.json','state/queue.json','ALL department outputs'],writes:['departments/gm/weekly-report.md','state/queue.json'],feeds:['You (weekly report)']},
 };
 
-const ALL_CHARS = [...EMPLOYEES, X_INTEL, IMAGE_PROMPT, PROMPT_QA, GM];
+const ALL_CHARS = [...EMPLOYEES, X_INTEL, IMAGE_PROMPT, PROMPT_QA, BLOG_WRITER, BLOG_QA, BLOG_PUBLISHER, GM];
 
 // ═══════════════════════════════════════════
 // POINTS OF INTEREST (where chars go for life sim)
@@ -572,7 +608,7 @@ function gmPatrolAI() {
   if (gm.actionTimer > 0) return;
 
   // Check for idle employees to visit
-  const allStaff = [...EMPLOYEES, X_INTEL, IMAGE_PROMPT, PROMPT_QA];
+  const allStaff = [...EMPLOYEES, X_INTEL, IMAGE_PROMPT, PROMPT_QA, BLOG_WRITER, BLOG_QA, BLOG_PUBLISHER];
   for (const emp of allStaff) {
     const status = getDeptStatus(emp.id);
     if (status === 'idle' || status === 'error') {
@@ -1382,7 +1418,7 @@ function updateHUD() {
   document.getElementById('hud-date').textContent = now.toUTCString().slice(0,16);
   if (!masterState) return;
   let working=0, idle=0;
-  for (const e of [...EMPLOYEES, X_INTEL, IMAGE_PROMPT, PROMPT_QA]) { const s=getDeptStatus(e.id); if(s==='working')working++; else if(s==='idle')idle++; }
+  for (const e of [...EMPLOYEES, X_INTEL, IMAGE_PROMPT, PROMPT_QA, BLOG_WRITER, BLOG_QA, BLOG_PUBLISHER]) { const s=getDeptStatus(e.id); if(s==='working')working++; else if(s==='idle')idle++; }
   document.getElementById('hud-working').textContent = working;
   document.getElementById('hud-idle').textContent = idle;
   document.getElementById('hud-queue').textContent = queueState?(queueState.pending||[]).length:0;
@@ -1398,6 +1434,7 @@ function updateScheduleBar() {
     {t:'07:00',m:420,l:'X-Intel',d:[0,1,2,3,4,5,6],c:'#1DA1F2'},
     {t:'07:03',m:423,l:'GM Report',d:[5],c:'#a6f'},{t:'07:41',m:461,l:'Content',d:[1,3,5],c:'#f84'},{t:'08:19',m:499,l:'LENS',d:[1,3,5],c:'#e879f9'},{t:'08:49',m:529,l:'FOCUS',d:[1,3,5],c:'#f59e0b'},
     {t:'08:53',m:533,l:'Email',d:[2,4],c:'#fc0'},{t:'09:11',m:551,l:'Social AM',d:[0,1,2,3,4,5,6],c:'#f6a'},
+    {t:'09:30',m:570,l:'SCRIBE',d:[1,3,5],c:'#10b981'},{t:'10:00',m:600,l:'QUILL',d:[1,3,5],c:'#ef4444'},{t:'10:30',m:630,l:'PRESS',d:[1,3,5],c:'#6366f1'},
     {t:'10:47',m:647,l:'Intel',d:[1,4],c:'#0cf'},{t:'11:29',m:689,l:'CRO',d:[3],c:'#48f'},
     {t:'16:37',m:997,l:'Social PM',d:[0,1,2,3,4,5,6],c:'#f6a'},{t:'18:51',m:1131,l:'GM Queue',d:[0,1,2,3,4,5,6],c:'#a6f'},
   ].filter(s=>s.d.includes(day));
@@ -1421,7 +1458,7 @@ async function loadData() {
   const [m,q] = await Promise.all([fetchJSON('state/master.json'),fetchJSON('state/queue.json')]);
   masterState=m; queueState=q;
   updateSidebar(); updateHUD(); updateScheduleBar();
-  runEnforcer(); loadImagePrompts();
+  runEnforcer(); loadImagePrompts(); loadBlogPipeline();
 }
 
 function runEnforcer() {
@@ -1475,6 +1512,54 @@ function darkenColor(hex,f){return lightenColor(hex,f);}
 function pickRandom(arr){return arr[Math.floor(Math.random()*arr.length)];}
 function addEnforcerLog(type,msg){const t=pad(new Date().getUTCHours())+':'+pad(new Date().getUTCMinutes());enforcerLog.push({type,msg,time:t});if(enforcerLog.length>50)enforcerLog.shift();renderEnforcerLog();}
 function addNotification(type,msg){const el=document.getElementById('notifications');const n=document.createElement('div');n.className=`notif ${type}`;n.textContent=msg;el.appendChild(n);setTimeout(()=>n.remove(),4000);}
+
+// ═══════════════════════════════════════════
+// BLOG PIPELINE
+// ═══════════════════════════════════════════
+let blogPipelineData = null;
+
+async function loadBlogPipeline() {
+  blogPipelineData = await fetchJSON('departments/content/blog-pipeline.json');
+  renderBlogPipeline();
+}
+
+function renderBlogPipeline() {
+  const statsEl = document.getElementById('blog-pipeline-stats');
+  const listEl = document.getElementById('blog-pipeline-list');
+  if (!blogPipelineData) {
+    statsEl.innerHTML = '';
+    listEl.innerHTML = '<div class="bp-empty">No blogs in pipeline yet — SCRIBE hasn\'t run</div>';
+    return;
+  }
+
+  const ps = blogPipelineData.pipeline_stats || {};
+  statsEl.innerHTML = `
+    <div class="bp-stat"><span class="bp-stat-val" style="color:var(--yellow)">${ps.total_drafted||0}</span><span class="bp-stat-label">DRAFTED</span></div>
+    <div class="bp-stat"><span class="bp-stat-val" style="color:var(--green)">${ps.total_approved||0}</span><span class="bp-stat-label">APPROVED</span></div>
+    <div class="bp-stat"><span class="bp-stat-val" style="color:var(--red)">${ps.total_rejected||0}</span><span class="bp-stat-label">REJECTED</span></div>
+    <div class="bp-stat"><span class="bp-stat-val" style="color:var(--cyan)">${ps.total_published||0}</span><span class="bp-stat-label">PUBLISHED</span></div>
+  `;
+
+  const blogs = blogPipelineData.blogs || [];
+  if (!blogs.length) {
+    listEl.innerHTML = '<div class="bp-empty">Pipeline empty — SCRIBE will draft blogs Mon/Wed/Fri</div>';
+    return;
+  }
+
+  listEl.innerHTML = blogs.slice(-10).reverse().map(b => {
+    const status = (b.status||'unknown').replace(/_/g,' ');
+    const statusClass = status.includes('approved') ? 'approved' : status.includes('reject') ? 'rejected' : status.includes('publish') ? 'published' : status.includes('queued') ? 'queued' : status.includes('block') ? 'blocked' : 'draft';
+    const keywords = (b.target_keywords||[]).slice(0,3);
+    return `<div class="bp-blog">
+      <div class="bp-blog-title">${b.title||'Untitled'}</div>
+      <div class="bp-blog-meta">
+        <span class="bp-status ${statusClass}">${status.toUpperCase()}</span>
+        ${b.qa_score?`<span class="bp-keyword">QA: ${b.qa_score}</span>`:''}
+        ${keywords.map(k => `<span class="bp-keyword">${k}</span>`).join('')}
+      </div>
+    </div>`;
+  }).join('');
+}
 
 // ═══════════════════════════════════════════
 // IMAGE GALLERY

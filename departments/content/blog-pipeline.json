@@ -1,0 +1,14 @@
+{
+  "blogs": [],
+  "pipeline_stats": {
+    "total_drafted": 0,
+    "total_approved": 0,
+    "total_rejected": 0,
+    "total_published": 0,
+    "total_blocked": 0
+  },
+  "last_draft": null,
+  "last_review": null,
+  "last_publish": null,
+  "notes": "Blog pipeline: SCRIBE drafts → QUILL QA reviews → LENS generates images → PRESS publishes to Shopify. Each blog moves through statuses: draft_ready → qa_approved/qa_rejected/qa_blocked → images_requested → queued_for_publish → published."
+}

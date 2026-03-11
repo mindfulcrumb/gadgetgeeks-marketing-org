@@ -64,6 +64,21 @@
       "last_run": null,
       "status": "idle",
       "runs_total": 0
+    },
+    "blog_writer": {
+      "last_run": null,
+      "status": "idle",
+      "runs_total": 0
+    },
+    "blog_qa": {
+      "last_run": null,
+      "status": "idle",
+      "runs_total": 0
+    },
+    "blog_publish": {
+      "last_run": null,
+      "status": "idle",
+      "runs_total": 0
     }
   },
   "created": "2026-03-11",

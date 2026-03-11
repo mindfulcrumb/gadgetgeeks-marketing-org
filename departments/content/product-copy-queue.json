@@ -1,4 +1,54 @@
 {
-  "queue": [],
-  "last_updated": null
+  "products": [
+    {
+      "name": "iPhone 12 - Refurbished",
+      "handle": "iphone-12-refurbished",
+      "target_keywords": [
+        "refurbished iphone",
+        "certified refurbished phones"
+      ],
+      "customer_language": [
+        "looks brand new",
+        "battery still lasts all day",
+        "saved $300 and got same experience"
+      ],
+      "current_issues": "Generic description doesn't address battery health concerns or use customer language",
+      "priority": "critical",
+      "notes": "Must include specific battery health percentage, condition details, and warranty info",
+      "added": "2026-03-11 19:06 UTC"
+    },
+    {
+      "name": "iPhone 13 - Refurbished",
+      "handle": "iphone-13-refurbished",
+      "target_keywords": [
+        "refurbished iphone",
+        "certified refurbished phones"
+      ],
+      "customer_language": [
+        "can't tell the difference",
+        "feels like I got away with something",
+        "perfect for my teenager"
+      ],
+      "current_issues": "Needs battery transparency and detailed grading info",
+      "priority": "critical",
+      "added": "2026-03-11 19:06 UTC"
+    },
+    {
+      "name": "Samsung Galaxy S22 - Refurbished",
+      "handle": "samsung-galaxy-s22-refurbished",
+      "target_keywords": [
+        "pre-owned samsung galaxy",
+        "certified refurbished phones"
+      ],
+      "customer_language": [
+        "looks brand new",
+        "half the price",
+        "battery still lasts all day"
+      ],
+      "current_issues": "Generic copy doesn't build trust or address condition concerns",
+      "priority": "high",
+      "added": "2026-03-11 19:06 UTC"
+    }
+  ],
+  "last_updated": "2026-03-11 19:06 UTC"
 }

@@ -1,4 +1,57 @@
 {
-  "opportunities": [],
-  "last_updated": null
+  "opportunities": [
+    {
+      "id": "refurb-iphone-main-page",
+      "priority": "critical",
+      "keyword": "refurbished iphone",
+      "type": "page_optimization",
+      "page": "/collections/refurbished-iphones",
+      "status": "completed",
+      "meta_title": "Refurbished iPhone - Certified Quality, Half the Price | Gadget Geeks Pro",
+      "meta_description": "Shop refurbished iPhones that look brand new. Battery health guaranteed 80%+. Save $300+ with warranty. Free shipping. Browse certified deals now.",
+      "improvements": [
+        "Added specific battery health guarantee (80%+)",
+        "Used customer language 'looks brand new' and 'save $300+'",
+        "Included warranty reassurance for trust building",
+        "Strong CTA 'Browse certified deals now'"
+      ],
+      "structured_data": "Product schema with battery health, condition grade, warranty info",
+      "completed": "2026-03-11 19:06 UTC"
+    },
+    {
+      "id": "samsung-galaxy-page",
+      "priority": "high",
+      "keyword": "pre-owned samsung galaxy",
+      "type": "page_optimization",
+      "page": "/collections/refurbished-samsung",
+      "status": "pending"
+    },
+    {
+      "id": "certified-phones-page",
+      "priority": "high",
+      "keyword": "certified refurbished phones",
+      "type": "page_optimization",
+      "page": "/collections/certified-refurbished-phones",
+      "status": "pending"
+    },
+    {
+      "id": "cheap-refurb-phones-content",
+      "priority": "high",
+      "keyword": "cheap refurbished phones",
+      "type": "content_gap",
+      "page": "/blogs/deals/cheap-refurbished-phones-guide",
+      "status": "pending",
+      "content_type": "buying guide"
+    },
+    {
+      "id": "buy-used-phones-online-trust",
+      "priority": "high",
+      "keyword": "buy used phones online",
+      "type": "trust_page",
+      "page": "/pages/how-to-buy-used-phones-online-safely",
+      "status": "pending",
+      "content_type": "educational landing page"
+    }
+  ],
+  "last_updated": "2026-03-11 19:06 UTC"
 }

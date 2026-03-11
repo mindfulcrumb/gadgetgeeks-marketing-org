@@ -74,24 +74,51 @@ Fix: Cut the transition word entirely. Start with the actual point.
 
 ### Category 4: Human Signals (Checks 12-16)
 
-**Check 12 — Contractions**: < 60% contraction usage = flag. "We are" should be "we're." Exception: full form for emphasis.
-**Check 13 — Specific Numbers**: Every claim needs a number. Flag vague quantifiers: many, several, various, numerous, a lot, tons of, a range of.
-**Check 14 — Strategic Imperfections**: Must have 2+ per 500 words from: fragment, em dash, casual word (honestly, kinda, legit), parenthetical, sentence starting with And/But/Or. Fewer = too polished.
-**Check 15 — Rhetorical Questions**: 1-3 per 500 words. Zero = flag. Over 4 = flag.
-**Check 16 — Features Without Benefits**: Every feature needs a "so what." Bad: "120Hz LTPO display." Good: "120Hz LTPO display — scrolling feels like butter."
+**Check 12 — Contractions**
+< 60% contraction usage = flag. "We are" should be "we're." "Do not" should be "don't."
+Exception: One or two full forms for emphasis is fine ("This is not a drill").
+
+**Check 13 — Specific Numbers**
+Every claim or benefit MUST be backed by a specific number. Flag vague quantifiers: many, several, various, numerous, a lot, tons of, a range of, a number of.
+Bad: "saves you money." Good: "saves you $189 vs. buying new."
+
+**Check 14 — Strategic Imperfections**
+Must have 2+ per 500 words from: sentence fragment, em dash, casual word (honestly, kinda, legit, solid, wild), parenthetical aside, sentence starting with And/But/Or. Fewer = over-polished.
+
+**Check 15 — Rhetorical Questions**
+1-3 per 500 words. Zero = too declarative. Over 4 per 500 = overdone, sounds like a sales page.
+
+**Check 16 — Features Without Benefits**
+Every feature needs a "so what" benefit attached.
+Bad: "120Hz LTPO display." Good: "120Hz LTPO display — scrolling feels like butter, and adaptive refresh saves battery."
 
 ### Category 5: Substance (Checks 17-20)
 
-**Check 17 — Hedging Language**: Flag: might, may, could potentially, it's possible, in some cases, to some extent, remains to be seen. Fix: commit or cut.
-**Check 18 — Vague Superlatives**: Flag: best, amazing, incredible, outstanding, exceptional, world-class, top-notch, premium, state-of-the-art, next-level, unparalleled. Fix: replace with provable claim.
-**Check 19 — Summary/Recap Endings**: Flag endings starting with "In summary," "To sum up," "In conclusion," "All in all," "So there you have it." Fix: end with CTA or punchy line.
-**Check 20 — Recap Patterns**: Flag paragraphs that only restate previous content ("As mentioned earlier," "To reiterate"). Fix: cut entirely.
+**Check 17 — Hedging Language**
+Flag: might, may, could potentially, it's possible, in some cases, to some extent, arguably, it depends, remains to be seen, only time will tell. Fix: commit to the claim or delete the sentence.
+
+**Check 18 — Vague Superlatives**
+Flag: best, amazing, incredible, outstanding, exceptional, world-class, top-notch, premium, state-of-the-art, next-level, unparalleled, unmatched, best-in-class.
+Fix: Replace with a specific, provable claim. "Best phone" becomes "ranked #1 by 847 verified buyers."
+
+**Check 19 — Summary/Recap Endings**
+Flag endings starting with "In summary," "To sum up," "In conclusion," "All in all," "So there you have it."
+Fix: End with a CTA, a forward-looking statement, or one punchy line. Never recap.
+
+**Check 20 — Recap Patterns**
+Flag paragraphs that exist solely to restate previous content: "As we discussed above," "As mentioned earlier," "To reiterate," "Let's revisit." Fix: cut the paragraph entirely.
 
 ### Category 6: Engagement Killers (Checks 21-23)
 
-**Check 21 — Exclamation Overuse**: More than 2 per post = flag. If a sentence needs one to sound exciting, the sentence is weak.
-**Check 22 — Possessive Repetition**: Flag "your"/"our" more than once per sentence or 5+ times per 100 words. Fix: restructure.
-**Check 23 — Active Voice**: Flag passive constructions ("was tested," "has been designed"). Fix: name the actor. Exception: 1-2 passives in a long post is fine. Over 3 per 500 words = flag.
+**Check 21 — Exclamation Overuse**
+More than 2 per post = flag. If a sentence needs one to sound exciting, the sentence is weak. Rewrite.
+
+**Check 22 — Possessive Repetition**
+Flag "your"/"our" more than once per sentence or 5+ times per 100 words. Fix: restructure sentences.
+
+**Check 23 — Active Voice**
+Flag passive constructions: "was tested," "has been designed," "is backed by," "was built to."
+Fix: Name the actor. "We tested it across 65 checkpoints." Exception: 1-2 passives OK. Over 3 per 500 words = flag.
 
 ---
 

@@ -1,11 +1,12 @@
 {
   "bot_token": "",
-  "chat_id": "",
+  "chat_id": 1631254047,
   "notifications_enabled": true,
   "notify_on_start": false,
   "notify_on_complete": true,
   "notify_on_error": true,
   "notify_on_queue_item": true,
   "daily_summary": true,
-  "daily_summary_time": "07:00 UTC"
+  "daily_summary_time": "07:00 UTC",
+  "discovered_at": "2026-03-11T20:16:06.787653+00:00"
 }

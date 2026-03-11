@@ -1,5 +1,49 @@
 {
-  "pending": [],
+  "pending": [
+    {
+      "title": "How to Avoid Activation Lock When Buying Used Phones Online (2026 Guide)",
+      "excerpt": "Your refurbished iPhone arrives. You're excited. You power it on, and... \"This iPhone is linked to an Apple ID. Sign in with the Apple ID that was used to set up this iPhone.\" Game over. You just bought a $400 paperweight.",
+      "handle": "avoid-activation-lock-buying-used-phones-online",
+      "author": "Gadget Geeks Team",
+      "tags": [
+        "how-to",
+        "refurbished-phones",
+        "activation-lock",
+        "iphone",
+        "buying-guide",
+        "phone-security"
+      ],
+      "product_links": [
+        {
+          "anchor": "iPhone 14 Pro Max Refurbished",
+          "url": "/products/iphone-14-pro-max-refurbished"
+        },
+        {
+          "anchor": "iPhone 13 Pro Refurbished",
+          "url": "/products/iphone-13-pro-refurbished"
+        },
+        {
+          "anchor": "Galaxy S24 Ultra Refurbished",
+          "url": "/products/galaxy-s24-ultra-refurbished"
+        }
+      ],
+      "collection_links": [],
+      "related_products": [
+        "iphone-14-pro-max-refurbished",
+        "iphone-13-pro-refurbished",
+        "galaxy-s24-ultra-refurbished",
+        "iphone-12-refurbished"
+      ],
+      "seo": {
+        "title_tag": "How to Avoid Activation Lock When Buying Used Phones Online (2026)",
+        "description_tag": "Don't get stuck with a locked phone. Learn the 5 red flags to watch for when buying refurbished iPhones online, plus how verified sellers prevent activation lock.",
+        "og_title": "5 Red Flags That Scream \"Activation Lock Risk\" When Buying Used Phones",
+        "og_description": "Your $400 iPhone arrives locked to someone else's Apple ID. Here's how to spot the warning signs before you buy and avoid getting burned by activation lock."
+      },
+      "header_image_prompt_id": "prompt_20260311_006",
+      "id": "blog_publish_20260311_200339"
+    }
+  ],
   "approved": [],
   "rejected": [],
   "completed": []

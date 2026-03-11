@@ -42,7 +42,15 @@ Based on data and trends:
 - Any competitive threats to respond to?
 
 ## Output Format
-Write the full report to departments/gm/weekly-report.md using ```json // UPDATE:``` format.
+Write the full report to departments/gm/weekly-report.md using this EXACT format (note: use ```markdown with // UPDATE: header):
+
+```markdown
+// UPDATE: departments/gm/weekly-report.md
+# Weekly Marketing Report — [Date]
+... report content here ...
+```
+
+IMPORTANT: Use ```markdown (not ```json) for the report block. The // UPDATE: header on the first line tells the system which file to write.
 
 ## Report Structure
 ```markdown

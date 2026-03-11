@@ -389,6 +389,10 @@ def parse_response(response_text: str) -> dict:
         try:
             data = json.loads(content)
         except json.JSONDecodeError:
+            # If it's an UPDATE with non-JSON content (like markdown), treat as raw text
+            if block_type == "UPDATE" and header.strip():
+                result["file_updates"].append({"path": header.strip(), "data": content})
+                continue
             print(f"WARNING: Failed to parse JSON block ({block_type}): {content[:100]}...")
             continue
 
@@ -399,6 +403,16 @@ def parse_response(response_text: str) -> dict:
             result["queue_items"].append(data)
         elif block_type == "SOCIAL_POST":
             result["social_posts"].append(data)
+
+    # Also catch markdown blocks with UPDATE headers
+    md_blocks = re.findall(
+        r'```(?:markdown|md)\s*\n\s*//\s*UPDATE:?\s*(.*?)\n(.*?)```',
+        response_text,
+        re.DOTALL,
+    )
+    for header, content in md_blocks:
+        if header.strip():
+            result["file_updates"].append({"path": header.strip(), "data": content.strip()})
 
     # Everything outside JSON blocks is analysis
     analysis = re.sub(r'```json.*?```', '', response_text, flags=re.DOTALL).strip()

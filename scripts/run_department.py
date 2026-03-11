@@ -303,6 +303,20 @@ DEPARTMENT_CONFIG = {
             "state/queue.json",
         ],
     },
+    "dialer": {
+        "agent_prompt": "agents/custom/dialer-agent.md",
+        "context_files": [
+            "departments/dialer/call-list.json",
+            "departments/intel/customer-language.json",
+            "departments/intel/trends.json",
+            "config/niche.json",
+            "config/vapi.json",
+        ],
+        "output_files": [
+            "departments/dialer/call-list.json",
+            "state/queue.json",
+        ],
+    },
 }
 
 

@@ -1,0 +1,14 @@
+{
+  "public_key": "2c3e1d24-a900-4292-a511-fe853c6c1659",
+  "phone_number": "+19253323098",
+  "phone_number_id": "eb2154c3-8919-43d9-bac3-a63531436626",
+  "assistants": {},
+  "max_calls_per_day": 20,
+  "calling_hours": {
+    "start": "09:00",
+    "end": "20:00",
+    "timezone": "America/Los_Angeles"
+  },
+  "do_not_call": [],
+  "notes": "Private API key stored in VAPI_API_KEY GitHub secret. Phone number ID needs to be set after importing number in Vapi dashboard."
+}

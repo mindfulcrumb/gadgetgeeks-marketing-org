@@ -384,6 +384,18 @@ const BLOG_PUBLISHER = {
   dataFlow:{reads:['departments/content/blog-pipeline.json','departments/social/image-prompts.json'],writes:['departments/content/blog-pipeline.json','state/queue.json'],feeds:['You (approval queue)','Shopify (after approval)']},
 };
 
+const DIALER = {
+  id:'dialer', name:'DIALER', fullName:'Dialer Voss',
+  title:'Outbound Call Agent', dept:'Sales Division',
+  color:'#16a34a', hair:'#2a1a0a', skin:'#c68642', pants:'#1a2a1a', shoes:'#0a0a0a',
+  schedule:'Mon-Fri 14:15 UTC', cronDays:[1,2,3,4,5], cronH:14, cronM:15,
+  stateKeys:['dialer'], deskTile:{x:30,y:5}, roomId:'content',
+  tasks:['Scan Shopify for abandoned carts ($300+)','Identify 60-day inactive customers for win-back','Build prioritized call lists with reasons','Queue call lists for human approval','Execute approved calls via Vapi.ai','Log call outcomes and do-not-call requests'],
+  rules:['NEVER make calls without approval','Max 20 calls per day','No calls on Sundays','Respect do-not-call permanently','One attempt per customer per week','Abandoned cart calls within 48hrs only'],
+  apis:[{name:'Vapi.ai',icon:'📞',color:'#16a34a'},{name:'Shopify API',icon:'🛍️',color:'#96bf48'},{name:'Claude API',icon:'🧠',color:'#d97706'}],
+  dataFlow:{reads:['Shopify abandoned carts','Shopify customer history','departments/dialer/call-list.json'],writes:['departments/dialer/call-list.json','state/queue.json'],feeds:['You (approval)','Vapi.ai (calls)']},
+};
+
 const TELEGRAM_BOT = {
   id:'telegram', name:'RELAY', fullName:'Relay Nakamura',
   title:'Telegram Comms Officer', dept:'Communications',
@@ -408,7 +420,7 @@ const GM = {
   dataFlow:{reads:['state/master.json','state/queue.json','ALL department outputs'],writes:['departments/gm/weekly-report.md','state/queue.json'],feeds:['You (weekly report)']},
 };
 
-const ALL_CHARS = [...EMPLOYEES, X_INTEL, IMAGE_PROMPT, PROMPT_QA, BLOG_WRITER, BLOG_QA, BLOG_PUBLISHER, TELEGRAM_BOT, GM];
+const ALL_CHARS = [...EMPLOYEES, X_INTEL, IMAGE_PROMPT, PROMPT_QA, BLOG_WRITER, BLOG_QA, BLOG_PUBLISHER, DIALER, TELEGRAM_BOT, GM];
 
 // ═══════════════════════════════════════════
 // POINTS OF INTEREST (where chars go for life sim)
@@ -1448,6 +1460,7 @@ function updateScheduleBar() {
     {t:'08:53',m:533,l:'Email',d:[2,4],c:'#fc0'},{t:'09:11',m:551,l:'Social AM',d:[0,1,2,3,4,5,6],c:'#f6a'},
     {t:'09:30',m:570,l:'SCRIBE',d:[1,3,5],c:'#10b981'},{t:'10:00',m:600,l:'QUILL',d:[1,3,5],c:'#ef4444'},{t:'10:30',m:630,l:'PRESS',d:[1,3,5],c:'#6366f1'},
     {t:'10:47',m:647,l:'Intel',d:[1,4],c:'#0cf'},{t:'11:29',m:689,l:'CRO',d:[3],c:'#48f'},
+    {t:'14:15',m:855,l:'DIALER',d:[1,2,3,4,5],c:'#16a34a'},{t:'15:45',m:945,l:'CALLS',d:[1,2,3,4,5],c:'#16a34a'},
     {t:'16:37',m:997,l:'Social PM',d:[0,1,2,3,4,5,6],c:'#f6a'},{t:'18:51',m:1131,l:'GM Queue',d:[0,1,2,3,4,5,6],c:'#a6f'},
   ].filter(s=>s.d.includes(day));
   tl.innerHTML = sched.map(s => {

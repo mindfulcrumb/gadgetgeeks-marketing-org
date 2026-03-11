@@ -136,6 +136,7 @@ DEPT_EMOJI = {
     "blog_writer": "\u270d\ufe0f",
     "blog_qa": "\ud83d\udea8",
     "blog_publish": "\ud83d\ude80",
+    "dialer": "\ud83d\udcde",
 }
 
 DEPT_NAMES = {
@@ -155,6 +156,7 @@ DEPT_NAMES = {
     "blog_writer": "Blog Writer",
     "blog_qa": "Blog QA",
     "blog_publish": "Blog Publisher",
+    "dialer": "Dialer",
 }
 
 

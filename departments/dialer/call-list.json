@@ -1,0 +1,13 @@
+{
+  "pending": [],
+  "completed": [],
+  "do_not_call": [],
+  "stats": {
+    "total_calls": 0,
+    "total_connected": 0,
+    "total_interested": 0,
+    "total_voicemail": 0,
+    "total_not_interested": 0
+  },
+  "last_run": null
+}

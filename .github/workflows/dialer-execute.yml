@@ -1,0 +1,37 @@
+name: Dialer — Execute Approved Calls
+on:
+  schedule:
+    - cron: '45 15 * * 1,2,3,4,5'  # Mon-Fri 3:45 PM UTC (90 min after list build, time for approval)
+  workflow_dispatch:
+
+jobs:
+  execute-calls:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Execute approved calls via Vapi
+        env:
+          VAPI_API_KEY: ${{ secrets.VAPI_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        run: python scripts/actions/vapi_caller.py execute
+
+      - name: Push changes
+        run: |
+          git config user.name "Marketing Org Bot"
+          git config user.email "bot@gadgetgeekspro.com"
+          git add -A
+          git diff --cached --quiet || git commit -m "[dialer] Execute calls — $(date -u '+%Y-%m-%d %H:%M UTC')"
+          for i in 1 2 3; do
+            git pull --rebase origin main || true
+            git push && break || sleep 5
+          done

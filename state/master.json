@@ -84,6 +84,11 @@
       "last_run": null,
       "status": "idle",
       "runs_total": 0
+    },
+    "dialer": {
+      "last_run": null,
+      "status": "idle",
+      "runs_total": 0
     }
   },
   "created": "2026-03-11",

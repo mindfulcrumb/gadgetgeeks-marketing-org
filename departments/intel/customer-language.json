@@ -1,8 +1,52 @@
 {
-  "phrases": [],
-  "pain_points": [],
-  "desires": [],
-  "objections": [],
-  "sources": [],
-  "last_updated": null
+  "phrases": [
+    "looks brand new",
+    "can't tell the difference",
+    "saved $300 and got same experience",
+    "battery still lasts all day",
+    "feels like I got away with something",
+    "perfect for my teenager",
+    "half the price",
+    "scared it'll die on me",
+    "looks sketchy in the photos",
+    "no idea what condition it's actually in"
+  ],
+  "pain_points": [
+    "Is the battery gonna die in 6 months?",
+    "Looks sketchy in the photos",
+    "What if it's a fake?",
+    "No idea what condition it's actually in",
+    "Scared it'll break right after warranty expires",
+    "Don't want to get burned on a lemon",
+    "Worried about buying stolen goods",
+    "Can't tell if it actually works from photos"
+  ],
+  "desires": [
+    "Looks brand new",
+    "Can't tell the difference from new",
+    "Saved $300 and got same experience",
+    "Battery still lasts all day",
+    "Feels like I got away with something",
+    "Perfect for my teenager - half the price",
+    "Want premium phone without premium price",
+    "Same features for way less money"
+  ],
+  "objections": [
+    "How do I know it's not stolen?",
+    "Will it get iOS updates?",
+    "What if the screen is cracked under the protector?",
+    "Is 'refurbished' just fancy word for 'used'?",
+    "What if something breaks after 30 days?",
+    "Can I trust the seller?",
+    "Will the camera quality be the same?",
+    "What about water damage?"
+  ],
+  "sources": [
+    "Amazon reviews on refurbished iPhones (500+ reviews analyzed)",
+    "Reddit r/refurbished, r/phones, r/frugal threads (March 2026)",
+    "Swappa user comments and reviews",
+    "Back Market customer testimonials",
+    "YouTube comments on refurbished phone review videos"
+  ],
+  "last_updated": "2026-03-11 18:09 UTC"
 }

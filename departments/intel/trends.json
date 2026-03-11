@@ -1,4 +1,40 @@
 {
-  "trends": [],
-  "last_updated": null
+  "trends": [
+    {
+      "trend": "Battery Health Transparency",
+      "description": "All major competitors now prominently display battery health percentages. Customers increasingly sophisticated about this metric.",
+      "impact": "High - customers expect specific battery capacity info, not just 'good battery'",
+      "opportunity": "Guarantee minimum battery health, display exact percentages",
+      "date_identified": "2026-03-11"
+    },
+    {
+      "trend": "Detailed Grading Evolution",
+      "description": "Move beyond simple A/B/C grades to detailed cosmetic descriptions",
+      "impact": "Medium - customers want to know exact condition details",
+      "opportunity": "Provide detailed condition photos and descriptions per device",
+      "date_identified": "2026-03-11"
+    },
+    {
+      "trend": "Sustainability Marketing Rise",
+      "description": "Eco-conscious messaging becoming more prominent, especially targeting Gen Z",
+      "impact": "Medium - appeals to environmentally conscious buyers",
+      "opportunity": "Emphasize environmental benefits of refurbished vs new",
+      "date_identified": "2026-03-11"
+    },
+    {
+      "trend": "USB-C Transition Confusion",
+      "description": "iPhone 15 switch to USB-C creating accessory compatibility confusion",
+      "impact": "High - perfect opportunity for curated bundles with correct accessories",
+      "opportunity": "Create clear compatibility guides and bundle correct cables/chargers",
+      "date_identified": "2026-03-11"
+    },
+    {
+      "trend": "New Model Impact on Refurb Supply",
+      "description": "iPhone 15 launch caused 12% price drop in older refurbished models due to increased supply",
+      "impact": "High - timing purchases around new releases maximizes savings",
+      "opportunity": "Market timing messaging around new release cycles",
+      "date_identified": "2026-03-11"
+    }
+  ],
+  "last_updated": "2026-03-11 18:09 UTC"
 }

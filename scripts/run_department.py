@@ -50,7 +50,7 @@ MAX_TOKENS_DEFAULT = 4096
 MAX_TOKENS_OVERRIDE = {
     "blog_writer": 8192,
     "blog_qa": 8192,
-    "blog_publish": 8192,
+    "blog_publish": 16384,
     "gm_report": 8192,
 }
 
@@ -443,6 +443,38 @@ IMPORTANT: Return your response in this exact format:
 """
 
 
+def _try_parse_json(text: str):
+    """Try to parse JSON, fixing common issues from LLM output."""
+    text = text.strip()
+    # Try direct parse first
+    try:
+        return json.loads(text)
+    except json.JSONDecodeError:
+        pass
+    # Try wrapping in braces if it starts with a key
+    if text.startswith('"') and not text.startswith('{'):
+        try:
+            return json.loads('{' + text + '}')
+        except json.JSONDecodeError:
+            pass
+    # Try finding the first complete JSON object using brace counting
+    depth = 0
+    start = None
+    for i, ch in enumerate(text):
+        if ch == '{':
+            if depth == 0:
+                start = i
+            depth += 1
+        elif ch == '}':
+            depth -= 1
+            if depth == 0 and start is not None:
+                try:
+                    return json.loads(text[start:i + 1])
+                except json.JSONDecodeError:
+                    start = None
+    return None
+
+
 def parse_response(response_text: str) -> dict:
     """Parse Claude's response into file updates, queue items, and social posts."""
     result = {
@@ -461,9 +493,8 @@ def parse_response(response_text: str) -> dict:
 
     for block_type, header, content in json_blocks:
         content = content.strip()
-        try:
-            data = json.loads(content)
-        except json.JSONDecodeError:
+        data = _try_parse_json(content)
+        if data is None:
             # If it's an UPDATE with non-JSON content (like markdown), treat as raw text
             if block_type == "UPDATE" and header.strip():
                 result["file_updates"].append({"path": header.strip(), "data": content})
@@ -478,6 +509,14 @@ def parse_response(response_text: str) -> dict:
             result["queue_items"].append(data)
         elif block_type == "SOCIAL_POST":
             result["social_posts"].append(data)
+
+    # Fallback: scan for bare JSON objects with known keys if no blocks found
+    if not result["queue_items"] and "blog_publish" in response_text:
+        for m in re.finditer(r'\{[^{}]*"type"\s*:\s*"blog_publish"', response_text):
+            data = _try_parse_json(response_text[m.start():])
+            if data and isinstance(data, dict) and "type" in data:
+                result["queue_items"].append(data)
+                print(f"  Recovered queue item via fallback parser")
 
     # Also catch markdown blocks with UPDATE headers
     md_blocks = re.findall(

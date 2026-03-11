@@ -10,6 +10,50 @@ from urllib.request import Request, urlopen
 from urllib.error import HTTPError
 
 
+_cached_token = None
+
+
+def _get_access_token() -> str:
+    """Get a valid Shopify access token, refreshing via client credentials if needed."""
+    global _cached_token
+
+    # If a static token is set, use it
+    static_token = os.environ.get("SHOPIFY_ACCESS_TOKEN", "")
+    if static_token:
+        return static_token
+
+    # If we already refreshed this run, reuse it
+    if _cached_token:
+        return _cached_token
+
+    # Auto-refresh using client credentials grant (token expires every 24h)
+    store = os.environ.get("SHOPIFY_STORE", "gadgetgeekspro.myshopify.com")
+    client_id = os.environ.get("SHOPIFY_CLIENT_ID", "")
+    client_secret = os.environ.get("SHOPIFY_CLIENT_SECRET", "")
+
+    if not client_id or not client_secret:
+        raise Exception("Neither SHOPIFY_ACCESS_TOKEN nor SHOPIFY_CLIENT_ID/SECRET set")
+
+    url = f"https://{store}/admin/oauth/access_token"
+    body = (
+        f"grant_type=client_credentials"
+        f"&client_id={client_id}"
+        f"&client_secret={client_secret}"
+    ).encode("utf-8")
+
+    req = Request(url, data=body, method="POST")
+    req.add_header("Content-Type", "application/x-www-form-urlencoded")
+
+    try:
+        with urlopen(req, timeout=15) as response:
+            result = json.loads(response.read().decode("utf-8"))
+            _cached_token = result["access_token"]
+            print(f"  Shopify token refreshed (expires in {result.get('expires_in', '?')}s)")
+            return _cached_token
+    except (HTTPError, KeyError) as e:
+        raise Exception(f"Failed to refresh Shopify token: {e}")
+
+
 def query_shopify(query: str, variables: dict = None) -> dict:
     """Execute a GraphQL query against the Shopify Admin API.
 
@@ -18,10 +62,10 @@ def query_shopify(query: str, variables: dict = None) -> dict:
         variables: Optional query variables
     """
     store = os.environ.get("SHOPIFY_STORE", "gadgetgeekspro.myshopify.com")
-    token = os.environ.get("SHOPIFY_ACCESS_TOKEN", "")
+    token = _get_access_token()
 
     if not token:
-        raise Exception("SHOPIFY_ACCESS_TOKEN not set")
+        raise Exception("Could not obtain Shopify access token")
 
     url = f"https://{store}/admin/api/2026-01/graphql.json"
 

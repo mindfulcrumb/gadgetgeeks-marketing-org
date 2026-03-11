@@ -33,4 +33,5 @@ jobs:
           git config user.email "bot@gadgetgeekspro.com"
           git add -A
           git diff --cached --quiet || git commit -m "[content] Automated run — $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git pull --rebase origin main || true
           git push

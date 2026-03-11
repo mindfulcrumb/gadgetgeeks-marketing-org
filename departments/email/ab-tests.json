@@ -1,4 +1,15 @@
 {
-  "tests": [],
-  "last_updated": null
+  "tests": [
+    {
+      "id": "winback-subject-001",
+      "campaign_id": "winback-sustainability-001",
+      "element": "subject_line",
+      "variant_a": "Stop throwing money at new phones",
+      "variant_b": "You don't need new tech every year",
+      "status": "queued",
+      "created": "2026-03-11 19:11 UTC",
+      "hypothesis": "Loss aversion (A) vs anti-consumerism messaging (B)"
+    }
+  ],
+  "last_updated": "2026-03-11 19:11 UTC"
 }

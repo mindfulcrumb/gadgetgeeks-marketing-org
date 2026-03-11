@@ -1,4 +1,15 @@
 {
-  "campaigns": [],
-  "last_updated": null
+  "campaigns": [
+    {
+      "id": "winback-sustainability-001",
+      "name": "Break the Upgrade Cycle - Win-Back",
+      "type": "win-back",
+      "status": "queued_for_approval",
+      "segment": "inactive_30d",
+      "created": "2026-03-11 19:11 UTC",
+      "theme": "Sustainability + Anti-consumerism",
+      "estimated_send_count": "~500-800 customers"
+    }
+  ],
+  "last_updated": "2026-03-11 19:11 UTC"
 }

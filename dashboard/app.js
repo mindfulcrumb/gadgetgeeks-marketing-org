@@ -1416,11 +1416,58 @@ function renderQueue() {
     list.innerHTML = '<div class="q-empty">No items pending</div>';
     return;
   }
-  list.innerHTML = queueState.pending.map(i => `
-    <div class="q-item"><span class="q-type">${i.type||'ITEM'}</span>
-    <span class="q-desc">${i.description||i.title||''}</span>
-    <span class="q-dept">${i.department||''}</span></div>`).join('');
+  const DEPT_NAMES_Q = {intel:'Market Intel',seo:'SEO',content:'Content',email:'Email',social_morning:'Social',cro:'CRO',x_intel:'X Intel',dialer:'Dialer',image_prompts:'Image Prompts',blog_writer:'Blog Writer'};
+  const skip = new Set(['id','department','type','summary']);
+  list.innerHTML = queueState.pending.map(i => {
+    const dept = i.department || '?';
+    const deptName = DEPT_NAMES_Q[dept] || dept;
+    const details = Object.entries(i).filter(([k])=>!skip.has(k)).slice(0,5).map(([k,v])=>{
+      let val = typeof v === 'string' ? v : JSON.stringify(v);
+      if(val.length>120) val = val.slice(0,120)+'…';
+      return `<span class="q-detail-line"><b>${k}</b>: ${val}</span>`;
+    }).join('');
+    return `<div class="q-item" data-id="${i.id||''}">
+      <span class="q-type">${(i.type||'ITEM').toUpperCase()}</span> <span class="q-dept">${deptName}</span>
+      <div class="q-summary">${i.summary||i.description||i.title||'No description'}</div>
+      ${details?`<div class="q-detail">${details}</div>`:''}
+      <div class="q-actions">
+        <button class="q-btn q-btn-approve" onclick="dashApprove('${i.id||''}')">APPROVE</button>
+        <button class="q-btn q-btn-reject" onclick="dashReject('${i.id||''}')">REJECT</button>
+      </div>
+      <span class="q-id">${i.id||''}</span>
+    </div>`;
+  }).join('');
 }
+
+async function dashAction(itemId, action) {
+  // Trigger via Telegram webhook worker (same API as /approve and /reject commands)
+  const workerUrl = 'https://gadgetgeeks-telegram-webhook.gadgetgeeks.workers.dev';
+  try {
+    addNotification('info', `${action==='approve'?'Approving':'Rejecting'} ${itemId}...`);
+    // We trigger the gm-queue workflow via GitHub API directly
+    const resp = await fetch(`https://api.github.com/repos/${REPO}/actions/workflows/gm-queue.yml/dispatches`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${window._ghToken||''}`,
+        'Accept': 'application/vnd.github.v3+json',
+      },
+      body: JSON.stringify({ ref: 'main', inputs: { boss_department: 'gm_queue', boss_instruction: `${action} ${itemId}` } }),
+    });
+    if (resp.status === 204) {
+      addNotification('info', `${action==='approve'?'Approved':'Rejected'}: ${itemId}`);
+      addEnforcerLog('ok', `BOSS ${action}d item ${itemId.slice(-8)}`);
+      // Optimistically remove from queue display
+      const el = document.querySelector(`.q-item[data-id="${itemId}"]`);
+      if (el) { el.style.opacity = '0.3'; el.querySelectorAll('.q-btn').forEach(b => b.disabled = true); }
+    } else {
+      addNotification('alert', `Failed to ${action} — check token`);
+    }
+  } catch (e) {
+    addNotification('alert', `Error: ${e.message}`);
+  }
+}
+function dashApprove(id) { dashAction(id, 'approve'); }
+function dashReject(id) { dashAction(id, 'reject'); }
 
 function renderEnforcerLog() {
   const el = document.getElementById('enforcer-log');
@@ -1670,28 +1717,233 @@ function openGalleryFolder(folderKey) {
     return;
   }
 
-  promptsEl.innerHTML = prompts.map(p => {
-    const rating = (p.rating||p.verdict||'unreviewed').toLowerCase().replace(/[_ ]/g,'');
+  promptsEl.innerHTML = prompts.map((p, idx) => {
+    const rating = (p.rating||p.verdict||p.qa_status||'unreviewed').toLowerCase().replace(/[_ ]/g,'');
     const scoreClass = rating.includes('excellent') ? 'excellent' : rating.includes('good') ? 'good' : rating.includes('need')||rating.includes('fix') ? 'needswork' : rating.includes('block') ? 'blocked' : 'good';
     const score = p.score != null ? `${p.score}/15` : '--';
     const promptText = p.prompt || p.corrected_prompt || p.text || JSON.stringify(p).slice(0,300);
     const platform = p.platform || p.target_platform || '';
     const aspect = p.aspect_ratio || '';
     const useCase = p.use_case || folderKey;
-    return `<div class="gal-prompt">
+    const negPrompt = p.negative_prompt || '';
+    const params = p.platform_params || '';
+    const tool = p.recommended_tool || '';
+    const notes = p.notes || '';
+    const pid = p.id || p.prompt_id || `prompt_${idx}`;
+    return `<div class="gal-prompt" data-prompt-id="${pid}">
       <div class="gal-prompt-header">
-        <span class="gal-prompt-id">${p.prompt_id||'—'}</span>
-        <span class="gal-prompt-score gal-score-${scoreClass}">${score} ${(p.rating||p.verdict||'UNREVIEWED').toUpperCase()}</span>
+        <span class="gal-prompt-id">${pid}</span>
+        <span class="gal-prompt-score gal-score-${scoreClass}">${score} ${(p.rating||p.verdict||p.qa_status||'UNREVIEWED').toUpperCase()}</span>
       </div>
-      <div class="gal-prompt-text">${promptText.length>500?promptText.slice(0,500)+'...':promptText}</div>
+      <div class="gal-prompt-text">${promptText.length>600?promptText.slice(0,600)+'...':promptText}</div>
+      ${negPrompt?`<div class="gal-neg-prompt"><b>Negative:</b> ${negPrompt.slice(0,200)}</div>`:''}
+      ${notes?`<div class="gal-notes"><b>Notes:</b> ${notes.slice(0,150)}</div>`:''}
       <div class="gal-prompt-meta">
+        ${tool?`<span class="gal-meta-tag tool">${tool}</span>`:''}
         ${platform?`<span class="gal-meta-tag">${platform}</span>`:''}
         ${aspect?`<span class="gal-meta-tag">${aspect}</span>`:''}
         ${useCase?`<span class="gal-meta-tag">${useCase}</span>`:''}
-        ${p.camera?`<span class="gal-meta-tag">${p.camera}</span>`:''}
+        ${params?`<span class="gal-meta-tag">${params}</span>`:''}
+      </div>
+      <div class="gal-actions">
+        <button class="q-btn q-btn-approve" onclick="copyPrompt(this)">COPY PROMPT</button>
+        <button class="q-btn q-btn-expand" onclick="sendPromptFeedback('${pid}','approve')">APPROVE</button>
+        <button class="q-btn q-btn-reject" onclick="sendPromptFeedback('${pid}','reject')">REJECT</button>
       </div>
     </div>`;
   }).join('');
+
+  // Store raw prompts for copy
+  promptsEl._prompts = prompts;
+}
+
+// ═══════════════════════════════════════════
+// IMAGE PROMPT ACTIONS
+// ═══════════════════════════════════════════
+function copyPrompt(btn) {
+  const card = btn.closest('.gal-prompt');
+  const promptText = card.querySelector('.gal-prompt-text').textContent;
+  navigator.clipboard.writeText(promptText).then(() => {
+    btn.textContent = 'COPIED!';
+    addNotification('info', 'Prompt copied to clipboard');
+    setTimeout(() => { btn.textContent = 'COPY PROMPT'; }, 2000);
+  }).catch(() => {
+    // Fallback for no clipboard API
+    const ta = document.createElement('textarea');
+    ta.value = promptText;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    ta.remove();
+    btn.textContent = 'COPIED!';
+    setTimeout(() => { btn.textContent = 'COPY PROMPT'; }, 2000);
+  });
+}
+
+async function sendPromptFeedback(promptId, action) {
+  addNotification('info', `${action === 'approve' ? 'Approving' : 'Rejecting'} prompt ${promptId}...`);
+  try {
+    await fetch(`https://api.github.com/repos/${REPO}/actions/workflows/gm-queue.yml/dispatches`, {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${window._ghToken||''}`, 'Accept': 'application/vnd.github.v3+json' },
+      body: JSON.stringify({ ref: 'main', inputs: { boss_department: 'image_prompts', boss_instruction: `${action} prompt ${promptId}` } }),
+    });
+    addNotification('info', `Prompt ${promptId} ${action}d`);
+    addEnforcerLog('ok', `BOSS ${action}d prompt ${promptId.slice(-8)}`);
+    const el = document.querySelector(`.gal-prompt[data-prompt-id="${promptId}"]`);
+    if (el) el.style.opacity = '0.4';
+  } catch (e) {
+    addNotification('alert', `Failed: ${e.message}`);
+  }
+}
+
+// ═══════════════════════════════════════════
+// COMMS CENTER
+// ═══════════════════════════════════════════
+let commsMessages = [];
+let commsTarget = 'gm';
+
+function initComms() {
+  const DEPT_NAMES_C = {gm:'GM',intel:'Intel',seo:'SEO',content:'Content',email:'Email',social_morning:'Social',cro:'CRO',x_intel:'X Intel',dialer:'Xavier',image_prompts:'Lens',blog_writer:'Scribe'};
+
+  // Build tabs from dropdown options
+  const tabs = document.getElementById('comms-tabs');
+  const deptSelect = document.getElementById('comms-dept');
+  tabs.innerHTML = '';
+  for (const opt of deptSelect.options) {
+    const btn = document.createElement('button');
+    btn.className = 'comms-tab' + (opt.value === commsTarget ? ' active' : '');
+    btn.dataset.target = opt.value;
+    btn.textContent = DEPT_NAMES_C[opt.value] || opt.value;
+    btn.addEventListener('click', () => {
+      commsTarget = opt.value;
+      deptSelect.value = opt.value;
+      tabs.querySelectorAll('.comms-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      renderComms();
+    });
+    tabs.appendChild(btn);
+  }
+
+  // Sync select with tabs
+  deptSelect.addEventListener('change', () => {
+    commsTarget = deptSelect.value;
+    tabs.querySelectorAll('.comms-tab').forEach(t => {
+      t.classList.toggle('active', t.dataset.target === commsTarget);
+    });
+    renderComms();
+  });
+
+  // Send button
+  document.getElementById('comms-send').addEventListener('click', sendCommsMessage);
+  document.getElementById('comms-msg').addEventListener('keydown', e => {
+    if (e.key === 'Enter') sendCommsMessage();
+  });
+
+  // Load existing boss instructions from run history
+  loadCommsHistory();
+}
+
+async function loadCommsHistory() {
+  const history = await fetchJSON('state/run-history.json');
+  if (!history) return;
+
+  const runs = history.runs || [];
+  commsMessages = [];
+
+  for (const run of runs.slice(-20)) {
+    const dept = run.department || '?';
+    const ts = run.timestamp || '';
+    const summary = run.summary || '';
+    if (summary) {
+      commsMessages.push({ from: dept, type: 'dept', text: summary.slice(0, 200), time: ts });
+    }
+    if (run.had_boss_instructions) {
+      commsMessages.push({ from: 'boss', type: 'boss', text: `Instruction sent to ${dept}`, time: ts });
+    }
+  }
+
+  // Also load queue items as dept messages
+  if (queueState && queueState.pending) {
+    for (const item of queueState.pending) {
+      commsMessages.push({
+        from: item.department || '?',
+        type: 'dept',
+        text: `[Needs Approval] ${item.summary || item.type || 'New item'}`,
+        time: new Date().toISOString(),
+        dept: item.department,
+      });
+    }
+  }
+
+  renderComms();
+}
+
+function renderComms() {
+  const feed = document.getElementById('comms-feed');
+  const filtered = commsTarget === 'gm'
+    ? commsMessages
+    : commsMessages.filter(m => m.from === commsTarget || m.dept === commsTarget || m.from === 'boss');
+
+  if (!filtered.length) {
+    feed.innerHTML = '<div class="comms-empty">No messages yet — send an instruction below</div>';
+    return;
+  }
+
+  const DEPT_NAMES_C = {gm:'GM',intel:'Intel',seo:'SEO',content:'Content',email:'Email',social_morning:'Social',cro:'CRO',x_intel:'X Intel',dialer:'Xavier',image_prompts:'Lens',blog_writer:'Scribe',boss:'BOSS'};
+
+  feed.innerHTML = filtered.slice(-15).map(m => {
+    let timeStr = '';
+    if (m.time) {
+      try { const d = new Date(m.time); timeStr = pad(d.getUTCHours()) + ':' + pad(d.getUTCMinutes()); } catch(e) {}
+    }
+    return `<div class="comms-msg ${m.type}">
+      <span class="comms-from">${DEPT_NAMES_C[m.from]||m.from}<span class="comms-time">${timeStr}</span></span>
+      <span class="comms-text">${m.text}</span>
+    </div>`;
+  }).join('');
+
+  feed.scrollTop = feed.scrollHeight;
+}
+
+async function sendCommsMessage() {
+  const input = document.getElementById('comms-msg');
+  const dept = document.getElementById('comms-dept').value;
+  const text = input.value.trim();
+  if (!text) return;
+
+  input.value = '';
+
+  // Add to local feed immediately
+  commsMessages.push({ from: 'boss', type: 'boss', text: `[→ ${dept}] ${text}`, time: new Date().toISOString() });
+  renderComms();
+
+  // Trigger via GitHub workflow dispatch (same as /boss command)
+  const DEPT_WF = {intel:'intel.yml',seo:'seo-daily.yml',content:'content.yml',email:'email.yml',social_morning:'social-morning.yml',cro:'cro.yml',x_intel:'x-intel.yml',dialer:'dialer.yml',image_prompts:'image-prompts.yml',blog_writer:'blog-writer.yml',gm:'gm-queue.yml'};
+  const workflow = DEPT_WF[dept] || 'gm-queue.yml';
+
+  try {
+    // Save boss instruction via gm-queue dispatch
+    await fetch(`https://api.github.com/repos/${REPO}/actions/workflows/gm-queue.yml/dispatches`, {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${window._ghToken||''}`, 'Accept': 'application/vnd.github.v3+json' },
+      body: JSON.stringify({ ref: 'main', inputs: { boss_department: dept, boss_instruction: text.slice(0, 500) } }),
+    });
+
+    // Also trigger the department workflow
+    if (dept !== 'gm') {
+      await fetch(`https://api.github.com/repos/${REPO}/actions/workflows/${workflow}/dispatches`, {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${window._ghToken||''}`, 'Accept': 'application/vnd.github.v3+json' },
+        body: JSON.stringify({ ref: 'main' }),
+      });
+    }
+
+    addNotification('info', `Instruction sent to ${dept}`);
+    addEnforcerLog('ok', `BOSS sent instruction to ${dept}`);
+  } catch (e) {
+    addNotification('alert', `Send failed: ${e.message}`);
+  }
 }
 
 // ═══════════════════════════════════════════
@@ -1741,9 +1993,18 @@ async function init() {
   canvas.addEventListener('touchstart', onTouchTap, {passive: false});
   canvas.addEventListener('touchmove', onTouchMove, {passive: false});
 
+  // GH token for approve/reject/comms (stored in sessionStorage)
+  window._ghToken = sessionStorage.getItem('ghToken') || '';
+  if (!window._ghToken) {
+    const t = prompt('Enter GitHub token for dashboard actions (approve/reject/send):\n(Leave blank for read-only mode)');
+    if (t) { window._ghToken = t; sessionStorage.setItem('ghToken', t); }
+  }
+
   await loadData();
   setInterval(loadData, 30000);
   setInterval(()=>{updateHUD();},1000);
+
+  initComms();
 
   addEnforcerLog('info','BOSS online — monitoring all departments');
   addEnforcerLog('info','God Mode activated');

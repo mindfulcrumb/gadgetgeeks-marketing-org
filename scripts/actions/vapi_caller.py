@@ -495,11 +495,40 @@ def execute_approved_calls() -> list:
             item["called_at"] = datetime.now(timezone.utc).isoformat()
             results.append({"number": customer_number, "call_id": call_result.get("id"), "status": "initiated"})
             print(f"  Called: {customer_number} ({script_type})")
+
+            # Notify boss via Telegram
+            try:
+                from scripts.actions.telegram_bot import send_message
+                customer_name = item.get("customer_name", "Unknown")
+                send_message(
+                    f"\U0001F4DE <b>XAVIER — Call Initiated</b>\n\n"
+                    f"\U0001F464 <b>{customer_name}</b>\n"
+                    f"\U0001F4F1 <code>{customer_number}</code>\n"
+                    f"\U0001F3AF Script: {script_type}\n"
+                    f"\U0001F194 <code>{call_result.get('id', '?')}</code>\n\n"
+                    f"\u2705 Call is ringing now."
+                )
+            except Exception as tg_err:
+                print(f"  Telegram notify error: {tg_err}")
+
         except Exception as e:
             item["status"] = "error"
             item["error"] = str(e)
             results.append({"number": customer_number, "error": str(e)})
             print(f"  ERROR calling {customer_number}: {e}")
+
+            # Notify boss of failed call
+            try:
+                from scripts.actions.telegram_bot import send_message
+                customer_name = item.get("customer_name", "Unknown")
+                send_message(
+                    f"\u274C <b>XAVIER — Call Failed</b>\n\n"
+                    f"\U0001F464 <b>{customer_name}</b>\n"
+                    f"\U0001F4F1 <code>{customer_number}</code>\n"
+                    f"Error: {str(e)[:200]}"
+                )
+            except Exception:
+                pass
 
     # Move completed items
     still_pending = []

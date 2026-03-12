@@ -80,6 +80,12 @@ def main():
     open(config_path, "w").write(json.dumps(config, indent=2))
     print(f"\n  Updated config/vapi.json with {len(new_ids)} assistant IDs")
 
+    # 6. Verify assistants were created correctly
+    print("\n=== VERIFICATION ===")
+    final = api("GET", "/assistant")
+    for a in final:
+        print(f"  {a.get('name')} — speed: {a.get('voice', {}).get('speed', '?')}, delay: {a.get('responseDelaySeconds', '?')}")
+
     print("\n=== DONE ===")
     print("All assistants are now Gadget Geeks Pro (Xavier).")
 

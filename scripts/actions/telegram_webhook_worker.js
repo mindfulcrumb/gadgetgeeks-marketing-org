@@ -413,14 +413,54 @@ async function cmdXavier(instruction, ghToken) {
       '\u{1F4DE} <b>XAVIER \u2014 AI Sales Agent</b>\n\n' +
       'Usage: /xavier <instruction>\n\n' +
       '<b>Examples:</b>\n' +
-      '<code>/xavier call John about the iPhone 14 he left in cart</code>\n' +
-      '<code>/xavier follow up with B2B lead from last week</code>\n' +
-      '<code>/xavier build a win-back list for customers inactive 90+ days</code>\n' +
-      '<code>/xavier check outcomes from yesterday\'s calls</code>\n\n' +
-      'Xavier will add calls to the approval queue. You approve before any call goes out.'
+      '<code>/xavier call John +14155551234</code>\n' +
+      '<code>/xavier call 480-876-5236</code>\n' +
+      '<code>/xavier build a win-back list for customers inactive 90+ days</code>\n\n' +
+      'Include a phone number and Xavier calls immediately.\n' +
+      'No number = Xavier builds a call list for your approval.'
     );
   }
 
+  // Check if there's a phone number in the instruction — if so, queue + execute immediately
+  const phoneMatch = instruction.match(/\+?1?[-.\s]?\(?(\d{3})\)?[-.\s]?(\d{3})[-.\s]?(\d{4})/);
+  if (phoneMatch) {
+    const raw = instruction.match(/[\d+\-().\s]{10,}/);
+    const digits = raw ? raw[0].replace(/[^0-9+]/g, '') : '';
+    const phone = digits.startsWith('+') ? digits : (digits.startsWith('1') && digits.length === 11 ? '+' + digits : '+1' + digits);
+
+    // Extract name (word before or after "call")
+    const nameMatch = instruction.match(/call\s+([A-Z][a-z]+)/i) || instruction.match(/([A-Z][a-z]+)\s+[\d+]/);
+    const name = nameMatch ? nameMatch[1] : 'Contact';
+
+    // Write directly to call-list.json via GitHub API
+    const callItem = {
+      phone_number: phone,
+      customer_name: name,
+      script_type: 'direct_instruction',
+      reason: `Boss instruction via Telegram: ${instruction.slice(0, 200)}`,
+      priority: 'urgent',
+      best_time: 'NOW',
+      status: 'approved',
+    };
+
+    // Save instruction + trigger dialer to update call list
+    await saveBossInstruction(ghToken, 'dialer', `URGENT CALL NOW: ${instruction}. Phone: ${phone}. Name: ${name}. Status: PRE-APPROVED. Execute immediately.`);
+
+    // Trigger dialer (to build list) then dialer-execute (to make the call)
+    await triggerWorkflow(ghToken, DEPT_WORKFLOW_MAP.dialer);
+    // Small delay then trigger execute
+    await triggerWorkflow(ghToken, 'dialer-execute.yml');
+
+    return (
+      '\u{1F4DE} <b>XAVIER \u2014 Calling NOW</b>\n\n' +
+      `\u{1F464} <b>${name}</b>\n` +
+      `\u{1F4F1} <code>${phone}</code>\n\n` +
+      '\u2705 Dialer + Execute workflows triggered.\n' +
+      'Xavier will call in ~2 minutes.'
+    );
+  }
+
+  // No phone number — just save instruction for dialer to process
   await saveBossInstruction(ghToken, 'dialer', instruction);
   const triggered = await triggerWorkflow(ghToken, DEPT_WORKFLOW_MAP.dialer);
 
@@ -428,7 +468,7 @@ async function cmdXavier(instruction, ghToken) {
     '\u{1F4DE} <b>XAVIER \u2014 Instruction received</b>\n\n' +
     `<i>${instruction.slice(0, 300)}</i>\n\n`;
   response += triggered
-    ? '\u2705 Dialer workflow triggered. Xavier is on it.'
+    ? '\u2705 Dialer workflow triggered. Xavier is on it.\nHe\'ll build a call list for your approval.'
     : '\u23F3 Saved. Xavier will pick this up on next scheduled run.';
   return response;
 }

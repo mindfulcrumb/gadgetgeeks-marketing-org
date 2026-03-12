@@ -4,6 +4,9 @@ on:
     - cron: '47 10 * * 1,4'  # Mon/Thu 10:47 AM UTC
   workflow_dispatch:  # Manual trigger for testing
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   run-intel:
     runs-on: ubuntu-latest

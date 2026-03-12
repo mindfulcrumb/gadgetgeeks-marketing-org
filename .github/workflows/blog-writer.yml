@@ -4,6 +4,9 @@ on:
     - cron: '30 9 * * *'  # Daily 9:30 UTC — one blog per day
   workflow_dispatch:
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   run-blog-writer:
     runs-on: ubuntu-latest

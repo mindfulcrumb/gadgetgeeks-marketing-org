@@ -4,6 +4,9 @@ on:
     - cron: '15 14 * * 1,2,3,4,5'  # Mon-Fri 2:15 PM UTC (morning PST)
   workflow_dispatch:
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   run-dialer:
     runs-on: ubuntu-latest

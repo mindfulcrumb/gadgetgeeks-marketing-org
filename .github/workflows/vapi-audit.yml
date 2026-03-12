@@ -2,6 +2,9 @@ name: VAPI Audit — Fix Assistants
 on:
   workflow_dispatch:
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   audit:
     runs-on: ubuntu-latest

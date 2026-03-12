@@ -2,6 +2,9 @@ name: "Image On-Demand (Telegram)"
 on:
   workflow_dispatch:
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   generate-on-demand:
     runs-on: ubuntu-latest

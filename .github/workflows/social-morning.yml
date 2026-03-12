@@ -4,6 +4,9 @@ on:
     - cron: '45 9 * * *'  # Daily 9:45 AM UTC — after CANVAS designs (9:25)
   workflow_dispatch:
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   run-social-morning:
     runs-on: ubuntu-latest

@@ -4,6 +4,9 @@ on:
     - cron: '25 9 * * *'  # Daily 9:25 AM UTC — after image generation (8:55), before social morning (9:11 moved to 9:45)
   workflow_dispatch:
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   run-canva-designer:
     runs-on: ubuntu-latest

@@ -4,6 +4,9 @@ on:
     - cron: '45 15 * * 1,2,3,4,5'  # Mon-Fri 3:45 PM UTC (90 min after list build, time for approval)
   workflow_dispatch:
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   execute-calls:
     runs-on: ubuntu-latest

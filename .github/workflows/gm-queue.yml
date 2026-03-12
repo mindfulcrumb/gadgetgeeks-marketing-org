@@ -4,6 +4,9 @@ on:
     - cron: '51 18 * * *'  # Daily 6:51 PM UTC
   workflow_dispatch:
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   run-gm-queue:
     runs-on: ubuntu-latest

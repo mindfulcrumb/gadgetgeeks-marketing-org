@@ -4,6 +4,9 @@ on:
     - cron: '41 7 * * *'  # Daily 7:41 AM UTC — feeds briefs to SCRIBE
   workflow_dispatch:
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   run-content:
     runs-on: ubuntu-latest

@@ -4,6 +4,9 @@ on:
     - cron: '19 8 * * *'  # Daily 8:19 AM UTC — LENS generates 10 prompts/day
   workflow_dispatch:
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   run-image-prompts:
     runs-on: ubuntu-latest

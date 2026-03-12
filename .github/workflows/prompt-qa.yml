@@ -4,6 +4,9 @@ on:
     - cron: '49 8 * * *'  # Daily 8:49 UTC — FOCUS reviews 10 prompts (30 min after LENS)
   workflow_dispatch:
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   run-prompt-qa:
     runs-on: ubuntu-latest

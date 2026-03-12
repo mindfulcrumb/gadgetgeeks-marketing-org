@@ -7,6 +7,9 @@ on:
         required: true
         default: 'cheap-refurbished-phones-guide'
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   fix-image:
     runs-on: ubuntu-latest

@@ -4,6 +4,9 @@ on:
     - cron: '0 10 * * *'  # Daily 10:00 UTC — after SCRIBE (9:30), before PRESS (10:30)
   workflow_dispatch:
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   copy-audit:
     runs-on: ubuntu-latest

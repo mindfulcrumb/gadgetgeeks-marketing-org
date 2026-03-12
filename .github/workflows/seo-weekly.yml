@@ -4,6 +4,9 @@ on:
     - cron: '17 5 * * 1'  # Monday 5:17 AM UTC
   workflow_dispatch:
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   run-seo-weekly:
     runs-on: ubuntu-latest

@@ -4,6 +4,9 @@ on:
     - cron: '53 8 * * 2,4'  # Tue/Thu 8:53 AM UTC
   workflow_dispatch:
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   run-email:
     runs-on: ubuntu-latest

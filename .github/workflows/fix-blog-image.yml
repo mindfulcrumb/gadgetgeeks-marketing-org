@@ -1,0 +1,62 @@
+name: Fix Blog Image
+on:
+  workflow_dispatch:
+    inputs:
+      blog_handle:
+        description: 'Blog handle (slug) or "all" to fix all published blogs missing images'
+        required: true
+        default: 'cheap-refurbished-phones-guide'
+
+jobs:
+  fix-image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Get fresh Shopify token
+        id: shopify
+        run: |
+          RESPONSE=$(curl -s -X POST "https://gadgetgeekspro.myshopify.com/admin/oauth/access_token" \
+            -H "Content-Type: application/x-www-form-urlencoded" \
+            -d "grant_type=client_credentials" \
+            -d "client_id=${{ secrets.SHOPIFY_CLIENT_ID }}" \
+            -d "client_secret=${{ secrets.SHOPIFY_CLIENT_SECRET }}")
+          TOKEN=$(echo "$RESPONSE" | python3 -c "import sys,json; print(json.load(sys.stdin)['access_token'])")
+          echo "::add-mask::$TOKEN"
+          echo "token=$TOKEN" >> "$GITHUB_OUTPUT"
+
+      - name: Generate and attach blog header image
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          SHOPIFY_ACCESS_TOKEN: ${{ steps.shopify.outputs.token }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          BLOG_HANDLE: ${{ github.event.inputs.blog_handle }}
+        run: |
+          cd scripts/actions
+          python3 -c "
+          from telegram_bot import _cmd_fix_image, send_message
+          result = _cmd_fix_image(['${{ github.event.inputs.blog_handle }}'])
+          print(result)
+          "
+
+      - name: Push changes
+        run: |
+          git config user.name "Marketing Org Bot"
+          git config user.email "bot@gadgetgeekspro.com"
+          git add -A
+          git diff --cached --quiet || git commit -m "[fix-image] ${{ github.event.inputs.blog_handle }} — $(date -u '+%Y-%m-%d %H:%M UTC')"
+          for i in 1 2 3; do
+            git pull --rebase origin main || { git rebase --abort 2>/dev/null; git pull origin main --no-edit; }
+            git push && break || sleep 5
+          done

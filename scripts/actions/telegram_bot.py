@@ -1760,6 +1760,12 @@ def _handle_natural_language(text: str, chat_id: int) -> str:
 
 def poll_and_respond():
     """Single poll cycle: get updates, respond, save offset."""
+    # Delete any active webhook first — webhooks block getUpdates polling
+    try:
+        _api("deleteWebhook", drop_pending_updates=False)
+    except Exception as e:
+        print(f"  (deleteWebhook warning: {e})")
+
     offset_path = REPO_ROOT / "state" / "telegram_offset.json"
     offset = None
     if offset_path.exists():

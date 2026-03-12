@@ -27,6 +27,16 @@ def write_state(file_path: str, data: dict):
 def commit_changes(message: str):
     """Stage all changes and commit to the repo."""
     try:
+        # Ensure git identity is set (needed in CI before first commit)
+        subprocess.run(
+            ["git", "config", "user.name", "Marketing Org Bot"],
+            cwd=str(REPO_ROOT), capture_output=True, text=True,
+        )
+        subprocess.run(
+            ["git", "config", "user.email", "bot@gadgetgeekspro.com"],
+            cwd=str(REPO_ROOT), capture_output=True, text=True,
+        )
+
         subprocess.run(
             ["git", "add", "-A"],
             cwd=str(REPO_ROOT),

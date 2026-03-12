@@ -1,6 +1,32 @@
 {
   "runs": [
     {
+      "id": "run_social_afternoon_20260312_172952",
+      "department": "social_afternoon",
+      "timestamp": "2026-03-12T17:29:52.891002+00:00",
+      "date": "2026-03-12",
+      "status": "ok",
+      "model": "claude-sonnet-4-20250514",
+      "tokens": {
+        "input": 1552,
+        "output": 1086,
+        "total": 2638
+      },
+      "actions": {
+        "file_updates": 1,
+        "queue_items": 1,
+        "social_posts": 0
+      },
+      "changes": [
+        {
+          "file": "departments/social/engagement-log.md",
+          "action": "modified",
+          "size": 1616
+        }
+      ],
+      "had_boss_instructions": false
+    },
+    {
       "id": "run_dialer_20260312_150714",
       "department": "dialer",
       "timestamp": "2026-03-12T15:07:14.086644+00:00",
@@ -354,8 +380,8 @@
     }
   ],
   "stats": {
-    "total_runs": 12,
-    "total_tokens": 83671,
+    "total_runs": 13,
+    "total_tokens": 86309,
     "total_errors": 0
   },
   "department_stats": {
@@ -400,6 +426,12 @@
       "tokens": 7070,
       "errors": 0,
       "last_run": "2026-03-12T11:23:23.707825+00:00"
+    },
+    "social_afternoon": {
+      "runs": 1,
+      "tokens": 2638,
+      "errors": 0,
+      "last_run": "2026-03-12T17:29:52.891002+00:00"
     }
   }
 }

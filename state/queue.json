@@ -169,6 +169,15 @@
       "department": "dialer",
       "type": "dialer",
       "summary": "New dialer item"
+    },
+    {
+      "recommendation": "Schedule posts for 15:00-17:00 UTC window tomorrow",
+      "rationale": "Current posting times (00:14 and 10:46) leave afternoon engagement gap",
+      "suggested_content": "Customer success stories or product education content",
+      "id": "social_afternoon_20260312_172952",
+      "department": "social_afternoon",
+      "type": "social_afternoon",
+      "summary": "New social_afternoon item"
     }
   ],
   "approved": [

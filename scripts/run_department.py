@@ -640,19 +640,20 @@ def execute_actions(department: str, parsed: dict):
     # 3. Post to social media (only if Postiz API key is available)
     postiz_key = os.environ.get("POSTIZ_API_KEY")
     for post in parsed["social_posts"]:
+        text = post.get("content") or post.get("text") or post.get("body") or post.get("caption") or str(post)[:200]
         if postiz_key:
             try:
                 post_to_social(
-                    content=post["content"],
+                    content=text,
                     platforms=post.get("platforms", []),
                     media_url=post.get("media_url"),
                     api_key=postiz_key,
                 )
-                print(f"  Posted to social: {post['content'][:60]}...")
+                print(f"  Posted to social: {text[:60]}...")
             except Exception as e:
                 print(f"  ERROR posting to social: {e}")
         else:
-            print(f"  SKIPPED social post (no POSTIZ_API_KEY): {post['content'][:60]}...")
+            print(f"  SKIPPED social post (no POSTIZ_API_KEY): {text[:60]}...")
 
 
 def process_approved_emails(parsed: dict):

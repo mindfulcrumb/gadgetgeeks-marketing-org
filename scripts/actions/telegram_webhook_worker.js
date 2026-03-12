@@ -173,6 +173,45 @@ async function triggerWorkflow(ghToken, workflowFile) {
   }
 }
 
+async function writeCallToList(ghToken, callItem) {
+  const path = 'departments/dialer/call-list.json';
+  const apiUrl = `https://api.github.com/repos/${GITHUB_REPO}/contents/${path}`;
+  const headers = {
+    Authorization: `Bearer ${ghToken}`,
+    Accept: 'application/vnd.github.v3+json',
+    'User-Agent': 'GadgetGeeks-Webhook/1.0',
+  };
+
+  try {
+    // 1. Get current file content + sha
+    const getResp = await fetch(apiUrl, { headers });
+    if (!getResp.ok) return false;
+    const fileData = await getResp.json();
+    const sha = fileData.sha;
+    const content = JSON.parse(atob(fileData.content.replace(/\n/g, '')));
+
+    // 2. Add the call item to pending
+    content.pending = content.pending || [];
+    content.pending.push(callItem);
+
+    // 3. Write back
+    const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(content, null, 2))));
+    const putResp = await fetch(apiUrl, {
+      method: 'PUT',
+      headers,
+      body: JSON.stringify({
+        message: `[dialer] Boss call: ${callItem.customer_name} ${callItem.phone_number}`,
+        content: encoded,
+        sha,
+      }),
+    });
+    return putResp.ok;
+  } catch (e) {
+    console.error('writeCallToList error:', e);
+    return false;
+  }
+}
+
 async function saveBossInstruction(ghToken, department, instruction) {
   // Trigger gm-queue workflow which will pick up from the dispatch event
   // We encode the instruction in a workflow_dispatch input
@@ -443,21 +482,29 @@ async function cmdXavier(instruction, ghToken) {
       status: 'approved',
     };
 
-    // Save instruction + trigger dialer to update call list
-    await saveBossInstruction(ghToken, 'dialer', `URGENT CALL NOW: ${instruction}. Phone: ${phone}. Name: ${name}. Status: PRE-APPROVED. Execute immediately.`);
+    // Write call directly to call-list.json via GitHub Contents API
+    const wrote = await writeCallToList(ghToken, callItem);
 
-    // Trigger dialer (to build list) then dialer-execute (to make the call)
-    await triggerWorkflow(ghToken, DEPT_WORKFLOW_MAP.dialer);
-    // Small delay then trigger execute
-    await triggerWorkflow(ghToken, 'dialer-execute.yml');
-
-    return (
-      '\u{1F4DE} <b>XAVIER \u2014 Calling NOW</b>\n\n' +
-      `\u{1F464} <b>${name}</b>\n` +
-      `\u{1F4F1} <code>${phone}</code>\n\n` +
-      '\u2705 Dialer + Execute workflows triggered.\n' +
-      'Xavier will call in ~2 minutes.'
-    );
+    if (wrote) {
+      // Only trigger execute — the call is already in the list
+      await triggerWorkflow(ghToken, 'dialer-execute.yml');
+      return (
+        '\u{1F4DE} <b>XAVIER \u2014 Calling NOW</b>\n\n' +
+        `\u{1F464} <b>${name}</b>\n` +
+        `\u{1F4F1} <code>${phone}</code>\n\n` +
+        '\u2705 Call queued and execute triggered.\n' +
+        'Xavier will call in ~1 minute.'
+      );
+    } else {
+      // Fallback: save instruction for dialer to process
+      await saveBossInstruction(ghToken, 'dialer', `URGENT CALL NOW: ${instruction}. Phone: ${phone}. Name: ${name}. Status: PRE-APPROVED.`);
+      await triggerWorkflow(ghToken, DEPT_WORKFLOW_MAP.dialer);
+      return (
+        '\u{1F4DE} <b>XAVIER \u2014 Instruction received</b>\n\n' +
+        `\u{1F464} <b>${name}</b> \u{1F4F1} <code>${phone}</code>\n\n` +
+        '\u23F3 Dialer is building the call list. Approve when ready.'
+      );
+    }
   }
 
   // No phone number — just save instruction for dialer to process

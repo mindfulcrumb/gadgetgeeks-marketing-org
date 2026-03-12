@@ -1003,40 +1003,63 @@ async function handleCommand(text, chatId, token, ghToken) {
 // Worker entry point
 // ---------------------------------------------------------------------------
 
+// CORS headers for dashboard requests
+const CORS_HEADERS = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+  'Access-Control-Allow-Headers': 'Content-Type',
+};
+
 export default {
   async fetch(request, env) {
+    // CORS preflight
+    if (request.method === 'OPTIONS') {
+      return new Response(null, { status: 204, headers: CORS_HEADERS });
+    }
+
     // Health check
     if (request.method === 'GET') {
       return new Response('GadgetGeeks Telegram Webhook is alive.', {
         status: 200,
-        headers: { 'Content-Type': 'text/plain' },
+        headers: { 'Content-Type': 'text/plain', ...CORS_HEADERS },
       });
     }
 
     // Only accept POST
     if (request.method !== 'POST') {
-      return new Response('Method not allowed', { status: 405 });
+      return new Response('Method not allowed', { status: 405, headers: CORS_HEADERS });
     }
 
     const token = env.TELEGRAM_BOT_TOKEN;
     const ghToken = env.GH_TOKEN;
 
     if (!token) {
-      return new Response('Missing TELEGRAM_BOT_TOKEN', { status: 500 });
+      return new Response(JSON.stringify({ ok: false, error: 'Missing TELEGRAM_BOT_TOKEN' }), {
+        status: 500,
+        headers: { 'Content-Type': 'application/json', ...CORS_HEADERS },
+      });
     }
 
     let update;
     try {
       update = await request.json();
     } catch {
-      return new Response('Invalid JSON', { status: 400 });
+      return new Response(JSON.stringify({ ok: false, error: 'Invalid JSON' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json', ...CORS_HEADERS },
+      });
     }
+
+    // Detect dashboard vs Telegram origin
+    const isDashboard = update._source === 'dashboard';
 
     // Extract message
     const msg = update.message || update.edited_message;
     if (!msg || !msg.text) {
-      // Not a text message — acknowledge silently
-      return new Response('OK', { status: 200 });
+      return new Response(JSON.stringify({ ok: true }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json', ...CORS_HEADERS },
+      });
     }
 
     const chatId = msg.chat.id;
@@ -1045,7 +1068,18 @@ export default {
     try {
       const result = await handleCommand(text, chatId, token, ghToken);
 
-      // Handle dashboard special case (inline keyboard with WebApp button)
+      if (isDashboard) {
+        // Dashboard request — return JSON result, don't send to Telegram
+        const resultText = (result && typeof result === 'object')
+          ? JSON.stringify(result)
+          : String(result || '');
+        return new Response(JSON.stringify({ ok: true, result: resultText }), {
+          status: 200,
+          headers: { 'Content-Type': 'application/json', ...CORS_HEADERS },
+        });
+      }
+
+      // Telegram request — send reply via Telegram API
       if (result && typeof result === 'object' && result.dashboard) {
         await tgApi('sendMessage', token, {
           chat_id: chatId,
@@ -1065,9 +1099,18 @@ export default {
       }
     } catch (err) {
       console.error('Handler error:', err);
+      if (isDashboard) {
+        return new Response(JSON.stringify({ ok: false, error: String(err).slice(0, 200) }), {
+          status: 200,
+          headers: { 'Content-Type': 'application/json', ...CORS_HEADERS },
+        });
+      }
       await sendMessage(token, chatId, `\u274C Internal error: ${String(err).slice(0, 200)}`);
     }
 
-    return new Response('OK', { status: 200 });
+    return new Response(JSON.stringify({ ok: true }), {
+      status: 200,
+      headers: { 'Content-Type': 'application/json', ...CORS_HEADERS },
+    });
   },
 };

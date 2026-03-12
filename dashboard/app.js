@@ -1446,32 +1446,32 @@ async function dashAction(itemId, action) {
   try {
     addNotification('info', `${action==='approve'?'Approving':'Rejecting'} ${itemId}...`);
 
-    // Send as a fake Telegram message to the worker — it will process /approve or /reject
     const resp = await fetch(WORKER_URL, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         message: {
-          chat: { id: 0 },  // dashboard origin — worker processes but won't send TG reply to chat 0
+          chat: { id: 0 },
           text: `/${action} ${itemId}`,
         },
         _source: 'dashboard',
       }),
     });
 
-    if (resp.ok) {
+    const data = await resp.json().catch(() => ({}));
+
+    if (resp.ok && data.ok !== false) {
       addNotification('info', `${action==='approve'?'Approved':'Rejected'}: ${itemId}`);
       addEnforcerLog('ok', `BOSS ${action}d item ${itemId.slice(-8)}`);
-      // Optimistically update UI
       const el = document.querySelector(`.q-item[data-id="${itemId}"]`);
       if (el) { el.style.opacity = '0.3'; el.querySelectorAll('.q-btn').forEach(b => b.disabled = true); }
-      // Refresh queue data after a moment
       setTimeout(async () => { await loadData(); }, 3000);
     } else {
-      addNotification('alert', `Failed — worker returned ${resp.status}`);
+      const errMsg = data.error || data.result || `Worker returned ${resp.status}`;
+      addNotification('alert', `Failed: ${errMsg}`);
     }
   } catch (e) {
-    addNotification('alert', `Error: ${e.message}`);
+    addNotification('alert', `Failed: ${e.message}. Check network connection.`);
   }
 }
 function dashApprove(id) { dashAction(id, 'approve'); }

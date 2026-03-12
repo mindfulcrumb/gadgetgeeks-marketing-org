@@ -712,6 +712,158 @@ def update_master_state(department: str, success: bool):
 
 
 # ---------------------------------------------------------------------------
+# Run history — persistent log of every department run
+# ---------------------------------------------------------------------------
+
+def _snapshot_output_files(dept_config: dict) -> dict:
+    """Snapshot current state of output files for diffing later."""
+    snapshots = {}
+    for file_path in dept_config.get("output_files", []):
+        full_path = REPO_ROOT / file_path
+        if full_path.exists():
+            snapshots[file_path] = full_path.read_text(encoding="utf-8")
+        else:
+            snapshots[file_path] = None
+    return snapshots
+
+
+def _diff_snapshots(before: dict, after: dict) -> list:
+    """Compare before/after snapshots and return a list of changes."""
+    changes = []
+    all_files = set(list(before.keys()) + list(after.keys()))
+    for f in sorted(all_files):
+        b = before.get(f)
+        a_path = REPO_ROOT / f
+        a = a_path.read_text(encoding="utf-8") if a_path.exists() else None
+
+        if b is None and a is not None:
+            changes.append({"file": f, "action": "created", "size": len(a)})
+        elif b is not None and a is None:
+            changes.append({"file": f, "action": "deleted"})
+        elif b != a:
+            changes.append({"file": f, "action": "modified", "size": len(a) if a else 0})
+    return changes
+
+
+def log_run_history(department: str, success: bool, model: str,
+                    input_tokens: int, output_tokens: int,
+                    file_updates: int, queue_items: int,
+                    social_posts: int, changes: list,
+                    boss_instructions: bool, error_msg: str = ""):
+    """Append a run entry to state/run-history.json."""
+    history_path = STATE_DIR / "run-history.json"
+    try:
+        if history_path.exists():
+            history = json.loads(history_path.read_text(encoding="utf-8"))
+        else:
+            history = {"runs": [], "stats": {"total_runs": 0, "total_tokens": 0, "total_errors": 0}}
+
+        now = datetime.now(timezone.utc)
+        entry = {
+            "id": f"run_{department}_{now.strftime('%Y%m%d_%H%M%S')}",
+            "department": department,
+            "timestamp": now.isoformat(),
+            "date": now.strftime("%Y-%m-%d"),
+            "status": "ok" if success else "error",
+            "model": model,
+            "tokens": {"input": input_tokens, "output": output_tokens, "total": input_tokens + output_tokens},
+            "actions": {
+                "file_updates": file_updates,
+                "queue_items": queue_items,
+                "social_posts": social_posts,
+            },
+            "changes": changes,
+            "had_boss_instructions": boss_instructions,
+        }
+        if error_msg:
+            entry["error"] = error_msg[:500]
+
+        history["runs"].insert(0, entry)
+        # Keep last 500 runs
+        history["runs"] = history["runs"][:500]
+
+        # Update aggregate stats
+        history["stats"]["total_runs"] += 1
+        history["stats"]["total_tokens"] += input_tokens + output_tokens
+        if not success:
+            history["stats"]["total_errors"] += 1
+
+        # Per-department stats
+        dept_stats = history.setdefault("department_stats", {})
+        ds = dept_stats.setdefault(department, {"runs": 0, "tokens": 0, "errors": 0, "last_run": ""})
+        ds["runs"] += 1
+        ds["tokens"] += input_tokens + output_tokens
+        ds["last_run"] = now.isoformat()
+        if not success:
+            ds["errors"] += 1
+
+        history_path.write_text(json.dumps(history, indent=2, ensure_ascii=False), encoding="utf-8")
+    except Exception as e:
+        print(f"  (run-history logging failed: {e})")
+
+
+def log_department_changelog(department: str, changes: list, summary: str):
+    """Append to per-department changelog."""
+    changelog_dir = DEPARTMENTS_DIR / department.replace("_", "-") if department.replace("_", "-") in [
+        d.name for d in DEPARTMENTS_DIR.iterdir() if d.is_dir()
+    ] else DEPARTMENTS_DIR / department
+    # Fallback: find the actual directory
+    for d in DEPARTMENTS_DIR.iterdir():
+        if d.is_dir() and d.name.replace("-", "_") == department:
+            changelog_dir = d
+            break
+
+    changelog_path = changelog_dir / "changelog.md"
+    now = datetime.now(timezone.utc)
+    header = f"\n## {now.strftime('%Y-%m-%d %H:%M UTC')}\n"
+
+    lines = [header]
+    if changes:
+        for c in changes:
+            lines.append(f"- **{c['action']}** `{c['file']}`" + (f" ({c.get('size', '?')} bytes)" if 'size' in c else ""))
+    else:
+        lines.append("- No file changes")
+    if summary:
+        lines.append(f"\n> {summary[:300]}")
+    lines.append("")
+
+    entry = "\n".join(lines)
+
+    if changelog_path.exists():
+        existing = changelog_path.read_text(encoding="utf-8")
+        # Keep last 100 entries (~50KB max)
+        sections = existing.split("\n## ")
+        if len(sections) > 100:
+            existing = "## ".join(sections[:100])
+        changelog_path.write_text(existing + entry, encoding="utf-8")
+    else:
+        changelog_dir.mkdir(parents=True, exist_ok=True)
+        changelog_path.write_text(f"# {department.replace('_', ' ').title()} — Changelog\n{entry}", encoding="utf-8")
+
+
+def log_alert(department: str, level: str, message: str):
+    """Append to persistent alert history."""
+    alerts_path = STATE_DIR / "alert-history.json"
+    try:
+        if alerts_path.exists():
+            alerts = json.loads(alerts_path.read_text(encoding="utf-8"))
+        else:
+            alerts = {"alerts": []}
+
+        alerts["alerts"].insert(0, {
+            "timestamp": datetime.now(timezone.utc).isoformat(),
+            "department": department,
+            "level": level,
+            "message": message[:500],
+        })
+        # Keep last 200 alerts
+        alerts["alerts"] = alerts["alerts"][:200]
+        alerts_path.write_text(json.dumps(alerts, indent=2, ensure_ascii=False), encoding="utf-8")
+    except Exception:
+        pass
+
+
+# ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
 
@@ -737,6 +889,9 @@ def main():
     print(f"  Time: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}")
     print(f"{'='*60}")
 
+    # Snapshot output files BEFORE run (for changelog diffing)
+    pre_snapshots = _snapshot_output_files(dept_config)
+
     # Telegram: notify start
     try:
         notify_department_start(department)
@@ -744,11 +899,11 @@ def main():
         print(f"  (Telegram start notify failed: {e})")
 
     # 1. Load agent prompt
-    print("\n[1/5] Loading agent prompt...")
+    print("\n[1/6] Loading agent prompt...")
     system_prompt = load_agent_prompt(dept_config)
 
     # 2. Load context
-    print("[2/5] Loading context files...")
+    print("[2/6] Loading context files...")
     context = load_context(dept_config)
 
     # Inject live X data for x_intel department
@@ -786,11 +941,13 @@ def main():
                 print("  Falling back to single-agent mode...")
 
     # 3. Call Claude API
-    print("[3/5] Calling Claude API...")
+    print("[3/6] Calling Claude API...")
     api_key = os.environ.get("ANTHROPIC_API_KEY")
     if not api_key:
         print("ERROR: ANTHROPIC_API_KEY not set")
         update_master_state(department, False)
+        log_run_history(department, False, model, 0, 0, 0, 0, 0, [], False, "ANTHROPIC_API_KEY not set")
+        log_alert(department, "critical", "ANTHROPIC_API_KEY not set")
         try:
             notify_error(department, "ANTHROPIC_API_KEY not set")
         except Exception:
@@ -809,10 +966,14 @@ def main():
             ],
         )
         response_text = message.content[0].text
-        print(f"  Response: {len(response_text)} chars, {message.usage.output_tokens} tokens")
+        input_tokens = message.usage.input_tokens
+        output_tokens = message.usage.output_tokens
+        print(f"  Response: {len(response_text)} chars, {output_tokens} tokens (in: {input_tokens})")
     except Exception as e:
         print(f"ERROR calling Claude API: {e}")
         update_master_state(department, False)
+        log_run_history(department, False, model, 0, 0, 0, 0, 0, [], False, str(e))
+        log_alert(department, "critical", f"Claude API error: {e}")
         try:
             notify_error(department, str(e))
         except Exception:
@@ -820,7 +981,7 @@ def main():
         sys.exit(1)
 
     # 4. Parse and execute actions
-    print("[4/5] Parsing response and executing actions...")
+    print("[4/6] Parsing response and executing actions...")
     parsed = parse_response(response_text)
     print(f"  File updates: {len(parsed['file_updates'])}")
     print(f"  Queue items: {len(parsed['queue_items'])}")
@@ -833,14 +994,38 @@ def main():
         process_approved_emails(parsed)
 
     # 5. Update master state and commit
-    print("[5/5] Updating state and committing...")
+    print("[5/6] Updating state and committing...")
     update_master_state(department, True)
+
+    # 6. Log run history, changelog, and alerts
+    print("[6/6] Logging run history and changelog...")
+    changes = _diff_snapshots(pre_snapshots, {})  # compare against current files
+    summary = parsed.get("analysis", "")[:300] if parsed.get("analysis") else ""
+
+    # Check if boss instructions were consumed
+    had_boss = "BOSS INSTRUCTIONS" in context
+
+    log_run_history(
+        department=department,
+        success=True,
+        model=model,
+        input_tokens=input_tokens,
+        output_tokens=output_tokens,
+        file_updates=len(parsed["file_updates"]),
+        queue_items=len(parsed["queue_items"]),
+        social_posts=len(parsed["social_posts"]),
+        changes=changes,
+        boss_instructions=had_boss,
+    )
+    log_department_changelog(department, changes, summary)
+
+    if parsed["queue_items"]:
+        log_alert(department, "info", f"Queued {len(parsed['queue_items'])} item(s) for approval")
+
     commit_changes(f"[{department}] Automated run — {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}")
 
     # Telegram: notify completion
     try:
-        # Build a brief summary from analysis
-        summary = parsed.get("analysis", "")[:300] if parsed.get("analysis") else ""
         notify_department_complete(
             department,
             success=True,

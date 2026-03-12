@@ -307,6 +307,9 @@ COMMANDS = {
     "/runall": "Trigger ALL departments",
     "/xavier": "Send instruction to Xavier (dialer AI)",
     "/boss": "Send instruction to any department",
+    "/history": "Last 10 department runs with token usage",
+    "/alerts": "Recent alerts and errors",
+    "/costs": "Token usage and cost breakdown",
     "/blog": "Show blog pipeline status",
     "/prompts": "Show image prompt stats",
     "/help": "Show available commands",
@@ -360,6 +363,9 @@ def handle_command(text: str, chat_id: int) -> str:
             "/runall — Trigger ALL departments\n"
             "/xavier [instruction] — Tell Xavier what to do\n"
             "/boss [dept] [instruction] — Direct any department\n"
+            "/history — Recent runs + token usage\n"
+            "/alerts — Errors and alerts\n"
+            "/costs — Token cost breakdown\n"
             "/help — This menu"
         )
 
@@ -394,6 +400,15 @@ def handle_command(text: str, chat_id: int) -> str:
 
     elif cmd == "/boss":
         return _cmd_boss(args)
+
+    elif cmd == "/history":
+        return _cmd_history()
+
+    elif cmd == "/alerts":
+        return _cmd_alerts()
+
+    elif cmd == "/costs":
+        return _cmd_costs()
 
     elif cmd == "/help":
         lines = ["\ud83d\udcd6 <b>Available Commands</b>\n"]
@@ -937,6 +952,124 @@ def _cmd_boss(args: list) -> str:
         response += f"\u23f3 Saved. {name} will pick this up on next scheduled run."
 
     return response
+
+
+def _cmd_history() -> str:
+    """Show last 10 department runs from run-history.json."""
+    history_path = REPO_ROOT / "state" / "run-history.json"
+    if not history_path.exists():
+        return "\ud83d\udcca No run history yet. Runs will be logged after the next department cycle."
+
+    history = json.loads(history_path.read_text(encoding="utf-8"))
+    runs = history.get("runs", [])[:10]
+    stats = history.get("stats", {})
+
+    if not runs:
+        return "\ud83d\udcca No runs recorded yet."
+
+    lines = [
+        f"\ud83d\udcca <b>RUN HISTORY</b> (last {len(runs)})\n",
+        f"Total: {stats.get('total_runs', 0)} runs | "
+        f"{stats.get('total_tokens', 0):,} tokens | "
+        f"{stats.get('total_errors', 0)} errors\n",
+    ]
+
+    for run in runs:
+        dept = run.get("department", "?")
+        emoji = DEPT_EMOJI.get(dept, "\u2699\ufe0f")
+        name = DEPT_NAMES.get(dept, dept)
+        status = "\u2705" if run.get("status") == "ok" else "\u274c"
+        tokens = run.get("tokens", {})
+        total_tok = tokens.get("total", 0)
+        ts = run.get("timestamp", "")
+        try:
+            dt = datetime.fromisoformat(ts.replace("Z", "+00:00"))
+            time_str = dt.strftime("%b %d %H:%M")
+        except Exception:
+            time_str = ts[:16]
+
+        actions = run.get("actions", {})
+        changes = len(run.get("changes", []))
+        boss = " \ud83d\udc53" if run.get("had_boss_instructions") else ""
+
+        lines.append(
+            f"{status} {emoji} <b>{name}</b> {time_str}{boss}\n"
+            f"   {total_tok:,} tok | {actions.get('file_updates', 0)} files | "
+            f"{actions.get('queue_items', 0)} queued | {changes} changed"
+        )
+
+    return "\n".join(lines)
+
+
+def _cmd_alerts() -> str:
+    """Show recent alerts from alert-history.json."""
+    alerts_path = REPO_ROOT / "state" / "alert-history.json"
+    if not alerts_path.exists():
+        return "\ud83d\udea8 No alerts yet."
+
+    alerts = json.loads(alerts_path.read_text(encoding="utf-8"))
+    items = alerts.get("alerts", [])[:15]
+
+    if not items:
+        return "\u2705 No alerts. Everything is clean."
+
+    level_emoji = {"critical": "\ud83d\udd34", "error": "\ud83d\udfe0", "warning": "\ud83d\udfe1", "info": "\ud83d\udfe2"}
+
+    lines = [f"\ud83d\udea8 <b>ALERTS</b> (last {len(items)})\n"]
+    for a in items:
+        emoji = level_emoji.get(a.get("level", "info"), "\u2753")
+        dept = a.get("department", "?")
+        name = DEPT_NAMES.get(dept, dept)
+        ts = a.get("timestamp", "")
+        try:
+            dt = datetime.fromisoformat(ts.replace("Z", "+00:00"))
+            time_str = dt.strftime("%b %d %H:%M")
+        except Exception:
+            time_str = ts[:16]
+
+        lines.append(f"{emoji} <b>{name}</b> ({time_str})\n   {a.get('message', '?')[:200]}")
+
+    return "\n".join(lines)
+
+
+def _cmd_costs() -> str:
+    """Show token usage and cost breakdown per department."""
+    history_path = REPO_ROOT / "state" / "run-history.json"
+    if not history_path.exists():
+        return "\ud83d\udcb0 No cost data yet."
+
+    history = json.loads(history_path.read_text(encoding="utf-8"))
+    dept_stats = history.get("department_stats", {})
+    total_stats = history.get("stats", {})
+
+    if not dept_stats:
+        return "\ud83d\udcb0 No department stats yet."
+
+    # Rough pricing: Sonnet ~$3/M input + $15/M output, Opus ~$15/M + $75/M
+    # Use blended average ~$10/M tokens for estimation
+    total_tokens = total_stats.get("total_tokens", 0)
+    est_cost = total_tokens * 10 / 1_000_000  # $10 per million tokens blended
+
+    lines = [
+        f"\ud83d\udcb0 <b>TOKEN USAGE & COSTS</b>\n",
+        f"Total: {total_tokens:,} tokens (~${est_cost:.2f})\n",
+        f"Runs: {total_stats.get('total_runs', 0)} | Errors: {total_stats.get('total_errors', 0)}\n",
+    ]
+
+    # Sort by token usage descending
+    sorted_depts = sorted(dept_stats.items(), key=lambda x: x[1].get("tokens", 0), reverse=True)
+
+    for dept, ds in sorted_depts:
+        emoji = DEPT_EMOJI.get(dept, "\u2699\ufe0f")
+        name = DEPT_NAMES.get(dept, dept)
+        tok = ds.get("tokens", 0)
+        runs = ds.get("runs", 0)
+        dept_cost = tok * 10 / 1_000_000
+        lines.append(
+            f"{emoji} <b>{name}</b>: {tok:,} tok ({runs} runs) ~${dept_cost:.2f}"
+        )
+
+    return "\n".join(lines)
 
 
 # ---------------------------------------------------------------------------

@@ -19,6 +19,18 @@
         "feels like I got away with something"
       ],
       "id": "seo_20260312_001430"
+    },
+    {
+      "required_data": [
+        "Shopify abandoned carts (last 48 hours, $300+ value)",
+        "Customer purchase history (60+ days inactive for win-back)",
+        "Recent orders (7-14 days ago for review requests)",
+        "Customer phone numbers and contact preferences",
+        "Previous call outcomes and do-not-call status"
+      ],
+      "purpose": "Build targeted outbound call lists focusing on battery health concerns and iPhone 16 anticipation trends",
+      "compliance_notes": "All calls will be queued for human approval before execution",
+      "id": "dialer_20260312_004833"
     }
   ],
   "approved": [],

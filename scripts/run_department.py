@@ -621,6 +621,18 @@ def execute_actions(department: str, parsed: dict):
         queue = json.loads(queue_path.read_text(encoding="utf-8"))
         for item in parsed["queue_items"]:
             item["id"] = f"{department}_{datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')}"
+            item.setdefault("department", department)
+            item.setdefault("type", department)
+            # Build a useful summary from whatever fields the AI provided
+            if "summary" not in item:
+                item["summary"] = (
+                    item.get("meta_title")
+                    or item.get("title")
+                    or item.get("purpose")
+                    or item.get("meta_description", "")[:150]
+                    or item.get("page", "")
+                    or f"New {department} item"
+                )
             queue["pending"].append(item)
             print(f"  Queued: {item.get('summary', 'unknown')} [{item.get('type', 'unknown')}]")
         queue_path.write_text(json.dumps(queue, indent=2, ensure_ascii=False), encoding="utf-8")

@@ -278,9 +278,23 @@ async function cmdQueue() {
     const item = pending[i];
     const dept = item.department || '?';
     const emoji = DEPT_EMOJI[dept] || '\u2699\uFE0F';
+    const name = DEPT_NAMES[dept] || dept;
+    // Build detail lines from all meaningful fields
+    const skip = new Set(['id', 'department', 'type', 'summary']);
+    const details = Object.entries(item)
+      .filter(([k]) => !skip.has(k))
+      .slice(0, 6)
+      .map(([k, v]) => {
+        let val = typeof v === 'string' ? v : JSON.stringify(v);
+        if (val.length > 150) val = val.slice(0, 150) + '…';
+        return `  • <b>${k}</b>: ${val}`;
+      })
+      .join('\n');
     lines.push(
-      `${i + 1}. ${emoji} <b>${item.summary || 'No description'}</b>\n` +
-      `   Type: <code>${item.type || '?'}</code> | ID: <code>${item.id || '?'}</code>\n` +
+      `${i + 1}. ${emoji} <b>${name}</b> — ${item.summary || 'No description'}\n` +
+      `   Type: <code>${item.type || '?'}</code>\n` +
+      (details ? details + '\n' : '') +
+      `   🆔 <code>${item.id || '?'}</code>\n` +
       `   /approve ${item.id || ''} | /reject ${item.id || ''}`
     );
   }

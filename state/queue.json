@@ -1,6 +1,9 @@
 {
   "pending": [
     {
+      "department": "seo",
+      "type": "seo_recommendation",
+      "summary": "Meta title/description update for /collections/refurbished-samsung — switch to pre-owned terminology",
       "page": "/collections/refurbished-samsung",
       "meta_title": "Pre-Owned Samsung Galaxy - Tested & Certified | Gadget Geeks Pro",
       "meta_description": "Shop pre-owned Samsung Galaxy phones that can't tell the difference from new. Battery lasts all day. Save half the price with warranty. Find your Galaxy now.",
@@ -21,6 +24,9 @@
       "id": "seo_20260312_001430"
     },
     {
+      "department": "dialer",
+      "type": "data_request",
+      "summary": "Build targeted outbound call lists — abandoned carts $300+, win-back inactive customers, review requests",
       "required_data": [
         "Shopify abandoned carts (last 48 hours, $300+ value)",
         "Customer purchase history (60+ days inactive for win-back)",

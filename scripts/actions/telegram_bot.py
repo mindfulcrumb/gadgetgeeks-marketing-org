@@ -200,12 +200,28 @@ def notify_queue_item(item: dict):
     summary = item.get("summary", "No description")
     item_type = item.get("type", "unknown")
 
+    item_id = item.get("id", "?")
+    # Build detail lines from all meaningful fields
+    detail_lines = []
+    skip_keys = {"id", "department", "type", "summary"}
+    for k, v in item.items():
+        if k in skip_keys:
+            continue
+        if isinstance(v, str) and len(v) > 200:
+            v = v[:200] + "…"
+        elif isinstance(v, (list, dict)):
+            v = json.dumps(v, ensure_ascii=False)[:200]
+        detail_lines.append(f"  • <b>{k}</b>: {v}")
+    details = "\n".join(detail_lines[:8])  # max 8 fields
+
     send_message(
         f"\ud83d\udce5 <b>NEW APPROVAL NEEDED</b>\n\n"
         f"{emoji} From: <b>{DEPT_NAMES.get(dept, dept)}</b>\n"
         f"\ud83c\udff7 Type: <code>{item_type}</code>\n"
         f"\ud83d\udcdd {summary}\n\n"
-        f"Reply /approve or /reject"
+        f"{details}\n\n"
+        f"\ud83c\udd94 <code>{item_id}</code>\n"
+        f"Reply:\n/approve {item_id}\n/reject {item_id}"
     )
 
 

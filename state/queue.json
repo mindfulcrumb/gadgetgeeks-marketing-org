@@ -1,5 +1,26 @@
 {
-  "pending": [],
+  "pending": [
+    {
+      "page": "/collections/refurbished-samsung",
+      "meta_title": "Pre-Owned Samsung Galaxy - Tested & Certified | Gadget Geeks Pro",
+      "meta_description": "Shop pre-owned Samsung Galaxy phones that can't tell the difference from new. Battery lasts all day. Save half the price with warranty. Find your Galaxy now.",
+      "page_copy_improvements": [
+        "Use 'pre-owned' terminology to build trust vs 'refurbished'",
+        "Address battery anxiety with specific 'lasts all day' messaging",
+        "Emphasize savings with 'half the price' customer language",
+        "Include warranty reassurance to overcome buying objections",
+        "Add specific condition grading explanations (A/B/C grades)"
+      ],
+      "structured_data": "Add Product schema with condition grade, battery life estimates, warranty coverage details",
+      "customer_language_to_use": [
+        "can't tell the difference from new",
+        "battery lasts all day",
+        "half the price",
+        "feels like I got away with something"
+      ],
+      "id": "seo_20260312_001430"
+    }
+  ],
   "approved": [],
   "rejected": [],
   "completed": [

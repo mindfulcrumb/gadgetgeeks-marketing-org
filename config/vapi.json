@@ -6,7 +6,8 @@
     "abandoned_cart": "33817be8-d11d-4ff1-a305-521f9fa394b4",
     "review_request": "0ca878f0-38f5-4c9d-941f-eca8eaacc708",
     "winback": "62f320e9-5977-44fa-9025-73c436881f41",
-    "b2b_outreach": "3baead1e-8756-4629-a300-92e4a377db45"
+    "b2b_outreach": "3baead1e-8756-4629-a300-92e4a377db45",
+    "direct_instruction": "a8fddb68-99f4-48d7-b5d5-5bb2efb67832"
   },
   "max_calls_per_day": 20,
   "calling_hours": {
@@ -15,5 +16,6 @@
     "timezone": "America/Los_Angeles"
   },
   "do_not_call": [],
-  "notes": "Private API key stored in VAPI_API_KEY GitHub secret. Phone number ID needs to be set after importing number in Vapi dashboard."
+  "notes": "Private API key stored in VAPI_API_KEY GitHub secret. Phone number ID needs to be set after importing number in Vapi dashboard.",
+  "updated_at": "2026-03-12T11:03:54.054109+00:00"
 }

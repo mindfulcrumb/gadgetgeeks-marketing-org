@@ -1,5 +1,6 @@
 {
-  "pending": [
+  "pending": [],
+  "completed": [
     {
       "phone_number": "+15202881507",
       "customer_name": "Charbel",
@@ -7,16 +8,17 @@
       "reason": "Direct boss instruction - urgent call requested",
       "priority": "urgent",
       "best_time": "ASAP (during business hours 9AM-8PM PST)",
-      "status": "approved",
+      "status": "called",
       "source": "Boss Telegram instruction 2026-03-12T00:47:29",
       "notes": "Boss requested this call twice - high priority. Currently outside calling hours (3:56 AM PST).",
-      "script_focus": "Use battery health messaging, spring upgrade timing, address quality concerns proactively"
+      "script_focus": "Use battery health messaging, spring upgrade timing, address quality concerns proactively",
+      "call_id": "019ce1b7-a23d-7000-8bf3-660b2cf14186",
+      "called_at": "2026-03-12T11:03:55.417174+00:00"
     }
   ],
-  "completed": [],
   "do_not_call": [],
   "stats": {
-    "total_calls": 0,
+    "total_calls": 1,
     "total_connected": 0,
     "total_interested": 0,
     "total_voicemail": 0,

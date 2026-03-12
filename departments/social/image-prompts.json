@@ -14,9 +14,16 @@
           "negative_prompt": "NO cluttered background, cheap plastic tools, cartoon, CGI, amateur lighting",
           "platform_params": "--ar 16:9 --style raw --s 200",
           "notes": "For activation lock prevention blog post - shows our verification process",
-          "keywords_targeted": ["activation lock prevention", "quality inspection", "certified refurbished"],
+          "keywords_targeted": [
+            "activation lock prevention",
+            "quality inspection",
+            "certified refurbished"
+          ],
           "recommended_tool": "midjourney",
-          "qa_status": "unreviewed"
+          "qa_status": "unreviewed",
+          "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/70bf9c68-179b-4c16-96bb-013cc2289d30/gg-prompt_20260311_006.png",
+          "generated_at": "2026-03-12T22:06:21.354392+00:00",
+          "generation_status": "done"
         }
       ]
     },
@@ -33,9 +40,16 @@
           "negative_prompt": "NO text, watermark, logo, cartoon, CGI, illustration, plastic skin, mannequin, airbrushed, corporate branding, fast fashion logos",
           "platform_params": "--ar 16:9 --style raw --s 250",
           "notes": "For sustainability viral thread response - shows conscious consumer with refurbished phone in authentic environment",
-          "keywords_targeted": ["refurbished iPhone", "sustainable tech", "conscious consumer"],
+          "keywords_targeted": [
+            "refurbished iPhone",
+            "sustainable tech",
+            "conscious consumer"
+          ],
           "recommended_tool": "midjourney",
-          "qa_status": "unreviewed"
+          "qa_status": "unreviewed",
+          "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/a8bd0d3c-37af-4db9-916c-6f06c8ba90bc/gg-prompt_20260311_001.png",
+          "generated_at": "2026-03-12T22:06:30.766105+00:00",
+          "generation_status": "done"
         },
         {
           "id": "prompt_20260311_003",
@@ -46,9 +60,16 @@
           "negative_prompt": "NO corporate stock photo look, plastic skin, overly staged, cartoon, CGI, fake smile",
           "platform_params": "--ar 1:1 --style raw --s 300",
           "notes": "Customer service reliability - contrasts with Back Market complaint threads",
-          "keywords_targeted": ["customer service", "responsive support", "quality inspection"],
+          "keywords_targeted": [
+            "customer service",
+            "responsive support",
+            "quality inspection"
+          ],
           "recommended_tool": "midjourney",
-          "qa_status": "unreviewed"
+          "qa_status": "unreviewed",
+          "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/1774134f-1139-453f-8304-eb33c318d46d/gg-prompt_20260311_003.png",
+          "generated_at": "2026-03-12T22:06:42.573704+00:00",
+          "generation_status": "done"
         },
         {
           "id": "prompt_20260311_005",
@@ -59,9 +80,16 @@
           "negative_prompt": "NO wealthy student aesthetic, designer clothes, corporate stock photo, cartoon, CGI, plastic skin",
           "platform_params": "--ar 16:9 --style raw --s 275",
           "notes": "Budget-conscious student demographic - shows refurbished as smart choice for tight budgets",
-          "keywords_targeted": ["budget refurbished phone", "student discounts", "iPhone 12"],
+          "keywords_targeted": [
+            "budget refurbished phone",
+            "student discounts",
+            "iPhone 12"
+          ],
           "recommended_tool": "midjourney",
-          "qa_status": "unreviewed"
+          "qa_status": "unreviewed",
+          "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/07618bb8-975d-4109-9105-e44e22c922a1/gg-prompt_20260311_005.png",
+          "generated_at": "2026-03-12T22:06:51.783533+00:00",
+          "generation_status": "done"
         }
       ]
     },
@@ -78,9 +106,16 @@
           "negative_prompt": "NO luxury brands, plastic items, corporate logos, sterile composition, cartoon, CGI",
           "platform_params": "--ar 1:1 --style raw --s 250",
           "notes": "Eco-conscious lifestyle positioning - appeals to sustainability trend",
-          "keywords_targeted": ["sustainable tech", "refurbished iPhone 15", "eco-conscious"],
+          "keywords_targeted": [
+            "sustainable tech",
+            "refurbished iPhone 15",
+            "eco-conscious"
+          ],
           "recommended_tool": "midjourney",
-          "qa_status": "unreviewed"
+          "qa_status": "unreviewed",
+          "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/7847405b-fab4-4688-a795-0a929c65fa24/gg-prompt_20260311_004.png",
+          "generated_at": "2026-03-12T22:07:00.681464+00:00",
+          "generation_status": "done"
         }
       ]
     },
@@ -102,9 +137,15 @@
           "negative_prompt": "NO text, watermark, cartoon, CGI, cheap plastic surface, cluttered background",
           "platform_params": "--ar 4:5 --style raw --s 200",
           "notes": "iPhone 16 vs iPhone 14 value comparison - shows smart financial choice without compromising quality",
-          "keywords_targeted": ["iPhone 16 pricing", "refurbished iPhone 14", "smart choice"],
+          "keywords_targeted": [
+            "iPhone 16 pricing",
+            "refurbished iPhone 14",
+            "smart choice"
+          ],
           "recommended_tool": "midjourney",
-          "qa_status": "unreviewed"
+          "qa_status": "unreviewed",
+          "generation_status": "error",
+          "generation_error": "400 Client Error: Bad Request for url: https://generativelanguage.googleapis.com/v1beta/models/imagen-4.0-generate-001:predict?key=AIzaSyAHttNoWl4hhodHhbUoJSDxjuHm5TufD7g"
         }
       ]
     }

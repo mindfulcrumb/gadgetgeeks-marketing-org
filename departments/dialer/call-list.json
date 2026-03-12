@@ -6,10 +6,11 @@
       "script_type": "direct_instruction",
       "reason": "Direct boss instruction - urgent call requested",
       "priority": "urgent",
-      "best_time": "ASAP",
+      "best_time": "ASAP (during business hours 9AM-8PM PST)",
       "status": "pending_approval",
       "source": "Boss Telegram instruction 2026-03-12T00:47:29",
-      "notes": "Boss requested this call twice - high priority"
+      "notes": "Boss requested this call twice - high priority. Currently outside calling hours (3:56 AM PST).",
+      "script_focus": "Use battery health messaging, spring upgrade timing, address quality concerns proactively"
     }
   ],
   "completed": [],
@@ -21,12 +22,20 @@
     "total_voicemail": 0,
     "total_not_interested": 0
   },
-  "last_run": "2026-03-12 10:52 UTC",
-  "status": "Boss instruction call queued for approval. Awaiting customer data access for standard opportunities",
+  "last_run": "2026-03-12 10:56 UTC",
+  "status": "URGENT boss call awaiting approval. Need Shopify customer data access to build standard opportunities.",
   "priority_focus": [
-    "URGENT: Boss-requested call to Charbel",
-    "Abandoned cart - iPhone 14/15 models ($500+ value)",
-    "Win-back customers with battery health messaging",
-    "Spring upgrade cycle previous customers"
+    "URGENT: Boss-requested call to Charbel (outside hours until 9AM PST)",
+    "Battery health messaging (300% trend increase)",
+    "Spring upgrade cycle timing urgency",
+    "Face ID/Touch ID quality assurance",
+    "iPhone 16 anticipation buying pressure"
+  ],
+  "data_access_needed": [
+    "Shopify abandoned cart data (past 48hrs, $300+ value)",
+    "Customer purchase history (60+ days inactive)",
+    "Recent order data (7-14 days for review requests)",
+    "B2B leads database",
+    "Previous call outcome logs"
   ]
 }

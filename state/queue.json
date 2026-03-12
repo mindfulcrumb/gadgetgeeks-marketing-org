@@ -124,6 +124,21 @@
       "department": "dialer",
       "type": "dialer",
       "summary": "New dialer item"
+    },
+    {
+      "required_data": [
+        "Shopify abandoned cart data (past 48hrs, $300+ items)",
+        "Customer purchase history for win-back (60+ days inactive)",
+        "Recent orders for review requests (7-14 days old)",
+        "B2B leads database",
+        "Previous call outcome history"
+      ],
+      "impact": "Cannot build standard call lists without customer data access",
+      "current_queue": "Only boss-requested urgent call for Charbel pending",
+      "id": "dialer_20260312_105620",
+      "department": "dialer",
+      "type": "dialer",
+      "summary": "New dialer item"
     }
   ],
   "approved": [],

@@ -1,0 +1,16 @@
+# Cloudflare Worker config for GadgetGeeks Telegram Webhook
+# Deploy: cd scripts && npx wrangler deploy
+# Secrets: npx wrangler secret put TELEGRAM_BOT_TOKEN
+#          npx wrangler secret put GH_TOKEN
+
+name = "gadgetgeeks-telegram-webhook"
+main = "actions/telegram_webhook_worker.js"
+compatibility_date = "2024-12-01"
+
+# Free tier — no usage-based billing
+usage_model = "bundled"
+
+# Optional: custom route (uncomment if you have a domain on CF)
+# routes = [
+#   { pattern = "webhook.yourdomain.com/telegram", zone_name = "yourdomain.com" }
+# ]

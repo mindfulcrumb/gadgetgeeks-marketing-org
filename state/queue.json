@@ -1,32 +1,9 @@
 {
   "pending": [
     {
-      "department": "seo",
-      "type": "seo_recommendation",
-      "summary": "Meta title/description update for /collections/refurbished-samsung — switch to pre-owned terminology",
-      "page": "/collections/refurbished-samsung",
-      "meta_title": "Pre-Owned Samsung Galaxy - Tested & Certified | Gadget Geeks Pro",
-      "meta_description": "Shop pre-owned Samsung Galaxy phones that can't tell the difference from new. Battery lasts all day. Save half the price with warranty. Find your Galaxy now.",
-      "page_copy_improvements": [
-        "Use 'pre-owned' terminology to build trust vs 'refurbished'",
-        "Address battery anxiety with specific 'lasts all day' messaging",
-        "Emphasize savings with 'half the price' customer language",
-        "Include warranty reassurance to overcome buying objections",
-        "Add specific condition grading explanations (A/B/C grades)"
-      ],
-      "structured_data": "Add Product schema with condition grade, battery life estimates, warranty coverage details",
-      "customer_language_to_use": [
-        "can't tell the difference from new",
-        "battery lasts all day",
-        "half the price",
-        "feels like I got away with something"
-      ],
-      "id": "seo_20260312_001430"
-    },
-    {
       "department": "dialer",
       "type": "data_request",
-      "summary": "Build targeted outbound call lists — abandoned carts $300+, win-back inactive customers, review requests",
+      "summary": "Build targeted outbound call lists â abandoned carts $300+, win-back inactive customers, review requests",
       "required_data": [
         "Shopify abandoned carts (last 48 hours, $300+ value)",
         "Customer purchase history (60+ days inactive for win-back)",
@@ -41,7 +18,7 @@
     {
       "department": "seo",
       "type": "content_brief",
-      "summary": "Blog brief: 'Cheap Refurbished Phones — How to Get $800 Phone for $350' targeting keyword 'cheap refurbished phones'",
+      "summary": "Blog brief: 'Cheap Refurbished Phones â How to Get $800 Phone for $350' targeting keyword 'cheap refurbished phones'",
       "page": "/blogs/deals/cheap-refurbished-phones-guide",
       "target_keyword": "cheap refurbished phones",
       "meta_title": "Cheap Refurbished Phones: How to Get $800 Phone for $350 (2026 Guide)",
@@ -65,9 +42,9 @@
     {
       "department": "x_intel",
       "type": "social_reply",
-      "summary": "Reply to @filocapri's viral e-waste post (7.5K+ likes) — eco angle, brand alignment",
+      "summary": "Reply to @filocapri's viral e-waste post (7.5K+ likes) â eco angle, brand alignment",
       "target_post": "@filocapri's e-waste awareness post (7.5K+ likes)",
-      "reply_content": "This! 👏 Choosing refurbished over new = same phone, 70% less environmental impact. Every device saved from e-waste makes a difference. Our refurbished iPhones work like new but help the planet too. 🌱📱",
+      "reply_content": "This! ð Choosing refurbished over new = same phone, 70% less environmental impact. Every device saved from e-waste makes a difference. Our refurbished iPhones work like new but help the planet too. ð±ð±",
       "why_engage": "Massive viral engagement, environmentally conscious audience, perfect brand alignment",
       "timing": "Immediately - while post is still trending",
       "id": "x_intel_20260312_074259"
@@ -75,9 +52,9 @@
     {
       "department": "x_intel",
       "type": "social_reply",
-      "summary": "Reply to @taqd33z asking for budget phone recs — pitch refurbished flagship vs new budget",
+      "summary": "Reply to @taqd33z asking for budget phone recs â pitch refurbished flagship vs new budget",
       "target_post": "@taqd33z asking for budget phone recommendations",
-      "reply_content": "Instead of new budget phone with weak specs, consider refurbished flagship! iPhone 14 Pro refurbished ($500) vs new budget Android ($400) - better camera, performance, longevity. Sometimes spending slightly more upfront saves money long-term 📱✨",
+      "reply_content": "Instead of new budget phone with weak specs, consider refurbished flagship! iPhone 14 Pro refurbished ($500) vs new budget Android ($400) - better camera, performance, longevity. Sometimes spending slightly more upfront saves money long-term ð±â¨",
       "why_engage": "Direct engagement with active shopper, demonstrates expertise",
       "timing": "Today - while they're actively researching",
       "id": "x_intel_20260312_074259"
@@ -85,9 +62,9 @@
     {
       "department": "x_intel",
       "type": "social_reply",
-      "summary": "Reply to @mrs_johnson909's Back Market complaint — differentiate on customer service",
+      "summary": "Reply to @mrs_johnson909's Back Market complaint â differentiate on customer service",
       "target_post": "@mrs_johnson909's Back Market support complaint",
-      "reply_content": "Sorry this happened to you 😞 This is exactly why we guarantee 2-hour response times and have real humans handling returns. No one should have to chase for weeks to return a defective device. Customer service should be as reliable as the phones we sell.",
+      "reply_content": "Sorry this happened to you ð This is exactly why we guarantee 2-hour response times and have real humans handling returns. No one should have to chase for weeks to return a defective device. Customer service should be as reliable as the phones we sell.",
       "why_engage": "Shows we care about customer experience, differentiates from competitor failures",
       "timing": "Today - while complaint is fresh",
       "id": "x_intel_20260312_074259"
@@ -95,7 +72,7 @@
     {
       "department": "email",
       "type": "email_campaign",
-      "summary": "Cross-sell protection bundles to recent phone buyers — 'Don't let a $5 drop ruin your $350 steal'",
+      "summary": "Cross-sell protection bundles to recent phone buyers â 'Don't let a $5 drop ruin your $350 steal'",
       "campaign_id": "crosssell-protection-001",
       "subject_variants": {
         "a": "Don't let a $5 drop ruin your $350 steal",
@@ -164,7 +141,33 @@
       "summary": "New dialer item"
     }
   ],
-  "approved": [],
+  "approved": [
+    {
+      "department": "seo",
+      "type": "seo_recommendation",
+      "summary": "Meta title/description update for /collections/refurbished-samsung â switch to pre-owned terminology",
+      "page": "/collections/refurbished-samsung",
+      "meta_title": "Pre-Owned Samsung Galaxy - Tested & Certified | Gadget Geeks Pro",
+      "meta_description": "Shop pre-owned Samsung Galaxy phones that can't tell the difference from new. Battery lasts all day. Save half the price with warranty. Find your Galaxy now.",
+      "page_copy_improvements": [
+        "Use 'pre-owned' terminology to build trust vs 'refurbished'",
+        "Address battery anxiety with specific 'lasts all day' messaging",
+        "Emphasize savings with 'half the price' customer language",
+        "Include warranty reassurance to overcome buying objections",
+        "Add specific condition grading explanations (A/B/C grades)"
+      ],
+      "structured_data": "Add Product schema with condition grade, battery life estimates, warranty coverage details",
+      "customer_language_to_use": [
+        "can't tell the difference from new",
+        "battery lasts all day",
+        "half the price",
+        "feels like I got away with something"
+      ],
+      "id": "seo_20260312_001430",
+      "_action": "approve",
+      "_actioned_at": "2026-03-12T14:03:01.131Z"
+    }
+  ],
   "rejected": [],
   "completed": [
     {

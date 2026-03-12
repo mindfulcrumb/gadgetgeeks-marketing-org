@@ -1,15 +1,5 @@
 {
-  "pending": [
-    {
-      "phone_number": "+14808765236",
-      "customer_name": "Will",
-      "script_type": "direct_instruction",
-      "reason": "Boss instruction via Telegram: Hey Javier, call Will and offer him the latest deal that we have on the refurbished iPhone 14 and 15",
-      "priority": "urgent",
-      "best_time": "NOW",
-      "status": "approved"
-    }
-  ],
+  "pending": [],
   "completed": [
     {
       "phone_number": "+15202881507",
@@ -35,11 +25,22 @@
       "status": "called",
       "call_id": "019ce1bd-b2ad-7000-8c45-d62e1a579c25",
       "called_at": "2026-03-12T11:10:32.876478+00:00"
+    },
+    {
+      "phone_number": "+14808765236",
+      "customer_name": "Will",
+      "script_type": "direct_instruction",
+      "reason": "Boss instruction via Telegram: Hey Javier, call Will and offer him the latest deal that we have on the refurbished iPhone 14 and 15",
+      "priority": "urgent",
+      "best_time": "NOW",
+      "status": "called",
+      "call_id": "019ce1ea-4048-7221-9f37-2f9600f82bb2",
+      "called_at": "2026-03-12T11:59:12.480556+00:00"
     }
   ],
   "do_not_call": [],
   "stats": {
-    "total_calls": 2,
+    "total_calls": 3,
     "total_connected": 0,
     "total_interested": 0,
     "total_voicemail": 0,

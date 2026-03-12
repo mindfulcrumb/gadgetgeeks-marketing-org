@@ -43,7 +43,18 @@
       "keyword": "certified refurbished phones",
       "type": "page_optimization",
       "page": "/collections/certified-refurbished-phones",
-      "status": "pending"
+      "status": "completed",
+      "meta_title": "Certified Refurbished Phones - Battery Health 80%+ Guaranteed | Gadget Geeks Pro",
+      "meta_description": "Shop certified refurbished phones with guaranteed 80%+ battery health. Looks brand new, lasts all day. Save 50% with warranty. Browse certified deals now.",
+      "improvements": [
+        "Led with battery health guarantee (addresses peak customer anxiety)",
+        "Used customer language 'looks brand new' and 'lasts all day'",
+        "Specific savings claim 'save 50%' for credibility",
+        "Trust-building through 'certified' and 'warranty' emphasis",
+        "Strong CTA 'Browse certified deals now'"
+      ],
+      "structured_data": "Product schema with battery health percentages, certification grade, warranty terms, condition details",
+      "completed": "2026-03-12 00:54 UTC"
     },
     {
       "id": "cheap-refurb-phones-content",
@@ -64,5 +75,5 @@
       "content_type": "educational landing page"
     }
   ],
-  "last_updated": "2026-03-12 00:14 UTC"
+  "last_updated": "2026-03-12 00:54 UTC"
 }

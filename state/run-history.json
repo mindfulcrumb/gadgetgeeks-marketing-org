@@ -1,6 +1,32 @@
 {
   "runs": [
     {
+      "id": "run_gm_queue_20260312_110323",
+      "department": "gm_queue",
+      "timestamp": "2026-03-12T11:03:23.257088+00:00",
+      "date": "2026-03-12",
+      "status": "ok",
+      "model": "claude-sonnet-4-20250514",
+      "tokens": {
+        "input": 4422,
+        "output": 1473,
+        "total": 5895
+      },
+      "actions": {
+        "file_updates": 1,
+        "queue_items": 0,
+        "social_posts": 0
+      },
+      "changes": [
+        {
+          "file": "state/master.json",
+          "action": "modified",
+          "size": 2233
+        }
+      ],
+      "had_boss_instructions": false
+    },
+    {
       "id": "run_dialer_20260312_105620",
       "department": "dialer",
       "timestamp": "2026-03-12T10:56:20.964682+00:00",
@@ -230,8 +256,8 @@
     }
   ],
   "stats": {
-    "total_runs": 8,
-    "total_tokens": 56994,
+    "total_runs": 9,
+    "total_tokens": 62889,
     "total_errors": 0
   },
   "department_stats": {
@@ -264,6 +290,12 @@
       "tokens": 9512,
       "errors": 0,
       "last_run": "2026-03-12T10:46:41.902422+00:00"
+    },
+    "gm_queue": {
+      "runs": 1,
+      "tokens": 5895,
+      "errors": 0,
+      "last_run": "2026-03-12T11:03:23.257088+00:00"
     }
   }
 }

@@ -1,5 +1,42 @@
 {
-  "posts": [],
-  "last_updated": "2026-03-11 19:14 UTC",
-  "notes": "First day of operations - no posts logged yet. Monitoring setup complete."
+  "posts": [
+    {
+      "date": "2026-03-12",
+      "time": "00:14 UTC",
+      "content_type": "sustainability/anti-consumerism",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook",
+        "reddit",
+        "linkedin"
+      ],
+      "trending_topic": "Sustainability in Tech Purchases",
+      "customer_language_used": [
+        "Can't tell the difference",
+        "battery still lasts all day",
+        "saved $347",
+        "feels like I got away with something"
+      ]
+    },
+    {
+      "date": "2026-03-12",
+      "time": "00:14 UTC",
+      "content_type": "battery health transparency",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook",
+        "linkedin"
+      ],
+      "trending_topic": "Battery Health Transparency",
+      "customer_language_used": [
+        "good battery isn't good enough"
+      ]
+    }
+  ],
+  "postiz_calls_used": 2,
+  "postiz_calls_remaining": 13,
+  "last_updated": "2026-03-12 00:14 UTC",
+  "notes": "First day posts - riding viral sustainability trend and addressing battery health concerns. Both posts use real customer language and avoid AI copy flags."
 }

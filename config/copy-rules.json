@@ -195,6 +195,47 @@
       "name": "Staccato Machine-Gun Fragments",
       "severity": "critical",
       "rule": "Never write 3+ consecutive short fragments separated by periods ('No blender. No subscription. Open the box.'). Humans connect ideas with commas in flowing sentences."
+    },
+    {
+      "id": 27,
+      "name": "Triple List Pattern",
+      "severity": "critical",
+      "rule": "If 50%+ of bullet/numbered lists have exactly 3 items, it fails. AI defaults to 3. Real writers vary: 2, 4, 5, 7 items. Also flag 4+ inline 'X, Y, and Z' triple patterns."
+    },
+    {
+      "id": 28,
+      "name": "Em Dash Density",
+      "severity": "critical",
+      "rule": "Max 3 em dashes per 1,000 words. Over 5/1000 = critical block. Over 3/1000 = warning. Convert extras to commas, periods, or parentheses. Chad's #1 AI fingerprint."
+    },
+    {
+      "id": 29,
+      "name": "Product Mention Density",
+      "severity": "critical",
+      "rule": "At least one H2 section (150+ words) must be sell-free: no products, no CTAs, no brand mentions (65-point inspection, 90-day warranty, GadgetGeeks). If every section sells, it's an ad pretending to be a blog."
+    },
+    {
+      "id": 30,
+      "name": "Depth Markers",
+      "severity": "warning",
+      "rule": "Blog must contain signals of original insight: first-person experience, proprietary data, contrarian statements, insider details. Zero depth markers = no original value."
+    },
+    {
+      "id": 31,
+      "name": "List Length Uniformity",
+      "severity": "warning",
+      "rule": "If all lists in the post have the same item count, it's an AI pattern. Vary list lengths: 2, 4, 5, 7 items across the post."
     }
+  ],
+
+  "em_dash_max_per_1000": 3,
+  "min_sell_free_sections": 1,
+  "triple_list_threshold": 0.5,
+  "depth_markers": [
+    "i tested", "we found", "our data shows", "in our experience",
+    "we've seen", "our return rate", "our inspection",
+    "despite what", "i disagree", "unpopular opinion", "hot take",
+    "here's what actually", "what most sites won't tell",
+    "from our catalog", "in our warehouse", "when we open"
   ]
 }

@@ -460,6 +460,123 @@ def scan_blog_html(html: str, rules: dict) -> dict:
                 })
                 critical_count += 1
 
+    # ===== CHECK 27: TRIPLE LIST PATTERN (Chad Rule C2) =====
+    list_groups = re.findall(r'<(?:ul|ol)[^>]*>(.*?)</(?:ul|ol)>', html, re.DOTALL)
+    list_item_counts = []
+    for lg in list_groups:
+        items = re.findall(r'<li[^>]*>', lg)
+        if len(items) >= 2:
+            list_item_counts.append(len(items))
+    if list_item_counts:
+        triple_lists = sum(1 for c in list_item_counts if c == 3)
+        if len(list_item_counts) > 0 and triple_lists / len(list_item_counts) >= 0.5:
+            feedback.append({
+                "check_id": 27, "check_name": "Triple List Pattern", "severity": "critical",
+                "location": f"{triple_lists}/{len(list_item_counts)} lists have exactly 3 items",
+                "issue": "AI defaults to 3-item lists. Real writers vary: 2, 4, 5, 7 items.",
+                "fix": "Add a 4th item or cut to 2. Never default to 3."
+            })
+            critical_count += 1
+
+    # Also check inline triple patterns: "X, Y, and Z" appearing 3+ times
+    inline_triples = re.findall(
+        r'\b\w+(?:,\s+\w+){1}\s*,?\s*and\s+\w+\b', text
+    )
+    if len(inline_triples) >= 4:
+        feedback.append({
+            "check_id": 27, "check_name": "Inline Triple Pattern", "severity": "warning",
+            "location": f"{len(inline_triples)} inline 'X, Y, and Z' patterns",
+            "issue": "Too many three-item inline lists — AI fingerprint",
+            "fix": "Vary: use 2-item pairs or 4+ item lists"
+        })
+        warnings.append("INLINE TRIPLES")
+
+    # ===== CHECK 28: EM DASH DENSITY (Chad Rule C3) =====
+    em_dash_count = len(re.findall(r'[\u2014]|&mdash;|—', html))
+    word_count_total = len(text.split())
+    if word_count_total > 0:
+        em_per_1000 = (em_dash_count / word_count_total) * 1000
+        max_em = rules.get("em_dash_max_per_1000", 3)
+        if em_per_1000 > 5:
+            feedback.append({
+                "check_id": 28, "check_name": "Em Dash Density", "severity": "critical",
+                "location": f"{em_dash_count} em dashes in {word_count_total} words ({em_per_1000:.1f}/1000)",
+                "issue": f"Em dash overuse — {em_per_1000:.1f} per 1,000 words (max {max_em}). Chad's #1 AI fingerprint.",
+                "fix": f"Cut to max {max_em} per 1,000 words. Convert extras to commas, periods, or parentheses."
+            })
+            critical_count += 1
+        elif em_per_1000 > max_em:
+            feedback.append({
+                "check_id": 28, "check_name": "Em Dash Density", "severity": "warning",
+                "location": f"{em_dash_count} em dashes in {word_count_total} words ({em_per_1000:.1f}/1000)",
+                "issue": f"Em dash density {em_per_1000:.1f}/1000 exceeds limit of {max_em}/1000",
+                "fix": "Replace some em dashes with commas or periods."
+            })
+            warnings.append("EM DASH DENSITY")
+
+    # ===== CHECK 29: PRODUCT MENTION DENSITY (Chad Rule C4 — Sell Test) =====
+    # Split HTML by H2 sections and check each for selling language
+    h2_sections = re.split(r'<h2[^>]*>', html)
+    sell_phrases = [
+        "65-point inspection", "90-day warranty", "30-day return", "free shipping",
+        "gadget geeks", "gadgetgeeks", "check availability", "shop now",
+        "check price", "find yours", "see the savings",
+    ]
+    sell_phrase_pattern = '|'.join(re.escape(sp) for sp in sell_phrases)
+    product_callout_pattern = r'blog-product-callout|blog-product-cta|/products/|/collections/'
+
+    sections_with_sell = 0
+    total_content_sections = 0
+    for section in h2_sections[1:]:  # Skip intro before first H2
+        section_lower = section.lower()
+        section_text = re.sub(r'<[^>]+>', ' ', section).strip()
+        if len(section_text.split()) < 30:  # Skip tiny sections
+            continue
+        total_content_sections += 1
+        has_sell = bool(re.search(sell_phrase_pattern, section_lower)) or \
+                   bool(re.search(product_callout_pattern, section_lower))
+        if has_sell:
+            sections_with_sell += 1
+
+    if total_content_sections >= 3 and sections_with_sell == total_content_sections:
+        feedback.append({
+            "check_id": 29, "check_name": "Product Mention Density", "severity": "critical",
+            "location": f"ALL {total_content_sections} sections contain selling language",
+            "issue": "Every section sells — this reads as an ad pretending to be a blog",
+            "fix": "At least one section (150+ words) must be pure information: no products, no CTAs, no brand mentions."
+        })
+        critical_count += 1
+
+    # ===== CHECK 30: DEPTH MARKERS (Chad Rule C1 — Original Insight) =====
+    depth_markers_list = rules.get("depth_markers", [
+        "i tested", "we found", "our data shows", "in our experience",
+        "we've seen", "our return rate", "our inspection",
+        "despite what", "i disagree", "unpopular opinion", "hot take",
+        "here's what actually", "what most sites won't tell",
+        "from our catalog", "in our warehouse", "when we open",
+    ])
+    depth_found = sum(1 for dm in depth_markers_list if dm in text_lower)
+    if depth_found == 0:
+        feedback.append({
+            "check_id": 30, "check_name": "Depth Markers", "severity": "warning",
+            "location": "No original insight markers found in entire post",
+            "issue": "Zero signals of proprietary data, real experience, or contrarian takes",
+            "fix": "Add at least one: proprietary data, customer story, insider detail, or debatable opinion"
+        })
+        warnings.append("NO DEPTH MARKERS")
+
+    # ===== CHECK 31: LIST LENGTH UNIFORMITY (Chad Rule C7) =====
+    if len(list_item_counts) >= 2:
+        unique_counts = set(list_item_counts)
+        if len(unique_counts) == 1:
+            feedback.append({
+                "check_id": 31, "check_name": "List Length Uniformity", "severity": "warning",
+                "location": f"All {len(list_item_counts)} lists have exactly {list_item_counts[0]} items",
+                "issue": "Every list has the same item count — AI pattern",
+                "fix": "Vary list lengths across the post: mix 2, 4, 5, 7 items"
+            })
+            warnings.append("UNIFORM LIST LENGTHS")
+
     # ===== MARKETING CLICHÉS =====
     cliches = [
         "peace of mind", "one-stop shop", "takes the guesswork out",

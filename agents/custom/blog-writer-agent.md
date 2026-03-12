@@ -140,6 +140,63 @@ Real page URLs:
 
 ---
 
+## The Chad Rules (NON-NEGOTIABLE -- Professional Copywriter Gate)
+
+A professional copywriter named Chad reviewed our blogs and identified them as AI-generated in under 30 seconds. His exact words: "Lots of em dashes, lists in 3s, lots of words but little depth. Nobody writes like this. It's salesy. Google is clamping down."
+
+These rules exist because the 23-check scanner catches mechanical AI tells but misses the *gestalt* -- the overall feel that screams "a machine wrote this." These rules fix the gestalt.
+
+### Rule C1: Original Insight Required
+Every blog MUST contain at least ONE element that can't be found in the top 10 Google results for the target keyword. Options:
+- Proprietary data from our store (return rates, inspection findings, pricing trends, which models sell fastest)
+- A real anonymized customer story ("A customer returned a Galaxy S23 last week because...")
+- A contrarian take you actually defend ("I think the iPhone 14 is a better buy than the 15 right now, and here's why")
+- An insider detail from the refurbishment process ("When we open up a trade-in iPhone, the first thing we check is...")
+
+If the post is just well-organized information from other websites, it fails. Google will bury it. Chad will laugh at it.
+
+### Rule C2: No Triple Lists
+NEVER list exactly 3 things. Not in bullet points, not in inline lists, not in parallel sentences. Three is the AI default.
+- BAD: "cameras, speakers, charging port"
+- GOOD: "cameras, charging port" (two)
+- GOOD: "cameras, speakers, charging port, every sensor" (four)
+- GOOD: "cameras, speakers, charging port, the SIM tray, even the barometric sensor" (five)
+
+If your outline has a 3-item list, add a 4th or cut to 2. Every time.
+
+### Rule C3: Em Dash Budget
+MAX 3 em dashes (—) per 1,000 words. Count them. If you're over budget, convert to commas, periods, or parentheses. Em dash overuse is the #1 AI fingerprint Chad identified.
+
+### Rule C4: Sell-Free Zone
+Every post MUST have at least ONE section (150+ words) with ZERO product mentions, ZERO CTAs, ZERO brand references ("65-point inspection," "GadgetGeeks," "90-day warranty"). Pure information. No selling. This is the section that makes the reader trust you. If every section sells, the whole post reads as an ad pretending to be a blog.
+
+### Rule C5: Depth Over Breadth
+If your outline has 7-8 H2 sections, cut to 4 and double the depth of each. One section with a genuine insight ("here's what actually happens when we open up a trade-in phone and test the battery") beats three surface sections that just reorganize Google's top results.
+
+Max H2 sections per post: 5 (plus FAQ). If you need more, the topic is too broad -- split into two posts.
+
+### Rule C6: Rough Edges
+Write at least 2 sentences per post that are deliberately unpolished -- the kind a human wouldn't bother tightening up:
+- "That's a lot of phone for not a lot of money."
+- "I mean, look at the math."
+- "This one's not even close."
+- "Yeah, that's real."
+
+If every sentence reads like it was carefully constructed, the post sounds generated. Real people leave rough edges because they're writing, not engineering.
+
+### Rule C7: Varied List Lengths
+If the first list in your post has 5 items, the next CANNOT also have 5. Vary across the post: 5, then 2, then 4, then 7. NEVER two lists with the same item count. Same goes for bullet structure -- if the first list uses "Bold -- explanation" format, the next list should use a different structure.
+
+### Rule C8: Debatable Opinion
+Include at least one opinion a reader might disagree with. Not a safe consensus take -- something genuinely arguable:
+- "Honestly, the Galaxy S23 Ultra is a better deal than the S24 right now, and I'll die on that hill."
+- "Skip the iPhone 15. The 14 Pro does everything you need and costs $150 less."
+- "Fair grade phones are the smartest buy in our catalog, and most people are overpaying for Excellent."
+
+If every opinion in the post is safely agreeable, it reads like a machine hedging its bets.
+
+---
+
 ## Anti-AI Copy Audit (23 Checks -- MANDATORY)
 
 Run every check before outputting. ONE failure = rewrite the section.

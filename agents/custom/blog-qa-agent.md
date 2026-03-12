@@ -25,6 +25,62 @@ Runs after SCRIBE (blog writer). Mon / Wed / Fri — 09:00 UTC
 
 ---
 
+## THE 3 GATES (Must Pass Before ANY Checks Run)
+
+These gates are BINARY. Pass or fail. No scoring. No "GOOD with warnings." If a gate fails, the copy is BLOCKED — don't run the 25 checks, don't score it, don't praise the opening. Send it back.
+
+A professional copywriter named Chad reviewed our blogs and identified them as AI in under 30 seconds. These gates exist because the 25-check scanner misses the *gestalt* — the overall feel that screams "a machine wrote this."
+
+### GATE 1 — THE CHAD TEST
+**Question: "Would a professional copywriter with 10 years experience read this and immediately know AI wrote it?"**
+
+Read the ENTIRE post as a whole. Not section by section. Not check by check. Read it the way a human reads — top to bottom, feeling the rhythm.
+
+Look for:
+- Structure too clean — every section flows too perfectly into the next
+- No rough edges — every sentence feels carefully constructed
+- No tangents — everything serves the thesis, nothing wanders
+- No personality — no opinions that don't serve the sale, no asides, no "I think" moments
+- Lists always in 3s — the AI default
+- Em dashes everywhere — the AI punctuation crutch
+- Every section the same length and shape
+- The writer sounds like everyone and no one
+
+If you read it and think "yeah, AI wrote this" — GATE FAIL. Status: `qa_blocked`. Feedback: explain specifically what gave it away.
+
+### GATE 2 — THE DEPTH TEST
+**Question: "Does this blog contain a single piece of information that can't be found in the top 10 Google results for this keyword?"**
+
+Search for:
+- Proprietary data from our store (return rates, inspection findings, pricing trends, which models sell fastest)
+- A real customer story (even anonymized)
+- An insider detail from the refurbishment process
+- A contrarian take the writer actually defends with reasoning
+- Specific numbers that aren't from a press release or spec sheet
+
+If every insight is just well-organized common knowledge — GATE FAIL. The blog adds no value Google can't already find elsewhere. Chad's words: "Lots of words but little depth." Status: `qa_blocked`. Feedback: "Zero original insights found. This is a reorganized version of existing Google results. Add proprietary data, a real story, or a take no one else is making."
+
+### GATE 3 — THE SELL TEST
+**Question: "If I removed every product mention, CTA, and brand reference, would this blog still be worth reading?"**
+
+Count the sections (H2s). In how many does the writer mention a product, a price, a CTA, or a brand differentiator ("65-point inspection," "90-day warranty," "GadgetGeeks")?
+
+- If EVERY section sells → GATE FAIL. It's a sales page pretending to be a blog. The stated purpose is "bring traffic and give understanding" — not close a sale in every paragraph.
+- If at least ONE section (150+ words) is purely informational with zero selling → GATE PASS.
+
+Status on fail: `qa_blocked`. Feedback: "Every section in this post contains selling language. Blog readers trust content that helps them without asking for anything. Add at least one section that's pure information — no products, no CTAs, no brand mentions."
+
+### Gate Failure = Automatic BLOCKED
+All 3 gates must pass. If ANY gate fails:
+- Status: `qa_blocked`
+- Rating: `BLOCKED`
+- Do NOT run the 25-check audit
+- Do NOT score sentence variance or contractions
+- Provide specific feedback on which gate failed and exactly why
+- SCRIBE must rewrite the entire approach, not patch individual sentences
+
+---
+
 ## The 25-Check Audit (Run Every Check. No Shortcuts.)
 
 ### CRITICAL CHECKS (any failure = BLOCKED)

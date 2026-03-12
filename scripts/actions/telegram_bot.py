@@ -312,8 +312,11 @@ COMMANDS = {
     "/costs": "Token usage and cost breakdown",
     "/blog": "Show blog pipeline status",
     "/prompts": "Show image prompt stats",
+    "/dashboard": "Open the HQ office dashboard",
     "/help": "Show available commands",
 }
+
+DASHBOARD_URL = "https://mindfulcrumb.github.io/gadgetgeeks-marketing-org/"
 
 # Map department names to their GitHub Actions workflow filenames
 DEPT_WORKFLOW_MAP = {
@@ -409,6 +412,9 @@ def handle_command(text: str, chat_id: int) -> str:
 
     elif cmd == "/costs":
         return _cmd_costs()
+
+    elif cmd == "/dashboard":
+        return _cmd_dashboard(chat_id)
 
     elif cmd == "/help":
         lines = ["\ud83d\udcd6 <b>Available Commands</b>\n"]
@@ -1066,6 +1072,40 @@ def _cmd_costs() -> str:
     return "\n".join(lines)
 
 
+def _cmd_dashboard(chat_id: int) -> str:
+    """Send the dashboard as a Telegram WebApp button."""
+    token = _get_token()
+    if not token:
+        return "\u274c No bot token available."
+
+    # Send a message with an inline keyboard containing a WebApp button
+    url = f"https://api.telegram.org/bot{token}/sendMessage"
+    payload = {
+        "chat_id": chat_id,
+        "text": "\ud83c\udfae <b>GADGETGEEKS HQ — GOD MODE</b>\n\nTap below to open the office dashboard.",
+        "parse_mode": "HTML",
+        "reply_markup": {
+            "inline_keyboard": [[
+                {
+                    "text": "\ud83c\udfae Open HQ Dashboard",
+                    "web_app": {"url": DASHBOARD_URL}
+                }
+            ]]
+        }
+    }
+    try:
+        resp = requests.post(url, json=payload, timeout=15)
+        resp.raise_for_status()
+        return ""  # Message already sent via API
+    except Exception as e:
+        # Fallback: send direct link
+        return (
+            f"\ud83c\udfae <b>GADGETGEEKS HQ — GOD MODE</b>\n\n"
+            f"\ud83d\udd17 <a href=\"{DASHBOARD_URL}\">Open Dashboard</a>\n\n"
+            f"Bookmark this link on your phone for instant access."
+        )
+
+
 # ---------------------------------------------------------------------------
 # Natural language intent detection
 # ---------------------------------------------------------------------------
@@ -1135,9 +1175,13 @@ def _handle_natural_language(text: str, chat_id: int) -> str:
         if any(w in lower for w in ["all", "everything", "everyone"]):
             return _cmd_runall()
 
-    # --- 3. STATUS INTENT ---
+    # --- 3. DASHBOARD / OFFICE INTENT ---
+    if any(t in lower for t in ["dashboard", "office", "open hq", "god mode", "pixel"]):
+        return _cmd_dashboard(chat_id)
+
+    # --- 3b. STATUS INTENT ---
     status_triggers = ["status", "how's it going", "hows it going", "what's happening",
-                        "whats happening", "how are things", "dashboard", "overview",
+                        "whats happening", "how are things", "overview",
                         "what's going on", "whats going on", "how are the agents",
                         "report", "sitrep", "check in"]
     if any(t in lower for t in status_triggers):

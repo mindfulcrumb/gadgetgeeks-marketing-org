@@ -15,6 +15,10 @@
     "end": "20:00",
     "timezone": "America/Los_Angeles"
   },
+  "contacts": {
+    "will": "+14808765236",
+    "charbel": "+15202881507"
+  },
   "do_not_call": [],
   "notes": "Private API key stored in VAPI_API_KEY GitHub secret. Phone number ID needs to be set after importing number in Vapi dashboard.",
   "updated_at": "2026-03-12T11:03:54.054109+00:00"

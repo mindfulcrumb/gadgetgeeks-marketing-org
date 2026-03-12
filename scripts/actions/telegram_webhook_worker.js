@@ -103,6 +103,7 @@ const COMMANDS_HELP = {
   '/run': 'Trigger a department NOW via GitHub Actions',
   '/runall': 'Trigger ALL departments',
   '/xavier': 'Send instruction to Xavier (dialer AI)',
+  '/contacts': 'View/add/remove contacts for Xavier',
   '/boss': 'Send instruction to any department',
   '/history': 'Last 10 department runs with token usage',
   '/alerts': 'Recent alerts and errors',
@@ -446,30 +447,124 @@ async function cmdRunAll(ghToken) {
     '\n\nResults arriving in ~2-5 min.';
 }
 
+async function fetchContacts() {
+  const config = await fetchGitHubRaw('config/vapi.json');
+  return (config && config.contacts) || {};
+}
+
+async function writeContacts(ghToken, contacts) {
+  const path = 'config/vapi.json';
+  const apiUrl = `https://api.github.com/repos/${GITHUB_REPO}/contents/${path}`;
+  const headers = {
+    Authorization: `Bearer ${ghToken}`,
+    Accept: 'application/vnd.github.v3+json',
+    'User-Agent': 'GadgetGeeks-Webhook/1.0',
+  };
+  try {
+    const getResp = await fetch(apiUrl, { headers });
+    if (!getResp.ok) return false;
+    const fileData = await getResp.json();
+    const sha = fileData.sha;
+    const config = JSON.parse(atob(fileData.content.replace(/\n/g, '')));
+    config.contacts = contacts;
+    const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(config, null, 2))));
+    const putResp = await fetch(apiUrl, {
+      method: 'PUT',
+      headers,
+      body: JSON.stringify({
+        message: `[contacts] Update contacts list`,
+        content: encoded,
+        sha,
+      }),
+    });
+    return putResp.ok;
+  } catch {
+    return false;
+  }
+}
+
+async function cmdContacts(args, ghToken) {
+  const contacts = await fetchContacts();
+
+  // No args = list contacts
+  if (!args.length || args[0] === 'list') {
+    const entries = Object.entries(contacts);
+    if (!entries.length) return '\u{1F4DE} No contacts saved yet.\n\nAdd one: <code>/contacts add Will +14808765236</code>';
+    const lines = ['\u{1F4DE} <b>CONTACTS</b>\n'];
+    for (const [name, phone] of entries) {
+      lines.push(`\u2022 <b>${name.charAt(0).toUpperCase() + name.slice(1)}</b>: <code>${phone}</code>`);
+    }
+    lines.push('\n<code>/contacts add Name +1XXXXXXXXXX</code>');
+    lines.push('<code>/contacts remove Name</code>');
+    return lines.join('\n');
+  }
+
+  const action = args[0].toLowerCase();
+
+  if (action === 'add' && args.length >= 3) {
+    const name = args[1].toLowerCase();
+    const rawPhone = args.slice(2).join('');
+    const digits = rawPhone.replace(/[^0-9+]/g, '');
+    const phone = digits.startsWith('+') ? digits : (digits.startsWith('1') && digits.length === 11 ? '+' + digits : '+1' + digits);
+    contacts[name] = phone;
+    const ok = await writeContacts(ghToken, contacts);
+    if (ok) return `\u2705 Added <b>${args[1]}</b>: <code>${phone}</code>`;
+    return '\u274C Failed to save contact. Try again.';
+  }
+
+  if ((action === 'remove' || action === 'delete') && args.length >= 2) {
+    const name = args[1].toLowerCase();
+    if (!contacts[name]) return `\u274C No contact named <b>${args[1]}</b>.`;
+    delete contacts[name];
+    const ok = await writeContacts(ghToken, contacts);
+    if (ok) return `\u2705 Removed <b>${args[1]}</b> from contacts.`;
+    return '\u274C Failed to remove contact. Try again.';
+  }
+
+  return '\u{1F4DE} <b>Contacts</b>\n\n<code>/contacts</code> — list all\n<code>/contacts add Name +1XXXXXXXXXX</code>\n<code>/contacts remove Name</code>';
+}
+
 async function cmdXavier(instruction, ghToken) {
   if (!instruction) {
     return (
       '\u{1F4DE} <b>XAVIER \u2014 AI Sales Agent</b>\n\n' +
       'Usage: /xavier <instruction>\n\n' +
       '<b>Examples:</b>\n' +
+      '<code>/xavier call Will</code> (uses saved contact)\n' +
       '<code>/xavier call John +14155551234</code>\n' +
-      '<code>/xavier call 480-876-5236</code>\n' +
       '<code>/xavier build a win-back list for customers inactive 90+ days</code>\n\n' +
-      'Include a phone number and Xavier calls immediately.\n' +
-      'No number = Xavier builds a call list for your approval.'
+      'Names in your contacts list work without a number.\n' +
+      'See contacts: <code>/contacts</code>'
     );
   }
 
-  // Check if there's a phone number in the instruction — if so, queue + execute immediately
+  // Check if there's a phone number in the instruction
   const phoneMatch = instruction.match(/\+?1?[-.\s]?\(?(\d{3})\)?[-.\s]?(\d{3})[-.\s]?(\d{4})/);
+
+  // If no phone number, try to look up a name in contacts
+  let phone = null;
+  let name = 'Contact';
+
   if (phoneMatch) {
     const raw = instruction.match(/[\d+\-().\s]{10,}/);
     const digits = raw ? raw[0].replace(/[^0-9+]/g, '') : '';
-    const phone = digits.startsWith('+') ? digits : (digits.startsWith('1') && digits.length === 11 ? '+' + digits : '+1' + digits);
-
-    // Extract name (word before or after "call")
+    phone = digits.startsWith('+') ? digits : (digits.startsWith('1') && digits.length === 11 ? '+' + digits : '+1' + digits);
     const nameMatch = instruction.match(/call\s+([A-Z][a-z]+)/i) || instruction.match(/([A-Z][a-z]+)\s+[\d+]/);
-    const name = nameMatch ? nameMatch[1] : 'Contact';
+    name = nameMatch ? nameMatch[1] : 'Contact';
+  } else {
+    // No phone number — check contacts
+    const nameMatch = instruction.match(/call\s+(\w+)/i);
+    if (nameMatch) {
+      const lookupName = nameMatch[1].toLowerCase();
+      const contacts = await fetchContacts();
+      if (contacts[lookupName]) {
+        phone = contacts[lookupName];
+        name = nameMatch[1].charAt(0).toUpperCase() + nameMatch[1].slice(1);
+      }
+    }
+  }
+
+  if (phone) {
 
     // Write directly to call-list.json via GitHub API
     const callItem = {
@@ -825,6 +920,9 @@ async function handleCommand(text, chatId, token, ghToken) {
 
     case '/xavier':
       return cmdXavier(args.join(' '), ghToken);
+
+    case '/contacts':
+      return cmdContacts(args, ghToken);
 
     case '/boss':
       return cmdBoss(args, ghToken);

@@ -100,6 +100,12 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;background:rep
 .gal-meta-tag.tool{color:var(--purple);border-color:var(--purple)}
 .gal-neg-prompt{font-size:6px;color:var(--red);padding:4px 6px;background:rgba(255,68,102,.05);border:1px solid rgba(255,68,102,.15);margin-top:3px;line-height:1.5}
 .gal-notes{font-size:6px;color:var(--yellow);padding:3px 6px;margin-top:2px;line-height:1.5}
+.gal-image-wrap{position:relative;margin:4px 0}
+.gal-image{width:100%;max-height:200px;object-fit:cover;border:1px solid var(--border);cursor:pointer;transition:all .2s}
+.gal-image:hover{border-color:var(--cyan);box-shadow:0 0 8px rgba(0,204,255,.3)}
+.gal-image-badge{position:absolute;top:4px;right:4px;font-size:5px;padding:2px 6px;background:var(--green);color:var(--bg);letter-spacing:1px}
+.gal-image-placeholder{width:100%;padding:20px 10px;text-align:center;background:rgba(0,0,0,.3);border:1px dashed var(--border);color:var(--dim);font-size:7px;margin:4px 0}
+.gal-image-placeholder.error{border-color:var(--red);color:var(--red)}
 .gal-actions{display:flex;gap:6px;margin-top:6px}
 .gal-empty{font-size:7px;color:var(--dim);text-align:center;padding:16px}
 #blog-pipeline-stats{display:flex;gap:6px;margin-bottom:8px;flex-wrap:wrap}

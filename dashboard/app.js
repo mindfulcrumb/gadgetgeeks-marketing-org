@@ -1730,11 +1730,17 @@ function openGalleryFolder(folderKey) {
     const tool = p.recommended_tool || '';
     const notes = p.notes || '';
     const pid = p.id || p.prompt_id || `prompt_${idx}`;
+    const imgUrl = p.generated_url || '';
+    const genStatus = p.generation_status || '';
+    const genError = p.generation_error || '';
     return `<div class="gal-prompt" data-prompt-id="${pid}">
       <div class="gal-prompt-header">
         <span class="gal-prompt-id">${pid}</span>
         <span class="gal-prompt-score gal-score-${scoreClass}">${score} ${(p.rating||p.verdict||p.qa_status||'UNREVIEWED').toUpperCase()}</span>
       </div>
+      ${imgUrl?`<div class="gal-image-wrap"><img class="gal-image" src="${imgUrl}" alt="${pid}" loading="lazy" onclick="window.open('${imgUrl}','_blank')"/><span class="gal-image-badge">GENERATED</span></div>`
+        :genStatus==='error'?`<div class="gal-image-placeholder error">GENERATION FAILED<br><span style="font-size:5px">${genError.slice(0,100)}</span></div>`
+        :`<div class="gal-image-placeholder">NOT YET GENERATED<br><span style="font-size:5px">Run /run image_generate or wait for next scheduled run</span></div>`}
       <div class="gal-prompt-text">${promptText.length>600?promptText.slice(0,600)+'...':promptText}</div>
       ${negPrompt?`<div class="gal-neg-prompt"><b>Negative:</b> ${negPrompt.slice(0,200)}</div>`:''}
       ${notes?`<div class="gal-notes"><b>Notes:</b> ${notes.slice(0,150)}</div>`:''}

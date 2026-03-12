@@ -32,7 +32,7 @@ def generate_image(prompt: str, aspect_ratio: str = "16:9") -> dict:
     if not api_key:
         raise ValueError("GEMINI_API_KEY environment variable is not set")
 
-    url = f"{GEMINI_API_BASE}/models/imagen-3.0-generate-002:predict"
+    url = f"{GEMINI_API_BASE}/models/imagen-4.0-generate-001:predict"
     resp = requests.post(
         url,
         params={"key": api_key},

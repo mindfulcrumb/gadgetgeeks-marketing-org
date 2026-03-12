@@ -4,6 +4,10 @@ on:
     - cron: '*/5 * * * *'  # Every 5 minutes
   workflow_dispatch:
 
+permissions:
+  contents: write
+  actions: write
+
 jobs:
   poll-telegram:
     runs-on: ubuntu-latest
@@ -38,6 +42,7 @@ jobs:
           SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
           SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GH_TOKEN: ${{ secrets.GH_PAT || github.token }}
         run: python scripts/actions/telegram_bot.py poll
 
       - name: Push changes

@@ -19,6 +19,7 @@ from datetime import datetime, timezone
 REPO_ROOT = Path(__file__).parent.parent.parent
 PIPELINE_PATH = REPO_ROOT / "departments" / "content" / "blog-pipeline.json"
 COPY_RULES_PATH = REPO_ROOT / "config" / "copy-rules.json"
+INVENTORY_PATH = REPO_ROOT / "config" / "store-inventory.json"
 
 
 def load_rules() -> dict:
@@ -409,6 +410,55 @@ def scan_blog_html(html: str, rules: dict) -> dict:
                 "fix": "Connect with commas in flowing sentences"
             })
             critical_count += 1
+
+    # ===== CHECK 26: LINK VALIDATION =====
+    inventory = {}
+    if INVENTORY_PATH.exists():
+        inventory = json.loads(INVENTORY_PATH.read_text(encoding="utf-8"))
+
+    if inventory:
+        valid_products = set(inventory.get("products", {}).keys())
+        valid_collections = set(inventory.get("collections", {}).keys())
+        valid_pages = set(inventory.get("pages", {}).keys())
+        aliases = inventory.get("handle_aliases", {})
+
+        hrefs = re.findall(r'href="(/[^"]+)"', html)
+        for href in hrefs:
+            parts = href.strip("/").split("/")
+            if len(parts) != 2:
+                continue
+            resource_type, handle = parts[0], parts[1]
+
+            if resource_type == "products" and handle not in valid_products:
+                real = aliases.get(handle, None)
+                fix_msg = f'Use "/products/{real}" instead' if real else "Check store-inventory.json for valid handles"
+                feedback.append({
+                    "check_id": 26, "check_name": "Broken Link", "severity": "critical",
+                    "location": href,
+                    "issue": f'Product handle "{handle}" does not exist in store',
+                    "fix": fix_msg
+                })
+                critical_count += 1
+            elif resource_type == "collections" and handle not in valid_collections:
+                real = aliases.get(handle, "").replace("collection:", "") if aliases.get(handle, "").startswith("collection:") else None
+                fix_msg = f'Use "/collections/{real}" instead' if real else "Check store-inventory.json for valid collections"
+                feedback.append({
+                    "check_id": 26, "check_name": "Broken Link", "severity": "critical",
+                    "location": href,
+                    "issue": f'Collection handle "{handle}" does not exist in store',
+                    "fix": fix_msg
+                })
+                critical_count += 1
+            elif resource_type == "pages" and handle not in valid_pages:
+                real = aliases.get(handle, "").replace("page:", "") if aliases.get(handle, "").startswith("page:") else None
+                fix_msg = f'Use "/pages/{real}" instead' if real else "Check store-inventory.json for valid pages"
+                feedback.append({
+                    "check_id": 26, "check_name": "Broken Link", "severity": "critical",
+                    "location": href,
+                    "issue": f'Page handle "{handle}" does not exist in store',
+                    "fix": fix_msg
+                })
+                critical_count += 1
 
     # ===== MARKETING CLICHÉS =====
     cliches = [

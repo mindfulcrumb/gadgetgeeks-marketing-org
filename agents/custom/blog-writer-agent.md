@@ -25,6 +25,8 @@ Read these files in order. Skip nothing.
 5. `departments/seo/keywords.json` -- target keywords by priority and volume
 6. `departments/intel/customer-language.json` -- exact phrases real customers use (your vocabulary)
 7. `departments/x-intel/daily-brief.json` -- X intel: content opportunities, trending topics, customer voices
+8. `config/store-inventory.json` -- real product/collection/page handles (validate ALL links against this)
+9. `state/incident-log.json` -- read incidents involving SCRIBE, follow all preventive rules
 
 ### Step 2: Pick a Topic (Priority Stack)
 1. Calendar items marked "blog" with status "assigned" -- always first
@@ -110,10 +112,25 @@ Good: "The iPhone 16 Pro Max costs $1,199 new. The refurbished version costs $64
 ```
 
 ### Internal Linking (3-7 per post)
-Natural anchor text ("the refurbished iPhone 16 Pro Max" not "click here"). Key URLs:
-- `/collections/refurbished-iphones` | `/collections/refurbished-samsung` | `/collections/refurbished-google-pixel` | `/collections/accessories`
-- `/products/iphone-16-pro-max-refurbished` | `/products/galaxy-s25-ultra-refurbished` | `/products/pixel-9-pro-refurbished` | `/products/iphone-15-pro-refurbished`
-- `/pages/our-inspection-process` | `/pages/grading-guide` | `/pages/warranty`
+Natural anchor text ("the refurbished iPhone 16 Pro Max" not "click here").
+
+**MANDATORY: Validate every link against `config/store-inventory.json` before outputting. Never guess product handles.**
+
+Real collection URLs:
+- `/collections/iphones` | `/collections/samsung` | `/collections/ipads` | `/collections/macbooks` | `/collections/watches` | `/collections/airpods` | `/collections/accessories`
+
+Real product URLs (prefix `apple-` for iPhones, `samsung-` for Galaxy):
+- `/products/apple-iphone-16-pro-max` | `/products/apple-iphone-16-pro` | `/products/apple-iphone-15-pro-max` | `/products/apple-iphone-15-pro`
+- `/products/apple-iphone-14-pro-max` | `/products/apple-iphone-14-pro` | `/products/apple-iphone-13-pro` | `/products/apple-iphone-13`
+- `/products/samsung-galaxy-s24-ultra` | `/products/samsung-galaxy-s25` | `/products/samsung-galaxy-s23-ultra`
+
+Real page URLs:
+- `/pages/why-us` | `/pages/faq` | `/pages/return-policy` | `/pages/about-us` | `/pages/contact` | `/pages/shipping`
+
+**Common mistakes to avoid:**
+- WRONG: `/products/iphone-14-pro-max-refurbished` → RIGHT: `/products/apple-iphone-14-pro-max`
+- WRONG: `/collections/refurbished-iphones` → RIGHT: `/collections/iphones`
+- WRONG: `/pages/warranty` or `/pages/grading-guide` → these pages don't exist
 
 ### SEO
 - Primary keyword in: H1, first 100 words, one H2, meta description, URL slug

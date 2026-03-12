@@ -303,11 +303,38 @@ COMMANDS = {
     "/queue": "Show approval queue",
     "/approve": "Approve a queued item",
     "/reject": "Reject a queued item",
-    "/run": "Manually trigger a department",
+    "/run": "Trigger a department NOW via GitHub Actions",
+    "/runall": "Trigger ALL departments",
+    "/xavier": "Send instruction to Xavier (dialer AI)",
+    "/boss": "Send instruction to any department",
     "/blog": "Show blog pipeline status",
     "/prompts": "Show image prompt stats",
     "/help": "Show available commands",
 }
+
+# Map department names to their GitHub Actions workflow filenames
+DEPT_WORKFLOW_MAP = {
+    "intel": "intel.yml",
+    "seo": "seo-daily.yml",
+    "seo_weekly": "seo-weekly.yml",
+    "content": "content.yml",
+    "email": "email.yml",
+    "social_morning": "social-morning.yml",
+    "social_afternoon": "social-afternoon.yml",
+    "cro": "cro.yml",
+    "x_intel": "x-intel.yml",
+    "gm_report": "gm-report.yml",
+    "gm_queue": "gm-queue.yml",
+    "image_prompts": "image-prompts.yml",
+    "prompt_qa": "prompt-qa.yml",
+    "blog_writer": "blog-writer.yml",
+    "blog_qa": "blog-qa.yml",
+    "blog_publish": "blog-publish.yml",
+    "dialer": "dialer.yml",
+    "dialer_execute": "dialer-execute.yml",
+}
+
+GITHUB_REPO = "mindfulcrumb/gadgetgeeks-marketing-org"
 
 
 def handle_command(text: str, chat_id: int) -> str:
@@ -321,15 +348,18 @@ def handle_command(text: str, chat_id: int) -> str:
         return (
             "\ud83c\udfae <b>GADGETGEEKS HQ — CONNECTED</b>\n\n"
             "You're now linked to the Marketing Org.\n"
-            "I'll send you real-time updates from all 13 agents.\n\n"
-            "Commands:\n"
+            "I'll send you real-time updates from all departments.\n\n"
+            "<b>Commands:</b>\n"
             "/status — Org overview\n"
             "/queue — Approval queue\n"
             "/blog — Blog pipeline\n"
             "/prompts — Image prompts\n"
             "/approve [id] — Approve item\n"
             "/reject [id] — Reject item\n"
-            "/run [dept] — Trigger department\n"
+            "/run [dept] — Trigger department NOW\n"
+            "/runall — Trigger ALL departments\n"
+            "/xavier [instruction] — Tell Xavier what to do\n"
+            "/boss [dept] [instruction] — Direct any department\n"
             "/help — This menu"
         )
 
@@ -355,6 +385,16 @@ def handle_command(text: str, chat_id: int) -> str:
     elif cmd == "/run":
         return _cmd_run(args)
 
+    elif cmd == "/runall":
+        return _cmd_runall()
+
+    elif cmd == "/xavier":
+        instruction = " ".join(args) if args else ""
+        return _cmd_xavier(instruction)
+
+    elif cmd == "/boss":
+        return _cmd_boss(args)
+
     elif cmd == "/help":
         lines = ["\ud83d\udcd6 <b>Available Commands</b>\n"]
         for c, desc in COMMANDS.items():
@@ -362,12 +402,13 @@ def handle_command(text: str, chat_id: int) -> str:
         return "\n".join(lines)
 
     else:
-        # Not a command — could be a natural language message to the GM
+        # Free-text message — save as boss instruction for GM queue
+        _save_boss_instruction("gm_queue", text)
         return (
-            f"\ud83e\udd16 I received your message. "
-            f"Use /help to see commands, or wait for the next GM queue run "
-            f"to process your request.\n\n"
-            f"<i>Your message: {text[:200]}</i>"
+            f"\ud83d\udcdd <b>Instruction saved for GM</b>\n\n"
+            f"Xavier and all departments will see this on their next run.\n"
+            f"<i>{text[:200]}</i>\n\n"
+            f"Use /run gm_queue to process now, or it runs automatically."
         )
 
 
@@ -425,6 +466,45 @@ def _cmd_approve(args: list) -> str:
             return f"\u2705 Approved: <b>{item.get('summary', item_id)}</b>"
 
     return f"\u274c Item not found: <code>{item_id}</code>"
+
+
+def _log_incident(severity: str, department: str, agents_involved: list,
+                   title: str, what_happened: str, root_cause: str,
+                   fix_applied: str, lesson: str, preventive_rule: str) -> None:
+    """Append an incident to state/incident-log.json."""
+    log_path = REPO_ROOT / "state" / "incident-log.json"
+    try:
+        if log_path.exists():
+            log = json.loads(log_path.read_text(encoding="utf-8"))
+        else:
+            log = {"_docs": "Incident log", "incidents": []}
+
+        incidents = log.get("incidents", [])
+        # Next ID
+        max_id = 0
+        for inc in incidents:
+            num = int(inc.get("id", "INC-0").split("-")[1])
+            if num > max_id:
+                max_id = num
+
+        incidents.insert(0, {
+            "id": f"INC-{max_id + 1:03d}",
+            "date": datetime.now(timezone.utc).strftime("%Y-%m-%d"),
+            "severity": severity,
+            "department": department,
+            "agents_involved": agents_involved,
+            "title": title,
+            "what_happened": what_happened,
+            "root_cause": root_cause,
+            "fix_applied": fix_applied,
+            "lesson": lesson,
+            "preventive_rule": preventive_rule,
+            "status": "open",
+        })
+        log["incidents"] = incidents
+        log_path.write_text(json.dumps(log, indent=2, ensure_ascii=False), encoding="utf-8")
+    except Exception:
+        pass  # Don't let logging failures break the main flow
 
 
 def _auto_publish_blog(item: dict) -> str:
@@ -491,7 +571,26 @@ def _auto_publish_blog(item: dict) -> str:
         )
         send_message(f"\u2705 Header image uploaded to Shopify CDN")
     except Exception as img_err:
-        send_message(f"\u26a0\ufe0f Image generation skipped: {img_err}")
+        # INC-005 preventive rule: NEVER publish without image — block and log incident
+        _log_incident(
+            severity="critical",
+            department="content",
+            agents_involved=["PRESS (telegram_bot.py)", "LENS (image_gen.py)"],
+            title=f"Image generation failed for blog: {blog['title'][:50]}",
+            what_happened=f"Image generation threw an error: {img_err}",
+            root_cause="Image API failure or missing API key",
+            fix_applied="Publication blocked. Manual image generation required.",
+            lesson="Never publish without a header image. Fix the image pipeline before retrying.",
+            preventive_rule="Block publication when image fails. Do not silently skip.",
+        )
+        send_message(
+            f"\u274c <b>PUBLISH BLOCKED</b>\n\n"
+            f"Image generation failed for <b>{blog['title'][:60]}</b>\n"
+            f"Error: <code>{img_err}</code>\n\n"
+            f"Blog will NOT publish without a header image.\n"
+            f"Fix the issue and re-approve."
+        )
+        return f"\u274c Publication blocked — image generation failed: {img_err}"
 
     # --- Build FAQ schema script tag ---
     faq_schema = blog.get("faq_schema")
@@ -666,22 +765,178 @@ def _cmd_prompts() -> str:
     return "\n".join(lines)
 
 
+def _trigger_workflow(workflow_file: str) -> tuple:
+    """Trigger a GitHub Actions workflow via API.
+
+    Returns (success: bool, message: str).
+    """
+    gh_token = os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN", "")
+    if not gh_token:
+        return False, "No GH_TOKEN or GITHUB_TOKEN set"
+
+    url = f"https://api.github.com/repos/{GITHUB_REPO}/actions/workflows/{workflow_file}/dispatches"
+    resp = requests.post(
+        url,
+        headers={
+            "Authorization": f"Bearer {gh_token}",
+            "Accept": "application/vnd.github.v3+json",
+        },
+        json={"ref": "main"},
+        timeout=15,
+    )
+    if resp.status_code == 204:
+        return True, "triggered"
+    return False, f"HTTP {resp.status_code}: {resp.text[:200]}"
+
+
 def _cmd_run(args: list) -> str:
-    """Show instructions for manual department trigger."""
+    """Trigger a department workflow via GitHub Actions."""
     if not args:
+        dept_list = ", ".join(sorted(DEPT_WORKFLOW_MAP.keys()))
         return (
-            "\u26a0\ufe0f Usage: /run <department>\n\n"
-            "Available: intel, seo, content, email, social_morning, "
-            "social_afternoon, cro, x_intel, image_prompts, prompt_qa, "
-            "blog_writer, blog_qa, blog_publish, gm_report, gm_queue"
+            f"\u26a0\ufe0f Usage: /run <department>\n\n"
+            f"Available:\n<code>{dept_list}</code>"
         )
 
-    dept = args[0]
+    dept = args[0].lower().replace("-", "_")
+    workflow = DEPT_WORKFLOW_MAP.get(dept)
+    if not workflow:
+        dept_list = ", ".join(sorted(DEPT_WORKFLOW_MAP.keys()))
+        return (
+            f"\u274c Unknown department: <code>{dept}</code>\n\n"
+            f"Available:\n<code>{dept_list}</code>"
+        )
+
+    name = DEPT_NAMES.get(dept, dept)
+    emoji = DEPT_EMOJI.get(dept, "\u2699\ufe0f")
+    ok, msg = _trigger_workflow(workflow)
+    if ok:
+        return f"{emoji} <b>{name}</b> triggered!\n\nWorkflow dispatched. Results in ~2 min."
+    return f"\u274c Failed to trigger <b>{name}</b>: {msg}"
+
+
+def _cmd_runall() -> str:
+    """Trigger all department workflows."""
+    # Core departments in logical order
+    core_depts = [
+        "intel", "x_intel", "seo", "content", "email",
+        "social_morning", "cro", "image_prompts", "blog_writer",
+        "dialer", "gm_queue",
+    ]
+    results = []
+    for dept in core_depts:
+        workflow = DEPT_WORKFLOW_MAP.get(dept)
+        if workflow:
+            ok, msg = _trigger_workflow(workflow)
+            emoji = "\u2705" if ok else "\u274c"
+            name = DEPT_NAMES.get(dept, dept)
+            results.append(f"{emoji} {name}")
+
     return (
-        f"\u23f3 To run <b>{dept}</b> manually:\n"
-        f"Go to GitHub Actions \u2192 find the workflow \u2192 Run workflow\n\n"
-        f"<i>Direct Telegram triggers coming soon.</i>"
+        "\ud83d\ude80 <b>ALL DEPARTMENTS TRIGGERED</b>\n\n"
+        + "\n".join(results)
+        + "\n\nResults arriving in ~2-5 min."
     )
+
+
+def _save_boss_instruction(department: str, instruction: str):
+    """Save a boss instruction to the instructions file for a department."""
+    instr_path = REPO_ROOT / "state" / "boss-instructions.json"
+    if instr_path.exists():
+        instructions = json.loads(instr_path.read_text(encoding="utf-8"))
+    else:
+        instructions = {"pending": []}
+
+    instructions["pending"].append({
+        "department": department,
+        "instruction": instruction,
+        "created_at": datetime.now(timezone.utc).isoformat(),
+        "status": "pending",
+    })
+    instr_path.write_text(json.dumps(instructions, indent=2, ensure_ascii=False), encoding="utf-8")
+
+
+def _cmd_xavier(instruction: str) -> str:
+    """Send an instruction to Xavier (dialer agent)."""
+    if not instruction:
+        return (
+            "\ud83d\udcde <b>XAVIER — AI Sales Agent</b>\n\n"
+            "Usage: /xavier <instruction>\n\n"
+            "<b>Examples:</b>\n"
+            "<code>/xavier call John about the iPhone 14 he left in cart</code>\n"
+            "<code>/xavier follow up with B2B lead from last week</code>\n"
+            "<code>/xavier build a win-back list for customers inactive 90+ days</code>\n"
+            "<code>/xavier check outcomes from yesterday's calls</code>\n\n"
+            "Xavier will add calls to the approval queue. You approve before any call goes out."
+        )
+
+    # Save instruction
+    _save_boss_instruction("dialer", instruction)
+
+    # Also trigger the dialer workflow so Xavier picks it up
+    workflow = DEPT_WORKFLOW_MAP.get("dialer")
+    triggered = False
+    if workflow:
+        ok, _ = _trigger_workflow(workflow)
+        triggered = ok
+
+    response = (
+        f"\ud83d\udcde <b>XAVIER — Instruction received</b>\n\n"
+        f"<i>{instruction[:300]}</i>\n\n"
+    )
+    if triggered:
+        response += "\u2705 Dialer workflow triggered. Xavier is on it."
+    else:
+        response += "\u23f3 Saved. Xavier will pick this up on next scheduled run."
+
+    return response
+
+
+def _cmd_boss(args: list) -> str:
+    """Send a direct instruction to any department."""
+    if len(args) < 2:
+        dept_list = ", ".join(sorted(DEPT_WORKFLOW_MAP.keys()))
+        return (
+            "\ud83d\udc53 <b>BOSS MODE</b>\n\n"
+            "Usage: /boss <department> <instruction>\n\n"
+            f"Departments:\n<code>{dept_list}</code>\n\n"
+            "<b>Examples:</b>\n"
+            "<code>/boss content write a blog about iPhone 16 vs 15</code>\n"
+            "<code>/boss email create a flash sale campaign for this weekend</code>\n"
+            "<code>/boss seo audit our top 5 product pages</code>\n"
+            "<code>/boss intel research what Back Market is doing with pricing</code>"
+        )
+
+    dept = args[0].lower().replace("-", "_")
+    instruction = " ".join(args[1:])
+
+    if dept not in DEPT_WORKFLOW_MAP and dept not in DEPT_NAMES:
+        dept_list = ", ".join(sorted(DEPT_WORKFLOW_MAP.keys()))
+        return f"\u274c Unknown department: <code>{dept}</code>\n\nAvailable:\n<code>{dept_list}</code>"
+
+    name = DEPT_NAMES.get(dept, dept)
+    emoji = DEPT_EMOJI.get(dept, "\u2699\ufe0f")
+
+    # Save instruction
+    _save_boss_instruction(dept, instruction)
+
+    # Trigger the workflow
+    workflow = DEPT_WORKFLOW_MAP.get(dept)
+    triggered = False
+    if workflow:
+        ok, _ = _trigger_workflow(workflow)
+        triggered = ok
+
+    response = (
+        f"{emoji} <b>{name} — Instruction received</b>\n\n"
+        f"<i>{instruction[:300]}</i>\n\n"
+    )
+    if triggered:
+        response += f"\u2705 {name} workflow triggered. Processing now."
+    else:
+        response += f"\u23f3 Saved. {name} will pick this up on next scheduled run."
+
+    return response
 
 
 # ---------------------------------------------------------------------------

@@ -416,16 +416,59 @@ def fetch_live_x_data() -> str:
         return f"\n=== LIVE X DATA === ERROR: {e}\n"
 
 
+def _get_boss_instructions(department: str) -> str:
+    """Check for boss instructions from Telegram for this department."""
+    instr_path = STATE_DIR / "boss-instructions.json"
+    if not instr_path.exists():
+        return ""
+
+    try:
+        data = json.loads(instr_path.read_text(encoding="utf-8"))
+    except Exception:
+        return ""
+
+    pending = data.get("pending", [])
+    dept_instructions = []
+    remaining = []
+
+    for item in pending:
+        if item.get("department") == department and item.get("status") == "pending":
+            dept_instructions.append(item)
+            item["status"] = "consumed"
+            item["consumed_at"] = datetime.now(timezone.utc).isoformat()
+        else:
+            remaining.append(item)
+
+    if not dept_instructions:
+        return ""
+
+    # Save back with consumed status
+    data["pending"] = [i for i in data.get("pending", []) if i.get("status") == "pending"]
+    data.setdefault("consumed", []).extend(dept_instructions)
+    instr_path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+
+    lines = ["\n=== BOSS INSTRUCTIONS (from Telegram — HIGHEST PRIORITY) ==="]
+    for item in dept_instructions:
+        lines.append(f"- [{item.get('created_at', '?')}] {item['instruction']}")
+    lines.append("=== END BOSS INSTRUCTIONS ===\n")
+    lines.append("IMPORTANT: The boss instructions above take priority over your standard tasks. Execute them FIRST.\n")
+    return "\n".join(lines)
+
+
 def build_user_message(department: str, context: str) -> str:
     """Build the user message with context and instructions."""
     now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+
+    # Check for boss instructions from Telegram
+    boss_instructions = _get_boss_instructions(department)
+
     return f"""Current time: {now}
 Department: {department}
 
 Here is your current context (state files from the repository):
 
 {context}
-
+{boss_instructions}
 ---
 
 Execute your department's tasks now. Read the context above carefully.

@@ -20,6 +20,8 @@ Runs after SCRIBE (blog writer). Mon / Wed / Fri — 09:00 UTC
 2. `agents/custom/department-context.md` — brand voice, audience
 3. `departments/content/blog-pipeline.json` — drafts to audit
 4. `departments/intel/customer-language.json` — real customer phrases (SCRIBE should be using these)
+5. `config/store-inventory.json` — real store handles (validate all blog links)
+6. `state/incident-log.json` — read incidents involving QUILL, follow all preventive rules
 
 ---
 
@@ -79,6 +81,9 @@ If testimonials/reviews are included, they must vary wildly in length and tone. 
 
 **Check 25: Staccato Machine-Gun Fragments**
 3+ consecutive short fragments separated by periods. "No blender. No subscription. Open the box." → "you don't need a blender or a subscription, just open the box." Connect related thoughts with commas.
+
+**Check 26: Link Validation (CRITICAL)**
+Every `href` in the blog HTML must point to a real product, collection, or page in `config/store-inventory.json`. Any link pointing to a handle that doesn't exist in the store = instant block. The scanner validates automatically. Common mistakes: missing `apple-` prefix on iPhone handles, using `-refurbished` suffix (wrong), linking to pages that don't exist (`/pages/warranty`, `/pages/grading-guide`).
 
 ### WARNING CHECKS (flag but don't block alone)
 

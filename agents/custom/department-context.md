@@ -153,3 +153,50 @@ If you catch yourself writing something a customer would never say out loud, rew
 - Draft copy files go in each department's `drafts/` directory
 - All dates in ISO 8601 (YYYY-MM-DD)
 - All prices in USD
+
+---
+
+## Incident Log — MANDATORY FOR ALL AGENTS
+
+**File**: `state/incident-log.json`
+
+Every agent MUST read this file before running. It contains documented mistakes, root causes, fixes, and preventive rules. If you ignore an incident's preventive rule and repeat the same mistake, that's a fireable offense.
+
+### Before You Run:
+1. Read `state/incident-log.json`
+2. Filter for incidents where your agent name appears in `agents_involved`
+3. Check the `preventive_rule` field — these are binding rules you must follow
+4. If you hit a new problem, log it (see format below)
+
+### When to Log an Incident:
+- A blog ships with broken links, bad copy, or missing images
+- An API call fails and causes data loss or silent degradation
+- An agent produces output that contradicts its own rules
+- A workflow step is skipped or silently fails
+- The human has to manually fix something an agent should have caught
+
+### Incident Format:
+```json
+{
+  "id": "INC-[next number]",
+  "date": "[YYYY-MM-DD]",
+  "severity": "[critical|high|medium|low]",
+  "department": "[department name]",
+  "agents_involved": ["[agent names]"],
+  "title": "[short description]",
+  "what_happened": "[factual description of the failure]",
+  "root_cause": "[why it happened]",
+  "fix_applied": "[what was done to fix it]",
+  "lesson": "[what we learned]",
+  "preventive_rule": "[binding rule to prevent recurrence]",
+  "status": "[resolved|open|monitoring]"
+}
+```
+
+### Severity Levels:
+- **critical**: Customer-facing damage — broken links on live site, wrong content published, data exposed
+- **high**: Internal damage — credentials leaked, workflows broken, silent failures
+- **medium**: Quality issue — copy violations, missed checks, process gaps
+- **low**: Minor — cosmetic issues, non-blocking warnings
+
+The GM reads the full log weekly and includes an incident summary in the weekly report. The boss delegates fixes based on this log.

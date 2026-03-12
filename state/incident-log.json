@@ -1,0 +1,75 @@
+{
+  "_docs": "Incident log for the GadgetGeeks Marketing Org. Every mistake, fix, and lesson learned goes here. The GM reads this weekly. Every agent reads their relevant incidents before running. The boss reviews this to delegate and correct. Format: newest first.",
+  "incidents": [
+    {
+      "id": "INC-005",
+      "date": "2026-03-11",
+      "severity": "critical",
+      "department": "content",
+      "agents_involved": ["LENS (image_gen.py)"],
+      "title": "Imagen 3 API deprecated — blog published without header image",
+      "what_happened": "Blog was auto-published to Shopify but the header image was missing. The image_gen.py script called imagen-3.0-generate-002 which returned 404 — Google had deprecated the endpoint. The auto-publish flow in telegram_bot.py silently caught the error and published without an image instead of blocking.",
+      "root_cause": "Hardcoded model version (imagen-3.0-generate-002) that Google deprecated. No model availability check. Error handling in auto-publish swallowed the failure instead of blocking publication.",
+      "fix_applied": "Updated image_gen.py to use imagen-4.0-generate-001. Manually generated and attached image via Shopify staged upload + articleUpdate.",
+      "lesson": "Pin API model versions in config, not code. When image generation fails, block publication and notify on Telegram — never publish without the image silently.",
+      "preventive_rule": "PRESS and telegram_bot.py: if image generation fails, set status to 'publish_blocked' and send Telegram alert. Do NOT publish without an image.",
+      "status": "resolved"
+    },
+    {
+      "id": "INC-004",
+      "date": "2026-03-11",
+      "severity": "critical",
+      "department": "content",
+      "agents_involved": ["SCRIBE (blog writer)", "QUILL (blog QA)"],
+      "title": "All blog internal links pointed to nonexistent product/page handles",
+      "what_happened": "Published blog had 6 broken links. Product links used wrong format (e.g., /products/iphone-14-pro-max-refurbished instead of /products/apple-iphone-14-pro-max). Page links pointed to pages that don't exist (/pages/warranty, /pages/grading-guide, /pages/our-inspection-process).",
+      "root_cause": "SCRIBE's agent prompt contained fabricated product handles in its Internal Linking section. No validation existed to check links against real store inventory before publishing. QUILL had no link validation check.",
+      "fix_applied": "1) Created config/store-inventory.json with all real product/collection/page handles + 95 aliases. 2) Added Check 26 (Link Validation) to copy_audit.py — any broken link = CRITICAL block. 3) Updated SCRIBE's prompt with correct handles and 'common mistakes to avoid' section. 4) Updated QUILL to document Check 26. 5) Fixed all 6 links in blog-pipeline.json and pushed corrected article to Shopify.",
+      "lesson": "Never trust agent-generated URLs. Every link must be validated against a single source of truth (store-inventory.json) before publication.",
+      "preventive_rule": "SCRIBE: always read config/store-inventory.json before writing links. copy_audit.py Check 26 blocks any blog with invalid handles. PRESS: verify all links before Shopify push.",
+      "status": "resolved"
+    },
+    {
+      "id": "INC-003",
+      "date": "2026-03-11",
+      "severity": "critical",
+      "department": "content",
+      "agents_involved": ["SCRIBE (blog writer)", "QUILL (blog QA)"],
+      "title": "Blog published with AI-generated copy — SCRIBE self-graded as GOOD, actual score was BLOCKED",
+      "what_happened": "First blog post ('Activation Lock Guide') was published with copy that had 6 critical violations and 3 warnings. SCRIBE's self-reported anti_ai_audit said 'PASS' with rating 'GOOD'. Actual independent scan: BLOCKED. Violations included staccato machine-gun fragments, period-conjunction patterns, transition word starters, marketing clichés ('selling peace of mind'), and contraction rate below threshold (67% vs 75% required).",
+      "root_cause": "No independent QA agent existed. SCRIBE was grading its own work and always reporting PASS. The pipeline had no enforcement gate between writing and publishing.",
+      "fix_applied": "1) Created QUILL agent (blog-qa-agent.md) as independent copy enforcer. 2) Created copy_audit.py — automated 26-check scanner that runs in GitHub Actions. 3) Added blog-qa.yml workflow: scanner runs BEFORE QUILL, blocks publication on failures. 4) Rewrote blog from scratch — went from BLOCKED (6 critical) to EXCELLENT (0 critical). 5) Rule: SCRIBE's self-reported audit is advisory only — QUILL's independent scan is gospel.",
+      "lesson": "Never let a writer grade their own work. Independent QA with automated enforcement is mandatory. Self-reported scores are advisory only.",
+      "preventive_rule": "Pipeline: SCRIBE writes → copy_audit.py scans (automated, 26 checks) → QUILL reviews (deep qualitative) → only then PRESS publishes. Any critical violation = publication blocked.",
+      "status": "resolved"
+    },
+    {
+      "id": "INC-002",
+      "date": "2026-03-11",
+      "severity": "high",
+      "department": "engineering",
+      "agents_involved": ["telegram_bot.py", "image_gen.py"],
+      "title": "Shopify credentials hardcoded in source code",
+      "what_happened": "telegram_bot.py and image_gen.py had Shopify client_id and client_secret as default values in os.environ.get() calls. This means credentials would be visible in the git repo.",
+      "root_cause": "During initial development, credentials were added as fallback defaults for testing and never removed.",
+      "fix_applied": "Removed all hardcoded credential defaults. Scripts now use empty string defaults and fail explicitly if env vars are not set. All credentials must come from GitHub Secrets or environment variables.",
+      "lesson": "Never put credentials in source code, even as 'defaults'. Scripts must fail loudly when credentials are missing, not fall back to hardcoded values.",
+      "preventive_rule": "All API keys, tokens, and secrets: os.environ.get('KEY', '') only — empty default, explicit error if missing. Never commit credentials.",
+      "status": "resolved"
+    },
+    {
+      "id": "INC-001",
+      "date": "2026-03-11",
+      "severity": "medium",
+      "department": "content",
+      "agents_involved": ["copy_audit.py"],
+      "title": "Banned word 'unlock' false positive in activation lock content",
+      "what_happened": "The copy scanner flagged 'unlock' as a banned word in the activation lock blog, even though it was used literally (not as marketing fluff). 'Unlock activation lock' is a technical term, not the metaphorical 'unlock your potential' usage the rule targets.",
+      "root_cause": "Banned word scanner had no context awareness — it flagged every instance of every banned word regardless of whether the usage was literal or metaphorical.",
+      "fix_applied": "Added context-sensitive checking to copy_audit.py. Words like 'unlock', 'navigate', 'journey', 'landscape' now check surrounding text (±40 chars) against literal context patterns. If the usage matches a literal pattern (e.g., 'activation lock', 'navigate to', 'carrier unlock'), the flag is skipped.",
+      "lesson": "Banned word lists need context awareness. The same word can be marketing fluff in one context and a precise technical term in another.",
+      "preventive_rule": "When adding new banned words to copy-rules.json, consider if the word has legitimate literal uses in refurbished phone content. If yes, add it to the context_sensitive set with appropriate literal_contexts patterns.",
+      "status": "resolved"
+    }
+  ]
+}

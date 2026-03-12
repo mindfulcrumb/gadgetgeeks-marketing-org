@@ -13,7 +13,7 @@ account_id = "c4582132c39a69078cbc492d3b67fb51"
 # KV namespace for persistent token storage (Canva OAuth, etc.)
 [[kv_namespaces]]
 binding = "TOKEN_STORE"
-id = "PLACEHOLDER_CREATE_VIA_WRANGLER"
+id = "dffbee9777ea4a019ed38f5d6463b192"
 
 # Optional: custom route (uncomment if you have a domain on CF)
 # routes = [

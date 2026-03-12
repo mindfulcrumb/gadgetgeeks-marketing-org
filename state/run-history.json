@@ -1,6 +1,37 @@
 {
   "runs": [
     {
+      "id": "run_email_20260312_093123",
+      "department": "email",
+      "timestamp": "2026-03-12T09:31:23.246622+00:00",
+      "date": "2026-03-12",
+      "status": "ok",
+      "model": "claude-sonnet-4-20250514",
+      "tokens": {
+        "input": 7468,
+        "output": 1387,
+        "total": 8855
+      },
+      "actions": {
+        "file_updates": 2,
+        "queue_items": 1,
+        "social_posts": 0
+      },
+      "changes": [
+        {
+          "file": "departments/email/ab-tests.json",
+          "action": "modified",
+          "size": 837
+        },
+        {
+          "file": "departments/email/campaigns.json",
+          "action": "modified",
+          "size": 794
+        }
+      ],
+      "had_boss_instructions": false
+    },
+    {
       "id": "run_x_intel_20260312_074259",
       "department": "x_intel",
       "timestamp": "2026-03-12T07:42:59.592288+00:00",
@@ -111,8 +142,8 @@
     }
   ],
   "stats": {
-    "total_runs": 4,
-    "total_tokens": 29707,
+    "total_runs": 5,
+    "total_tokens": 38562,
     "total_errors": 0
   },
   "department_stats": {
@@ -133,6 +164,12 @@
       "tokens": 14134,
       "errors": 0,
       "last_run": "2026-03-12T07:42:59.592288+00:00"
+    },
+    "email": {
+      "runs": 1,
+      "tokens": 8855,
+      "errors": 0,
+      "last_run": "2026-03-12T09:31:23.246622+00:00"
     }
   }
 }

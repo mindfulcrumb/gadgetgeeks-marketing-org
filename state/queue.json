@@ -73,6 +73,24 @@
       "why_engage": "Shows we care about customer experience, differentiates from competitor failures",
       "timing": "Today - while complaint is fresh",
       "id": "x_intel_20260312_074259"
+    },
+    {
+      "campaign_id": "crosssell-protection-001",
+      "subject_variants": {
+        "a": "Don't let a $5 drop ruin your $350 steal",
+        "b": "Smart buyers grab these next"
+      },
+      "segment": "recent_phone_buyers_30d",
+      "estimated_send_count": "~300-500 customers",
+      "preview_text": "You scored an $800 phone for $350. Now protect that win.",
+      "key_cta": "Shop Protection Bundles",
+      "theme": "Investment protection + environmental responsibility",
+      "body_preview": "Starts with congratulating their smart purchase, frames accessories as protecting their investment, includes environmental angle about extending device life, features customer testimonials using their language ('feels like I got away with something'), single CTA button for case/charger bundles",
+      "mobile_optimized": true,
+      "anti_ai_checks": "Passed all 25 copy rules - includes contractions, sentence length variation, strategic fragments, customer language integration",
+      "environmental_tie_in": "Protecting devices = fewer replacements = less e-waste (riding viral sustainability wave)",
+      "loss_aversion": "Frames $15 case as preventing loss of $350 investment rather than just 'buying protection'",
+      "id": "email_20260312_093123"
     }
   ],
   "approved": [],

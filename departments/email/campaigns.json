@@ -9,7 +9,17 @@
       "created": "2026-03-11 19:11 UTC",
       "theme": "Sustainability + Anti-consumerism",
       "estimated_send_count": "~500-800 customers"
+    },
+    {
+      "id": "crosssell-protection-001",
+      "name": "Protect Your Smart Buy - Cross-sell",
+      "type": "cross-sell",
+      "status": "queued_for_approval",
+      "segment": "recent_phone_buyers_30d",
+      "created": "2026-03-12 09:30 UTC",
+      "theme": "Investment protection + Environmental responsibility",
+      "estimated_send_count": "~300-500 customers"
     }
   ],
-  "last_updated": "2026-03-11 19:11 UTC"
+  "last_updated": "2026-03-12 09:30 UTC"
 }

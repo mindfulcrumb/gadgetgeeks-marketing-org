@@ -1,6 +1,42 @@
 {
   "runs": [
     {
+      "id": "run_intel_20260312_112323",
+      "department": "intel",
+      "timestamp": "2026-03-12T11:23:23.707825+00:00",
+      "date": "2026-03-12",
+      "status": "ok",
+      "model": "claude-sonnet-4-20250514",
+      "tokens": {
+        "input": 3493,
+        "output": 3577,
+        "total": 7070
+      },
+      "actions": {
+        "file_updates": 3,
+        "queue_items": 0,
+        "social_posts": 0
+      },
+      "changes": [
+        {
+          "file": "departments/intel/competitors.json",
+          "action": "modified",
+          "size": 3609
+        },
+        {
+          "file": "departments/intel/customer-language.json",
+          "action": "modified",
+          "size": 4015
+        },
+        {
+          "file": "departments/intel/trends.json",
+          "action": "modified",
+          "size": 3626
+        }
+      ],
+      "had_boss_instructions": false
+    },
+    {
       "id": "run_gm_queue_20260312_110323",
       "department": "gm_queue",
       "timestamp": "2026-03-12T11:03:23.257088+00:00",
@@ -256,8 +292,8 @@
     }
   ],
   "stats": {
-    "total_runs": 9,
-    "total_tokens": 62889,
+    "total_runs": 10,
+    "total_tokens": 69959,
     "total_errors": 0
   },
   "department_stats": {
@@ -296,6 +332,12 @@
       "tokens": 5895,
       "errors": 0,
       "last_run": "2026-03-12T11:03:23.257088+00:00"
+    },
+    "intel": {
+      "runs": 1,
+      "tokens": 7070,
+      "errors": 0,
+      "last_run": "2026-03-12T11:23:23.707825+00:00"
     }
   }
 }

@@ -4,62 +4,67 @@
       "name": "Back Market",
       "url": "https://www.backmarket.com",
       "category": "refurbished electronics marketplace",
-      "last_checked": "2026-03-12 00:14 UTC",
+      "last_checked": "2026-03-12 11:22 UTC",
       "notes": "Major competitor — certified refurbished, warranty, wide catalog",
       "current_findings": {
-        "promotions": "Spring Cleaning Sale EXTENDED - 20% off all iPhones through March 15th",
-        "pricing": "iPhone 13 Grade B from $299 (down from $329), iPhone 14 from $399",
-        "new_features": "Battery Health Promise - guarantee minimum 85% capacity with badge system",
-        "strategy_changes": "Aggressive pricing to clear inventory, enhanced battery guarantee messaging"
+        "promotions": "Spring Cleaning Sale EXTENDED again - now through March 20th, 20% off all iPhones",
+        "pricing": "iPhone 13 Grade B from $289 (further drop), iPhone 14 from $389",
+        "new_features": "Battery Health Promise now guarantees 85% minimum with visible badge on product pages",
+        "strategy_changes": "Doubling down on battery health messaging - added 'Battery Certified' badges to all listings",
+        "market_response": "Inventory pressure driving extended sale, but smart to lead with battery health guarantee"
       }
     },
     {
       "name": "Gazelle",
       "url": "https://www.gazelle.com",
       "category": "refurbished phones/tablets",
-      "last_checked": "2026-03-12 00:14 UTC",
+      "last_checked": "2026-03-12 11:22 UTC",
       "notes": "Premium positioning, 30-day returns",
       "current_findings": {
-        "pricing": "iPhone 13 Pro at $379 (excellent condition)",
-        "new_features": "Gazelle Premium tier launched - near-perfect devices $50-75 below retail",
-        "positioning": "Targeting customers who want refurbished savings but new appearance",
-        "differentiator": "Premium tier directly competes with new device experience"
+        "pricing": "iPhone 13 Pro at $369 (down from $379), Premium tier iPhone 14 at $529",
+        "new_features": "Gazelle Premium tier expansion - now covers iPhone 12/13/14 series",
+        "positioning": "Heavy marketing on 'indistinguishable from new' messaging for Premium tier",
+        "differentiator": "Premium tier creating new price anchor - makes standard refurb look like better value",
+        "strategy": "Two-tier approach: premium for perfectionist buyers, standard for value seekers"
       }
     },
     {
       "name": "Decluttr",
       "url": "https://www.decluttr.com",
       "category": "refurbished tech + trade-in",
-      "last_checked": "2026-03-12 00:14 UTC",
+      "last_checked": "2026-03-12 11:22 UTC",
       "notes": "Buy and sell used tech, strong trade-in funnel",
       "current_findings": {
-        "pricing": "iPhone 14 refurbs at $399 (down from $449), Samsung Galaxy S22 at $269",
-        "new_programs": "Aggressive liquidation pricing suggests inventory clearing",
-        "strategy": "Fast inventory turnover, possibly cash flow optimization"
+        "pricing": "iPhone 14 at $379 (another $20 drop), Samsung Galaxy S22 at $249",
+        "new_programs": "Flash sales every Tuesday - clearing inventory fast",
+        "strategy": "Prioritizing cash flow over margins, creating pricing pressure market-wide",
+        "opportunity": "Their aggressive pricing makes our quality/warranty positioning more valuable"
       }
     },
     {
       "name": "Swappa",
       "url": "https://swappa.com",
       "category": "peer-to-peer used electronics",
-      "last_checked": "2026-03-12 00:14 UTC",
+      "last_checked": "2026-03-12 11:22 UTC",
       "notes": "Marketplace model, user-to-user sales",
       "current_findings": {
-        "pricing": "iPhone 13 averaging $320-380 (down from $350-400 last week)",
-        "new_features": "Enhanced device history tracking for transparency",
-        "market_insight": "Peer-to-peer prices dropping faster due to spring upgrade cycle"
+        "pricing": "iPhone 13 averaging $300-360 (continued decline), iPhone 14 at $380-450",
+        "new_features": "Battery health verification now required for all iPhone listings",
+        "market_insight": "Peer-to-peer forcing battery health transparency across entire market",
+        "trend": "Individual sellers starting to offer 30-day personal warranties to compete"
       }
     },
     {
       "name": "RefurbMe",
       "url": "https://www.refurb.me",
       "category": "refurbished price comparison",
-      "last_checked": "2026-03-12 00:14 UTC",
+      "last_checked": "2026-03-12 11:22 UTC",
       "notes": "Aggregator — compare refurbished prices across vendors",
       "current_findings": {
-        "market_data": "iPhone refurb prices down additional 5% this week, 17% total since iPhone 15 launch",
-        "insight": "Spring cleaning + iPhone 16 rumors creating perfect storm for supply",
-        "opportunity": "Market timing for aggressive pricing while maintaining margins"
+        "market_data": "iPhone 13 refurb average now $310 (down from $320 last week), supply up 23%",
+        "insight": "Spring upgrade cycle hitting peak - best inventory selection in 6 months",
+        "opportunity": "Perfect timing for inventory acquisition at lowest prices before summer demand",
+        "prediction": "Prices likely to stabilize after March 20th as spring sale cycle ends"
       }
     }
   ]

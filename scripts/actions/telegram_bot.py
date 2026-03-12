@@ -417,14 +417,8 @@ def handle_command(text: str, chat_id: int) -> str:
         return "\n".join(lines)
 
     else:
-        # Free-text message — save as boss instruction for GM queue
-        _save_boss_instruction("gm_queue", text)
-        return (
-            f"\ud83d\udcdd <b>Instruction saved for GM</b>\n\n"
-            f"Xavier and all departments will see this on their next run.\n"
-            f"<i>{text[:200]}</i>\n\n"
-            f"Use /run gm_queue to process now, or it runs automatically."
-        )
+        # No slash command — try to understand natural language
+        return _handle_natural_language(text, chat_id)
 
 
 def _cmd_queue() -> str:
@@ -1070,6 +1064,164 @@ def _cmd_costs() -> str:
         )
 
     return "\n".join(lines)
+
+
+# ---------------------------------------------------------------------------
+# Natural language intent detection
+# ---------------------------------------------------------------------------
+
+# Department name aliases for fuzzy matching
+_DEPT_ALIASES = {
+    "xavier": "dialer", "dialer": "dialer", "caller": "dialer", "phone": "dialer", "calls": "dialer",
+    "intel": "intel", "market": "intel", "research": "intel", "competitors": "intel",
+    "seo": "seo", "keywords": "seo", "ranking": "seo", "rankings": "seo",
+    "content": "content", "calendar": "content", "topics": "content",
+    "email": "email", "emails": "email", "newsletter": "email", "campaign": "email",
+    "social": "social_morning", "twitter": "social_morning", "post": "social_morning", "posts": "social_morning",
+    "cro": "cro", "conversion": "cro", "optimize": "cro",
+    "blog": "blog_writer", "blogs": "blog_writer", "article": "blog_writer", "write": "blog_writer",
+    "image": "image_prompts", "images": "image_prompts", "prompts": "image_prompts", "photos": "image_prompts",
+    "gm": "gm_queue", "report": "gm_report",
+    "x": "x_intel", "hawk": "x_intel",
+}
+
+
+def _detect_department(text: str) -> str | None:
+    """Try to detect a department from natural language."""
+    words = text.lower().split()
+    for word in words:
+        dept = _DEPT_ALIASES.get(word)
+        if dept:
+            return dept
+    return None
+
+
+def _handle_natural_language(text: str, chat_id: int) -> str:
+    """Parse natural language and route to the right handler.
+
+    Intent priority:
+    1. Xavier / call instructions
+    2. Run / trigger / start a department
+    3. Status / how's it going
+    4. Approve / reject
+    5. Alerts / errors / problems
+    6. Costs / spending / tokens
+    7. History / runs / what happened
+    8. Boss instruction to a specific department
+    9. Fallback: GM instruction
+    """
+    lower = text.lower().strip()
+
+    # --- 1. XAVIER / CALL INTENT ---
+    # "xavier call john", "tell xavier to...", "have xavier...", "call the B2B lead"
+    xavier_triggers = ["xavier", "call ", "phone ", "dial "]
+    if any(t in lower for t in xavier_triggers):
+        # Strip "xavier" prefix if present to get the actual instruction
+        instruction = text.strip()
+        for prefix in ["xavier ", "xavier, ", "tell xavier to ", "have xavier ",
+                        "ask xavier to ", "xavier please ", "hey xavier "]:
+            if lower.startswith(prefix):
+                instruction = text[len(prefix):].strip()
+                break
+        return _cmd_xavier(instruction)
+
+    # --- 2. RUN / TRIGGER INTENT ---
+    run_triggers = ["run ", "trigger ", "start ", "fire ", "launch ", "execute "]
+    if any(lower.startswith(t) for t in run_triggers):
+        dept = _detect_department(text)
+        if dept:
+            return _cmd_run([dept])
+        # "run all" / "run everything" / "trigger all"
+        if any(w in lower for w in ["all", "everything", "everyone"]):
+            return _cmd_runall()
+
+    # --- 3. STATUS INTENT ---
+    status_triggers = ["status", "how's it going", "hows it going", "what's happening",
+                        "whats happening", "how are things", "dashboard", "overview",
+                        "what's going on", "whats going on", "how are the agents",
+                        "report", "sitrep", "check in"]
+    if any(t in lower for t in status_triggers):
+        send_daily_summary()
+        return ""
+
+    # --- 4. APPROVE / REJECT INTENT ---
+    if any(w in lower for w in ["approve", "approved", "yes approve", "go ahead", "looks good", "ship it"]):
+        # Try to find an ID in the text
+        import re
+        ids = re.findall(r'[A-Za-z0-9_-]{4,}', text)
+        # Filter out common words
+        common = {"approve", "approved", "reject", "looks", "good", "ship", "ahead", "yes", "the", "this", "that", "please"}
+        ids = [i for i in ids if i.lower() not in common]
+        if ids:
+            return _cmd_approve(ids[:1])
+        # No ID found — show the queue so they can pick
+        return _cmd_queue()
+
+    if any(w in lower for w in ["reject", "rejected", "no", "deny", "kill it", "nope"]):
+        import re
+        ids = re.findall(r'[A-Za-z0-9_-]{4,}', text)
+        common = {"approve", "approved", "reject", "rejected", "deny", "kill", "nope", "please", "the", "this", "that"}
+        ids = [i for i in ids if i.lower() not in common]
+        if ids:
+            return _cmd_reject(ids[:1])
+
+    # --- 5. ALERTS / ERRORS ---
+    if any(w in lower for w in ["alert", "alerts", "error", "errors", "problem", "problems",
+                                  "broken", "failing", "failed", "what broke", "issues"]):
+        return _cmd_alerts()
+
+    # --- 6. COSTS / SPENDING ---
+    if any(w in lower for w in ["cost", "costs", "spending", "tokens", "budget", "money",
+                                  "how much", "expensive"]):
+        return _cmd_costs()
+
+    # --- 7. HISTORY / RUNS ---
+    if any(w in lower for w in ["history", "recent", "last run", "what happened",
+                                  "what ran", "runs"]):
+        return _cmd_history()
+
+    # --- 8. QUEUE ---
+    if any(w in lower for w in ["queue", "pending", "waiting", "approval", "approvals"]):
+        return _cmd_queue()
+
+    # --- 9. BLOG STATUS ---
+    if any(w in lower for w in ["blog", "blogs", "articles", "pipeline"]):
+        return _cmd_blog()
+
+    # --- 10. BOSS INSTRUCTION TO SPECIFIC DEPARTMENT ---
+    dept = _detect_department(text)
+    if dept and len(text.split()) > 2:
+        # Looks like an instruction for a specific department
+        # Strip the department keyword to get the instruction
+        instruction = text
+        name = DEPT_NAMES.get(dept, dept)
+        emoji = DEPT_EMOJI.get(dept, "\u2699\ufe0f")
+
+        _save_boss_instruction(dept, instruction)
+        workflow = DEPT_WORKFLOW_MAP.get(dept)
+        triggered = False
+        if workflow:
+            ok, _ = _trigger_workflow(workflow)
+            triggered = ok
+
+        response = (
+            f"{emoji} <b>Got it — sending to {name}</b>\n\n"
+            f"<i>{instruction[:300]}</i>\n\n"
+        )
+        if triggered:
+            response += f"\u2705 {name} workflow triggered."
+        else:
+            response += f"\u23f3 Saved. {name} picks this up on next run."
+        return response
+
+    # --- 11. FALLBACK: GM instruction ---
+    _save_boss_instruction("gm_queue", text)
+    return (
+        f"\ud83d\udcdd <b>Got it, boss.</b>\n\n"
+        f"<i>{text[:200]}</i>\n\n"
+        f"Saved for GM. All departments will see this.\n"
+        f"Say <code>run gm</code> to process now."
+    )
 
 
 # ---------------------------------------------------------------------------

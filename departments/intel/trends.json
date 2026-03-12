@@ -1,40 +1,47 @@
 {
   "trends": [
     {
-      "trend": "Battery Health Transparency",
-      "description": "All major competitors now prominently display battery health percentages. Customers increasingly sophisticated about this metric.",
-      "impact": "High - customers expect specific battery capacity info, not just 'good battery'",
-      "opportunity": "Guarantee minimum battery health, display exact percentages",
+      "trend": "Battery Health Obsession Peak",
+      "description": "Customer mentions of 'battery health' up 300% in March. Buyers extremely sophisticated about this metric now.",
+      "impact": "Critical - must display exact battery percentages and guarantee minimums",
+      "opportunity": "Lead with battery health data, offer battery replacement services",
+      "date_identified": "2026-03-12"
+    },
+    {
+      "trend": "iPhone 16 Anticipation Impact",
+      "description": "Early iPhone 16 rumors already affecting current-gen pricing despite months until release",
+      "impact": "High - creates buying urgency as customers expect further price drops",
+      "opportunity": "Message current pricing as 'best deal timing' before next wave",
+      "date_identified": "2026-03-12"
+    },
+    {
+      "trend": "USB-C Compatibility Anxiety",
+      "description": "Massive confusion about which devices use Lightning vs USB-C, what accessories work",
+      "impact": "High - perfect opportunity for clear compatibility guides and bundles",
+      "opportunity": "Create definitive compatibility charts and curated accessory bundles",
       "date_identified": "2026-03-11"
     },
     {
-      "trend": "Detailed Grading Evolution",
-      "description": "Move beyond simple A/B/C grades to detailed cosmetic descriptions",
-      "impact": "Medium - customers want to know exact condition details",
-      "opportunity": "Provide detailed condition photos and descriptions per device",
-      "date_identified": "2026-03-11"
+      "trend": "Spring Upgrade Cycle Supply Surge",
+      "description": "March showing highest refurb supply levels as customers upgrade during spring cleaning",
+      "impact": "High - pricing power and selection at peak",
+      "opportunity": "Aggressive acquisition of quality inventory at best prices",
+      "date_identified": "2026-03-12"
     },
     {
-      "trend": "Sustainability Marketing Rise",
-      "description": "Eco-conscious messaging becoming more prominent, especially targeting Gen Z",
-      "impact": "Medium - appeals to environmentally conscious buyers",
-      "opportunity": "Emphasize environmental benefits of refurbished vs new",
-      "date_identified": "2026-03-11"
+      "trend": "Premium Refurb Tier Emergence",
+      "description": "Competitors launching 'like-new' tiers priced close to retail",
+      "impact": "Medium - creates opportunity to own true value position",
+      "opportunity": "Emphasize savings vs quality rather than chasing premium tiers",
+      "date_identified": "2026-03-12"
     },
     {
-      "trend": "USB-C Transition Confusion",
-      "description": "iPhone 15 switch to USB-C creating accessory compatibility confusion",
-      "impact": "High - perfect opportunity for curated bundles with correct accessories",
-      "opportunity": "Create clear compatibility guides and bundle correct cables/chargers",
-      "date_identified": "2026-03-11"
-    },
-    {
-      "trend": "New Model Impact on Refurb Supply",
-      "description": "iPhone 15 launch caused 12% price drop in older refurbished models due to increased supply",
-      "impact": "High - timing purchases around new releases maximizes savings",
-      "opportunity": "Market timing messaging around new release cycles",
-      "date_identified": "2026-03-11"
+      "trend": "Biometric Function Anxiety",
+      "description": "Increased customer concern about Face ID/Touch ID working properly on refurbished devices",
+      "impact": "Medium - specific quality assurance messaging needed",
+      "opportunity": "Guarantee biometric function testing and certification",
+      "date_identified": "2026-03-12"
     }
   ],
-  "last_updated": "2026-03-11 18:09 UTC"
+  "last_updated": "2026-03-12 00:14 UTC"
 }

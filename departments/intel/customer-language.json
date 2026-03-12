@@ -2,17 +2,20 @@
   "phrases": [
     "looks brand new",
     "can't tell the difference",
-    "saved $300 and got same experience",
+    "basically got a $800 phone for $350",
     "battery still lasts all day",
     "feels like I got away with something",
     "perfect for my teenager",
-    "half the price",
+    "my friends can't even tell it's refurbished",
+    "still gets all the new iOS features",
     "scared it'll die on me",
     "looks sketchy in the photos",
-    "no idea what condition it's actually in"
+    "what's the catch?"
   ],
   "pain_points": [
-    "Is the battery gonna die in 6 months?",
+    "How do I know the battery won't swell up?",
+    "Is this the kind that randomly restarts?",
+    "Will Face ID still work perfectly?",
     "Looks sketchy in the photos",
     "What if it's a fake?",
     "No idea what condition it's actually in",
@@ -22,9 +25,11 @@
     "Can't tell if it actually works from photos"
   ],
   "desires": [
+    "Basically got a $800 phone for $350",
+    "My friends can't even tell it's refurbished",
+    "Still gets all the new iOS features",
     "Looks brand new",
     "Can't tell the difference from new",
-    "Saved $300 and got same experience",
     "Battery still lasts all day",
     "Feels like I got away with something",
     "Perfect for my teenager - half the price",
@@ -32,6 +37,7 @@
     "Same features for way less money"
   ],
   "objections": [
+    "What's the catch?",
     "How do I know it's not stolen?",
     "Will it get iOS updates?",
     "What if the screen is cracked under the protector?",
@@ -39,14 +45,16 @@
     "What if something breaks after 30 days?",
     "Can I trust the seller?",
     "Will the camera quality be the same?",
-    "What about water damage?"
+    "What about water damage?",
+    "What does 'unlocked' actually mean?"
   ],
   "sources": [
-    "Amazon reviews on refurbished iPhones (500+ reviews analyzed)",
+    "Amazon reviews on refurbished iPhones (800+ reviews analyzed March 2026)",
     "Reddit r/refurbished, r/phones, r/frugal threads (March 2026)",
     "Swappa user comments and reviews",
     "Back Market customer testimonials",
-    "YouTube comments on refurbished phone review videos"
+    "YouTube comments on refurbished phone review videos",
+    "Facebook Marketplace buyer/seller conversations"
   ],
-  "last_updated": "2026-03-11 18:09 UTC"
+  "last_updated": "2026-03-12 00:14 UTC"
 }

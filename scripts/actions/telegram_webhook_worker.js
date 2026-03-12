@@ -117,6 +117,7 @@ const COMMANDS_HELP = {
   '/costs': 'Token usage and cost breakdown',
   '/blog': 'Show blog pipeline status',
   '/prompts': 'Show image prompt stats',
+  '/image': 'Generate an image from a brief (e.g. /image iPhone 14 battery health TikTok)',
   '/dashboard': 'Open the HQ office dashboard',
   '/help': 'Show available commands',
 };
@@ -707,6 +708,86 @@ async function cmdBoss(args, ghToken) {
   return response;
 }
 
+async function cmdImage(args, ghToken, chatId, tgToken) {
+  if (!args.length) {
+    return (
+      '\u{1F5BC}\u{FE0F} <b>IMAGE GENERATOR</b>\n\n' +
+      'Usage: /image <brief>\n\n' +
+      '<b>Examples:</b>\n' +
+      '<code>/image iPhone 14 battery health 100% for TikTok</code>\n' +
+      '<code>/image Galaxy S25 unboxing lifestyle Instagram</code>\n' +
+      '<code>/image iPhone 15 Pro deal urgency flash sale</code>\n' +
+      '<code>/image refurbished phone eco sustainability</code>\n\n' +
+      'I\'ll generate the image, brand it, upload to cloud, and send you links for approval.'
+    );
+  }
+
+  const brief = args.join(' ');
+
+  // Save the brief to a queue file in the repo
+  const queuePath = 'departments/canva/image-queue.json';
+  const apiUrl = `https://api.github.com/repos/${GITHUB_REPO}/contents/${queuePath}`;
+  const headers = {
+    Authorization: `Bearer ${ghToken}`,
+    Accept: 'application/vnd.github.v3+json',
+    'User-Agent': 'GadgetGeeks-Webhook/1.0',
+  };
+
+  const now = new Date().toISOString();
+  const requestId = `img_${Date.now()}`;
+
+  try {
+    // Try to read existing queue
+    let queue = { pending: [], completed: [] };
+    let sha = null;
+
+    const getResp = await fetch(apiUrl, { headers });
+    if (getResp.ok) {
+      const fileData = await getResp.json();
+      sha = fileData.sha;
+      queue = JSON.parse(atob(fileData.content.replace(/\n/g, '')));
+    }
+
+    // Add new request
+    queue.pending.push({
+      id: requestId,
+      brief,
+      chat_id: chatId,
+      requested_at: now,
+      status: 'pending',
+    });
+
+    // Write back
+    const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(queue, null, 2))));
+    const putBody = {
+      message: `[image] Queue request: ${brief.slice(0, 60)}`,
+      content: encoded,
+    };
+    if (sha) putBody.sha = sha;
+
+    await fetch(apiUrl, {
+      method: 'PUT',
+      headers,
+      body: JSON.stringify(putBody),
+    });
+
+    // Trigger the image generation workflow
+    const triggered = await triggerWorkflow(ghToken, 'image-on-demand.yml');
+
+    let msg = '\u{1F3A8} <b>IMAGE REQUEST QUEUED</b>\n\n';
+    msg += `<b>Brief:</b> <i>${brief.slice(0, 200)}</i>\n`;
+    msg += `<b>ID:</b> <code>${requestId}</code>\n\n`;
+    msg += triggered
+      ? '\u2705 Pipeline triggered! You\'ll get the image links here when ready (1-2 min).'
+      : '\u23F3 Queued. Will be processed on next pipeline run.';
+
+    return msg;
+  } catch (e) {
+    console.error('cmdImage error:', e);
+    return `\u274C Error queuing image: ${String(e).slice(0, 200)}`;
+  }
+}
+
 async function cmdHistory() {
   const history = await fetchGitHubRaw('state/run-history.json');
   if (!history) return '\u{1F4CA} No run history yet. Runs will be logged after the next department cycle.';
@@ -982,6 +1063,9 @@ async function handleCommand(text, chatId, token, ghToken) {
     case '/boss':
       return cmdBoss(args, ghToken);
 
+    case '/image':
+      return cmdImage(args, ghToken, chatId, token);
+
     case '/history':
       return cmdHistory();
 
@@ -1201,6 +1285,41 @@ export default {
       const result = await canvaGetFreshToken(env);
       return new Response(JSON.stringify(result), {
         status: result.ok ? 200 : 502,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
+    // --- Telegram bot menu setup ---
+    if (path === '/setup-menu' && request.method === 'GET') {
+      const botToken = env.TELEGRAM_BOT_TOKEN;
+      if (!botToken) return new Response('Missing bot token', { status: 500 });
+
+      const commands = [
+        { command: 'status', description: 'Show org status' },
+        { command: 'image', description: 'Generate image from brief' },
+        { command: 'run', description: 'Trigger a department' },
+        { command: 'boss', description: 'Send instruction to department' },
+        { command: 'queue', description: 'Show approval queue' },
+        { command: 'approve', description: 'Approve a queued item' },
+        { command: 'reject', description: 'Reject a queued item' },
+        { command: 'runall', description: 'Trigger ALL departments' },
+        { command: 'xavier', description: 'Instruct Xavier (dialer)' },
+        { command: 'history', description: 'Last 10 runs with costs' },
+        { command: 'alerts', description: 'Recent alerts and errors' },
+        { command: 'costs', description: 'Token usage breakdown' },
+        { command: 'blog', description: 'Blog pipeline status' },
+        { command: 'prompts', description: 'Image prompt stats' },
+        { command: 'dashboard', description: 'Open HQ dashboard' },
+        { command: 'help', description: 'Show all commands' },
+      ];
+
+      const resp = await fetch(`https://api.telegram.org/bot${botToken}/setMyCommands`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ commands }),
+      });
+      const result = await resp.json();
+      return new Response(JSON.stringify(result, null, 2), {
         headers: { 'Content-Type': 'application/json' },
       });
     }

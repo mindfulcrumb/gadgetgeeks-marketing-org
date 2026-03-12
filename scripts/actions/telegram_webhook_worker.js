@@ -344,21 +344,69 @@ async function cmdQueue() {
   return lines.join('\n');
 }
 
+async function writeQueueAction(ghToken, itemId, action) {
+  const path = 'state/queue.json';
+  const apiUrl = `https://api.github.com/repos/${GITHUB_REPO}/contents/${path}`;
+  const headers = {
+    Authorization: `Bearer ${ghToken}`,
+    Accept: 'application/vnd.github.v3+json',
+    'User-Agent': 'GadgetGeeks-Webhook/1.0',
+  };
+
+  try {
+    const getResp = await fetch(apiUrl, { headers });
+    if (!getResp.ok) return { ok: false, error: 'Could not read queue' };
+    const fileData = await getResp.json();
+    const sha = fileData.sha;
+    const queue = JSON.parse(atob(fileData.content.replace(/\n/g, '')));
+
+    const pending = queue.pending || [];
+    const idx = pending.findIndex(i => i.id === itemId);
+    if (idx === -1) return { ok: false, error: `Item ${itemId} not found in queue` };
+
+    const item = pending.splice(idx, 1)[0];
+    item._action = action;
+    item._actioned_at = new Date().toISOString();
+    const targetList = action === 'approve' ? 'approved' : 'rejected';
+    queue[targetList] = queue[targetList] || [];
+    queue[targetList].push(item);
+
+    const encoded = btoa(unescape(encodeURIComponent(JSON.stringify(queue, null, 2))));
+    const putResp = await fetch(apiUrl, {
+      method: 'PUT',
+      headers,
+      body: JSON.stringify({
+        message: `[queue] ${action} ${itemId}`,
+        content: encoded,
+        sha,
+      }),
+    });
+    return putResp.ok
+      ? { ok: true, item }
+      : { ok: false, error: 'Failed to write queue' };
+  } catch (e) {
+    return { ok: false, error: String(e).slice(0, 200) };
+  }
+}
+
 async function cmdApprove(args, ghToken) {
   if (!args.length) return '\u26A0\uFE0F Usage: /approve <item_id>';
-  // Approval requires write access to the repo — trigger via workflow
-  const ok = await triggerWorkflow(ghToken, 'gm-queue.yml');
-  return ok
-    ? `\u2705 Approve request for <code>${args[0]}</code> sent.\nGM Queue will process it shortly.`
-    : `\u274C Could not trigger approval workflow. Try again.`;
+  const result = await writeQueueAction(ghToken, args[0], 'approve');
+  if (result.ok) {
+    const item = result.item;
+    return `\u2705 <b>Approved:</b> ${item.summary || item.type || args[0]}\n\nMoved to approved queue.`;
+  }
+  return `\u274C ${result.error}`;
 }
 
 async function cmdReject(args, ghToken) {
   if (!args.length) return '\u26A0\uFE0F Usage: /reject <item_id>';
-  const ok = await triggerWorkflow(ghToken, 'gm-queue.yml');
-  return ok
-    ? `\u274C Reject request for <code>${args[0]}</code> sent.\nGM Queue will process it shortly.`
-    : `\u274C Could not trigger rejection workflow. Try again.`;
+  const result = await writeQueueAction(ghToken, args[0], 'reject');
+  if (result.ok) {
+    const item = result.item;
+    return `\u274C <b>Rejected:</b> ${item.summary || item.type || args[0]}\n\nMoved to rejected queue.`;
+  }
+  return `\u274C ${result.error}`;
 }
 
 async function cmdBlog() {

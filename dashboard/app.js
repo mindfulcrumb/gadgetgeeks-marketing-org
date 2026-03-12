@@ -1439,28 +1439,36 @@ function renderQueue() {
   }).join('');
 }
 
+const WORKER_URL = 'https://gadgetgeeks-telegram-webhook.gadgetgeeks.workers.dev';
+
 async function dashAction(itemId, action) {
-  // Trigger via Telegram webhook worker (same API as /approve and /reject commands)
-  const workerUrl = 'https://gadgetgeeks-telegram-webhook.gadgetgeeks.workers.dev';
+  // Route through Cloudflare Worker which has GH_TOKEN — no browser token needed
   try {
     addNotification('info', `${action==='approve'?'Approving':'Rejecting'} ${itemId}...`);
-    // We trigger the gm-queue workflow via GitHub API directly
-    const resp = await fetch(`https://api.github.com/repos/${REPO}/actions/workflows/gm-queue.yml/dispatches`, {
+
+    // Send as a fake Telegram message to the worker — it will process /approve or /reject
+    const resp = await fetch(WORKER_URL, {
       method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${window._ghToken||''}`,
-        'Accept': 'application/vnd.github.v3+json',
-      },
-      body: JSON.stringify({ ref: 'main', inputs: { boss_department: 'gm_queue', boss_instruction: `${action} ${itemId}` } }),
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        message: {
+          chat: { id: 0 },  // dashboard origin — worker processes but won't send TG reply to chat 0
+          text: `/${action} ${itemId}`,
+        },
+        _source: 'dashboard',
+      }),
     });
-    if (resp.status === 204) {
+
+    if (resp.ok) {
       addNotification('info', `${action==='approve'?'Approved':'Rejected'}: ${itemId}`);
       addEnforcerLog('ok', `BOSS ${action}d item ${itemId.slice(-8)}`);
-      // Optimistically remove from queue display
+      // Optimistically update UI
       const el = document.querySelector(`.q-item[data-id="${itemId}"]`);
       if (el) { el.style.opacity = '0.3'; el.querySelectorAll('.q-btn').forEach(b => b.disabled = true); }
+      // Refresh queue data after a moment
+      setTimeout(async () => { await loadData(); }, 3000);
     } else {
-      addNotification('alert', `Failed to ${action} — check token`);
+      addNotification('alert', `Failed — worker returned ${resp.status}`);
     }
   } catch (e) {
     addNotification('alert', `Error: ${e.message}`);
@@ -1789,10 +1797,13 @@ function copyPrompt(btn) {
 async function sendPromptFeedback(promptId, action) {
   addNotification('info', `${action === 'approve' ? 'Approving' : 'Rejecting'} prompt ${promptId}...`);
   try {
-    await fetch(`https://api.github.com/repos/${REPO}/actions/workflows/gm-queue.yml/dispatches`, {
+    await fetch(WORKER_URL, {
       method: 'POST',
-      headers: { 'Authorization': `Bearer ${window._ghToken||''}`, 'Accept': 'application/vnd.github.v3+json' },
-      body: JSON.stringify({ ref: 'main', inputs: { boss_department: 'image_prompts', boss_instruction: `${action} prompt ${promptId}` } }),
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        message: { chat: { id: 0 }, text: `/boss image_prompts ${action} prompt ${promptId}` },
+        _source: 'dashboard',
+      }),
     });
     addNotification('info', `Prompt ${promptId} ${action}d`);
     addEnforcerLog('ok', `BOSS ${action}d prompt ${promptId.slice(-8)}`);
@@ -1924,27 +1935,17 @@ async function sendCommsMessage() {
   commsMessages.push({ from: 'boss', type: 'boss', text: `[→ ${dept}] ${text}`, time: new Date().toISOString() });
   renderComms();
 
-  // Trigger via GitHub workflow dispatch (same as /boss command)
-  const DEPT_WF = {intel:'intel.yml',seo:'seo-daily.yml',content:'content.yml',email:'email.yml',social_morning:'social-morning.yml',cro:'cro.yml',x_intel:'x-intel.yml',dialer:'dialer.yml',image_prompts:'image-prompts.yml',blog_writer:'blog-writer.yml',gm:'gm-queue.yml'};
-  const workflow = DEPT_WF[dept] || 'gm-queue.yml';
-
+  // Route through Cloudflare Worker (has all tokens)
   try {
-    // Save boss instruction via gm-queue dispatch
-    await fetch(`https://api.github.com/repos/${REPO}/actions/workflows/gm-queue.yml/dispatches`, {
+    const cmd = dept === 'gm' ? text : `/boss ${dept} ${text}`;
+    await fetch(WORKER_URL, {
       method: 'POST',
-      headers: { 'Authorization': `Bearer ${window._ghToken||''}`, 'Accept': 'application/vnd.github.v3+json' },
-      body: JSON.stringify({ ref: 'main', inputs: { boss_department: dept, boss_instruction: text.slice(0, 500) } }),
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        message: { chat: { id: 0 }, text: cmd },
+        _source: 'dashboard',
+      }),
     });
-
-    // Also trigger the department workflow
-    if (dept !== 'gm') {
-      await fetch(`https://api.github.com/repos/${REPO}/actions/workflows/${workflow}/dispatches`, {
-        method: 'POST',
-        headers: { 'Authorization': `Bearer ${window._ghToken||''}`, 'Accept': 'application/vnd.github.v3+json' },
-        body: JSON.stringify({ ref: 'main' }),
-      });
-    }
-
     addNotification('info', `Instruction sent to ${dept}`);
     addEnforcerLog('ok', `BOSS sent instruction to ${dept}`);
   } catch (e) {
@@ -1998,13 +1999,6 @@ async function init() {
   // Touch support for mobile
   canvas.addEventListener('touchstart', onTouchTap, {passive: false});
   canvas.addEventListener('touchmove', onTouchMove, {passive: false});
-
-  // GH token for approve/reject/comms (stored in sessionStorage)
-  window._ghToken = sessionStorage.getItem('ghToken') || '';
-  if (!window._ghToken) {
-    const t = prompt('Enter GitHub token for dashboard actions (approve/reject/send):\n(Leave blank for read-only mode)');
-    if (t) { window._ghToken = t; sessionStorage.setItem('ghToken', t); }
-  }
 
   await loadData();
   setInterval(loadData, 30000);

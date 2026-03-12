@@ -31,6 +31,27 @@
       "purpose": "Build targeted outbound call lists focusing on battery health concerns and iPhone 16 anticipation trends",
       "compliance_notes": "All calls will be queued for human approval before execution",
       "id": "dialer_20260312_004833"
+    },
+    {
+      "page": "/blogs/deals/cheap-refurbished-phones-guide",
+      "target_keyword": "cheap refurbished phones",
+      "meta_title": "Cheap Refurbished Phones: How to Get $800 Phone for $350 (2026 Guide)",
+      "meta_description": "Smart buyers save 50%+ on refurbished phones with 80%+ battery health. No catch - just timing the market right. Find your deal before prices jump.",
+      "word_count_target": "1500-2000 words",
+      "key_messaging": [
+        "Address 'what's the catch?' objection directly",
+        "Leverage iPhone 16 timing trend for urgency",
+        "Lead with battery health guarantees",
+        "Use customer language throughout",
+        "Educational approach builds trust"
+      ],
+      "internal_links_needed": [
+        "Link to /collections/refurbished-iphones",
+        "Link to /collections/refurbished-samsung",
+        "Link to /collections/certified-refurbished-phones",
+        "Link to warranty/return policy pages"
+      ],
+      "id": "seo_20260312_071601"
     }
   ],
   "approved": [],

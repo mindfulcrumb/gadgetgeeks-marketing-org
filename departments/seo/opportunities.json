@@ -62,8 +62,30 @@
       "keyword": "cheap refurbished phones",
       "type": "content_gap",
       "page": "/blogs/deals/cheap-refurbished-phones-guide",
-      "status": "pending",
-      "content_type": "buying guide"
+      "status": "completed",
+      "content_type": "buying guide",
+      "meta_title": "Cheap Refurbished Phones: How to Get $800 Phone for $350 (2026 Guide)",
+      "meta_description": "Smart buyers save 50%+ on refurbished phones with 80%+ battery health. No catch - just timing the market right. Find your deal before prices jump.",
+      "h1": "How to Get a $800 Phone for $350: The Smart Buyer's Guide to Cheap Refurbished Phones",
+      "content_outline": [
+        "Why March 2026 is the best time to buy (iPhone 16 anticipation creating deals)",
+        "Battery health: The #1 thing that matters (80%+ guarantee explained)",
+        "What 'cheap' actually means (Grade A vs B vs C breakdown)",
+        "The 'catch' everyone asks about (spoiler: there isn't one)",
+        "5 signs you're getting a genuine deal vs getting scammed",
+        "Best models to buy refurbished right now",
+        "Why friends can't tell the difference from new",
+        "CTA sections linking to collections"
+      ],
+      "improvements": [
+        "Uses customer language 'basically got a $800 phone for $350'",
+        "Addresses 'what's the catch?' objection directly",
+        "Leverages iPhone 16 timing trend for urgency",
+        "Leads with battery health obsession trend",
+        "Trust-building through education rather than selling"
+      ],
+      "structured_data": "Article schema + FAQ schema for common questions",
+      "completed": "2026-03-12 07:15 UTC"
     },
     {
       "id": "buy-used-phones-online-trust",
@@ -75,5 +97,5 @@
       "content_type": "educational landing page"
     }
   ],
-  "last_updated": "2026-03-12 00:54 UTC"
+  "last_updated": "2026-03-12 07:15 UTC"
 }

@@ -139,6 +139,29 @@
       "department": "dialer",
       "type": "dialer",
       "summary": "New dialer item"
+    },
+    {
+      "needed_data": [
+        "Abandoned cart data (past 48hrs, $300+ cart value)",
+        "Customer purchase history (identify 60+ day inactive customers)",
+        "Recent orders (7-14 days ago for review requests)",
+        "Customer phone numbers and contact preferences",
+        "Previous call attempt logs"
+      ],
+      "expected_opportunities": {
+        "abandoned_cart_calls": "Estimated 8-12 high-value calls per day",
+        "winback_calls": "Estimated 5-8 inactive customer calls per day",
+        "review_requests": "Estimated 3-5 happy customer calls per day"
+      },
+      "script_priorities": {
+        "battery_health": "Must lead with exact battery percentages (400% trend increase)",
+        "timing_urgency": "iPhone 16 anticipation creates perfect upgrade timing",
+        "compatibility_expertise": "Address accessory confusion proactively"
+      },
+      "id": "dialer_20260312_113734",
+      "department": "dialer",
+      "type": "dialer",
+      "summary": "New dialer item"
     }
   ],
   "approved": [],

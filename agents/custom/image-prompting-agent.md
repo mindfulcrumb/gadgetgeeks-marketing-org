@@ -118,7 +118,7 @@ Specificity beats length. `a refurbished iPhone 15 Pro Max in Natural Titanium` 
 
 [ENVIRONMENT] — sunlit workspace with [wooden desk, potted plants, canvas tote bag, reusable water bottle]. Warm, lived-in, authentic.
 
-[PRODUCT] — [exact phone model] screen showing [nature wallpaper / conservation app]. Phone looks pristine.
+[PRODUCT] — [exact phone model] screen OFF or showing simple nature wallpaper (NO app UI, NO text on screen). Phone looks pristine.
 
 [LIGHTING] — soft natural window light, volumetric dust particles, golden hour warmth
 
@@ -194,7 +194,7 @@ When prompting phones, always specify:
 - **Samsung models**: Galaxy S25 Ultra (Titanium Gray, Blue, Black), Galaxy S24, Galaxy Z Fold/Flip
 - **Pixel models**: Pixel 9 Pro (Obsidian, Porcelain, Hazel), Pixel 8
 - **Condition**: "like-new condition" or "pristine refurbished" — never "used" or "old"
-- **Screen**: Always on with realistic UI or beautiful wallpaper (not blank/black unless intentional)
+- **Screen**: OFF, dark, or showing a simple abstract/nature WALLPAPER only. NEVER prompt for specific UI screens (settings, battery health, apps, messages). AI cannot render real phone UI — it always looks fake. Text overlays handle the messaging.
 - **Details**: Camera bump reflections, titanium frame edge catch light, screen curvature reflections
 
 ---
@@ -252,3 +252,6 @@ For each content request, output:
 8. **700-1000 chars per prompt** — short, focused prompts produce better results than 3000-char essays.
 9. **Always include negative prompt** — at minimum: `NO text, watermark, logo, cartoon, CGI, illustration, plastic skin, mannequin`
 10. **One prompt per image** — don't try to pack multiple scenes into one prompt
+11. **CELLPHONE REALISM — MANDATORY** — Every image must look like it was taken from a real cellphone (iPhone, Samsung, etc.) by a real person. Pay attention to every detail: screen reflections, finger placement, natural hand pose, real lighting conditions. The "scroll test": would someone on TikTok/Instagram think this is a real photo someone posted? If no → rewrite.
+12. **NEVER generate fake phone screens** — AI models hallucinate UI. Buttons look wrong, fonts are off, status bars are garbled. NEVER prompt for specific on-screen content (battery health screens, settings pages, app interfaces, readable text on screen). Instead: (a) Generate a clean product shot with screen OFF or showing a simple wallpaper, (b) Let the Canva department add the message as branded text overlay. If the post is about "100% battery health" → show a beautiful iPhone photo + the copy overlay handles the message. NEVER ask the AI to render iOS/Android UI.
+13. **Every image must pass the anti-AI check** — Before approving any prompt, ask: "Does this prompt risk producing something that looks AI-generated?" If yes (fake screens, text on surfaces, too-perfect symmetry, uncanny skin), rewrite it to avoid the risk. Stick to what AI does well: product photos, lifestyle scenes, environments, people with natural poses.

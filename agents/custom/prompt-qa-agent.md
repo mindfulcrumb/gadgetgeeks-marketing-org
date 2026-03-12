@@ -109,16 +109,28 @@ Prompt must NOT ask for text, words, labels, or captions IN the image. Text over
 - Flag: any instruction to render text
 - Fix: remove text instructions, note "text overlay added post-generation"
 
+**Check 16 — NO FAKE PHONE SCREENS (CRITICAL — AUTO-BLOCK)**
+Prompt must NEVER ask the AI to render specific phone UI: battery health screens, settings pages, app interfaces, messages, notifications, readable text on phone screens. AI CANNOT render convincing iOS/Android UI — it always looks fake and kills credibility.
+- Flag: ANY mention of specific screen content (battery health, settings, apps, messages, prices on screen)
+- Fix: Change screen to OFF, dark, or simple wallpaper. The message goes in the text overlay, NOT the AI image.
+- Severity: **BLOCK** — this is an automatic fail, not a warning
+
+**Check 17 — Cellphone Realism / Scroll Test**
+Every image must look like it was taken from a real cellphone by a real person. Would someone scrolling TikTok/Instagram think this is a real photo? Check for: natural hand poses, realistic finger placement, proper screen reflections, real lighting conditions, authentic environments.
+- Flag: prompts that describe posed/staged scenes, unnatural hand positions, or anything that would trigger "this is AI" on social media
+- Fix: make it more candid, more authentic, more cellphone-photo-like
+
 ---
 
 ## SCORING
 
 | Score | Rating | Action |
 |-------|--------|--------|
-| 13-15 checks pass | EXCELLENT | Ships as-is |
-| 10-12 checks pass | GOOD | Ships with noted warnings |
-| 7-9 checks pass | NEEDS WORK | Return to LENS with fixes |
-| <7 checks pass | BLOCKED | Rewrite required |
+| 15-17 checks pass | EXCELLENT | Ships as-is |
+| 12-14 checks pass | GOOD | Ships with noted warnings |
+| 9-11 checks pass | NEEDS WORK | Return to LENS with fixes |
+| <9 checks pass | BLOCKED | Rewrite required |
+| Check 16 fails | AUTO-BLOCK | Fake screen = instant fail regardless of other scores |
 
 ---
 
@@ -151,7 +163,7 @@ For each prompt reviewed:
 
 ## RULES
 
-1. Run ALL 15 checks — no shortcuts
+1. Run ALL 17 checks — no shortcuts. Check 16 (fake screens) is an AUTO-BLOCK.
 2. Be specific — line-level feedback, not vague suggestions
 3. Always provide the corrected prompt when fixes are needed
 4. LENS learning loop: track recurring issues and note patterns

@@ -33,10 +33,41 @@
       "customer_language_used": [
         "good battery isn't good enough"
       ]
+    },
+    {
+      "date": "2026-03-12",
+      "time": "10:46 UTC",
+      "content_type": "product spotlight - budget phone math",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook",
+        "linkedin"
+      ],
+      "trending_topic": "Active Budget Phone Shopping Requests",
+      "customer_language_used": [
+        "basically got a $800 phone for $350",
+        "can't tell the difference"
+      ]
+    },
+    {
+      "date": "2026-03-12",
+      "time": "10:46 UTC",
+      "content_type": "behind the scenes - quality assurance",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook",
+        "linkedin"
+      ],
+      "trending_topic": "Biometric Function Anxiety + Back Market Support Failures",
+      "customer_language_used": [
+        "what's the catch?"
+      ]
     }
   ],
-  "postiz_calls_used": 2,
-  "postiz_calls_remaining": 13,
-  "last_updated": "2026-03-12 00:14 UTC",
-  "notes": "First day posts - riding viral sustainability trend and addressing battery health concerns. Both posts use real customer language and avoid AI copy flags."
+  "postiz_calls_used": 4,
+  "postiz_calls_remaining": 11,
+  "last_updated": "2026-03-12 10:46 UTC",
+  "notes": "Morning posts: Product spotlight addressing budget phone shopping trend with specific price comparison + behind-the-scenes quality process to differentiate from competitor support failures. Both use authentic customer language and avoid AI copy patterns."
 }

@@ -111,3 +111,59 @@ body::after{content:'';position:fixed;inset:0;pointer-events:none;background:rep
 .bp-keyword{font-size:5px;padding:1px 4px;border:1px solid var(--border);color:var(--dim)}
 .bp-empty{font-size:7px;color:var(--dim);text-align:center;padding:12px}
 ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--border)}
+
+/* ═══════════════════════════════════════════
+   MOBILE RESPONSIVE
+   ═══════════════════════════════════════════ */
+
+/* Unlock scroll on small screens */
+@media(max-width:1100px){
+  body{overflow:auto;height:auto;min-height:100vh}
+
+  /* HUD: stack on very small, wrap on medium */
+  #hud{flex-wrap:wrap;height:auto;padding:8px 12px;gap:8px;justify-content:center}
+  .hud-left{width:100%;justify-content:center;text-align:center}
+  .hud-center{flex-wrap:wrap;gap:12px;justify-content:center}
+  .hud-right{width:100%;text-align:center;display:flex;gap:12px;justify-content:center;align-items:center}
+  .hud-time{display:inline}
+
+  /* Main area: stack vertically */
+  #main-area{flex-direction:column;height:auto;overflow:visible}
+
+  /* Canvas wrapper: scale canvas to fit width */
+  #office-wrapper{flex:none;width:100%;height:auto;min-height:0;aspect-ratio:1120/736}
+  #office{width:100%;height:auto;max-height:none}
+
+  /* Sidebar: full width below canvas */
+  #sidebar{width:100%;border-left:none;border-top:2px solid var(--border);max-height:none;overflow-y:visible}
+
+  /* Schedule bar: wrap blocks */
+  #schedule-bar{height:auto;flex-wrap:wrap;padding:8px 12px;gap:6px}
+  .sched-label{width:100%;text-align:center;min-width:0}
+  #schedule-timeline{flex-wrap:wrap;justify-content:center}
+}
+
+/* Extra small (phones) */
+@media(max-width:480px){
+  .hud-title{font-size:10px}
+  .hs-val{font-size:11px}
+  .hud-time{font-size:11px}
+  .hud-center{gap:8px}
+  .hud-stat{min-width:0}
+
+  #sidebar{font-size:8px}
+  .sidebar-section{padding:8px}
+  .sidebar-section h2{font-size:8px}
+  .dir-entry{padding:8px 6px}
+  .dir-avatar{width:20px;height:20px}
+  .emp-avatar-lg{width:36px;height:36px}
+  .emp-stats{grid-template-columns:1fr 1fr;gap:4px}
+
+  .sched-block{padding:3px 6px;font-size:6px}
+
+  /* Larger touch targets */
+  .dir-entry{min-height:44px}
+  .back-btn{min-height:36px;padding:6px 12px;font-size:8px}
+  .q-item{padding:8px 10px}
+  .gal-folder{padding:10px}
+}

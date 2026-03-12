@@ -1695,6 +1695,35 @@ function openGalleryFolder(folderKey) {
 }
 
 // ═══════════════════════════════════════════
+// TOUCH HANDLERS (mobile support)
+// ═══════════════════════════════════════════
+function onTouchTap(e) {
+  e.preventDefault();
+  const touch = e.touches[0];
+  const rect = canvas.getBoundingClientRect();
+  const sx = canvas.width / rect.width, sy = canvas.height / rect.height;
+  const mx = (touch.clientX - rect.left) * sx;
+  const my = (touch.clientY - rect.top) * sy;
+
+  // Find tapped employee
+  for (const emp of ALL_CHARS) {
+    const c = chars[emp.id];
+    const ex = c.x - T/2, ey = c.y - T/2;
+    if (mx >= ex-8 && mx <= ex+T+8 && my >= ey-18 && my <= ey+T+12) {
+      selectEmployee(emp);
+      return;
+    }
+  }
+  // Hide tooltip on tap-away
+  document.getElementById('tooltip').classList.add('hidden');
+}
+
+function onTouchMove(e) {
+  // Prevent canvas from scrolling page when dragging on it
+  if (e.target === canvas) e.preventDefault();
+}
+
+// ═══════════════════════════════════════════
 // INIT
 // ═══════════════════════════════════════════
 async function init() {
@@ -1707,6 +1736,10 @@ async function init() {
 
   canvas.addEventListener('mousemove', onMouseMove);
   canvas.addEventListener('click', onClick);
+
+  // Touch support for mobile
+  canvas.addEventListener('touchstart', onTouchTap, {passive: false});
+  canvas.addEventListener('touchmove', onTouchMove, {passive: false});
 
   await loadData();
   setInterval(loadData, 30000);

@@ -85,10 +85,11 @@ def main():
         from telegram_bot import send_message, send_photo
 
         if generated_count > 0:
+            failed_line = f"\u274C {failed_count} failed" if failed_count else ""
             msg = (
                 f"\U0001F3A8 <b>IMAGE GENERATION COMPLETE</b>\n\n"
                 f"\u2705 {generated_count} images generated\n"
-                f"{f'\u274C {failed_count} failed' if failed_count else ''}\n\n"
+                f"{failed_line}\n\n"
             )
             for r in results[:5]:
                 if "url" in r:

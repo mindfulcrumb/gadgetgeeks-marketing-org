@@ -1,5 +1,15 @@
 {
-  "pending": [],
+  "pending": [
+    {
+      "phone_number": "+14808765236",
+      "customer_name": "Will",
+      "script_type": "direct_instruction",
+      "reason": "Boss instruction via Telegram: Hey Javier, call Will and offer him the latest deal that we have on the refurbished iPhone 14 and 15",
+      "priority": "urgent",
+      "best_time": "NOW",
+      "status": "approved"
+    }
+  ],
   "completed": [
     {
       "phone_number": "+15202881507",
@@ -19,7 +29,7 @@
       "phone_number": "+14808765236",
       "customer_name": "Will",
       "script_type": "direct_instruction",
-      "reason": "Direct boss instruction — call Will now",
+      "reason": "Direct boss instruction â call Will now",
       "priority": "urgent",
       "best_time": "NOW",
       "status": "called",

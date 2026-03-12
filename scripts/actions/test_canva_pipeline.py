@@ -30,14 +30,18 @@ def main():
     print("\n[1/4] Generating image via Gemini Imagen 4...")
 
     prompt = (
-        "Close-up of someone holding an iPhone 14 in Midnight showing the Battery Health "
-        "screen at 100% Maximum Capacity. The phone screen is crisp and clearly readable. "
-        "Hand belongs to a 24-year-old woman, natural nails, casual outfit sleeve visible. "
-        "Background: trendy apartment with warm afternoon light, slightly blurred bokeh. "
-        "Shot feels like a genuine TikTok screenshot moment — authentic, not staged. "
-        "Canon EOS R5, 50mm f/1.4, shallow depth of field. Warm Kodak Portra 400 grade, "
-        "golden tones. Natural skin texture. Vertical 9:16 composition for TikTok/Reels. "
-        "IMG_7291.CR3 unedited RAW file."
+        "Candid moment: 24-year-old woman sitting on a beige linen couch in her apartment, "
+        "holding an iPhone 14 in Midnight color at a natural angle, screen dark/off. "
+        "She's smiling slightly, looking relaxed — casual outfit, oversized white tee, "
+        "natural nails, thin gold bracelet. Phone looks pristine, like-new condition. "
+        "Natural skin with visible pores, subsurface scattering, natural facial asymmetry. "
+        "Background: warm afternoon light streaming through sheer curtains, potted monstera plant, "
+        "ceramic mug on side table. Shot feels like a genuine TikTok moment a friend posted. "
+        "Canon EOS R5, 50mm f/1.4, shallow depth of field, subject sharp, background creamy bokeh. "
+        "Kodak Portra 400 emulation, warm golden grade, lifted shadows. "
+        "Vertical 9:16 composition. IMG_7291.CR3 untitled unedited RAW file. "
+        "NO AI artifacts, NO distorted text, NO fake UI, NO uncanny valley, NO plastic skin, "
+        "NO wrong finger count, NO text on screen, NO watermark."
     )
 
     result = generate_image(prompt, aspect_ratio="9:16")

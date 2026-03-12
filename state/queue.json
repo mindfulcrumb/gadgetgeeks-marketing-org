@@ -112,6 +112,18 @@
       "environmental_tie_in": "Protecting devices = fewer replacements = less e-waste (riding viral sustainability wave)",
       "loss_aversion": "Frames $15 case as preventing loss of $350 investment rather than just 'buying protection'",
       "id": "email_20260312_093123"
+    },
+    {
+      "phone_number": "+15202881507",
+      "customer_name": "Charbel",
+      "reason": "Direct boss instruction from Telegram - requested twice",
+      "priority": "urgent",
+      "timestamp_received": "2026-03-12T00:47:29",
+      "approval_needed": "Immediate - boss priority",
+      "id": "dialer_20260312_105243",
+      "department": "dialer",
+      "type": "dialer",
+      "summary": "New dialer item"
     }
   ],
   "approved": [],

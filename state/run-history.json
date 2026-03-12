@@ -1,6 +1,37 @@
 {
   "runs": [
     {
+      "id": "run_dialer_20260312_105243",
+      "department": "dialer",
+      "timestamp": "2026-03-12T10:52:43.220381+00:00",
+      "date": "2026-03-12",
+      "status": "ok",
+      "model": "claude-sonnet-4-20250514",
+      "tokens": {
+        "input": 3553,
+        "output": 734,
+        "total": 4287
+      },
+      "actions": {
+        "file_updates": 1,
+        "queue_items": 1,
+        "social_posts": 0
+      },
+      "changes": [
+        {
+          "file": "departments/dialer/call-list.json",
+          "action": "modified",
+          "size": 1011
+        },
+        {
+          "file": "state/queue.json",
+          "action": "modified",
+          "size": 9387
+        }
+      ],
+      "had_boss_instructions": false
+    },
+    {
       "id": "run_social_morning_20260312_104641",
       "department": "social_morning",
       "timestamp": "2026-03-12T10:46:41.902422+00:00",
@@ -168,16 +199,16 @@
     }
   ],
   "stats": {
-    "total_runs": 6,
-    "total_tokens": 48074,
+    "total_runs": 7,
+    "total_tokens": 52361,
     "total_errors": 0
   },
   "department_stats": {
     "dialer": {
-      "runs": 1,
-      "tokens": 4100,
+      "runs": 2,
+      "tokens": 8387,
       "errors": 0,
-      "last_run": "2026-03-12T00:48:33.568883+00:00"
+      "last_run": "2026-03-12T10:52:43.220381+00:00"
     },
     "seo": {
       "runs": 2,

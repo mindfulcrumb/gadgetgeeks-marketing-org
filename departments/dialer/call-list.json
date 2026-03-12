@@ -1,5 +1,17 @@
 {
-  "pending": [],
+  "pending": [
+    {
+      "phone_number": "+15202881507",
+      "customer_name": "Charbel",
+      "script_type": "direct_instruction",
+      "reason": "Direct boss instruction - urgent call requested",
+      "priority": "urgent",
+      "best_time": "ASAP",
+      "status": "pending_approval",
+      "source": "Boss Telegram instruction 2026-03-12T00:47:29",
+      "notes": "Boss requested this call twice - high priority"
+    }
+  ],
   "completed": [],
   "do_not_call": [],
   "stats": {
@@ -9,9 +21,10 @@
     "total_voicemail": 0,
     "total_not_interested": 0
   },
-  "last_run": "2026-03-12 00:48 UTC",
-  "status": "Awaiting customer data access to identify calling opportunities",
+  "last_run": "2026-03-12 10:52 UTC",
+  "status": "Boss instruction call queued for approval. Awaiting customer data access for standard opportunities",
   "priority_focus": [
+    "URGENT: Boss-requested call to Charbel",
     "Abandoned cart - iPhone 14/15 models ($500+ value)",
     "Win-back customers with battery health messaging",
     "Spring upgrade cycle previous customers"

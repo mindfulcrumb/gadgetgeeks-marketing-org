@@ -1,6 +1,37 @@
 {
   "runs": [
     {
+      "id": "run_gm_queue_20260312_193411",
+      "department": "gm_queue",
+      "timestamp": "2026-03-12T19:34:11.036235+00:00",
+      "date": "2026-03-12",
+      "status": "ok",
+      "model": "claude-sonnet-4-20250514",
+      "tokens": {
+        "input": 5366,
+        "output": 4096,
+        "total": 9462
+      },
+      "actions": {
+        "file_updates": 1,
+        "queue_items": 1,
+        "social_posts": 0
+      },
+      "changes": [
+        {
+          "file": "state/master.json",
+          "action": "modified",
+          "size": 2228
+        },
+        {
+          "file": "state/queue.json",
+          "action": "modified",
+          "size": 11133
+        }
+      ],
+      "had_boss_instructions": false
+    },
+    {
       "id": "run_social_afternoon_20260312_172952",
       "department": "social_afternoon",
       "timestamp": "2026-03-12T17:29:52.891002+00:00",
@@ -380,8 +411,8 @@
     }
   ],
   "stats": {
-    "total_runs": 13,
-    "total_tokens": 86309,
+    "total_runs": 14,
+    "total_tokens": 95771,
     "total_errors": 0
   },
   "department_stats": {
@@ -416,10 +447,10 @@
       "last_run": "2026-03-12T10:46:41.902422+00:00"
     },
     "gm_queue": {
-      "runs": 1,
-      "tokens": 5895,
+      "runs": 2,
+      "tokens": 15357,
       "errors": 0,
-      "last_run": "2026-03-12T11:03:23.257088+00:00"
+      "last_run": "2026-03-12T19:34:11.036235+00:00"
     },
     "intel": {
       "runs": 1,

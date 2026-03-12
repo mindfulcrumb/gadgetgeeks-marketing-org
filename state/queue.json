@@ -3,7 +3,7 @@
     {
       "department": "dialer",
       "type": "data_request",
-      "summary": "Build targeted outbound call lists â abandoned carts $300+, win-back inactive customers, review requests",
+      "summary": "Build targeted outbound call lists — abandoned carts $300+, win-back inactive customers, review requests",
       "required_data": [
         "Shopify abandoned carts (last 48 hours, $300+ value)",
         "Customer purchase history (60+ days inactive for win-back)",
@@ -18,7 +18,7 @@
     {
       "department": "seo",
       "type": "content_brief",
-      "summary": "Blog brief: 'Cheap Refurbished Phones â How to Get $800 Phone for $350' targeting keyword 'cheap refurbished phones'",
+      "summary": "Blog brief: 'Cheap Refurbished Phones — How to Get $800 Phone for $350' targeting keyword 'cheap refurbished phones'",
       "page": "/blogs/deals/cheap-refurbished-phones-guide",
       "target_keyword": "cheap refurbished phones",
       "meta_title": "Cheap Refurbished Phones: How to Get $800 Phone for $350 (2026 Guide)",
@@ -42,37 +42,40 @@
     {
       "department": "x_intel",
       "type": "social_reply",
-      "summary": "Reply to @filocapri's viral e-waste post (7.5K+ likes) â eco angle, brand alignment",
+      "summary": "Reply to @filocapri's viral e-waste post (7.5K+ likes) — eco angle, brand alignment",
       "target_post": "@filocapri's e-waste awareness post (7.5K+ likes)",
-      "reply_content": "This! ð Choosing refurbished over new = same phone, 70% less environmental impact. Every device saved from e-waste makes a difference. Our refurbished iPhones work like new but help the planet too. ð±ð±",
+      "reply_content": "This! 🌍 Choosing refurbished over new = same phone, 70% less environmental impact. Every device saved from e-waste makes a difference. Our refurbished iPhones work like new but help the planet too. 📱💚",
       "why_engage": "Massive viral engagement, environmentally conscious audience, perfect brand alignment",
       "timing": "Immediately - while post is still trending",
+      "status": "flagged_for_processing",
       "id": "x_intel_20260312_074259"
     },
     {
       "department": "x_intel",
       "type": "social_reply",
-      "summary": "Reply to @taqd33z asking for budget phone recs â pitch refurbished flagship vs new budget",
+      "summary": "Reply to @taqd33z asking for budget phone recs — pitch refurbished flagship vs new budget",
       "target_post": "@taqd33z asking for budget phone recommendations",
-      "reply_content": "Instead of new budget phone with weak specs, consider refurbished flagship! iPhone 14 Pro refurbished ($500) vs new budget Android ($400) - better camera, performance, longevity. Sometimes spending slightly more upfront saves money long-term ð±â¨",
+      "reply_content": "Instead of new budget phone with weak specs, consider refurbished flagship! iPhone 14 Pro refurbished ($500) vs new budget Android ($400) - better camera, performance, longevity. Sometimes spending slightly more upfront saves money long-term 📱✨",
       "why_engage": "Direct engagement with active shopper, demonstrates expertise",
       "timing": "Today - while they're actively researching",
-      "id": "x_intel_20260312_074259"
+      "status": "flagged_for_processing",
+      "id": "x_intel_20260312_074259_2"
     },
     {
       "department": "x_intel",
       "type": "social_reply",
-      "summary": "Reply to @mrs_johnson909's Back Market complaint â differentiate on customer service",
+      "summary": "Reply to @mrs_johnson909's Back Market complaint — differentiate on customer service",
       "target_post": "@mrs_johnson909's Back Market support complaint",
-      "reply_content": "Sorry this happened to you ð This is exactly why we guarantee 2-hour response times and have real humans handling returns. No one should have to chase for weeks to return a defective device. Customer service should be as reliable as the phones we sell.",
+      "reply_content": "Sorry this happened to you 😔 This is exactly why we guarantee 2-hour response times and have real humans handling returns. No one should have to chase for weeks to return a defective device. Customer service should be as reliable as the phones we sell.",
       "why_engage": "Shows we care about customer experience, differentiates from competitor failures",
       "timing": "Today - while complaint is fresh",
-      "id": "x_intel_20260312_074259"
+      "status": "flagged_for_processing",
+      "id": "x_intel_20260312_074259_3"
     },
     {
       "department": "email",
       "type": "email_campaign",
-      "summary": "Cross-sell protection bundles to recent phone buyers â 'Don't let a $5 drop ruin your $350 steal'",
+      "summary": "Cross-sell protection bundles to recent phone buyers — 'Don't let a $5 drop ruin your $350 steal'",
       "campaign_id": "crosssell-protection-001",
       "subject_variants": {
         "a": "Don't let a $5 drop ruin your $350 steal",
@@ -88,6 +91,7 @@
       "anti_ai_checks": "Passed all 25 copy rules - includes contractions, sentence length variation, strategic fragments, customer language integration",
       "environmental_tie_in": "Protecting devices = fewer replacements = less e-waste (riding viral sustainability wave)",
       "loss_aversion": "Frames $15 case as preventing loss of $350 investment rather than just 'buying protection'",
+      "status": "flagged_for_processing",
       "id": "email_20260312_093123"
     },
     {
@@ -99,46 +103,8 @@
       "approval_needed": "Immediate - boss priority",
       "id": "dialer_20260312_105243",
       "department": "dialer",
-      "type": "dialer",
-      "summary": "New dialer item"
-    },
-    {
-      "required_data": [
-        "Shopify abandoned cart data (past 48hrs, $300+ items)",
-        "Customer purchase history for win-back (60+ days inactive)",
-        "Recent orders for review requests (7-14 days old)",
-        "B2B leads database",
-        "Previous call outcome history"
-      ],
-      "impact": "Cannot build standard call lists without customer data access",
-      "current_queue": "Only boss-requested urgent call for Charbel pending",
-      "id": "dialer_20260312_105620",
-      "department": "dialer",
-      "type": "dialer",
-      "summary": "New dialer item"
-    },
-    {
-      "needed_data": [
-        "Abandoned cart data (past 48hrs, $300+ cart value)",
-        "Customer purchase history (identify 60+ day inactive customers)",
-        "Recent orders (7-14 days ago for review requests)",
-        "Customer phone numbers and contact preferences",
-        "Previous call attempt logs"
-      ],
-      "expected_opportunities": {
-        "abandoned_cart_calls": "Estimated 8-12 high-value calls per day",
-        "winback_calls": "Estimated 5-8 inactive customer calls per day",
-        "review_requests": "Estimated 3-5 happy customer calls per day"
-      },
-      "script_priorities": {
-        "battery_health": "Must lead with exact battery percentages (400% trend increase)",
-        "timing_urgency": "iPhone 16 anticipation creates perfect upgrade timing",
-        "compatibility_expertise": "Address accessory confusion proactively"
-      },
-      "id": "dialer_20260312_113734",
-      "department": "dialer",
-      "type": "dialer",
-      "summary": "New dialer item"
+      "type": "urgent_call",
+      "summary": "Boss-requested urgent call to Charbel"
     },
     {
       "id": "blog_publish_20260312_143000",
@@ -155,36 +121,32 @@
       "created_at": "2026-03-12T14:41:48.172431+00:00"
     },
     {
-      "required_integrations": [
-        "Shopify abandoned cart API (past 48hrs, $300+ value)",
-        "Customer purchase history database (60+ day inactive identification)",
-        "Recent order tracking (7-14 days for review requests)",
-        "B2B leads database connection",
-        "Call outcome tracking system"
-      ],
-      "current_limitation": "Cannot identify calling opportunities without customer data access",
-      "script_updates_ready": "Intelligence-based script priorities updated for March trends",
-      "calling_readiness": "Within calling hours, VAPI configured, but no target opportunities identified",
-      "id": "dialer_20260312_150714",
-      "department": "dialer",
-      "type": "dialer",
-      "summary": "New dialer item"
-    },
-    {
       "recommendation": "Schedule posts for 15:00-17:00 UTC window tomorrow",
       "rationale": "Current posting times (00:14 and 10:46) leave afternoon engagement gap",
       "suggested_content": "Customer success stories or product education content",
       "id": "social_afternoon_20260312_172952",
       "department": "social_afternoon",
-      "type": "social_afternoon",
-      "summary": "New social_afternoon item"
+      "type": "scheduling_recommendation",
+      "summary": "Optimize afternoon posting schedule"
+    },
+    {
+      "blog_handle": "cheap-refurbished-phones-guide",
+      "image_needed": "Header image generation via Gemini",
+      "priority": "urgent",
+      "boss_instruction": "/fix_image_cheap-refurbished-phones-guide",
+      "id": "gm_queue_20260312_193411",
+      "department": "gm_queue",
+      "type": "gm_queue",
+      "summary": "New gm_queue item"
     }
   ],
-  "approved": [
+  "approved": [],
+  "rejected": [],
+  "completed": [
     {
       "department": "seo",
       "type": "seo_recommendation",
-      "summary": "Meta title/description update for /collections/refurbished-samsung â switch to pre-owned terminology",
+      "summary": "Meta title/description update for /collections/refurbished-samsung — switch to pre-owned terminology",
       "page": "/collections/refurbished-samsung",
       "meta_title": "Pre-Owned Samsung Galaxy - Tested & Certified | Gadget Geeks Pro",
       "meta_description": "Shop pre-owned Samsung Galaxy phones that can't tell the difference from new. Battery lasts all day. Save half the price with warranty. Find your Galaxy now.",
@@ -203,12 +165,9 @@
         "feels like I got away with something"
       ],
       "id": "seo_20260312_001430",
-      "_action": "approve",
-      "_actioned_at": "2026-03-12T14:03:01.131Z"
-    }
-  ],
-  "rejected": [],
-  "completed": [
+      "status": "ready_for_implementation",
+      "processed_at": "2026-03-12T19:33:00Z"
+    },
     {
       "title": "How to Avoid Activation Lock When Buying Used Phones Online (2026 Guide)",
       "excerpt": "Your refurbished iPhone arrives. You're excited. You power it on, and... \"This iPhone is linked to an Apple ID. Sign in with the Apple ID that was used to set up this iPhone.\" Game over. You just bought a $400 paperweight.",

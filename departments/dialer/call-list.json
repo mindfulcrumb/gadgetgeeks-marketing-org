@@ -1,5 +1,15 @@
 {
-  "pending": [],
+  "pending": [
+    {
+      "phone_number": "+14808765236",
+      "customer_name": "Will",
+      "script_type": "direct_instruction",
+      "reason": "Direct boss instruction — call Will now",
+      "priority": "urgent",
+      "best_time": "NOW",
+      "status": "approved"
+    }
+  ],
   "completed": [
     {
       "phone_number": "+15202881507",

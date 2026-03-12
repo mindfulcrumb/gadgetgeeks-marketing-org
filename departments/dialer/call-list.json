@@ -1,15 +1,5 @@
 {
-  "pending": [
-    {
-      "phone_number": "+14808765236",
-      "customer_name": "Will",
-      "script_type": "direct_instruction",
-      "reason": "Direct boss instruction — call Will now",
-      "priority": "urgent",
-      "best_time": "NOW",
-      "status": "approved"
-    }
-  ],
+  "pending": [],
   "completed": [
     {
       "phone_number": "+15202881507",
@@ -24,11 +14,22 @@
       "script_focus": "Use battery health messaging, spring upgrade timing, address quality concerns proactively",
       "call_id": "019ce1b7-a23d-7000-8bf3-660b2cf14186",
       "called_at": "2026-03-12T11:03:55.417174+00:00"
+    },
+    {
+      "phone_number": "+14808765236",
+      "customer_name": "Will",
+      "script_type": "direct_instruction",
+      "reason": "Direct boss instruction — call Will now",
+      "priority": "urgent",
+      "best_time": "NOW",
+      "status": "called",
+      "call_id": "019ce1bd-b2ad-7000-8c45-d62e1a579c25",
+      "called_at": "2026-03-12T11:10:32.876478+00:00"
     }
   ],
   "do_not_call": [],
   "stats": {
-    "total_calls": 1,
+    "total_calls": 2,
     "total_connected": 0,
     "total_interested": 0,
     "total_voicemail": 0,

@@ -1,17 +1,25 @@
 """
 Canva post designer for GadgetGeeks Marketing Organization.
 
-Uses the Canva Connect API to create branded social media posts
-from AI-generated images. Takes raw images from the image pipeline
-and produces finished, platform-ready designs.
+Creates branded social media posts from AI-generated images:
+1. Pillow composites the branded post (text overlays, gradient, logo, CTA badge)
+2. Upload finished post to Shopify CDN (permanent cloud URL)
+3. Push to Canva as a design (team access / manual tweaks)
+4. Export from Canva for backup URL
+
+Canva Connect API does NOT support programmatic editing (text/shapes).
+All design composition is done locally with Pillow.
 """
 
+import base64
+import io
 import json
 import os
 import requests
 import time
 from datetime import datetime, timezone
 from pathlib import Path
+from PIL import Image, ImageDraw, ImageFont
 
 
 # ---------------------------------------------------------------------------
@@ -46,7 +54,6 @@ def _fetch_token_from_worker() -> str:
 
 def _canva_headers() -> dict:
     """Build authorization headers for Canva Connect API."""
-    # Try worker first (auto-refresh), fall back to env var
     token = _fetch_token_from_worker() or os.environ.get("CANVA_ACCESS_TOKEN", "")
     if not token:
         raise ValueError(
@@ -60,166 +67,241 @@ def _canva_headers() -> dict:
 
 
 # ---------------------------------------------------------------------------
-# Canva API Operations
+# Pillow — branded post compositor
 # ---------------------------------------------------------------------------
 
-def create_design(title: str, width: int, height: int) -> dict:
-    """Create a new blank Canva design.
+# Brand constants
+BRAND_PRIMARY = "#C72F8F"
+BRAND_SECONDARY = "#0D0D0D"
+BRAND_ACCENT = "#5B21A8"
+BRAND_TEXT = "#FFFFFF"
+BRAND_LOGO = "GADGET GEEKS PRO"
+BRAND_TAGLINE = "Premium Refurbished Tech"
+
+
+def _hex_to_rgb(hex_color: str) -> tuple:
+    """Convert hex color to RGB tuple."""
+    h = hex_color.lstrip("#")
+    return tuple(int(h[i:i+2], 16) for i in (0, 2, 4))
+
+
+def _get_font(size: int, bold: bool = False) -> ImageFont.FreeTypeFont:
+    """Get a font, falling back to default if custom fonts unavailable."""
+    font_paths = [
+        "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf" if bold
+        else "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+        "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf" if bold
+        else "/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf",
+        "/System/Library/Fonts/Helvetica.ttc",
+    ]
+    for path in font_paths:
+        if os.path.exists(path):
+            try:
+                return ImageFont.truetype(path, size)
+            except Exception:
+                continue
+    return ImageFont.load_default()
+
+
+def composite_branded_post(
+    image_bytes: bytes,
+    width: int,
+    height: int,
+    text_overlay: dict,
+    design_type: str,
+) -> bytes:
+    """Composite a branded social media post using Pillow.
 
     Args:
-        title:  Design title (visible in Canva dashboard).
-        width:  Width in pixels.
-        height: Height in pixels.
+        image_bytes: Raw image bytes (PNG/JPG from Gemini or CDN).
+        width:       Target width in pixels.
+        height:      Target height in pixels.
+        text_overlay: {"headline": str, "subline": str, "cta": str}
+        design_type:  product_spotlight, deal_urgency, lifestyle, etc.
 
     Returns:
-        {"design_id": str, "edit_url": str, "title": str}
+        PNG bytes of the finished branded post.
     """
-    resp = requests.post(
-        f"{CANVA_API_BASE}/designs",
-        headers=_canva_headers(),
-        json={
-            "design_type": {
-                "type": "custom_size",
-                "width": width,
-                "height": height,
-            },
-            "title": title,
-        },
-        timeout=30,
-    )
-    resp.raise_for_status()
-    data = resp.json().get("design", {})
-    return {
-        "design_id": data.get("id", ""),
-        "edit_url": data.get("urls", {}).get("edit_url", ""),
-        "title": data.get("title", title),
-    }
+    # Load and resize the base image
+    img = Image.open(io.BytesIO(image_bytes)).convert("RGBA")
+    img = img.resize((width, height), Image.LANCZOS)
+
+    # Create overlay layer for gradient + text
+    overlay = Image.new("RGBA", (width, height), (0, 0, 0, 0))
+    draw = ImageDraw.Draw(overlay)
+
+    # --- Gradient overlay (bottom 40%) for text readability ---
+    if design_type in ("product_spotlight", "deal_urgency", "comparison"):
+        gradient_start = int(height * 0.55)
+        for y in range(gradient_start, height):
+            progress = (y - gradient_start) / (height - gradient_start)
+            alpha = int(200 * progress)  # 0 → 200 opacity
+            draw.line([(0, y), (width, y)], fill=(0, 0, 0, alpha))
+    else:
+        # Lighter gradient for lifestyle/sustainability
+        gradient_start = int(height * 0.65)
+        for y in range(gradient_start, height):
+            progress = (y - gradient_start) / (height - gradient_start)
+            alpha = int(160 * progress)
+            draw.line([(0, y), (width, y)], fill=(0, 0, 0, alpha))
+
+    # Composite gradient onto image
+    img = Image.alpha_composite(img, overlay)
+    draw = ImageDraw.Draw(img)
+
+    # --- Text overlays ---
+    headline = text_overlay.get("headline", "")
+    subline = text_overlay.get("subline", "")
+    cta = text_overlay.get("cta", "")
+
+    margin_x = int(width * 0.06)
+
+    if headline:
+        font_size = 64 if width >= 1200 else 52 if width >= 1080 else 40
+        font = _get_font(font_size, bold=True)
+        y_pos = int(height * 0.68) if design_type != "lifestyle" else int(height * 0.72)
+
+        # Text shadow for readability
+        draw.text((margin_x + 2, y_pos + 2), headline, font=font, fill=(0, 0, 0, 180))
+        draw.text((margin_x, y_pos), headline, font=font, fill=BRAND_TEXT)
+
+    if subline:
+        sub_size = 36 if width >= 1200 else 30 if width >= 1080 else 24
+        font = _get_font(sub_size, bold=False)
+        y_pos = int(height * 0.78) if design_type != "lifestyle" else int(height * 0.82)
+
+        draw.text((margin_x + 1, y_pos + 1), subline, font=font, fill=(0, 0, 0, 140))
+        draw.text((margin_x, y_pos), subline, font=font, fill=BRAND_TEXT)
+
+    if cta:
+        cta_size = 28 if width >= 1200 else 24 if width >= 1080 else 20
+        cta_font = _get_font(cta_size, bold=True)
+
+        # Measure CTA text
+        bbox = draw.textbbox((0, 0), cta, font=cta_font)
+        text_w = bbox[2] - bbox[0]
+        text_h = bbox[3] - bbox[1]
+        pad_x, pad_y = 24, 12
+        badge_w = text_w + pad_x * 2
+        badge_h = text_h + pad_y * 2
+
+        badge_x = width - margin_x - badge_w
+        badge_y = int(height * 0.88)
+
+        # CTA badge (rounded rectangle)
+        pink = _hex_to_rgb(BRAND_PRIMARY)
+        draw.rounded_rectangle(
+            [badge_x, badge_y, badge_x + badge_w, badge_y + badge_h],
+            radius=10,
+            fill=(*pink, 230),
+        )
+        draw.text(
+            (badge_x + pad_x, badge_y + pad_y),
+            cta, font=cta_font, fill=BRAND_TEXT,
+        )
+
+    # --- Logo text (bottom left, subtle) ---
+    logo_size = 16 if width >= 1200 else 14 if width >= 1080 else 12
+    logo_font = _get_font(logo_size, bold=True)
+    logo_y = int(height * 0.94)
+    draw.text((margin_x, logo_y), BRAND_LOGO, font=logo_font, fill=(255, 255, 255, 140))
+
+    # Convert to RGB and export as PNG
+    final = img.convert("RGB")
+    buf = io.BytesIO()
+    final.save(buf, format="PNG", quality=95)
+    return buf.getvalue()
 
 
-def upload_asset(image_url: str, title: str = "Generated Image") -> dict:
-    """Upload an image from URL to Canva as a reusable asset.
+# ---------------------------------------------------------------------------
+# Canva API — upload asset + create design (for team access)
+# ---------------------------------------------------------------------------
 
-    Args:
-        image_url: Public URL of the image to upload.
-        title:     Asset title.
+def upload_asset_to_canva(image_bytes: bytes, name: str) -> dict:
+    """Upload image bytes to Canva as an asset (binary upload).
 
     Returns:
-        {"asset_id": str, "thumbnail_url": str}
+        {"job_id": str} or {"asset_id": str}
     """
-    # Step 1: Start the upload job
+    headers = _canva_headers()
+    # Canva expects binary body with metadata in header
+    name_b64 = base64.b64encode(name[:50].encode()).decode()
+    headers["Content-Type"] = "application/octet-stream"
+    headers["Asset-Upload-Metadata"] = json.dumps({"name_base64": name_b64})
+
     resp = requests.post(
         f"{CANVA_API_BASE}/asset-uploads",
-        headers=_canva_headers(),
-        json={
-            "name_base64": __import__("base64").b64encode(title.encode()).decode(),
-            "url": image_url,
-        },
-        timeout=30,
+        headers=headers,
+        data=image_bytes,
+        timeout=60,
     )
     resp.raise_for_status()
-    job = resp.json().get("job", {})
-    job_id = job.get("id", "")
+    data = resp.json()
 
-    if not job_id:
-        # Direct asset return (some API versions)
-        asset = resp.json().get("asset", {})
-        return {
-            "asset_id": asset.get("id", ""),
-            "thumbnail_url": asset.get("thumbnail", {}).get("url", ""),
-        }
+    job = data.get("job", {})
+    if job.get("id"):
+        return {"job_id": job["id"]}
 
-    # Step 2: Poll for completion
-    for _ in range(20):
+    asset = data.get("asset", {})
+    return {"asset_id": asset.get("id", "")}
+
+
+def poll_asset_upload(job_id: str, max_wait: int = 60) -> str:
+    """Poll until asset upload completes. Returns asset_id."""
+    for _ in range(max_wait // 3):
         time.sleep(3)
-        status_resp = requests.get(
+        resp = requests.get(
             f"{CANVA_API_BASE}/asset-uploads/{job_id}",
             headers=_canva_headers(),
             timeout=15,
         )
-        status_resp.raise_for_status()
-        status_data = status_resp.json().get("job", {})
-        if status_data.get("status") == "success":
-            asset = status_data.get("asset", {})
-            return {
-                "asset_id": asset.get("id", ""),
-                "thumbnail_url": asset.get("thumbnail", {}).get("url", ""),
-            }
-        if status_data.get("status") == "failed":
-            raise RuntimeError(f"Asset upload failed: {status_data.get('error', {})}")
-
-    raise RuntimeError("Asset upload timed out after 60 seconds")
+        resp.raise_for_status()
+        job = resp.json().get("job", {})
+        if job.get("status") == "success":
+            return job.get("asset", {}).get("id", "")
+        if job.get("status") == "failed":
+            raise RuntimeError(f"Asset upload failed: {job.get('error', {})}")
+    raise RuntimeError("Asset upload timed out")
 
 
-def start_editing(design_id: str) -> str:
-    """Start an editing transaction on a design.
+def create_canva_design(title: str, width: int, height: int, asset_id: str = "") -> dict:
+    """Create a Canva design, optionally pre-populated with an image.
 
     Returns:
-        Transaction ID (used for subsequent editing operations).
+        {"design_id": str, "edit_url": str, "view_url": str}
     """
+    body = {
+        "design_type": {
+            "type": "custom",
+            "width": width,
+            "height": height,
+        },
+        "title": title,
+    }
+    if asset_id:
+        body["asset_id"] = asset_id
+
     resp = requests.post(
-        f"{CANVA_API_BASE}/designs/{design_id}/editing/transactions",
+        f"{CANVA_API_BASE}/designs",
         headers=_canva_headers(),
-        json={},
-        timeout=15,
-    )
-    resp.raise_for_status()
-    return resp.json().get("transaction", {}).get("id", "")
-
-
-def add_elements(design_id: str, transaction_id: str, elements: list) -> dict:
-    """Add elements (text, images, shapes) to a design within an editing transaction.
-
-    Args:
-        design_id:      The Canva design ID.
-        transaction_id: Active editing transaction ID.
-        elements:       List of element definitions.
-
-    Returns:
-        API response dict.
-    """
-    resp = requests.post(
-        f"{CANVA_API_BASE}/designs/{design_id}/editing/transactions/{transaction_id}/elements",
-        headers=_canva_headers(),
-        json={"elements": elements},
+        json=body,
         timeout=30,
     )
     resp.raise_for_status()
-    return resp.json()
+    design = resp.json().get("design", {})
+    return {
+        "design_id": design.get("id", ""),
+        "edit_url": design.get("urls", {}).get("edit_url", ""),
+        "view_url": design.get("urls", {}).get("view_url", ""),
+    }
 
 
-def commit_editing(design_id: str, transaction_id: str) -> dict:
-    """Commit an editing transaction, finalizing all changes.
-
-    Returns:
-        API response dict.
-    """
-    resp = requests.post(
-        f"{CANVA_API_BASE}/designs/{design_id}/editing/transactions/{transaction_id}/commit",
-        headers=_canva_headers(),
-        json={},
-        timeout=30,
-    )
-    resp.raise_for_status()
-    return resp.json()
-
-
-def export_design(design_id: str, format: str = "png") -> str:
-    """Export a finished design as PNG/JPG.
-
-    Args:
-        design_id: The Canva design ID.
-        format:    "png" or "jpg".
-
-    Returns:
-        Export download URL.
-    """
-    # Step 1: Start export job
+def export_canva_design(design_id: str) -> str:
+    """Export a Canva design as PNG. Returns download URL (valid 24h)."""
     resp = requests.post(
         f"{CANVA_API_BASE}/designs/{design_id}/exports",
         headers=_canva_headers(),
-        json={
-            "format": {"type": format},
-        },
+        json={"format": {"type": "png"}},
         timeout=15,
     )
     resp.raise_for_status()
@@ -227,10 +309,9 @@ def export_design(design_id: str, format: str = "png") -> str:
     job_id = job.get("id", "")
 
     if not job_id:
-        # Direct URL return
-        return resp.json().get("export", {}).get("urls", [{}])[0].get("url", "")
+        urls = resp.json().get("job", {}).get("urls", [])
+        return urls[0] if urls else ""
 
-    # Step 2: Poll for completion
     for _ in range(30):
         time.sleep(2)
         status_resp = requests.get(
@@ -240,21 +321,17 @@ def export_design(design_id: str, format: str = "png") -> str:
         )
         status_resp.raise_for_status()
         status_data = status_resp.json().get("job", {})
-
         if status_data.get("status") == "success":
             urls = status_data.get("urls", [])
-            if urls:
-                return urls[0].get("url", "")
-            return ""
-
+            return urls[0] if urls else ""
         if status_data.get("status") == "failed":
             raise RuntimeError(f"Export failed: {status_data.get('error', {})}")
 
-    raise RuntimeError("Export timed out after 60 seconds")
+    raise RuntimeError("Export timed out")
 
 
 # ---------------------------------------------------------------------------
-# Design Builder — creates a complete branded post
+# Full pipeline — build branded post end-to-end
 # ---------------------------------------------------------------------------
 
 def build_branded_post(
@@ -264,29 +341,28 @@ def build_branded_post(
     text_overlay: dict,
     prompt_id: str,
 ) -> dict:
-    """Build a complete branded social media post in Canva.
+    """Build a complete branded social media post.
 
-    Args:
-        image_url:    CDN URL of the AI-generated image.
-        platform:     Target platform (instagram, twitter, facebook, etc.).
-        design_type:  One of: product_spotlight, deal_urgency, lifestyle, sustainability, comparison.
-        text_overlay: Dict with keys: headline, subline, cta.
-        prompt_id:    Source prompt ID for traceability.
+    Pipeline:
+    1. Download the raw AI-generated image
+    2. Composite branded post with Pillow (text, gradient, logo, CTA)
+    3. Upload finished post to Shopify CDN (permanent URL)
+    4. Push to Canva as a design (team can edit in browser)
 
     Returns:
         {
+            "export_url": str (Shopify CDN — permanent),
             "canva_design_id": str,
             "canva_edit_url": str,
-            "export_url": str,
             "platform": str,
             "dimensions": str,
             "status": str,
         }
     """
-    # Platform dimensions
     DIMENSIONS = {
         "instagram": (1080, 1080),
         "instagram_story": (1080, 1920),
+        "tiktok": (1080, 1920),
         "twitter": (1600, 900),
         "facebook": (1200, 630),
         "linkedin": (1200, 627),
@@ -298,199 +374,70 @@ def build_branded_post(
     title = f"GGP_{platform}_{design_type}_{now}"
 
     try:
-        # 1. Create the design
-        design = create_design(title, width, height)
-        design_id = design["design_id"]
+        # 1. Download the raw image
+        print(f"    Downloading raw image...")
+        img_resp = requests.get(image_url, timeout=60)
+        img_resp.raise_for_status()
+        raw_bytes = img_resp.content
 
-        # 2. Upload the AI-generated image as an asset
-        asset = upload_asset(image_url, title=f"bg_{prompt_id}")
-
-        # 3. Start editing transaction
-        txn_id = start_editing(design_id)
-
-        # 4. Build element list
-        elements = _build_elements(
-            asset_id=asset["asset_id"],
-            width=width,
-            height=height,
-            design_type=design_type,
-            text_overlay=text_overlay,
+        # 2. Composite branded post with Pillow
+        print(f"    Compositing branded post ({width}x{height})...")
+        branded_bytes = composite_branded_post(
+            raw_bytes, width, height, text_overlay, design_type,
         )
+        print(f"    Branded post: {len(branded_bytes):,} bytes")
 
-        # 5. Add elements
-        add_elements(design_id, txn_id, elements)
-
-        # 6. Commit the editing transaction
-        commit_editing(design_id, txn_id)
-
-        # 7. Export the final design
-        export_url = export_design(design_id, format="png")
-
-        # 8. Re-upload exported design to Shopify CDN for permanent cloud storage
+        # 3. Upload to Shopify CDN (permanent URL)
         cdn_url = ""
         try:
             from image_gen import upload_to_shopify
-            print(f"  Uploading finished design to Shopify CDN...")
-            export_resp = requests.get(export_url, timeout=60)
-            export_resp.raise_for_status()
             cdn_filename = f"canva-{platform}-{prompt_id}-{now}.png"
-            cdn_url = upload_to_shopify(
-                export_resp.content, cdn_filename, content_type="image/png"
-            )
-            print(f"  CDN URL: {cdn_url}")
+            print(f"    Uploading to Shopify CDN...")
+            cdn_url = upload_to_shopify(branded_bytes, cdn_filename, content_type="image/png")
+            print(f"    CDN URL: {cdn_url}")
         except Exception as e:
-            print(f"  Warning: CDN upload failed ({e}), using Canva export URL")
+            print(f"    Warning: Shopify CDN upload failed ({e})")
+
+        # 4. Push to Canva (team access)
+        canva_design_id = ""
+        canva_edit_url = ""
+        try:
+            print(f"    Uploading to Canva...")
+            upload_result = upload_asset_to_canva(branded_bytes, title)
+
+            asset_id = upload_result.get("asset_id", "")
+            if not asset_id and upload_result.get("job_id"):
+                asset_id = poll_asset_upload(upload_result["job_id"])
+
+            if asset_id:
+                print(f"    Creating Canva design...")
+                design = create_canva_design(title, width, height, asset_id=asset_id)
+                canva_design_id = design["design_id"]
+                canva_edit_url = design["edit_url"]
+                print(f"    Canva design: {canva_edit_url}")
+        except Exception as e:
+            print(f"    Warning: Canva upload failed ({e}), CDN URL still valid")
 
         return {
-            "canva_design_id": design_id,
-            "canva_edit_url": design["edit_url"],
-            "export_url": cdn_url or export_url,
-            "canva_export_url": export_url,
+            "export_url": cdn_url,
+            "canva_design_id": canva_design_id,
+            "canva_edit_url": canva_edit_url,
             "platform": platform,
             "dimensions": f"{width}x{height}",
             "status": "exported",
         }
 
     except Exception as e:
-        print(f"  ERROR building Canva design for {prompt_id}: {e}")
+        print(f"  ERROR building branded post for {prompt_id}: {e}")
         return {
+            "export_url": "",
             "canva_design_id": "",
             "canva_edit_url": "",
-            "export_url": "",
             "platform": platform,
             "dimensions": f"{width}x{height}",
             "status": "error",
             "error": str(e)[:300],
         }
-
-
-def _build_elements(
-    asset_id: str,
-    width: int,
-    height: int,
-    design_type: str,
-    text_overlay: dict,
-) -> list:
-    """Build the element list for a branded post.
-
-    Returns a list of Canva element definitions: background image,
-    text blocks, gradient overlay, logo placement.
-    """
-    elements = []
-
-    # 1. Background image (full bleed)
-    elements.append({
-        "type": "image",
-        "asset_id": asset_id,
-        "position": {"x": 0, "y": 0},
-        "size": {"width": width, "height": height},
-    })
-
-    # 2. Gradient overlay for text readability (bottom third)
-    if design_type in ("product_spotlight", "deal_urgency", "comparison"):
-        elements.append({
-            "type": "shape",
-            "shape_type": "rectangle",
-            "position": {"x": 0, "y": int(height * 0.6)},
-            "size": {"width": width, "height": int(height * 0.4)},
-            "fill": {
-                "type": "gradient",
-                "stops": [
-                    {"color": "#00000000", "position": 0},
-                    {"color": "#000000CC", "position": 100},
-                ],
-            },
-        })
-
-    # 3. Text overlays
-    headline = text_overlay.get("headline", "")
-    subline = text_overlay.get("subline", "")
-    cta = text_overlay.get("cta", "")
-
-    if headline:
-        # Headline — large, bold, bottom area
-        font_size = 56 if width >= 1200 else 44 if width >= 1080 else 36
-        elements.append({
-            "type": "text",
-            "content": headline,
-            "position": {"x": int(width * 0.05), "y": int(height * 0.65)},
-            "size": {"width": int(width * 0.9), "height": int(font_size * 1.5)},
-            "font": {
-                "family": "Plus Jakarta Sans",
-                "weight": "bold",
-                "size": font_size,
-            },
-            "color": "#FFFFFF",
-            "text_align": "left",
-        })
-
-    if subline:
-        # Subline — medium, below headline
-        sub_size = 32 if width >= 1200 else 28 if width >= 1080 else 24
-        elements.append({
-            "type": "text",
-            "content": subline,
-            "position": {"x": int(width * 0.05), "y": int(height * 0.78)},
-            "size": {"width": int(width * 0.9), "height": int(sub_size * 1.5)},
-            "font": {
-                "family": "Inter",
-                "weight": "regular",
-                "size": sub_size,
-            },
-            "color": "#FFFFFF",
-            "text_align": "left",
-        })
-
-    if cta:
-        # CTA badge — brand pink, bottom right
-        cta_size = 28 if width >= 1200 else 24
-        badge_w = min(len(cta) * cta_size * 0.6, width * 0.5)
-        elements.append({
-            "type": "shape",
-            "shape_type": "rounded_rectangle",
-            "position": {
-                "x": int(width * 0.95 - badge_w),
-                "y": int(height * 0.88),
-            },
-            "size": {"width": int(badge_w), "height": int(cta_size * 2)},
-            "fill": {"type": "solid", "color": "#C72F8F"},
-            "corner_radius": 8,
-        })
-        elements.append({
-            "type": "text",
-            "content": cta,
-            "position": {
-                "x": int(width * 0.95 - badge_w + 16),
-                "y": int(height * 0.88 + cta_size * 0.4),
-            },
-            "size": {"width": int(badge_w - 32), "height": int(cta_size * 1.4)},
-            "font": {
-                "family": "Plus Jakarta Sans",
-                "weight": "bold",
-                "size": cta_size,
-            },
-            "color": "#FFFFFF",
-            "text_align": "center",
-        })
-
-    # 4. Logo — bottom left, small
-    # (Uses brand text since we can't upload a logo asset in every run)
-    logo_size = 16 if width >= 1200 else 14
-    elements.append({
-        "type": "text",
-        "content": "GADGET GEEKS PRO",
-        "position": {"x": int(width * 0.03), "y": int(height * 0.94)},
-        "size": {"width": int(width * 0.35), "height": int(logo_size * 1.8)},
-        "font": {
-            "family": "Plus Jakarta Sans",
-            "weight": "bold",
-            "size": logo_size,
-        },
-        "color": "#FFFFFF80",
-        "text_align": "left",
-    })
-
-    return elements
 
 
 # ---------------------------------------------------------------------------
@@ -500,7 +447,7 @@ def _build_elements(
 def process_batch() -> dict:
     """Process all generated images that haven't been designed yet.
 
-    Reads image-prompts.json, creates Canva designs for each image
+    Reads image-prompts.json, creates branded designs for each image
     with generated_url, updates both pipeline files.
 
     Returns:
@@ -559,7 +506,7 @@ def process_batch() -> dict:
 
             print(f"  Designing: {prompt_item.get('id', '?')} → {platform} {design_type}")
 
-            # Build the Canva design
+            # Build the branded post
             result = build_branded_post(
                 image_url=prompt_item["generated_url"],
                 platform=platform,
@@ -615,7 +562,7 @@ def process_batch() -> dict:
         json.dumps(pipeline_data, indent=2, ensure_ascii=False), encoding="utf-8"
     )
 
-    print(f"\n  Canva batch complete: {results['success']} designed, "
+    print(f"\n  Batch complete: {results['success']} designed, "
           f"{results['failed']} failed, {results['skipped']} skipped")
 
     return results
@@ -623,18 +570,15 @@ def process_batch() -> dict:
 
 def _build_text_overlay(prompt_item: dict, design_type: str) -> dict:
     """Build text overlay content based on prompt metadata and design type."""
-    notes = prompt_item.get("notes", "")
     keywords = prompt_item.get("keywords_targeted", [])
 
     if design_type == "product_spotlight":
-        # Extract model name from keywords or notes
         model = next((k for k in keywords if "iPhone" in k or "Galaxy" in k or "Pixel" in k), "")
         return {
             "headline": model or "Premium Refurbished",
             "subline": "65-Point Inspected. Like New.",
             "cta": "Shop Now",
         }
-
     elif design_type == "deal_urgency":
         model = next((k for k in keywords if "iPhone" in k or "Galaxy" in k), "")
         return {
@@ -642,21 +586,18 @@ def _build_text_overlay(prompt_item: dict, design_type: str) -> dict:
             "subline": "Save 40-60% vs Retail",
             "cta": "Check Price",
         }
-
     elif design_type == "sustainability":
         return {
             "headline": "Choose Refurbished",
             "subline": "Same phone. Less waste.",
             "cta": "Save Money & Planet",
         }
-
     elif design_type == "comparison":
         return {
             "headline": "New vs Refurbished",
             "subline": "Same specs. Half the price.",
             "cta": "See the Savings",
         }
-
     else:  # lifestyle
         return {
             "headline": keywords[0] if keywords else "Premium for Less",
@@ -670,7 +611,7 @@ def _build_text_overlay(prompt_item: dict, design_type: str) -> dict:
 # ---------------------------------------------------------------------------
 
 def notify_canva_batch(results: dict):
-    """Send Canva batch results to Telegram."""
+    """Send batch results to Telegram."""
     try:
         from actions.telegram_bot import send_message as tg_send
 
@@ -704,12 +645,10 @@ if __name__ == "__main__":
     print(f"  Time: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}")
     print("=" * 60)
 
-    # Token comes from Worker (auto-refresh) or static env var
     has_worker = os.environ.get("CANVA_TOKEN_WORKER_URL") and os.environ.get("WORKER_API_SECRET")
     has_static = os.environ.get("CANVA_ACCESS_TOKEN")
     if not has_worker and not has_static:
-        print("ERROR: No Canva token source. Set CANVA_TOKEN_WORKER_URL+WORKER_API_SECRET or CANVA_ACCESS_TOKEN")
-        exit(1)
+        print("WARNING: No Canva token source — designs will skip Canva upload")
 
     results = process_batch()
     notify_canva_batch(results)

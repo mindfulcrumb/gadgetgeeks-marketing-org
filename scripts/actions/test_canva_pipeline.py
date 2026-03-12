@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """
-One-time test: Generate image via Gemini → Upload to Shopify CDN → Create Canva post → Export.
+One-time test: Generate image via Gemini → Composite branded post with Pillow →
+Upload to Shopify CDN → Push to Canva.
+
 Tests the full pipeline end-to-end for a TikTok post about iPhone 14 100% battery health.
 """
 
@@ -10,7 +12,6 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-# Add scripts/actions to path so imports work
 sys.path.insert(0, str(Path(__file__).parent))
 
 from image_gen import generate_image, upload_to_shopify
@@ -26,7 +27,7 @@ def main():
     print("=" * 60)
 
     # --- Step 1: Generate image with Gemini ---
-    print("\n[1/3] Generating image via Gemini Imagen 4...")
+    print("\n[1/4] Generating image via Gemini Imagen 4...")
 
     prompt = (
         "Close-up of someone holding an iPhone 14 in Midnight showing the Battery Health "
@@ -45,16 +46,16 @@ def main():
     ext = "png" if "png" in mime else "jpg"
     print(f"  Image generated: {len(image_bytes):,} bytes ({mime})")
 
-    # --- Step 2: Upload to Shopify CDN ---
-    print("\n[2/3] Uploading to Shopify CDN...")
+    # --- Step 2: Upload raw image to Shopify CDN ---
+    print("\n[2/4] Uploading raw image to Shopify CDN...")
     filename = f"gg-test-iphone14-battery-{datetime.now(timezone.utc).strftime('%Y%m%d%H%M%S')}.{ext}"
-    cdn_url = upload_to_shopify(image_bytes, filename, content_type=mime)
-    print(f"  CDN URL: {cdn_url}")
+    raw_cdn_url = upload_to_shopify(image_bytes, filename, content_type=mime)
+    print(f"  Raw image CDN URL: {raw_cdn_url}")
 
-    # --- Step 3: Create Canva post ---
-    print("\n[3/3] Creating Canva branded post (TikTok / Instagram Story format)...")
+    # --- Step 3: Create branded post (Pillow composite → Shopify CDN → Canva) ---
+    print("\n[3/4] Creating branded TikTok post...")
     canva_result = build_branded_post(
-        image_url=cdn_url,
+        image_url=raw_cdn_url,
         platform="instagram_story",  # 1080x1920 = TikTok/Reels format
         design_type="product_spotlight",
         text_overlay={
@@ -65,28 +66,28 @@ def main():
         prompt_id="test_battery_health",
     )
 
+    # --- Results ---
     print(f"\n{'=' * 60}")
     print("  RESULTS")
     print(f"{'=' * 60}")
-    print(f"  Gemini raw image (Shopify CDN): {cdn_url}")
-    print(f"  Canva design ID:                {canva_result.get('canva_design_id', 'N/A')}")
-    print(f"  Canva edit URL:                 {canva_result.get('canva_edit_url', 'N/A')}")
-    print(f"  Final post (Shopify CDN):       {canva_result.get('export_url', 'N/A')}")
-    print(f"  Canva temp export:              {canva_result.get('canva_export_url', 'N/A')}")
-    print(f"  Platform:                       {canva_result.get('platform', 'N/A')}")
-    print(f"  Dimensions:                     {canva_result.get('dimensions', 'N/A')}")
-    print(f"  Status:                         {canva_result.get('status', 'N/A')}")
+    print(f"  Raw image (Shopify CDN):     {raw_cdn_url}")
+    print(f"  Branded post (Shopify CDN):  {canva_result.get('export_url', 'N/A')}")
+    print(f"  Canva design ID:             {canva_result.get('canva_design_id', 'N/A')}")
+    print(f"  Canva edit URL:              {canva_result.get('canva_edit_url', 'N/A')}")
+    print(f"  Platform:                    {canva_result.get('platform', 'N/A')}")
+    print(f"  Dimensions:                  {canva_result.get('dimensions', 'N/A')}")
+    print(f"  Status:                      {canva_result.get('status', 'N/A')}")
 
     if canva_result.get("error"):
-        print(f"  Error:           {canva_result['error']}")
+        print(f"  Error:                       {canva_result['error']}")
 
     # Save results
     results_path = REPO_ROOT / "departments" / "canva" / "test-result.json"
     results_path.write_text(json.dumps({
         "test": "iphone14_battery_health_tiktok",
         "timestamp": datetime.now(timezone.utc).isoformat(),
-        "gemini_image_url": cdn_url,
-        "canva": canva_result,
+        "raw_image_url": raw_cdn_url,
+        "branded_post": canva_result,
     }, indent=2), encoding="utf-8")
     print(f"\n  Results saved to: {results_path}")
 

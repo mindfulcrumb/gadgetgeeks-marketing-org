@@ -2,13 +2,18 @@
 # Deploy: cd scripts && npx wrangler deploy
 # Secrets: npx wrangler secret put TELEGRAM_BOT_TOKEN
 #          npx wrangler secret put GH_TOKEN
+#          npx wrangler secret put CANVA_CLIENT_ID
+#          npx wrangler secret put CANVA_CLIENT_SECRET
 
 name = "gadgetgeeks-telegram-webhook"
 main = "actions/telegram_webhook_worker.js"
 compatibility_date = "2024-12-01"
+account_id = "c4582132c39a69078cbc492d3b67fb51"
 
-# Free tier — no usage-based billing
-usage_model = "bundled"
+# KV namespace for persistent token storage (Canva OAuth, etc.)
+[[kv_namespaces]]
+binding = "TOKEN_STORE"
+id = "PLACEHOLDER_CREATE_VIA_WRANGLER"
 
 # Optional: custom route (uncomment if you have a domain on CF)
 # routes = [

@@ -22,11 +22,37 @@ CANVA_API_BASE = "https://api.canva.com/rest/v1"
 REPO_ROOT = Path(__file__).parent.parent.parent
 
 
+def _fetch_token_from_worker() -> str:
+    """Fetch a fresh Canva access token from the Cloudflare Worker."""
+    worker_url = os.environ.get("CANVA_TOKEN_WORKER_URL", "")
+    worker_secret = os.environ.get("WORKER_API_SECRET", "")
+    if not worker_url or not worker_secret:
+        return ""
+    try:
+        resp = requests.get(
+            f"{worker_url}/canva/token",
+            headers={"X-Worker-Secret": worker_secret},
+            timeout=15,
+        )
+        if resp.status_code == 200:
+            data = resp.json()
+            if data.get("ok"):
+                return data["access_token"]
+        print(f"[canva] Worker token fetch failed: {resp.status_code} {resp.text[:200]}")
+    except Exception as e:
+        print(f"[canva] Worker token fetch error: {e}")
+    return ""
+
+
 def _canva_headers() -> dict:
     """Build authorization headers for Canva Connect API."""
-    token = os.environ.get("CANVA_ACCESS_TOKEN", "")
+    # Try worker first (auto-refresh), fall back to env var
+    token = _fetch_token_from_worker() or os.environ.get("CANVA_ACCESS_TOKEN", "")
     if not token:
-        raise ValueError("CANVA_ACCESS_TOKEN environment variable is not set")
+        raise ValueError(
+            "No Canva token available. Set CANVA_TOKEN_WORKER_URL + WORKER_API_SECRET "
+            "or CANVA_ACCESS_TOKEN directly."
+        )
     return {
         "Authorization": f"Bearer {token}",
         "Content-Type": "application/json",

@@ -37,6 +37,7 @@ const DEPT_WORKFLOW_MAP = {
   blog_publish: 'blog-publish.yml',
   dialer: 'dialer.yml',
   dialer_execute: 'dialer-execute.yml',
+  canva_post: 'canva-post.yml',
 };
 
 const DEPT_NAMES = {
@@ -58,6 +59,7 @@ const DEPT_NAMES = {
   blog_qa: 'Blog QA',
   blog_publish: 'Blog Publisher',
   dialer: 'Dialer',
+  canva_post: 'Canva Designer',
 };
 
 const DEPT_EMOJI = {
@@ -79,6 +81,7 @@ const DEPT_EMOJI = {
   blog_qa: '\u{1F6A8}',
   blog_publish: '\u{1F680}',
   dialer: '\u{1F4DE}',
+  canva_post: '\u{1F3A8}',
 };
 
 const STATUS_EMOJI = { ok: '\u2705', error: '\u274C', working: '\u23F3', idle: '\u23F8' };
@@ -93,6 +96,7 @@ const DEPT_ALIASES = {
   cro: 'cro', conversion: 'cro', optimize: 'cro',
   blog: 'blog_writer', blogs: 'blog_writer', article: 'blog_writer', write: 'blog_writer',
   image: 'image_prompts', images: 'image_prompts', prompts: 'image_prompts', photos: 'image_prompts', generate: 'image_generate',
+  canva: 'canva_post', design: 'canva_post', canvas: 'canva_post',
   gm: 'gm_queue', report: 'gm_report',
   x: 'x_intel', hawk: 'x_intel',
 };
@@ -1010,14 +1014,215 @@ const CORS_HEADERS = {
   'Access-Control-Allow-Headers': 'Content-Type',
 };
 
+// ---------------------------------------------------------------------------
+// Canva OAuth helpers
+// ---------------------------------------------------------------------------
+
+const CANVA_TOKEN_URL = 'https://api.canva.com/rest/v1/oauth/token';
+const CANVA_AUTH_URL = 'https://www.canva.com/api/oauth/authorize';
+const CANVA_SCOPES = 'design:content:read design:content:write asset:read asset:write';
+const CANVA_KV_KEY = 'canva_tokens';
+
+async function canvaStartAuth(env, workerUrl) {
+  const clientId = env.CANVA_CLIENT_ID;
+  if (!clientId) return new Response('Missing CANVA_CLIENT_ID secret', { status: 500 });
+
+  // Generate PKCE code verifier + challenge
+  const verifierBytes = new Uint8Array(64);
+  crypto.getRandomValues(verifierBytes);
+  const codeVerifier = btoa(String.fromCharCode(...verifierBytes))
+    .replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '').slice(0, 128);
+
+  const challengeBuffer = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(codeVerifier));
+  const codeChallenge = btoa(String.fromCharCode(...new Uint8Array(challengeBuffer)))
+    .replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+
+  const state = crypto.randomUUID();
+
+  // Store verifier + state in KV (5 min TTL)
+  await env.TOKEN_STORE.put('canva_pkce', JSON.stringify({ codeVerifier, state }), { expirationTtl: 300 });
+
+  const redirectUri = `${workerUrl}/canva/callback`;
+  const params = new URLSearchParams({
+    response_type: 'code',
+    client_id: clientId,
+    redirect_uri: redirectUri,
+    scope: CANVA_SCOPES,
+    state,
+    code_challenge: codeChallenge,
+    code_challenge_method: 'S256',
+  });
+
+  return Response.redirect(`${CANVA_AUTH_URL}?${params}`, 302);
+}
+
+async function canvaHandleCallback(env, url) {
+  const code = url.searchParams.get('code');
+  const state = url.searchParams.get('state');
+  const error = url.searchParams.get('error');
+
+  if (error) {
+    return new Response(`<h1>Canva Auth Error</h1><p>${error}</p>`, {
+      status: 400, headers: { 'Content-Type': 'text/html' },
+    });
+  }
+
+  if (!code) {
+    return new Response('Missing authorization code', { status: 400 });
+  }
+
+  // Verify state + retrieve PKCE verifier
+  const pkceRaw = await env.TOKEN_STORE.get('canva_pkce');
+  if (!pkceRaw) {
+    return new Response('PKCE session expired — restart auth at /canva/auth', { status: 400 });
+  }
+  const pkce = JSON.parse(pkceRaw);
+  if (pkce.state !== state) {
+    return new Response('State mismatch — possible CSRF', { status: 403 });
+  }
+
+  const workerUrl = `${url.protocol}//${url.host}`;
+  const redirectUri = `${workerUrl}/canva/callback`;
+
+  // Exchange code for tokens
+  const resp = await fetch(CANVA_TOKEN_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      Authorization: 'Basic ' + btoa(`${env.CANVA_CLIENT_ID}:${env.CANVA_CLIENT_SECRET}`),
+    },
+    body: new URLSearchParams({
+      grant_type: 'authorization_code',
+      code,
+      redirect_uri: redirectUri,
+      code_verifier: pkce.codeVerifier,
+    }),
+  });
+
+  if (!resp.ok) {
+    const errText = await resp.text();
+    return new Response(`<h1>Token Exchange Failed</h1><pre>${resp.status}: ${errText}</pre>`, {
+      status: 502, headers: { 'Content-Type': 'text/html' },
+    });
+  }
+
+  const data = await resp.json();
+  const tokenData = {
+    access_token: data.access_token,
+    refresh_token: data.refresh_token,
+    expires_at: Date.now() + (data.expires_in * 1000) - 60000, // 1 min buffer
+    updated_at: new Date().toISOString(),
+  };
+
+  await env.TOKEN_STORE.put(CANVA_KV_KEY, JSON.stringify(tokenData));
+  await env.TOKEN_STORE.delete('canva_pkce');
+
+  return new Response(
+    '<html><body style="font-family:sans-serif;text-align:center;padding:60px">' +
+    '<h1 style="color:#22c55e">Canva Connected!</h1>' +
+    '<p>Access token stored. Auto-refresh is active.</p>' +
+    '<p>Token expires in ' + Math.round(data.expires_in / 3600) + ' hours — will auto-refresh.</p>' +
+    '<p>You can close this tab.</p></body></html>',
+    { status: 200, headers: { 'Content-Type': 'text/html' } }
+  );
+}
+
+async function canvaGetFreshToken(env) {
+  const raw = await env.TOKEN_STORE.get(CANVA_KV_KEY);
+  if (!raw) {
+    return { ok: false, error: 'No Canva token stored. Visit /canva/auth to connect.' };
+  }
+
+  let tokens = JSON.parse(raw);
+
+  // If token expires within 5 minutes, refresh it
+  if (Date.now() > tokens.expires_at - 300000) {
+    const resp = await fetch(CANVA_TOKEN_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization: 'Basic ' + btoa(`${env.CANVA_CLIENT_ID}:${env.CANVA_CLIENT_SECRET}`),
+      },
+      body: new URLSearchParams({
+        grant_type: 'refresh_token',
+        refresh_token: tokens.refresh_token,
+      }),
+    });
+
+    if (!resp.ok) {
+      return { ok: false, error: `Refresh failed (${resp.status}). Re-auth at /canva/auth` };
+    }
+
+    const data = await resp.json();
+    tokens = {
+      access_token: data.access_token,
+      refresh_token: data.refresh_token || tokens.refresh_token,
+      expires_at: Date.now() + (data.expires_in * 1000) - 60000,
+      updated_at: new Date().toISOString(),
+    };
+    await env.TOKEN_STORE.put(CANVA_KV_KEY, JSON.stringify(tokens));
+  }
+
+  return { ok: true, access_token: tokens.access_token, expires_at: tokens.expires_at };
+}
+
+// ---------------------------------------------------------------------------
+// Main fetch handler
+// ---------------------------------------------------------------------------
+
 export default {
   async fetch(request, env) {
+    const url = new URL(request.url);
+    const path = url.pathname;
+
     // CORS preflight
     if (request.method === 'OPTIONS') {
       return new Response(null, { status: 204, headers: CORS_HEADERS });
     }
 
-    // Health check
+    // --- Canva OAuth routes (path-based) ---
+    if (path === '/canva/auth' && request.method === 'GET') {
+      const workerUrl = `${url.protocol}//${url.host}`;
+      return canvaStartAuth(env, workerUrl);
+    }
+
+    if (path === '/canva/callback' && request.method === 'GET') {
+      return canvaHandleCallback(env, url);
+    }
+
+    if (path === '/canva/token' && request.method === 'GET') {
+      // Protected: requires a shared secret header
+      const authHeader = request.headers.get('X-Worker-Secret');
+      if (!authHeader || authHeader !== env.WORKER_API_SECRET) {
+        return new Response(JSON.stringify({ ok: false, error: 'Unauthorized' }), {
+          status: 401, headers: { 'Content-Type': 'application/json' },
+        });
+      }
+      const result = await canvaGetFreshToken(env);
+      return new Response(JSON.stringify(result), {
+        status: result.ok ? 200 : 502,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
+    if (path === '/canva/status' && request.method === 'GET') {
+      const raw = await env.TOKEN_STORE.get(CANVA_KV_KEY);
+      if (!raw) {
+        return new Response(JSON.stringify({ connected: false }), {
+          headers: { 'Content-Type': 'application/json' },
+        });
+      }
+      const tokens = JSON.parse(raw);
+      return new Response(JSON.stringify({
+        connected: true,
+        expires_at: tokens.expires_at,
+        expires_in_minutes: Math.round((tokens.expires_at - Date.now()) / 60000),
+        updated_at: tokens.updated_at,
+        needs_refresh: Date.now() > tokens.expires_at - 300000,
+      }), { headers: { 'Content-Type': 'application/json' } });
+    }
+
+    // --- Health check (root GET only) ---
     if (request.method === 'GET') {
       return new Response('GadgetGeeks Telegram Webhook is alive.', {
         status: 200,
@@ -1025,7 +1230,7 @@ export default {
       });
     }
 
-    // Only accept POST
+    // Only accept POST for Telegram/dashboard
     if (request.method !== 'POST') {
       return new Response('Method not allowed', { status: 405, headers: CORS_HEADERS });
     }

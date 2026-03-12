@@ -1,5 +1,12 @@
 {
-  "pending": [],
+  "pending": [
+    {
+      "department": "gm_queue",
+      "instruction": "/fix_image_cheap-refurbished-phones-guide",
+      "created_at": "2026-03-12T15:37:53.285376+00:00",
+      "status": "pending"
+    }
+  ],
   "consumed": [
     {
       "department": "dialer",

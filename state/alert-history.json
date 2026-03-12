@@ -1,6 +1,12 @@
 {
   "alerts": [
     {
+      "timestamp": "2026-03-12T15:07:14.087539+00:00",
+      "department": "dialer",
+      "level": "info",
+      "message": "Queued 1 item(s) for approval"
+    },
+    {
       "timestamp": "2026-03-12T11:37:34.824797+00:00",
       "department": "dialer",
       "level": "info",

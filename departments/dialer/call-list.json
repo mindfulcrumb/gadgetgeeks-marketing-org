@@ -19,7 +19,7 @@
       "phone_number": "+14808765236",
       "customer_name": "Will",
       "script_type": "direct_instruction",
-      "reason": "Direct boss instruction Ã¢ÂÂ call Will now",
+      "reason": "Direct boss instruction – call Will now",
       "priority": "urgent",
       "best_time": "NOW",
       "status": "called",
@@ -57,27 +57,34 @@
     "total_voicemail": 0,
     "total_not_interested": 0
   },
-  "last_run": "2026-03-12 11:37 UTC",
-  "status": "No new calls built - awaiting Shopify data access. Updated script priorities based on Intel trends.",
+  "last_run": "2026-03-12 15:06 UTC",
+  "status": "Cannot build call list - missing Shopify data access. Scripts updated with March intelligence. Within calling hours (7:06 AM PST).",
   "priority_focus": [
-    "CRITICAL: Battery health messaging (400% increase in customer mentions)",
-    "iPhone 16 anticipation urgency - perfect timing messaging",
-    "Spring upgrade cycle - highest supply in months",
-    "Accessory compatibility expertise positioning",
-    "Biometric function quality assurance"
+    "CRITICAL: Battery health messaging (400% increase in customer mentions - exact percentages mandatory)",
+    "iPhone 16 anticipation urgency - perfect upgrade timing messaging",
+    "Spring upgrade cycle - highest supply in months (23% week-over-week increase)",
+    "Accessory compatibility expertise - major confusion about Lightning vs USB-C",
+    "Biometric function quality assurance - Face ID/Touch ID reliability concerns"
   ],
   "data_access_needed": [
-    "Shopify abandoned cart data (past 48hrs, $300+ value)",
-    "Customer purchase history (60+ days inactive)",
-    "Recent order data (7-14 days for review requests)",
-    "B2B leads database",
-    "Previous call outcome logs"
+    "Shopify abandoned cart API - past 48hrs, $300+ items",
+    "Customer purchase history API - identify 60+ day inactive customers",
+    "Recent order data - 7-14 days ago for review requests",
+    "B2B leads database access",
+    "Previous call outcome tracking system"
   ],
   "script_updates_needed": {
-    "abandoned_cart": "Lead with exact battery health %, emphasize spring timing advantage",
-    "winback": "iPhone 16 anticipation creates perfect upgrade timing pressure",
-    "review_request": "Focus on compatibility expertise and accessory bundles",
-    "b2b_outreach": "Position as spring supply advantage for bulk orders"
+    "abandoned_cart": "MUST lead with exact battery health % (85%+ minimum), emphasize spring timing advantage, address bloating fears proactively",
+    "winback": "iPhone 16 anticipation creates perfect upgrade timing pressure - 'best prices before next wave'",
+    "review_request": "Focus on compatibility expertise (Lightning vs USB-C confusion), bundle recommendations",
+    "b2b_outreach": "Spring supply advantage for bulk orders - 23% more inventory, better grades available"
   },
-  "calling_hours_status": "Outside calling hours (3:37 AM PST). Next calling window: 9:00 AM PST (17:00 UTC)"
+  "calling_hours_status": "Within calling hours (7:06 AM PST). Optimal calling window: 9:00 AM - 8:00 PM PST",
+  "next_actions": [
+    "Integrate with Shopify API for abandoned cart data",
+    "Set up customer purchase history access",
+    "Create previous call outcome tracking",
+    "Update scripts with battery health guarantees",
+    "Build compatibility expertise positioning"
+  ]
 }

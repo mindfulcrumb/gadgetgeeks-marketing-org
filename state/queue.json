@@ -3,7 +3,7 @@
     {
       "department": "dialer",
       "type": "data_request",
-      "summary": "Build targeted outbound call lists \u00e2\u0080\u0094 abandoned carts $300+, win-back inactive customers, review requests",
+      "summary": "Build targeted outbound call lists â abandoned carts $300+, win-back inactive customers, review requests",
       "required_data": [
         "Shopify abandoned carts (last 48 hours, $300+ value)",
         "Customer purchase history (60+ days inactive for win-back)",
@@ -18,7 +18,7 @@
     {
       "department": "seo",
       "type": "content_brief",
-      "summary": "Blog brief: 'Cheap Refurbished Phones \u00e2\u0080\u0094 How to Get $800 Phone for $350' targeting keyword 'cheap refurbished phones'",
+      "summary": "Blog brief: 'Cheap Refurbished Phones â How to Get $800 Phone for $350' targeting keyword 'cheap refurbished phones'",
       "page": "/blogs/deals/cheap-refurbished-phones-guide",
       "target_keyword": "cheap refurbished phones",
       "meta_title": "Cheap Refurbished Phones: How to Get $800 Phone for $350 (2026 Guide)",
@@ -42,9 +42,9 @@
     {
       "department": "x_intel",
       "type": "social_reply",
-      "summary": "Reply to @filocapri's viral e-waste post (7.5K+ likes) \u00e2\u0080\u0094 eco angle, brand alignment",
+      "summary": "Reply to @filocapri's viral e-waste post (7.5K+ likes) â eco angle, brand alignment",
       "target_post": "@filocapri's e-waste awareness post (7.5K+ likes)",
-      "reply_content": "This! \u00f0\u009f\u0091\u008f Choosing refurbished over new = same phone, 70% less environmental impact. Every device saved from e-waste makes a difference. Our refurbished iPhones work like new but help the planet too. \u00f0\u009f\u008c\u00b1\u00f0\u009f\u0093\u00b1",
+      "reply_content": "This! ð Choosing refurbished over new = same phone, 70% less environmental impact. Every device saved from e-waste makes a difference. Our refurbished iPhones work like new but help the planet too. ð±ð±",
       "why_engage": "Massive viral engagement, environmentally conscious audience, perfect brand alignment",
       "timing": "Immediately - while post is still trending",
       "id": "x_intel_20260312_074259"
@@ -52,9 +52,9 @@
     {
       "department": "x_intel",
       "type": "social_reply",
-      "summary": "Reply to @taqd33z asking for budget phone recs \u00e2\u0080\u0094 pitch refurbished flagship vs new budget",
+      "summary": "Reply to @taqd33z asking for budget phone recs â pitch refurbished flagship vs new budget",
       "target_post": "@taqd33z asking for budget phone recommendations",
-      "reply_content": "Instead of new budget phone with weak specs, consider refurbished flagship! iPhone 14 Pro refurbished ($500) vs new budget Android ($400) - better camera, performance, longevity. Sometimes spending slightly more upfront saves money long-term \u00f0\u009f\u0093\u00b1\u00e2\u009c\u00a8",
+      "reply_content": "Instead of new budget phone with weak specs, consider refurbished flagship! iPhone 14 Pro refurbished ($500) vs new budget Android ($400) - better camera, performance, longevity. Sometimes spending slightly more upfront saves money long-term ð±â¨",
       "why_engage": "Direct engagement with active shopper, demonstrates expertise",
       "timing": "Today - while they're actively researching",
       "id": "x_intel_20260312_074259"
@@ -62,9 +62,9 @@
     {
       "department": "x_intel",
       "type": "social_reply",
-      "summary": "Reply to @mrs_johnson909's Back Market complaint \u00e2\u0080\u0094 differentiate on customer service",
+      "summary": "Reply to @mrs_johnson909's Back Market complaint â differentiate on customer service",
       "target_post": "@mrs_johnson909's Back Market support complaint",
-      "reply_content": "Sorry this happened to you \u00f0\u009f\u0098\u009e This is exactly why we guarantee 2-hour response times and have real humans handling returns. No one should have to chase for weeks to return a defective device. Customer service should be as reliable as the phones we sell.",
+      "reply_content": "Sorry this happened to you ð This is exactly why we guarantee 2-hour response times and have real humans handling returns. No one should have to chase for weeks to return a defective device. Customer service should be as reliable as the phones we sell.",
       "why_engage": "Shows we care about customer experience, differentiates from competitor failures",
       "timing": "Today - while complaint is fresh",
       "id": "x_intel_20260312_074259"
@@ -72,7 +72,7 @@
     {
       "department": "email",
       "type": "email_campaign",
-      "summary": "Cross-sell protection bundles to recent phone buyers \u00e2\u0080\u0094 'Don't let a $5 drop ruin your $350 steal'",
+      "summary": "Cross-sell protection bundles to recent phone buyers â 'Don't let a $5 drop ruin your $350 steal'",
       "campaign_id": "crosssell-protection-001",
       "subject_variants": {
         "a": "Don't let a $5 drop ruin your $350 steal",
@@ -144,22 +144,38 @@
       "id": "blog_publish_20260312_143000",
       "department": "content",
       "type": "blog_publish",
-      "summary": "Blog: Cheap Refurbished Phones \u2014 How to Get an $800 Phone for $350",
+      "summary": "Blog: Cheap Refurbished Phones — How to Get an $800 Phone for $350",
       "handle": "cheap-refurbished-phones-guide",
       "title": "Cheap Refurbished Phones: How to Get an $800 Phone for $350",
-      "action_on_approve": "Generate header image via Gemini \u2192 Upload to Shopify CDN \u2192 Publish article \u2192 Send confirmation with live URL",
+      "action_on_approve": "Generate header image via Gemini → Upload to Shopify CDN → Publish article → Send confirmation with live URL",
       "qa_rating": "EXCELLENT",
       "word_count": 1488,
       "internal_links": 5,
       "product_callouts": 3,
       "created_at": "2026-03-12T14:41:48.172431+00:00"
+    },
+    {
+      "required_integrations": [
+        "Shopify abandoned cart API (past 48hrs, $300+ value)",
+        "Customer purchase history database (60+ day inactive identification)",
+        "Recent order tracking (7-14 days for review requests)",
+        "B2B leads database connection",
+        "Call outcome tracking system"
+      ],
+      "current_limitation": "Cannot identify calling opportunities without customer data access",
+      "script_updates_ready": "Intelligence-based script priorities updated for March trends",
+      "calling_readiness": "Within calling hours, VAPI configured, but no target opportunities identified",
+      "id": "dialer_20260312_150714",
+      "department": "dialer",
+      "type": "dialer",
+      "summary": "New dialer item"
     }
   ],
   "approved": [
     {
       "department": "seo",
       "type": "seo_recommendation",
-      "summary": "Meta title/description update for /collections/refurbished-samsung \u00e2\u0080\u0094 switch to pre-owned terminology",
+      "summary": "Meta title/description update for /collections/refurbished-samsung â switch to pre-owned terminology",
       "page": "/collections/refurbished-samsung",
       "meta_title": "Pre-Owned Samsung Galaxy - Tested & Certified | Gadget Geeks Pro",
       "meta_description": "Shop pre-owned Samsung Galaxy phones that can't tell the difference from new. Battery lasts all day. Save half the price with warranty. Find your Galaxy now.",

@@ -1,0 +1,35 @@
+name: VAPI Audit — Fix Assistants
+on:
+  workflow_dispatch:
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Audit and fix VAPI assistants
+        env:
+          VAPI_API_KEY: ${{ secrets.VAPI_API_KEY }}
+        working-directory: scripts/actions
+        run: python vapi_audit.py
+
+      - name: Push updated config
+        run: |
+          git config user.name "Marketing Org Bot"
+          git config user.email "bot@gadgetgeekspro.com"
+          git add -A
+          git diff --cached --quiet || git commit -m "[vapi] Audit — reset assistants to GadgetGeeks"
+          for i in 1 2 3; do
+            git pull --rebase origin main || { git rebase --abort 2>/dev/null; git pull origin main --no-edit; }
+            git push && break || sleep 5
+          done

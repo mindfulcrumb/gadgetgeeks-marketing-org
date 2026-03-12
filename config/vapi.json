@@ -2,7 +2,12 @@
   "public_key": "2c3e1d24-a900-4292-a511-fe853c6c1659",
   "phone_number": "+19253323098",
   "phone_number_id": "eb2154c3-8919-43d9-bac3-a63531436626",
-  "assistants": {},
+  "assistants": {
+    "abandoned_cart": "33817be8-d11d-4ff1-a305-521f9fa394b4",
+    "review_request": "0ca878f0-38f5-4c9d-941f-eca8eaacc708",
+    "winback": "62f320e9-5977-44fa-9025-73c436881f41",
+    "b2b_outreach": "3baead1e-8756-4629-a300-92e4a377db45"
+  },
   "max_calls_per_day": 20,
   "calling_hours": {
     "start": "09:00",

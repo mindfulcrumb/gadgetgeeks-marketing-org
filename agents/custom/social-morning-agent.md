@@ -13,10 +13,20 @@ Create 1-2 social media posts and schedule them via Postiz to all connected plat
 
 ### 1. Check Context
 - Read social/calendar.json for what's been posted recently (avoid repeating)
+- Read **departments/canva/pipeline.json** for finished Canva designs ready to post (status: "exported")
+- Read departments/social/image-prompts.json for generated images (if no Canva designs available)
 - Read intel/trends.json for trending topics to ride
 - Read intel/customer-language.json for real language to use
 - Check content/drafts/ for blog content to repurpose
 - Review platform-config.json for platform list and posting times
+
+### 1b. Use Canva Designs First
+**Priority: ALWAYS use finished Canva designs over raw generated images.**
+- Check `departments/canva/pipeline.json` → designs with `status: "exported"` and `export_url` present
+- Use the `export_url` as the `media_url` in SOCIAL_POST blocks
+- Match post platform to the design's target platform (instagram design → instagram post)
+- Mark used designs by noting their ID in calendar.json
+- Fall back to raw `generated_url` from image-prompts.json ONLY if no Canva designs are available
 
 ### 2. Create Posts
 Create 1-2 posts. Each post must:

@@ -1,0 +1,66 @@
+{
+  "_docs": "Canva Post Design Pipeline — tracks image-to-finished-post conversion. The Canva department takes generated images from departments/social/image-prompts.json and creates finished social media posts using Canva.",
+  "_created": "2026-03-12",
+  "_last_run": null,
+  "designs": [],
+  "templates": {
+    "instagram_square": {
+      "width": 1080,
+      "height": 1080,
+      "type": "InstagramSquare",
+      "description": "1:1 Instagram feed post"
+    },
+    "instagram_story": {
+      "width": 1080,
+      "height": 1920,
+      "type": "InstagramStory",
+      "description": "9:16 Instagram/TikTok story"
+    },
+    "twitter_post": {
+      "width": 1600,
+      "height": 900,
+      "type": "TwitterPost",
+      "description": "16:9 Twitter/X post image"
+    },
+    "facebook_post": {
+      "width": 1200,
+      "height": 630,
+      "type": "FacebookPost",
+      "description": "Facebook feed post"
+    },
+    "linkedin_post": {
+      "width": 1200,
+      "height": 627,
+      "type": "LinkedInPost",
+      "description": "LinkedIn feed post"
+    },
+    "pinterest_pin": {
+      "width": 1000,
+      "height": 1500,
+      "type": "PinterestPin",
+      "description": "2:3 Pinterest pin"
+    }
+  },
+  "brand_elements": {
+    "logo_text": "GADGET GEEKS PRO",
+    "tagline": "Premium Refurbished Tech",
+    "primary_color": "#C72F8F",
+    "secondary_color": "#0D0D0D",
+    "accent_color": "#5B21A8",
+    "text_color": "#FFFFFF",
+    "font_heading": "Plus Jakarta Sans",
+    "font_body": "Inter",
+    "value_props": [
+      "65-Point Inspection",
+      "90-Day Warranty",
+      "Free Shipping",
+      "30-Day Returns",
+      "Save 40-60%"
+    ]
+  },
+  "stats": {
+    "total_designs": 0,
+    "designs_today": 0,
+    "last_design_at": null
+  }
+}

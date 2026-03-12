@@ -1,7 +1,7 @@
 name: Image Prompting (LENS)
 on:
   schedule:
-    - cron: '19 8 * * 1,3,5'  # Mon/Wed/Fri 8:19 AM UTC (after content, before social)
+    - cron: '19 8 * * *'  # Daily 8:19 AM UTC — LENS generates 10 prompts/day
   workflow_dispatch:
 
 jobs:

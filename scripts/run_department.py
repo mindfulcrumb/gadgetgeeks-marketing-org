@@ -149,6 +149,8 @@ DEPARTMENT_CONFIG = {
         "context_files": [
             "departments/social/calendar.json",
             "departments/social/platform-config.json",
+            "departments/canva/pipeline.json",
+            "departments/social/image-prompts.json",
             "departments/intel/trends.json",
             "departments/intel/customer-language.json",
             "departments/x-intel/daily-brief.json",
@@ -259,6 +261,21 @@ DEPARTMENT_CONFIG = {
             "config/niche.json",
         ],
         "output_files": [
+            "departments/social/image-prompts.json",
+        ],
+    },
+    "canva_designer": {
+        "agent_prompt": "agents/custom/canva-post-agent.md",
+        "context_files": [
+            "departments/canva/pipeline.json",
+            "departments/social/image-prompts.json",
+            "departments/social/calendar.json",
+            "departments/intel/trends.json",
+            "departments/intel/customer-language.json",
+            "config/niche.json",
+        ],
+        "output_files": [
+            "departments/canva/pipeline.json",
             "departments/social/image-prompts.json",
         ],
     },

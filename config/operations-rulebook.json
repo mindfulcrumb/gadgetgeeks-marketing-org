@@ -71,6 +71,12 @@
         "required_fields": ["prompt", "aspect_ratio"],
         "confirmation": "Telegram message with image preview URL",
         "rollback": "Delete from Shopify Files"
+      },
+      "canva_design": {
+        "action": "Create branded social media post in Canva using generated image + text overlays + brand kit → export as PNG",
+        "required_fields": ["source_prompt_id", "platform", "design_type"],
+        "confirmation": "Telegram message with design preview + edit URL",
+        "rollback": "Delete design from Canva"
       }
     }
   },
@@ -233,12 +239,16 @@
   },
 
   "rule_12_all_workflows_daily": {
-    "description": "Blog pipeline runs daily. One blog per day. All supporting workflows run daily.",
+    "description": "All pipelines run daily. Image pipeline produces 10 images/day. Canva produces 10 designs/day. Blog pipeline produces 1 blog/day.",
     "schedule": {
+      "LENS (image-prompts)": "Daily 8:19 UTC — generates 10 image prompts",
+      "FOCUS (prompt-qa)": "Daily 8:49 UTC — reviews all 10 prompts",
+      "Image generation": "Daily 8:55 UTC — generates images via Gemini Imagen",
+      "CANVAS (canva-post)": "Daily 9:25 UTC — creates 10 branded Canva designs from generated images",
+      "Social morning": "Daily 9:45 UTC — picks up Canva designs and posts to platforms",
       "SCRIBE (blog-writer)": "Daily 9:30 UTC — writes one blog from brief_ready queue",
       "QUILL (blog-qa)": "Daily 10:00 UTC — scans and QA-reviews draft_ready blogs",
-      "PRESS (blog-publish)": "Daily 10:30 UTC — packages qa_approved blogs for approval",
-      "Image generation": "Daily 8:55 UTC — generates pending image prompts"
+      "PRESS (blog-publish)": "Daily 10:30 UTC — packages qa_approved blogs for approval"
     },
     "rules": [
       "The pipeline processes ONE blog per day through each stage",

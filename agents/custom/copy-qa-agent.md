@@ -9,6 +9,7 @@ Scan every piece of copy produced by any department. Flag violations with specif
 ## Load First
 - `agents/custom/department-context.md` (brand voice, audience, value props)
 - `config/copy-rules.json` (banned words, banned phrases, structural rules)
+- `state/incident-log.json`
 
 ---
 

@@ -2,6 +2,34 @@
   "_docs": "Incident log for the GadgetGeeks Marketing Org. Every mistake, fix, and lesson learned goes here. The GM reads this weekly. Every agent reads their relevant incidents before running. The boss reviews this to delegate and correct. Format: newest first.",
   "incidents": [
     {
+      "id": "INC-007",
+      "date": "2026-03-12",
+      "severity": "critical",
+      "department": "content",
+      "agents_involved": ["PRESS (telegram_bot.py)", "manual publish (bypassed pipeline)"],
+      "title": "Blog #2 published without header image — pipeline bypassed",
+      "what_happened": "Blog 'Cheap Refurbished Phones' was published to Shopify via direct articleCreate call during a manual session, bypassing _auto_publish_blog() which contains the image generation step. The blog went live at gadgetgeekspro.com/blogs/news/cheap-refurbished-phones-guide with NO header image. Article ID: gid://shopify/Article/597502787835.",
+      "root_cause": "Publication happened outside the autonomous pipeline. The articleCreate was called directly from a local session without GEMINI_API_KEY, bypassing the _auto_publish_blog() function which generates the image, blocks on failure, and then publishes.",
+      "fix_applied": "1) Added /fix_image command to Telegram bot — retroactively generates and attaches images to published blogs via articleUpdate. 2) Added Rule 11 to operations-rulebook.json: EVERY blog MUST have a header image, publication BLOCKED without one, all publishing MUST go through _auto_publish_blog(). 3) Added Rule 12: all blog workflows run daily. 4) Changed image-generate.yml to daily schedule. 5) /fix_image cheap-refurbished-phones-guide will be triggered via GitHub Actions to fix the published blog.",
+      "lesson": "NEVER publish a blog outside of the autonomous pipeline. _auto_publish_blog() is the ONLY code path that creates Shopify articles. Local/manual sessions must not bypass the pipeline because they lack the API keys (GEMINI_API_KEY) needed for image generation.",
+      "preventive_rule": "Rule 11 in operations-rulebook.json: All publication MUST go through _auto_publish_blog(). No direct articleCreate calls. If image generation fails, publication is BLOCKED. /fix_image exists as a safety net but should never be needed.",
+      "status": "in_progress"
+    },
+    {
+      "id": "INC-006",
+      "date": "2026-03-12",
+      "severity": "high",
+      "department": "operations",
+      "agents_involved": ["telegram_bot.py", "all agents"],
+      "title": "Dead-end approvals — boss approved SEO recommendation but nothing happened",
+      "what_happened": "Boss approved queue item seo_20260312_001430 (SEO meta title/description update for Samsung collection) via /approve on Telegram. The system responded 'Approved: [summary]' but took NO action. The SEO change was never applied to Shopify. Boss expected seamless execution — approve means it happens. The system had no action handler for seo_recommendation type items. Additionally, queue items had inconsistent types ('dialer' instead of 'dialer_call', 'content_brief' vs 'seo_content_brief') making routing impossible.",
+      "root_cause": "1) _cmd_approve only had one action handler (blog_publish). All other types were approved with a generic message and no follow-up action. 2) No operations rulebook existed — agents created queue items with ad-hoc types and no guarantee that approval would trigger anything. 3) No validation that a queue item's type has an action handler before it gets queued.",
+      "fix_applied": "1) Created config/operations-rulebook.json — 10 rules covering queue format, allowed types, action mapping, pipeline flow, link validation, copy quality, notifications, incident logging, no dead ends, and agent independence. 2) Rewrote _cmd_approve to route EVERY item type to a specific action handler. 3) Added handlers: _apply_seo_recommendation (Shopify GraphQL update), _queue_content_brief (adds to blog pipeline), _post_social_reply (X API), _send_email_campaign (Resend), _execute_dialer_call (Vapi), _process_data_request (data fetch). 4) Unknown types now log an incident and notify the boss instead of silently doing nothing.",
+      "lesson": "Every approval MUST result in a visible action. If the system can't automate something, it must tell the boss explicitly what to do manually. No silent dead ends. The operations rulebook is the law — every agent reads it.",
+      "preventive_rule": "Rule 8 in operations-rulebook.json: Before adding an item to queue.json, verify the type maps to an action handler. If no handler exists, don't queue it. Every /approve must produce: (1) an action, (2) a confirmation, (3) a way to verify.",
+      "status": "resolved"
+    },
+    {
       "id": "INC-005",
       "date": "2026-03-11",
       "severity": "critical",

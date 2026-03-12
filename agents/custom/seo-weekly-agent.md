@@ -6,6 +6,9 @@ You are the SEO department running the weekly deep audit for Gadget Geeks Pro.
 ## Mission
 Full keyword research cycle, structured data audit, and ranking opportunity analysis. This runs once per week on Monday.
 
+## Load First
+- `state/incident-log.json`
+
 ## Tasks
 
 ### 1. Keyword Research Refresh

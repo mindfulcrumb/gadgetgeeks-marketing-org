@@ -1,0 +1,249 @@
+{
+  "_docs": "Operations Rulebook — THE LAW of the GadgetGeeks Marketing Org. Every agent, every workflow, every approval MUST follow these rules. No exceptions.",
+  "_version": "1.0.0",
+  "_created": "2026-03-12",
+  "_last_updated": "2026-03-12",
+
+  "rule_1_queue_item_format": {
+    "description": "Every queue item MUST have these fields. If any field is missing, the item is INVALID and must be rejected by the system.",
+    "required_fields": {
+      "id": "Unique ID in format: {department}_{YYYYMMDD}_{HHMMSS}",
+      "department": "Which department created this item",
+      "type": "One of the allowed types listed in rule_2",
+      "summary": "Human-readable 1-line description of what this item does",
+      "action_on_approve": "Exactly what happens when the boss approves this. Must be a concrete action, not 'logged for reference'."
+    },
+    "banned": [
+      "Queue items with no 'type' field",
+      "Queue items with generic type like 'dialer' — must be specific (dialer_call, dialer_data_request)",
+      "Queue items with no 'action_on_approve' — if approval does nothing, don't queue it",
+      "Duplicate IDs in the same queue"
+    ]
+  },
+
+  "rule_2_allowed_types_and_actions": {
+    "description": "Every queue item type maps to EXACTLY ONE action. No dead ends. If you approve it, something happens.",
+    "types": {
+      "blog_publish": {
+        "action": "Generate header image via Gemini → Upload to Shopify CDN → Publish article via articleCreate → Send confirmation with live URL",
+        "required_fields": ["handle", "title"],
+        "confirmation": "Telegram message with clickable live URL",
+        "rollback": "articleDelete via GraphQL if broken"
+      },
+      "seo_recommendation": {
+        "action": "Apply meta title/description to the target page via Shopify GraphQL metafield update",
+        "required_fields": ["page", "meta_title", "meta_description"],
+        "confirmation": "Telegram message confirming which page was updated + link to verify",
+        "rollback": "Restore previous meta from backup"
+      },
+      "seo_content_brief": {
+        "action": "Move brief into blog-pipeline.json as a new blog entry with status 'brief_ready' → SCRIBE picks it up next scheduled run",
+        "required_fields": ["page", "target_keyword", "meta_title", "meta_description", "word_count_target"],
+        "confirmation": "Telegram message: 'Brief queued for SCRIBE. Next write: [date]'",
+        "rollback": "Remove from blog-pipeline.json"
+      },
+      "social_reply": {
+        "action": "Post reply via X API (or Postiz when available)",
+        "required_fields": ["target_post", "reply_content"],
+        "confirmation": "Telegram message with link to the posted reply",
+        "rollback": "Delete tweet via API"
+      },
+      "email_campaign": {
+        "action": "Send email via Resend API to the specified segment",
+        "required_fields": ["campaign_id", "subject_variants", "segment"],
+        "confirmation": "Telegram message with send count + campaign ID",
+        "rollback": "Cannot unsend — this is why email requires explicit approval"
+      },
+      "dialer_call": {
+        "action": "Execute call via Vapi.ai to the specified phone number",
+        "required_fields": ["phone_number", "customer_name", "reason"],
+        "confirmation": "Telegram message with call status + duration",
+        "rollback": "Cannot uncall — this is why calls require explicit approval"
+      },
+      "dialer_data_request": {
+        "action": "Fetch requested data from Shopify API and build call list → save to departments/dialer/call-list.json",
+        "required_fields": ["required_data", "purpose"],
+        "confirmation": "Telegram message with count of leads found per category",
+        "rollback": "Clear call-list.json"
+      },
+      "image_prompt": {
+        "action": "Generate image via Gemini Imagen and upload to Shopify Files",
+        "required_fields": ["prompt", "aspect_ratio"],
+        "confirmation": "Telegram message with image preview URL",
+        "rollback": "Delete from Shopify Files"
+      }
+    }
+  },
+
+  "rule_3_blog_pipeline_flow": {
+    "description": "The blog pipeline has EXACTLY these stages. No skipping. No self-grading. No shortcuts.",
+    "stages": [
+      {
+        "stage": "brief_ready",
+        "who": "SEO agent or content agent creates the brief",
+        "next": "SCRIBE picks up on next scheduled run (Mon/Wed/Fri 9:30 UTC)"
+      },
+      {
+        "stage": "draft_ready",
+        "who": "SCRIBE writes the blog",
+        "next": "copy_audit.py scanner runs automatically (Mon/Wed/Fri 9:00 UTC)"
+      },
+      {
+        "stage": "qa_passed",
+        "who": "copy_audit.py scanner + QUILL agent approve",
+        "next": "Queued for boss approval via Telegram"
+      },
+      {
+        "stage": "approved",
+        "who": "Boss approves via /approve on Telegram",
+        "next": "Auto-publish: image generation → Shopify upload → article creation → confirmation"
+      },
+      {
+        "stage": "published",
+        "who": "System (telegram_bot.py _auto_publish_blog)",
+        "next": "Done. URL sent to Telegram."
+      }
+    ],
+    "rules": [
+      "SCRIBE NEVER grades its own work. Scanner + QUILL are the ONLY judges.",
+      "Scanner runs BEFORE QUILL. If scanner says BLOCKED, QUILL doesn't run.",
+      "No blog publishes without a header image. Image failure = publication blocked.",
+      "Every link in blog content MUST exist in store-inventory.json. Check 26 blocks unknown links.",
+      "Blog body MUST pass all 25 copy checks. BLOCKED = rewrite, not override.",
+      "Published URL uses gadgetgeekspro.com (custom domain), not .myshopify.com"
+    ]
+  },
+
+  "rule_4_link_validation": {
+    "description": "Every internal link in ANY content (blogs, emails, social) MUST be validated before publishing.",
+    "source_of_truth": "config/store-inventory.json",
+    "rules": [
+      "Only link to handles that exist in store-inventory.json products, collections, or pages",
+      "Use the canonical handle from store-inventory.json, not aliases",
+      "If a handle doesn't exist, DO NOT fabricate one. Remove the link or link to the closest valid alternative.",
+      "Pages that don't exist (/pages/warranty, /pages/grading-guide, /pages/our-inspection-process) MUST NOT be linked. Use /pages/return-policy or /pages/why-us instead.",
+      "copy_audit.py Check 26 enforces this automatically for blogs. Other content types must validate manually."
+    ],
+    "update_frequency": "store-inventory.json must be refreshed weekly or whenever products are added/removed"
+  },
+
+  "rule_5_copy_quality": {
+    "description": "ALL customer-facing copy MUST pass the 25-check anti-AI scanner. No exceptions.",
+    "scanner": "scripts/actions/copy_audit.py",
+    "rules_file": "config/copy-rules.json",
+    "ratings": {
+      "EXCELLENT": "0 critical, ≤1 warning — ships immediately",
+      "GOOD": "0 critical, 2-3 warnings — ships with note",
+      "NEEDS_WORK": "1-2 critical — rewrite required, do NOT ship",
+      "BLOCKED": "3+ critical — full rewrite, investigate why agent produced this"
+    },
+    "applies_to": ["blog content", "email body copy", "social media posts", "product descriptions", "collection descriptions"],
+    "does_not_apply_to": ["internal memos", "data requests", "technical logs"]
+  },
+
+  "rule_6_telegram_notifications": {
+    "description": "Every significant system action MUST notify the boss via Telegram. No silent operations.",
+    "required_notifications": [
+      "Blog published → title + live URL + image confirmation",
+      "Blog blocked → reason + which checks failed + what agent needs to fix",
+      "Image generation failed → error message + 'publication blocked'",
+      "SEO change applied → which page + what changed + link to verify",
+      "Email sent → campaign name + send count + subject line used",
+      "Call completed → customer name + duration + outcome",
+      "Approval executed → WHAT was approved + WHAT action was taken + HOW to verify",
+      "Approval failed → WHAT failed + WHY + what to do next"
+    ],
+    "format": "Every notification must include: (1) Status emoji, (2) Action type in bold, (3) What happened, (4) Clickable link to verify (if applicable)",
+    "banned": [
+      "Silent approvals — if /approve does nothing visible, the system is broken",
+      "Generic 'Approved: [summary]' with no action taken",
+      "Notifications without verification links"
+    ]
+  },
+
+  "rule_7_incident_logging": {
+    "description": "Every failure, every bug, every 'that shouldn't have happened' gets logged to state/incident-log.json.",
+    "when_to_log": [
+      "Image generation fails",
+      "Shopify API call fails",
+      "Blog published with broken links",
+      "Copy scanner rates content as BLOCKED",
+      "Approval triggers no action (dead-end approval)",
+      "Wrong store targeted",
+      "Hardcoded credentials found",
+      "Any agent produces output that violates the rules in this file"
+    ],
+    "required_fields": ["severity", "department", "agents_involved", "title", "what_happened", "root_cause", "fix_applied", "lesson", "preventive_rule"],
+    "review": "GM reads incident-log.json every Friday in the weekly report. All agents load it before running."
+  },
+
+  "rule_8_no_dead_ends": {
+    "description": "If the system queues something for approval, approving it MUST do something. Period.",
+    "rules": [
+      "Before adding an item to queue.json, the creating agent MUST verify that the 'type' field matches one of the types in rule_2",
+      "If a type has no automation wired up yet, DO NOT queue it. Log it as a recommendation in the department's output file instead.",
+      "Every /approve MUST result in: (1) an action, (2) a confirmation, (3) a way to verify",
+      "If /approve results in 'Approved: [summary]' with no follow-up action, that is an INCIDENT (rule_7)"
+    ]
+  },
+
+  "rule_9_one_store": {
+    "description": "There is ONE store. Only one. Forever.",
+    "store": "gadgetgeekspro.myshopify.com",
+    "custom_domain": "gadgetgeekspro.com",
+    "theme_id": 157805740283,
+    "theme_name": "Refresh",
+    "blog_id": "gid://shopify/Blog/88861573371",
+    "rules": [
+      "NEVER reference deviceplug.myshopify.com for anything",
+      "Published URLs use gadgetgeekspro.com (custom domain)",
+      "API calls go to gadgetgeekspro.myshopify.com/admin/api/2026-01/graphql.json",
+      "All product links are relative (/products/handle) so they work on any domain"
+    ]
+  },
+
+  "rule_10_agent_independence": {
+    "description": "No agent grades its own work. Ever.",
+    "rules": [
+      "SCRIBE writes blogs → copy_audit.py + QUILL grades them",
+      "LENS creates image prompts → FOCUS grades them",
+      "Content agent creates briefs → SEO agent validates keywords",
+      "If an agent self-reports 'GOOD' or 'EXCELLENT', that rating is IGNORED. Only the independent reviewer's rating counts.",
+      "Any agent caught self-grading gets an incident logged (rule_7)"
+    ]
+  },
+
+  "rule_11_image_is_mandatory": {
+    "description": "EVERY blog MUST have a header image. No exceptions. No publishing without an image. EVER.",
+    "architectural_enforcement": {
+      "primary_path": "_auto_publish_blog() in telegram_bot.py generates image BEFORE publishing. If image generation fails, publication is BLOCKED.",
+      "safety_net": "/fix_image <handle> command retroactively generates and attaches an image to any published blog missing one.",
+      "daily_check": "image-generate.yml runs daily at 8:55 UTC. Checks all blog and social image prompts.",
+      "pipeline_gate": "Blog status cannot move from 'approved' to 'published' unless image generation succeeds."
+    },
+    "rules": [
+      "Blog publication code MUST call generate_blog_header() before articleCreate. No skipping.",
+      "If image generation fails, status = 'publish_blocked', NOT 'published'.",
+      "If a blog is discovered live without an image, trigger /fix_image immediately.",
+      "NEVER publish a blog via direct GraphQL articleCreate outside of _auto_publish_blog(). All publication goes through the pipeline.",
+      "The GEMINI_API_KEY must be available in any workflow that publishes blogs.",
+      "Image generation happens in GitHub Actions (where API keys live), never locally."
+    ],
+    "incident_reference": "INC-005, INC-007 — blogs published without header images"
+  },
+
+  "rule_12_all_workflows_daily": {
+    "description": "Blog pipeline runs daily. One blog per day. All supporting workflows run daily.",
+    "schedule": {
+      "SCRIBE (blog-writer)": "Daily 9:30 UTC — writes one blog from brief_ready queue",
+      "QUILL (blog-qa)": "Daily 10:00 UTC — scans and QA-reviews draft_ready blogs",
+      "PRESS (blog-publish)": "Daily 10:30 UTC — packages qa_approved blogs for approval",
+      "Image generation": "Daily 8:55 UTC — generates pending image prompts"
+    },
+    "rules": [
+      "The pipeline processes ONE blog per day through each stage",
+      "If no briefs are available, SCRIBE does nothing (no fabricating topics)",
+      "Each stage hands off to the next — no skipping stages"
+    ]
+  }
+}

@@ -6,6 +6,7 @@ You are LENS, the Visual Director for Gadget Geeks Pro. You write photorealistic
 ## Load First
 - `agents/custom/department-context.md` (brand, products, audience)
 - `config/niche.json` (store identity)
+- `state/incident-log.json`
 
 ---
 

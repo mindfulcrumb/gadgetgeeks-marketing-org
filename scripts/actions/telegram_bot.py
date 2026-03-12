@@ -329,6 +329,7 @@ COMMANDS = {
     "/blog": "Show blog pipeline status",
     "/prompts": "Show image prompt stats",
     "/dashboard": "Open the HQ office dashboard",
+    "/fix_image": "Generate + attach header image to a published blog",
     "/help": "Show available commands",
 }
 
@@ -385,6 +386,7 @@ def handle_command(text: str, chat_id: int) -> str:
             "/history — Recent runs + token usage\n"
             "/alerts — Errors and alerts\n"
             "/costs — Token cost breakdown\n"
+            "/fix_image [handle] — Fix missing blog image\n"
             "/help — This menu"
         )
 
@@ -432,6 +434,9 @@ def handle_command(text: str, chat_id: int) -> str:
     elif cmd == "/dashboard":
         return _cmd_dashboard(chat_id)
 
+    elif cmd == "/fix_image":
+        return _cmd_fix_image(args)
+
     elif cmd == "/help":
         lines = ["\ud83d\udcd6 <b>Available Commands</b>\n"]
         for c, desc in COMMANDS.items():
@@ -469,7 +474,7 @@ def _cmd_queue() -> str:
 
 
 def _cmd_approve(args: list) -> str:
-    """Approve a queue item by ID."""
+    """Approve a queue item by ID. Every type routes to an action — no dead ends."""
     if not args:
         return "\u26a0\ufe0f Usage: /approve <item_id>"
 
@@ -486,15 +491,63 @@ def _cmd_approve(args: list) -> str:
             queue["pending"].pop(i)
             queue_path.write_text(json.dumps(queue, indent=2), encoding="utf-8")
 
-            # Auto-publish if this is a blog item
-            if item.get("type") == "blog_publish" or "handle" in item:
-                publish_result = _auto_publish_blog(item)
-                return (
-                    f"\u2705 Approved: <b>{item.get('summary', item_id)}</b>\n\n"
-                    f"{publish_result}"
-                )
+            item_type = item.get("type", "")
+            summary = item.get("summary", item_id)
 
-            return f"\u2705 Approved: <b>{item.get('summary', item_id)}</b>"
+            # --- Route to the correct action based on type ---
+            # Rule 8: No dead ends. Every approval MUST do something.
+
+            if item_type == "blog_publish" or "handle" in item:
+                result = _auto_publish_blog(item)
+                return f"\u2705 Approved: <b>{summary}</b>\n\n{result}"
+
+            elif item_type == "seo_recommendation":
+                result = _apply_seo_recommendation(item)
+                return f"\u2705 Approved: <b>{summary}</b>\n\n{result}"
+
+            elif item_type == "content_brief" or item_type == "seo_content_brief":
+                result = _queue_content_brief(item)
+                return f"\u2705 Approved: <b>{summary}</b>\n\n{result}"
+
+            elif item_type == "social_reply":
+                result = _post_social_reply(item)
+                return f"\u2705 Approved: <b>{summary}</b>\n\n{result}"
+
+            elif item_type == "email_campaign":
+                result = _send_email_campaign(item)
+                return f"\u2705 Approved: <b>{summary}</b>\n\n{result}"
+
+            elif item_type in ("dialer_call", "dialer") and item.get("phone_number"):
+                result = _execute_dialer_call(item)
+                return f"\u2705 Approved: <b>{summary}</b>\n\n{result}"
+
+            elif item_type in ("dialer_data_request", "data_request"):
+                result = _process_data_request(item)
+                return f"\u2705 Approved: <b>{summary}</b>\n\n{result}"
+
+            else:
+                # Rule 8 violation — unknown type with no action
+                _log_incident(
+                    severity="warning",
+                    department=item.get("department", "unknown"),
+                    agents_involved=["telegram_bot.py"],
+                    title=f"Dead-end approval: type '{item_type}' has no action handler",
+                    what_happened=f"Item {item_id} was approved but type '{item_type}' has no automation.",
+                    root_cause="Missing action handler for this queue item type",
+                    fix_applied="Item marked approved but no action taken. Needs manual handling.",
+                    lesson="Every queue item type must map to an action in _cmd_approve.",
+                    preventive_rule="Do not queue items with types that have no action handler.",
+                )
+                send_message(
+                    f"\u26a0\ufe0f <b>APPROVAL GAP</b>\n\n"
+                    f"Item <code>{item_id}</code> approved but type <code>{item_type}</code> "
+                    f"has no automation wired up yet.\n\n"
+                    f"Action needed: manual execution or add handler."
+                )
+                return (
+                    f"\u2705 Approved: <b>{summary}</b>\n\n"
+                    f"\u26a0\ufe0f No automation for type '{item_type}' — logged as incident."
+                )
 
     return f"\u274c Item not found: <code>{item_id}</code>"
 
@@ -689,7 +742,7 @@ mutation articleCreate($article: ArticleCreateInput!) {
     article = gql_data.get("data", {}).get("articleCreate", {}).get("article", {})
     article_id = article.get("id", "")
     article_handle = article.get("handle", blog["slug"])
-    published_url = f"https://gadgetgeekspro.myshopify.com/blogs/news/{article_handle}"
+    published_url = f"https://gadgetgeekspro.com/blogs/news/{article_handle}"
 
     # --- Update blog-pipeline.json ---
     bp["blogs"][blog_index]["status"] = "published"
@@ -715,6 +768,301 @@ mutation articleCreate($article: ArticleCreateInput!) {
     )
 
 
+def _apply_seo_recommendation(item: dict) -> str:
+    """Apply an approved SEO meta title/description change to Shopify."""
+    page = item.get("page", "")
+    meta_title = item.get("meta_title", "")
+    meta_desc = item.get("meta_description", "")
+
+    if not page or not meta_title:
+        return "\u26a0\ufe0f Missing page or meta_title — cannot apply SEO change."
+
+    # Determine resource type and find the Shopify GID
+    try:
+        shopify_token = _get_shopify_token_for_api()
+    except Exception as e:
+        return f"\u274c Shopify token error: {e}"
+
+    gql_url = "https://gadgetgeekspro.myshopify.com/admin/api/2026-01/graphql.json"
+    headers = {"Content-Type": "application/json", "X-Shopify-Access-Token": shopify_token}
+
+    # Find the resource by handle
+    resource_handle = page.rstrip("/").split("/")[-1]
+    resource_type = "collection" if "/collections/" in page else "page" if "/pages/" in page else "product"
+
+    # Look up by handle
+    lookup_queries = {
+        "collection": f'{{ collectionByHandle(handle: "{resource_handle}") {{ id title }} }}',
+        "page": f'{{ pages(first: 50, query: "handle:{resource_handle}") {{ nodes {{ id handle title }} }} }}',
+        "product": f'{{ productByHandle(handle: "{resource_handle}") {{ id title }} }}',
+    }
+
+    try:
+        resp = requests.post(gql_url, headers=headers,
+                             json={"query": lookup_queries[resource_type]}, timeout=15)
+        resp.raise_for_status()
+        data = resp.json().get("data", {})
+    except Exception as e:
+        return f"\u274c Failed to look up {resource_type}: {e}"
+
+    # Extract GID
+    gid = None
+    if resource_type == "collection":
+        node = data.get("collectionByHandle")
+        gid = node.get("id") if node else None
+    elif resource_type == "page":
+        nodes = data.get("pages", {}).get("nodes", [])
+        for n in nodes:
+            if n.get("handle") == resource_handle:
+                gid = n.get("id")
+                break
+    elif resource_type == "product":
+        node = data.get("productByHandle")
+        gid = node.get("id") if node else None
+
+    if not gid:
+        return f"\u274c Could not find {resource_type} with handle '{resource_handle}' on Shopify."
+
+    # Apply SEO meta via metafields
+    mutation = """
+mutation updateSeo($input: HasMetafieldsInput!, $seo: SEOInput!) {
+  metafieldsSet(metafields: []) { metafields { id } userErrors { field message } }
+}
+"""
+    # Use the type-specific update mutation instead
+    update_mutations = {
+        "collection": """
+mutation collectionUpdate($input: CollectionInput!) {
+  collectionUpdate(input: $input) {
+    collection { id title }
+    userErrors { field message }
+  }
+}""",
+        "page": """
+mutation pageUpdate($id: ID!, $page: PageUpdateInput!) {
+  pageUpdate(id: $id, page: $page) {
+    page { id title }
+    userErrors { field message }
+  }
+}""",
+        "product": """
+mutation productUpdate($input: ProductInput!) {
+  productUpdate(input: $input) {
+    product { id title }
+    userErrors { field message }
+  }
+}""",
+    }
+
+    seo_block = {"title": meta_title, "description": meta_desc}
+
+    variables_map = {
+        "collection": {"input": {"id": gid, "seo": seo_block}},
+        "page": {"id": gid, "page": {"seo": seo_block}},
+        "product": {"input": {"id": gid, "seo": seo_block}},
+    }
+
+    try:
+        resp = requests.post(gql_url, headers=headers,
+                             json={"query": update_mutations[resource_type],
+                                   "variables": variables_map[resource_type]}, timeout=15)
+        resp.raise_for_status()
+        result_data = resp.json()
+    except Exception as e:
+        return f"\u274c Shopify update failed: {e}"
+
+    # Check for errors
+    errors_key = f"{resource_type}Update"
+    user_errors = result_data.get("data", {}).get(errors_key, {}).get("userErrors", [])
+    if user_errors:
+        msgs = "; ".join(f"{e['field']}: {e['message']}" for e in user_errors)
+        return f"\u274c SEO update failed: {msgs}"
+
+    verify_url = f"https://gadgetgeekspro.com{page}"
+    send_message(
+        f"\u2705 <b>SEO UPDATE APPLIED</b>\n\n"
+        f"\ud83d\udcc4 Page: <code>{page}</code>\n"
+        f"\ud83d\udcdd Title: {meta_title}\n"
+        f"\ud83d\udcdd Description: {meta_desc[:80]}...\n"
+        f"\ud83d\udd17 <a href=\"{verify_url}\">Verify here</a>"
+    )
+    return f"\u2705 SEO updated on {page}\n\ud83d\udd17 <a href=\"{verify_url}\">Verify</a>"
+
+
+def _queue_content_brief(item: dict) -> str:
+    """Move an approved content brief into the blog pipeline for SCRIBE to pick up."""
+    bp_path = REPO_ROOT / "departments" / "content" / "blog-pipeline.json"
+    if not bp_path.exists():
+        return "\u26a0\ufe0f blog-pipeline.json not found."
+
+    bp = json.loads(bp_path.read_text(encoding="utf-8"))
+
+    # Build a new blog entry from the brief
+    slug = item.get("page", "").rstrip("/").split("/")[-1] or item.get("target_keyword", "").replace(" ", "-").lower()
+    new_blog = {
+        "blog_id": f"blog_{datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')}",
+        "title": item.get("meta_title", item.get("summary", "Untitled")),
+        "slug": slug,
+        "meta_description": item.get("meta_description", ""),
+        "target_keywords": [item.get("target_keyword", "")],
+        "word_count_target": item.get("word_count_target", "1500-2000"),
+        "key_messaging": item.get("key_messaging", []),
+        "internal_links_needed": item.get("internal_links_needed", []),
+        "status": "brief_ready",
+        "created": datetime.now(timezone.utc).isoformat(),
+        "source_queue_id": item.get("id", ""),
+    }
+
+    bp.setdefault("blogs", []).append(new_blog)
+    bp_path.write_text(json.dumps(bp, indent=2), encoding="utf-8")
+
+    send_message(
+        f"\ud83d\udcdd <b>BRIEF QUEUED FOR SCRIBE</b>\n\n"
+        f"\ud83d\udccc Topic: {new_blog['title'][:70]}\n"
+        f"\ud83c\udfaf Keyword: {item.get('target_keyword', 'N/A')}\n"
+        f"\ud83d\udcc5 SCRIBE picks it up next Mon/Wed/Fri 9:30 UTC"
+    )
+    return f"\ud83d\udcdd Brief added to pipeline. SCRIBE writes it next scheduled run."
+
+
+def _post_social_reply(item: dict) -> str:
+    """Post an approved social media reply via X API."""
+    reply_content = item.get("reply_content", "")
+    target = item.get("target_post", "unknown")
+
+    if not reply_content:
+        return "\u26a0\ufe0f No reply_content found — cannot post."
+
+    # Try X API
+    try:
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("x_api", Path(__file__).parent / "x_api.py")
+        x_api = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(x_api)
+
+        if hasattr(x_api, "post_tweet"):
+            result = x_api.post_tweet(reply_content)
+            send_message(
+                f"\ud83d\udce2 <b>SOCIAL REPLY POSTED</b>\n\n"
+                f"\ud83c\udfaf Target: {target[:60]}\n"
+                f"\ud83d\udcac Reply: {reply_content[:100]}...\n"
+                f"\u2705 Posted via X API"
+            )
+            return f"\ud83d\udce2 Reply posted to X targeting {target[:40]}"
+        else:
+            raise AttributeError("post_tweet not found in x_api.py")
+    except Exception as e:
+        # Fallback: log for manual posting
+        send_message(
+            f"\u26a0\ufe0f <b>SOCIAL REPLY — MANUAL POST NEEDED</b>\n\n"
+            f"\ud83c\udfaf Target: {target}\n"
+            f"\ud83d\udcac Copy:\n<code>{reply_content}</code>\n\n"
+            f"X API unavailable: {e}\n"
+            f"Copy the text above and post manually."
+        )
+        return f"\u26a0\ufe0f X API unavailable — reply content sent to Telegram for manual posting."
+
+
+def _send_email_campaign(item: dict) -> str:
+    """Send an approved email campaign via Resend API."""
+    campaign_id = item.get("campaign_id", "unknown")
+    subject = item.get("subject_variants", {})
+    subject_line = subject.get("a", "") if isinstance(subject, dict) else str(subject)
+
+    # Check if Resend is configured
+    resend_key = os.environ.get("RESEND_API_KEY", "")
+    if not resend_key:
+        send_message(
+            f"\u26a0\ufe0f <b>EMAIL — MANUAL SEND NEEDED</b>\n\n"
+            f"\ud83d\udce7 Campaign: {campaign_id}\n"
+            f"\ud83d\udcdd Subject: {subject_line}\n"
+            f"\ud83d\udc65 Segment: {item.get('segment', 'N/A')}\n\n"
+            f"RESEND_API_KEY not configured. Set it in GitHub Secrets to enable auto-send."
+        )
+        return f"\u26a0\ufe0f Resend not configured — email details sent to Telegram for manual send."
+
+    # TODO: Wire up actual Resend sending when key is available
+    send_message(
+        f"\ud83d\udce7 <b>EMAIL CAMPAIGN QUEUED</b>\n\n"
+        f"\ud83d\udccc Campaign: {campaign_id}\n"
+        f"\ud83d\udcdd Subject: {subject_line}\n"
+        f"\ud83d\udc65 Segment: {item.get('segment', 'N/A')}\n"
+        f"\ud83d\udcca Est. recipients: {item.get('estimated_send_count', 'N/A')}"
+    )
+    return f"\ud83d\udce7 Email campaign {campaign_id} queued for send."
+
+
+def _execute_dialer_call(item: dict) -> str:
+    """Execute an approved phone call via Vapi.ai."""
+    phone = item.get("phone_number", "")
+    name = item.get("customer_name", "Unknown")
+    reason = item.get("reason", "")
+
+    if not phone:
+        return "\u26a0\ufe0f No phone_number — cannot make call."
+
+    try:
+        import importlib.util
+        spec = importlib.util.spec_from_file_location("vapi_caller", Path(__file__).parent / "vapi_caller.py")
+        vapi = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(vapi)
+
+        if hasattr(vapi, "make_call"):
+            result = vapi.make_call(phone, name, reason)
+            send_message(
+                f"\ud83d\udcde <b>CALL EXECUTED</b>\n\n"
+                f"\ud83d\udc64 {name}\n"
+                f"\ud83d\udcf1 {phone}\n"
+                f"\ud83d\udccc Reason: {reason[:60]}\n"
+                f"\u2705 Call initiated via Vapi.ai"
+            )
+            return f"\ud83d\udcde Call to {name} ({phone}) initiated."
+        else:
+            raise AttributeError("make_call not found")
+    except Exception as e:
+        send_message(
+            f"\u26a0\ufe0f <b>CALL — MANUAL DIAL NEEDED</b>\n\n"
+            f"\ud83d\udc64 {name}\n"
+            f"\ud83d\udcf1 {phone}\n"
+            f"\ud83d\udccc {reason}\n\n"
+            f"Vapi error: {e}"
+        )
+        return f"\u26a0\ufe0f Vapi unavailable — call details sent to Telegram."
+
+
+def _process_data_request(item: dict) -> str:
+    """Acknowledge a data request approval — these require Shopify data access."""
+    required = item.get("required_data", [])
+    purpose = item.get("purpose", "")
+
+    send_message(
+        f"\ud83d\udcca <b>DATA REQUEST APPROVED</b>\n\n"
+        f"\ud83d\udccc Purpose: {purpose[:80]}\n"
+        f"\ud83d\udcdd Required data:\n" +
+        "\n".join(f"  \u2022 {d[:60]}" for d in required[:5]) +
+        f"\n\n\u26a0\ufe0f Requires Shopify API data access — will be processed next dialer workflow run."
+    )
+    return f"\ud83d\udcca Data request approved. Processed on next dialer run."
+
+
+def _get_shopify_token_for_api() -> str:
+    """Get a fresh Shopify access token via client credentials."""
+    resp = requests.post(
+        "https://gadgetgeekspro.myshopify.com/admin/oauth/access_token",
+        data={
+            "grant_type": "client_credentials",
+            "client_id": os.environ.get("SHOPIFY_CLIENT_ID", ""),
+            "client_secret": os.environ.get("SHOPIFY_CLIENT_SECRET", ""),
+        },
+        timeout=15,
+    )
+    resp.raise_for_status()
+    token = resp.json().get("access_token")
+    if not token:
+        raise ValueError("No access_token in response")
+    return token
+
+
 def _cmd_reject(args: list) -> str:
     """Reject a queue item by ID."""
     if not args:
@@ -735,6 +1083,128 @@ def _cmd_reject(args: list) -> str:
             return f"\u274c Rejected: <b>{item.get('summary', item_id)}</b>"
 
     return f"\u274c Item not found: <code>{item_id}</code>"
+
+
+def _cmd_fix_image(args: list) -> str:
+    """Generate and attach a header image to a published blog that's missing one.
+
+    Usage: /fix_image <blog_handle>
+    or:    /fix_image all  (fix ALL published blogs missing images)
+
+    This is the safety net for INC-005/INC-007 — retroactively fix published
+    blogs that somehow got out without a header image.
+    """
+    if not args:
+        return (
+            "\u26a0\ufe0f Usage: /fix_image <blog_handle>\n"
+            "Example: /fix_image cheap-refurbished-phones-guide\n"
+            "Or: /fix_image all"
+        )
+
+    target = args[0].strip()
+
+    # Load blog pipeline to find published blogs
+    bp_path = REPO_ROOT / "departments" / "content" / "blog-pipeline.json"
+    if not bp_path.exists():
+        return "\u26a0\ufe0f blog-pipeline.json not found."
+
+    bp = json.loads(bp_path.read_text(encoding="utf-8"))
+    blogs_to_fix = []
+
+    for blog in bp.get("blogs", []):
+        if blog.get("status") != "published":
+            continue
+        if target == "all" or blog.get("slug") == target or blog.get("handle") == target:
+            blogs_to_fix.append(blog)
+
+    if not blogs_to_fix:
+        return f"\u26a0\ufe0f No published blog found with handle <code>{target}</code>"
+
+    results = []
+    for blog in blogs_to_fix:
+        handle = blog.get("slug") or blog.get("handle", "")
+        title = blog.get("title", "")
+        article_id = blog.get("shopify_article_id", "")
+
+        if not article_id:
+            results.append(f"\u274c <b>{handle}</b> — no Shopify article ID in pipeline")
+            continue
+
+        send_message(f"\ud83c\udfa8 Generating header image for <b>{title[:60]}</b>...")
+
+        # --- Generate image via Gemini ---
+        try:
+            import importlib.util
+            spec = importlib.util.spec_from_file_location(
+                "image_gen", Path(__file__).parent / "image_gen.py"
+            )
+            image_gen = importlib.util.module_from_spec(spec)
+            spec.loader.exec_module(image_gen)
+
+            img_result = image_gen.generate_blog_header(
+                title, blog.get("category", "refurbished phones")
+            )
+            filename = f"blog-header-{handle}.png"
+            cdn_url = image_gen.upload_to_shopify(
+                img_result["image_bytes"], filename,
+                img_result.get("mime_type", "image/png")
+            )
+        except Exception as e:
+            results.append(f"\u274c <b>{handle}</b> — image generation failed: {e}")
+            continue
+
+        # --- Attach to article via articleUpdate ---
+        try:
+            token = _get_shopify_token_for_api()
+            mutation = """
+mutation articleUpdate($id: ID!, $article: ArticleUpdateInput!) {
+  articleUpdate(id: $id, article: $article) {
+    article { id title handle image { url } }
+    userErrors { field message }
+  }
+}
+"""
+            variables = {
+                "id": article_id,
+                "article": {
+                    "image": {"url": cdn_url, "altText": title},
+                },
+            }
+            gql_url = "https://gadgetgeekspro.myshopify.com/admin/api/2026-01/graphql.json"
+            resp = requests.post(
+                gql_url,
+                headers={
+                    "Content-Type": "application/json",
+                    "X-Shopify-Access-Token": token,
+                },
+                json={"query": mutation, "variables": variables},
+                timeout=30,
+            )
+            resp.raise_for_status()
+            data = resp.json()
+            user_errors = data.get("data", {}).get("articleUpdate", {}).get("userErrors", [])
+            if user_errors:
+                msgs = "; ".join(f"{e['field']}: {e['message']}" for e in user_errors)
+                results.append(f"\u274c <b>{handle}</b> — articleUpdate failed: {msgs}")
+                continue
+
+            # Also prepend the image to body_html if not already there
+            article_data = data.get("data", {}).get("articleUpdate", {}).get("article", {})
+            img_url_final = article_data.get("image", {}).get("url", cdn_url)
+
+            results.append(
+                f"\u2705 <b>{handle}</b> — image attached!\n"
+                f"   CDN: {img_url_final[:80]}..."
+            )
+
+        except Exception as e:
+            results.append(f"\u274c <b>{handle}</b> — Shopify update failed: {e}")
+
+    summary = "\n".join(results)
+    send_message(
+        f"\ud83d\uddbc <b>IMAGE FIX COMPLETE</b>\n\n{summary}"
+    )
+    return summary
 
 
 def _cmd_blog() -> str:

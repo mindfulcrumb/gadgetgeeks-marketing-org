@@ -1,7 +1,7 @@
 name: Image Generation (Gemini)
 on:
   schedule:
-    - cron: '55 8 * * 1,3,5'  # Mon/Wed/Fri 8:55 AM UTC (after LENS 8:19 + FOCUS 8:49)
+    - cron: '55 8 * * *'  # Daily 8:55 AM UTC (after LENS 8:19 + FOCUS 8:49)
   workflow_dispatch:
 
 jobs:

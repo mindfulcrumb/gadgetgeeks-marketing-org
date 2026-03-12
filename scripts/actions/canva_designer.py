@@ -326,10 +326,26 @@ def build_branded_post(
         # 7. Export the final design
         export_url = export_design(design_id, format="png")
 
+        # 8. Re-upload exported design to Shopify CDN for permanent cloud storage
+        cdn_url = ""
+        try:
+            from image_gen import upload_to_shopify
+            print(f"  Uploading finished design to Shopify CDN...")
+            export_resp = requests.get(export_url, timeout=60)
+            export_resp.raise_for_status()
+            cdn_filename = f"canva-{platform}-{prompt_id}-{now}.png"
+            cdn_url = upload_to_shopify(
+                export_resp.content, cdn_filename, content_type="image/png"
+            )
+            print(f"  CDN URL: {cdn_url}")
+        except Exception as e:
+            print(f"  Warning: CDN upload failed ({e}), using Canva export URL")
+
         return {
             "canva_design_id": design_id,
             "canva_edit_url": design["edit_url"],
-            "export_url": export_url,
+            "export_url": cdn_url or export_url,
+            "canva_export_url": export_url,
             "platform": platform,
             "dimensions": f"{width}x{height}",
             "status": "exported",
@@ -688,8 +704,11 @@ if __name__ == "__main__":
     print(f"  Time: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}")
     print("=" * 60)
 
-    if not os.environ.get("CANVA_ACCESS_TOKEN"):
-        print("ERROR: CANVA_ACCESS_TOKEN not set")
+    # Token comes from Worker (auto-refresh) or static env var
+    has_worker = os.environ.get("CANVA_TOKEN_WORKER_URL") and os.environ.get("WORKER_API_SECRET")
+    has_static = os.environ.get("CANVA_ACCESS_TOKEN")
+    if not has_worker and not has_static:
+        print("ERROR: No Canva token source. Set CANVA_TOKEN_WORKER_URL+WORKER_API_SECRET or CANVA_ACCESS_TOKEN")
         exit(1)
 
     results = process_batch()

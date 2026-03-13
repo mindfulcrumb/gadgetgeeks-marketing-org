@@ -23,7 +23,10 @@
           "qa_status": "unreviewed",
           "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/70bf9c68-179b-4c16-96bb-013cc2289d30/gg-prompt_20260311_006.png",
           "generated_at": "2026-03-12T22:06:21.354392+00:00",
-          "generation_status": "done"
+          "generation_status": "done",
+          "canva_design_status": "designed",
+          "canva_design_id": "DAHD0YSaeA4",
+          "canva_export_url": ""
         }
       ]
     },
@@ -49,7 +52,10 @@
           "qa_status": "unreviewed",
           "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/a8bd0d3c-37af-4db9-916c-6f06c8ba90bc/gg-prompt_20260311_001.png",
           "generated_at": "2026-03-12T22:06:30.766105+00:00",
-          "generation_status": "done"
+          "generation_status": "done",
+          "canva_design_status": "designed",
+          "canva_design_id": "DAHD0XgHVk8",
+          "canva_export_url": ""
         },
         {
           "id": "prompt_20260311_003",
@@ -69,7 +75,10 @@
           "qa_status": "unreviewed",
           "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/1774134f-1139-453f-8304-eb33c318d46d/gg-prompt_20260311_003.png",
           "generated_at": "2026-03-12T22:06:42.573704+00:00",
-          "generation_status": "done"
+          "generation_status": "done",
+          "canva_design_status": "designed",
+          "canva_design_id": "DAHD0fSU5Dw",
+          "canva_export_url": ""
         },
         {
           "id": "prompt_20260311_005",
@@ -89,7 +98,10 @@
           "qa_status": "unreviewed",
           "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/07618bb8-975d-4109-9105-e44e22c922a1/gg-prompt_20260311_005.png",
           "generated_at": "2026-03-12T22:06:51.783533+00:00",
-          "generation_status": "done"
+          "generation_status": "done",
+          "canva_design_status": "designed",
+          "canva_design_id": "DAHD0Xke2jo",
+          "canva_export_url": ""
         }
       ]
     },
@@ -115,7 +127,10 @@
           "qa_status": "unreviewed",
           "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/7847405b-fab4-4688-a795-0a929c65fa24/gg-prompt_20260311_004.png",
           "generated_at": "2026-03-12T22:07:00.681464+00:00",
-          "generation_status": "done"
+          "generation_status": "done",
+          "canva_design_status": "designed",
+          "canva_design_id": "DAHD0Y7gNJw",
+          "canva_export_url": ""
         }
       ]
     },

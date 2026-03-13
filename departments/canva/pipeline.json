@@ -1,8 +1,99 @@
 {
   "_docs": "Canva Post Design Pipeline — tracks image-to-finished-post conversion. The Canva department takes generated images from departments/social/image-prompts.json and creates finished social media posts using Canva.",
   "_created": "2026-03-12",
-  "_last_run": null,
-  "designs": [],
+  "_last_run": "2026-03-13T09:58:45.035096+00:00",
+  "designs": [
+    {
+      "id": "canva_20260313_095823_001",
+      "source_prompt_id": "prompt_20260311_006",
+      "source_image_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/70bf9c68-179b-4c16-96bb-013cc2289d30/gg-prompt_20260311_006.png",
+      "canva_design_id": "DAHD0YSaeA4",
+      "canva_edit_url": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc1OTg3OTAzNDAwfQ..4bgWREn39LBYMa_y.0Q82OT64kkoLMoi9bIctijXoVzPKqzd9qTFMyWxGDIYR9S6Vk9WHGVJvQhKjS-MSeu4WprPeICmTTU1em8xjzaB-ySldRyhShP4l2dICdamFX-o.U0kliJhpZ5zz_QA4528zLg/edit?utm_source=OC-AZziwCpO4uv4&utm_medium=referral&utm_term=56417e15-2c43-4855-a64a-a951d1103ba6&utm_campaign=public_api_create_design_clicked_hyperlink",
+      "export_url": "",
+      "platform": "blog",
+      "dimensions": "1080x1080",
+      "design_type": "product_spotlight",
+      "text_overlay": {
+        "headline": "Premium Refurbished",
+        "subline": "65-Point Inspected. Like New.",
+        "cta": "Shop Now"
+      },
+      "status": "exported",
+      "created_at": "2026-03-13T09:58:23.455967+00:00"
+    },
+    {
+      "id": "canva_20260313_095828_002",
+      "source_prompt_id": "prompt_20260311_001",
+      "source_image_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/a8bd0d3c-37af-4db9-916c-6f06c8ba90bc/gg-prompt_20260311_001.png",
+      "canva_design_id": "DAHD0XgHVk8",
+      "canva_edit_url": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc1OTg3OTA4NjQxfQ..R2iYwnBGi11z5owF.HXK-AT05dMrJ_G7niOTk-o_JVuI3vzEieqRpNuU4pWHPaRsO6VEoh8sSnk4WY91he1iOEqej2JEYFduc7NglHy_KOJZn42HpnvMfFCMRzNJhHlM.w4NVVUESJQRQiiUJSalbuQ/edit?utm_source=OC-AZziwCpO4uv4&utm_medium=referral&utm_term=af42f7d1-8726-4275-bf01-12dda84684f8&utm_campaign=public_api_create_design_clicked_hyperlink",
+      "export_url": "",
+      "platform": "twitter",
+      "dimensions": "1600x900",
+      "design_type": "lifestyle",
+      "text_overlay": {
+        "headline": "refurbished iPhone",
+        "subline": "Refurbished. Inspected. Guaranteed.",
+        "cta": "Find Yours"
+      },
+      "status": "exported",
+      "created_at": "2026-03-13T09:58:28.691280+00:00"
+    },
+    {
+      "id": "canva_20260313_095834_003",
+      "source_prompt_id": "prompt_20260311_003",
+      "source_image_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/1774134f-1139-453f-8304-eb33c318d46d/gg-prompt_20260311_003.png",
+      "canva_design_id": "DAHD0fSU5Dw",
+      "canva_edit_url": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc1OTg3OTE0MTMwfQ..9VfIdIksJGuZHPgY._2pm8L9WQkdNZJmFjFwHLkodQsDex2vBjYrY6_lK8-ZwEoTu8r7E-q_5INpx-7aglzw4GhfR0kF8XJcLtftpBXJq7IJxuS6BmFHArI9whPaAejo.ErMEQsK5w-uH3rzi732VKg/edit?utm_source=OC-AZziwCpO4uv4&utm_medium=referral&utm_term=9159d07d-c674-404c-b5ba-7d7879ccbed2&utm_campaign=public_api_create_design_clicked_hyperlink",
+      "export_url": "",
+      "platform": "twitter",
+      "dimensions": "1600x900",
+      "design_type": "lifestyle",
+      "text_overlay": {
+        "headline": "customer service",
+        "subline": "Refurbished. Inspected. Guaranteed.",
+        "cta": "Find Yours"
+      },
+      "status": "exported",
+      "created_at": "2026-03-13T09:58:34.192179+00:00"
+    },
+    {
+      "id": "canva_20260313_095839_004",
+      "source_prompt_id": "prompt_20260311_005",
+      "source_image_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/07618bb8-975d-4109-9105-e44e22c922a1/gg-prompt_20260311_005.png",
+      "canva_design_id": "DAHD0Xke2jo",
+      "canva_edit_url": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc1OTg3OTE5NTYyfQ..u-J47F4PNvKzMnZV.ZZ-GsMCGVWdMojlVhP3PBtdS40jQk6Emik7Eu__DPwDQ47zlHUm4bHqUgvt1UqLr828QdwHrojDklqRIM06q2SKSOxCHloX8yZk9lYLUv8qNv24.pxQn_7a_YOpUxl4fv1C-nA/edit?utm_source=OC-AZziwCpO4uv4&utm_medium=referral&utm_term=84ed0882-58e4-48a1-90eb-ff58da297ca3&utm_campaign=public_api_create_design_clicked_hyperlink",
+      "export_url": "",
+      "platform": "twitter",
+      "dimensions": "1600x900",
+      "design_type": "lifestyle",
+      "text_overlay": {
+        "headline": "budget refurbished phone",
+        "subline": "Refurbished. Inspected. Guaranteed.",
+        "cta": "Find Yours"
+      },
+      "status": "exported",
+      "created_at": "2026-03-13T09:58:39.614645+00:00"
+    },
+    {
+      "id": "canva_20260313_095845_005",
+      "source_prompt_id": "prompt_20260311_004",
+      "source_image_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/7847405b-fab4-4688-a795-0a929c65fa24/gg-prompt_20260311_004.png",
+      "canva_design_id": "DAHD0Y7gNJw",
+      "canva_edit_url": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc1OTg3OTI0OTg1fQ..sxQHR12ErCOvj6cB.QCi8O-JosfMtcF6JoqKHksQMBtP0UNiyhkYx2WoopCS8FYQbtZeD9pQnsuWbpYjTq5NiXXLfS1kBDBxJkObfrmOOHKt12M84WtJ4RIGB83LIWW0.c8Lp5-3OzX-RCT3Vu6XzUA/edit?utm_source=OC-AZziwCpO4uv4&utm_medium=referral&utm_term=e61b0b2c-d261-4ea9-85f0-71e6c5357461&utm_campaign=public_api_create_design_clicked_hyperlink",
+      "export_url": "",
+      "platform": "instagram",
+      "dimensions": "1080x1080",
+      "design_type": "sustainability",
+      "text_overlay": {
+        "headline": "Choose Refurbished",
+        "subline": "Same phone. Less waste.",
+        "cta": "Save Money & Planet"
+      },
+      "status": "exported",
+      "created_at": "2026-03-13T09:58:45.035022+00:00"
+    }
+  ],
   "templates": {
     "instagram_square": {
       "width": 1080,
@@ -59,8 +150,8 @@
     ]
   },
   "stats": {
-    "total_designs": 0,
-    "designs_today": 0,
-    "last_design_at": null
+    "total_designs": 5,
+    "designs_today": 5,
+    "last_design_at": "2026-03-13T09:58:45.035093+00:00"
   }
 }

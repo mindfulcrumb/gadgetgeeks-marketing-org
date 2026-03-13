@@ -414,47 +414,37 @@ def parse_response(response_text: str) -> dict:
     for block_type, header, content in json_blocks:
         content = content.strip()
         data = None
-        # Try direct parse first
-        try:
-            data = json.loads(content)
-        except json.JSONDecodeError:
-            # Try wrapping in braces (LLMs sometimes omit outer {})
-            # Also fix common LLM issues: invalid escapes like \$ \# etc.
-            fixed = re.sub(r'\\([^"\\/bfnrtu])', r'\1', content)
-            if not fixed.startswith('{'):
-                wrapped = fixed.rstrip().rstrip(',')
+
+        # Fix common LLM issues: invalid JSON escapes like \$ \# \' etc.
+        fixed = re.sub(r'\\([^"\\/bfnrtu])', r'\1', content)
+
+        # Try multiple parsing strategies in order
+        for attempt_content in [content, fixed]:
+            if data is not None:
+                break
+            # Strategy 1: direct parse
+            try:
+                data = json.loads(attempt_content)
+                break
+            except json.JSONDecodeError:
+                pass
+            # Strategy 2: wrap in braces (LLMs sometimes omit outer {})
+            if not attempt_content.startswith('{'):
+                wrapped = attempt_content.rstrip().rstrip(',')
                 try:
                     data = json.loads('{' + wrapped + '}')
-                except json.JSONDecodeError:
-                    pass
-            elif data is None:
-                try:
-                    data = json.loads(fixed)
-                except json.JSONDecodeError:
-                    pass
-            # Try finding first complete JSON object via brace counting
-            if data is None:
-                depth = 0
-                start = None
-                for i, ch in enumerate(content):
-                    if ch == '{':
-                        if depth == 0:
-                            start = i
-                        depth += 1
-                    elif ch == '}':
-                        depth -= 1
-                        if depth == 0 and start is not None:
-                            try:
-                                data = json.loads(content[start:i + 1])
-                                break
-                            except json.JSONDecodeError:
-                                start = None
+                    break
+                except json.JSONDecodeError as e:
+                    if attempt_content == fixed:
+                        print(f"  DEBUG parse attempt ({block_type}): wrap-in-braces failed: {e}")
+
         if data is None:
             # If it's an UPDATE with non-JSON content (like markdown), treat as raw text
             if block_type == "UPDATE" and header.strip():
                 result["file_updates"].append({"path": header.strip(), "data": content})
                 continue
             print(f"WARNING: Failed to parse JSON block ({block_type}): {content[:100]}...")
+            print(f"  DEBUG: first 500 chars: {repr(content[:500])}")
             continue
 
         if block_type == "UPDATE":

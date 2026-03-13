@@ -413,9 +413,35 @@ def parse_response(response_text: str) -> dict:
 
     for block_type, header, content in json_blocks:
         content = content.strip()
+        data = None
+        # Try direct parse first
         try:
             data = json.loads(content)
         except json.JSONDecodeError:
+            # Try wrapping in braces (LLMs sometimes omit outer {})
+            if content.startswith('"') and not content.startswith('{'):
+                try:
+                    data = json.loads('{' + content + '}')
+                except json.JSONDecodeError:
+                    pass
+            # Try finding first complete JSON object via brace counting
+            if data is None:
+                depth = 0
+                start = None
+                for i, ch in enumerate(content):
+                    if ch == '{':
+                        if depth == 0:
+                            start = i
+                        depth += 1
+                    elif ch == '}':
+                        depth -= 1
+                        if depth == 0 and start is not None:
+                            try:
+                                data = json.loads(content[start:i + 1])
+                                break
+                            except json.JSONDecodeError:
+                                start = None
+        if data is None:
             # If it's an UPDATE with non-JSON content (like markdown), treat as raw text
             if block_type == "UPDATE" and header.strip():
                 result["file_updates"].append({"path": header.strip(), "data": content})

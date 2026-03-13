@@ -173,10 +173,10 @@
       ]
     }
   ],
-  "postiz_calls_used": 15,
-  "postiz_calls_remaining": 0,
-  "last_updated": "2026-03-13 12:57 UTC",
-  "notes": "Daily Postiz budget exhausted at 12:53 UTC. No additional posts can be scheduled today. Social morning shift attempted at 12:57 UTC but could not post due to API limits. Content prepared for tomorrow morning focusing on accessory compatibility and bundle deals.",
+  "postiz_calls_used": 0,
+  "postiz_calls_remaining": 15,
+  "last_updated": "2026-03-13 13:00 UTC",
+  "notes": "Counter reset — previous runs logged posts in calendar but Postiz API calls never actually fired (parser bug fixed). Ready for real posting.",
   "tomorrow_priorities": [
     "Accessory compatibility guides (Lightning vs USB-C confusion trending - critical need)",
     "Bundle deal spotlight with specific savings numbers (underutilized this week)",

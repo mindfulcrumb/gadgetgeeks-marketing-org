@@ -1,6 +1,26 @@
 {
   "runs": [
     {
+      "id": "run_prompt_qa_20260313_092732",
+      "department": "prompt_qa",
+      "timestamp": "2026-03-13T09:27:32.830767+00:00",
+      "date": "2026-03-13",
+      "status": "ok",
+      "model": "claude-sonnet-4-20250514",
+      "tokens": {
+        "input": 12213,
+        "output": 4096,
+        "total": 16309
+      },
+      "actions": {
+        "file_updates": 0,
+        "queue_items": 0,
+        "social_posts": 0
+      },
+      "changes": [],
+      "had_boss_instructions": false
+    },
+    {
       "id": "run_image_prompts_20260313_090138",
       "department": "image_prompts",
       "timestamp": "2026-03-13T09:01:38.318867+00:00",
@@ -529,8 +549,8 @@
     }
   ],
   "stats": {
-    "total_runs": 19,
-    "total_tokens": 168948,
+    "total_runs": 20,
+    "total_tokens": 185257,
     "total_errors": 0
   },
   "department_stats": {
@@ -593,6 +613,12 @@
       "tokens": 19134,
       "errors": 0,
       "last_run": "2026-03-13T07:52:53.461118+00:00"
+    },
+    "prompt_qa": {
+      "runs": 1,
+      "tokens": 16309,
+      "errors": 0,
+      "last_run": "2026-03-13T09:27:32.830767+00:00"
     }
   }
 }

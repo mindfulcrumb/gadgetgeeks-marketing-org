@@ -64,10 +64,41 @@
       "customer_language_used": [
         "what's the catch?"
       ]
+    },
+    {
+      "date": "2026-03-13",
+      "time": "10:19 UTC",
+      "content_type": "customer service differentiation",
+      "platforms": [
+        "twitter",
+        "facebook",
+        "linkedin"
+      ],
+      "trending_topic": "Back Market Support Crisis - Multi-national Support Failures",
+      "customer_language_used": [
+        "what's the catch?"
+      ],
+      "canva_design_used": "canva_20260313_095834_003"
+    },
+    {
+      "date": "2026-03-13",
+      "time": "10:19 UTC",
+      "content_type": "battery health education/process transparency",
+      "platforms": [
+        "instagram",
+        "facebook",
+        "linkedin"
+      ],
+      "trending_topic": "Battery Health Obsession Peak (400% increase in mentions)",
+      "customer_language_used": [
+        "How do I know the battery health is real",
+        "battery still lasts all day"
+      ],
+      "canva_design_used": "canva_20260313_095845_005"
     }
   ],
-  "postiz_calls_used": 4,
-  "postiz_calls_remaining": 11,
-  "last_updated": "2026-03-12 10:46 UTC",
-  "notes": "Morning posts: Product spotlight addressing budget phone shopping trend with specific price comparison + behind-the-scenes quality process to differentiate from competitor support failures. Both use authentic customer language and avoid AI copy patterns."
+  "postiz_calls_used": 6,
+  "postiz_calls_remaining": 9,
+  "last_updated": "2026-03-13 10:19 UTC",
+  "notes": "Morning posts: Customer service differentiation (riding Back Market support crisis) + Battery health process transparency (riding 400% trend spike). Both use authentic customer language, avoid AI patterns, and leverage finished Canva designs. Varied platforms to maximize reach while staying under daily limit."
 }

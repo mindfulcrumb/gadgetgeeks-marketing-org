@@ -26,9 +26,23 @@ def main():
     failed_count = 0
     results = []
 
+    # Build lookup from top-level prompts array (where full dicts live)
+    top_prompts = {p["id"]: p for p in data.get("prompts", []) if isinstance(p, dict) and "id" in p}
+
     # Process all folders
     for folder_key, folder in (data.get("folders") or {}).items():
-        for prompt_item in folder.get("prompts") or []:
+        for entry in folder.get("prompts") or []:
+            # Resolve: entry can be a dict (old format) or a string ID (new format)
+            if isinstance(entry, str):
+                prompt_item = top_prompts.get(entry)
+                if not prompt_item:
+                    print(f"  SKIP: {entry} — ID not found in top-level prompts")
+                    continue
+            elif isinstance(entry, dict):
+                prompt_item = entry
+            else:
+                continue
+
             # Skip already generated
             if prompt_item.get("generated_url"):
                 continue

@@ -473,10 +473,26 @@ def process_batch() -> dict:
     ]
     platform_idx = 0
 
+    # Build lookup from top-level prompts array (where full dicts live)
+    top_prompts = {p["id"]: p for p in prompts_data.get("prompts", []) if isinstance(p, dict) and "id" in p}
+
     # Process each folder's prompts
     folders = prompts_data.get("folders", {})
     for folder_name, folder_data in folders.items():
-        for prompt_item in folder_data.get("prompts", []):
+        for entry in folder_data.get("prompts", []):
+            # Resolve: entry can be a dict (old format) or a string ID (new format)
+            if isinstance(entry, str):
+                prompt_item = top_prompts.get(entry)
+                if not prompt_item:
+                    print(f"  SKIP: {entry} — ID not found in top-level prompts")
+                    results["skipped"] += 1
+                    continue
+            elif isinstance(entry, dict):
+                prompt_item = entry
+            else:
+                results["skipped"] += 1
+                continue
+
             # Skip if no generated image
             if not prompt_item.get("generated_url"):
                 results["skipped"] += 1

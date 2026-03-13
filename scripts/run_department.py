@@ -412,8 +412,9 @@ def parse_response(response_text: str) -> dict:
         pass
 
     # Extract JSON blocks with headers
+    # Note: use [^\S\n]* instead of \s* to avoid consuming newlines in wrong places
     json_blocks = re.findall(
-        r'```json\s*\n\s*//\s*(UPDATE|QUEUE_ITEM|SOCIAL_POST):?\s*(.*?)\n(.*?)```',
+        r'```json[^\S\n]*\n[^\S\n]*//[^\S\n]*(UPDATE|QUEUE_ITEM|SOCIAL_POST):?[^\S\n]*(.*?)\n(.*?)```',
         response_text,
         re.DOTALL,
     )

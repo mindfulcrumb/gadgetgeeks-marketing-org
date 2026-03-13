@@ -14,7 +14,7 @@
       <span class="hud-badge">GOD MODE</span>
     </div>
     <div class="hud-center">
-      <div class="hud-stat"><span class="hs-label">STAFF</span><span class="hs-val" id="hud-employees">10</span></div>
+      <div class="hud-stat"><span class="hs-label">STAFF</span><span class="hs-val" id="hud-employees">15</span></div>
       <div class="hud-stat"><span class="hs-label">WORKING</span><span class="hs-val green" id="hud-working">0</span></div>
       <div class="hud-stat"><span class="hs-label">IDLE</span><span class="hs-val red" id="hud-idle">0</span></div>
       <div class="hud-stat"><span class="hs-label">QUEUE</span><span class="hs-val yellow" id="hud-queue">0</span></div>
@@ -52,9 +52,40 @@
           <div id="gallery-prompts"></div>
         </div>
       </div>
+      <div class="sidebar-section" id="blog-pipeline-section">
+        <h2>BLOG PIPELINE</h2>
+        <div id="blog-pipeline-stats"></div>
+        <div id="blog-pipeline-list"></div>
+      </div>
       <div class="sidebar-section" id="queue-section">
         <h2>APPROVAL QUEUE</h2>
         <div id="queue-list"></div>
+      </div>
+      <div class="sidebar-section" id="comms-section">
+        <h2>COMMS CENTER</h2>
+        <div id="comms-tabs">
+          <button class="comms-tab active" data-target="gm">GM</button>
+        </div>
+        <div id="comms-feed"></div>
+        <div id="comms-input-area">
+          <select id="comms-dept">
+            <option value="gm">GM (All Depts)</option>
+            <option value="intel">Market Intel</option>
+            <option value="seo">SEO</option>
+            <option value="content">Content</option>
+            <option value="email">Email</option>
+            <option value="social_morning">Social</option>
+            <option value="cro">CRO</option>
+            <option value="x_intel">X Intel</option>
+            <option value="dialer">Dialer (Xavier)</option>
+            <option value="image_prompts">Image Prompts</option>
+            <option value="blog_writer">Blog Writer</option>
+          </select>
+          <div class="comms-row">
+            <input type="text" id="comms-msg" placeholder="Type instruction..." />
+            <button id="comms-send">SEND</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>

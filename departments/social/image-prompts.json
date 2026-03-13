@@ -14,7 +14,9 @@
         "refurbished iPhone",
         "current flagship"
       ],
-      "recommended_tool": "midjourney"
+      "recommended_tool": "midjourney",
+      "generation_status": "error",
+      "generation_error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-preview-image-generation:generateContent?key=AIzaSyDfLg-9Amhq3wstjaRykHBTQNpGdSuucds"
     },
     {
       "id": "prompt_20260313_002",
@@ -30,7 +32,9 @@
         "Blue Titanium",
         "refurbished flagship"
       ],
-      "recommended_tool": "midjourney"
+      "recommended_tool": "midjourney",
+      "generation_status": "error",
+      "generation_error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-preview-image-generation:generateContent?key=AIzaSyDfLg-9Amhq3wstjaRykHBTQNpGdSuucds"
     },
     {
       "id": "prompt_20260313_003",
@@ -46,7 +50,9 @@
         "spring deals",
         "supply surge"
       ],
-      "recommended_tool": "midjourney"
+      "recommended_tool": "midjourney",
+      "generation_status": "error",
+      "generation_error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-preview-image-generation:generateContent?key=AIzaSyDfLg-9Amhq3wstjaRykHBTQNpGdSuucds"
     },
     {
       "id": "prompt_20260313_004",
@@ -62,7 +68,9 @@
         "work setup",
         "bundle deals"
       ],
-      "recommended_tool": "midjourney"
+      "recommended_tool": "midjourney",
+      "generation_status": "error",
+      "generation_error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-preview-image-generation:generateContent?key=AIzaSyDfLg-9Amhq3wstjaRykHBTQNpGdSuucds"
     },
     {
       "id": "prompt_20260313_005",
@@ -79,7 +87,9 @@
         "Grade B",
         "inspection process"
       ],
-      "recommended_tool": "midjourney"
+      "recommended_tool": "midjourney",
+      "generation_status": "error",
+      "generation_error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-preview-image-generation:generateContent?key=AIzaSyDfLg-9Amhq3wstjaRykHBTQNpGdSuucds"
     },
     {
       "id": "prompt_20260313_006",
@@ -95,7 +105,9 @@
         "sustainability",
         "eco-conscious"
       ],
-      "recommended_tool": "midjourney"
+      "recommended_tool": "midjourney",
+      "generation_status": "error",
+      "generation_error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-preview-image-generation:generateContent?key=AIzaSyDfLg-9Amhq3wstjaRykHBTQNpGdSuucds"
     },
     {
       "id": "prompt_20260313_007",
@@ -111,7 +123,9 @@
         "student",
         "budget phone"
       ],
-      "recommended_tool": "midjourney"
+      "recommended_tool": "midjourney",
+      "generation_status": "error",
+      "generation_error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-preview-image-generation:generateContent?key=AIzaSyDfLg-9Amhq3wstjaRykHBTQNpGdSuucds"
     },
     {
       "id": "prompt_20260313_008",
@@ -127,7 +141,9 @@
         "Space Black",
         "premium refurbished"
       ],
-      "recommended_tool": "midjourney"
+      "recommended_tool": "midjourney",
+      "generation_status": "error",
+      "generation_error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-preview-image-generation:generateContent?key=AIzaSyDfLg-9Amhq3wstjaRykHBTQNpGdSuucds"
     },
     {
       "id": "prompt_20260313_009",
@@ -143,7 +159,9 @@
         "flash sale",
         "limited time"
       ],
-      "recommended_tool": "midjourney"
+      "recommended_tool": "midjourney",
+      "generation_status": "error",
+      "generation_error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-preview-image-generation:generateContent?key=AIzaSyDfLg-9Amhq3wstjaRykHBTQNpGdSuucds"
     },
     {
       "id": "prompt_20260313_010",
@@ -160,7 +178,9 @@
         "teenager phone",
         "parent purchase"
       ],
-      "recommended_tool": "midjourney"
+      "recommended_tool": "midjourney",
+      "generation_status": "error",
+      "generation_error": "404 Client Error: Not Found for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-preview-image-generation:generateContent?key=AIzaSyDfLg-9Amhq3wstjaRykHBTQNpGdSuucds"
     }
   ],
   "folders": {

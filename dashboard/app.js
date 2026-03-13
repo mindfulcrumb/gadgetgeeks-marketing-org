@@ -348,66 +348,6 @@ const PROMPT_QA = {
   dataFlow:{reads:['departments/social/image-prompts.json','agents/custom/image-prompting-agent.md'],writes:['departments/social/image-prompts.json'],feeds:['Social','Content','Email']},
 };
 
-const BLOG_WRITER = {
-  id:'blog_writer', name:'SCRIBE', fullName:'Scribe Delacroix',
-  title:'Blog Writer', dept:'Content Division',
-  color:'#10b981', hair:'#3a2a1a', skin:'#f0c8a0', pants:'#1a3a2a', shoes:'#0a1a0a',
-  schedule:'Mon/Wed/Fri 9:30 UTC', cronDays:[1,3,5], cronH:9, cronM:30,
-  stateKeys:['blog_writer'], deskTile:{x:23,y:5}, roomId:'content',
-  tasks:['Read intel trends, SEO keywords, customer language','Write 1200-2000 word SEO-optimized blog posts','Internal links to products (iPhone, Galaxy, Pixel)','Structure: H1, meta desc, H2/H3, FAQ schema','Match brand voice — confident, anti-corporate','Pass blog to QUILL for anti-AI review'],
-  rules:['Every blog targets specific SEO keywords','Use real customer language from intel','Specific numbers beat vague claims','One clear CTA per post','NO AI-generated copy tells','3+ internal product links minimum'],
-  apis:[{name:'Claude API',icon:'🧠',color:'#d97706'}],
-  dataFlow:{reads:['departments/intel/trends.json','departments/seo/keywords.json','departments/x-intel/daily-brief.json','departments/intel/customer-language.json'],writes:['departments/content/blog-pipeline.json'],feeds:['QUILL (QA)','PRESS (publish)']},
-};
-
-const BLOG_QA = {
-  id:'blog_qa', name:'QUILL', fullName:'Quill Okafor',
-  title:'Blog Copy Police', dept:'Content Division',
-  color:'#ef4444', hair:'#1a1a1a', skin:'#8d5524', pants:'#2a1a1a', shoes:'#0a0505',
-  schedule:'Mon/Wed/Fri 10:00 UTC', cronDays:[1,3,5], cronH:10, cronM:0,
-  stateKeys:['blog_qa'], deskTile:{x:25,y:5}, roomId:'content',
-  tasks:['Run 23-check anti-AI audit on every blog draft','Check banned words (60+) and phrases (40+)','Verify sentence rhythm variance & burstiness','Ensure brand voice — not corporate, not AI','Check SEO: title tags, meta desc, keyword density','Approve, reject, or block with specific fixes'],
-  rules:['23 checks on EVERY blog — no exceptions','Zero banned words or it fails','Sentence length must vary 5-25 words','Must have contractions and conversational tone','EXCELLENT ships, NEEDS WORK returns to SCRIBE','BLOCKED = full rewrite required'],
-  apis:[{name:'Claude API',icon:'🧠',color:'#d97706'}],
-  dataFlow:{reads:['departments/content/blog-pipeline.json','config/copy-rules.json'],writes:['departments/content/blog-pipeline.json'],feeds:['PRESS (publish)','SCRIBE (fixes)']},
-};
-
-const BLOG_PUBLISHER = {
-  id:'blog_publish', name:'PRESS', fullName:'Press Hawthorne',
-  title:'Blog Publisher', dept:'Publishing Division',
-  color:'#6366f1', hair:'#2a1a3a', skin:'#e0c8a0', pants:'#1a1a3a', shoes:'#0a0a1a',
-  schedule:'Mon/Wed/Fri 10:30 UTC', cronDays:[1,3,5], cronH:10, cronM:30,
-  stateKeys:['blog_publish'], deskTile:{x:30,y:12}, roomId:'cro',
-  tasks:['Take QA-approved blogs from pipeline','Format HTML for Shopify Blog API','Add structured data (Article, FAQ, Breadcrumb)','Insert internal links to product pages','Add related products section','Queue for human approval before publishing'],
-  rules:['NEVER auto-publish — always queue for approval','Every blog gets Article + FAQ schema','3+ internal product links required','Proper og:tags and SEO metadata','Image prompt reference for header','Shopify publish only after human approves'],
-  apis:[{name:'Claude API',icon:'🧠',color:'#d97706'},{name:'Shopify API',icon:'🛍️',color:'#96bf48'}],
-  dataFlow:{reads:['departments/content/blog-pipeline.json','departments/social/image-prompts.json'],writes:['departments/content/blog-pipeline.json','state/queue.json'],feeds:['You (approval queue)','Shopify (after approval)']},
-};
-
-const DIALER = {
-  id:'dialer', name:'DIALER', fullName:'Dialer Voss',
-  title:'Outbound Call Agent', dept:'Sales Division',
-  color:'#16a34a', hair:'#2a1a0a', skin:'#c68642', pants:'#1a2a1a', shoes:'#0a0a0a',
-  schedule:'Mon-Fri 14:15 UTC', cronDays:[1,2,3,4,5], cronH:14, cronM:15,
-  stateKeys:['dialer'], deskTile:{x:30,y:5}, roomId:'content',
-  tasks:['Scan Shopify for abandoned carts ($300+)','Identify 60-day inactive customers for win-back','Build prioritized call lists with reasons','Queue call lists for human approval','Execute approved calls via Vapi.ai','Log call outcomes and do-not-call requests'],
-  rules:['NEVER make calls without approval','Max 20 calls per day','No calls on Sundays','Respect do-not-call permanently','One attempt per customer per week','Abandoned cart calls within 48hrs only'],
-  apis:[{name:'Vapi.ai',icon:'📞',color:'#16a34a'},{name:'Shopify API',icon:'🛍️',color:'#96bf48'},{name:'Claude API',icon:'🧠',color:'#d97706'}],
-  dataFlow:{reads:['Shopify abandoned carts','Shopify customer history','departments/dialer/call-list.json'],writes:['departments/dialer/call-list.json','state/queue.json'],feeds:['You (approval)','Vapi.ai (calls)']},
-};
-
-const TELEGRAM_BOT = {
-  id:'telegram', name:'RELAY', fullName:'Relay Nakamura',
-  title:'Telegram Comms Officer', dept:'Communications',
-  color:'#0088cc', hair:'#1a2a3a', skin:'#d4a574', pants:'#1a1a2a', shoes:'#0a0a1a',
-  schedule:'Every 5 min (polling)', cronDays:[0,1,2,3,4,5,6], cronH:0, cronM:0,
-  stateKeys:['telegram'], deskTile:{x:18,y:1}, roomId:'lobby',
-  tasks:['Poll Telegram for incoming commands','Route /status /queue /blog /approve commands','Send department completion notifications','Send error alerts immediately','Daily org summary at 7:00 UTC','Relay approval requests to owner'],
-  rules:['Respond to ALL messages within 5 min','Send notification on every department run','Error alerts = highest priority','Never expose API keys in messages','Auto-discover chat ID on first /start','Queue approvals flow through Telegram'],
-  apis:[{name:'Telegram Bot API',icon:'✈️',color:'#0088cc'}],
-  dataFlow:{reads:['state/master.json','state/queue.json','departments/content/blog-pipeline.json','departments/social/image-prompts.json'],writes:['config/telegram.json','state/telegram_offset.json','state/queue.json'],feeds:['You (Telegram)','All departments (notifications)']},
-};
-
 const GM = {
   id:'gm', name:'BOSS', fullName:'Boss Morgan',
   title:'General Manager / Enforcer', dept:'Executive',
@@ -420,7 +360,7 @@ const GM = {
   dataFlow:{reads:['state/master.json','state/queue.json','ALL department outputs'],writes:['departments/gm/weekly-report.md','state/queue.json'],feeds:['You (weekly report)']},
 };
 
-const ALL_CHARS = [...EMPLOYEES, X_INTEL, IMAGE_PROMPT, PROMPT_QA, BLOG_WRITER, BLOG_QA, BLOG_PUBLISHER, DIALER, TELEGRAM_BOT, GM];
+const ALL_CHARS = [...EMPLOYEES, X_INTEL, IMAGE_PROMPT, PROMPT_QA, GM];
 
 // ═══════════════════════════════════════════
 // POINTS OF INTEREST (where chars go for life sim)
@@ -632,7 +572,7 @@ function gmPatrolAI() {
   if (gm.actionTimer > 0) return;
 
   // Check for idle employees to visit
-  const allStaff = [...EMPLOYEES, X_INTEL, IMAGE_PROMPT, PROMPT_QA, BLOG_WRITER, BLOG_QA, BLOG_PUBLISHER];
+  const allStaff = [...EMPLOYEES, X_INTEL, IMAGE_PROMPT, PROMPT_QA];
   for (const emp of allStaff) {
     const status = getDeptStatus(emp.id);
     if (status === 'idle' || status === 'error') {
@@ -1416,66 +1356,11 @@ function renderQueue() {
     list.innerHTML = '<div class="q-empty">No items pending</div>';
     return;
   }
-  const DEPT_NAMES_Q = {intel:'Market Intel',seo:'SEO',content:'Content',email:'Email',social_morning:'Social',cro:'CRO',x_intel:'X Intel',dialer:'Dialer',image_prompts:'Image Prompts',blog_writer:'Blog Writer'};
-  const skip = new Set(['id','department','type','summary']);
-  list.innerHTML = queueState.pending.map(i => {
-    const dept = i.department || '?';
-    const deptName = DEPT_NAMES_Q[dept] || dept;
-    const details = Object.entries(i).filter(([k])=>!skip.has(k)).slice(0,5).map(([k,v])=>{
-      let val = typeof v === 'string' ? v : JSON.stringify(v);
-      if(val.length>120) val = val.slice(0,120)+'…';
-      return `<span class="q-detail-line"><b>${k}</b>: ${val}</span>`;
-    }).join('');
-    return `<div class="q-item" data-id="${i.id||''}">
-      <span class="q-type">${(i.type||'ITEM').toUpperCase()}</span> <span class="q-dept">${deptName}</span>
-      <div class="q-summary">${i.summary||i.description||i.title||'No description'}</div>
-      ${details?`<div class="q-detail">${details}</div>`:''}
-      <div class="q-actions">
-        <button class="q-btn q-btn-approve" onclick="dashApprove('${i.id||''}')">APPROVE</button>
-        <button class="q-btn q-btn-reject" onclick="dashReject('${i.id||''}')">REJECT</button>
-      </div>
-      <span class="q-id">${i.id||''}</span>
-    </div>`;
-  }).join('');
+  list.innerHTML = queueState.pending.map(i => `
+    <div class="q-item"><span class="q-type">${i.type||'ITEM'}</span>
+    <span class="q-desc">${i.description||i.title||''}</span>
+    <span class="q-dept">${i.department||''}</span></div>`).join('');
 }
-
-const WORKER_URL = 'https://gadgetgeeks-telegram-webhook.gadgetgeeks.workers.dev';
-
-async function dashAction(itemId, action) {
-  // Route through Cloudflare Worker which has GH_TOKEN — no browser token needed
-  try {
-    addNotification('info', `${action==='approve'?'Approving':'Rejecting'} ${itemId}...`);
-
-    const resp = await fetch(WORKER_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        message: {
-          chat: { id: 0 },
-          text: `/${action} ${itemId}`,
-        },
-        _source: 'dashboard',
-      }),
-    });
-
-    const data = await resp.json().catch(() => ({}));
-
-    if (resp.ok && data.ok !== false) {
-      addNotification('info', `${action==='approve'?'Approved':'Rejected'}: ${itemId}`);
-      addEnforcerLog('ok', `BOSS ${action}d item ${itemId.slice(-8)}`);
-      const el = document.querySelector(`.q-item[data-id="${itemId}"]`);
-      if (el) { el.style.opacity = '0.3'; el.querySelectorAll('.q-btn').forEach(b => b.disabled = true); }
-      setTimeout(async () => { await loadData(); }, 3000);
-    } else {
-      const errMsg = data.error || data.result || `Worker returned ${resp.status}`;
-      addNotification('alert', `Failed: ${errMsg}`);
-    }
-  } catch (e) {
-    addNotification('alert', `Failed: ${e.message}. Check network connection.`);
-  }
-}
-function dashApprove(id) { dashAction(id, 'approve'); }
-function dashReject(id) { dashAction(id, 'reject'); }
 
 function renderEnforcerLog() {
   const el = document.getElementById('enforcer-log');
@@ -1497,7 +1382,7 @@ function updateHUD() {
   document.getElementById('hud-date').textContent = now.toUTCString().slice(0,16);
   if (!masterState) return;
   let working=0, idle=0;
-  for (const e of [...EMPLOYEES, X_INTEL, IMAGE_PROMPT, PROMPT_QA, BLOG_WRITER, BLOG_QA, BLOG_PUBLISHER]) { const s=getDeptStatus(e.id); if(s==='working')working++; else if(s==='idle')idle++; }
+  for (const e of [...EMPLOYEES, X_INTEL, IMAGE_PROMPT, PROMPT_QA]) { const s=getDeptStatus(e.id); if(s==='working')working++; else if(s==='idle')idle++; }
   document.getElementById('hud-working').textContent = working;
   document.getElementById('hud-idle').textContent = idle;
   document.getElementById('hud-queue').textContent = queueState?(queueState.pending||[]).length:0;
@@ -1513,9 +1398,7 @@ function updateScheduleBar() {
     {t:'07:00',m:420,l:'X-Intel',d:[0,1,2,3,4,5,6],c:'#1DA1F2'},
     {t:'07:03',m:423,l:'GM Report',d:[5],c:'#a6f'},{t:'07:41',m:461,l:'Content',d:[1,3,5],c:'#f84'},{t:'08:19',m:499,l:'LENS',d:[1,3,5],c:'#e879f9'},{t:'08:49',m:529,l:'FOCUS',d:[1,3,5],c:'#f59e0b'},
     {t:'08:53',m:533,l:'Email',d:[2,4],c:'#fc0'},{t:'09:11',m:551,l:'Social AM',d:[0,1,2,3,4,5,6],c:'#f6a'},
-    {t:'09:30',m:570,l:'SCRIBE',d:[1,3,5],c:'#10b981'},{t:'10:00',m:600,l:'QUILL',d:[1,3,5],c:'#ef4444'},{t:'10:30',m:630,l:'PRESS',d:[1,3,5],c:'#6366f1'},
     {t:'10:47',m:647,l:'Intel',d:[1,4],c:'#0cf'},{t:'11:29',m:689,l:'CRO',d:[3],c:'#48f'},
-    {t:'14:15',m:855,l:'DIALER',d:[1,2,3,4,5],c:'#16a34a'},{t:'15:45',m:945,l:'CALLS',d:[1,2,3,4,5],c:'#16a34a'},
     {t:'16:37',m:997,l:'Social PM',d:[0,1,2,3,4,5,6],c:'#f6a'},{t:'18:51',m:1131,l:'GM Queue',d:[0,1,2,3,4,5,6],c:'#a6f'},
   ].filter(s=>s.d.includes(day));
   tl.innerHTML = sched.map(s => {
@@ -1538,7 +1421,7 @@ async function loadData() {
   const [m,q] = await Promise.all([fetchJSON('state/master.json'),fetchJSON('state/queue.json')]);
   masterState=m; queueState=q;
   updateSidebar(); updateHUD(); updateScheduleBar();
-  runEnforcer(); loadImagePrompts(); loadBlogPipeline();
+  runEnforcer(); loadImagePrompts();
 }
 
 function runEnforcer() {
@@ -1592,54 +1475,6 @@ function darkenColor(hex,f){return lightenColor(hex,f);}
 function pickRandom(arr){return arr[Math.floor(Math.random()*arr.length)];}
 function addEnforcerLog(type,msg){const t=pad(new Date().getUTCHours())+':'+pad(new Date().getUTCMinutes());enforcerLog.push({type,msg,time:t});if(enforcerLog.length>50)enforcerLog.shift();renderEnforcerLog();}
 function addNotification(type,msg){const el=document.getElementById('notifications');const n=document.createElement('div');n.className=`notif ${type}`;n.textContent=msg;el.appendChild(n);setTimeout(()=>n.remove(),4000);}
-
-// ═══════════════════════════════════════════
-// BLOG PIPELINE
-// ═══════════════════════════════════════════
-let blogPipelineData = null;
-
-async function loadBlogPipeline() {
-  blogPipelineData = await fetchJSON('departments/content/blog-pipeline.json');
-  renderBlogPipeline();
-}
-
-function renderBlogPipeline() {
-  const statsEl = document.getElementById('blog-pipeline-stats');
-  const listEl = document.getElementById('blog-pipeline-list');
-  if (!blogPipelineData) {
-    statsEl.innerHTML = '';
-    listEl.innerHTML = '<div class="bp-empty">No blogs in pipeline yet — SCRIBE hasn\'t run</div>';
-    return;
-  }
-
-  const ps = blogPipelineData.pipeline_stats || {};
-  statsEl.innerHTML = `
-    <div class="bp-stat"><span class="bp-stat-val" style="color:var(--yellow)">${ps.total_drafted||0}</span><span class="bp-stat-label">DRAFTED</span></div>
-    <div class="bp-stat"><span class="bp-stat-val" style="color:var(--green)">${ps.total_approved||0}</span><span class="bp-stat-label">APPROVED</span></div>
-    <div class="bp-stat"><span class="bp-stat-val" style="color:var(--red)">${ps.total_rejected||0}</span><span class="bp-stat-label">REJECTED</span></div>
-    <div class="bp-stat"><span class="bp-stat-val" style="color:var(--cyan)">${ps.total_published||0}</span><span class="bp-stat-label">PUBLISHED</span></div>
-  `;
-
-  const blogs = blogPipelineData.blogs || [];
-  if (!blogs.length) {
-    listEl.innerHTML = '<div class="bp-empty">Pipeline empty — SCRIBE will draft blogs Mon/Wed/Fri</div>';
-    return;
-  }
-
-  listEl.innerHTML = blogs.slice(-10).reverse().map(b => {
-    const status = (b.status||'unknown').replace(/_/g,' ');
-    const statusClass = status.includes('approved') ? 'approved' : status.includes('reject') ? 'rejected' : status.includes('publish') ? 'published' : status.includes('queued') ? 'queued' : status.includes('block') ? 'blocked' : 'draft';
-    const keywords = (b.target_keywords||[]).slice(0,3);
-    return `<div class="bp-blog">
-      <div class="bp-blog-title">${b.title||'Untitled'}</div>
-      <div class="bp-blog-meta">
-        <span class="bp-status ${statusClass}">${status.toUpperCase()}</span>
-        ${b.qa_score?`<span class="bp-keyword">QA: ${b.qa_score}</span>`:''}
-        ${keywords.map(k => `<span class="bp-keyword">${k}</span>`).join('')}
-      </div>
-    </div>`;
-  }).join('');
-}
 
 // ═══════════════════════════════════════════
 // IMAGE GALLERY
@@ -1725,261 +1560,28 @@ function openGalleryFolder(folderKey) {
     return;
   }
 
-  promptsEl.innerHTML = prompts.map((p, idx) => {
-    const rating = (p.rating||p.verdict||p.qa_status||'unreviewed').toLowerCase().replace(/[_ ]/g,'');
+  promptsEl.innerHTML = prompts.map(p => {
+    const rating = (p.rating||p.verdict||'unreviewed').toLowerCase().replace(/[_ ]/g,'');
     const scoreClass = rating.includes('excellent') ? 'excellent' : rating.includes('good') ? 'good' : rating.includes('need')||rating.includes('fix') ? 'needswork' : rating.includes('block') ? 'blocked' : 'good';
     const score = p.score != null ? `${p.score}/15` : '--';
     const promptText = p.prompt || p.corrected_prompt || p.text || JSON.stringify(p).slice(0,300);
     const platform = p.platform || p.target_platform || '';
     const aspect = p.aspect_ratio || '';
     const useCase = p.use_case || folderKey;
-    const negPrompt = p.negative_prompt || '';
-    const params = p.platform_params || '';
-    const tool = p.recommended_tool || '';
-    const notes = p.notes || '';
-    const pid = p.id || p.prompt_id || `prompt_${idx}`;
-    const imgUrl = p.generated_url || '';
-    const genStatus = p.generation_status || '';
-    const genError = p.generation_error || '';
-    return `<div class="gal-prompt" data-prompt-id="${pid}">
+    return `<div class="gal-prompt">
       <div class="gal-prompt-header">
-        <span class="gal-prompt-id">${pid}</span>
-        <span class="gal-prompt-score gal-score-${scoreClass}">${score} ${(p.rating||p.verdict||p.qa_status||'UNREVIEWED').toUpperCase()}</span>
+        <span class="gal-prompt-id">${p.prompt_id||'—'}</span>
+        <span class="gal-prompt-score gal-score-${scoreClass}">${score} ${(p.rating||p.verdict||'UNREVIEWED').toUpperCase()}</span>
       </div>
-      ${imgUrl?`<div class="gal-image-wrap"><img class="gal-image" src="${imgUrl}" alt="${pid}" loading="lazy" onclick="window.open('${imgUrl}','_blank')"/><span class="gal-image-badge">GENERATED</span></div>`
-        :genStatus==='error'?`<div class="gal-image-placeholder error">GENERATION FAILED<br><span style="font-size:5px">${genError.slice(0,100)}</span></div>`
-        :`<div class="gal-image-placeholder">NOT YET GENERATED<br><span style="font-size:5px">Run /run image_generate or wait for next scheduled run</span></div>`}
-      <div class="gal-prompt-text">${promptText.length>600?promptText.slice(0,600)+'...':promptText}</div>
-      ${negPrompt?`<div class="gal-neg-prompt"><b>Negative:</b> ${negPrompt.slice(0,200)}</div>`:''}
-      ${notes?`<div class="gal-notes"><b>Notes:</b> ${notes.slice(0,150)}</div>`:''}
+      <div class="gal-prompt-text">${promptText.length>500?promptText.slice(0,500)+'...':promptText}</div>
       <div class="gal-prompt-meta">
-        ${tool?`<span class="gal-meta-tag tool">${tool}</span>`:''}
         ${platform?`<span class="gal-meta-tag">${platform}</span>`:''}
         ${aspect?`<span class="gal-meta-tag">${aspect}</span>`:''}
         ${useCase?`<span class="gal-meta-tag">${useCase}</span>`:''}
-        ${params?`<span class="gal-meta-tag">${params}</span>`:''}
-      </div>
-      <div class="gal-actions">
-        <button class="q-btn q-btn-approve" onclick="copyPrompt(this)">COPY PROMPT</button>
-        <button class="q-btn q-btn-expand" onclick="sendPromptFeedback('${pid}','approve')">APPROVE</button>
-        <button class="q-btn q-btn-reject" onclick="sendPromptFeedback('${pid}','reject')">REJECT</button>
+        ${p.camera?`<span class="gal-meta-tag">${p.camera}</span>`:''}
       </div>
     </div>`;
   }).join('');
-
-  // Store raw prompts for copy
-  promptsEl._prompts = prompts;
-}
-
-// ═══════════════════════════════════════════
-// IMAGE PROMPT ACTIONS
-// ═══════════════════════════════════════════
-function copyPrompt(btn) {
-  const card = btn.closest('.gal-prompt');
-  const promptText = card.querySelector('.gal-prompt-text').textContent;
-  navigator.clipboard.writeText(promptText).then(() => {
-    btn.textContent = 'COPIED!';
-    addNotification('info', 'Prompt copied to clipboard');
-    setTimeout(() => { btn.textContent = 'COPY PROMPT'; }, 2000);
-  }).catch(() => {
-    // Fallback for no clipboard API
-    const ta = document.createElement('textarea');
-    ta.value = promptText;
-    document.body.appendChild(ta);
-    ta.select();
-    document.execCommand('copy');
-    ta.remove();
-    btn.textContent = 'COPIED!';
-    setTimeout(() => { btn.textContent = 'COPY PROMPT'; }, 2000);
-  });
-}
-
-async function sendPromptFeedback(promptId, action) {
-  addNotification('info', `${action === 'approve' ? 'Approving' : 'Rejecting'} prompt ${promptId}...`);
-  try {
-    await fetch(WORKER_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        message: { chat: { id: 0 }, text: `/boss image_prompts ${action} prompt ${promptId}` },
-        _source: 'dashboard',
-      }),
-    });
-    addNotification('info', `Prompt ${promptId} ${action}d`);
-    addEnforcerLog('ok', `BOSS ${action}d prompt ${promptId.slice(-8)}`);
-    const el = document.querySelector(`.gal-prompt[data-prompt-id="${promptId}"]`);
-    if (el) el.style.opacity = '0.4';
-  } catch (e) {
-    addNotification('alert', `Failed: ${e.message}`);
-  }
-}
-
-// ═══════════════════════════════════════════
-// COMMS CENTER
-// ═══════════════════════════════════════════
-let commsMessages = [];
-let commsTarget = 'gm';
-
-function initComms() {
-  const DEPT_NAMES_C = {gm:'GM',intel:'Intel',seo:'SEO',content:'Content',email:'Email',social_morning:'Social',cro:'CRO',x_intel:'X Intel',dialer:'Xavier',image_prompts:'Lens',blog_writer:'Scribe'};
-
-  // Build tabs from dropdown options
-  const tabs = document.getElementById('comms-tabs');
-  const deptSelect = document.getElementById('comms-dept');
-  tabs.innerHTML = '';
-  for (const opt of deptSelect.options) {
-    const btn = document.createElement('button');
-    btn.className = 'comms-tab' + (opt.value === commsTarget ? ' active' : '');
-    btn.dataset.target = opt.value;
-    btn.textContent = DEPT_NAMES_C[opt.value] || opt.value;
-    btn.addEventListener('click', () => {
-      commsTarget = opt.value;
-      deptSelect.value = opt.value;
-      tabs.querySelectorAll('.comms-tab').forEach(t => t.classList.remove('active'));
-      btn.classList.add('active');
-      renderComms();
-    });
-    tabs.appendChild(btn);
-  }
-
-  // Sync select with tabs
-  deptSelect.addEventListener('change', () => {
-    commsTarget = deptSelect.value;
-    tabs.querySelectorAll('.comms-tab').forEach(t => {
-      t.classList.toggle('active', t.dataset.target === commsTarget);
-    });
-    renderComms();
-  });
-
-  // Send button
-  document.getElementById('comms-send').addEventListener('click', sendCommsMessage);
-  document.getElementById('comms-msg').addEventListener('keydown', e => {
-    if (e.key === 'Enter') sendCommsMessage();
-  });
-
-  // Load existing boss instructions from run history
-  loadCommsHistory();
-}
-
-async function loadCommsHistory() {
-  const history = await fetchJSON('state/run-history.json');
-  if (!history) return;
-
-  const runs = history.runs || [];
-  commsMessages = [];
-
-  for (const run of runs.slice(-20)) {
-    const dept = run.department || '?';
-    const ts = run.timestamp || '';
-    const summary = run.summary || '';
-    if (summary) {
-      commsMessages.push({ from: dept, type: 'dept', text: summary.slice(0, 200), time: ts });
-    }
-    if (run.had_boss_instructions) {
-      commsMessages.push({ from: 'boss', type: 'boss', text: `Instruction sent to ${dept}`, time: ts });
-    }
-  }
-
-  // Also load queue items as dept messages
-  if (queueState && queueState.pending) {
-    for (const item of queueState.pending) {
-      commsMessages.push({
-        from: item.department || '?',
-        type: 'dept',
-        text: `[Needs Approval] ${item.summary || item.type || 'New item'}`,
-        time: new Date().toISOString(),
-        dept: item.department,
-      });
-    }
-  }
-
-  renderComms();
-}
-
-function renderComms() {
-  const feed = document.getElementById('comms-feed');
-  const filtered = commsTarget === 'gm'
-    ? commsMessages
-    : commsMessages.filter(m => m.from === commsTarget || m.dept === commsTarget || m.from === 'boss');
-
-  if (!filtered.length) {
-    feed.innerHTML = '<div class="comms-empty">No messages yet — send an instruction below</div>';
-    return;
-  }
-
-  const DEPT_NAMES_C = {gm:'GM',intel:'Intel',seo:'SEO',content:'Content',email:'Email',social_morning:'Social',cro:'CRO',x_intel:'X Intel',dialer:'Xavier',image_prompts:'Lens',blog_writer:'Scribe',boss:'BOSS'};
-
-  feed.innerHTML = filtered.slice(-15).map(m => {
-    let timeStr = '';
-    if (m.time) {
-      try { const d = new Date(m.time); timeStr = pad(d.getUTCHours()) + ':' + pad(d.getUTCMinutes()); } catch(e) {}
-    }
-    return `<div class="comms-msg ${m.type}">
-      <span class="comms-from">${DEPT_NAMES_C[m.from]||m.from}<span class="comms-time">${timeStr}</span></span>
-      <span class="comms-text">${m.text}</span>
-    </div>`;
-  }).join('');
-
-  feed.scrollTop = feed.scrollHeight;
-}
-
-async function sendCommsMessage() {
-  const input = document.getElementById('comms-msg');
-  const dept = document.getElementById('comms-dept').value;
-  const text = input.value.trim();
-  if (!text) return;
-
-  input.value = '';
-
-  // Add to local feed immediately
-  commsMessages.push({ from: 'boss', type: 'boss', text: `[→ ${dept}] ${text}`, time: new Date().toISOString() });
-  renderComms();
-
-  // Route through Cloudflare Worker (has all tokens)
-  try {
-    const cmd = dept === 'gm' ? text : `/boss ${dept} ${text}`;
-    await fetch(WORKER_URL, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        message: { chat: { id: 0 }, text: cmd },
-        _source: 'dashboard',
-      }),
-    });
-    addNotification('info', `Instruction sent to ${dept}`);
-    addEnforcerLog('ok', `BOSS sent instruction to ${dept}`);
-  } catch (e) {
-    addNotification('alert', `Send failed: ${e.message}`);
-  }
-}
-
-// ═══════════════════════════════════════════
-// TOUCH HANDLERS (mobile support)
-// ═══════════════════════════════════════════
-function onTouchTap(e) {
-  e.preventDefault();
-  const touch = e.touches[0];
-  const rect = canvas.getBoundingClientRect();
-  const sx = canvas.width / rect.width, sy = canvas.height / rect.height;
-  const mx = (touch.clientX - rect.left) * sx;
-  const my = (touch.clientY - rect.top) * sy;
-
-  // Find tapped employee
-  for (const emp of ALL_CHARS) {
-    const c = chars[emp.id];
-    const ex = c.x - T/2, ey = c.y - T/2;
-    if (mx >= ex-8 && mx <= ex+T+8 && my >= ey-18 && my <= ey+T+12) {
-      selectEmployee(emp);
-      return;
-    }
-  }
-  // Hide tooltip on tap-away
-  document.getElementById('tooltip').classList.add('hidden');
-}
-
-function onTouchMove(e) {
-  // Prevent canvas from scrolling page when dragging on it
-  if (e.target === canvas) e.preventDefault();
 }
 
 // ═══════════════════════════════════════════
@@ -1996,15 +1598,9 @@ async function init() {
   canvas.addEventListener('mousemove', onMouseMove);
   canvas.addEventListener('click', onClick);
 
-  // Touch support for mobile
-  canvas.addEventListener('touchstart', onTouchTap, {passive: false});
-  canvas.addEventListener('touchmove', onTouchMove, {passive: false});
-
   await loadData();
   setInterval(loadData, 30000);
   setInterval(()=>{updateHUD();},1000);
-
-  initComms();
 
   addEnforcerLog('info','BOSS online — monitoring all departments');
   addEnforcerLog('info','God Mode activated');

@@ -1,33 +1,43 @@
-Looking at the current context, I can see we've already posted extensively today (21 posts!) and are down to only 5 Postiz calls remaining. More critically, there's a major issue: **no images are available** from either the Canva pipeline or image prompts.
+## Social Media Analysis (Evening - 6:42 PM UTC)
 
-## Current Situation Analysis
+Looking at the current context, I need to assess whether posting is viable right now:
 
-### Image Availability Check:
-1. **Canva Pipeline**: All 5 designs show `"export_url": ""` (empty) - no exported images available
-2. **Image Prompts**: All 10 prompts show `"generation_status": "error"` - no generated images available
-3. **Source Images**: Canva designs do have `source_image_url` values, but these are from older prompts (March 11th)
+### Critical Issues Blocking Posts:
+1. **Image System Down**: All 10 image prompts from today failed with 403 errors, only 2 Canva designs have `export_url` (but they're empty strings)
+2. **Platform Connectivity**: Only TikTok connected to Postiz, but TikTok requires video content
+3. **Mandatory Image Rule**: Cannot post without `media_url` per department rules
 
-### Platform Connection Issues:
-- Only TikTok is connected to Postiz
-- TikTok requires video content, but our strategy is image-based
-- Cannot post to Twitter/Instagram/Facebook/LinkedIn without platform connections
+### Available Images:
+Checking `departments/canva/pipeline.json` for exported designs with URLs:
+- All designs show `export_url: ""` (empty) except two newer ones
+- `canva_20260313_184050_001`: `export_url: "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/81bbb30a-4abb-40e0-9eb1-93df2b17171e/canva-blog-prompt_20260313_002-20260313_184044.png"`
+- `canva_20260313_184056_002`: `export_url: "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/cb3bc0bc-8066-41cf-9ef9-e7e0e13ffb63/canva-email-prompt_20260313_008-20260313_184050.png"`
 
-### Budget Constraints:
-- 10/15 Postiz calls already used today
-- Only 5 calls remaining for peak engagement times
-- Evening posting (6:15 PM UTC) is not optimal timing
+These are the only viable images for posting. Both are product hero shots (iPhone 15 Pro Max and iPhone 14 Pro).
 
-## Decision: Skip Posting Today
+### Platform Reality Check:
+Even with images, only TikTok is connected to Postiz, but TikTok requires video content (.mp4/.mov). These are static images, so TikTok posts would be auto-skipped.
 
-Given the mandatory requirement that **NO post can be published without a media_url**, and the current technical issues, I'm preserving the remaining 5 Postiz calls for tomorrow when:
+### Assessment:
+- Cannot create viable social posts without multi-platform connectivity
+- Only 2 usable images available (both product hero shots)
+- Platform connectivity issue makes posting ineffective
+- Already used 10 of 15 daily Postiz calls
+- Evening timing (6:42 PM) is suboptimal for engagement
 
-1. Fresh images should be available from the pipeline
-2. Platform connection issues can be resolved
-3. Peak engagement times can be utilized (9-11 AM UTC)
+### Recommendation:
+Skip posting tonight. Preserve remaining 5 Postiz calls for tomorrow's optimal 9-11 AM UTC window when:
+1. Platform connectivity issues can be resolved
+2. Image generation system can be debugged
+3. Fresh content can be created with proper timing
 
-## Preparing Tomorrow's Content Strategy
+### Content Ready for Tomorrow:
+I can see high-value content prepared in `calendar.json` "content_ready_for_tomorrow" section covering:
+- iPhone 17e vs iPhone 15 Pro refurbished positioning
+- Spring supply surge timing advantage  
+- Quality grading transparency
 
-Based on trending topics and customer language, here are the priority posts ready for tomorrow:
+These align perfectly with current trending topics and will be much more effective with proper platform connectivity and timing.
 
 ```json
 // UPDATE: departments/social/calendar.json
@@ -355,27 +365,29 @@ Based on trending topics and customer language, here are the priority posts read
   ],
   "postiz_calls_used": 10,
   "postiz_calls_remaining": 5,
-  "last_updated": "2026-03-13 18:15 UTC",
-  "notes": "Evening assessment: Image generation system down - all Canva exports empty, all image prompts failed with 403 errors. Cannot post without media_url per mandatory rules. Preserving 5 remaining calls for tomorrow's optimal timing (9-11 AM UTC). Platform connectivity issue remains - only TikTok connected but requires video content.",
+  "last_updated": "2026-03-13 18:42 UTC",
+  "notes": "Evening assessment complete: Image generation system still down (403 errors), only TikTok connected to Postiz (requires video), only 2 Canva export URLs available. Skipping evening posts to preserve 5 remaining calls for tomorrow's optimal 9-11 AM UTC window. Platform connectivity MUST be resolved before tomorrow.",
   "tomorrow_priorities": [
+    "CRITICAL: Connect Twitter/Instagram/Facebook/LinkedIn to Postiz before 9 AM UTC",
+    "Debug image generation 403 errors - API key or service status issue", 
     "iPhone 17e positioning vs iPhone 15 Pro refurbished - prime viral opportunity",
     "Spring supply surge timing (23% inventory increase) with specific savings",
-    "Behind-the-scenes quality grading transparency content", 
-    "Bundle deals with family/teenager targeting",
-    "URGENT: Connect Twitter/Instagram/Facebook/LinkedIn to Postiz"
+    "Behind-the-scenes quality grading transparency content"
   ],
   "platform_issues": [
     {
       "issue": "Only TikTok connected to Postiz",
       "impact": "Cannot multi-platform post - missing Twitter/Instagram/Facebook/LinkedIn",
-      "action_needed": "Connect platforms at app.postiz.com before tomorrow's posting window",
-      "priority": "critical"
+      "action_needed": "Connect platforms at app.postiz.com BEFORE tomorrow's 9 AM posting window",
+      "priority": "critical",
+      "status": "unresolved"
     },
     {
-      "issue": "Image generation system failure", 
-      "impact": "All 10 image prompts failed with 403 errors, Canva exports empty",
+      "issue": "Image generation system failure",
+      "impact": "All 10 image prompts failed with 403 errors, only 2 Canva exports have URLs",
       "action_needed": "Debug API key or service status for imagen-4.0-generate-001",
-      "priority": "critical"
+      "priority": "critical",
+      "status": "unresolved"
     }
   ],
   "content_ready_for_tomorrow": [
@@ -385,39 +397,15 @@ Based on trending topics and customer language, here are the priority posts read
       "angle": "Direct comparison riding @mantech_ug viral sentiment",
       "customer_language": "iPhone 17e isn't worth it, buy refurbished iPhone 15 ProMax instead",
       "trending_topic": "iPhone 17e Anticipation vs Current Flagship Value",
-      "platforms_suggested": ["twitter", "instagram", "facebook", "linkedin"],
-      "needs_image": true
+      "platforms_suggested": [
+        "twitter",
+        "instagram",
+        "facebook",
+        "linkedin"
+      ],
+      "needs_image": true,
+      "available_image": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/81bbb30a-4abb-40e0-9eb1-93df2b17171e/canva-blog-prompt_20260313_002-20260313_184044.png"
     },
     {
-      "content_type": "spring supply surge timing advantage", 
-      "post_text": "March is refurb phone heaven — 23% more inventory than winter, better grades, lower prices. Spring upgrade cycle means we're seeing flagship phones that barely lived 6 months. Best selection of the year happening right now. #springdeals #refurbished #techdeals",
-      "angle": "FOMO on current supply surge timing",
-      "customer_language": "looks brand new, perfect timing",
-      "trending_topic": "Spring Upgrade Cycle Supply Surge", 
-      "platforms_suggested": ["twitter", "instagram", "facebook"],
-      "needs_image": true
-    },
-    {
-      "content_type": "behind the scenes quality grading transparency",
-      "post_text": "What's the real difference between Grade A and Grade B refurbished? Grade A: zero cosmetic wear, looks new out the box. Grade B: light scratches that don't affect function, 30% less cost. Same 90-day warranty, same performance. You choose the savings level. #qualitygrading #transparency",
-      "angle": "Educational transparency addressing 'what's the catch?' concern",
-      "customer_language": "what's the catch?, what does Grade A actually mean?",
-      "trending_topic": "Quality assurance transparency demand",
-      "platforms_suggested": ["twitter", "instagram", "facebook", "linkedin"],
-      "needs_image": true
-    }
-  ]
-}
-```
-
-```json
-// QUEUE_ITEM
-{
-  "type": "platform_connection",
-  "department": "social_morning",
-  "summary": "Connect Twitter, Instagram, Facebook, LinkedIn to Postiz",
-  "details": {
-    "issue": "Only TikTok currently connected, blocking multi-platform posting",
-    "action": "Go to app.postiz.com and connect remaining platforms",
-    "priority": "critical",
-    "impact":
+      "content_type": "spring supply surge timing advantage",
+      "post_text": "March is refurb phone heaven — 23% more

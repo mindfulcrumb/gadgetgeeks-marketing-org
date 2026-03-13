@@ -1,6 +1,26 @@
 {
   "runs": [
     {
+      "id": "run_image_prompts_20260313_090138",
+      "department": "image_prompts",
+      "timestamp": "2026-03-13T09:01:38.318867+00:00",
+      "date": "2026-03-13",
+      "status": "ok",
+      "model": "claude-sonnet-4-20250514",
+      "tokens": {
+        "input": 12007,
+        "output": 4096,
+        "total": 16103
+      },
+      "actions": {
+        "file_updates": 0,
+        "queue_items": 0,
+        "social_posts": 0
+      },
+      "changes": [],
+      "had_boss_instructions": false
+    },
+    {
       "id": "run_gm_report_20260313_075253",
       "department": "gm_report",
       "timestamp": "2026-03-13T07:52:53.461118+00:00",
@@ -509,8 +529,8 @@
     }
   ],
   "stats": {
-    "total_runs": 18,
-    "total_tokens": 152845,
+    "total_runs": 19,
+    "total_tokens": 168948,
     "total_errors": 0
   },
   "department_stats": {
@@ -563,10 +583,10 @@
       "last_run": "2026-03-12T17:29:52.891002+00:00"
     },
     "image_prompts": {
-      "runs": 1,
-      "tokens": 15378,
+      "runs": 2,
+      "tokens": 31481,
       "errors": 0,
-      "last_run": "2026-03-12T22:06:03.611555+00:00"
+      "last_run": "2026-03-13T09:01:38.318867+00:00"
     },
     "gm_report": {
       "runs": 1,

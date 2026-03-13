@@ -144,6 +144,21 @@ def post_to_social(
         ).lower()
         settings_type = PLATFORM_TYPE_MAP.get(integ_type, integ_type)
 
+        settings = {"__type": settings_type}
+
+        # Platform-specific required settings
+        if settings_type == "tiktok":
+            settings.update({
+                "privacy_level": "PUBLIC_TO_EVERYONE",
+                "duet": False,
+                "stitch": False,
+                "comment": True,
+                "autoAddMusic": "no",
+                "brand_content_toggle": False,
+                "brand_organic_toggle": False,
+                "content_posting_method": "DIRECT_POST",
+            })
+
         post_obj = {
             "integration": {"id": integ["id"]},
             "value": [
@@ -152,9 +167,7 @@ def post_to_social(
                     "image": image_payload,
                 }
             ],
-            "settings": {
-                "__type": settings_type,
-            },
+            "settings": settings,
         }
         posts.append(post_obj)
 

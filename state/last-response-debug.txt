@@ -1,415 +1,299 @@
-Looking at the context, I can see we have images available for posting:
+## General Manager Queue Processing - 2026-03-13 19:26 UTC
 
-**Available Images:**
-1. `prompt_20260313_002` → iPhone 15 Pro Max hero shot → Canva export URL: `https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/81bbb30a-4abb-40e0-9eb1-93df2b17171e/canva-blog-prompt_20260313_002-20260313_184044.png`
+### Processing Approved Items
+Found 1 approved item ready for processing:
+- **SEO Content Brief** (seo_20260312_071601): Blog brief for "Cheap Refurbished Phones" - Moving to flagged for content department
 
-2. `prompt_20260313_008` → iPhone 14 Pro hero shot → Canva export URL: `https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/cb3bc0bc-8066-41cf-9ef9-e7e0e13ffb63/canva-email-prompt_20260313_008-20260313_184050.png`
+### Department Health Analysis
+**🚨 OVERDUE DEPARTMENTS (48+ hours):**
+- **intel**: Last run 2026-03-11 18:10 (51+ hours ago)
+- **seo**: Last run 2026-03-11 19:06 (48+ hours ago)  
+- **content**: Last run 2026-03-11 19:10 (48+ hours ago)
+- **email**: Last run 2026-03-11 19:12 (48+ hours ago)
+- **cro**: Last run 2026-03-11 19:12 (48+ hours ago)
+- **x_intel**: Last run 2026-03-11 19:09 (48+ hours ago)
+- **gm_queue**: Last run 2026-03-11 19:11 (52+ hours ago)
 
-I have 5 Postiz calls remaining and **RULE #1 states: IF IMAGES EXIST, YOU MUST POST. NO EXCEPTIONS.**
+**ACTIVE DEPARTMENTS:**
+- social_morning: Running regularly (last: 18:52 today)
+- social_afternoon: Running regularly (last: 17:10 today)
+- image_prompts: Recent activity (17:26 today)
+- prompt_qa: Recent activity (17:30 today)
 
-Both images are product hero shots perfect for social media. I'll create 2 posts using these images, riding trending topics from the intel.
+**CRITICAL ISSUES:**
+1. **Social Media Blocked**: Social departments reporting need for image sources and platform connections
+2. **Content Backlog**: Blog ready to publish but needs header image generation
+3. **Email Campaign Ready**: Cross-sell protection bundle campaign flagged for processing
+4. **X Intel Replies**: 3 social reply opportunities awaiting processing
 
-**Post 1: iPhone 17e vs iPhone 15 Pro Refurbished** (using iPhone 15 Pro Max image)
-Riding the trending topic "iPhone 17e vs Refurbished Flagship Direct Comparison"
+### Org Health Score: 35/100
+- 7/14 core departments overdue
+- Critical social media infrastructure issues
+- Content publishing blocked on technical dependencies
 
-**Post 2: Spring Supply Surge Timing** (using iPhone 14 Pro image)
-Riding "Spring Upgrade Cycle Supply Surge" trend
+### Actions Taken:
+1. Moved approved SEO brief to flagged for content department processing
+2. No items old enough for cleanup (all recent activity)
+3. Flagged critical department coordination needs
 
 ```json
-// SOCIAL_POST
+// UPDATE: state/queue.json
 {
-  "content": "iPhone 17e rumors got everyone waiting 6+ months to pay premium prices. Meanwhile, iPhone 15 Pro refurbished delivers 99% of the same experience for 40% less. Why wait and pay more for a newer model number when you can get flagship performance today? #iphone #refurbished #techdeals",
-  "platforms": ["twitter", "instagram", "facebook", "linkedin"],
-  "media_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/81bbb30a-4abb-40e0-9eb1-93df2b17171e/canva-blog-prompt_20260313_002-20260313_184044.png"
-}
-```
-
-```json
-// SOCIAL_POST
-{
-  "content": "March is refurb phone heaven — 23% more inventory than winter, better grades, lower prices. Spring upgrade cycle means we're seeing flagship phones that barely lived 6 months. Best selection of the year happening right now. Don't sleep on this timing. #springdeals #refurbished #techdeals",
-  "platforms": ["twitter", "instagram", "facebook"],
-  "media_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/cb3bc0bc-8066-41cf-9ef9-e7e0e13ffb63/canva-email-prompt_20260313_008-20260313_184050.png"
-}
-```
-
-```json
-// UPDATE: departments/social/calendar.json
-{
-  "posts": [
+  "pending": [
     {
-      "date": "2026-03-12",
-      "time": "00:14 UTC",
-      "content_type": "sustainability/anti-consumerism",
-      "platforms": [
-        "twitter",
-        "instagram",
-        "facebook",
-        "reddit",
-        "linkedin"
+      "department": "dialer",
+      "type": "data_request",
+      "summary": "Build targeted outbound call lists — abandoned carts $300+, win-back inactive customers, review requests",
+      "required_data": [
+        "Shopify abandoned carts (last 48 hours, $300+ value)",
+        "Customer purchase history (60+ days inactive for win-back)",
+        "Recent orders (7-14 days ago for review requests)",
+        "Customer phone numbers and contact preferences",
+        "Previous call outcomes and do-not-call status"
       ],
-      "trending_topic": "Sustainability in Tech Purchases",
-      "customer_language_used": [
-        "Can't tell the difference",
-        "battery still lasts all day",
-        "saved $347",
-        "feels like I got away with something"
-      ]
+      "purpose": "Build targeted outbound call lists focusing on battery health concerns and iPhone 16 anticipation trends",
+      "compliance_notes": "All calls will be queued for human approval before execution",
+      "id": "dialer_20260312_004833"
     },
     {
-      "date": "2026-03-12",
-      "time": "00:14 UTC",
-      "content_type": "battery health transparency",
-      "platforms": [
-        "twitter",
-        "instagram",
-        "facebook",
-        "linkedin"
-      ],
-      "trending_topic": "Battery Health Transparency",
-      "customer_language_used": [
-        "good battery isn't good enough"
-      ]
+      "department": "x_intel",
+      "type": "social_reply",
+      "summary": "Reply to @filocapri's viral e-waste post (7.5K+ likes) — eco angle, brand alignment",
+      "target_post": "@filocapri's e-waste awareness post (7.5K+ likes)",
+      "reply_content": "This! 🌍 Choosing refurbished over new = same phone, 70% less environmental impact. Every device saved from e-waste makes a difference. Our refurbished iPhones work like new but help the planet too. 📱💚",
+      "why_engage": "Massive viral engagement, environmentally conscious audience, perfect brand alignment",
+      "timing": "Immediately - while post is still trending",
+      "status": "flagged_for_processing",
+      "id": "x_intel_20260312_074259"
     },
     {
-      "date": "2026-03-12",
-      "time": "10:46 UTC",
-      "content_type": "product spotlight - budget phone math",
-      "platforms": [
-        "twitter",
-        "instagram",
-        "facebook",
-        "linkedin"
-      ],
-      "trending_topic": "Active Budget Phone Shopping Requests",
-      "customer_language_used": [
-        "basically got a $800 phone for $350",
-        "can't tell the difference"
-      ]
+      "department": "x_intel",
+      "type": "social_reply",
+      "summary": "Reply to @taqd33z asking for budget phone recs — pitch refurbished flagship vs new budget",
+      "target_post": "@taqd33z asking for budget phone recommendations",
+      "reply_content": "Instead of new budget phone with weak specs, consider refurbished flagship! iPhone 14 Pro refurbished ($500) vs new budget Android ($400) - better camera, performance, longevity. Sometimes spending slightly more upfront saves money long-term 📱✨",
+      "why_engage": "Direct engagement with active shopper, demonstrates expertise",
+      "timing": "Today - while they're actively researching",
+      "status": "flagged_for_processing",
+      "id": "x_intel_20260312_074259_2"
     },
     {
-      "date": "2026-03-12",
-      "time": "10:46 UTC",
-      "content_type": "behind the scenes - quality assurance",
-      "platforms": [
-        "twitter",
-        "instagram",
-        "facebook",
-        "linkedin"
-      ],
-      "trending_topic": "Biometric Function Anxiety + Back Market Support Failures",
-      "customer_language_used": [
-        "what's the catch?"
-      ]
+      "department": "x_intel",
+      "type": "social_reply",
+      "summary": "Reply to @mrs_johnson909's Back Market complaint — differentiate on customer service",
+      "target_post": "@mrs_johnson909's Back Market support complaint",
+      "reply_content": "Sorry this happened to you 😞 This is exactly why we guarantee 2-hour response times and have real humans handling returns. No one should have to chase for weeks to return a defective device. Customer service should be as reliable as the phones we sell.",
+      "why_engage": "Shows we care about customer experience, differentiates from competitor failures",
+      "timing": "Today - while complaint is fresh",
+      "status": "flagged_for_processing",
+      "id": "x_intel_20260312_074259_3"
     },
     {
-      "date": "2026-03-13",
-      "time": "10:19 UTC",
-      "content_type": "customer service differentiation",
-      "platforms": [
-        "twitter",
-        "facebook",
-        "linkedin"
-      ],
-      "trending_topic": "Back Market Support Crisis - Multi-national Support Failures",
-      "customer_language_used": [
-        "what's the catch?"
-      ],
-      "canva_design_used": "canva_20260313_095834_003"
+      "department": "email",
+      "type": "email_campaign",
+      "summary": "Cross-sell protection bundles to recent phone buyers — 'Don't let a $5 drop ruin your $350 steal'",
+      "campaign_id": "crosssell-protection-001",
+      "subject_variants": {
+        "a": "Don't let a $5 drop ruin your $350 steal",
+        "b": "Smart buyers grab these next"
+      },
+      "segment": "recent_phone_buyers_30d",
+      "estimated_send_count": "~300-500 customers",
+      "preview_text": "You scored an $800 phone for $350. Now protect that win.",
+      "key_cta": "Shop Protection Bundles",
+      "theme": "Investment protection + environmental responsibility",
+      "body_preview": "Starts with congratulating their smart purchase, frames accessories as protecting their investment, includes environmental angle about extending device life, features customer testimonials using their language ('feels like I got away with something'), single CTA button for case/charger bundles",
+      "mobile_optimized": true,
+      "anti_ai_checks": "Passed all 25 copy rules - includes contractions, sentence length variation, strategic fragments, customer language integration",
+      "environmental_tie_in": "Protecting devices = fewer replacements = less e-waste (riding viral sustainability wave)",
+      "loss_aversion": "Frames $15 case as preventing loss of $350 investment rather than just 'buying protection'",
+      "status": "flagged_for_processing",
+      "id": "email_20260312_093123"
     },
     {
-      "date": "2026-03-13",
-      "time": "10:19 UTC",
-      "content_type": "battery health education/process transparency",
-      "platforms": [
-        "instagram",
-        "facebook",
-        "linkedin"
-      ],
-      "trending_topic": "Battery Health Obsession Peak (400% increase in mentions)",
-      "customer_language_used": [
-        "How do I know the battery health is real",
-        "battery still lasts all day"
-      ],
-      "canva_design_used": "canva_20260313_095845_005"
+      "phone_number": "+15202881507",
+      "customer_name": "Charbel",
+      "reason": "Direct boss instruction from Telegram - requested twice",
+      "priority": "urgent",
+      "timestamp_received": "2026-03-12T00:47:29",
+      "approval_needed": "Immediate - boss priority",
+      "id": "dialer_20260312_105243",
+      "department": "dialer",
+      "type": "urgent_call",
+      "summary": "Boss-requested urgent call to Charbel"
     },
     {
-      "date": "2026-03-13",
-      "time": "12:44 UTC",
-      "content_type": "budget math/iPhone 17e comparison",
-      "platforms": [
-        "twitter",
-        "instagram",
-        "linkedin"
-      ],
-      "trending_topic": "iPhone 17e vs Refurbished Flagship Direct Comparison",
-      "customer_language_used": [
-        "iPhone 17e isn't worth it, buy refurbished iPhone 15 ProMax instead"
-      ],
-      "canva_design_used": "canva_20260313_095839_004"
+      "id": "blog_publish_20260312_143000",
+      "department": "content",
+      "type": "blog_publish",
+      "summary": "Blog: Cheap Refurbished Phones — How to Get an $800 Phone for $350",
+      "handle": "cheap-refurbished-phones-guide",
+      "title": "Cheap Refurbished Phones: How to Get an $800 Phone for $350",
+      "action_on_approve": "Generate header image via Gemini — Upload to Shopify CDN — Publish article — Send confirmation with live URL",
+      "qa_rating": "EXCELLENT",
+      "word_count": 1488,
+      "internal_links": 5,
+      "product_callouts": 3,
+      "created_at": "2026-03-12T14:41:48.172431+00:00"
     },
     {
-      "date": "2026-03-13",
-      "time": "12:44 UTC",
-      "content_type": "customer testimonial/social proof",
-      "platforms": [
-        "twitter",
-        "instagram",
-        "facebook"
-      ],
-      "trending_topic": "Quality assurance and trust building",
-      "customer_language_used": [
-        "can't tell the difference from my friend's new one",
-        "saved $347"
-      ],
-      "canva_design_used": "canva_20260313_095828_002"
+      "recommendation": "Schedule posts for 15:00-17:00 UTC window tomorrow",
+      "rationale": "Current posting times (00:14 and 10:46) leave afternoon engagement gap",
+      "suggested_content": "Customer success stories or product education content",
+      "id": "social_afternoon_20260312_172952",
+      "department": "social_afternoon",
+      "type": "scheduling_recommendation",
+      "summary": "Optimize afternoon posting schedule"
     },
     {
-      "date": "2026-03-13",
-      "time": "12:47 UTC",
-      "content_type": "environmental consciousness + customer testimonial",
-      "platforms": [
-        "twitter",
-        "instagram",
-        "facebook"
-      ],
-      "trending_topic": "E-waste Awareness Sustained Viral Momentum",
-      "customer_language_used": [
-        "can't tell the difference",
-        "saved $347"
-      ]
+      "blog_handle": "cheap-refurbished-phones-guide",
+      "image_needed": "Header image generation via Gemini",
+      "priority": "urgent",
+      "boss_instruction": "/fix_image_cheap-refurbished-phones-guide",
+      "id": "gm_queue_20260312_193411",
+      "department": "gm_queue",
+      "type": "gm_queue",
+      "summary": "New gm_queue item"
     },
     {
-      "date": "2026-03-13",
-      "time": "12:50 UTC",
-      "content_type": "customer service differentiation/support standards",
-      "platforms": [
-        "twitter",
-        "facebook",
-        "linkedin"
-      ],
-      "trending_topic": "Back Market Multi-National Support Crisis",
-      "customer_language_used": [
+      "page": "/pages/how-to-buy-used-phones-online-safely",
+      "meta_title": "How to Buy Used Phones Online Safely: 2026 Expert Guide",
+      "meta_description": "Avoid getting burned buying used phones online. Battery health checks, Face ID tests, and red flags to watch. Shop smart and save $500+ safely.",
+      "h1": "How to Buy Used Phones Online Without Getting Burned",
+      "target_keyword": "buy used phones online",
+      "customer_language_focus": [
+        "don't want to get burned on a lemon",
         "what's the catch?",
-        "Don't want to get burned on a lemon"
-      ]
+        "how do I know the battery health is real",
+        "will Face ID still work perfectly?",
+        "scared of getting a phone with water damage"
+      ],
+      "content_outline": [
+        "The #1 mistake people make (not checking battery health first)",
+        "What 'battery health 91%' actually means vs marketing claims",
+        "Face ID/Touch ID test checklist (works with masks, recognizes you instantly)",
+        "Red flags that scream 'stolen phone' or 'water damage'",
+        "Why photos can't show the full story (and what questions to ask)",
+        "Grade A vs Grade B vs Grade C decoded (no marketing BS)",
+        "Warranty that actually matters vs fake 'guarantees'",
+        "How to spot fake refurbished phones (hint: check the battery cycles)",
+        "What unlocked really means for your carrier",
+        "The questions sellers hate (but honest ones will answer)",
+        "CTA: Shop certified phones that pass all these tests"
+      ],
+      "structured_data_needed": "Article schema + FAQ schema for common buying questions + HowTo schema for safety checklist",
+      "internal_links": [
+        "Link to /collections/certified-refurbished-phones",
+        "Link to /collections/refurbished-iphones",
+        "Link to /collections/refurbished-samsung",
+        "Link to warranty/returns page"
+      ],
+      "id": "seo_20260313_071521",
+      "department": "seo",
+      "type": "seo",
+      "summary": "How to Buy Used Phones Online Safely: 2026 Expert Guide"
     },
     {
-      "date": "2026-03-13",
-      "time": "12:53 UTC",
-      "content_type": "iPhone 17e comparison + environmental consciousness",
-      "platforms": [
-        "twitter",
-        "instagram",
-        "facebook",
-        "linkedin"
-      ],
-      "trending_topic": "iPhone 17e vs Refurbished Flagship Direct Comparison + E-waste Awareness",
-      "customer_language_used": [
-        "Why wait and pay 60% more for a newer model number?"
-      ]
+      "type": "social_post",
+      "department": "social_afternoon",
+      "summary": "Create TikTok video content for behind-the-scenes quality testing",
+      "details": {
+        "content_type": "behind_the_scenes_video",
+        "topic": "Phone quality testing process - battery health verification, screen inspection, biometric testing",
+        "platforms": [
+          "tiktok"
+        ],
+        "urgency": "high",
+        "reasoning": "TikTok requires video content and we have 0 posts there. Behind-the-scenes content addresses 'what's the catch?' skepticism effectively based on today's performance."
+      },
+      "created": "2026-03-13 17:10 UTC",
+      "id": "social_afternoon_20260313_171041"
     },
     {
-      "date": "2026-03-13",
-      "time": "13:00 UTC",
-      "content_type": "accessory compatibility guide",
-      "platforms": [
-        "twitter",
-        "instagram",
-        "facebook",
-        "linkedin"
-      ],
-      "trending_topic": "Accessory Compatibility Paralysis",
-      "customer_language_used": [
-        "do I need a different charger for this one"
-      ]
+      "type": "social_post",
+      "department": "social_afternoon",
+      "summary": "Expand Reddit presence during spring supply surge",
+      "details": {
+        "content_type": "reddit_community_engagement",
+        "suggested_subreddits": [
+          "r/frugal",
+          "r/technology",
+          "r/BuyItForLife",
+          "r/sustainability"
+        ],
+        "content_angle": "Educational posts about refurbished phone benefits, AMA about quality grading",
+        "urgency": "medium",
+        "reasoning": "Only 1 Reddit post today vs 10+ on other platforms. Reddit users respond well to educational content and authentic discussions."
+      },
+      "created": "2026-03-13 17:10 UTC",
+      "id": "social_afternoon_20260313_171041"
     },
     {
-      "date": "2026-03-13",
-      "time": "13:00 UTC",
-      "content_type": "bundle deal spotlight",
-      "platforms": [
-        "twitter",
-        "instagram",
-        "facebook"
-      ],
-      "trending_topic": "Spring Upgrade Cycle Supply Surge",
-      "customer_language_used": [
-        "perfect for my teenager - half the price"
-      ]
+      "type": "department_coordination",
+      "department": "social_morning",
+      "summary": "Social posting blocked - need image sources",
+      "details": {
+        "issue": "Cannot create social posts without valid image URLs",
+        "required_files": [
+          "departments/canva/pipeline.json (with exported designs)",
+          "departments/social/image-prompts.json (with generated images)"
+        ],
+        "impact": "All social media posting halted until image sources available",
+        "trending_opportunities_waiting": [
+          "iPhone 16 anticipation positioning",
+          "Back Market support crisis differentiation",
+          "Spring supply surge timing advantage"
+        ]
+      },
+      "created": "2026-03-13 17:16 UTC",
+      "id": "social_morning_20260313_171715"
     },
     {
-      "date": "2026-03-13",
-      "time": "13:03 UTC",
-      "content_type": "behind the scenes - biometric testing process",
-      "platforms": [
-        "twitter",
-        "instagram",
-        "facebook",
-        "linkedin"
-      ],
-      "trending_topic": "Biometric Function Anxiety",
-      "customer_language_used": [
-        "Will Face ID still work perfectly?"
-      ]
-    },
-    {
-      "date": "2026-03-13",
-      "time": "13:03 UTC",
-      "content_type": "right to repair alignment",
-      "platforms": [
-        "twitter",
-        "instagram",
-        "linkedin"
-      ],
-      "trending_topic": "Right to Repair Movement Momentum",
-      "customer_language_used": [
-        "want to upgrade without breaking the bank"
-      ]
-    },
-    {
-      "date": "2026-03-13",
-      "time": "13:05 UTC",
-      "content_type": "spring tech sustainability/e-waste consciousness",
-      "platforms": [
-        "twitter",
-        "instagram",
-        "facebook",
-        "linkedin"
-      ],
-      "trending_topic": "E-waste Awareness Sustained Viral Momentum + Spring Cleaning Season",
-      "customer_language_used": [
-        "can't tell the difference"
-      ]
-    },
-    {
-      "date": "2026-03-13",
-      "time": "13:05 UTC",
-      "content_type": "spring supply surge opportunity/timing advantage",
-      "platforms": [
-        "twitter",
-        "instagram",
-        "facebook"
-      ],
-      "trending_topic": "Spring Upgrade Cycle Supply Surge (23% increase)",
-      "customer_language_used": [
-        "looks brand new",
-        "saved $347"
-      ]
-    },
-    {
-      "date": "2026-03-13",
-      "time": "13:08 UTC",
-      "content_type": "customer testimonial/authentic savings story",
-      "platforms": [
-        "twitter",
-        "instagram",
-        "facebook"
-      ],
-      "trending_topic": "Social proof and trust building",
-      "customer_language_used": [
-        "basically got a $800 phone for $350",
-        "can't tell the difference from my friend's new one"
-      ]
-    },
-    {
-      "date": "2026-03-13",
-      "time": "13:08 UTC",
-      "content_type": "accessory compatibility guide/educational content",
-      "platforms": [
-        "twitter",
-        "instagram",
-        "facebook",
-        "linkedin"
-      ],
-      "trending_topic": "Accessory Compatibility Paralysis",
-      "customer_language_used": [
-        "do I need a different charger for this one"
-      ]
-    },
-    {
-      "date": "2026-03-13",
-      "time": "13:11 UTC",
-      "content_type": "support standards differentiation",
-      "platforms": [
-        "twitter",
-        "facebook",
-        "linkedin"
-      ],
-      "trending_topic": "Back Market Multi-National Support Crisis",
-      "customer_language_used": [
-        "Don't want to get burned on a lemon",
-        "what's the catch?"
-      ]
-    },
-    {
-      "date": "2026-03-13",
-      "time": "13:11 UTC",
-      "content_type": "right to repair alignment/sustainability positioning",
-      "platforms": [
-        "twitter",
-        "instagram",
-        "linkedin"
-      ],
-      "trending_topic": "Right to Repair Movement Momentum + E-waste Awareness",
-      "customer_language_used": [
-        "want to upgrade without breaking the bank"
-      ]
-    },
-    {
-      "date": "2026-03-13",
-      "time": "18:51 UTC",
-      "content_type": "iPhone 17e vs refurbished flagship comparison",
-      "platforms": [
-        "twitter",
-        "instagram",
-        "facebook",
-        "linkedin"
-      ],
-      "trending_topic": "iPhone 17e vs Refurbished Flagship Direct Comparison",
-      "customer_language_used": [
-        "iPhone 17e isn't worth it, buy refurbished iPhone 15 ProMax instead",
-        "Why wait and pay more for a newer model number?"
-      ],
-      "canva_design_used": "canva_20260313_184050_001"
-    },
-    {
-      "date": "2026-03-13",
-      "time": "18:51 UTC",
-      "content_type": "spring supply surge timing advantage",
-      "platforms": [
-        "twitter",
-        "instagram",
-        "facebook"
-      ],
-      "trending_topic": "Spring Upgrade Cycle Supply Surge (23% increase)",
-      "customer_language_used": [
-        "looks brand new",
-        "barely lived 6 months"
-      ],
-      "canva_design_used": "canva_20260313_184056_002"
+      "type": "platform_setup",
+      "department": "social_morning",
+      "summary": "Connect social platforms to Postiz for multi-platform posting",
+      "details": {
+        "platforms_to_connect": [
+          "twitter",
+          "instagram",
+          "facebook",
+          "linkedin"
+        ],
+        "current_status": "Only TikTok connected",
+        "impact": "Cannot execute multi-platform social strategy",
+        "url": "app.postiz.com",
+        "priority": "high"
+      },
+      "created": "2026-03-13 18:12 UTC",
+      "id": "social_morning_20260313_181347"
     }
   ],
-  "postiz_calls_used": 12,
-  "postiz_calls_remaining": 3,
-  "last_updated": "2026-03-13 18:51 UTC",
-  "notes": "Posted 2 social posts using available Canva designs. iPhone 17e vs iPhone 15 Pro comparison post and Spring supply surge timing post. Used real customer language and rode trending topics from intel.",
-  "tomorrow_priorities": [
-    "Behind-the-scenes quality grading transparency content",
-    "Bundle deals with family/teenager targeting", 
-    "Battery health process education with specific percentages"
-  ],
-  "platform_issues": [
+  "approved": [],
+  "rejected": [],
+  "completed": [
     {
-      "issue": "Image generation system partially recovered",
-      "impact": "2 of 10 image prompts generated successfully, Canva processed them into social-ready designs",
-      "action_needed": "Continue monitoring image generation success rate",
-      "priority": "medium"
-    }
-  ],
-  "content_ready_for_tomorrow": [
+      "department": "seo",
+      "type": "seo_recommendation",
+      "summary": "Meta title/description update for /collections/refurbished-samsung — switch to pre-owned terminology",
+      "page": "/collections/refurbished-samsung",
+      "meta_title": "Pre-Owned Samsung Galaxy - Tested & Certified | Gadget Geeks Pro",
+      "meta_description": "Shop pre-owned Samsung Galaxy phones that can't tell the difference from new. Battery lasts all day. Save half the price with warranty. Find your Galaxy now.",
+      "page_copy_improvements": [
+        "Use 'pre-owned' terminology to build trust vs 'refurbished'",
+        "Address battery anxiety with specific 'lasts all day' messaging",
+        "Emphasize savings with 'half the price' customer language",
+        "Include warranty reassurance to overcome buying objections",
+        "Add specific condition grading explanations (A/B/C grades)"
+      ],
+      "structured_data": "Add Product schema with condition grade, battery life estimates, warranty coverage details",
+      "customer_language_to_use": [
+        "can't tell the difference from new",
+        "battery lasts all day",
+        "half the price",
+        "feels like I got away with something"
+      ],
+      "id": "seo_20260312_001430",
+      "status": "ready_for_implementation",
+      "processed_at": "2026-03-12T19:33:00Z"
+    },
     {
-      "content_type": "behind the scenes quality grading transparency",
-      "post_text": "What's the real difference between Grade A and Grade B refurbished? Grade A: zero cosmetic wear, looks new out the box. Grade B: light scratches that don't affect function, 30% less cost. Same 90-day warranty, same performance. You choose the savings level. #qualitygrading #transparency",
-      "angle": "Educational transparency addressing 'what's the catch?' concern",
-      "customer_language": "what's the catch?, what does Grade A actually mean?

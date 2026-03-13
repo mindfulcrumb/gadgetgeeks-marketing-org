@@ -259,31 +259,50 @@
         "looks brand new",
         "saved $347"
       ]
-    }
-  ],
-  "postiz_calls_used": 6,
-  "postiz_calls_remaining": 9,
-  "last_updated": "2026-03-13 13:05 UTC",
-  "notes": "Posted spring sustainability content (riding sustained e-waste viral momentum) and supply surge timing opportunity (23% stock increase). Used authentic customer language with specific savings numbers. Avoided recently used topics like biometric testing and right to repair.",
-  "tomorrow_priorities": [
-    "Customer testimonial compilation (rotate back to social proof)",
-    "Product spotlight with specific model and savings numbers",
-    "iPhone 16 anticipation vs current deals positioning",
-    "Back Market support crisis differentiation (sustained opportunity)",
-    "Avoid: Spring cleaning (used today), Supply surge timing (used today)"
-  ],
-  "content_ready_for_tomorrow": [
+    },
     {
-      "content_type": "customer testimonial compilation",
-      "angle": "Real customer quotes about quality and savings with specific numbers",
-      "customer_language": "can't tell the difference from my friend's new one",
-      "trending_topic": "Trust building through authentic voices",
-      "platforms_suggested": [
+      "date": "2026-03-13",
+      "time": "13:08 UTC",
+      "content_type": "customer testimonial/authentic savings story",
+      "platforms": [
         "twitter",
         "instagram",
         "facebook"
+      ],
+      "trending_topic": "Social proof and trust building",
+      "customer_language_used": [
+        "basically got a $800 phone for $350",
+        "can't tell the difference from my friend's new one"
       ]
     },
+    {
+      "date": "2026-03-13",
+      "time": "13:08 UTC",
+      "content_type": "accessory compatibility guide/educational content",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook",
+        "linkedin"
+      ],
+      "trending_topic": "Accessory Compatibility Paralysis",
+      "customer_language_used": [
+        "do I need a different charger for this one"
+      ]
+    }
+  ],
+  "postiz_calls_used": 8,
+  "postiz_calls_remaining": 7,
+  "last_updated": "2026-03-13 13:08 UTC",
+  "notes": "Posted customer testimonial with authentic savings story ($800 for $350) and practical accessory compatibility guide. Used real customer language, avoided recently covered topics, and provided educational value alongside social proof.",
+  "tomorrow_priorities": [
+    "iPhone 16 anticipation vs current deals positioning",
+    "Back Market support crisis differentiation (sustained opportunity)",
+    "Bundle deal with specific model and savings numbers",
+    "Behind the scenes content (quality grading process)",
+    "Avoid: Customer testimonials (used today), Accessory compatibility (used today)"
+  ],
+  "content_ready_for_tomorrow": [
     {
       "content_type": "iPhone 16 anticipation positioning",
       "angle": "Why wait 6 months and pay more when current flagships are perfect now",
@@ -305,6 +324,17 @@
         "twitter",
         "facebook",
         "linkedin"
+      ]
+    },
+    {
+      "content_type": "bundle deal spotlight",
+      "angle": "Complete phone + case + charger bundle with exact savings calculations",
+      "customer_language": "perfect for my teenager - half the price",
+      "trending_topic": "Bundle deals and complete solutions",
+      "platforms_suggested": [
+        "twitter",
+        "instagram",
+        "facebook"
       ]
     }
   ]

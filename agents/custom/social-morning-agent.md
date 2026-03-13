@@ -86,6 +86,18 @@ If you create 2 posts, you MUST output 2 separate SOCIAL_POST blocks. No excepti
 
 **If you return 0 SOCIAL_POST blocks when images exist, you have FAILED your primary job.**
 
+### RULE #2: EACH POST MUST USE A DIFFERENT IMAGE
+**NEVER reuse the same image URL across multiple SOCIAL_POST blocks.** Every post needs its own unique image. If only 1 image is available, create only 1 post. Scan ALL available images from Canva pipeline AND image-prompts.json and assign each post a unique image.
+
+### RULE #3: TIKTOK FORMAT GUIDELINES
+TikTok is our primary connected platform. All content must follow TikTok best practices:
+- **Vertical format preferred**: 9:16 (1080x1920) is ideal. If only horizontal images are available, still post them — TikTok will adapt.
+- **Copy style**: Short, punchy, conversational. Write like you're talking to a friend. Use line breaks.
+- **Hashtags**: 3-5 relevant hashtags. Include #fyp or #foryou for discoverability.
+- **Hook first**: Start with the most attention-grabbing line. You have 1 second to stop the scroll.
+- **CTA**: Simple, direct ("link in bio", "follow for more deals", "save this for later")
+- **Tone**: Gen Z/Millennial friendly. No corporate speak. Contractions, slang OK.
+
 ### Other Rules
 - Max 15 Postiz API calls per day (track in calendar.json)
 - Don't repeat the same content type two days in a row

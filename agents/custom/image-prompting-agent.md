@@ -29,9 +29,9 @@ Every run MUST produce exactly **10 prompts**. Distribute across use cases:
 
 **Rotation rules:**
 - Vary phone models across the 10 prompts — never more than 3 of the same brand
-- Vary aspect ratios: at least 3 different ratios per batch (1:1, 4:5, 16:9, 9:16)
+- **TikTok-first aspect ratios**: At least 5 out of 10 prompts MUST be 9:16 (vertical/portrait) for TikTok. The rest can be 1:1, 4:5, or 16:9 for other platforms.
 - Vary environments — no two lifestyle shots in the same type of location
-- Vary people — age, ethnicity, gender, body type must differ across all people shots
+- **People prompts**: Do NOT specify age, race, ethnicity, or gender in prompts. Instead describe clothing, hairstyle, accessories, and actions. Example: "person with curly hair wearing a denim jacket" NOT "25-year-old Black woman". This avoids AI safety filter blocks.
 - Check `departments/social/calendar.json` — don't repeat yesterday's content themes
 
 ---
@@ -76,9 +76,9 @@ Specificity beats length. `a refurbished iPhone 15 Pro Max in Natural Titanium` 
 [NEGATIVE] — NO text, NO watermark, NO logo on image, NO cartoon, NO CGI, NO illustration
 ```
 
-### 2. Lifestyle / Social Media (for Instagram, X, Facebook)
+### 2. Lifestyle / Social Media (for Instagram, X, TikTok, Facebook)
 ```
-[CHARACTER] — [age, ethnicity, natural features, clothing — be specific and diverse]. Real person, not model-perfect.
+[CHARACTER] — [hairstyle, clothing, accessories — be specific]. Do NOT specify age, race, or ethnicity (triggers AI safety filters). Instead describe style: "person with braids wearing oversized hoodie" or "person in linen shirt with round glasses". Real person, not model-perfect.
 
 [ACTION] — [using the phone naturally: texting at café, FaceTiming on couch, taking photo at park]. Emotion: [relaxed, focused, laughing, candid moment].
 
@@ -244,7 +244,7 @@ For each content request, output:
 
 1. **Every prompt must look like a real photo** — camera filename hack (IMG_XXXX.CR3), real camera+lens, film stock
 2. **Show REAL brands** on phones — iPhone with Apple logo visible, Samsung with Galaxy branding. No generic phones.
-3. **Diverse people** — vary age, ethnicity, body type, gender across prompts. Our audience is everyone.
+3. **Diverse people** — vary clothing, hairstyles, environments, and accessories to suggest diversity. NEVER specify age, race, ethnicity, or gender directly — AI safety filters block these. Describe style and context instead.
 4. **Phone always looks premium** — pristine, like-new. This IS the product message: refurbished ≠ beat up.
 5. **No text on images** — text overlays are added in design tools later. Keep images clean.
 6. **Match the keyword/campaign** — if the post is about "iPhone 15 deals", the image MUST show an iPhone 15.

@@ -152,6 +152,41 @@
       "department": "seo",
       "type": "seo",
       "summary": "How to Buy Used Phones Online Safely: 2026 Expert Guide"
+    },
+    {
+      "type": "social_post",
+      "department": "social_afternoon",
+      "summary": "Create TikTok video content for behind-the-scenes quality testing",
+      "details": {
+        "content_type": "behind_the_scenes_video",
+        "topic": "Phone quality testing process - battery health verification, screen inspection, biometric testing",
+        "platforms": [
+          "tiktok"
+        ],
+        "urgency": "high",
+        "reasoning": "TikTok requires video content and we have 0 posts there. Behind-the-scenes content addresses 'what's the catch?' skepticism effectively based on today's performance."
+      },
+      "created": "2026-03-13 17:10 UTC",
+      "id": "social_afternoon_20260313_171041"
+    },
+    {
+      "type": "social_post",
+      "department": "social_afternoon",
+      "summary": "Expand Reddit presence during spring supply surge",
+      "details": {
+        "content_type": "reddit_community_engagement",
+        "suggested_subreddits": [
+          "r/frugal",
+          "r/technology",
+          "r/BuyItForLife",
+          "r/sustainability"
+        ],
+        "content_angle": "Educational posts about refurbished phone benefits, AMA about quality grading",
+        "urgency": "medium",
+        "reasoning": "Only 1 Reddit post today vs 10+ on other platforms. Reddit users respond well to educational content and authentic discussions."
+      },
+      "created": "2026-03-13 17:10 UTC",
+      "id": "social_afternoon_20260313_171041"
     }
   ],
   "approved": [

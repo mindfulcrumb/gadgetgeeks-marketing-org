@@ -419,9 +419,17 @@ def parse_response(response_text: str) -> dict:
             data = json.loads(content)
         except json.JSONDecodeError:
             # Try wrapping in braces (LLMs sometimes omit outer {})
-            if content.startswith('"') and not content.startswith('{'):
+            # Also fix common LLM issues: invalid escapes like \$ \# etc.
+            fixed = re.sub(r'\\([^"\\/bfnrtu])', r'\1', content)
+            if not fixed.startswith('{'):
+                wrapped = fixed.rstrip().rstrip(',')
                 try:
-                    data = json.loads('{' + content + '}')
+                    data = json.loads('{' + wrapped + '}')
+                except json.JSONDecodeError:
+                    pass
+            elif data is None:
+                try:
+                    data = json.loads(fixed)
                 except json.JSONDecodeError:
                     pass
             # Try finding first complete JSON object via brace counting

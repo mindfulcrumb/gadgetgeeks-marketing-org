@@ -1,43 +1,31 @@
-## Social Media Analysis (Evening - 6:42 PM UTC)
+## Social Media Morning Analysis
 
-Looking at the current context, I need to assess whether posting is viable right now:
+Looking at the calendar, I see we've had 21 posts today with heavy platform redundancy and 10 Postiz calls used, leaving us with 5 remaining calls. Critical issue: the evening assessment notes that the **image generation system is completely down** - all Canva exports are empty and all image prompts failed with 403 errors.
 
-### Critical Issues Blocking Posts:
-1. **Image System Down**: All 10 image prompts from today failed with 403 errors, only 2 Canva designs have `export_url` (but they're empty strings)
-2. **Platform Connectivity**: Only TikTok connected to Postiz, but TikTok requires video content
-3. **Mandatory Image Rule**: Cannot post without `media_url` per department rules
+### Context Check
+- **Canva designs**: All export_url fields are empty strings despite status "exported" 
+- **Image prompts**: Only 2 out of 10 have generated_url (prompts 002 and 008), rest failed with 403 errors
+- **Platform connectivity**: Only TikTok connected to Postiz, missing Twitter/Instagram/Facebook/LinkedIn
+- **Content saturation**: Already covered all major angles today - iPhone 17e positioning, spring supply surge, support standards, battery health, environmental consciousness
 
-### Available Images:
-Checking `departments/canva/pipeline.json` for exported designs with URLs:
-- All designs show `export_url: ""` (empty) except two newer ones
-- `canva_20260313_184050_001`: `export_url: "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/81bbb30a-4abb-40e0-9eb1-93df2b17171e/canva-blog-prompt_20260313_002-20260313_184044.png"`
-- `canva_20260313_184056_002`: `export_url: "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/cb3bc0bc-8066-41cf-9ef9-e7e0e13ffb63/canva-email-prompt_20260313_008-20260313_184050.png"`
+### Image Availability Assessment
+Following the mandatory image requirements:
 
-These are the only viable images for posting. Both are product hero shots (iPhone 15 Pro Max and iPhone 14 Pro).
+1. **Canva exports**: All have empty export_url strings despite "exported" status - unusable
+2. **Canva source images**: Most have empty source_image_url - unusable  
+3. **Generated images**: Only 2 valid URLs available:
+   - prompt_20260313_002: https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/f1bc1edb-88ed-4233-94b0-a45f4e2ab992/gg-prompt_20260313_002.jpg
+   - prompt_20260313_008: https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/7ac51c3e-6123-4840-ac61-9b4c98f0a679/gg-prompt_20260313_008.jpg
 
-### Platform Reality Check:
-Even with images, only TikTok is connected to Postiz, but TikTok requires video content (.mp4/.mov). These are static images, so TikTok posts would be auto-skipped.
+### Decision: Hold Posts for Tomorrow's Optimal Window
 
-### Assessment:
-- Cannot create viable social posts without multi-platform connectivity
-- Only 2 usable images available (both product hero shots)
-- Platform connectivity issue makes posting ineffective
-- Already used 10 of 15 daily Postiz calls
-- Evening timing (6:42 PM) is suboptimal for engagement
+Given the critical system failures and content saturation, I'm preserving the remaining 5 Postiz calls for tomorrow's optimal posting window (9-11 AM UTC) when:
+1. Image generation system should be restored
+2. Platform connectivity issues resolved  
+3. Fresh content angles can be developed
+4. Audience engagement is highest
 
-### Recommendation:
-Skip posting tonight. Preserve remaining 5 Postiz calls for tomorrow's optimal 9-11 AM UTC window when:
-1. Platform connectivity issues can be resolved
-2. Image generation system can be debugged
-3. Fresh content can be created with proper timing
-
-### Content Ready for Tomorrow:
-I can see high-value content prepared in `calendar.json` "content_ready_for_tomorrow" section covering:
-- iPhone 17e vs iPhone 15 Pro refurbished positioning
-- Spring supply surge timing advantage  
-- Quality grading transparency
-
-These align perfectly with current trending topics and will be much more effective with proper platform connectivity and timing.
+The evening notes already identified tomorrow's priority content ready to post once systems are operational.
 
 ```json
 // UPDATE: departments/social/calendar.json
@@ -365,29 +353,35 @@ These align perfectly with current trending topics and will be much more effecti
   ],
   "postiz_calls_used": 10,
   "postiz_calls_remaining": 5,
-  "last_updated": "2026-03-13 18:42 UTC",
-  "notes": "Evening assessment complete: Image generation system still down (403 errors), only TikTok connected to Postiz (requires video), only 2 Canva export URLs available. Skipping evening posts to preserve 5 remaining calls for tomorrow's optimal 9-11 AM UTC window. Platform connectivity MUST be resolved before tomorrow.",
+  "last_updated": "2026-03-13 18:45 UTC",
+  "notes": "Morning shift assessment: Critical system failures blocking content creation. Image generation API returning 403 errors (8/10 prompts failed), all Canva export URLs empty despite 'exported' status, and only TikTok connected to Postiz. Preserving all 5 remaining calls for tomorrow's optimal posting window (9-11 AM UTC) when systems should be operational and fresh content angles can be developed. Today's content already saturated all major trending topics.",
   "tomorrow_priorities": [
-    "CRITICAL: Connect Twitter/Instagram/Facebook/LinkedIn to Postiz before 9 AM UTC",
-    "Debug image generation 403 errors - API key or service status issue", 
-    "iPhone 17e positioning vs iPhone 15 Pro refurbished - prime viral opportunity",
-    "Spring supply surge timing (23% inventory increase) with specific savings",
-    "Behind-the-scenes quality grading transparency content"
+    "iPhone 17e positioning vs iPhone 15 Pro refurbished - prime viral opportunity when systems restored",
+    "Spring supply surge timing (23% inventory increase) with specific savings - needs fresh imagery",
+    "Behind-the-scenes quality grading transparency content - requires working Canva exports",
+    "Bundle deals with family/teenager targeting - needs lifestyle imagery",
+    "URGENT: Connect Twitter/Instagram/Facebook/LinkedIn to Postiz before tomorrow",
+    "URGENT: Debug image generation API - 403 errors blocking all new prompts",
+    "URGENT: Fix Canva export system - all export_url fields empty despite 'exported' status"
   ],
   "platform_issues": [
     {
       "issue": "Only TikTok connected to Postiz",
       "impact": "Cannot multi-platform post - missing Twitter/Instagram/Facebook/LinkedIn",
-      "action_needed": "Connect platforms at app.postiz.com BEFORE tomorrow's 9 AM posting window",
-      "priority": "critical",
-      "status": "unresolved"
+      "action_needed": "Connect platforms at app.postiz.com before tomorrow's posting window",
+      "priority": "critical"
     },
     {
-      "issue": "Image generation system failure",
-      "impact": "All 10 image prompts failed with 403 errors, only 2 Canva exports have URLs",
+      "issue": "Image generation system complete failure",
+      "impact": "8/10 image prompts failed with 403 errors, blocking content creation",
       "action_needed": "Debug API key or service status for imagen-4.0-generate-001",
-      "priority": "critical",
-      "status": "unresolved"
+      "priority": "critical"
+    },
+    {
+      "issue": "Canva export system malfunction",
+      "impact": "All export_url fields empty despite 'exported' status",
+      "action_needed": "Debug Canva API export functionality",
+      "priority": "critical"
     }
   ],
   "content_ready_for_tomorrow": [
@@ -404,8 +398,11 @@ These align perfectly with current trending topics and will be much more effecti
         "linkedin"
       ],
       "needs_image": true,
-      "available_image": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/81bbb30a-4abb-40e0-9eb1-93df2b17171e/canva-blog-prompt_20260313_002-20260313_184044.png"
+      "blocked_by": "Image generation system down"
     },
     {
       "content_type": "spring supply surge timing advantage",
-      "post_text": "March is refurb phone heaven — 23% more
+      "post_text": "March is refurb phone heaven — 23% more inventory than winter, better grades, lower prices. Spring upgrade cycle means we're seeing flagship phones that barely lived 6 months. Best selection of the year happening right now. #springdeals #refurbished #techdeals",
+      "angle": "FOMO on current supply surge timing",
+      "customer_language": "looks brand new, perfect timing",
+      "trending_topic": "Spring Upgrade Cycle Supply Surge",

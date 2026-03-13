@@ -207,6 +207,25 @@
       },
       "created": "2026-03-13 17:16 UTC",
       "id": "social_morning_20260313_171715"
+    },
+    {
+      "type": "platform_setup",
+      "department": "social_morning",
+      "summary": "Connect social platforms to Postiz for multi-platform posting",
+      "details": {
+        "platforms_to_connect": [
+          "twitter",
+          "instagram",
+          "facebook",
+          "linkedin"
+        ],
+        "current_status": "Only TikTok connected",
+        "impact": "Cannot execute multi-platform social strategy",
+        "url": "app.postiz.com",
+        "priority": "high"
+      },
+      "created": "2026-03-13 18:12 UTC",
+      "id": "social_morning_20260313_181347"
     }
   ],
   "approved": [

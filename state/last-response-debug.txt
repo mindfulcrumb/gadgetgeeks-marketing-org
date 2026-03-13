@@ -1,304 +1,436 @@
-## FOCUS Quality Assurance Review — BATCH 2026-03-13
+## Analysis and Work
 
-I've reviewed all 10 prompts against the 17-check quality gate. Running comprehensive analysis now.
+Looking at the context, I can see we've already posted extensively today (20+ posts since 10:19 UTC), using 10 of our 15 daily Postiz calls. The calendar shows we've covered most major content types already today: customer service differentiation, battery health education, iPhone 17e comparisons, customer testimonials, environmental consciousness, support standards, right to repair, accessory compatibility, bundle deals, and behind-the-scenes content.
 
----
+### Checking for Available Images
 
-## BATCH OVERVIEW
-- **Total prompts**: 10
-- **Use case distribution**: ✅ Proper spread (4 lifestyle, 2 product hero, 2 deal urgency, 1 sustainability, 1 comparison)
-- **Phone model variety**: ✅ Good rotation (iPhone 15 Pro 2x, iPhone 14 Pro 2x, others 1x each)
-- **Aspect ratio variety**: ✅ 4 different ratios used
-- **People diversity**: ✅ Varied demographics across all lifestyle shots
+**Canva Pipeline Check**: No file provided - cannot access departments/canva/pipeline.json
+**Image Prompts Check**: No file provided - cannot access departments/social/image-prompts.json
 
----
+Since I cannot access either image source and **NEVER post without an image is MANDATORY**, I cannot create any SOCIAL_POST blocks today.
 
-## DETAILED PROMPT REVIEWS
+### Content Gap Analysis
 
-### Prompt 001 — EXCELLENT (16/17 checks passed)
-**Score**: 16/17 | **Rating**: EXCELLENT | **Verdict**: SHIP
+Looking at what we haven't covered today that could work well:
+1. **iPhone 16 anticipation positioning** - from tomorrow_priorities, this would be perfect timing
+2. **Spring supply advantage** - we have 23% more inventory per trends
+3. **Quality grading process transparency** - addresses "what's the catch?" concerns
 
-✅ Camera: Canon EOS R5  
-✅ Lens: 85mm f/1.2  
-✅ Film stock: Kodak Portra 400  
-✅ Filename hack: IMG_4829.CR3  
-✅ Negative prompt: Present  
-✅ Skin realism: Full stack included  
-✅ Dark skin lighting: Proper rim light specified  
-✅ Anti-uncanny: Natural details, no "perfect" language  
-✅ Phone model: iPhone 15 Pro Natural Titanium (correct color)  
-✅ Phone condition: Implicit premium presentation  
-✅ Brand visibility: iPhone clearly identified  
-✅ Prompt length: 987 chars (optimal)  
-✅ Platform match: 4:5 for Instagram ✓  
-✅ No text: Clean image design  
-✅ No fake screens: Simple wallpaper only  
-⚠️ **Check 17 — Cellphone realism**: Minor — video calling pose could be more natural  
-✅ People diversity: Black woman, natural styling
+However, without access to image files and no valid media_url available, I cannot execute any posts today.
 
-**Minor warning**: Video calling hand position could be more authentic, but overall very strong lifestyle shot.
+### Platform Status
 
----
+The platform-config.json shows only TikTok is connected to Postiz, but TikTok requires video content (.mp4/.mov), not images. This creates a fundamental conflict with our image-based content strategy.
 
-### Prompt 002 — EXCELLENT (17/17 checks passed)
-**Score**: 17/17 | **Rating**: EXCELLENT | **Verdict**: SHIP
+### Recommendation
 
-✅ All technical checks passed  
-✅ Perfect product hero shot execution  
-✅ Phase One IQ4 + 100mm macro specified  
-✅ No fake screen issues (screen OFF)  
-✅ Clean filename hack  
+We need to:
+1. Connect Twitter, Instagram, Facebook, and LinkedIn to Postiz at app.postiz.com
+2. Ensure Canva pipeline has exported designs ready for social media
+3. Generate image prompts if Canva designs aren't available
 
-**Perfect execution** — textbook product hero shot.
-
----
-
-### Prompt 003 — GOOD (14/17 checks passed)
-**Score**: 14/17 | **Rating**: GOOD | **Verdict**: SHIP WITH WARNINGS
-
-✅ Camera: ARRI Alexa 35  
-✅ Lens: Cooke Anamorphic 50mm  
-⚠️ **Check 3 — Film stock**: Missing (but acceptable for cinematic/product style)  
-✅ Filename hack: Present  
-✅ Negative prompt: Strong  
-✅ Phone model: Galaxy S24 Ultra Titanium Gray ✓  
-⚠️ **Check 11 — Phone condition**: Not explicitly stated as refurbished quality  
-✅ Brand visibility: Samsung implied through model  
-✅ Prompt length: 856 chars  
-✅ Platform match: 1:1 for Facebook  
-✅ No fake screens: Dark wallpaper only  
-⚠️ **Check 17 — Cellphone realism**: Dramatic staging may look too produced for social scroll test  
-
-**Warnings noted but acceptable** — dramatic lighting serves deal urgency purpose.
-
----
-
-### Prompt 004 — EXCELLENT (15/17 checks passed)
-**Score**: 15/17 | **Rating**: EXCELLENT | **Verdict**: SHIP
-
-✅ Technical foundation solid  
-✅ Skin realism for Latino subject  
-✅ Natural work environment  
-⚠️ **Check 7 — Dark skin lighting**: Not applicable (subject not described as dark-skinned)  
-⚠️ **Check 17 — Cellphone realism**: Phone placement on table vs. in-hand reduces natural phone interaction  
-
-**Strong lifestyle shot** — authentic work environment, good candid energy.
-
----
-
-### Prompt 005 — BLOCKED (8/17 checks passed)
-**Score**: 8/17 | **Rating**: BLOCKED | **Verdict**: MAJOR REWRITE REQUIRED
-
-❌ **CRITICAL ISSUE — Check 16**: Prompt includes "labeled 'Grade B'" and "labeled 'Grade A+'" — this requests AI to render text labels directly on the image. AI cannot render convincing text/labels.
-
-❌ **Check 3**: No film stock specified  
-❌ **Check 4**: Poor filename hack execution  
-❌ **Check 11**: Describes phones as having "minor scratches" — negative condition language  
-❌ **Multiple technical issues**
-
-**BLOCKED**: The labeling request makes this unusable. Text overlays must be added in Canva, not generated by AI.
-
----
-
-### Prompt 006 — EXCELLENT (16/17 checks passed)
-**Score**: 16/17 | **Rating**: EXCELLENT | **Verdict**: SHIP
-
-✅ Strong sustainability execution  
-✅ Leica M11 + 50mm f/1.4  
-✅ Natural environment details  
-✅ Phone condition: Implicit premium quality  
-⚠️ **Check 9 — Diversity**: Asian woman representation good, but check batch diversity overall  
-
-**Excellent eco-conscious lifestyle shot** — authentic workspace, natural lighting.
-
----
-
-### Prompt 007 — NEEDS WORK (10/17 checks passed)
-**Score**: 10/17 | **Rating**: NEEDS WORK | **Verdict**: FIX AND RESHIP
-
-❌ **Check 16 — CRITICAL**: "phone displaying simple timer app screen" — requests AI to render specific app interface. This will look fake.  
-⚠️ **Check 17**: College dorm staging may look too perfect/staged  
-❌ **Check 11**: Implied phone usage rather than showcasing refurbished quality  
-⚠️ Multiple minor issues with composition and realism
-
-**Major fix required**: Remove app screen request, show phone with wallpaper or OFF.
-
----
-
-### Prompt 008 — EXCELLENT (17/17 checks passed)
-**Score**: 17/17 | **Rating**: EXCELLENT | **Verdict**: SHIP
-
-✅ Perfect product hero execution  
-✅ All technical specs correct  
-✅ Premium presentation for iPhone 14 Pro  
-
-**Flawless product shot** — ready for email hero use.
-
----
-
-### Prompt 009 — GOOD (13/17 checks passed)
-**Score**: 13/17 | **Rating**: GOOD | **Verdict**: SHIP WITH WARNINGS
-
-✅ Strong dramatic lighting concept  
-⚠️ **Check 3**: No film stock (acceptable for cinematic style)  
-⚠️ **Check 11**: Condition not explicitly premium  
-⚠️ **Check 17**: Very dramatic staging may not pass scroll test  
-⚠️ **Check 15**: "Red accent lighting" could be interpreted as text element
-
-**Acceptable for urgency messaging** — dramatic style serves the flash sale purpose.
-
----
-
-### Prompt 010 — EXCELLENT (15/17 checks passed)
-**Score**: 15/17 | **Rating**: EXCELLENT | **Verdict**: SHIP
-
-✅ Great family dynamics  
-✅ Authentic interaction between father and daughter  
-✅ Natural Titanium iPhone 15 Pro Max correctly specified  
-⚠️ **Check 17**: "Setting up phone together" could look slightly staged  
-⚠️ **Check 9**: Good diversity addition with Middle Eastern representation  
-
-**Strong family-focused lifestyle shot** — authentic emotional connection.
-
----
-
-## BATCH SUMMARY
-
-| Rating | Count | Prompts |
-|--------|-------|---------|
-| EXCELLENT (15-17) | 7 | 001, 002, 004, 006, 008, 009, 010 |
-| GOOD (12-14) | 1 | 003 |
-| NEEDS WORK (9-11) | 1 | 007 |
-| BLOCKED (<9) | 1 | 005 |
-
-**CRITICAL ISSUES REQUIRING IMMEDIATE FIXES:**
-1. **Prompt 005**: Text labels requested in AI generation — must be removed
-2. **Prompt 007**: App interface requested — must show simple wallpaper instead
-
----
+Since we're at 10 Postiz calls used with 5 remaining, and it's evening (18:12 UTC), saving those calls for peak posting times tomorrow makes strategic sense.
 
 ```json
-// UPDATE: departments/social/image-prompts.json
+// UPDATE: departments/social/calendar.json
 {
-  "prompts": [
+  "posts": [
     {
-      "id": "prompt_20260313_001",
-      "use_case": "lifestyle",
-      "platform": "instagram",
-      "aspect_ratio": "4:5",
-      "prompt": "25-year-old Black woman with natural hair in loose twist-out, wearing cream oversized sweater, sitting cross-legged on hardwood floor of bright Brooklyn apartment. She's holding iPhone 15 Pro in Natural Titanium, screen showing simple abstract wallpaper, genuine smile as she video calls someone. Natural morning light streaming through large windows creates soft rim lighting on her face and hair. Potted fiddle leaf fig and white ceramic mug on oak coffee table in background. Canon EOS R5, 85mm f/1.2, shallow depth of field, subject sharp, creamy bokeh background. Kodak Portra 400 film emulation, warm amber grade, lifted shadows, natural skin with visible pores, subsurface scattering, eye detail with corneal catchlight. IMG_4829.CR3 untitled unedited RAW file.",
-      "negative_prompt": "NO plastic skin, mannequin, CGI, airbrushed, doll-like, cartoon, text, watermark, logo",
-      "platform_params": "--ar 4:5 --style raw --s 250",
-      "notes": "For iPhone 16 anticipation positioning content - shows current flagship in real lifestyle use",
-      "keywords_targeted": [
-        "iPhone 15 Pro",
-        "refurbished iPhone",
-        "current flagship"
+      "date": "2026-03-12",
+      "time": "00:14 UTC",
+      "content_type": "sustainability/anti-consumerism",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook",
+        "reddit",
+        "linkedin"
       ],
-      "recommended_tool": "midjourney",
-      "qa_status": "EXCELLENT",
-      "qa_score": "16/17",
-      "qa_issues": [
-        {
-          "check": 17,
-          "severity": "minor",
-          "note": "Video calling pose could be more natural for scroll test"
-        }
+      "trending_topic": "Sustainability in Tech Purchases",
+      "customer_language_used": [
+        "Can't tell the difference",
+        "battery still lasts all day",
+        "saved $347",
+        "feels like I got away with something"
       ]
     },
     {
-      "id": "prompt_20260313_002",
-      "use_case": "product_hero",
-      "platform": "blog",
-      "aspect_ratio": "16:9",
-      "prompt": "iPhone 15 Pro Max in Blue Titanium positioned at slight angle on white Carrara marble surface, creating subtle reflections. Titanium frame catching studio light with precision edge highlights. Screen OFF showing curved glass reflections. Single strip light from left creates gentle gradient shadow. AirPods Pro case in white and woven Lightning cable arranged nearby, suggesting premium ecosystem. Phase One IQ4 150MP, 100mm macro f/2.8, focus stacked, product fills 60% of frame. Professional product photography, commercial studio lighting, 8K ultra-detailed. IMG_2851.CR3 unedited RAW.",
-      "negative_prompt": "NO text, watermark, logo on image, cartoon, CGI, illustration",
-      "platform_params": "--ar 16:9 --style raw --s 250",
-      "notes": "Hero shot for iPhone 16 anticipation blog post - current flagship quality",
-      "keywords_targeted": [
-        "iPhone 15 Pro Max",
-        "Blue Titanium",
-        "refurbished flagship"
+      "date": "2026-03-12",
+      "time": "00:14 UTC",
+      "content_type": "battery health transparency",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook",
+        "linkedin"
       ],
-      "recommended_tool": "midjourney",
-      "qa_status": "EXCELLENT",
-      "qa_score": "17/17",
-      "qa_issues": []
-    },
-    {
-      "id": "prompt_20260313_003",
-      "use_case": "deal_urgency",
-      "platform": "facebook",
-      "aspect_ratio": "1:1",
-      "prompt": "Galaxy S24 Ultra in Titanium Gray tilted at dynamic 25-degree angle on dark concrete surface. Dramatic split lighting with strong key light from left creating deep shadows on right side. Neon teal accent light as rim light along phone's edge, suggesting exclusivity. Screen displays simple dark wallpaper with subtle gradient. Background fades to deep black with spotlight pool effect. ARRI Alexa 35, Cooke Anamorphic 50mm, anamorphic oval bokeh, subtle horizontal lens flare. Teal and orange color grade, crushed blacks, cinematic contrast, fine grain. Commercial advertising photography, 8K. IMG_8805.CR3.",
-      "negative_prompt": "NO text, watermark, logo, cartoon, CGI, cheap looking, fake UI",
-      "platform_params": "--ar 1:1 --style raw --s 250",
-      "notes": "For spring supply surge urgency messaging - dramatic premium feel",
-      "keywords_targeted": [
-        "Galaxy S24 Ultra",
-        "spring deals",
-        "supply surge"
-      ],
-      "recommended_tool": "midjourney",
-      "qa_status": "GOOD",
-      "qa_score": "14/17",
-      "qa_issues": [
-        {
-          "check": 3,
-          "severity": "warning",
-          "note": "No film stock specified - acceptable for cinematic style"
-        },
-        {
-          "check": 11,
-          "severity": "warning", 
-          "note": "Phone condition not explicitly described as refurbished quality"
-        },
-        {
-          "check": 17,
-          "severity": "warning",
-          "note": "Dramatic staging may look too produced for social scroll test"
-        }
+      "trending_topic": "Battery Health Transparency",
+      "customer_language_used": [
+        "good battery isn't good enough"
       ]
     },
     {
-      "id": "prompt_20260313_004",
-      "use_case": "lifestyle",
-      "platform": "twitter",
-      "aspect_ratio": "9:16",
-      "prompt": "33-year-old Latino man with short beard wearing navy henley shirt, sitting at wooden cafe table with iPhone 14 Pro in Deep Purple lying flat beside his laptop. He's typing, focused expression, natural candid moment. Austin coffee shop with exposed brick walls, pendant lighting, other customers blurred in background. Golden hour afternoon light through large windows creates warm atmosphere. Ceramic coffee cup, small succulent plant, worn leather messenger bag visible. Canon EOS R5, 85mm f/1.2, shallow depth of field. Kodak Portra 400, warm amber grade, natural skin texture, fine organic grain. IMG_4833.CR3 unedited RAW.",
-      "negative_prompt": "NO plastic skin, mannequin, CGI, airbrushed, perfect skin, cartoon",
-      "platform_params": "--ar 9:16 --style raw --s 250",
-      "notes": "For bundle deal content showing phone in natural work environment",
-      "keywords_targeted": [
-        "iPhone 14 Pro",
-        "work setup",
-        "bundle deals"
+      "date": "2026-03-12",
+      "time": "10:46 UTC",
+      "content_type": "product spotlight - budget phone math",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook",
+        "linkedin"
       ],
-      "recommended_tool": "midjourney",
-      "qa_status": "EXCELLENT",
-      "qa_score": "15/17",
-      "qa_issues": [
-        {
-          "check": 17,
-          "severity": "minor",
-          "note": "Phone on table vs in-hand reduces natural interaction feel"
-        }
+      "trending_topic": "Active Budget Phone Shopping Requests",
+      "customer_language_used": [
+        "basically got a $800 phone for $350",
+        "can't tell the difference"
       ]
     },
     {
-      "id": "prompt_20260313_005",
-      "use_case": "comparison",
-      "platform": "instagram", 
-      "aspect_ratio": "1:1",
-      "prompt": "Split composition showing quality grading process: Left side shows iPhone with minor wear under magnifying glass on white inspection mat. Right side shows pristine refurbished iPhone under same professional lighting setup. Both phones positioned identically with GadgetGeeks quality control tools nearby - microfiber cloths, precision screwdrivers, battery testing equipment. Professional lighting from overhead panels creates even illumination across entire frame. Sony A7R V, 50mm f/1.4, sharp focus across entire frame. Editorial documentation style, magazine quality. Natural color grading, high detail. IMG_3295.CR3 RAW.",
-      "negative_prompt": "NO text overlays, labels, fake screens, cartoon tools, CGI, watermarks, readable text on devices",
-      "platform_params": "--ar 1:1 --style raw --s 250",
-      "notes": "For behind-the-scenes quality grading process content - text overlays will be added in Canva to show grade levels",
-      "keywords_targeted": [
-        "quality grading",
-        "inspection process",
-        "refurbished quality"
+      "date": "2026-03-12",
+      "time": "10:46 UTC",
+      "content_type": "behind the scenes - quality assurance",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook",
+        "linkedin"
       ],
-      "recommended_tool": "midjourney",
-      "qa_status": "NEEDS_WORK",
-      "qa_score": "12
+      "trending_topic": "Biometric Function Anxiety + Back Market Support Failures",
+      "customer_language_used": [
+        "what's the catch?"
+      ]
+    },
+    {
+      "date": "2026-03-13",
+      "time": "10:19 UTC",
+      "content_type": "customer service differentiation",
+      "platforms": [
+        "twitter",
+        "facebook",
+        "linkedin"
+      ],
+      "trending_topic": "Back Market Support Crisis - Multi-national Support Failures",
+      "customer_language_used": [
+        "what's the catch?"
+      ],
+      "canva_design_used": "canva_20260313_095834_003"
+    },
+    {
+      "date": "2026-03-13",
+      "time": "10:19 UTC",
+      "content_type": "battery health education/process transparency",
+      "platforms": [
+        "instagram",
+        "facebook",
+        "linkedin"
+      ],
+      "trending_topic": "Battery Health Obsession Peak (400% increase in mentions)",
+      "customer_language_used": [
+        "How do I know the battery health is real",
+        "battery still lasts all day"
+      ],
+      "canva_design_used": "canva_20260313_095845_005"
+    },
+    {
+      "date": "2026-03-13",
+      "time": "12:44 UTC",
+      "content_type": "budget math/iPhone 17e comparison",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "linkedin"
+      ],
+      "trending_topic": "iPhone 17e vs Refurbished Flagship Direct Comparison",
+      "customer_language_used": [
+        "iPhone 17e isn't worth it, buy refurbished iPhone 15 ProMax instead"
+      ],
+      "canva_design_used": "canva_20260313_095839_004"
+    },
+    {
+      "date": "2026-03-13",
+      "time": "12:44 UTC",
+      "content_type": "customer testimonial/social proof",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook"
+      ],
+      "trending_topic": "Quality assurance and trust building",
+      "customer_language_used": [
+        "can't tell the difference from my friend's new one",
+        "saved $347"
+      ],
+      "canva_design_used": "canva_20260313_095828_002"
+    },
+    {
+      "date": "2026-03-13",
+      "time": "12:47 UTC",
+      "content_type": "environmental consciousness + customer testimonial",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook"
+      ],
+      "trending_topic": "E-waste Awareness Sustained Viral Momentum",
+      "customer_language_used": [
+        "can't tell the difference",
+        "saved $347"
+      ]
+    },
+    {
+      "date": "2026-03-13",
+      "time": "12:50 UTC",
+      "content_type": "customer service differentiation/support standards",
+      "platforms": [
+        "twitter",
+        "facebook",
+        "linkedin"
+      ],
+      "trending_topic": "Back Market Multi-National Support Crisis",
+      "customer_language_used": [
+        "what's the catch?",
+        "Don't want to get burned on a lemon"
+      ]
+    },
+    {
+      "date": "2026-03-13",
+      "time": "12:53 UTC",
+      "content_type": "iPhone 17e comparison + environmental consciousness",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook",
+        "linkedin"
+      ],
+      "trending_topic": "iPhone 17e vs Refurbished Flagship Direct Comparison + E-waste Awareness",
+      "customer_language_used": [
+        "Why wait and pay 60% more for a newer model number?"
+      ]
+    },
+    {
+      "date": "2026-03-13",
+      "time": "13:00 UTC",
+      "content_type": "accessory compatibility guide",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook",
+        "linkedin"
+      ],
+      "trending_topic": "Accessory Compatibility Paralysis",
+      "customer_language_used": [
+        "do I need a different charger for this one"
+      ]
+    },
+    {
+      "date": "2026-03-13",
+      "time": "13:00 UTC",
+      "content_type": "bundle deal spotlight",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook"
+      ],
+      "trending_topic": "Spring Upgrade Cycle Supply Surge",
+      "customer_language_used": [
+        "perfect for my teenager - half the price"
+      ]
+    },
+    {
+      "date": "2026-03-13",
+      "time": "13:03 UTC",
+      "content_type": "behind the scenes - biometric testing process",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook",
+        "linkedin"
+      ],
+      "trending_topic": "Biometric Function Anxiety",
+      "customer_language_used": [
+        "Will Face ID still work perfectly?"
+      ]
+    },
+    {
+      "date": "2026-03-13",
+      "time": "13:03 UTC",
+      "content_type": "right to repair alignment",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "linkedin"
+      ],
+      "trending_topic": "Right to Repair Movement Momentum",
+      "customer_language_used": [
+        "want to upgrade without breaking the bank"
+      ]
+    },
+    {
+      "date": "2026-03-13",
+      "time": "13:05 UTC",
+      "content_type": "spring tech sustainability/e-waste consciousness",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook",
+        "linkedin"
+      ],
+      "trending_topic": "E-waste Awareness Sustained Viral Momentum + Spring Cleaning Season",
+      "customer_language_used": [
+        "can't tell the difference"
+      ]
+    },
+    {
+      "date": "2026-03-13",
+      "time": "13:05 UTC",
+      "content_type": "spring supply surge opportunity/timing advantage",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook"
+      ],
+      "trending_topic": "Spring Upgrade Cycle Supply Surge (23% increase)",
+      "customer_language_used": [
+        "looks brand new",
+        "saved $347"
+      ]
+    },
+    {
+      "date": "2026-03-13",
+      "time": "13:08 UTC",
+      "content_type": "customer testimonial/authentic savings story",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook"
+      ],
+      "trending_topic": "Social proof and trust building",
+      "customer_language_used": [
+        "basically got a $800 phone for $350",
+        "can't tell the difference from my friend's new one"
+      ]
+    },
+    {
+      "date": "2026-03-13",
+      "time": "13:08 UTC",
+      "content_type": "accessory compatibility guide/educational content",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook",
+        "linkedin"
+      ],
+      "trending_topic": "Accessory Compatibility Paralysis",
+      "customer_language_used": [
+        "do I need a different charger for this one"
+      ]
+    },
+    {
+      "date": "2026-03-13",
+      "time": "13:11 UTC",
+      "content_type": "support standards differentiation",
+      "platforms": [
+        "twitter",
+        "facebook",
+        "linkedin"
+      ],
+      "trending_topic": "Back Market Multi-National Support Crisis",
+      "customer_language_used": [
+        "Don't want to get burned on a lemon",
+        "what's the catch?"
+      ]
+    },
+    {
+      "date": "2026-03-13",
+      "time": "13:11 UTC",
+      "content_type": "right to repair alignment/sustainability positioning",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "linkedin"
+      ],
+      "trending_topic": "Right to Repair Movement Momentum + E-waste Awareness",
+      "customer_language_used": [
+        "want to upgrade without breaking the bank"
+      ]
+    }
+  ],
+  "postiz_calls_used": 10,
+  "postiz_calls_remaining": 5,
+  "last_updated": "2026-03-13 18:12 UTC",
+  "notes": "Evening check: No images available from Canva pipeline or image prompts. Cannot post without media_url per mandatory rules. Saving remaining 5 Postiz calls for tomorrow's peak times. Need to connect Twitter/Instagram/Facebook/LinkedIn to Postiz - only TikTok currently connected.",
+  "tomorrow_priorities": [
+    "iPhone 16 anticipation vs current deals positioning - prime opportunity",
+    "Spring supply surge timing advantage messaging (23% more inventory)",
+    "Bundle deal with specific model and savings numbers",
+    "Behind the scenes quality grading process content", 
+    "Connect additional platforms to Postiz for multi-platform publishing"
+  ],
+  "platform_issues": [
+    {
+      "issue": "Only TikTok connected to Postiz",
+      "impact": "Cannot multi-platform post to Twitter/Instagram/Facebook/LinkedIn",
+      "action_needed": "Connect platforms at app.postiz.com"
+    },
+    {
+      "issue": "TikTok requires video content, but our strategy is image-based",
+      "impact": "Platform mismatch prevents TikTok posting",
+      "action_needed": "Create video content strategy or adjust TikTok approach"
+    }
+  ],
+  "content_ready_for_tomorrow": [
+    {
+      "content_type": "iPhone 16 anticipation positioning",
+      "angle": "Why wait 6+ months and pay more when current flagships deliver everything you need now",
+      "customer_language": "want premium phone without premium price",
+      "trending_topic": "iPhone 16 Anticipation Impact",
+      "platforms_suggested": [
+        "twitter",
+        "instagram",
+        "facebook",
+        "linkedin"
+      ]
+    },
+    {
+      "content_type": "spring supply advantage timing",
+      "angle": "Best selection of the year - 23% more inventory, better grades, lower prices",
+      "customer_language": "looks brand new",
+      "trending_topic": "Spring Upgrade Cycle Supply Surge",
+      "platforms_suggested": [
+        "twitter",
+        "instagram",
+        "facebook"
+      ]
+    },
+    {
+      "content_type": "behind the scenes quality process",
+      "angle": "Our A/B/C grading system explained - what each grade actually means for buyers",
+      "customer_language": "what's the catch?",
+      "trending_topic": "Quality assurance transparency",
+      "platforms_suggested": [
+        "twitter",
+        "instagram",
+        "facebook",
+        "linkedin"
+      ]
+    }
+  ]
+}
+```
+
+```json
+// QUEUE_ITEM
+{
+  "type": "platform_setup",
+  "department": "social_morning", 
+  "summary": "Connect social platforms to Postiz for multi-platform posting",
+  "details": {
+    "platforms_to_connect": ["twitter", "instagram", "facebook", "linkedin"],
+    "current_status": "Only TikTok connected",
+    "impact": "Cannot execute multi-platform social strategy",
+    "url": "app.postiz.com",
+    "priority": "high"
+  },
+  "created": "2026-03-13 18:12 UTC"
+}
+```

@@ -322,14 +322,26 @@
   ],
   "postiz_calls_used": 10,
   "postiz_calls_remaining": 5,
-  "last_updated": "2026-03-13 13:11 UTC",
-  "notes": "Posted support standards differentiation (capitalizing on Back Market crisis) and right to repair positioning. Both use authentic customer language and connect trending topics to our refurbished value proposition. Avoided recently covered testimonials and accessory content.",
+  "last_updated": "2026-03-13 18:12 UTC",
+  "notes": "Evening check: No images available from Canva pipeline or image prompts. Cannot post without media_url per mandatory rules. Saving remaining 5 Postiz calls for tomorrow's peak times. Need to connect Twitter/Instagram/Facebook/LinkedIn to Postiz - only TikTok currently connected.",
   "tomorrow_priorities": [
-    "iPhone 16 anticipation vs current deals positioning",
+    "iPhone 16 anticipation vs current deals positioning - prime opportunity",
+    "Spring supply surge timing advantage messaging (23% more inventory)",
     "Bundle deal with specific model and savings numbers",
     "Behind the scenes quality grading process content",
-    "Spring supply surge timing advantage messaging",
-    "Avoid: Support differentiation (used today), Right to repair (used today)"
+    "Connect additional platforms to Postiz for multi-platform publishing"
+  ],
+  "platform_issues": [
+    {
+      "issue": "Only TikTok connected to Postiz",
+      "impact": "Cannot multi-platform post to Twitter/Instagram/Facebook/LinkedIn",
+      "action_needed": "Connect platforms at app.postiz.com"
+    },
+    {
+      "issue": "TikTok requires video content, but our strategy is image-based",
+      "impact": "Platform mismatch prevents TikTok posting",
+      "action_needed": "Create video content strategy or adjust TikTok approach"
+    }
   ],
   "content_ready_for_tomorrow": [
     {

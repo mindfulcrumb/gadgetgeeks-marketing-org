@@ -44,9 +44,28 @@ Create 1-2 posts. Each post must:
 - **Tip/education**: Phone care tip, how to check battery health, etc.
 - **Behind the scenes**: Our grading process (A/B/C), quality checks
 
-### 4. Schedule via Postiz
-Output posts using the ```json // SOCIAL_POST``` format for automatic posting.
-Update social/calendar.json with what was posted.
+### 4. Schedule via Postiz — MANDATORY OUTPUT FORMAT
+
+**You MUST output SOCIAL_POST blocks for every post you create.** Without these blocks, posts will NOT be published. This is the most important part of your job.
+
+For EVERY post, output a block like this:
+
+```json
+// SOCIAL_POST
+{
+  "content": "Your actual post text here. Use contractions, real numbers, customer language.",
+  "platforms": ["twitter", "instagram", "facebook", "linkedin"],
+  "media_url": "https://cdn-url-of-image-if-available.png"
+}
+```
+
+- `content`: The exact post text to publish
+- `platforms`: Which platforms to post to (use names from platform-config.json)
+- `media_url`: URL of an image to attach (from Canva export_url or image-prompts generated_url). Set to `null` if no image.
+
+**Then** also update social/calendar.json with what was posted.
+
+If you create 2 posts, you MUST output 2 separate SOCIAL_POST blocks. No exceptions.
 
 ## Rules
 - Max 15 Postiz API calls per day (track in calendar.json)

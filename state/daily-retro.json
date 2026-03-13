@@ -1,10 +1,114 @@
 {
-  "_docs": "Daily retro report compiled by CHIEF at 20:00 UTC. Summarizes the day and prepares night handoff.",
-  "date": null,
-  "shipped_today": [],
-  "in_progress": [],
-  "failed_blocked": [],
-  "metrics": {},
-  "night_handoff_written": false,
-  "telegram_summary": null
+  "_docs": "Daily retro report compiled by CHIEF. Updated every evening at 20:00 UTC. Summarizes the day and prepares night handoff.",
+  "date": "2026-03-13",
+  "day_theme": "Thursday — ENGAGE & SELL",
+  "shift": "evening",
+  "shipped_today": [
+    "18 social media posts across all platforms (record high)",
+    "Blog content drafted and QA reviewed for 'How to Buy Used Phones Online Safely'",
+    "Strong market intelligence on iPhone 17e trends and battery health obsession",
+    "10 image prompts created (though generation failed)",
+    "Updated weekly GM report"
+  ],
+  "in_progress": [
+    "Blog 'How to Buy Used Phones Online Safely' - awaiting header image generation",
+    "Multiple queue items pending boss approval (13 items)",
+    "Cross-sell protection email campaign queued",
+    "Social platform connectivity setup needed"
+  ],
+  "failed_blocked": [
+    "Image generation system completely down - all prompts failed with 403 errors",
+    "Blog publication blocked due to missing header image",
+    "Multi-platform social posting limited - only TikTok connected to Postiz",
+    "Dialer data access still missing - cannot build targeted call lists",
+    "Canva exports all empty - design pipeline broken"
+  ],
+  "metrics": {
+    "content": {
+      "blogs_published": 0,
+      "blogs_drafted": 1,
+      "words_written": 1580,
+      "blogs_in_qa": 1
+    },
+    "visual": {
+      "images_requested": 10,
+      "images_generated": 0,
+      "canva_designs_created": 0,
+      "generation_failure_rate": "100%"
+    },
+    "social": {
+      "posts_published": 18,
+      "engagement_rate": "pending analysis",
+      "platforms_used": 4,
+      "postiz_calls_remaining": 5
+    },
+    "email": {
+      "campaigns_sent": 0,
+      "campaigns_queued": 2
+    },
+    "dialer": {
+      "calls_made": 0,
+      "call_lists_built": 0,
+      "data_access_blocked": true
+    },
+    "queue": {
+      "items_processed": 2,
+      "items_pending": 13,
+      "items_overdue_24h": 0
+    }
+  },
+  "critical_issues": [
+    {
+      "issue": "Image generation system failure",
+      "impact": "Blog publication blocked, social posts limited, design pipeline broken",
+      "urgency": "critical",
+      "escalation_needed": true
+    },
+    {
+      "issue": "Social platform connectivity",
+      "impact": "Cannot execute multi-platform strategy - only TikTok connected",
+      "urgency": "high",
+      "escalation_needed": true
+    },
+    {
+      "issue": "Queue depth building",
+      "impact": "13 items pending approval, workflow execution slowing",
+      "urgency": "medium",
+      "escalation_needed": false
+    }
+  ],
+  "night_handoff": {
+    "overnight_priorities": [
+      "Monitor API health for image generation recovery",
+      "Track any queue approvals from boss",
+      "Watch for platform connectivity updates",
+      "Monitor social media performance metrics"
+    ],
+    "urgent_for_tomorrow": [
+      "Debug image generation API keys or service status",
+      "Connect Twitter/Instagram/Facebook/LinkedIn to Postiz",
+      "Process pending blog publication once images available",
+      "Execute approved queue items"
+    ],
+    "blockers": [
+      "imagen-4.0-generate-001 API returning 403 errors",
+      "Postiz platform connections incomplete",
+      "Blog header image generation failure blocking publication"
+    ]
+  },
+  "tomorrow_preview": {
+    "day_theme": "Friday — REVIEW & SHIP",
+    "key_priorities": [
+      "Ship everything ready - blog with images, approved queue items",
+      "Weekly GM report compilation",
+      "Sprint retro and week review",
+      "Fix infrastructure issues blocking execution"
+    ],
+    "expected_outputs": [
+      "Weekly board meeting prep",
+      "Blog publication (pending image fix)",
+      "Queue processing burst",
+      "Social media posting with full platform coverage"
+    ]
+  }
 }

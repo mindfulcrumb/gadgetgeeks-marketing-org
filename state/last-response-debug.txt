@@ -1,29 +1,38 @@
-## Social Media Morning Analysis
+Looking at the current context, I can see we've already posted quite a bit today (15 posts with 4 Postiz calls used). Let me check what content types we haven't used recently and what trends we should ride.
 
-Looking at the calendar, I can see we've had 13 posts today already with varied content types. I need to avoid overused topics:
-- Customer service differentiation (used 3x today)
-- iPhone 17e comparisons (used 3x today) 
-- Accessory compatibility (used today)
-- Bundle deals (used today)
+## Analysis
 
-From trends.json, I see strong opportunities in:
-- Battery Health Obsession Peak (400% increase)
-- Biometric Function Anxiety 
-- Right to Repair Movement Momentum
+**Recent Content Review:**
+- Today we've covered: customer service differentiation, battery health education, iPhone 17e comparisons, customer testimonials, environmental consciousness, accessory compatibility, bundle deals, biometric testing, and right to repair
+- We should avoid repeating biometric testing and right to repair (both used in the last hour)
 
-Checking departments/canva/pipeline.json - no file exists, so I'll check for generated images in image-prompts.json (also not present). I'll create text-only posts.
+**Available Trends to Ride:**
+- E-waste Awareness Sustained Viral Momentum (still hot with 7.5K+ likes)
+- Spring Upgrade Cycle Supply Surge (23% week-over-week supply increase)
+- Back Market Support Crisis (multiple customer complaints trending)
 
-I'll create 2 posts focusing on fresh angles:
+**Canva Designs Check:**
+No Canva pipeline.json file provided, so I'll check for generated images from image-prompts.json (not provided either). I'll create posts without images for now.
 
-1. **Behind the scenes - Biometric testing process** (addresses Face ID/Touch ID anxiety trend)
-2. **Right to repair alignment** (riding the momentum from ethics discussions)
+**Content Strategy:**
+Given the sustained e-waste momentum and spring upgrade surge, I'll create:
+1. A sustainability-focused post about spring cleaning your tech responsibly
+2. A supply surge opportunity post about best selection timing
 
-Both will use authentic customer language and avoid overused topics.
+Let me create two posts that follow our anti-AI copy rules and use authentic customer language.
+
+## Post Creation
+
+**Post 1: Spring Tech Sustainability**
+This rides the e-waste viral momentum while connecting to spring upgrade surge trend. Uses customer language "can't tell the difference" and "saved $347".
+
+**Post 2: Supply Surge Timing**
+This capitalizes on the 23% supply increase and spring upgrade timing, using customer language about getting deals and quality selection.
 
 ```json
 // SOCIAL_POST
 {
-  "content": "Real talk: every phone goes through biometric testing before we ship it. Face ID? We test it with masks, sunglasses, different angles. Touch ID? We check sensitivity and accuracy. Because \"Will Face ID still work perfectly?\" is the #1 question we get. Yeah, it works. We guarantee it. 📱✅ #refurbished #faceID #qualitycheck",
+  "content": "Spring cleaning your tech drawer? Don't toss that old iPhone in a drawer to collect dust. Someone else gets your upgrade, you get serious cash back, and that's one less device heading to a landfill. Win-win-win. Our customers keep telling us they 'can't tell the difference' between their refurbished phone and their friend's brand new one. Same features, better karma. #sustainabletech #springcleaning #refurbished #ewaste",
   "platforms": ["twitter", "instagram", "facebook", "linkedin"],
   "media_url": null
 }
@@ -32,8 +41,8 @@ Both will use authentic customer language and avoid overused topics.
 ```json
 // SOCIAL_POST
 {
-  "content": "Every refurbished phone purchase = a vote against planned obsolescence. You're keeping devices out of landfills AND proving phones don't need replacing every 2 years. Right to repair isn't just about fixing - it's about using what already works perfectly. Refurbished = rebellion against waste. 🔧♻️ #righttorepair #sustainabletech #refurbished",
-  "platforms": ["twitter", "instagram", "linkedin"],
+  "content": "March = best refurbished phone selection of the year. Supply's up 23% as everyone spring cleans their tech. More options, better grades, lower prices. It's like Black Friday but for quality instead of chaos. Grabbed a Grade A iPhone 15 yesterday - customer said it 'looks brand new' and saved $347 vs retail. Perfect timing if you've been waiting for the right deal. Stock moves fast when selection's this good. #phonedeals #refurbished #springupgrade #techdeals",
+  "platforms": ["twitter", "instagram", "facebook"],
   "media_url": null
 }
 ```
@@ -271,18 +280,48 @@ Both will use authentic customer language and avoid overused topics.
       "customer_language_used": [
         "want to upgrade without breaking the bank"
       ]
+    },
+    {
+      "date": "2026-03-13",
+      "time": "13:05 UTC",
+      "content_type": "spring tech sustainability/e-waste consciousness",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook",
+        "linkedin"
+      ],
+      "trending_topic": "E-waste Awareness Sustained Viral Momentum + Spring Cleaning Season",
+      "customer_language_used": [
+        "can't tell the difference"
+      ]
+    },
+    {
+      "date": "2026-03-13",
+      "time": "13:05 UTC",
+      "content_type": "spring supply surge opportunity/timing advantage",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook"
+      ],
+      "trending_topic": "Spring Upgrade Cycle Supply Surge (23% increase)",
+      "customer_language_used": [
+        "looks brand new",
+        "saved $347"
+      ]
     }
   ],
-  "postiz_calls_used": 4,
-  "postiz_calls_remaining": 11,
-  "last_updated": "2026-03-13 13:03 UTC",
-  "notes": "Added behind the scenes biometric testing (riding Face ID anxiety trend) and right to repair alignment content (riding ethics momentum). Avoided overused topics from today. Used authentic customer language with guarantees and specific testing processes.",
+  "postiz_calls_used": 6,
+  "postiz_calls_remaining": 9,
+  "last_updated": "2026-03-13 13:05 UTC",
+  "notes": "Posted spring sustainability content (riding sustained e-waste viral momentum) and supply surge timing opportunity (23% stock increase). Used authentic customer language with specific savings numbers. Avoided recently used topics like biometric testing and right to repair.",
   "tomorrow_priorities": [
     "Customer testimonial compilation (rotate back to social proof)",
     "Product spotlight with specific model and savings numbers",
-    "Environmental impact continuation (sustained momentum)",
     "iPhone 16 anticipation vs current deals positioning",
-    "Avoid: Biometric testing (used today), Right to repair (used today)"
+    "Back Market support crisis differentiation (sustained opportunity)",
+    "Avoid: Spring cleaning (used today), Supply surge timing (used today)"
   ],
   "content_ready_for_tomorrow": [
     {
@@ -304,6 +343,17 @@ Both will use authentic customer language and avoid overused topics.
       "platforms_suggested": [
         "twitter",
         "instagram",
+        "facebook",
+        "linkedin"
+      ]
+    },
+    {
+      "content_type": "back market support differentiation",
+      "angle": "2-hour response vs 2+ day ghost mode - real support standards",
+      "customer_language": "Don't want to get burned on a lemon",
+      "trending_topic": "Back Market Multi-National Support Crisis",
+      "platforms_suggested": [
+        "twitter",
         "facebook",
         "linkedin"
       ]

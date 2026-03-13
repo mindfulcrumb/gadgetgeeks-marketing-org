@@ -1,6 +1,32 @@
 {
   "runs": [
     {
+      "id": "run_x_intel_20260313_074116",
+      "department": "x_intel",
+      "timestamp": "2026-03-13T07:41:16.266041+00:00",
+      "date": "2026-03-13",
+      "status": "ok",
+      "model": "claude-sonnet-4-20250514",
+      "tokens": {
+        "input": 11956,
+        "output": 2679,
+        "total": 14635
+      },
+      "actions": {
+        "file_updates": 1,
+        "queue_items": 0,
+        "social_posts": 0
+      },
+      "changes": [
+        {
+          "file": "departments/x-intel/daily-brief.json",
+          "action": "modified",
+          "size": 8642
+        }
+      ],
+      "had_boss_instructions": false
+    },
+    {
       "id": "run_seo_20260313_071521",
       "department": "seo",
       "timestamp": "2026-03-13T07:15:21.065522+00:00",
@@ -457,8 +483,8 @@
     }
   ],
   "stats": {
-    "total_runs": 16,
-    "total_tokens": 119076,
+    "total_runs": 17,
+    "total_tokens": 133711,
     "total_errors": 0
   },
   "department_stats": {
@@ -475,10 +501,10 @@
       "last_run": "2026-03-13T07:15:21.065522+00:00"
     },
     "x_intel": {
-      "runs": 1,
-      "tokens": 14134,
+      "runs": 2,
+      "tokens": 28769,
       "errors": 0,
-      "last_run": "2026-03-12T07:42:59.592288+00:00"
+      "last_run": "2026-03-13T07:41:16.266041+00:00"
     },
     "email": {
       "runs": 1,

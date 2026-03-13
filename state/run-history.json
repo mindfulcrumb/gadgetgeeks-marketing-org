@@ -1,6 +1,32 @@
 {
   "runs": [
     {
+      "id": "run_seo_20260313_071521",
+      "department": "seo",
+      "timestamp": "2026-03-13T07:15:21.065522+00:00",
+      "date": "2026-03-13",
+      "status": "ok",
+      "model": "claude-sonnet-4-20250514",
+      "tokens": {
+        "input": 5148,
+        "output": 2779,
+        "total": 7927
+      },
+      "actions": {
+        "file_updates": 1,
+        "queue_items": 1,
+        "social_posts": 0
+      },
+      "changes": [
+        {
+          "file": "departments/seo/opportunities.json",
+          "action": "modified",
+          "size": 7246
+        }
+      ],
+      "had_boss_instructions": false
+    },
+    {
       "id": "run_image_prompts_20260312_220603",
       "department": "image_prompts",
       "timestamp": "2026-03-12T22:06:03.611555+00:00",
@@ -431,8 +457,8 @@
     }
   ],
   "stats": {
-    "total_runs": 15,
-    "total_tokens": 111149,
+    "total_runs": 16,
+    "total_tokens": 119076,
     "total_errors": 0
   },
   "department_stats": {
@@ -443,10 +469,10 @@
       "last_run": "2026-03-12T15:07:14.086644+00:00"
     },
     "seo": {
-      "runs": 2,
-      "tokens": 11473,
+      "runs": 3,
+      "tokens": 19400,
       "errors": 0,
-      "last_run": "2026-03-12T07:16:01.724920+00:00"
+      "last_run": "2026-03-13T07:15:21.065522+00:00"
     },
     "x_intel": {
       "runs": 1,

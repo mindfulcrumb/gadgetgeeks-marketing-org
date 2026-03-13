@@ -138,6 +138,44 @@
       "department": "gm_queue",
       "type": "gm_queue",
       "summary": "New gm_queue item"
+    },
+    {
+      "page": "/pages/how-to-buy-used-phones-online-safely",
+      "meta_title": "How to Buy Used Phones Online Safely: 2026 Expert Guide",
+      "meta_description": "Avoid getting burned buying used phones online. Battery health checks, Face ID tests, and red flags to watch. Shop smart and save $500+ safely.",
+      "h1": "How to Buy Used Phones Online Without Getting Burned",
+      "target_keyword": "buy used phones online",
+      "customer_language_focus": [
+        "don't want to get burned on a lemon",
+        "what's the catch?",
+        "how do I know the battery health is real",
+        "will Face ID still work perfectly?",
+        "scared of getting a phone with water damage"
+      ],
+      "content_outline": [
+        "The #1 mistake people make (not checking battery health first)",
+        "What 'battery health 91%' actually means vs marketing claims",
+        "Face ID/Touch ID test checklist (works with masks, recognizes you instantly)",
+        "Red flags that scream 'stolen phone' or 'water damage'",
+        "Why photos can't show the full story (and what questions to ask)",
+        "Grade A vs Grade B vs Grade C decoded (no marketing BS)",
+        "Warranty that actually matters vs fake 'guarantees'",
+        "How to spot fake refurbished phones (hint: check the battery cycles)",
+        "What unlocked really means for your carrier",
+        "The questions sellers hate (but honest ones will answer)",
+        "CTA: Shop certified phones that pass all these tests"
+      ],
+      "structured_data_needed": "Article schema + FAQ schema for common buying questions + HowTo schema for safety checklist",
+      "internal_links": [
+        "Link to /collections/certified-refurbished-phones",
+        "Link to /collections/refurbished-iphones",
+        "Link to /collections/refurbished-samsung",
+        "Link to warranty/returns page"
+      ],
+      "id": "seo_20260313_071521",
+      "department": "seo",
+      "type": "seo",
+      "summary": "How to Buy Used Phones Online Safely: 2026 Expert Guide"
     }
   ],
   "approved": [],

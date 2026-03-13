@@ -93,9 +93,52 @@
       "keyword": "buy used phones online",
       "type": "trust_page",
       "page": "/pages/how-to-buy-used-phones-online-safely",
+      "status": "completed",
+      "content_type": "educational landing page",
+      "meta_title": "How to Buy Used Phones Online Safely: 2026 Expert Guide",
+      "meta_description": "Avoid getting burned buying used phones online. Battery health checks, Face ID tests, and red flags to watch. Shop smart and save $500+ safely.",
+      "h1": "How to Buy Used Phones Online Without Getting Burned",
+      "content_outline": [
+        "The #1 mistake people make (not checking battery health first)",
+        "What 'battery health 91%' actually means vs marketing claims",
+        "Face ID/Touch ID test checklist (works with masks, recognizes you instantly)",
+        "Red flags that scream 'stolen phone' or 'water damage'",
+        "Why photos can't show the full story (and what questions to ask)",
+        "Grade A vs Grade B vs Grade C decoded (no marketing BS)",
+        "Warranty that actually matters vs fake 'guarantees'",
+        "How to spot fake refurbished phones (hint: check the battery cycles)",
+        "What unlocked really means for your carrier",
+        "The questions sellers hate (but honest ones will answer)",
+        "CTA: Shop certified phones that pass all these tests"
+      ],
+      "improvements": [
+        "Addresses core customer fear 'don't want to get burned'",
+        "Leads with battery health obsession trend",
+        "Uses customer language 'avoid getting burned' and 'shop smart'",
+        "Specific savings promise 'save $500+' for motivation",
+        "Educational approach builds trust before selling"
+      ],
+      "structured_data": "Article schema + FAQ schema for common buying questions + HowTo schema for safety checklist",
+      "completed": "2026-03-13 07:14 UTC"
+    },
+    {
+      "id": "refurb-ipad-page",
+      "priority": "medium",
+      "keyword": "refurbished ipad",
+      "type": "page_optimization",
+      "page": "/collections/refurbished-ipads",
       "status": "pending",
-      "content_type": "educational landing page"
+      "content_type": "collection optimization"
+    },
+    {
+      "id": "apple-watch-refurb-page",
+      "priority": "medium",
+      "keyword": "refurbished apple watch",
+      "type": "page_optimization",
+      "page": "/collections/refurbished-apple-watch",
+      "status": "pending",
+      "content_type": "collection optimization"
     }
   ],
-  "last_updated": "2026-03-12 07:15 UTC"
+  "last_updated": "2026-03-13 07:14 UTC"
 }

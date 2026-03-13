@@ -67,13 +67,51 @@ def get_channels(api_key: str = None) -> list:
 def upload_media(file_url: str, api_key: str = None) -> dict:
     """Upload media from a URL to Postiz for attachment.
 
-    Note: For URL-based uploads, we download then re-upload.
-    Returns dict with 'id' and 'path' keys.
+    Downloads the image from the source URL, then uploads to Postiz.
+    Returns dict with 'id' and 'path' keys (path on uploads.postiz.com).
     """
-    # Postiz upload endpoint expects multipart — for URL-based media,
-    # we pass the URL directly in the post payload instead.
-    # This function is a placeholder for future file-based uploads.
-    return {"id": None, "path": file_url}
+    import io
+    from urllib.request import Request as DLRequest, urlopen as dl_open
+
+    key = api_key or os.environ.get("POSTIZ_API_KEY", "")
+
+    # Step 1: Download the image from source URL
+    dl_req = DLRequest(file_url)
+    with dl_open(dl_req, timeout=30) as resp:
+        image_bytes = resp.read()
+        content_type = resp.headers.get("Content-Type", "image/png")
+
+    # Determine filename from URL
+    filename = file_url.rstrip("/").split("/")[-1] or "image.png"
+
+    # Step 2: Upload to Postiz via multipart form data
+    boundary = "----PostizUploadBoundary"
+    body = (
+        f"--{boundary}\r\n"
+        f'Content-Disposition: form-data; name="file"; filename="{filename}"\r\n'
+        f"Content-Type: {content_type}\r\n\r\n"
+    ).encode("utf-8") + image_bytes + f"\r\n--{boundary}--\r\n".encode("utf-8")
+
+    upload_url = f"{POSTIZ_BASE_URL}/upload"
+    req = Request(
+        upload_url,
+        data=body,
+        headers={
+            "Authorization": key,
+            "Content-Type": f"multipart/form-data; boundary={boundary}",
+        },
+        method="POST",
+    )
+
+    try:
+        with urlopen(req, timeout=60) as response:
+            raw = response.read().decode("utf-8")
+            result = json.loads(raw) if raw.strip() else {}
+            print(f"  Postiz upload: {result.get('path', '?')}")
+            return result
+    except HTTPError as e:
+        error_body = e.read().decode("utf-8") if e.fp else ""
+        raise Exception(f"Postiz upload error {e.code}: {error_body}")
 
 
 def post_to_social(
@@ -131,10 +169,19 @@ def post_to_social(
 
     # Note: TikTok can accept image posts via Postiz — no video-only filter needed
 
-    # Step 3: Build image attachment if media_url provided
+    # Step 3: Upload image to Postiz CDN if media_url provided
     image_payload = []
     if media_url:
-        image_payload = [{"id": "media_0", "path": media_url}]
+        try:
+            uploaded = upload_media(media_url, api_key=api_key)
+            postiz_path = uploaded.get("path", "")
+            postiz_id = uploaded.get("id", "media_0")
+            if postiz_path:
+                image_payload = [{"id": postiz_id, "path": postiz_path}]
+            else:
+                print(f"  Postiz: upload returned no path, posting without image")
+        except Exception as upload_err:
+            print(f"  Postiz: image upload failed ({upload_err}), posting without image")
 
     # Step 4: Build per-integration post objects
     posts = []

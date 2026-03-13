@@ -404,12 +404,20 @@ def parse_response(response_text: str) -> dict:
         "social_posts": [],
     }
 
+    # Save raw response for debugging (last run only)
+    try:
+        debug_path = Path(__file__).parent.parent / "state" / "last-response-debug.txt"
+        debug_path.write_text(response_text, encoding="utf-8")
+    except Exception:
+        pass
+
     # Extract JSON blocks with headers
     json_blocks = re.findall(
         r'```json\s*\n\s*//\s*(UPDATE|QUEUE_ITEM|SOCIAL_POST):?\s*(.*?)\n(.*?)```',
         response_text,
         re.DOTALL,
     )
+    print(f"  DEBUG: Found {len(json_blocks)} JSON blocks in response")
 
     for block_type, header, content in json_blocks:
         content = content.strip()

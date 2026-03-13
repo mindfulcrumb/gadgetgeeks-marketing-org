@@ -1,6 +1,26 @@
 {
   "runs": [
     {
+      "id": "run_blog_qa_20260313_102410",
+      "department": "blog_qa",
+      "timestamp": "2026-03-13T10:24:10.750730+00:00",
+      "date": "2026-03-13",
+      "status": "ok",
+      "model": "claude-sonnet-4-20250514",
+      "tokens": {
+        "input": 18786,
+        "output": 692,
+        "total": 19478
+      },
+      "actions": {
+        "file_updates": 0,
+        "queue_items": 0,
+        "social_posts": 0
+      },
+      "changes": [],
+      "had_boss_instructions": false
+    },
+    {
       "id": "run_social_morning_20260313_102008",
       "department": "social_morning",
       "timestamp": "2026-03-13T10:20:08.234003+00:00",
@@ -595,8 +615,8 @@
     }
   ],
   "stats": {
-    "total_runs": 22,
-    "total_tokens": 236598,
+    "total_runs": 23,
+    "total_tokens": 256076,
     "total_errors": 0
   },
   "department_stats": {
@@ -671,6 +691,12 @@
       "tokens": 32876,
       "errors": 0,
       "last_run": "2026-03-13T10:07:04.502162+00:00"
+    },
+    "blog_qa": {
+      "runs": 1,
+      "tokens": 19478,
+      "errors": 0,
+      "last_run": "2026-03-13T10:24:10.750730+00:00"
     }
   }
 }

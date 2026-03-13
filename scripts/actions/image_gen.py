@@ -1,7 +1,8 @@
 """
 Image generation wrapper for GadgetGeeks Marketing Organization.
 
-Uses Google Gemini API (Imagen 3) for generation and Shopify staged uploads for hosting.
+Uses Google Gemini API (gemini-2.0-flash-preview-image-generation) for
+generation and Shopify staged uploads for hosting.
 """
 
 import base64
@@ -12,14 +13,15 @@ from datetime import datetime, timezone
 
 
 GEMINI_API_BASE = "https://generativelanguage.googleapis.com/v1beta"
+GEMINI_IMAGE_MODEL = "gemini-2.0-flash-preview-image-generation"
 
 
 # ---------------------------------------------------------------------------
-# Imagen 3 generation via Gemini API
+# Gemini 2.0 Flash image generation (Nano Banana Pro)
 # ---------------------------------------------------------------------------
 
 def generate_image(prompt: str, aspect_ratio: str = "16:9") -> dict:
-    """Generate an image using Google Imagen 3 via the Gemini API.
+    """Generate an image using Gemini 2.0 Flash image generation.
 
     Args:
         prompt:       Text description of the image to generate.
@@ -32,16 +34,26 @@ def generate_image(prompt: str, aspect_ratio: str = "16:9") -> dict:
     if not api_key:
         raise ValueError("GEMINI_API_KEY environment variable is not set")
 
-    url = f"{GEMINI_API_BASE}/models/imagen-4.0-generate-001:predict"
+    url = f"{GEMINI_API_BASE}/models/{GEMINI_IMAGE_MODEL}:generateContent"
+
+    generation_prompt = (
+        f"{prompt}\n\n"
+        f"Generate this as a {aspect_ratio} aspect ratio image. "
+        f"Photorealistic, high quality, no text overlays, no watermarks."
+    )
+
     resp = requests.post(
         url,
         params={"key": api_key},
         headers={"Content-Type": "application/json"},
         json={
-            "instances": [{"prompt": prompt}],
-            "parameters": {
-                "sampleCount": 1,
-                "aspectRatio": aspect_ratio,
+            "contents": [
+                {
+                    "parts": [{"text": generation_prompt}]
+                }
+            ],
+            "generationConfig": {
+                "responseModalities": ["TEXT", "IMAGE"],
             },
         },
         timeout=120,
@@ -49,20 +61,24 @@ def generate_image(prompt: str, aspect_ratio: str = "16:9") -> dict:
     resp.raise_for_status()
     data = resp.json()
 
-    predictions = data.get("predictions", [])
-    if not predictions:
-        raise RuntimeError(f"Imagen returned no predictions: {data}")
+    # Extract image from response parts
+    candidates = data.get("candidates", [])
+    if not candidates:
+        raise RuntimeError(f"Gemini returned no candidates: {data}")
 
-    image_b64 = predictions[0].get("bytesBase64Encoded", "")
-    mime_type = predictions[0].get("mimeType", "image/png")
+    parts = candidates[0].get("content", {}).get("parts", [])
 
-    if not image_b64:
-        raise RuntimeError("Imagen returned empty image data")
+    for part in parts:
+        inline_data = part.get("inlineData")
+        if inline_data and inline_data.get("data"):
+            mime_type = inline_data.get("mimeType", "image/png")
+            image_b64 = inline_data["data"]
+            return {
+                "image_bytes": base64.b64decode(image_b64),
+                "mime_type": mime_type,
+            }
 
-    return {
-        "image_bytes": base64.b64decode(image_b64),
-        "mime_type": mime_type,
-    }
+    raise RuntimeError(f"Gemini returned no image data. Parts: {[list(p.keys()) for p in parts]}")
 
 
 # ---------------------------------------------------------------------------

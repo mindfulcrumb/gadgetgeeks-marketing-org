@@ -1,0 +1,10 @@
+{
+  "_docs": "Daily retro report compiled by CHIEF at 20:00 UTC. Summarizes the day and prepares night handoff.",
+  "date": null,
+  "shipped_today": [],
+  "in_progress": [],
+  "failed_blocked": [],
+  "metrics": {},
+  "night_handoff_written": false,
+  "telegram_summary": null
+}

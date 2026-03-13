@@ -1,0 +1,37 @@
+{
+  "_docs": "Night operations report from SENTINEL. Updated at 00:00, 03:00, and 05:00 UTC.",
+  "timestamp": null,
+  "run_type": null,
+  "api_health": {
+    "shopify": "unknown",
+    "gemini": "unknown",
+    "telegram": "unknown",
+    "canva": "unknown",
+    "vapi": "unknown"
+  },
+  "workflow_health": {
+    "scheduled_today": 0,
+    "ran_successfully": 0,
+    "failed": 0,
+    "missed": 0,
+    "details": []
+  },
+  "queue_health": {
+    "pending_count": 0,
+    "stale_items": [],
+    "oldest_pending": null
+  },
+  "incidents": {
+    "open_count": 0,
+    "critical_open": 0,
+    "oldest_open": null
+  },
+  "pipeline_health": {
+    "blogs_stuck": [],
+    "images_stuck": [],
+    "emails_stuck": []
+  },
+  "idle_departments": [],
+  "alerts_triggered": [],
+  "status": "INITIALIZED"
+}

@@ -64,8 +64,28 @@
       "last_run": null,
       "status": "idle",
       "runs_total": 0
+    },
+    "standup": {
+      "last_run": null,
+      "status": "idle",
+      "runs_total": 0
+    },
+    "retro": {
+      "last_run": null,
+      "status": "idle",
+      "runs_total": 0
+    },
+    "board_meeting": {
+      "last_run": null,
+      "status": "idle",
+      "runs_total": 0
+    },
+    "night_ops": {
+      "last_run": null,
+      "status": "idle",
+      "runs_total": 0
     }
   },
   "created": "2026-03-11",
-  "version": "1.0.0"
+  "version": "2.0.0"
 }

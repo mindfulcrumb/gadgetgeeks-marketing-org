@@ -1,0 +1,257 @@
+{
+  "_docs": "GadgetGeeks Marketing Org — Enterprise Org Chart v1.0. Defines hierarchy, departments, reporting lines, escalation chains, and communication protocols. Modeled after how billion-dollar companies (Salesforce, HubSpot, Shopify) structure their marketing operations.",
+  "_version": "1.0.0",
+  "_created": "2026-03-13",
+
+  "executive_team": {
+    "ceo": {
+      "title": "CEO / Business Owner",
+      "name": "Boss (Telegram)",
+      "channel": "Telegram @GGP_MA_Bot",
+      "responsibilities": [
+        "Final approval on all customer-facing actions",
+        "Strategic direction and brand decisions",
+        "Budget allocation and resource priorities",
+        "Escalation endpoint — buck stops here"
+      ],
+      "reports_from": ["chief_of_staff", "gm"]
+    },
+    "chief_of_staff": {
+      "title": "Chief of Staff",
+      "agent": "CHIEF",
+      "agent_file": "chief-of-staff-agent.md",
+      "responsibilities": [
+        "Runs daily standup — collects status from all departments",
+        "Runs evening retro — summarizes day, flags blockers, prepares night handoff",
+        "Cross-department alignment — ensures intel feeds content, SEO feeds blogs, etc.",
+        "Escalation router — decides what needs boss attention vs what can be auto-resolved",
+        "Sprint planning — Monday morning priorities based on weekly goals",
+        "Meeting cadence owner — ensures standups, retros, and board meetings happen on time"
+      ],
+      "reports_to": "ceo",
+      "reports_from": ["vp_content", "vp_growth", "vp_operations"]
+    }
+  },
+
+  "leadership_team": {
+    "vp_content": {
+      "title": "VP of Content",
+      "role": "Virtual — orchestrated by CHIEF via cross-department reads",
+      "departments": ["content_creation", "content_quality"],
+      "kpis": [
+        "1 blog published per day (7/week)",
+        "Zero blogs with BLOCKED rating",
+        "All links validated against store-inventory.json",
+        "Organic traffic growth 10% month-over-month"
+      ]
+    },
+    "vp_growth": {
+      "title": "VP of Growth",
+      "role": "Virtual — orchestrated by CHIEF via cross-department reads",
+      "departments": ["seo", "social_media", "email_marketing", "paid_media", "cro"],
+      "kpis": [
+        "SEO: 3 new keyword rankings per week",
+        "Social: 10 posts/day across platforms, engagement rate >2%",
+        "Email: 2 campaigns/week, open rate >25%, click rate >3%",
+        "CRO: conversion rate from 1.4% → 3% within 90 days"
+      ]
+    },
+    "vp_operations": {
+      "title": "VP of Operations",
+      "role": "Virtual — orchestrated by CHIEF via cross-department reads",
+      "departments": ["intelligence", "dialer", "general_management"],
+      "kpis": [
+        "Zero dead-end approvals",
+        "All incidents resolved within 24 hours",
+        "Queue items processed same-day",
+        "Dialer: 10+ calls/week, 15% conversion on abandoned carts"
+      ]
+    }
+  },
+
+  "departments": {
+    "intelligence": {
+      "head": "SCOUT",
+      "agents": ["SCOUT", "ECHO"],
+      "mission": "Know what's happening in the market before anyone else",
+      "feeds_into": ["seo", "content_creation", "social_media", "email_marketing"],
+      "outputs": ["competitors.json", "trends.json", "customer-language.json", "daily-brief.json"],
+      "standup_report": "Top 3 market signals since last standup"
+    },
+    "seo": {
+      "head": "PIXEL",
+      "agents": ["PIXEL (Daily)", "PIXEL (Weekly)"],
+      "mission": "Own organic search — keywords, rankings, technical health",
+      "feeds_into": ["content_creation"],
+      "depends_on": ["intelligence"],
+      "outputs": ["keywords.json", "opportunities.json", "audit-log.md", "product-copy-queue.json"],
+      "standup_report": "Yesterday's SEO action + today's target opportunity"
+    },
+    "content_creation": {
+      "head": "SCRIBE",
+      "agents": ["SCRIBE", "Content Agent", "PRESS"],
+      "mission": "Produce one high-quality blog per day + product copy on demand",
+      "feeds_into": ["content_quality"],
+      "depends_on": ["intelligence", "seo"],
+      "outputs": ["blog-pipeline.json", "calendar.json", "product-copy-queue.json"],
+      "standup_report": "Blog in progress + pipeline status (brief_ready / draft_ready / qa_passed)"
+    },
+    "content_quality": {
+      "head": "QUILL",
+      "agents": ["QUILL", "Copy QA Agent"],
+      "mission": "Zero AI-sounding copy ships. Ever.",
+      "feeds_into": ["content_creation"],
+      "depends_on": ["content_creation"],
+      "outputs": ["blog-pipeline.json (QA ratings)", "qa feedback"],
+      "standup_report": "Blogs reviewed + pass/fail + specific issues flagged"
+    },
+    "visual_design": {
+      "head": "LENS",
+      "agents": ["LENS", "FOCUS", "CANVAS"],
+      "mission": "10 branded images per day — from prompt to finished Canva design",
+      "feeds_into": ["social_media"],
+      "depends_on": [],
+      "outputs": ["image-prompts.json", "canva/pipeline.json"],
+      "standup_report": "Images generated yesterday + designs completed + any failures"
+    },
+    "social_media": {
+      "head": "VIBE",
+      "agents": ["VIBE (Morning)", "VIBE (Afternoon)"],
+      "mission": "10 posts/day, engage with trending conversations, grow following",
+      "feeds_into": [],
+      "depends_on": ["visual_design", "intelligence"],
+      "outputs": ["calendar.json", "engagement-log.md"],
+      "standup_report": "Posts published + top engagement + trending opportunities"
+    },
+    "email_marketing": {
+      "head": "BEACON",
+      "agents": ["Email Marketing Agent"],
+      "mission": "2 campaigns/week that drive revenue, not just opens",
+      "feeds_into": [],
+      "depends_on": ["intelligence", "cro"],
+      "outputs": ["campaigns.json", "segments.json", "ab-tests.json"],
+      "standup_report": "Campaign in progress + last campaign results"
+    },
+    "cro": {
+      "head": "OPTIMIZER",
+      "agents": ["CRO Agent"],
+      "mission": "Find and fix conversion leaks — from landing page to checkout",
+      "feeds_into": ["email_marketing", "content_creation"],
+      "depends_on": ["intelligence"],
+      "outputs": ["experiments.json", "metrics.json", "audit-log.md"],
+      "standup_report": "Active experiments + conversion metrics + next test"
+    },
+    "dialer": {
+      "head": "XAVIER",
+      "agents": ["DIALER", "DIALER Execute"],
+      "mission": "Recover abandoned carts, win back inactive customers, collect reviews",
+      "feeds_into": [],
+      "depends_on": ["intelligence"],
+      "outputs": ["call-list.json"],
+      "standup_report": "Calls made yesterday + outcomes + today's call list size"
+    },
+    "general_management": {
+      "head": "GM",
+      "agents": ["GM Report", "GM Queue"],
+      "mission": "Keep the org running — process queues, compile reports, flag issues",
+      "feeds_into": ["all"],
+      "depends_on": ["all"],
+      "outputs": ["weekly-report.md", "queue.json processing"],
+      "standup_report": "Queue depth + pending approvals + open incidents"
+    }
+  },
+
+  "escalation_chain": {
+    "_docs": "When something goes wrong, this is the chain. Each level has a time limit — if not resolved, escalate up.",
+    "levels": [
+      {
+        "level": 0,
+        "name": "Auto-resolve",
+        "handler": "The agent that encountered the issue",
+        "time_limit": "Immediate",
+        "examples": [
+          "Retryable API error (429, 503)",
+          "Temporary file lock",
+          "Missing optional field with safe default"
+        ],
+        "action": "Retry up to 3 times with exponential backoff. If resolved, log to alert-history.json only."
+      },
+      {
+        "level": 1,
+        "name": "Department head",
+        "handler": "The department's head agent (next scheduled run)",
+        "time_limit": "Next scheduled run (usually <4 hours)",
+        "examples": [
+          "Copy rated NEEDS_WORK (not BLOCKED)",
+          "Image prompt failed QA — needs revision",
+          "Non-critical data missing from intel report"
+        ],
+        "action": "Department head reviews on next run, applies fix, logs to changelog."
+      },
+      {
+        "level": 2,
+        "name": "Chief of Staff",
+        "handler": "CHIEF (morning standup or evening retro)",
+        "time_limit": "Next standup or retro (<12 hours)",
+        "examples": [
+          "Cross-department dependency broken (SEO produced brief but SCRIBE didn't pick it up)",
+          "Agent produced BLOCKED-rated content twice in a row",
+          "Department has been idle for 24+ hours",
+          "Queue items pending for 24+ hours with no boss action"
+        ],
+        "action": "CHIEF flags in standup/retro, proposes fix, triggers affected department if needed."
+      },
+      {
+        "level": 3,
+        "name": "Boss (CEO)",
+        "handler": "Human via Telegram",
+        "time_limit": "Async — boss responds when available",
+        "examples": [
+          "Customer-facing content about to publish with issues",
+          "Shopify API credentials expired",
+          "Store down or broken",
+          "Any action that costs money (email send, phone call)",
+          "Strategic decisions (new campaign direction, pricing changes)"
+        ],
+        "action": "Telegram alert with URGENT tag. Include: what happened, what's blocked, what you recommend."
+      }
+    ]
+  },
+
+  "communication_protocols": {
+    "standup": {
+      "frequency": "Daily",
+      "time": "06:00 UTC",
+      "duration": "1 workflow run (~2 min)",
+      "format": "Each department reports: (1) What was accomplished since last standup, (2) What's planned for today, (3) Blockers or dependencies needed from other departments",
+      "owner": "CHIEF",
+      "output": "state/daily-standup.json + Telegram summary to boss"
+    },
+    "retro": {
+      "frequency": "Daily",
+      "time": "20:00 UTC",
+      "duration": "1 workflow run (~2 min)",
+      "format": "Day summary: (1) What shipped today, (2) What's in progress, (3) What failed and why, (4) Night shift handoff notes",
+      "owner": "CHIEF",
+      "output": "state/daily-retro.json + Telegram summary to boss"
+    },
+    "weekly_board": {
+      "frequency": "Monday",
+      "time": "06:30 UTC",
+      "duration": "1 workflow run (~3 min)",
+      "format": "Strategic review: (1) Last week's KPIs vs targets, (2) This week's priorities, (3) Resource allocation, (4) Incidents and lessons, (5) Competitive landscape changes",
+      "owner": "CHIEF + GM",
+      "output": "departments/gm/weekly-board-minutes.md + Telegram briefing to boss"
+    },
+    "cross_department_sync": {
+      "mechanism": "state/daily-standup.json — every agent reads this at the start of their run",
+      "purpose": "Ensures SCRIBE knows what SEO found, VIBE knows what CANVAS designed, EMAIL knows what INTEL discovered",
+      "rule": "Every agent's prompt includes: 'Read state/daily-standup.json before starting work to understand what other departments are doing today.'"
+    },
+    "incident_review": {
+      "frequency": "Daily (evening retro) + Weekly (board meeting)",
+      "owner": "CHIEF reviews daily, GM compiles weekly",
+      "rule": "No incident stays open more than 48 hours without an escalation to boss"
+    }
+  }
+}

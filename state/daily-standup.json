@@ -1,0 +1,10 @@
+{
+  "_docs": "Daily standup report compiled by CHIEF. Updated every morning at 06:00 UTC. Every agent reads this before their run.",
+  "date": null,
+  "day_theme": null,
+  "departments": {},
+  "escalations": [],
+  "priorities": [],
+  "cross_department_handoffs": [],
+  "telegram_summary": null
+}

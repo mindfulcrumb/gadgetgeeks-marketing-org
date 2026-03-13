@@ -39,10 +39,11 @@ AGENTS_DIR = REPO_ROOT / "agents"
 CONFIG_DIR = REPO_ROOT / "config"
 STATE_DIR = REPO_ROOT / "state"
 
-# Model selection: opus for GM weekly report, sonnet for everything else
+# Model selection: opus for GM weekly report + board meetings, sonnet for everything else
 MODELS = {
     "default": "claude-sonnet-4-20250514",
     "gm_report": "claude-opus-4-20250514",
+    "board_meeting": "claude-opus-4-20250514",
 }
 
 MAX_TOKENS = 4096
@@ -246,6 +247,104 @@ DEPARTMENT_CONFIG = {
         ],
         "output_files": [
             "departments/social/image-prompts.json",
+        ],
+    },
+    # --- Enterprise Governance (CHIEF + SENTINEL) ---
+    "standup": {
+        "agent_prompt": "agents/custom/chief-of-staff-agent.md",
+        "context_files": [
+            "state/shift-handoff.json",
+            "state/master.json",
+            "state/queue.json",
+            "state/incident-log.json",
+            "state/daily-retro.json",
+            "state/night-report.json",
+            "departments/content/blog-pipeline.json",
+            "departments/social/calendar.json",
+            "departments/seo/opportunities.json",
+            "departments/intel/trends.json",
+            "departments/x-intel/daily-brief.json",
+            "departments/canva/pipeline.json",
+            "departments/email/campaigns.json",
+            "departments/dialer/call-list.json",
+            "departments/cro/experiments.json",
+            "config/weekly-cadence.json",
+            "config/org-chart.json",
+            "config/daily-schedule.json",
+        ],
+        "output_files": [
+            "state/daily-standup.json",
+        ],
+    },
+    "retro": {
+        "agent_prompt": "agents/custom/chief-of-staff-agent.md",
+        "context_files": [
+            "state/master.json",
+            "state/queue.json",
+            "state/incident-log.json",
+            "state/daily-standup.json",
+            "state/run-history.json",
+            "departments/content/blog-pipeline.json",
+            "departments/social/calendar.json",
+            "departments/social/engagement-log.md",
+            "departments/email/campaigns.json",
+            "departments/dialer/call-list.json",
+            "departments/cro/experiments.json",
+            "config/weekly-cadence.json",
+            "config/org-chart.json",
+        ],
+        "output_files": [
+            "state/daily-retro.json",
+            "state/shift-handoff.json",
+        ],
+    },
+    "board_meeting": {
+        "agent_prompt": "agents/custom/chief-of-staff-agent.md",
+        "context_files": [
+            "state/master.json",
+            "state/queue.json",
+            "state/incident-log.json",
+            "state/run-history.json",
+            "state/daily-standup.json",
+            "departments/gm/weekly-report.md",
+            "departments/content/blog-pipeline.json",
+            "departments/content/calendar.json",
+            "departments/social/calendar.json",
+            "departments/social/engagement-log.md",
+            "departments/seo/keywords.json",
+            "departments/seo/opportunities.json",
+            "departments/intel/competitors.json",
+            "departments/intel/trends.json",
+            "departments/intel/customer-language.json",
+            "departments/x-intel/daily-brief.json",
+            "departments/email/campaigns.json",
+            "departments/email/ab-tests.json",
+            "departments/cro/experiments.json",
+            "departments/cro/metrics.json",
+            "departments/dialer/call-list.json",
+            "config/weekly-cadence.json",
+            "config/org-chart.json",
+            "config/niche.json",
+        ],
+        "output_files": [
+            "departments/gm/weekly-board-minutes.md",
+        ],
+    },
+    "night_ops": {
+        "agent_prompt": "agents/custom/night-ops-agent.md",
+        "context_files": [
+            "state/shift-handoff.json",
+            "state/master.json",
+            "state/queue.json",
+            "state/incident-log.json",
+            "state/alert-history.json",
+            "state/run-history.json",
+            "departments/content/blog-pipeline.json",
+            "config/daily-schedule.json",
+        ],
+        "output_files": [
+            "state/night-report.json",
+            "state/shift-handoff.json",
         ],
     },
 }

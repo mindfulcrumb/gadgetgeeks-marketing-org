@@ -1,0 +1,286 @@
+{
+  "_docs": "GadgetGeeks Marketing Org — 24/7 Operating Schedule v1.0. Three shifts covering the full day. Modeled after enterprise operations centers (Google SRE, Amazon ops, Salesforce marketing ops). Every hour has an owner. No dead time.",
+  "_version": "1.0.0",
+  "_created": "2026-03-13",
+
+  "shifts": {
+    "morning_shift": {
+      "name": "Morning Shift (THE BUILD)",
+      "hours": "06:00 - 13:59 UTC",
+      "philosophy": "This is when we CREATE. Content, designs, campaigns — the production engine runs here.",
+      "shift_lead": "CHIEF (Chief of Staff)",
+      "key_activities": [
+        "Daily standup (06:00)",
+        "Intelligence gathering (06:23 - 07:41)",
+        "Visual content pipeline (08:19 - 09:25)",
+        "Blog production pipeline (09:30 - 10:30)",
+        "Social media publishing (09:45)",
+        "Queue processing and approvals"
+      ]
+    },
+    "afternoon_shift": {
+      "name": "Afternoon Shift (THE PUSH)",
+      "hours": "14:00 - 19:59 UTC",
+      "philosophy": "This is when we SELL and ENGAGE. Outbound calls, social engagement, email campaigns, conversion optimization.",
+      "shift_lead": "GM (General Manager)",
+      "key_activities": [
+        "Outbound calling (14:15 - 15:45)",
+        "Social engagement monitoring (16:37)",
+        "Email campaign execution",
+        "CRO analysis (Wednesday)",
+        "Daily queue wrap-up (18:51)",
+        "Evening retro (20:00)"
+      ]
+    },
+    "night_shift": {
+      "name": "Night Shift (THE WATCH)",
+      "hours": "20:00 - 05:59 UTC",
+      "philosophy": "This is when we MONITOR and PREPARE. Overnight health checks, incident detection, next-day prep. Low-touch — automated monitoring with escalation.",
+      "shift_lead": "SENTINEL (Night Ops Agent)",
+      "key_activities": [
+        "Evening retro + night handoff (20:00)",
+        "Overnight health monitoring (00:00, 03:00)",
+        "Store uptime check",
+        "Workflow failure detection",
+        "Next-day brief preparation (05:00)",
+        "Pre-standup data collection (05:30)"
+      ]
+    }
+  },
+
+  "daily_timeline": {
+    "_docs": "Every scheduled event across the full 24-hour day. This is the master clock. All times UTC.",
+
+    "05:00": {
+      "event": "SENTINEL: Pre-dawn prep",
+      "agent": "SENTINEL",
+      "workflow": "night-ops.yml",
+      "action": "Collect overnight metrics, prepare standup data package, check all API health",
+      "shift": "night",
+      "output": "state/night-report.json"
+    },
+    "05:30": {
+      "event": "SENTINEL: Night-to-morning handoff",
+      "agent": "SENTINEL",
+      "workflow": "night-ops.yml",
+      "action": "Write handoff notes: overnight incidents, pending items, API status, what needs morning attention",
+      "shift": "night → morning",
+      "output": "state/shift-handoff.json"
+    },
+    "06:00": {
+      "event": "CHIEF: Morning Standup",
+      "agent": "CHIEF",
+      "workflow": "morning-standup.yml",
+      "action": "Read all department states, night handoff, incident log. Compile standup: what each dept did yesterday, what's planned today, blockers. Send Telegram summary to boss.",
+      "shift": "morning",
+      "output": "state/daily-standup.json + Telegram"
+    },
+    "06:23": {
+      "event": "PIXEL: Daily SEO scan",
+      "agent": "PIXEL",
+      "workflow": "seo-daily.yml",
+      "action": "Analyze keyword opportunities, write today's SEO recommendation",
+      "shift": "morning",
+      "output": "departments/seo/"
+    },
+    "07:00": {
+      "event": "ECHO: X Intelligence + Daily Telegram Summary",
+      "agent": "ECHO + BOT",
+      "workflow": "x-intel.yml + telegram-summary.yml",
+      "action": "Scan X/Twitter for market signals. Send daily summary to boss on Telegram.",
+      "shift": "morning",
+      "output": "departments/x-intel/daily-brief.json"
+    },
+    "07:41": {
+      "event": "Content: Daily brief generation",
+      "agent": "Content Agent",
+      "workflow": "content.yml",
+      "action": "Generate blog briefs from SEO opportunities + intel signals",
+      "shift": "morning",
+      "output": "departments/content/"
+    },
+    "08:19": {
+      "event": "LENS: Generate 10 image prompts",
+      "agent": "LENS",
+      "workflow": "image-prompts.yml",
+      "action": "Write 10 photorealistic AI image prompts for the day",
+      "shift": "morning",
+      "output": "departments/social/image-prompts.json"
+    },
+    "08:49": {
+      "event": "FOCUS: QA all 10 prompts",
+      "agent": "FOCUS",
+      "workflow": "prompt-qa.yml",
+      "action": "Run 17-check quality audit on all prompts from LENS",
+      "shift": "morning",
+      "output": "departments/social/image-prompts.json (updated)"
+    },
+    "08:53": {
+      "event": "BEACON: Email campaign (Tue/Thu only)",
+      "agent": "Email Marketing Agent",
+      "workflow": "email.yml",
+      "action": "Design and queue email campaign for approval",
+      "shift": "morning",
+      "output": "departments/email/",
+      "frequency": "Tue/Thu only"
+    },
+    "08:55": {
+      "event": "Gemini: Generate images from approved prompts",
+      "agent": "Image Generation",
+      "workflow": "image-generate.yml",
+      "action": "Generate images via Gemini Imagen 4 from FOCUS-approved prompts",
+      "shift": "morning",
+      "output": "Shopify CDN uploads"
+    },
+    "09:25": {
+      "event": "CANVAS: Design 10 branded Canva posts",
+      "agent": "CANVAS",
+      "workflow": "canva-post.yml",
+      "action": "Create finished social media designs from generated images",
+      "shift": "morning",
+      "output": "departments/canva/pipeline.json"
+    },
+    "09:30": {
+      "event": "SCRIBE: Write daily blog",
+      "agent": "SCRIBE",
+      "workflow": "blog-writer.yml",
+      "action": "Pick next brief_ready topic, write 1,200-2,000 word blog. Reads daily-standup.json first to know what intel/SEO found.",
+      "shift": "morning",
+      "output": "departments/content/blog-pipeline.json"
+    },
+    "09:45": {
+      "event": "VIBE: Morning social media posts",
+      "agent": "VIBE (Morning)",
+      "workflow": "social-morning.yml",
+      "action": "Pick up CANVAS designs, write copy, post across platforms",
+      "shift": "morning",
+      "output": "departments/social/calendar.json"
+    },
+    "10:00": {
+      "event": "QUILL: Blog QA + copy audit",
+      "agent": "QUILL",
+      "workflow": "blog-qa.yml",
+      "action": "Run 25-check scanner + deep qualitative review on draft blogs",
+      "shift": "morning",
+      "output": "departments/content/blog-pipeline.json (QA ratings)"
+    },
+    "10:30": {
+      "event": "PRESS: Blog publisher",
+      "agent": "PRESS",
+      "workflow": "blog-publish.yml",
+      "action": "Package qa_approved blogs for boss approval",
+      "shift": "morning",
+      "output": "state/queue.json"
+    },
+    "10:47": {
+      "event": "SCOUT: Market intelligence (Mon/Thu only)",
+      "agent": "SCOUT",
+      "workflow": "intel.yml",
+      "action": "Deep competitor analysis, trend identification, customer language mining",
+      "shift": "morning",
+      "output": "departments/intel/",
+      "frequency": "Mon/Thu only"
+    },
+    "11:29": {
+      "event": "OPTIMIZER: CRO audit (Wed only)",
+      "agent": "OPTIMIZER",
+      "workflow": "cro.yml",
+      "action": "Conversion rate analysis, A/B test review, experiment proposals",
+      "shift": "morning",
+      "output": "departments/cro/",
+      "frequency": "Wed only"
+    },
+    "14:15": {
+      "event": "XAVIER: Build call list",
+      "agent": "DIALER",
+      "workflow": "dialer.yml",
+      "action": "Scan Shopify for abandoned carts, win-back candidates, review requests. Build call list for approval.",
+      "shift": "afternoon",
+      "frequency": "Weekdays only"
+    },
+    "15:45": {
+      "event": "XAVIER: Execute approved calls",
+      "agent": "DIALER Execute",
+      "workflow": "dialer-execute.yml",
+      "action": "Make calls from approved call list via Vapi.ai",
+      "shift": "afternoon",
+      "frequency": "Weekdays only"
+    },
+    "16:37": {
+      "event": "VIBE: Afternoon engagement check",
+      "agent": "VIBE (Afternoon)",
+      "workflow": "social-afternoon.yml",
+      "action": "Monitor post performance, track engagement, flag standout content",
+      "shift": "afternoon",
+      "output": "departments/social/engagement-log.md"
+    },
+    "18:51": {
+      "event": "GM: Daily queue processing",
+      "agent": "GM Queue",
+      "workflow": "gm-queue.yml",
+      "action": "Process approval queue, flag overdue items, move approved items to execution",
+      "shift": "afternoon",
+      "output": "state/queue.json"
+    },
+    "20:00": {
+      "event": "CHIEF: Evening Retro + Night Handoff",
+      "agent": "CHIEF",
+      "workflow": "evening-retro.yml",
+      "action": "Compile day results: what shipped, what's in progress, what failed. Write night handoff notes. Send Telegram summary to boss.",
+      "shift": "afternoon → night",
+      "output": "state/daily-retro.json + state/shift-handoff.json + Telegram"
+    },
+    "00:00": {
+      "event": "SENTINEL: Midnight health check",
+      "agent": "SENTINEL",
+      "workflow": "night-ops.yml",
+      "action": "Check store uptime, API health, workflow status. Alert on failures.",
+      "shift": "night",
+      "output": "state/night-report.json"
+    },
+    "03:00": {
+      "event": "SENTINEL: Pre-dawn health check",
+      "agent": "SENTINEL",
+      "workflow": "night-ops.yml",
+      "action": "Second health check. Verify no workflow failures overnight. Check Telegram for boss messages.",
+      "shift": "night",
+      "output": "state/night-report.json"
+    }
+  },
+
+  "shift_handoff_protocol": {
+    "_docs": "How shifts hand off to each other. The handoff file is the single source of truth.",
+    "handoff_file": "state/shift-handoff.json",
+    "format": {
+      "from_shift": "Which shift is ending",
+      "to_shift": "Which shift is starting",
+      "timestamp": "ISO 8601",
+      "completed_today": ["List of completed items"],
+      "in_progress": ["List of items still in progress"],
+      "blockers": ["List of items blocked and why"],
+      "pending_approvals": ["Queue items awaiting boss action"],
+      "incidents": ["Any new incidents from this shift"],
+      "urgent_for_next_shift": ["Must-handle items for incoming shift"],
+      "api_health": {
+        "shopify": "ok/degraded/down",
+        "gemini": "ok/degraded/down",
+        "telegram": "ok/degraded/down",
+        "canva": "ok/degraded/down",
+        "vapi": "ok/degraded/down"
+      }
+    },
+    "rules": [
+      "NEVER start a shift without reading the handoff from the previous shift",
+      "The outgoing shift MUST write the handoff before clocking out",
+      "If the handoff file is missing or stale (>8 hours old), log an incident",
+      "Blockers in the handoff get auto-escalated per the escalation chain in org-chart.json"
+    ]
+  },
+
+  "telegram_polling": {
+    "schedule": "Every 5 minutes (unchanged)",
+    "workflow": "telegram-poll.yml",
+    "purpose": "Continuous command processing between scheduled events — this is the boss's real-time control channel",
+    "shift": "all"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "_docs": "Shift handoff file. Written by outgoing shift, read by incoming shift. Single source of truth for what happened.",
+  "from_shift": null,
+  "to_shift": null,
+  "timestamp": null,
+  "overnight_summary": "No handoff data yet — system initialized.",
+  "completed_items": [],
+  "in_progress": [],
+  "blockers": [],
+  "pending_approvals": [],
+  "incidents": [],
+  "urgent_for_next_shift": [],
+  "api_health": {
+    "shopify": "unknown",
+    "gemini": "unknown",
+    "telegram": "unknown",
+    "canva": "unknown",
+    "vapi": "unknown"
+  }
+}

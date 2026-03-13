@@ -1,0 +1,130 @@
+{
+  "_docs": "GadgetGeeks Marketing Org — Weekly Sprint Cadence v1.0. Defines the weekly rhythm: Monday sprint planning through Friday board review. Every day has a theme. Modeled after Agile/Scrum adapted for marketing ops.",
+  "_version": "1.0.0",
+  "_created": "2026-03-13",
+
+  "sprint_cycle": {
+    "duration": "1 week (Monday 06:00 UTC → Sunday 23:59 UTC)",
+    "planning": "Monday 06:30 UTC (weekly board meeting)",
+    "review": "Friday 07:03 UTC (GM weekly report)",
+    "retro": "Friday evening retro (20:00 UTC) doubles as sprint retro"
+  },
+
+  "daily_themes": {
+    "monday": {
+      "theme": "PLAN & LAUNCH",
+      "philosophy": "Set the week's direction. What are we trying to accomplish? What shipped last week? What's the #1 priority?",
+      "special_events": [
+        {"time": "05:17", "event": "PIXEL Weekly SEO deep audit", "workflow": "seo-weekly.yml"},
+        {"time": "06:00", "event": "Morning standup (includes week kickoff)", "workflow": "morning-standup.yml"},
+        {"time": "06:30", "event": "Weekly Board Meeting — CHIEF + GM compile strategic review", "workflow": "weekly-board.yml"},
+        {"time": "10:47", "event": "SCOUT deep intel run", "workflow": "intel.yml"}
+      ],
+      "standup_extra": "CHIEF adds: (1) Last week's scorecard vs KPIs, (2) This week's top 3 priorities, (3) Sprint goals for each department",
+      "boss_deliverable": "Telegram: Weekly board brief with last week's wins, this week's plan, and any decisions needed"
+    },
+    "tuesday": {
+      "theme": "CREATE & BUILD",
+      "philosophy": "Heads-down production day. Content, emails, designs — the machine runs full speed.",
+      "special_events": [
+        {"time": "08:53", "event": "BEACON email campaign", "workflow": "email.yml"}
+      ],
+      "standup_extra": "Focus on pipeline throughput — how many pieces moving through each stage?",
+      "boss_deliverable": "Telegram: Pipeline status (X blogs in progress, Y images designed, Z posts scheduled)"
+    },
+    "wednesday": {
+      "theme": "OPTIMIZE & TEST",
+      "philosophy": "Mid-week checkpoint. Are we on track? What can we optimize? Run experiments.",
+      "special_events": [
+        {"time": "11:29", "event": "OPTIMIZER CRO audit", "workflow": "cro.yml"}
+      ],
+      "standup_extra": "CHIEF adds: (1) Sprint progress check — are we on track for weekly goals? (2) Any course corrections needed?",
+      "boss_deliverable": "Telegram: Mid-week check-in with conversion metrics + any experiments to approve"
+    },
+    "thursday": {
+      "theme": "ENGAGE & SELL",
+      "philosophy": "Push engagement. Outbound focus — calls, emails, social replies, partnership outreach.",
+      "special_events": [
+        {"time": "08:53", "event": "BEACON email campaign #2", "workflow": "email.yml"},
+        {"time": "10:47", "event": "SCOUT intel run #2", "workflow": "intel.yml"}
+      ],
+      "standup_extra": "Focus on engagement metrics — social interactions, email opens, call outcomes",
+      "boss_deliverable": "Telegram: Engagement report + any high-value opportunities to act on"
+    },
+    "friday": {
+      "theme": "REVIEW & SHIP",
+      "philosophy": "Ship everything that's ready. Review the week. Celebrate wins. Learn from failures. Prep for next week.",
+      "special_events": [
+        {"time": "07:03", "event": "GM Weekly Report — comprehensive org review", "workflow": "gm-report.yml"}
+      ],
+      "standup_extra": "CHIEF adds: (1) What are we shipping today? (2) What rolls over to next week? (3) Sprint retro highlights",
+      "boss_deliverable": "Telegram: Weekly report with full scorecard, highlights, lowlights, and next week's preview"
+    },
+    "saturday": {
+      "theme": "AUTOPILOT — CONTENT & SOCIAL ONLY",
+      "philosophy": "Weekend mode. Only pre-scheduled content publishes. Social posts go out. No outbound calls. No new campaigns. Monitoring only.",
+      "active_workflows": ["blog pipeline (if content ready)", "social morning/afternoon", "image pipeline", "telegram polling", "night ops"],
+      "inactive_workflows": ["dialer", "email", "intel", "cro", "seo-weekly"],
+      "standup_extra": "Abbreviated — CHIEF reports only: (1) Anything broke overnight? (2) Content publishing on schedule?",
+      "boss_deliverable": "Telegram: Brief weekend status — everything running or not"
+    },
+    "sunday": {
+      "theme": "AUTOPILOT — MONITORING ONLY",
+      "philosophy": "Minimal operations. Health monitoring, social autopilot. Preparing Monday's sprint.",
+      "active_workflows": ["social morning/afternoon", "telegram polling", "night ops"],
+      "inactive_workflows": ["blog pipeline", "dialer", "email", "intel", "cro", "seo-weekly", "image pipeline"],
+      "standup_extra": "CHIEF: Prepare Monday board meeting data — pull last week's metrics, compile scorecard",
+      "boss_deliverable": "Telegram: Monday preview — what's coming this week"
+    }
+  },
+
+  "weekly_kpi_scorecard": {
+    "_docs": "These KPIs are tracked weekly and reported in the Monday board meeting and Friday GM report.",
+    "content": {
+      "blogs_published": {"target": 5, "unit": "per week", "source": "blog-pipeline.json (status: published)"},
+      "blogs_blocked": {"target": 0, "unit": "per week", "source": "blog-pipeline.json (status: blocked)"},
+      "copy_quality_avg": {"target": "EXCELLENT", "unit": "rating", "source": "copy_audit.py results"}
+    },
+    "seo": {
+      "new_keyword_rankings": {"target": 3, "unit": "per week", "source": "keywords.json"},
+      "seo_recommendations_applied": {"target": 5, "unit": "per week", "source": "queue.json (completed, type: seo_recommendation)"},
+      "organic_traffic_growth": {"target": "10%", "unit": "month-over-month", "source": "Google Search Console"}
+    },
+    "social": {
+      "posts_published": {"target": 70, "unit": "per week (10/day)", "source": "calendar.json"},
+      "engagement_rate": {"target": ">2%", "unit": "average", "source": "engagement-log.md"},
+      "follower_growth": {"target": ">50", "unit": "per week", "source": "platform analytics"}
+    },
+    "email": {
+      "campaigns_sent": {"target": 2, "unit": "per week", "source": "campaigns.json"},
+      "open_rate": {"target": ">25%", "unit": "average", "source": "Resend analytics"},
+      "click_rate": {"target": ">3%", "unit": "average", "source": "Resend analytics"},
+      "revenue_attributed": {"target": ">$500", "unit": "per week", "source": "Shopify + UTM tracking"}
+    },
+    "dialer": {
+      "calls_made": {"target": 10, "unit": "per week", "source": "call-list.json"},
+      "abandoned_cart_recovery": {"target": ">15%", "unit": "recovery rate", "source": "Vapi outcomes + Shopify orders"},
+      "review_requests_completed": {"target": 5, "unit": "per week", "source": "call-list.json"}
+    },
+    "operations": {
+      "queue_items_processed": {"target": "100%", "unit": "same-day processing", "source": "queue.json"},
+      "incidents_open": {"target": 0, "unit": "older than 48h", "source": "incident-log.json"},
+      "dead_end_approvals": {"target": 0, "unit": "per week", "source": "incident-log.json"},
+      "uptime": {"target": "100%", "unit": "store availability", "source": "night-ops health checks"}
+    },
+    "visual": {
+      "images_generated": {"target": 50, "unit": "per week (10/day x 5 weekdays)", "source": "image-prompts.json"},
+      "canva_designs_created": {"target": 50, "unit": "per week", "source": "canva/pipeline.json"},
+      "prompt_qa_pass_rate": {"target": ">90%", "unit": "first-pass", "source": "image-prompts.json"}
+    }
+  },
+
+  "monthly_board_review": {
+    "frequency": "First Monday of each month",
+    "time": "07:00 UTC (after weekly board)",
+    "format": "Extended board meeting: (1) Monthly KPI scorecard, (2) Revenue attribution, (3) Competitive landscape, (4) Resource efficiency (token spend vs output), (5) Incident trend analysis, (6) Strategic pivots needed, (7) Next month's OKRs",
+    "owner": "CHIEF + GM",
+    "output": "departments/gm/monthly-board-minutes.md",
+    "boss_deliverable": "Telegram + full PDF report"
+  }
+}

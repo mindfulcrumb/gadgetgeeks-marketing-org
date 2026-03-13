@@ -1,8 +1,8 @@
 {
   "_docs": "Operations Rulebook — THE LAW of the GadgetGeeks Marketing Org. Every agent, every workflow, every approval MUST follow these rules. No exceptions.",
-  "_version": "1.0.0",
+  "_version": "2.0.0",
   "_created": "2026-03-12",
-  "_last_updated": "2026-03-12",
+  "_last_updated": "2026-03-13",
 
   "rule_1_queue_item_format": {
     "description": "Every queue item MUST have these fields. If any field is missing, the item is INVALID and must be rejected by the system.",
@@ -254,6 +254,111 @@
       "The pipeline processes ONE blog per day through each stage",
       "If no briefs are available, SCRIBE does nothing (no fabricating topics)",
       "Each stage hands off to the next — no skipping stages"
+    ]
+  },
+
+  "rule_13_shift_system": {
+    "description": "The org runs 24/7 across 3 shifts. Every hour has an owner. No dead time.",
+    "shifts": {
+      "morning": {"hours": "06:00-13:59 UTC", "lead": "CHIEF", "focus": "CREATE — content, designs, campaigns"},
+      "afternoon": {"hours": "14:00-19:59 UTC", "lead": "GM", "focus": "SELL — calls, engagement, email, CRO"},
+      "night": {"hours": "20:00-05:59 UTC", "lead": "SENTINEL", "focus": "WATCH — monitoring, health checks, prep"}
+    },
+    "rules": [
+      "Every shift writes a handoff to state/shift-handoff.json before ending",
+      "Every shift reads the previous shift's handoff before starting",
+      "If the handoff file is stale (>8 hours old), log an incident",
+      "Full schedule defined in config/daily-schedule.json"
+    ]
+  },
+
+  "rule_14_daily_standup": {
+    "description": "Every day at 06:00 UTC, CHIEF compiles a standup from ALL department states. This is the #1 alignment mechanism.",
+    "rules": [
+      "CHIEF reads ALL department output files + state files before compiling",
+      "Standup is written to state/daily-standup.json",
+      "Condensed summary is sent to boss via Telegram",
+      "Every agent MUST read state/daily-standup.json before their run to know what other departments are doing",
+      "Standup identifies cross-department dependencies: who needs what from whom today",
+      "Standup flags escalations: anything that needs boss attention"
+    ]
+  },
+
+  "rule_15_evening_retro": {
+    "description": "Every day at 20:00 UTC, CHIEF compiles a retro — what shipped, what failed, what's in progress. Then writes the night handoff.",
+    "rules": [
+      "Retro summarizes the full day across all departments",
+      "Written to state/daily-retro.json",
+      "Night handoff written to state/shift-handoff.json for SENTINEL",
+      "Boss gets Telegram summary of the day",
+      "Failed items are analyzed — not just listed, but WHY they failed"
+    ]
+  },
+
+  "rule_16_weekly_board_meeting": {
+    "description": "Every Monday at 06:30 UTC (after standup), CHIEF compiles a strategic board meeting — KPIs vs targets, wins, misses, incidents, competitive landscape, priorities.",
+    "rules": [
+      "Uses KPI targets from config/weekly-cadence.json",
+      "Compares actual performance to targets with trend arrows",
+      "Written to departments/gm/weekly-board-minutes.md",
+      "Boss gets executive summary via Telegram",
+      "Includes decisions needed from boss — strategic questions requiring human judgment"
+    ]
+  },
+
+  "rule_17_night_ops": {
+    "description": "SENTINEL monitors the org overnight (00:00, 03:00, 05:00 UTC). Detects failures, stale queues, idle departments.",
+    "rules": [
+      "SENTINEL reads ALL state files — never modifies department files",
+      "Writes to state/night-report.json and state/shift-handoff.json only",
+      "Telegram alerts ONLY for critical/urgent issues — no spam at 3am",
+      "Morning prep (05:00) is the most important run — prepares CHIEF's standup data",
+      "Checks: API health, workflow failures, stale queue items (>24h), open incidents (>48h), idle departments (>48h)"
+    ]
+  },
+
+  "rule_18_escalation_chain": {
+    "description": "4-level escalation: Auto-resolve → Department head → CHIEF → Boss. Time-boxed at each level.",
+    "levels": [
+      "Level 0: Agent auto-resolves (retries, safe defaults). Immediate.",
+      "Level 1: Department head reviews on next run. <4 hours.",
+      "Level 2: CHIEF flags in standup or retro. <12 hours.",
+      "Level 3: Boss notified via Telegram with URGENT tag. Async."
+    ],
+    "rules": [
+      "Every escalation includes: what happened, what's blocked, recommended action",
+      "No incident stays open >48 hours without boss notification",
+      "No queue item stays pending >24 hours without CHIEF flagging it",
+      "Full escalation chain defined in config/org-chart.json"
+    ]
+  },
+
+  "rule_19_cross_department_communication": {
+    "description": "Departments are NOT independent silos. They depend on each other. CHIEF ensures the information flows.",
+    "dependency_map": {
+      "SCOUT + ECHO → everyone": "Intel feeds trends and customer language to ALL departments",
+      "PIXEL → SCRIBE": "SEO opportunities become blog briefs",
+      "LENS → FOCUS → CANVAS → VIBE": "Image pipeline is strictly sequential",
+      "SCRIBE → QUILL → PRESS": "Blog pipeline is strictly sequential",
+      "ECHO → VIBE": "X trends inform social posting strategy",
+      "OPTIMIZER → BEACON": "CRO insights inform email campaign targeting"
+    },
+    "mechanism": "state/daily-standup.json — read by all agents before their run",
+    "rules": [
+      "If a downstream department can't work because upstream didn't deliver, CHIEF flags it as a blocker",
+      "Every agent reads daily-standup.json at the start of their run",
+      "Never write content in a vacuum — check what intel/SEO found first"
+    ]
+  },
+
+  "rule_20_org_chart": {
+    "description": "The org has a clear hierarchy. CEO → Chief of Staff → VP → Department Heads → Agents. Full structure in config/org-chart.json.",
+    "rules": [
+      "CHIEF reports to CEO (boss)",
+      "Departments are grouped under 3 virtual VPs: Content, Growth, Operations",
+      "Each department has a head agent who is accountable for that department's KPIs",
+      "KPIs are defined in config/weekly-cadence.json and tracked in the weekly board meeting",
+      "No agent operates without a department. No department operates without KPIs."
     ]
   }
 }

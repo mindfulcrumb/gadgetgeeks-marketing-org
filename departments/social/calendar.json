@@ -322,62 +322,70 @@
   ],
   "postiz_calls_used": 10,
   "postiz_calls_remaining": 5,
-  "last_updated": "2026-03-13 18:12 UTC",
-  "notes": "Evening check: No images available from Canva pipeline or image prompts. Cannot post without media_url per mandatory rules. Saving remaining 5 Postiz calls for tomorrow's peak times. Need to connect Twitter/Instagram/Facebook/LinkedIn to Postiz - only TikTok currently connected.",
+  "last_updated": "2026-03-13 18:15 UTC",
+  "notes": "Evening assessment: Image generation system down - all Canva exports empty, all image prompts failed with 403 errors. Cannot post without media_url per mandatory rules. Preserving 5 remaining calls for tomorrow's optimal timing (9-11 AM UTC). Platform connectivity issue remains - only TikTok connected but requires video content.",
   "tomorrow_priorities": [
-    "iPhone 16 anticipation vs current deals positioning - prime opportunity",
-    "Spring supply surge timing advantage messaging (23% more inventory)",
-    "Bundle deal with specific model and savings numbers",
-    "Behind the scenes quality grading process content",
-    "Connect additional platforms to Postiz for multi-platform publishing"
+    "iPhone 17e positioning vs iPhone 15 Pro refurbished - prime viral opportunity",
+    "Spring supply surge timing (23% inventory increase) with specific savings",
+    "Behind-the-scenes quality grading transparency content",
+    "Bundle deals with family/teenager targeting",
+    "URGENT: Connect Twitter/Instagram/Facebook/LinkedIn to Postiz"
   ],
   "platform_issues": [
     {
       "issue": "Only TikTok connected to Postiz",
-      "impact": "Cannot multi-platform post to Twitter/Instagram/Facebook/LinkedIn",
-      "action_needed": "Connect platforms at app.postiz.com"
+      "impact": "Cannot multi-platform post - missing Twitter/Instagram/Facebook/LinkedIn",
+      "action_needed": "Connect platforms at app.postiz.com before tomorrow's posting window",
+      "priority": "critical"
     },
     {
-      "issue": "TikTok requires video content, but our strategy is image-based",
-      "impact": "Platform mismatch prevents TikTok posting",
-      "action_needed": "Create video content strategy or adjust TikTok approach"
+      "issue": "Image generation system failure",
+      "impact": "All 10 image prompts failed with 403 errors, Canva exports empty",
+      "action_needed": "Debug API key or service status for imagen-4.0-generate-001",
+      "priority": "critical"
     }
   ],
   "content_ready_for_tomorrow": [
     {
-      "content_type": "iPhone 16 anticipation positioning",
-      "angle": "Why wait 6+ months and pay more when current flagships deliver everything you need now",
-      "customer_language": "want premium phone without premium price",
-      "trending_topic": "iPhone 16 Anticipation Impact",
+      "content_type": "iPhone 17e vs iPhone 15 Pro refurbished comparison",
+      "post_text": "iPhone 17e rumors got everyone waiting 6+ months to pay premium prices. Meanwhile, iPhone 15 Pro refurbished delivers 99% of the same experience for 40% less. Why wait and pay more for a newer model number when you can get flagship performance today? #iphone #refurbished #techdeals",
+      "angle": "Direct comparison riding @mantech_ug viral sentiment",
+      "customer_language": "iPhone 17e isn't worth it, buy refurbished iPhone 15 ProMax instead",
+      "trending_topic": "iPhone 17e Anticipation vs Current Flagship Value",
       "platforms_suggested": [
         "twitter",
         "instagram",
         "facebook",
         "linkedin"
-      ]
+      ],
+      "needs_image": true
     },
     {
-      "content_type": "spring supply advantage timing",
-      "angle": "Best selection of the year - 23% more inventory, better grades, lower prices",
-      "customer_language": "looks brand new",
+      "content_type": "spring supply surge timing advantage",
+      "post_text": "March is refurb phone heaven — 23% more inventory than winter, better grades, lower prices. Spring upgrade cycle means we're seeing flagship phones that barely lived 6 months. Best selection of the year happening right now. #springdeals #refurbished #techdeals",
+      "angle": "FOMO on current supply surge timing",
+      "customer_language": "looks brand new, perfect timing",
       "trending_topic": "Spring Upgrade Cycle Supply Surge",
       "platforms_suggested": [
         "twitter",
         "instagram",
         "facebook"
-      ]
+      ],
+      "needs_image": true
     },
     {
-      "content_type": "behind the scenes quality process",
-      "angle": "Our A/B/C grading system explained - what each grade actually means for buyers",
-      "customer_language": "what's the catch?",
-      "trending_topic": "Quality assurance transparency",
+      "content_type": "behind the scenes quality grading transparency",
+      "post_text": "What's the real difference between Grade A and Grade B refurbished? Grade A: zero cosmetic wear, looks new out the box. Grade B: light scratches that don't affect function, 30% less cost. Same 90-day warranty, same performance. You choose the savings level. #qualitygrading #transparency",
+      "angle": "Educational transparency addressing 'what's the catch?' concern",
+      "customer_language": "what's the catch?, what does Grade A actually mean?",
+      "trending_topic": "Quality assurance transparency demand",
       "platforms_suggested": [
         "twitter",
         "instagram",
         "facebook",
         "linkedin"
-      ]
+      ],
+      "needs_image": true
     }
   ]
 }

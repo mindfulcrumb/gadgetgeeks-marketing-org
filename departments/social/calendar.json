@@ -95,10 +95,41 @@
         "battery still lasts all day"
       ],
       "canva_design_used": "canva_20260313_095845_005"
+    },
+    {
+      "date": "2026-03-13",
+      "time": "12:44 UTC",
+      "content_type": "budget math/iPhone 17e comparison",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "linkedin"
+      ],
+      "trending_topic": "iPhone 17e vs Refurbished Flagship Direct Comparison",
+      "customer_language_used": [
+        "iPhone 17e isn't worth it, buy refurbished iPhone 15 ProMax instead"
+      ],
+      "canva_design_used": "canva_20260313_095839_004"
+    },
+    {
+      "date": "2026-03-13",
+      "time": "12:44 UTC",
+      "content_type": "customer testimonial/social proof",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook"
+      ],
+      "trending_topic": "Quality assurance and trust building",
+      "customer_language_used": [
+        "can't tell the difference from my friend's new one",
+        "saved $347"
+      ],
+      "canva_design_used": "canva_20260313_095828_002"
     }
   ],
-  "postiz_calls_used": 6,
-  "postiz_calls_remaining": 9,
-  "last_updated": "2026-03-13 10:19 UTC",
-  "notes": "Morning posts: Customer service differentiation (riding Back Market support crisis) + Battery health process transparency (riding 400% trend spike). Both use authentic customer language, avoid AI patterns, and leverage finished Canva designs. Varied platforms to maximize reach while staying under daily limit."
+  "postiz_calls_used": 12,
+  "postiz_calls_remaining": 3,
+  "last_updated": "2026-03-13 12:44 UTC",
+  "notes": "Afternoon posts: Budget math riding iPhone 17e comparison trend + Customer testimonial for trust building. Both use finished Canva designs and authentic customer language. Specific savings numbers ($240+, $347) and real scenarios (textbooks, groceries). Varied platforms to maximize reach while conserving remaining calls."
 }

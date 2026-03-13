@@ -1,6 +1,32 @@
 {
   "runs": [
     {
+      "id": "run_social_morning_20260313_124515",
+      "department": "social_morning",
+      "timestamp": "2026-03-13T12:45:15.256169+00:00",
+      "date": "2026-03-13",
+      "status": "ok",
+      "model": "claude-sonnet-4-20250514",
+      "tokens": {
+        "input": 17107,
+        "output": 3241,
+        "total": 20348
+      },
+      "actions": {
+        "file_updates": 1,
+        "queue_items": 0,
+        "social_posts": 0
+      },
+      "changes": [
+        {
+          "file": "departments/social/calendar.json",
+          "action": "modified",
+          "size": 4011
+        }
+      ],
+      "had_boss_instructions": false
+    },
+    {
       "id": "run_blog_publish_20260313_110401",
       "department": "blog_publish",
       "timestamp": "2026-03-13T11:04:01.981689+00:00",
@@ -635,8 +661,8 @@
     }
   ],
   "stats": {
-    "total_runs": 24,
-    "total_tokens": 272486,
+    "total_runs": 25,
+    "total_tokens": 292834,
     "total_errors": 0
   },
   "department_stats": {
@@ -665,10 +691,10 @@
       "last_run": "2026-03-12T09:31:23.246622+00:00"
     },
     "social_morning": {
-      "runs": 2,
-      "tokens": 27977,
+      "runs": 3,
+      "tokens": 48325,
       "errors": 0,
-      "last_run": "2026-03-13T10:20:08.234003+00:00"
+      "last_run": "2026-03-13T12:45:15.256169+00:00"
     },
     "gm_queue": {
       "runs": 2,

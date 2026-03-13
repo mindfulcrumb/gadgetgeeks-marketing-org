@@ -129,22 +129,7 @@ def post_to_social(
     if not target_integrations:
         raise Exception("No integrations connected in Postiz at all.")
 
-    # Step 2b: TikTok requires video — skip for text/image-only posts
-    VIDEO_ONLY_PLATFORMS = {"tiktok"}
-    is_video = media_url and any(media_url.lower().endswith(ext) for ext in (".mp4", ".mov", ".webm", ".avi"))
-    if not is_video:
-        def _integ_type(i):
-            raw = (i.get("identifier", "") or i.get("type", "") or i.get("providerIdentifier", "")).lower()
-            return PLATFORM_TYPE_MAP.get(raw, raw)
-        skipped = [i for i in target_integrations if _integ_type(i) in VIDEO_ONLY_PLATFORMS]
-        if skipped:
-            names = ", ".join(i.get("identifier", i.get("type", "?")) for i in skipped)
-            print(f"  Postiz: skipping {names} (video-only platform, no video attached)")
-        target_integrations = [i for i in target_integrations if i not in skipped]
-
-    if not target_integrations:
-        print("  Postiz: no eligible platforms after filtering video-only. Skipping post.")
-        return {"skipped": True, "reason": "all target platforms require video"}
+    # Note: TikTok can accept image posts via Postiz — no video-only filter needed
 
     # Step 3: Build image attachment if media_url provided
     image_payload = []

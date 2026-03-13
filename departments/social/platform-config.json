@@ -18,7 +18,7 @@
   "daily_post_budget": 15,
   "postiz_connected": ["tiktok", "twitter", "instagram", "facebook", "linkedin"],
   "postiz_note": "Post to all platforms via Postiz. TikTok requires video — auto-skipped for image posts. Postiz API handles routing to connected accounts.",
-  "video_only_platforms": ["tiktok"],
-  "video_only_note": "TikTok API requires video content (.mp4/.mov). Text-only and image-only posts will be auto-skipped for TikTok. Create short-form video content for TikTok posting.",
+  "video_only_platforms": [],
+  "video_only_note": "TikTok accepts image posts via Postiz. No video-only restriction.",
   "last_updated": "2026-03-13"
 }

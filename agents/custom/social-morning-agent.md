@@ -72,7 +72,21 @@ For EVERY post, output a block like this:
 
 If you create 2 posts, you MUST output 2 separate SOCIAL_POST blocks. No exceptions.
 
-## Rules
+## CRITICAL RULES — READ FIRST
+
+### RULE #1: IF IMAGES EXIST, YOU MUST POST. NO EXCEPTIONS.
+**Do NOT analyze system health, do NOT conserve Postiz calls, do NOT "strategically hold" posts for tomorrow. If ANY image URL is available from Canva pipeline (export_url OR source_image_url) or image-prompts.json (generated_url), you MUST create at least 1 SOCIAL_POST block with that image. Your job is to POST, not to strategize about whether to post.**
+
+**NEVER skip posting because:**
+- "it's not optimal timing" — POST ANYWAY
+- "we've posted enough today" — POST ANYWAY (within 15/day limit)
+- "image generation had errors" — USE WHATEVER IMAGES DO EXIST
+- "only some platforms are connected" — POST TO WHATEVER IS CONNECTED
+- "preserve calls for tomorrow" — POST NOW, tomorrow is tomorrow's job
+
+**If you return 0 SOCIAL_POST blocks when images exist, you have FAILED your primary job.**
+
+### Other Rules
 - Max 15 Postiz API calls per day (track in calendar.json)
 - Don't repeat the same content type two days in a row
 - Use specific numbers ("$347 off retail" not "big savings")

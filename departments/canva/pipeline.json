@@ -1,7 +1,7 @@
 {
   "_docs": "Canva Post Design Pipeline — tracks image-to-finished-post conversion. The Canva department takes generated images from departments/social/image-prompts.json and creates finished social media posts using Canva.",
   "_created": "2026-03-12",
-  "_last_run": "2026-03-13T09:58:45.035096+00:00",
+  "_last_run": "2026-03-13T17:21:09.383595+00:00",
   "designs": [
     {
       "id": "canva_20260313_095823_001",
@@ -151,7 +151,7 @@
   },
   "stats": {
     "total_designs": 5,
-    "designs_today": 5,
-    "last_design_at": "2026-03-13T09:58:45.035093+00:00"
+    "designs_today": 0,
+    "last_design_at": "2026-03-13T17:21:09.383588+00:00"
   }
 }

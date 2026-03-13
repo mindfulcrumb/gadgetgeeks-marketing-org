@@ -11,7 +11,7 @@ from urllib.error import HTTPError
 from datetime import datetime, timezone, timedelta
 
 
-POSTIZ_BASE_URL = "https://app.postiz.com/public/v1"
+POSTIZ_BASE_URL = "https://api.postiz.com/public/v1"
 
 # Map platform names to Postiz settings.__type values
 PLATFORM_TYPE_MAP = {

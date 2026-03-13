@@ -13,7 +13,7 @@
         "Daily standup (06:00)",
         "Intelligence gathering (06:23 - 07:41)",
         "Visual content pipeline (08:19 - 09:25)",
-        "Blog production pipeline (09:30 - 10:30)",
+        "Blog production pipeline (12:00 - 14:30)",
         "Social media publishing (09:45)",
         "Queue processing and approvals"
       ]
@@ -140,7 +140,7 @@
       "shift": "morning",
       "output": "departments/canva/pipeline.json"
     },
-    "09:30": {
+    "12:00": {
       "event": "SCRIBE: Write daily blog",
       "agent": "SCRIBE",
       "workflow": "blog-writer.yml",
@@ -156,7 +156,7 @@
       "shift": "morning",
       "output": "departments/social/calendar.json"
     },
-    "10:00": {
+    "13:00": {
       "event": "QUILL: Blog QA + copy audit",
       "agent": "QUILL",
       "workflow": "blog-qa.yml",
@@ -164,13 +164,21 @@
       "shift": "morning",
       "output": "departments/content/blog-pipeline.json (QA ratings)"
     },
-    "10:30": {
+    "14:30": {
       "event": "PRESS: Blog publisher",
       "agent": "PRESS",
       "workflow": "blog-publish.yml",
       "action": "Package qa_approved blogs for boss approval",
-      "shift": "morning",
+      "shift": "afternoon",
       "output": "state/queue.json"
+    },
+    "15:00": {
+      "event": "Daily Blog Status Report",
+      "agent": "SYSTEM",
+      "workflow": "blog-status-report.yml",
+      "action": "Send Telegram report: what published today, pipeline status, upcoming drafts, any failures",
+      "shift": "afternoon",
+      "output": "Telegram"
     },
     "10:47": {
       "event": "SCOUT: Market intelligence (Mon/Thu only)",

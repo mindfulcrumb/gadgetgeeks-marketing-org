@@ -1,7 +1,7 @@
 name: Blog Writer (SCRIBE)
 on:
   schedule:
-    - cron: '30 9 * * *'  # Daily 9:30 UTC — one blog per day
+    - cron: '0 12 * * *'  # Daily 12:00 UTC (8 AM EST) — optimal traffic window
   workflow_dispatch:
 
 env:

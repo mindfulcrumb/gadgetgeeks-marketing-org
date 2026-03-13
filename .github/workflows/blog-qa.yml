@@ -1,7 +1,7 @@
 name: Blog QA (QUILL — Copy Police)
 on:
   schedule:
-    - cron: '0 10 * * *'  # Daily 10:00 UTC — after SCRIBE (9:30), before PRESS (10:30)
+    - cron: '0 13 * * *'  # Daily 13:00 UTC (9 AM EST) — after SCRIBE (12:00), before PRESS (14:30)
   workflow_dispatch:
 
 env:

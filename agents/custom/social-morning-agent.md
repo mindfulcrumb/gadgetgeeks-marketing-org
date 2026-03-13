@@ -20,13 +20,18 @@ Create 1-2 social media posts and schedule them via Postiz to all connected plat
 - Check content/drafts/ for blog content to repurpose
 - Review platform-config.json for platform list and posting times
 
-### 1b. Use Canva Designs First
-**Priority: ALWAYS use finished Canva designs over raw generated images.**
-- Check `departments/canva/pipeline.json` → designs with `status: "exported"` and `export_url` present
-- Use the `export_url` as the `media_url` in SOCIAL_POST blocks
+### 1b. Image is MANDATORY — NO post without an image
+**NEVER post to Postiz without a media_url. Text-only posts are BLOCKED.**
+
+Image source priority (use the first one that has a URL):
+1. `departments/canva/pipeline.json` → designs with `status: "exported"` and `export_url` not empty → use `export_url`
+2. `departments/canva/pipeline.json` → designs with `source_image_url` not empty → use `source_image_url` as fallback
+3. `departments/social/image-prompts.json` → prompts with `generated_url` not empty → use `generated_url`
+
+**If NONE of these have a valid URL, DO NOT create a SOCIAL_POST block. Skip posting entirely.**
+
 - Match post platform to the design's target platform (instagram design → instagram post)
 - Mark used designs by noting their ID in calendar.json
-- Fall back to raw `generated_url` from image-prompts.json ONLY if no Canva designs are available
 
 ### 2. Create Posts
 Create 1-2 posts. Each post must:
@@ -61,7 +66,7 @@ For EVERY post, output a block like this:
 
 - `content`: The exact post text to publish
 - `platforms`: Which platforms to post to (use names from platform-config.json)
-- `media_url`: URL of an image to attach (from Canva export_url or image-prompts generated_url). Set to `null` if no image.
+- `media_url`: **REQUIRED** — URL of an image to attach. Use Canva `export_url` first, then `source_image_url`, then `generated_url`. NEVER set to `null` — if you have no image URL, do NOT create this SOCIAL_POST block.
 
 **Then** also update social/calendar.json with what was posted.
 

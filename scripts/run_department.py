@@ -347,6 +347,47 @@ DEPARTMENT_CONFIG = {
             "state/shift-handoff.json",
         ],
     },
+    # --- Blog Pipeline (SCRIBE → QUILL → PRESS) ---
+    "blog_writer": {
+        "agent_prompt": "agents/custom/blog-writer-agent.md",
+        "context_files": [
+            "departments/content/blog-pipeline.json",
+            "departments/seo/opportunities.json",
+            "departments/seo/keywords.json",
+            "departments/intel/trends.json",
+            "departments/intel/customer-language.json",
+            "departments/x-intel/daily-brief.json",
+            "state/daily-standup.json",
+            "config/niche.json",
+            "config/copy-rules.json",
+        ],
+        "output_files": [
+            "departments/content/blog-pipeline.json",
+        ],
+    },
+    "blog_qa": {
+        "agent_prompt": "agents/custom/blog-qa-agent.md",
+        "context_files": [
+            "departments/content/blog-pipeline.json",
+            "config/copy-rules.json",
+        ],
+        "output_files": [
+            "departments/content/blog-pipeline.json",
+        ],
+    },
+    "blog_publish": {
+        "agent_prompt": "agents/custom/blog-publisher-agent.md",
+        "context_files": [
+            "departments/content/blog-pipeline.json",
+            "config/niche.json",
+            "config/store-inventory.json",
+            "state/incident-log.json",
+        ],
+        "output_files": [
+            "departments/content/blog-pipeline.json",
+            "state/queue.json",
+        ],
+    },
 }
 
 
@@ -609,12 +650,19 @@ def execute_actions(department: str, parsed: dict):
     # 3. Post to social media (only if Postiz API key is available)
     postiz_key = os.environ.get("POSTIZ_API_KEY")
     for post in parsed["social_posts"]:
+        # Block posts without images — Postiz needs media
+        media = post.get("media_url")
+        if not media:
+            print(f"  BLOCKED social post (no media_url): {post['content'][:60]}...")
+            print(f"  Rule: Never post without an image. Check Canva pipeline for export_url or source_image_url.")
+            continue
+
         if postiz_key:
             try:
                 post_to_social(
                     content=post["content"],
                     platforms=post.get("platforms", []),
-                    media_url=post.get("media_url"),
+                    media_url=media,
                     api_key=postiz_key,
                 )
                 print(f"  Posted to social: {post['content'][:60]}...")

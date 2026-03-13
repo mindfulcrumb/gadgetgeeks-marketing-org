@@ -18,5 +18,7 @@
   "daily_post_budget": 15,
   "postiz_connected": ["tiktok"],
   "postiz_note": "Only TikTok is connected in Postiz. Connect Twitter, Instagram, Facebook, LinkedIn at app.postiz.com to enable multi-platform posting.",
+  "video_only_platforms": ["tiktok"],
+  "video_only_note": "TikTok API requires video content (.mp4/.mov). Text-only and image-only posts will be auto-skipped for TikTok. Create short-form video content for TikTok posting.",
   "last_updated": "2026-03-13"
 }

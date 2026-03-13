@@ -136,6 +136,8 @@ DEPARTMENT_CONFIG = {
         "context_files": [
             "departments/social/calendar.json",
             "departments/social/platform-config.json",
+            "departments/social/image-prompts.json",
+            "departments/canva/pipeline.json",
             "departments/intel/trends.json",
             "departments/intel/customer-language.json",
             "departments/x-intel/daily-brief.json",
@@ -152,6 +154,8 @@ DEPARTMENT_CONFIG = {
             "departments/social/calendar.json",
             "departments/social/engagement-log.md",
             "departments/social/platform-config.json",
+            "departments/social/image-prompts.json",
+            "departments/canva/pipeline.json",
         ],
         "output_files": [
             "departments/social/calendar.json",

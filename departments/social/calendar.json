@@ -200,40 +200,69 @@
       "customer_language_used": [
         "perfect for my teenager - half the price"
       ]
-    }
-  ],
-  "postiz_calls_used": 2,
-  "postiz_calls_remaining": 13,
-  "last_updated": "2026-03-13 13:00 UTC",
-  "notes": "Added accessory compatibility guide (trending heavily) and bundle deal with spring supply messaging. Avoided overused topics from today (customer service differentiation used 3x, iPhone 17e comparisons used 3x). Used fresh customer language and specific savings numbers.",
-  "tomorrow_priorities": [
-    "Behind the scenes content - grading process transparency (good for rotation)",
-    "Right to repair alignment messaging (gaining momentum in ethics discussions)",
-    "iPhone 16 anticipation impact content (6 months early positioning)",
-    "Biometric function testing guarantees (Face ID/Touch ID anxiety)",
-    "Avoid: Accessory compatibility (used today), Bundle deals (used today)"
-  ],
-  "content_ready_for_tomorrow": [
+    },
     {
-      "content_type": "behind the scenes - grading process",
-      "angle": "How we test Face ID, Touch ID, and biometric functions on every device",
-      "customer_language": "Will Face ID still work perfectly?",
-      "trending_topic": "Biometric Function Anxiety",
-      "platforms_suggested": [
+      "date": "2026-03-13",
+      "time": "13:03 UTC",
+      "content_type": "behind the scenes - biometric testing process",
+      "platforms": [
         "twitter",
         "instagram",
         "facebook",
         "linkedin"
+      ],
+      "trending_topic": "Biometric Function Anxiety",
+      "customer_language_used": [
+        "Will Face ID still work perfectly?"
       ]
     },
     {
+      "date": "2026-03-13",
+      "time": "13:03 UTC",
       "content_type": "right to repair alignment",
-      "angle": "Refurbished phones support device longevity and fight planned obsolescence",
-      "customer_language": "want to upgrade without breaking the bank",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "linkedin"
+      ],
       "trending_topic": "Right to Repair Movement Momentum",
+      "customer_language_used": [
+        "want to upgrade without breaking the bank"
+      ]
+    }
+  ],
+  "postiz_calls_used": 4,
+  "postiz_calls_remaining": 11,
+  "last_updated": "2026-03-13 13:03 UTC",
+  "notes": "Added behind the scenes biometric testing (riding Face ID anxiety trend) and right to repair alignment content (riding ethics momentum). Avoided overused topics from today. Used authentic customer language with guarantees and specific testing processes.",
+  "tomorrow_priorities": [
+    "Customer testimonial compilation (rotate back to social proof)",
+    "Product spotlight with specific model and savings numbers",
+    "Environmental impact continuation (sustained momentum)",
+    "iPhone 16 anticipation vs current deals positioning",
+    "Avoid: Biometric testing (used today), Right to repair (used today)"
+  ],
+  "content_ready_for_tomorrow": [
+    {
+      "content_type": "customer testimonial compilation",
+      "angle": "Real customer quotes about quality and savings with specific numbers",
+      "customer_language": "can't tell the difference from my friend's new one",
+      "trending_topic": "Trust building through authentic voices",
       "platforms_suggested": [
         "twitter",
         "instagram",
+        "facebook"
+      ]
+    },
+    {
+      "content_type": "iPhone 16 anticipation positioning",
+      "angle": "Why wait 6 months and pay more when current flagships are perfect now",
+      "customer_language": "want premium phone without premium price",
+      "trending_topic": "iPhone 16 Anticipation Impact",
+      "platforms_suggested": [
+        "twitter",
+        "instagram",
+        "facebook",
         "linkedin"
       ]
     }

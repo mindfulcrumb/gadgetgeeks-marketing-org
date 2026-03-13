@@ -171,25 +171,54 @@
       "customer_language_used": [
         "Why wait and pay 60% more for a newer model number?"
       ]
+    },
+    {
+      "date": "2026-03-13",
+      "time": "13:00 UTC",
+      "content_type": "accessory compatibility guide",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook",
+        "linkedin"
+      ],
+      "trending_topic": "Accessory Compatibility Paralysis",
+      "customer_language_used": [
+        "do I need a different charger for this one"
+      ]
+    },
+    {
+      "date": "2026-03-13",
+      "time": "13:00 UTC",
+      "content_type": "bundle deal spotlight",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook"
+      ],
+      "trending_topic": "Spring Upgrade Cycle Supply Surge",
+      "customer_language_used": [
+        "perfect for my teenager - half the price"
+      ]
     }
   ],
-  "postiz_calls_used": 0,
-  "postiz_calls_remaining": 15,
+  "postiz_calls_used": 2,
+  "postiz_calls_remaining": 13,
   "last_updated": "2026-03-13 13:00 UTC",
-  "notes": "Counter reset — previous runs logged posts in calendar but Postiz API calls never actually fired (parser bug fixed). Ready for real posting.",
+  "notes": "Added accessory compatibility guide (trending heavily) and bundle deal with spring supply messaging. Avoided overused topics from today (customer service differentiation used 3x, iPhone 17e comparisons used 3x). Used fresh customer language and specific savings numbers.",
   "tomorrow_priorities": [
-    "Accessory compatibility guides (Lightning vs USB-C confusion trending - critical need)",
-    "Bundle deal spotlight with specific savings numbers (underutilized this week)",
-    "Behind the scenes content - grading process transparency (last used March 12)",
-    "Spring supply surge messaging (23% increase in quality inventory)",
-    "Avoid: Customer service differentiation (used 3x today), iPhone 17e comparisons (used 3x today)"
+    "Behind the scenes content - grading process transparency (good for rotation)",
+    "Right to repair alignment messaging (gaining momentum in ethics discussions)",
+    "iPhone 16 anticipation impact content (6 months early positioning)",
+    "Biometric function testing guarantees (Face ID/Touch ID anxiety)",
+    "Avoid: Accessory compatibility (used today), Bundle deals (used today)"
   ],
   "content_ready_for_tomorrow": [
     {
-      "content_type": "accessory compatibility guide",
-      "angle": "Lightning vs USB-C cable compatibility with specific iPhone models",
-      "customer_language": "do I need a different charger for this one",
-      "trending_topic": "Accessory Compatibility Paralysis",
+      "content_type": "behind the scenes - grading process",
+      "angle": "How we test Face ID, Touch ID, and biometric functions on every device",
+      "customer_language": "Will Face ID still work perfectly?",
+      "trending_topic": "Biometric Function Anxiety",
       "platforms_suggested": [
         "twitter",
         "instagram",
@@ -198,14 +227,14 @@
       ]
     },
     {
-      "content_type": "bundle deal spotlight",
-      "angle": "iPhone 14 + case + charger bundle with specific savings vs buying separately",
-      "customer_language": "perfect for my teenager - half the price",
-      "trending_topic": "Spring supply surge - best selection in months",
+      "content_type": "right to repair alignment",
+      "angle": "Refurbished phones support device longevity and fight planned obsolescence",
+      "customer_language": "want to upgrade without breaking the bank",
+      "trending_topic": "Right to Repair Movement Momentum",
       "platforms_suggested": [
         "twitter",
         "instagram",
-        "facebook"
+        "linkedin"
       ]
     }
   ]

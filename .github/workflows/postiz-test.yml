@@ -1,0 +1,43 @@
+name: Postiz Direct Test
+on:
+  workflow_dispatch:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  test-post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install deps
+        run: pip install requests
+      - name: Direct Postiz test post
+        env:
+          POSTIZ_API_KEY: ${{ secrets.POSTIZ_API_KEY }}
+        run: |
+          python3 -c "
+          import sys, os
+          sys.path.insert(0, 'scripts/actions')
+          from postiz import get_channels, post_to_social
+
+          print('=== Postiz Channel Check ===')
+          channels = get_channels()
+          for ch in channels:
+              print(f\"  Channel: {ch.get('name','?')} | type: {ch.get('identifier', ch.get('type','?'))} | id: {ch.get('id','?')}\")
+
+          if not channels:
+              print('NO channels connected. Connect platforms at app.postiz.com')
+              sys.exit(0)
+
+          print()
+          print('=== Posting test with image ===')
+          result = post_to_social(
+              content='Premium refurbished tech — 65-point inspected, like new. Save 40-60% vs retail. #refurbished #techdeals',
+              media_url='https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/f1bc1edb-88ed-4233-94b0-a45f4e2ab992/gg-prompt_20260313_002.jpg',
+          )
+          print(f'Result: {result}')
+          "

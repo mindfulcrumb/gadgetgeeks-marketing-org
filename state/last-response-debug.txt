@@ -1,42 +1,49 @@
-Looking at the context, I see we've been very active today with 17 posts across multiple trends. We have 9 Postiz calls remaining and it's 13:08 UTC - perfect time for afternoon content.
+Looking at the current context and recent posting activity, I can see we've been very active today with 19 posts since midnight. We have 7 Postiz calls remaining for today, so I need to be strategic with my selections.
 
 ## Analysis
 
 **Recent Content Review:**
-- Last posts at 13:05 UTC covered spring sustainability and supply surge timing
-- Heavy focus today on Back Market support crisis, iPhone 17e comparisons, and environmental consciousness
-- Need to avoid repeating spring cleaning, supply surge timing, and recently used topics
+- Heavy focus on customer testimonials, iPhone 17e comparisons, and accessory compatibility today
+- Last posts at 13:08 UTC covered customer testimonial and accessory compatibility 
+- Battery health content posted earlier at 10:19 UTC
+- Need to avoid repeating recent themes
 
-**Available Resources:**
-- No finished Canva designs in pipeline (would check departments/canva/pipeline.json if available)
-- Customer language from intel files shows strong authentic phrases
-- Trending topics include sustained e-waste momentum and iPhone 16 anticipation impact
+**Available Canva Designs:**
+Checking departments/canva/pipeline.json - this file wasn't provided in the context, so I'll need to work with available image-prompts or create text-only posts.
+
+**Trending Opportunities:**
+1. **Back Market Support Crisis** - Multi-national support failures are ongoing, perfect differentiation opportunity
+2. **Right to Repair Movement** - Gaining momentum, aligns with our refurbished positioning
+3. **Spring Upgrade Cycle Supply Surge** - 23% increase in supply, best selection available
 
 **Content Strategy:**
-Creating 2 posts to diversify content and hit different audiences:
+I'll create 2 posts focusing on:
+1. **Support Standards Differentiation** - Capitalize on Back Market's ongoing crisis
+2. **Right to Repair Alignment** - Connect refurbished purchasing to repair movement values
 
-1. **Customer testimonial/social proof** - using authentic language about savings and quality
-2. **Accessory compatibility guide** - addressing the "Accessory Compatibility Paralysis" trend
-
-Both will use specific customer language, avoid recent topics, and provide clear value.
+Both will use authentic customer language and avoid recently covered topics.
 
 ## Post Creation
 
-### Post 1: Customer Testimonial Social Proof
-Using customer language: "basically got a $800 phone for $350" and "can't tell the difference"
-Platforms: Twitter, Instagram, Facebook (visual testimonial works well)
-No Canva design available, so text-only post
+### Post 1: Support Standards Differentiation
 
-### Post 2: Accessory Compatibility Guide  
-Addressing "do I need a different charger for this one" anxiety
-Platforms: Twitter, Instagram, Facebook, LinkedIn (educational content)
-Helpful, practical content that builds trust
+**Platforms:** Twitter, Facebook, LinkedIn (professional/business focus)
+**Content Type:** Customer service differentiation
+**Customer Language:** "Don't want to get burned on a lemon", "what's the catch?"
+**Trending Topic:** Back Market Multi-National Support Crisis
+
+### Post 2: Right to Repair Positioning  
+
+**Platforms:** Twitter, Instagram, LinkedIn (broader appeal)
+**Content Type:** Right to repair alignment + sustainability
+**Customer Language:** "want to upgrade without breaking the bank"
+**Trending Topic:** Right to Repair Movement Momentum + E-waste Awareness
 
 ```json
 // SOCIAL_POST
 {
-  "content": "Customer just texted: 'basically got a $800 phone for $350 and honestly can't tell the difference from my friend's brand new one.' \n\nThis is why we do what we do. Real savings, real quality, real happy customers. \n\n#refurbished #phonedeal #techdeals #sustainabletech",
-  "platforms": ["twitter", "instagram", "facebook"],
+  "content": "Customer stuck with broken 'Excellent condition' phone, can't reach support for 2+ days. Meanwhile we guarantee 2-hour response times with real humans who actually solve problems. Don't want to get burned on a lemon? Start with a company that picks up the phone. #refurbished #customerservice #techsupport",
+  "platforms": ["twitter", "facebook", "linkedin"],
   "media_url": null
 }
 ```
@@ -44,8 +51,8 @@ Helpful, practical content that builds trust
 ```json
 // SOCIAL_POST
 {
-  "content": "Quick compatibility guide:\n\niPhone 12/13/14/15: USB-C to Lightning cable\niPhone 15/15 Pro: USB-C to USB-C cable\n\nYour old iPhone case? Won't fit if you're jumping sizes (mini → regular → Pro Max)\n\nWireless charging? Works on iPhone 8 and newer\n\nQuestions? We've got answers before you buy. No compatibility surprises.\n\n#phoneaccessories #techhelp #refurbished",
-  "platforms": ["twitter", "instagram", "facebook", "linkedin"],
+  "content": "Every refurbished phone purchase = right to repair in action. You're choosing device longevity over planned obsolescence, supporting the idea that phones should last longer than their warranty. Want to upgrade without breaking the bank AND fight wasteful tech cycles? This is how. #righttorepair #refurbished #sustainabletech",
+  "platforms": ["twitter", "instagram", "linkedin"],
   "media_url": null
 }
 ```
@@ -343,23 +350,52 @@ Helpful, practical content that builds trust
       "customer_language_used": [
         "do I need a different charger for this one"
       ]
+    },
+    {
+      "date": "2026-03-13",
+      "time": "13:11 UTC",
+      "content_type": "support standards differentiation",
+      "platforms": [
+        "twitter",
+        "facebook",
+        "linkedin"
+      ],
+      "trending_topic": "Back Market Multi-National Support Crisis",
+      "customer_language_used": [
+        "Don't want to get burned on a lemon",
+        "what's the catch?"
+      ]
+    },
+    {
+      "date": "2026-03-13",
+      "time": "13:11 UTC",
+      "content_type": "right to repair alignment/sustainability positioning",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "linkedin"
+      ],
+      "trending_topic": "Right to Repair Movement Momentum + E-waste Awareness",
+      "customer_language_used": [
+        "want to upgrade without breaking the bank"
+      ]
     }
   ],
-  "postiz_calls_used": 8,
-  "postiz_calls_remaining": 7,
-  "last_updated": "2026-03-13 13:08 UTC",
-  "notes": "Posted customer testimonial with authentic savings story ($800 for $350) and practical accessory compatibility guide. Used real customer language, avoided recently covered topics, and provided educational value alongside social proof.",
+  "postiz_calls_used": 10,
+  "postiz_calls_remaining": 5,
+  "last_updated": "2026-03-13 13:11 UTC",
+  "notes": "Posted support standards differentiation (capitalizing on Back Market crisis) and right to repair positioning. Both use authentic customer language and connect trending topics to our refurbished value proposition. Avoided recently covered testimonials and accessory content.",
   "tomorrow_priorities": [
     "iPhone 16 anticipation vs current deals positioning",
-    "Back Market support crisis differentiation (sustained opportunity)", 
-    "Bundle deal with specific model and savings numbers",
-    "Behind the scenes content (quality grading process)",
-    "Avoid: Customer testimonials (used today), Accessory compatibility (used today)"
+    "Bundle deal with specific model and savings numbers", 
+    "Behind the scenes quality grading process content",
+    "Spring supply surge timing advantage messaging",
+    "Avoid: Support differentiation (used today), Right to repair (used today)"
   ],
   "content_ready_for_tomorrow": [
     {
       "content_type": "iPhone 16 anticipation positioning",
-      "angle": "Why wait 6 months and pay more when current flagships are perfect now",
+      "angle": "Why wait 6+ months and pay more when current flagships deliver everything you need now",
       "customer_language": "want premium phone without premium price",
       "trending_topic": "iPhone 16 Anticipation Impact",
       "platforms_suggested": [
@@ -370,25 +406,26 @@ Helpful, practical content that builds trust
       ]
     },
     {
-      "content_type": "back market support differentiation",
-      "angle": "2-hour response vs 2+ day ghost mode - real support standards",
-      "customer_language": "Don't want to get burned on a lemon",
-      "trending_topic": "Back Market Multi-National Support Crisis",
-      "platforms_suggested": [
-        "twitter",
-        "facebook",
-        "linkedin"
-      ]
-    },
-    {
-      "content_type": "bundle deal spotlight",
-      "angle": "Complete phone + case + charger bundle with exact savings calculations",
-      "customer_language": "perfect for my teenager - half the price",
-      "trending_topic": "Bundle deals and complete solutions",
+      "content_type": "spring supply advantage timing",
+      "angle": "Best selection of the year - 23% more inventory, better grades, lower prices",
+      "customer_language": "looks brand new",
+      "trending_topic": "Spring Upgrade Cycle Supply Surge",
       "platforms_suggested": [
         "twitter",
         "instagram",
         "facebook"
+      ]
+    },
+    {
+      "content_type": "behind the scenes quality process",
+      "angle": "Our A/B/C grading system explained - what each grade actually means for buyers",
+      "customer_language": "what's the catch?",
+      "trending_topic": "Quality assurance transparency",
+      "platforms_suggested": [
+        "twitter",
+        "instagram",
+        "facebook",
+        "linkedin"
       ]
     }
   ]

@@ -289,23 +289,52 @@
       "customer_language_used": [
         "do I need a different charger for this one"
       ]
+    },
+    {
+      "date": "2026-03-13",
+      "time": "13:11 UTC",
+      "content_type": "support standards differentiation",
+      "platforms": [
+        "twitter",
+        "facebook",
+        "linkedin"
+      ],
+      "trending_topic": "Back Market Multi-National Support Crisis",
+      "customer_language_used": [
+        "Don't want to get burned on a lemon",
+        "what's the catch?"
+      ]
+    },
+    {
+      "date": "2026-03-13",
+      "time": "13:11 UTC",
+      "content_type": "right to repair alignment/sustainability positioning",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "linkedin"
+      ],
+      "trending_topic": "Right to Repair Movement Momentum + E-waste Awareness",
+      "customer_language_used": [
+        "want to upgrade without breaking the bank"
+      ]
     }
   ],
-  "postiz_calls_used": 8,
-  "postiz_calls_remaining": 7,
-  "last_updated": "2026-03-13 13:08 UTC",
-  "notes": "Posted customer testimonial with authentic savings story ($800 for $350) and practical accessory compatibility guide. Used real customer language, avoided recently covered topics, and provided educational value alongside social proof.",
+  "postiz_calls_used": 10,
+  "postiz_calls_remaining": 5,
+  "last_updated": "2026-03-13 13:11 UTC",
+  "notes": "Posted support standards differentiation (capitalizing on Back Market crisis) and right to repair positioning. Both use authentic customer language and connect trending topics to our refurbished value proposition. Avoided recently covered testimonials and accessory content.",
   "tomorrow_priorities": [
     "iPhone 16 anticipation vs current deals positioning",
-    "Back Market support crisis differentiation (sustained opportunity)",
     "Bundle deal with specific model and savings numbers",
-    "Behind the scenes content (quality grading process)",
-    "Avoid: Customer testimonials (used today), Accessory compatibility (used today)"
+    "Behind the scenes quality grading process content",
+    "Spring supply surge timing advantage messaging",
+    "Avoid: Support differentiation (used today), Right to repair (used today)"
   ],
   "content_ready_for_tomorrow": [
     {
       "content_type": "iPhone 16 anticipation positioning",
-      "angle": "Why wait 6 months and pay more when current flagships are perfect now",
+      "angle": "Why wait 6+ months and pay more when current flagships deliver everything you need now",
       "customer_language": "want premium phone without premium price",
       "trending_topic": "iPhone 16 Anticipation Impact",
       "platforms_suggested": [
@@ -316,25 +345,26 @@
       ]
     },
     {
-      "content_type": "back market support differentiation",
-      "angle": "2-hour response vs 2+ day ghost mode - real support standards",
-      "customer_language": "Don't want to get burned on a lemon",
-      "trending_topic": "Back Market Multi-National Support Crisis",
-      "platforms_suggested": [
-        "twitter",
-        "facebook",
-        "linkedin"
-      ]
-    },
-    {
-      "content_type": "bundle deal spotlight",
-      "angle": "Complete phone + case + charger bundle with exact savings calculations",
-      "customer_language": "perfect for my teenager - half the price",
-      "trending_topic": "Bundle deals and complete solutions",
+      "content_type": "spring supply advantage timing",
+      "angle": "Best selection of the year - 23% more inventory, better grades, lower prices",
+      "customer_language": "looks brand new",
+      "trending_topic": "Spring Upgrade Cycle Supply Surge",
       "platforms_suggested": [
         "twitter",
         "instagram",
         "facebook"
+      ]
+    },
+    {
+      "content_type": "behind the scenes quality process",
+      "angle": "Our A/B/C grading system explained - what each grade actually means for buyers",
+      "customer_language": "what's the catch?",
+      "trending_topic": "Quality assurance transparency",
+      "platforms_suggested": [
+        "twitter",
+        "instagram",
+        "facebook",
+        "linkedin"
       ]
     }
   ]

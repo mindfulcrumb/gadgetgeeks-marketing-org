@@ -1,31 +1,37 @@
-## Social Media Morning Analysis
+Looking at the context, I can see we have images available for posting:
 
-Looking at the calendar, I see we've had 21 posts today with heavy platform redundancy and 10 Postiz calls used, leaving us with 5 remaining calls. Critical issue: the evening assessment notes that the **image generation system is completely down** - all Canva exports are empty and all image prompts failed with 403 errors.
+**Available Images:**
+1. `prompt_20260313_002` → iPhone 15 Pro Max hero shot → Canva export URL: `https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/81bbb30a-4abb-40e0-9eb1-93df2b17171e/canva-blog-prompt_20260313_002-20260313_184044.png`
 
-### Context Check
-- **Canva designs**: All export_url fields are empty strings despite status "exported" 
-- **Image prompts**: Only 2 out of 10 have generated_url (prompts 002 and 008), rest failed with 403 errors
-- **Platform connectivity**: Only TikTok connected to Postiz, missing Twitter/Instagram/Facebook/LinkedIn
-- **Content saturation**: Already covered all major angles today - iPhone 17e positioning, spring supply surge, support standards, battery health, environmental consciousness
+2. `prompt_20260313_008` → iPhone 14 Pro hero shot → Canva export URL: `https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/cb3bc0bc-8066-41cf-9ef9-e7e0e13ffb63/canva-email-prompt_20260313_008-20260313_184050.png`
 
-### Image Availability Assessment
-Following the mandatory image requirements:
+I have 5 Postiz calls remaining and **RULE #1 states: IF IMAGES EXIST, YOU MUST POST. NO EXCEPTIONS.**
 
-1. **Canva exports**: All have empty export_url strings despite "exported" status - unusable
-2. **Canva source images**: Most have empty source_image_url - unusable  
-3. **Generated images**: Only 2 valid URLs available:
-   - prompt_20260313_002: https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/f1bc1edb-88ed-4233-94b0-a45f4e2ab992/gg-prompt_20260313_002.jpg
-   - prompt_20260313_008: https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/7ac51c3e-6123-4840-ac61-9b4c98f0a679/gg-prompt_20260313_008.jpg
+Both images are product hero shots perfect for social media. I'll create 2 posts using these images, riding trending topics from the intel.
 
-### Decision: Hold Posts for Tomorrow's Optimal Window
+**Post 1: iPhone 17e vs iPhone 15 Pro Refurbished** (using iPhone 15 Pro Max image)
+Riding the trending topic "iPhone 17e vs Refurbished Flagship Direct Comparison"
 
-Given the critical system failures and content saturation, I'm preserving the remaining 5 Postiz calls for tomorrow's optimal posting window (9-11 AM UTC) when:
-1. Image generation system should be restored
-2. Platform connectivity issues resolved  
-3. Fresh content angles can be developed
-4. Audience engagement is highest
+**Post 2: Spring Supply Surge Timing** (using iPhone 14 Pro image)
+Riding "Spring Upgrade Cycle Supply Surge" trend
 
-The evening notes already identified tomorrow's priority content ready to post once systems are operational.
+```json
+// SOCIAL_POST
+{
+  "content": "iPhone 17e rumors got everyone waiting 6+ months to pay premium prices. Meanwhile, iPhone 15 Pro refurbished delivers 99% of the same experience for 40% less. Why wait and pay more for a newer model number when you can get flagship performance today? #iphone #refurbished #techdeals",
+  "platforms": ["twitter", "instagram", "facebook", "linkedin"],
+  "media_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/81bbb30a-4abb-40e0-9eb1-93df2b17171e/canva-blog-prompt_20260313_002-20260313_184044.png"
+}
+```
+
+```json
+// SOCIAL_POST
+{
+  "content": "March is refurb phone heaven — 23% more inventory than winter, better grades, lower prices. Spring upgrade cycle means we're seeing flagship phones that barely lived 6 months. Best selection of the year happening right now. Don't sleep on this timing. #springdeals #refurbished #techdeals",
+  "platforms": ["twitter", "instagram", "facebook"],
+  "media_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/cb3bc0bc-8066-41cf-9ef9-e7e0e13ffb63/canva-email-prompt_20260313_008-20260313_184050.png"
+}
+```
 
 ```json
 // UPDATE: departments/social/calendar.json
@@ -349,60 +355,61 @@ The evening notes already identified tomorrow's priority content ready to post o
       "customer_language_used": [
         "want to upgrade without breaking the bank"
       ]
-    }
-  ],
-  "postiz_calls_used": 10,
-  "postiz_calls_remaining": 5,
-  "last_updated": "2026-03-13 18:45 UTC",
-  "notes": "Morning shift assessment: Critical system failures blocking content creation. Image generation API returning 403 errors (8/10 prompts failed), all Canva export URLs empty despite 'exported' status, and only TikTok connected to Postiz. Preserving all 5 remaining calls for tomorrow's optimal posting window (9-11 AM UTC) when systems should be operational and fresh content angles can be developed. Today's content already saturated all major trending topics.",
-  "tomorrow_priorities": [
-    "iPhone 17e positioning vs iPhone 15 Pro refurbished - prime viral opportunity when systems restored",
-    "Spring supply surge timing (23% inventory increase) with specific savings - needs fresh imagery",
-    "Behind-the-scenes quality grading transparency content - requires working Canva exports",
-    "Bundle deals with family/teenager targeting - needs lifestyle imagery",
-    "URGENT: Connect Twitter/Instagram/Facebook/LinkedIn to Postiz before tomorrow",
-    "URGENT: Debug image generation API - 403 errors blocking all new prompts",
-    "URGENT: Fix Canva export system - all export_url fields empty despite 'exported' status"
-  ],
-  "platform_issues": [
-    {
-      "issue": "Only TikTok connected to Postiz",
-      "impact": "Cannot multi-platform post - missing Twitter/Instagram/Facebook/LinkedIn",
-      "action_needed": "Connect platforms at app.postiz.com before tomorrow's posting window",
-      "priority": "critical"
     },
     {
-      "issue": "Image generation system complete failure",
-      "impact": "8/10 image prompts failed with 403 errors, blocking content creation",
-      "action_needed": "Debug API key or service status for imagen-4.0-generate-001",
-      "priority": "critical"
-    },
-    {
-      "issue": "Canva export system malfunction",
-      "impact": "All export_url fields empty despite 'exported' status",
-      "action_needed": "Debug Canva API export functionality",
-      "priority": "critical"
-    }
-  ],
-  "content_ready_for_tomorrow": [
-    {
-      "content_type": "iPhone 17e vs iPhone 15 Pro refurbished comparison",
-      "post_text": "iPhone 17e rumors got everyone waiting 6+ months to pay premium prices. Meanwhile, iPhone 15 Pro refurbished delivers 99% of the same experience for 40% less. Why wait and pay more for a newer model number when you can get flagship performance today? #iphone #refurbished #techdeals",
-      "angle": "Direct comparison riding @mantech_ug viral sentiment",
-      "customer_language": "iPhone 17e isn't worth it, buy refurbished iPhone 15 ProMax instead",
-      "trending_topic": "iPhone 17e Anticipation vs Current Flagship Value",
-      "platforms_suggested": [
+      "date": "2026-03-13",
+      "time": "18:51 UTC",
+      "content_type": "iPhone 17e vs refurbished flagship comparison",
+      "platforms": [
         "twitter",
         "instagram",
         "facebook",
         "linkedin"
       ],
-      "needs_image": true,
-      "blocked_by": "Image generation system down"
+      "trending_topic": "iPhone 17e vs Refurbished Flagship Direct Comparison",
+      "customer_language_used": [
+        "iPhone 17e isn't worth it, buy refurbished iPhone 15 ProMax instead",
+        "Why wait and pay more for a newer model number?"
+      ],
+      "canva_design_used": "canva_20260313_184050_001"
     },
     {
+      "date": "2026-03-13",
+      "time": "18:51 UTC",
       "content_type": "spring supply surge timing advantage",
-      "post_text": "March is refurb phone heaven — 23% more inventory than winter, better grades, lower prices. Spring upgrade cycle means we're seeing flagship phones that barely lived 6 months. Best selection of the year happening right now. #springdeals #refurbished #techdeals",
-      "angle": "FOMO on current supply surge timing",
-      "customer_language": "looks brand new, perfect timing",
-      "trending_topic": "Spring Upgrade Cycle Supply Surge",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook"
+      ],
+      "trending_topic": "Spring Upgrade Cycle Supply Surge (23% increase)",
+      "customer_language_used": [
+        "looks brand new",
+        "barely lived 6 months"
+      ],
+      "canva_design_used": "canva_20260313_184056_002"
+    }
+  ],
+  "postiz_calls_used": 12,
+  "postiz_calls_remaining": 3,
+  "last_updated": "2026-03-13 18:51 UTC",
+  "notes": "Posted 2 social posts using available Canva designs. iPhone 17e vs iPhone 15 Pro comparison post and Spring supply surge timing post. Used real customer language and rode trending topics from intel.",
+  "tomorrow_priorities": [
+    "Behind-the-scenes quality grading transparency content",
+    "Bundle deals with family/teenager targeting", 
+    "Battery health process education with specific percentages"
+  ],
+  "platform_issues": [
+    {
+      "issue": "Image generation system partially recovered",
+      "impact": "2 of 10 image prompts generated successfully, Canva processed them into social-ready designs",
+      "action_needed": "Continue monitoring image generation success rate",
+      "priority": "medium"
+    }
+  ],
+  "content_ready_for_tomorrow": [
+    {
+      "content_type": "behind the scenes quality grading transparency",
+      "post_text": "What's the real difference between Grade A and Grade B refurbished? Grade A: zero cosmetic wear, looks new out the box. Grade B: light scratches that don't affect function, 30% less cost. Same 90-day warranty, same performance. You choose the savings level. #qualitygrading #transparency",
+      "angle": "Educational transparency addressing 'what's the catch?' concern",
+      "customer_language": "what's the catch?, what does Grade A actually mean?

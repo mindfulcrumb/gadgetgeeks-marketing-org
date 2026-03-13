@@ -121,11 +121,13 @@ def post_to_social(
         target_integrations = integrations
 
     if not target_integrations:
+        # Fall back to ALL connected integrations if none of the requested ones match
         available = [i.get("identifier", i.get("type", "?")) for i in integrations]
-        raise Exception(
-            f"None of the requested platforms {platforms} found in Postiz. "
-            f"Available integrations: {available}"
-        )
+        print(f"  Postiz: requested platforms {platforms} not found. Falling back to available: {available}")
+        target_integrations = integrations
+
+    if not target_integrations:
+        raise Exception("No integrations connected in Postiz at all.")
 
     # Step 3: Build image attachment if media_url provided
     image_payload = []

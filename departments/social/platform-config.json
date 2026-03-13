@@ -16,5 +16,7 @@
     "accessories": ["#phonecase", "#techgadgets", "#phoneaccessories"]
   },
   "daily_post_budget": 15,
-  "last_updated": null
+  "postiz_connected": ["tiktok"],
+  "postiz_note": "Only TikTok is connected in Postiz. Connect Twitter, Instagram, Facebook, LinkedIn at app.postiz.com to enable multi-platform posting.",
+  "last_updated": "2026-03-13"
 }

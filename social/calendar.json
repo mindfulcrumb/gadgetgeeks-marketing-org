@@ -1,45 +1,3 @@
-Looking at my context, I need to check for available images before creating posts. Let me examine the available image sources:
-
-## Analysis
-
-**Image Availability Check:**
-- **departments/canva/pipeline.json**: Not provided - can't access Canva designs
-- **departments/social/image-prompts.json**: Not provided - can't access generated images
-- **Result**: NO valid image URLs available
-
-**Current Status:**
-- Date: March 13, 2026, 17:16 UTC (evening)
-- Postiz calls used: 10/15 (5 remaining)
-- Last posts: Multiple posts throughout the day, last at 13:11 UTC
-
-**Problem:** According to my instructions, I CANNOT create SOCIAL_POST blocks without a valid `media_url`. The rule states: "Image is MANDATORY — NO post without an image" and "NEVER post to Postiz without a media_url. Text-only posts are BLOCKED."
-
-Since I don't have access to:
-1. Canva pipeline with exported designs
-2. Image prompts with generated URLs
-3. Any other valid image sources
-
-I cannot fulfill my primary task of creating social posts today. This is a blocking issue that needs to be resolved by either:
-1. Providing access to departments/canva/pipeline.json with exported designs
-2. Providing access to departments/social/image-prompts.json with generated images
-3. Having another department create images first
-
-**Trending Topics Available:**
-- Battery Health Obsession Peak (400% increase)
-- iPhone 16 Anticipation Impact
-- Spring Upgrade Cycle Supply Surge (23% increase)
-- Back Market Support Crisis
-- E-waste Awareness Sustained Viral Momentum
-
-**Content Ideas Ready (if images were available):**
-1. iPhone 16 anticipation positioning vs current deals
-2. Spring supply surge timing advantage
-3. Support standards differentiation (capitalizing on Back Market crisis)
-
-However, without valid image URLs, I cannot execute any social posts today.
-
-```json
-// UPDATE: social/calendar.json
 {
   "posts": [
     {
@@ -368,7 +326,7 @@ However, without valid image URLs, I cannot execute any social posts today.
   "notes": "BLOCKED: Cannot create posts due to missing image sources. Need access to departments/canva/pipeline.json or departments/social/image-prompts.json with valid URLs. All posts require mandatory media_url - text-only posts are prohibited.",
   "tomorrow_priorities": [
     "iPhone 16 anticipation vs current deals positioning",
-    "Bundle deal with specific model and savings numbers", 
+    "Bundle deal with specific model and savings numbers",
     "Behind the scenes quality grading process content",
     "Spring supply surge timing advantage messaging",
     "Avoid: Support differentiation (used today), Right to repair (used today)"
@@ -381,7 +339,7 @@ However, without valid image URLs, I cannot execute any social posts today.
       "trending_topic": "iPhone 16 Anticipation Impact",
       "platforms_suggested": [
         "twitter",
-        "instagram", 
+        "instagram",
         "facebook",
         "linkedin"
       ]
@@ -419,27 +377,3 @@ However, without valid image URLs, I cannot execute any social posts today.
     }
   ]
 }
-```
-
-```json
-// QUEUE_ITEM
-{
-  "type": "department_coordination",
-  "department": "social_morning", 
-  "summary": "Social posting blocked - need image sources",
-  "details": {
-    "issue": "Cannot create social posts without valid image URLs",
-    "required_files": [
-      "departments/canva/pipeline.json (with exported designs)",
-      "departments/social/image-prompts.json (with generated images)"
-    ],
-    "impact": "All social media posting halted until image sources available",
-    "trending_opportunities_waiting": [
-      "iPhone 16 anticipation positioning",
-      "Back Market support crisis differentiation", 
-      "Spring supply surge timing advantage"
-    ]
-  },
-  "created": "2026-03-13 17:16 UTC"
-}
-```

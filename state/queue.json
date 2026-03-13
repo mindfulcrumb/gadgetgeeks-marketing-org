@@ -187,6 +187,26 @@
       },
       "created": "2026-03-13 17:10 UTC",
       "id": "social_afternoon_20260313_171041"
+    },
+    {
+      "type": "department_coordination",
+      "department": "social_morning",
+      "summary": "Social posting blocked - need image sources",
+      "details": {
+        "issue": "Cannot create social posts without valid image URLs",
+        "required_files": [
+          "departments/canva/pipeline.json (with exported designs)",
+          "departments/social/image-prompts.json (with generated images)"
+        ],
+        "impact": "All social media posting halted until image sources available",
+        "trending_opportunities_waiting": [
+          "iPhone 16 anticipation positioning",
+          "Back Market support crisis differentiation",
+          "Spring supply surge timing advantage"
+        ]
+      },
+      "created": "2026-03-13 17:16 UTC",
+      "id": "social_morning_20260313_171715"
     }
   ],
   "approved": [

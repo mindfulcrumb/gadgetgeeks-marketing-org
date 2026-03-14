@@ -688,6 +688,10 @@ def main():
 
     # 4. Parse and execute actions
     print("[4/5] Parsing response and executing actions...")
+    # Debug: dump response to see what format agent is using
+    print(f"  DEBUG RESPONSE (last 3000 chars):")
+    for line in response_text[-3000:].split('\n'):
+        print(f"    | {line}")
     parsed = parse_response(response_text)
     print(f"  File updates: {len(parsed['file_updates'])}")
     print(f"  Queue items: {len(parsed['queue_items'])}")

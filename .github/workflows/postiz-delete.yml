@@ -1,0 +1,36 @@
+name: "Delete Postiz Posts"
+
+on:
+  workflow_dispatch:
+    inputs:
+      post_ids:
+        description: "Comma-separated Postiz post IDs to delete"
+        required: true
+        type: string
+
+jobs:
+  delete-posts:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Delete scheduled posts
+        env:
+          POSTIZ_API_KEY: ${{ secrets.POSTIZ_API_KEY }}
+        run: |
+          IFS=',' read -ra IDS <<< "${{ github.event.inputs.post_ids }}"
+          for POST_ID in "${IDS[@]}"; do
+            POST_ID=$(echo "$POST_ID" | xargs)  # trim whitespace
+            echo "Deleting post: $POST_ID"
+            HTTP_CODE=$(curl -s -o /tmp/response.txt -w "%{http_code}" \
+              -X DELETE \
+              "https://api.postiz.com/public/v1/posts/$POST_ID" \
+              -H "Authorization: $POSTIZ_API_KEY" \
+              -H "Content-Type: application/json")
+            echo "Response code: $HTTP_CODE"
+            cat /tmp/response.txt
+            echo ""
+            if [ "$HTTP_CODE" -ge 200 ] && [ "$HTTP_CODE" -lt 300 ]; then
+              echo "✅ Successfully deleted $POST_ID"
+            else
+              echo "⚠️ Failed to delete $POST_ID (HTTP $HTTP_CODE)"
+            fi
+          done

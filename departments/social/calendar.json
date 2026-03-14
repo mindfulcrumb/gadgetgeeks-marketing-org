@@ -318,48 +318,68 @@
       "customer_language_used": [
         "want to upgrade without breaking the bank"
       ]
-    }
-  ],
-  "postiz_calls_used": 10,
-  "postiz_calls_remaining": 5,
-  "last_updated": "2026-03-13 18:15 UTC",
-  "notes": "Evening assessment: Image generation system down - all Canva exports empty, all image prompts failed with 403 errors. Cannot post without media_url per mandatory rules. Preserving 5 remaining calls for tomorrow's optimal timing (9-11 AM UTC). Platform connectivity issue remains - only TikTok connected but requires video content.",
-  "tomorrow_priorities": [
-    "iPhone 17e positioning vs iPhone 15 Pro refurbished - prime viral opportunity",
-    "Spring supply surge timing (23% inventory increase) with specific savings",
-    "Behind-the-scenes quality grading transparency content",
-    "Bundle deals with family/teenager targeting",
-    "URGENT: Connect Twitter/Instagram/Facebook/LinkedIn to Postiz"
-  ],
-  "platform_issues": [
-    {
-      "issue": "Only TikTok connected to Postiz",
-      "impact": "Cannot multi-platform post - missing Twitter/Instagram/Facebook/LinkedIn",
-      "action_needed": "Connect platforms at app.postiz.com before tomorrow's posting window",
-      "priority": "critical"
     },
     {
-      "issue": "Image generation system failure",
-      "impact": "All 10 image prompts failed with 403 errors, Canva exports empty",
-      "action_needed": "Debug API key or service status for imagen-4.0-generate-001",
-      "priority": "critical"
-    }
-  ],
-  "content_ready_for_tomorrow": [
-    {
-      "content_type": "iPhone 17e vs iPhone 15 Pro refurbished comparison",
-      "post_text": "iPhone 17e rumors got everyone waiting 6+ months to pay premium prices. Meanwhile, iPhone 15 Pro refurbished delivers 99% of the same experience for 40% less. Why wait and pay more for a newer model number when you can get flagship performance today? #iphone #refurbished #techdeals",
-      "angle": "Direct comparison riding @mantech_ug viral sentiment",
-      "customer_language": "iPhone 17e isn't worth it, buy refurbished iPhone 15 ProMax instead",
-      "trending_topic": "iPhone 17e Anticipation vs Current Flagship Value",
-      "platforms_suggested": [
+      "date": "2026-03-14",
+      "time": "13:24 UTC",
+      "content_type": "iPhone 17e vs refurbished comparison",
+      "platforms": [
         "twitter",
         "instagram",
         "facebook",
         "linkedin"
       ],
-      "needs_image": true
+      "trending_topic": "iPhone 17e vs Refurbished Flagship Direct Comparison Gaining Momentum",
+      "customer_language_used": [
+        "Why wait and pay more for a newer model number?"
+      ],
+      "canva_design_used": "canva_20260313_184050_001",
+      "image_used": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/81bbb30a-4abb-40e0-9eb1-93df2b17171e/canva-blog-prompt_20260313_002-20260313_184044.png",
+      "source_prompt_id": "prompt_20260313_002",
+      "driven_by": "x-intel trending: iPhone 17e vs refurbished comparison gaining retweet momentum"
     },
+    {
+      "date": "2026-03-14",
+      "time": "13:24 UTC",
+      "content_type": "reality check format/customer testimonial",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook",
+        "linkedin"
+      ],
+      "trending_topic": "Reality Check style honest breakdown with engagement numbers",
+      "customer_language_used": [
+        "looks absolutely brand new",
+        "can't tell the difference from my friend's new one",
+        "saved $347",
+        "feels like getting away with something"
+      ],
+      "canva_design_used": "canva_20260313_184056_002",
+      "image_used": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/cb3bc0bc-8066-41cf-9ef9-e7e0e13ffb63/canva-email-prompt_20260313_008-20260313_184050.png",
+      "source_prompt_id": "prompt_20260313_008",
+      "driven_by": "x-intel viral format: Reality Check style honest breakdown getting 155 likes, 19 replies"
+    }
+  ],
+  "postiz_calls_used": 12,
+  "postiz_calls_remaining": 3,
+  "last_updated": "2026-03-14 13:24 UTC",
+  "notes": "Morning posting session - successfully used 2 unused Canva designs with export URLs. Both posts capitalize on trending topics from x-intel: iPhone 17e comparison and Reality Check format. Strong customer language integration.",
+  "tomorrow_priorities": [
+    "Continue iPhone 17e positioning trend if momentum sustains",
+    "Create video content for TikTok using behind-the-scenes quality testing",
+    "Bundle deals with family/teenager targeting for spring supply surge",
+    "More reality check style content - format showing high engagement"
+  ],
+  "platform_issues": [
+    {
+      "issue": "Need more video content for TikTok",
+      "impact": "Missing engagement opportunity on primary connected platform",
+      "action_needed": "Create behind-the-scenes quality testing videos",
+      "priority": "medium"
+    }
+  ],
+  "content_ready_for_tomorrow": [
     {
       "content_type": "spring supply surge timing advantage",
       "post_text": "March is refurb phone heaven — 23% more inventory than winter, better grades, lower prices. Spring upgrade cycle means we're seeing flagship phones that barely lived 6 months. Best selection of the year happening right now. #springdeals #refurbished #techdeals",

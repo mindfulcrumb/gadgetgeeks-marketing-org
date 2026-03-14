@@ -199,6 +199,10 @@ def generate_blog_header(blog_title: str, blog_topic: str) -> dict:
         f"Clean, modern composition with soft natural lighting. "
         f"Shallow depth of field, shot on Sony A7IV with 35mm f/1.4 lens. "
         f"Muted color palette with a slight teal-and-amber grade. "
+        f"CRITICAL: If phones are shown, they must NOT be mirrored. "
+        f"Rear camera module must be in the correct top-left position when viewing the back. "
+        f"Front-facing camera in the correct top-right notch/Dynamic Island position. "
+        f"Do NOT flip or mirror the phone orientation. "
         f"No text, no watermarks, no logos. "
         f"Wide 16:9 blog header image."
     )

@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 """
-Direct TikTok poster — uploads ready-to-post images and schedules on Postiz.
+Direct TikTok poster — uses Canva-designed images on Shopify CDN and schedules on Postiz.
 
-Reads finished branded images from departments/social/ready-to-post/,
-uses raw GitHub URLs (public repo) as media source, and posts to TikTok
-via Postiz API with pre-written copy.
+Images: Canva exports uploaded to Shopify CDN (permanent URLs).
+Source photos: gc001-gc004 from Shopify Files (gadgetgeekspro.myshopify.com).
 
 Usage:
   python scripts/actions/post_ready_tiktok.py
@@ -24,17 +23,15 @@ sys.path.insert(0, str(Path(__file__).parent))
 from postiz import post_to_social
 
 REPO_ROOT = Path(__file__).parent.parent.parent
-READY_DIR = REPO_ROOT / "departments" / "social" / "ready-to-post"
 CALENDAR_PATH = REPO_ROOT / "departments" / "social" / "calendar.json"
-PIPELINE_PATH = REPO_ROOT / "departments" / "canva" / "pipeline.json"
 
-# GitHub raw URL base (public repo)
-GITHUB_RAW_BASE = "https://raw.githubusercontent.com/mindfulcrumb/gadgetgeeks-marketing-org/main"
-
-# Pre-written TikTok copy for each post — matched to the image content
+# Canva-designed TikTok posts with permanent Shopify CDN URLs
+# Source: gc001-gc004 from Shopify Files → Canva design → Export PNG → Shopify CDN
 TIKTOK_POSTS = [
     {
-        "image_file": "gg-iphone13-hero-tiktok.png",
+        "id": "canva_design1_iphone_flatlat",
+        "canva_design_id": "DAHD7jU4OMw",
+        "cdn_url": "https://cdn.shopify.com/s/files/1/0664/1664/0251/files/gg-tiktok-design1.png?v=1773498404",
         "product": "iPhone 13",
         "content": (
             "iPhone 13 bundle for under $300?\n\n"
@@ -47,7 +44,9 @@ TIKTOK_POSTS = [
         "design_type": "product_hero",
     },
     {
-        "image_file": "gg-iphone14-hero-tiktok.png",
+        "id": "canva_design2_iphone_hero",
+        "canva_design_id": "DAHD7nNxlN4",
+        "cdn_url": "https://cdn.shopify.com/s/files/1/0664/1664/0251/files/gg-tiktok-design2.png?v=1773498404",
         "product": "iPhone 14",
         "content": (
             "iPhone 14 bundle — everything you need in one box\n\n"
@@ -60,7 +59,9 @@ TIKTOK_POSTS = [
         "design_type": "product_hero",
     },
     {
-        "image_file": "gg-iphone13-deal-tiktok.png",
+        "id": "canva_design3_iphone_deal",
+        "canva_design_id": "DAHD7ox7jyY",
+        "cdn_url": "https://cdn.shopify.com/s/files/1/0664/1664/0251/files/gg-tiktok-design3.png?v=1773498404",
         "product": "iPhone 13",
         "content": (
             "This iPhone 13 deal won't last\n\n"
@@ -74,7 +75,9 @@ TIKTOK_POSTS = [
         "design_type": "deal_urgency",
     },
     {
-        "image_file": "gg-iphone14-eco-tiktok.png",
+        "id": "canva_design4_iphone_ugc",
+        "canva_design_id": "DAHD7pxTtSI",
+        "cdn_url": "https://cdn.shopify.com/s/files/1/0664/1664/0251/files/gg-tiktok-design4.png?v=1773498404",
         "product": "iPhone 14",
         "content": (
             "Buying refurbished = 1 less phone in a landfill\n\n"
@@ -90,7 +93,7 @@ TIKTOK_POSTS = [
 
 
 def get_burned_images():
-    """Load all previously used image URLs from calendar.json."""
+    """Load all previously used image URLs and design IDs from calendar.json."""
     burned = set()
     if CALENDAR_PATH.exists():
         try:
@@ -137,34 +140,28 @@ def main():
     now = datetime.now(timezone.utc)
 
     for i, post_info in enumerate(TIKTOK_POSTS):
-        image_file = post_info["image_file"]
-        image_path = READY_DIR / image_file
-        raw_url = f"{GITHUB_RAW_BASE}/departments/social/ready-to-post/{image_file}"
+        cdn_url = post_info["cdn_url"]
+        canva_id = post_info["canva_design_id"]
 
         # Check if burned
-        if raw_url in burned or image_file in burned:
-            print(f"  SKIP (already posted): {image_file}")
+        if cdn_url in burned or canva_id in burned:
+            print(f"  SKIP (already posted): {post_info['id']}")
             continue
 
-        # Check if file exists locally
-        if not image_path.exists():
-            print(f"  SKIP (file missing): {image_file}")
-            continue
-
-        # Schedule 5 min apart to avoid flooding
+        # Schedule 30 min apart
         schedule_time = now + timedelta(minutes=3 + (i * 30))
         schedule_str = schedule_time.strftime("%Y-%m-%dT%H:%M:%S.000Z")
 
-        print(f"\n  Posting: {image_file}")
+        print(f"\n  Posting: {post_info['id']}")
         print(f"  Product: {post_info['product']}")
         print(f"  Schedule: {schedule_str}")
-        print(f"  Media URL: {raw_url}")
+        print(f"  CDN URL: {cdn_url}")
 
         try:
             result = post_to_social(
                 content=post_info["content"],
                 platforms=["tiktok"],
-                media_url=raw_url,
+                media_url=cdn_url,
                 scheduled_at=schedule_str,
                 api_key=api_key,
             )
@@ -179,16 +176,19 @@ def main():
                 "content_type": post_info["design_type"],
                 "product": post_info["product"],
                 "content_preview": post_info["content"][:80],
-                "image_used": raw_url,
-                "source_file": image_file,
-                "canva_design_used": f"ready-to-post-{image_file}",
-                "source_prompt_id": f"real_product_photo_{post_info['product'].lower().replace(' ', '_')}",
-                "driven_by": "Real product photos — iPhone 13/14 bundles from gadgetgeekspro.myshopify.com",
+                "image_used": cdn_url,
+                "canva_design_used": canva_id,
+                "source": "canva_export_shopify_cdn",
+                "driven_by": "Real product photos gc001-gc004 from gadgetgeekspro.myshopify.com → Canva designed → Shopify CDN",
                 "posted_via": "post_ready_tiktok.py",
             })
 
         except Exception as e:
             print(f"  ERROR: {e}")
+
+    # Update postiz call counters
+    calendar["postiz_calls_used"] = calendar.get("postiz_calls_used", 0) + posted_count
+    calendar["postiz_calls_remaining"] = max(0, calendar.get("postiz_calls_remaining", 15) - posted_count)
 
     # Save updated calendar
     CALENDAR_PATH.parent.mkdir(parents=True, exist_ok=True)

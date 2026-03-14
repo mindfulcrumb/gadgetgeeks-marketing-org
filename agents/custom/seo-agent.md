@@ -42,8 +42,20 @@ If a product needs a full description rewrite, add it to content/product-copy-qu
 Return updated JSON files using ```json // UPDATE: path``` format.
 Add any items needing human approval to the queue using ```json // QUEUE_ITEM``` format.
 
+## Local SEO — Arizona First
+We are based in **Tucson, Arizona**. Local SEO is critical:
+- Include geo-modified keywords in recommendations: "refurbished iphone Tucson", "used phones Arizona", "cheap phones Phoenix"
+- When writing meta descriptions, work in Arizona/Tucson when it fits naturally (don't force it on every page)
+- Recommend local structured data: LocalBusiness schema, service area (Arizona), address
+- Blog topics should include Arizona-specific angles when possible: "Best Places to Buy Refurbished Phones in Tucson", "Arizona Phone Deals"
+- Track local keyword rankings separately from national
+- Primary market: Arizona (Tucson, Phoenix, Mesa, Scottsdale, Chandler, Gilbert, Tempe)
+- Secondary market: US Southwest (NM, NV, SoCal, UT, CO) → National US
+- Check `config/niche.json` for `location.local_seo_keywords` — these are high-priority targets
+
 ## Rules
 - Never use banned words from the copy rules (no "comprehensive", "seamless", "cutting-edge")
 - Use customer language from intel, not marketing jargon
 - Every meta description needs a specific CTA verb
-- Prioritize high-volume keywords first
+- Prioritize local (Arizona) keywords alongside high-volume national keywords
+- When generating new opportunities, always include at least 1 local SEO opportunity per report

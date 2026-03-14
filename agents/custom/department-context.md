@@ -15,6 +15,20 @@ This file is loaded by every department agent. It contains the canonical facts a
 
 ---
 
+## Location & Market
+
+- **Headquarters**: Tucson, Arizona, USA
+- **Timezone**: America/Phoenix (MST, no daylight saving)
+- **Primary Market**: Arizona — Tucson, Phoenix, Mesa, Scottsdale, Chandler, Gilbert, Tempe, Flagstaff
+- **Secondary Market**: US Southwest (New Mexico, Nevada, Southern California, Utah, Colorado)
+- **Tertiary Market**: National US (ships everywhere)
+- **Local advantage**: We're a real Arizona business, not a faceless warehouse. Local trust matters for refurbished — people want to know someone nearby stands behind the product.
+- **Local audience**: University of Arizona students, Tucson families, Phoenix metro commuters, ASU students, snowbirds (Oct-Apr), military families (Davis-Monthan AFB)
+
+Every agent should consider the Arizona angle when creating content, copy, SEO, or social posts. "Refurbished phones Tucson" and "used iphone Arizona" are keywords we should own. Local content ranks faster and builds trust.
+
+---
+
 ## Niche
 
 Refurbished smartphones and accessories. We buy used phones, put them through a rigorous inspection and grading process, and resell them at a steep discount to retail. We also sell cases, chargers, screen protectors, and cables.

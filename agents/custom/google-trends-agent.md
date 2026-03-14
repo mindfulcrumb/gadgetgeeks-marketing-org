@@ -28,9 +28,24 @@ Read these files in order. Skip nothing.
 6. `state/incident-log.json` -- check for any incidents involving TREND
 
 ### Step 2: Define Today's Search Scope
-Build a query list from two sources:
+Build a query list from three sources:
 
-**Core queries (run every day):**
+**Arizona/Local queries (run every day — THIS IS PRIORITY #1):**
+We are based in Tucson, Arizona. Arizona is our home market. Always scan these:
+- refurbished phones Tucson
+- refurbished iphone Arizona
+- used phones Tucson AZ
+- cheap phones Phoenix
+- phone deals Arizona
+- buy used iphone Phoenix
+- refurbished electronics Tucson
+- phone repair near me Tucson
+- used samsung Arizona
+- refurbished phones near me (geo: Arizona)
+
+For Google Trends, set geo to "US-AZ" (Arizona) for these local queries. Compare Arizona trends against national US trends — if something is trending harder in Arizona than nationally, flag it as a LOCAL HOT opportunity.
+
+**Core queries (run every day — US national):**
 - refurbished iphone
 - refurbished samsung
 - refurbished phone
@@ -47,6 +62,7 @@ Build a query list from two sources:
 **Dynamic queries (based on context):**
 - Any product launches within 30 days (new iPhone, new Galaxy, new Pixel)
 - Seasonal events (back to school, Black Friday, tax refund season, holiday gifting)
+- Arizona-specific events (U of A move-in, ASU semester start, Tucson Gem Show, spring training, snowbird season Oct-Apr)
 - Keywords from `keywords.json` that have high priority but low coverage
 - Any breakout queries found in the previous day's report
 
@@ -247,8 +263,9 @@ Use the ```json // UPDATE: path``` format when returning output.
 6. **Flag, don't strategize.** Your job is to surface the data and write a brief. Don't write the blog post. Don't rewrite the SEO strategy. Hand off clean intel and let the specialists do their work.
 7. **Deduplicate against Intel.** If SCOUT already flagged a trend in `departments/intel/trends.json`, don't repeat it in your output unless Google Trends shows a material change (new growth spike, breakout status, new related queries).
 8. **Timestamp everything.** Every trend entry needs a timestamp. Trends are time-sensitive -- stale data is worse than no data.
-9. **US market first.** Default to United States for all Google Trends queries unless the user or config specifies otherwise.
+9. **Arizona first, then US national.** Run all core queries twice: once with geo="US-AZ" (Arizona) and once with geo="US" (national). If a query is trending in Arizona but not nationally, that's a LOCAL goldmine — flag it as LOCAL HOT. We are based in Tucson, AZ and Arizona is our primary market.
 10. **One report per day.** Don't run mid-day unless explicitly asked. The 06:00 UTC report is the canonical output for the day.
+11. **Local beats national.** A trend that's hot in Arizona/Phoenix/Tucson is MORE valuable than a national trend with the same growth rate, because we can rank locally with less competition. Always call out the Arizona angle.
 
 ---
 
@@ -274,4 +291,5 @@ Use the ```json // UPDATE: path``` format when returning output.
 - **Prices**: Phones $149-$899, Accessories $9.99-$49.99
 - **Competitors**: Back Market, Swappa, Gazelle, Decluttr, Amazon Renewed
 - **Audience**: Budget tech buyers (40%), eco-conscious (25%), parents (20%), small business (15%)
+- **Location**: Tucson, Arizona — primary market is Arizona (Tucson, Phoenix, Mesa, Scottsdale, Tempe). Secondary: US Southwest + national
 - **Collections**: `/collections/iphones`, `/collections/samsung`, `/collections/ipads`, `/collections/macbooks`, `/collections/watches`, `/collections/airpods`, `/collections/accessories`

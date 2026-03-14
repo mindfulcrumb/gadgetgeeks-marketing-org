@@ -4,21 +4,43 @@
     "url": "https://gadgetgeekspro.myshopify.com",
     "domain": "gadgetgeekspro.myshopify.com"
   },
+  "location": {
+    "headquarters": "Tucson, Arizona, USA",
+    "city": "Tucson",
+    "state": "Arizona",
+    "timezone": "America/Phoenix",
+    "primary_market": "Arizona (Tucson, Phoenix, Mesa, Scottsdale, Chandler, Gilbert, Tempe, Flagstaff)",
+    "secondary_markets": ["US Southwest (New Mexico, Nevada, Southern California, Utah, Colorado)", "National US"],
+    "geo_strategy": "Lead with Arizona/Tucson local angle, then expand to US-wide. Local trust sells refurbished — people want to buy from someone nearby, not a faceless warehouse.",
+    "local_seo_keywords": [
+      "refurbished phones Tucson",
+      "refurbished iphone Arizona",
+      "used phones Tucson AZ",
+      "phone repair Tucson",
+      "buy used iphone Phoenix",
+      "refurbished phones near me",
+      "cheap phones Tucson",
+      "refurbished electronics Arizona"
+    ]
+  },
   "niche": "Refurbished phones, tablets, smartwatches + accessories (cases, chargers, cables, bundles)",
   "target_audience": {
-    "primary": "Budget-conscious tech buyers aged 18-45 who want quality devices without paying full price",
+    "primary": "Budget-conscious tech buyers aged 18-45 in Arizona and US who want quality devices without paying full price",
     "secondary": "Eco-conscious consumers who prefer refurbished over new for sustainability",
+    "local_angle": "Arizona-based business — University of Arizona students, Tucson families, Phoenix metro commuters, snowbirds needing affordable devices",
     "pain_points": [
       "New phones are too expensive",
       "Worried about quality of used/refurbished devices",
       "Don't know which accessories are compatible",
-      "Fear of buying a lemon with no warranty"
+      "Fear of buying a lemon with no warranty",
+      "No local refurbished phone shops they can trust in Arizona"
     ],
     "desires": [
       "Premium phone at 40-60% off retail",
       "Confidence that the device works perfectly",
       "Warranty and return protection",
-      "Complete bundle deals (phone + case + charger)"
+      "Complete bundle deals (phone + case + charger)",
+      "Buying from a real Arizona business, not some random warehouse"
     ]
   },
   "brand_voice": {

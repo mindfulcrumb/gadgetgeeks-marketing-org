@@ -13,7 +13,7 @@ from datetime import datetime, timezone
 
 
 GEMINI_API_BASE = "https://generativelanguage.googleapis.com/v1beta"
-GEMINI_IMAGE_MODEL = "gemini-2.0-flash-exp-image-generation"
+GEMINI_IMAGE_MODEL = "gemini-2.0-flash-preview-image-generation"
 
 
 # ---------------------------------------------------------------------------

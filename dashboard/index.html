@@ -1,26 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GadgetGeeks HQ — God Mode</title>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GadgetGeeks HQ</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ===== VIEW TOGGLE ===== */
+.view { display: none; }
+#view-office.active { display: block; }
+#view-mc.active {
+  display: flex;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', 'Segoe UI', sans-serif;
+  height: 100vh;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 1.5;
+}
+/* When MC is active, hide God Mode body styles */
+body.mc-active { overflow: hidden; }
+body.mc-active::after { display: none; }
+body.mc-active #view-office { display: none !important; }
+
+/* ===== MISSION CONTROL BUTTON (God Mode HUD) ===== */
+#mc-btn {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 4px 12px; background: #00d4ff22; border: 1px solid #00d4ff55;
+  border-radius: 4px; color: #00d4ff; font-family: 'Press Start 2P', monospace;
+  font-size: 7px; text-decoration: none; letter-spacing: 0.5px;
+  cursor: pointer; transition: all 0.15s; border: 1px solid #00d4ff55;
+}
+#mc-btn:hover { background: #00d4ff44; box-shadow: 0 0 12px #00d4ff44; }
+
+/* ============================================================ */
+/* MISSION CONTROL — ALL CSS NAMESPACED UNDER #view-mc          */
+/* ============================================================ */
+#view-mc {
+  --bg: #0b0b14; --sidebar: #0f0f1a; --surface: #141420;
+  --surface2: #1a1a2a; --surface3: #22223a; --border: #2a2a40;
+  --text: #e0e0ec; --text-dim: #7878a0; --text-muted: #50506a;
+  --accent: #00d4ff; --green: #00e676; --red: #ff5252;
+  --orange: #ffab40; --purple: #b388ff; --yellow: #ffd740;
+  --pink: #ff80ab; --teal: #64ffda; --coral: #ff6e6e;
+  --blue: #448aff; --sidebar-w: 220px;
+  background: var(--bg); color: var(--text);
+}
+
+/* MC Sidebar */
+#view-mc .mc-sidebar {
+  width: var(--sidebar-w); background: var(--sidebar);
+  border-right: 1px solid var(--border); display: flex;
+  flex-direction: column; flex-shrink: 0; overflow-y: auto;
+}
+#view-mc .mc-sidebar-brand { padding: 20px 16px 16px; border-bottom: 1px solid var(--border); }
+#view-mc .mc-sidebar-brand h1 { font-size: 15px; font-weight: 700; color: var(--accent); letter-spacing: 0.5px; margin: 0; }
+#view-mc .mc-sidebar-brand .tagline { font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1.5px; margin-top: 4px; }
+#view-mc .mc-sidebar nav { padding: 8px 0; flex: 1; }
+#view-mc .mc-sidebar nav button {
+  display: flex; align-items: center; gap: 10px; width: 100%;
+  padding: 10px 16px; background: none; border: none; color: var(--text-dim);
+  font-family: inherit; font-size: 13px; font-weight: 500; cursor: pointer;
+  text-align: left; transition: all 0.12s; border-left: 3px solid transparent;
+}
+#view-mc .mc-sidebar nav button:hover { color: var(--text); background: rgba(255,255,255,0.03); }
+#view-mc .mc-sidebar nav button.active { color: var(--accent); background: rgba(0,212,255,0.06); border-left-color: var(--accent); font-weight: 600; }
+#view-mc .mc-sidebar nav button .icon { font-size: 16px; width: 20px; text-align: center; }
+#view-mc .mc-sidebar-footer { padding: 12px 16px; border-top: 1px solid var(--border); font-size: 11px; color: var(--text-muted); }
+#view-mc .mc-sidebar-footer .clock { color: var(--accent); font-weight: 600; font-size: 12px; font-family: 'SF Mono', 'Fira Code', monospace; }
+
+/* MC Back button */
+#view-mc .mc-back-btn {
+  display: flex; align-items: center; gap: 8px; padding: 12px 16px;
+  color: var(--green); font-size: 11px; font-weight: 700; text-decoration: none;
+  border-bottom: 1px solid var(--border); letter-spacing: 0.5px;
+  cursor: pointer; transition: background 0.12s; background: none; border-top: none; border-left: none; border-right: none;
+  width: 100%; text-align: left; font-family: inherit;
+}
+#view-mc .mc-back-btn:hover { background: rgba(0,230,118,0.08); }
+
+/* MC Main content */
+#view-mc .mc-main {
+  flex: 1; overflow-y: auto; padding: 24px 28px; scroll-behavior: smooth;
+}
+#view-mc .mc-page { display: none; }
+#view-mc .mc-page.active { display: block; }
+#view-mc .mc-page-title { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+#view-mc .mc-page-sub { font-size: 13px; color: var(--text-dim); margin-bottom: 24px; }
+
+/* MC Stats row */
+#view-mc .mc-stats {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px; margin-bottom: 24px;
+}
+#view-mc .mc-stat {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 10px; padding: 14px 16px; text-align: center;
+}
+#view-mc .mc-stat-n { font-size: 28px; font-weight: 800; color: var(--accent); line-height: 1; }
+#view-mc .mc-stat-l { font-size: 10px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; margin-top: 6px; }
+
+/* MC Always Running */
+#view-mc .always-running { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; margin-bottom: 20px; }
+#view-mc .always-running-header { display: flex; align-items: center; gap: 8px; margin-bottom: 10px; font-size: 13px; font-weight: 600; color: var(--text); }
+#view-mc .always-running-header .mc-pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--green); animation: mc-pulse 2s infinite; }
+@keyframes mc-pulse { 0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0,230,118,0.4); } 50% { opacity: 0.8; box-shadow: 0 0 0 6px rgba(0,230,118,0); } }
+#view-mc .always-running-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+#view-mc .ar-tag { background: var(--surface2); border: 1px solid var(--border); padding: 5px 12px; border-radius: 6px; font-size: 12px; color: var(--text-dim); }
+#view-mc .ar-tag strong { color: var(--text); }
+
+/* MC Calendar grid */
+#view-mc .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin-bottom: 24px; }
+#view-mc .cal-day-header { font-size: 12px; font-weight: 700; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; padding: 8px 8px 6px; text-align: center; }
+#view-mc .cal-day-header.today-h { color: var(--accent); }
+#view-mc .cal-col { display: flex; flex-direction: column; gap: 4px; min-height: 400px; }
+#view-mc .cal-card { border-radius: 6px; padding: 7px 10px; font-size: 11px; cursor: pointer; transition: all 0.12s; border-left: 3px solid transparent; line-height: 1.3; }
+#view-mc .cal-card:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.3); filter: brightness(1.15); }
+#view-mc .cal-card .card-name { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+#view-mc .cal-card .card-time { font-size: 10px; opacity: 0.7; margin-top: 1px; }
+#view-mc .cal-card.c-governance { background: #1a1a2e; border-left-color: var(--purple); color: #d4b8ff; }
+#view-mc .cal-card.c-content { background: #1a2e1a; border-left-color: var(--green); color: #80ffb0; }
+#view-mc .cal-card.c-visual { background: #2e1a2a; border-left-color: var(--pink); color: #ffb0d0; }
+#view-mc .cal-card.c-seo { background: #2e2a1a; border-left-color: var(--yellow); color: #ffe080; }
+#view-mc .cal-card.c-social { background: #1a2a2e; border-left-color: var(--teal); color: #80ffd0; }
+#view-mc .cal-card.c-intel { background: #2e1a1a; border-left-color: var(--coral); color: #ffb0b0; }
+#view-mc .cal-card.c-email { background: #1a1a2e; border-left-color: var(--blue); color: #90b8ff; }
+#view-mc .cal-card.c-revenue { background: #2a2e1a; border-left-color: var(--orange); color: #ffd080; }
+#view-mc .cal-card.c-ops { background: #1a2e2e; border-left-color: var(--accent); color: #80e8ff; }
+#view-mc .cal-card.c-system { background: var(--surface2); border-left-color: var(--text-dim); color: var(--text-dim); }
+
+/* MC Next Up */
+#view-mc .next-up { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; }
+#view-mc .next-up-title { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; margin-bottom: 10px; color: var(--text); }
+#view-mc .next-item { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
+#view-mc .next-item:last-child { border-bottom: none; }
+#view-mc .next-item .ni-name { color: var(--text); }
+#view-mc .next-item .ni-agent { color: var(--yellow); font-size: 11px; }
+#view-mc .next-item .ni-countdown { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; color: var(--accent); white-space: nowrap; }
+
+/* MC Modal */
+#view-mc .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.7); z-index: 1000; justify-content: center; align-items: center; }
+#view-mc .modal-overlay.open { display: flex; }
+#view-mc .mc-modal { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; width: 560px; max-height: 80vh; overflow-y: auto; padding: 0; }
+#view-mc .mc-modal-header { padding: 18px 22px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+#view-mc .mc-modal-header h3 { font-size: 16px; margin: 0; }
+#view-mc .mc-modal-close { background: none; border: none; color: var(--text-dim); font-size: 20px; cursor: pointer; padding: 4px 8px; border-radius: 4px; }
+#view-mc .mc-modal-close:hover { background: var(--surface2); color: var(--text); }
+#view-mc .mc-modal-body { padding: 18px 22px; }
+#view-mc .modal-row { display: flex; gap: 12px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.04); font-size: 13px; }
+#view-mc .modal-row:last-child { border-bottom: none; }
+#view-mc .modal-label { color: var(--text-dim); width: 100px; flex-shrink: 0; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; padding-top: 2px; }
+#view-mc .modal-value { color: var(--text); line-height: 1.5; }
+
+/* MC Tables */
+#view-mc table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 20px; }
+#view-mc thead th { background: var(--surface2); color: var(--accent); padding: 10px 12px; text-align: left; font-size: 10px; text-transform: uppercase; letter-spacing: 1px; border-bottom: 1px solid var(--border); }
+#view-mc tbody td { padding: 10px 12px; border-bottom: 1px solid var(--border); }
+#view-mc tbody tr:hover { background: var(--surface); }
+#view-mc .codename { font-weight: 700; color: var(--yellow); }
+#view-mc .tag { display: inline-block; padding: 2px 7px; border-radius: 4px; font-size: 10px; font-weight: 600; }
+#view-mc .tag-sonnet { background: #102030; color: var(--accent); }
+#view-mc .tag-opus { background: #201030; color: var(--purple); }
+#view-mc .tag-gemini { background: #103020; color: var(--green); }
+#view-mc .tag-ok { background: #103020; color: var(--green); }
+#view-mc .tag-idle { background: var(--surface2); color: var(--text-dim); }
+#view-mc .tag-error { background: #301010; color: var(--red); }
+#view-mc .dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; margin-right: 6px; }
+#view-mc .dot-ok { background: var(--green); }
+#view-mc .dot-idle { background: var(--text-muted); }
+
+/* MC Org Chart / Flow */
+#view-mc .org-box { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; line-height: 1.6; overflow-x: auto; white-space: pre; color: var(--text-dim); margin-bottom: 20px; }
+#view-mc .org-box .h { color: var(--accent); font-weight: 700; }
+#view-mc .org-box .g { color: var(--yellow); font-weight: 700; }
+#view-mc .flow { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; line-height: 1.8; overflow-x: auto; white-space: pre; margin-bottom: 20px; }
+#view-mc .flow .a { color: var(--yellow); font-weight: 600; }
+#view-mc .flow .b { color: var(--accent); }
+#view-mc .flow .g { color: var(--green); font-weight: 700; }
+
+/* MC Section headers */
+#view-mc h2 { font-size: 14px; color: var(--purple); text-transform: uppercase; letter-spacing: 1px; margin: 24px 0 12px; }
+#view-mc h2:first-of-type { margin-top: 0; }
+
+/* MC Shifts */
+#view-mc .shift-tag { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+#view-mc .shift-m { background: #1a2a10; color: #a0d840; }
+#view-mc .shift-a { background: #2a1a10; color: var(--orange); }
+#view-mc .shift-n { background: #10102a; color: #8080ff; }
+
+/* MC Rule cards */
+#view-mc .rule-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; margin-bottom: 10px; }
+#view-mc .rule-card h4 { font-size: 13px; color: var(--text); margin-bottom: 6px; }
+#view-mc .rule-card p { font-size: 12px; color: var(--text-dim); line-height: 1.6; }
+#view-mc .rule-num { display: inline-block; background: var(--accent); color: var(--bg); width: 22px; height: 22px; border-radius: 50%; text-align: center; line-height: 22px; font-size: 11px; font-weight: 700; margin-right: 8px; }
+
+/* MC Calendar legend */
+#view-mc .legend { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 16px; }
+#view-mc .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; color: var(--text-dim); }
+#view-mc .legend-dot { width: 10px; height: 10px; border-radius: 3px; }
+</style>
 </head>
 <body>
+
+<!-- ============================================================ -->
+<!-- GOD MODE VIEW (default) -->
+<!-- ============================================================ -->
+<div id="view-office" class="view active">
   <div id="hud">
     <div class="hud-left">
       <span class="hud-title">GADGETGEEKS HQ</span>
       <span class="hud-badge">GOD MODE</span>
     </div>
     <div class="hud-center">
-      <div class="hud-stat"><span class="hs-label">STAFF</span><span class="hs-val" id="hud-employees">10</span></div>
+      <div class="hud-stat"><span class="hs-label">STAFF</span><span class="hs-val" id="hud-employees">27</span></div>
       <div class="hud-stat"><span class="hs-label">WORKING</span><span class="hs-val green" id="hud-working">0</span></div>
       <div class="hud-stat"><span class="hs-label">IDLE</span><span class="hs-val red" id="hud-idle">0</span></div>
       <div class="hud-stat"><span class="hs-label">QUEUE</span><span class="hs-val yellow" id="hud-queue">0</span></div>
     </div>
     <div class="hud-right">
-      <a href="mission-control.html" id="mc-btn" style="display:inline-flex;align-items:center;gap:5px;padding:4px 12px;background:#00d4ff22;border:1px solid #00d4ff55;border-radius:4px;color:#00d4ff;font-family:'Press Start 2P',monospace;font-size:7px;text-decoration:none;letter-spacing:0.5px;cursor:pointer;transition:all 0.15s;" onmouseover="this.style.background='#00d4ff44';this.style.boxShadow='0 0 12px #00d4ff44'" onmouseout="this.style.background='#00d4ff22';this.style.boxShadow='none'">&#9632; MISSION CONTROL</a>
+      <button id="mc-btn" onclick="switchView('mc')">&#9632; MISSION CONTROL</button>
       <span class="hud-time" id="hud-time">--:--</span>
       <span class="hud-date" id="hud-date">---</span>
     </div>
@@ -63,6 +261,649 @@
     <div class="sched-label">TODAY'S SCHEDULE</div>
     <div id="schedule-timeline"></div>
   </div>
-  <script src="app.js"></script>
+</div>
+
+<!-- ============================================================ -->
+<!-- MISSION CONTROL VIEW (hidden by default) -->
+<!-- ============================================================ -->
+<div id="view-mc" class="view">
+
+<!-- MC Sidebar -->
+<div class="mc-sidebar">
+  <div class="mc-sidebar-brand">
+    <h1>GADGETGEEKS HQ</h1>
+    <div class="tagline">Mission Control</div>
+  </div>
+  <button class="mc-back-btn" onclick="switchView('office')">&#9664; BACK TO OFFICE</button>
+  <nav>
+    <button class="active" onclick="mcNav('dashboard', this)"><span class="icon">&#9632;</span> Dashboard</button>
+    <button onclick="mcNav('calendar', this)"><span class="icon">&#9776;</span> Calendar</button>
+    <button onclick="mcNav('team', this)"><span class="icon">&#9787;</span> Team</button>
+    <button onclick="mcNav('council', this)"><span class="icon">&#9733;</span> Council</button>
+    <button onclick="mcNav('content', this)"><span class="icon">&#9998;</span> Content</button>
+    <button onclick="mcNav('intel', this)"><span class="icon">&#9788;</span> Radar</button>
+    <button onclick="mcNav('visual', this)"><span class="icon">&#9881;</span> Factory</button>
+    <button onclick="mcNav('pipeline', this)"><span class="icon">&#8649;</span> Pipeline</button>
+    <button onclick="mcNav('revenue', this)"><span class="icon">&#9830;</span> Revenue</button>
+    <button onclick="mcNav('ops', this)"><span class="icon">&#9742;</span> Operations</button>
+    <button onclick="mcNav('status', this)"><span class="icon">&#9899;</span> System</button>
+    <button onclick="mcNav('approvals', this)"><span class="icon">&#10003;</span> Approvals</button>
+    <button onclick="mcNav('rules', this)"><span class="icon">&#9878;</span> Rules</button>
+    <button onclick="mcNav('flow', this)"><span class="icon">&#8644;</span> Data Flow</button>
+    <button onclick="mcNav('memory', this)"><span class="icon">&#9729;</span> Memory</button>
+  </nav>
+  <div class="mc-sidebar-footer">
+    <div class="clock" id="mcSidebarClock">--:--:-- AZ</div>
+    <div style="margin-top:4px;">Arizona Time (UTC-7)</div>
+  </div>
+</div>
+
+<!-- MC Main Content -->
+<div class="mc-main">
+
+<!-- DASHBOARD -->
+<div class="mc-page active" id="mc-dashboard">
+  <div class="mc-page-title">Mission Control</div>
+  <div class="mc-page-sub">GadgetGeeks Marketing HQ — 24/7 Autonomous Operations</div>
+  <div class="mc-stats">
+    <div class="mc-stat"><div class="mc-stat-n">27</div><div class="mc-stat-l">AI Agents</div></div>
+    <div class="mc-stat"><div class="mc-stat-n">17</div><div class="mc-stat-l">Departments</div></div>
+    <div class="mc-stat"><div class="mc-stat-n">34</div><div class="mc-stat-l">Workflows</div></div>
+    <div class="mc-stat"><div class="mc-stat-n">3</div><div class="mc-stat-l">Shifts</div></div>
+    <div class="mc-stat"><div class="mc-stat-n" style="color:var(--green)">12</div><div class="mc-stat-l">Active</div></div>
+    <div class="mc-stat"><div class="mc-stat-n" style="color:var(--text-dim)">5</div><div class="mc-stat-l">Idle</div></div>
+    <div class="mc-stat"><div class="mc-stat-n" style="color:var(--red)">0</div><div class="mc-stat-l">Errors</div></div>
+  </div>
+  <div class="always-running">
+    <div class="always-running-header"><div class="mc-pulse"></div> Always Running</div>
+    <div class="always-running-tags">
+      <div class="ar-tag"><strong>Telegram Poller</strong> &middot; every 5 min</div>
+      <div class="ar-tag"><strong>SENTINEL Night Watch</strong> &middot; 3x nightly</div>
+      <div class="ar-tag"><strong>CHIEF Governance</strong> &middot; standup + retro daily</div>
+    </div>
+  </div>
+  <h2>Today's Schedule</h2>
+  <div id="mcDashboardToday"></div>
+  <h2 style="margin-top:24px">Next Up</h2>
+  <div class="next-up" id="mcNextUpDash"></div>
+  <h2>Org Structure</h2>
+  <div class="org-box"><span class="h">                        YOU (BOSS)</span>
+                           |
+              +------------+------------+
+              |                         |
+       <span class="g">CHIEF</span> (CoS)              <span class="g">SENTINEL</span> (Night Ops)
+    Morning + Board               Night Watch
+              |
+   +----------+----------+
+   |          |          |
+VP CONTENT  VP GROWTH  VP OPS
+   |          |          |
+ <span class="g">SCRIBE</span>     <span class="g">PIXEL</span>     <span class="g">XAVIER</span>
+ <span class="g">QUILL</span>      <span class="g">SCOUT</span>      <span class="g">GM</span>
+ <span class="g">PRESS</span>      <span class="g">ECHO</span>
+ Content    <span class="g">VIBE</span>
+            <span class="g">BEACON</span>
+ <span class="g">LENS</span>       <span class="g">OPTIMIZER</span>
+ <span class="g">FOCUS</span>
+ <span class="g">CANVAS</span></div>
+</div>
+
+<!-- CALENDAR -->
+<div class="mc-page" id="mc-calendar">
+  <div class="mc-page-title">Calendar</div>
+  <div class="mc-page-sub">Every scheduled task — click any card for details</div>
+  <div class="always-running">
+    <div class="always-running-header"><div class="mc-pulse"></div> Always Running</div>
+    <div class="always-running-tags">
+      <div class="ar-tag"><strong>Telegram Poller</strong> &middot; every 5 min</div>
+      <div class="ar-tag"><strong>SENTINEL</strong> &middot; 3x nightly health checks</div>
+      <div class="ar-tag"><strong>CHIEF Governance</strong> &middot; daily standup + retro</div>
+    </div>
+  </div>
+  <div class="legend">
+    <div class="legend-item"><div class="legend-dot" style="background:var(--purple)"></div> Governance</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div> Content</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--pink)"></div> Visual</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--yellow)"></div> SEO</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--teal)"></div> Social</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--coral)"></div> Intel</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--blue)"></div> Email</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--orange)"></div> Revenue</div>
+    <div class="legend-item"><div class="legend-dot" style="background:var(--accent)"></div> Operations</div>
+  </div>
+  <div class="cal-grid" id="mcCalGrid"></div>
+  <div class="next-up" id="mcNextUpCal"><div class="next-up-title">&#128197; Next Up</div></div>
+</div>
+
+<!-- TEAM -->
+<div class="mc-page" id="mc-team">
+  <div class="mc-page-title">Team Roster</div>
+  <div class="mc-page-sub">27 agents — every codename, model, schedule, responsibilities</div>
+  <h2>Governance</h2>
+  <table><thead><tr><th>#</th><th>Codename</th><th>Role</th><th>Model</th><th>Schedule</th><th>Shift</th><th>Responsibilities</th></tr></thead><tbody>
+    <tr><td>1</td><td><span class="codename">CHIEF</span></td><td>Chief of Staff</td><td><span class="tag tag-sonnet">Sonnet</span> / <span class="tag tag-opus">Opus</span></td><td>06:00, 20:00 daily / Mon 06:30</td><td><span class="shift-tag shift-m">Morning</span></td><td>Standups, retros, board meetings. Reads all dept states. Compiles org-wide briefings. Sends Telegram summaries.</td></tr>
+    <tr><td>2</td><td><span class="codename">SENTINEL</span></td><td>Night Operations</td><td><span class="tag tag-sonnet">Sonnet</span></td><td>00:00, 03:00, 05:00, 05:30</td><td><span class="shift-tag shift-n">Night</span></td><td>3 nightly health checks. Store uptime, API health, workflow failures. Pre-dawn data collection. Morning handoff.</td></tr>
+  </tbody></table>
+  <h2>Content & Copy</h2>
+  <table><thead><tr><th>#</th><th>Codename</th><th>Role</th><th>Model</th><th>Schedule</th><th>Shift</th><th>Responsibilities</th></tr></thead><tbody>
+    <tr><td>3</td><td><span class="codename">SCRIBE</span></td><td>Blog Writer</td><td><span class="tag tag-sonnet">Sonnet</span></td><td>Daily 12:00</td><td><span class="shift-tag shift-m">Morning</span></td><td>Writes 1 blog/day (1,200-2,000 words). Reads standup + SEO brief + intel.</td></tr>
+    <tr><td>4</td><td><span class="codename">QUILL</span></td><td>Blog QA</td><td><span class="tag tag-sonnet">Sonnet</span></td><td>Daily 13:00</td><td><span class="shift-tag shift-m">Morning</span></td><td>25-check anti-AI copy audit. Rates: EXCELLENT / GOOD / NEEDS WORK.</td></tr>
+    <tr><td>5</td><td><span class="codename">PRESS</span></td><td>Blog Publisher</td><td><span class="tag tag-sonnet">Sonnet</span></td><td>Daily 14:30</td><td><span class="shift-tag shift-a">Afternoon</span></td><td>Packages qa_approved blogs for boss approval. Publishes after approval.</td></tr>
+    <tr><td>27</td><td><span class="codename">SCRIBE</span></td><td>Blog Writer (PM)</td><td><span class="tag tag-sonnet">Sonnet</span></td><td>Daily 18:00</td><td><span class="shift-tag shift-a">Afternoon</span></td><td>SCRIBE 2nd shift — evergreen blog post. Complements daily AM blog.</td></tr>
+    <tr><td>6</td><td>—</td><td>Content Agent</td><td><span class="tag tag-sonnet">Sonnet</span></td><td>Daily 07:41</td><td><span class="shift-tag shift-m">Morning</span></td><td>Daily content briefs from SEO opportunities + intel signals.</td></tr>
+    <tr><td>7</td><td>—</td><td>Copy QA</td><td><span class="tag tag-sonnet">Sonnet</span></td><td>On-demand</td><td>—</td><td>Master copy auditor. Deep qualitative review.</td></tr>
+    <tr><td>8</td><td>—</td><td>Shopify E-Commerce</td><td><span class="tag tag-sonnet">Sonnet</span></td><td>On-demand</td><td>—</td><td>Catalog optimization, product descriptions, metafields.</td></tr>
+  </tbody></table>
+  <h2>Visual & Design</h2>
+  <table><thead><tr><th>#</th><th>Codename</th><th>Role</th><th>Model</th><th>Schedule</th><th>Shift</th><th>Responsibilities</th></tr></thead><tbody>
+    <tr><td>9</td><td><span class="codename">LENS</span></td><td>Image Prompting</td><td><span class="tag tag-sonnet">Sonnet</span></td><td>Daily 08:19</td><td><span class="shift-tag shift-m">Morning</span></td><td>10 photorealistic AI image prompts per day.</td></tr>
+    <tr><td>10</td><td><span class="codename">FOCUS</span></td><td>Prompt QA</td><td><span class="tag tag-sonnet">Sonnet</span></td><td>Daily 08:49</td><td><span class="shift-tag shift-m">Morning</span></td><td>17-check quality audit on prompts from LENS.</td></tr>
+    <tr><td>11</td><td><span class="codename">CANVAS</span></td><td>Canva Designer</td><td><span class="tag tag-sonnet">Sonnet</span></td><td>Daily 09:25</td><td><span class="shift-tag shift-m">Morning</span></td><td>10 branded social media designs from generated images.</td></tr>
+    <tr><td>12</td><td>—</td><td>Image Generator</td><td><span class="tag tag-gemini">Gemini</span></td><td>Daily 08:55</td><td><span class="shift-tag shift-m">Morning</span></td><td>Generates images from approved prompts via Imagen 4.</td></tr>
+  </tbody></table>
+  <h2>Growth & Marketing</h2>
+  <table><thead><tr><th>#</th><th>Codename</th><th>Role</th><th>Model</th><th>Schedule</th><th>Shift</th><th>Responsibilities</th></tr></thead><tbody>
+    <tr><td>13</td><td><span class="codename">PIXEL</span></td><td>SEO Daily</td><td><span class="tag tag-sonnet">Sonnet</span></td><td>Daily 06:23</td><td><span class="shift-tag shift-m">Morning</span></td><td>Daily keyword scan + SEO recommendation.</td></tr>
+    <tr><td>14</td><td><span class="codename">PIXEL</span></td><td>SEO Weekly</td><td><span class="tag tag-sonnet">Sonnet</span></td><td>Mon 05:17</td><td><span class="shift-tag shift-m">Morning</span></td><td>Deep audit: content gaps, competitor SERPs.</td></tr>
+    <tr><td>15</td><td><span class="codename">VIBE</span></td><td>Social Morning</td><td><span class="tag tag-sonnet">Sonnet</span></td><td>Daily 09:45</td><td><span class="shift-tag shift-m">Morning</span></td><td>Creates and posts 1-2 daily social posts via Postiz.</td></tr>
+    <tr><td>16</td><td><span class="codename">VIBE</span></td><td>Social Afternoon</td><td><span class="tag tag-sonnet">Sonnet</span></td><td>Daily 16:37</td><td><span class="shift-tag shift-a">Afternoon</span></td><td>Engagement monitoring, performance tracking.</td></tr>
+    <tr><td>17</td><td><span class="codename">SCOUT</span></td><td>Market Intel</td><td><span class="tag tag-sonnet">Sonnet</span></td><td>Mon/Thu 10:47</td><td><span class="shift-tag shift-m">Morning</span></td><td>Competitor analysis, trends, customer language mining.</td></tr>
+    <tr><td>18</td><td><span class="codename">ECHO</span></td><td>X Intelligence</td><td><span class="tag tag-sonnet">Sonnet</span></td><td>Daily 07:00</td><td><span class="shift-tag shift-m">Morning</span></td><td>Twitter/X monitoring. Market signals, sentiment.</td></tr>
+    <tr><td>25</td><td><span class="codename">TREND</span></td><td>Google Trends Scout</td><td><span class="tag tag-sonnet">Sonnet</span></td><td>Daily 06:00</td><td><span class="shift-tag shift-m">Morning</span></td><td>Daily Google Trends scan. Breakout queries, rising searches, trending topics.</td></tr>
+    <tr><td>26</td><td><span class="codename">SIGNAL</span></td><td>Analytics Optimizer</td><td><span class="tag tag-sonnet">Sonnet</span></td><td>Daily 07:30</td><td><span class="shift-tag shift-m">Morning</span></td><td>GA4 + Search Console analysis. Traffic, conversions, search performance.</td></tr>
+  </tbody></table>
+  <h2>Revenue</h2>
+  <table><thead><tr><th>#</th><th>Codename</th><th>Role</th><th>Model</th><th>Schedule</th><th>Shift</th><th>Responsibilities</th></tr></thead><tbody>
+    <tr><td>19</td><td><span class="codename">BEACON</span></td><td>Email Marketing</td><td><span class="tag tag-sonnet">Sonnet</span></td><td>Tue/Thu 08:53</td><td><span class="shift-tag shift-m">Morning</span></td><td>Email campaigns 2x/week. Segments, A/B, subject lines.</td></tr>
+    <tr><td>20</td><td><span class="codename">OPTIMIZER</span></td><td>CRO</td><td><span class="tag tag-sonnet">Sonnet</span></td><td>Wed 11:29</td><td><span class="shift-tag shift-m">Morning</span></td><td>Conversion analysis, A/B reviews, experiments.</td></tr>
+  </tbody></table>
+  <h2>Operations</h2>
+  <table><thead><tr><th>#</th><th>Codename</th><th>Role</th><th>Model</th><th>Schedule</th><th>Shift</th><th>Responsibilities</th></tr></thead><tbody>
+    <tr><td>21</td><td><span class="codename">XAVIER</span></td><td>Dialer (Lists)</td><td><span class="tag tag-sonnet">Sonnet</span></td><td>Weekdays 14:15</td><td><span class="shift-tag shift-a">Afternoon</span></td><td>Scans Shopify for abandoned carts, win-back, review requests.</td></tr>
+    <tr><td>22</td><td><span class="codename">XAVIER</span></td><td>Dialer (Calls)</td><td><span class="tag tag-sonnet">Sonnet</span></td><td>Weekdays 15:45</td><td><span class="shift-tag shift-a">Afternoon</span></td><td>Executes approved calls via Vapi.ai. +1 (925) 332-3098.</td></tr>
+  </tbody></table>
+  <h2>General Management</h2>
+  <table><thead><tr><th>#</th><th>Codename</th><th>Role</th><th>Model</th><th>Schedule</th><th>Shift</th><th>Responsibilities</th></tr></thead><tbody>
+    <tr><td>23</td><td><span class="codename">GM</span></td><td>Queue Processing</td><td><span class="tag tag-sonnet">Sonnet</span></td><td>Daily 18:51</td><td><span class="shift-tag shift-a">Afternoon</span></td><td>Processes queue. Flags overdue items. End-of-day wrap.</td></tr>
+    <tr><td>24</td><td><span class="codename">GM</span></td><td>Weekly Report</td><td><span class="tag tag-opus">Opus</span></td><td>Fri 07:03</td><td><span class="shift-tag shift-m">Morning</span></td><td>Org-wide KPIs, budget, strategic recommendations.</td></tr>
+  </tbody></table>
+</div>
+
+<!-- COUNCIL -->
+<div class="mc-page" id="mc-council">
+  <div class="mc-page-title">Council</div>
+  <div class="mc-page-sub">Executive governance — CHIEF, SENTINEL, Boss briefings, board meetings</div>
+  <h2>Governance Cadence</h2>
+  <table><thead><tr><th>Meeting</th><th>When</th><th>Led By</th><th>Model</th><th>Purpose</th></tr></thead><tbody>
+    <tr><td>Night Handoff</td><td>Daily 10:30 PM AZ</td><td><span class="codename">SENTINEL</span></td><td><span class="tag tag-sonnet">Sonnet</span></td><td>Overnight incidents, pending items, API status, what needs morning attention.</td></tr>
+    <tr><td>Morning Standup</td><td>Daily 11:00 PM AZ</td><td><span class="codename">CHIEF</span></td><td><span class="tag tag-sonnet">Sonnet</span></td><td>Reads ALL dept states + night handoff. Compiles what each dept did yesterday, what's planned today, blockers. Sends Telegram briefing to boss.</td></tr>
+    <tr><td>Weekly Board</td><td>Monday 11:30 PM AZ</td><td><span class="codename">CHIEF</span></td><td><span class="tag tag-opus">Opus</span></td><td>Full org strategic review. KPIs, what worked, what didn't, priorities for the week. Uses Opus for deeper analysis.</td></tr>
+    <tr><td>Weekly Report</td><td>Friday 12:03 AM AZ</td><td><span class="codename">GM</span></td><td><span class="tag tag-opus">Opus</span></td><td>Org-wide performance report. Budget tracking, strategic recommendations. Week in review.</td></tr>
+    <tr><td>Evening Retro</td><td>Daily 1:00 PM AZ</td><td><span class="codename">CHIEF</span></td><td><span class="tag tag-sonnet">Sonnet</span></td><td>Compiles day results: what shipped, what's in progress, what failed. Writes night handoff notes. Telegram summary.</td></tr>
+  </tbody></table>
+  <h2>Boss Briefing Flow</h2>
+  <div class="flow"><span class="a">SENTINEL</span> (05:30) writes overnight handoff
+     |
+     v
+<span class="a">CHIEF</span> (06:00) reads ALL states + handoff → compiles standup
+     |
+     v
+<span class="b">TELEGRAM</span> → Boss gets morning briefing
+     |
+     ... departments run their schedules ...
+     |
+     v
+<span class="a">CHIEF</span> (20:00) compiles retro → what shipped, what failed
+     |
+     v
+<span class="b">TELEGRAM</span> → Boss gets evening summary
+     |
+     v
+<span class="a">SENTINEL</span> (00:00) begins overnight monitoring
+     |
+     v
+     ... cycle repeats ...</div>
+  <h2>Escalation Chain</h2>
+  <div class="rule-card"><h4><span class="rule-num">1</span> Auto-Resolve (0-1h)</h4><p>Agent retries, adjusts parameters, tries alternate approach. No human needed.</p></div>
+  <div class="rule-card"><h4><span class="rule-num">2</span> Department Head (1-4h)</h4><p>Issue escalated to department lead. CHIEF notified. Logged in incident-log.json.</p></div>
+  <div class="rule-card"><h4><span class="rule-num">3</span> Chief of Staff (4-12h)</h4><p>CHIEF takes ownership. Cross-department coordination. Boss notified via Telegram.</p></div>
+  <div class="rule-card"><h4><span class="rule-num">4</span> Boss (12h+)</h4><p>Critical issue. Boss intervenes directly. Full post-mortem required.</p></div>
+</div>
+
+<!-- CONTENT -->
+<div class="mc-page" id="mc-content">
+  <div class="mc-page-title">Content</div>
+  <div class="mc-page-sub">Blog pipeline — SCRIBE, QUILL, PRESS, Content Agent</div>
+  <h2>Blog Production Pipeline</h2>
+  <div class="flow"><span class="a">SCOUT</span> (Intel) → trends, competitors, customer language
+   |
+   v
+<span class="a">PIXEL</span> (SEO) → keywords, opportunities, briefs
+   |
+   v
+<span class="a">Content Agent</span> → generates blog briefs (brief_ready)
+   |
+   v
+<span class="a">SCRIBE</span> → writes 1,200-2,000 word draft
+   |
+   v
+<span class="a">QUILL</span> → 25-check anti-AI copy audit
+   |  EXCELLENT → ships
+   |  GOOD → ships with warnings
+   |  NEEDS WORK → back to SCRIBE
+   v
+<span class="a">PRESS</span> → queues for boss approval
+   |
+   v
+<span class="b">YOU</span> approve via Telegram → <span class="g">LIVE ON SHOPIFY</span></div>
+  <h2>Content Agents</h2>
+  <table><thead><tr><th>Agent</th><th>Schedule</th><th>What It Does</th></tr></thead><tbody>
+    <tr><td><span class="codename">SCRIBE</span></td><td>Daily 12:00</td><td>Picks next brief_ready topic. Reads standup + SEO + intel. Writes blog with original takes, specific data, no AI patterns.</td></tr>
+    <tr><td><span class="codename">QUILL</span></td><td>Daily 13:00</td><td>Runs 25-check scanner: banned words, triple patterns, sentence variance, specificity, human signals. Rates every draft.</td></tr>
+    <tr><td><span class="codename">PRESS</span></td><td>Daily 14:30</td><td>Takes qa_approved blogs, creates Shopify article via API, queues for boss approval before going live.</td></tr>
+    <tr><td>Content Agent</td><td>Daily 07:41</td><td>Generates briefs from SEO keywords + intel trends. Manages content calendar.</td></tr>
+  </tbody></table>
+</div>
+
+<!-- INTEL / RADAR -->
+<div class="mc-page" id="mc-intel">
+  <div class="mc-page-title">Radar</div>
+  <div class="mc-page-sub">Intelligence — SCOUT (market intel) + ECHO (X/Twitter)</div>
+  <table><thead><tr><th>Agent</th><th>Schedule</th><th>Sources</th><th>Output</th></tr></thead><tbody>
+    <tr><td><span class="codename">SCOUT</span></td><td>Mon/Thu 10:47</td><td>Competitor sites, Amazon reviews, Reddit, Trustpilot, Google Trends</td><td>departments/intel/ — competitors.json, trends.json, customer-language.json</td></tr>
+    <tr><td><span class="codename">ECHO</span></td><td>Daily 07:00</td><td>Twitter/X API — keywords, hashtags, competitor mentions</td><td>departments/x-intel/daily-brief.json</td></tr>
+  </tbody></table>
+  <h2>What They Feed</h2>
+  <div class="flow"><span class="a">SCOUT</span> findings → read by SCRIBE (blogs), PIXEL (SEO), Content (briefs)
+<span class="a">ECHO</span> daily brief → read by CHIEF (standup), VIBE (social), Content (briefs)</div>
+</div>
+
+<!-- VISUAL / FACTORY -->
+<div class="mc-page" id="mc-visual">
+  <div class="mc-page-title">Factory</div>
+  <div class="mc-page-sub">Visual pipeline — LENS, FOCUS, Gemini, CANVAS</div>
+  <div class="flow"><span class="a">LENS</span> (08:19) → 10 photorealistic prompts
+   |
+   v
+<span class="a">FOCUS</span> (08:49) → 17-check QA audit
+   |
+   v
+<span class="a">Gemini Imagen 4</span> (08:55) → generates images → Shopify CDN
+   |
+   v
+<span class="a">CANVAS</span> (09:25) → 10 branded Canva social posts
+   |
+   v
+<span class="a">VIBE</span> (09:45) → posts to all platforms via Postiz</div>
+  <h2>Visual Agents</h2>
+  <table><thead><tr><th>Agent</th><th>Schedule</th><th>Output</th></tr></thead><tbody>
+    <tr><td><span class="codename">LENS</span></td><td>Daily 08:19</td><td>10 image prompts in departments/social/image-prompts.json</td></tr>
+    <tr><td><span class="codename">FOCUS</span></td><td>Daily 08:49</td><td>QA ratings on each prompt (approved/needs_revision)</td></tr>
+    <tr><td>Gemini</td><td>Daily 08:55</td><td>Generated images uploaded to Shopify CDN</td></tr>
+    <tr><td><span class="codename">CANVAS</span></td><td>Daily 09:25</td><td>10 designs in departments/canva/pipeline.json</td></tr>
+  </tbody></table>
+</div>
+
+<!-- PIPELINE -->
+<div class="mc-page" id="mc-pipeline">
+  <div class="mc-page-title">Pipeline</div>
+  <div class="mc-page-sub">Full data flow — how every department feeds the next</div>
+  <h2>Content Pipeline</h2>
+  <div class="flow">SCOUT → intel data → PIXEL → SEO briefs → Content → blog briefs
+→ SCRIBE → draft → QUILL → QA → PRESS → <span class="b">approval</span> → <span class="g">LIVE</span></div>
+  <h2>Visual Pipeline</h2>
+  <div class="flow">ECHO → trends → LENS → prompts → FOCUS → QA
+→ Gemini → images → CANVAS → designs → VIBE → <span class="g">POSTED</span></div>
+  <h2>Revenue Pipeline</h2>
+  <div class="flow">BEACON → email campaign → <span class="b">approval</span> → sent via Resend
+XAVIER → call list → <span class="b">approval</span> → calls via Vapi.ai
+OPTIMIZER → CRO experiment proposals → <span class="b">queue</span></div>
+  <h2>Shared State Files</h2>
+  <table><thead><tr><th>File</th><th>Written By</th><th>Read By</th><th>Purpose</th></tr></thead><tbody>
+    <tr><td>state/daily-standup.json</td><td>CHIEF</td><td>All agents</td><td>Org-wide context for the day</td></tr>
+    <tr><td>state/daily-retro.json</td><td>CHIEF</td><td>SENTINEL, GM</td><td>Day results + night handoff</td></tr>
+    <tr><td>state/shift-handoff.json</td><td>SENTINEL/CHIEF</td><td>Incoming shift lead</td><td>Shift transition notes</td></tr>
+    <tr><td>state/queue.json</td><td>All agents</td><td>GM, Boss</td><td>Approval queue</td></tr>
+    <tr><td>state/master.json</td><td>Engine</td><td>CHIEF, all</td><td>Department run status</td></tr>
+    <tr><td>state/incident-log.json</td><td>Any agent</td><td>CHIEF, SENTINEL</td><td>Post-mortems + error learning</td></tr>
+  </tbody></table>
+</div>
+
+<!-- REVENUE -->
+<div class="mc-page" id="mc-revenue">
+  <div class="mc-page-title">Revenue</div>
+  <div class="mc-page-sub">BEACON (email) + OPTIMIZER (CRO) + XAVIER (dialer)</div>
+  <table><thead><tr><th>Agent</th><th>Schedule</th><th>Channel</th><th>What It Does</th></tr></thead><tbody>
+    <tr><td><span class="codename">BEACON</span></td><td>Tue/Thu 08:53</td><td>Email (Resend)</td><td>Designs campaigns, segment targeting, A/B tests, subject line optimization. All queued for approval.</td></tr>
+    <tr><td><span class="codename">OPTIMIZER</span></td><td>Wed 11:29</td><td>CRO</td><td>Weekly conversion analysis, A/B test reviews, product page experiments.</td></tr>
+    <tr><td><span class="codename">XAVIER</span></td><td>Weekdays 14:15</td><td>Phone (Vapi.ai)</td><td>Builds call lists: abandoned cart, win-back, review request, B2B outreach.</td></tr>
+    <tr><td><span class="codename">XAVIER</span></td><td>Weekdays 15:45</td><td>Phone (Vapi.ai)</td><td>Executes approved calls. +1 (925) 332-3098.</td></tr>
+  </tbody></table>
+</div>
+
+<!-- OPERATIONS -->
+<div class="mc-page" id="mc-ops">
+  <div class="mc-page-title">Operations</div>
+  <div class="mc-page-sub">XAVIER dialer + GM queue/reports</div>
+  <h2>Dialer System (XAVIER)</h2>
+  <table><thead><tr><th>Script</th><th>Trigger</th><th>Purpose</th></tr></thead><tbody>
+    <tr><td>abandoned_cart</td><td>Cart abandoned > 1h</td><td>Call to recover abandoned purchase</td></tr>
+    <tr><td>review_request</td><td>Order delivered > 7d</td><td>Ask for product review</td></tr>
+    <tr><td>winback</td><td>No purchase > 60d</td><td>Re-engage lapsed customers</td></tr>
+    <tr><td>b2b_outreach</td><td>Manual trigger</td><td>B2B wholesale prospecting</td></tr>
+  </tbody></table>
+  <p style="color:var(--text-dim); font-size:12px; margin-top:8px;">All calls require human approval before dialing. Phone: +1 (925) 332-3098 via Vapi.ai</p>
+  <h2>General Management</h2>
+  <table><thead><tr><th>Agent</th><th>Schedule</th><th>What It Does</th></tr></thead><tbody>
+    <tr><td><span class="codename">GM Queue</span></td><td>Daily 18:51</td><td>Processes approval queue, flags overdue items, moves approved to execution.</td></tr>
+    <tr><td><span class="codename">GM Report</span></td><td>Fri 07:03</td><td>Weekly org-wide KPIs, budget, strategic recommendations. Runs on Opus.</td></tr>
+  </tbody></table>
+</div>
+
+<!-- STATUS / SYSTEM -->
+<div class="mc-page" id="mc-status">
+  <div class="mc-page-title">System Status</div>
+  <div class="mc-page-sub">Live department status — from state/master.json</div>
+  <div class="mc-stats">
+    <div class="mc-stat"><div class="mc-stat-n" style="color:var(--green)">12</div><div class="mc-stat-l">Active</div></div>
+    <div class="mc-stat"><div class="mc-stat-n" style="color:var(--text-dim)">5</div><div class="mc-stat-l">Idle</div></div>
+    <div class="mc-stat"><div class="mc-stat-n" style="color:var(--red)">0</div><div class="mc-stat-l">Errors</div></div>
+    <div class="mc-stat"><div class="mc-stat-n" style="color:var(--orange)">0</div><div class="mc-stat-l">Incidents</div></div>
+  </div>
+  <table><thead><tr><th>Status</th><th>Codename</th><th>Department</th><th>Runs</th><th>Last Run</th><th>Model</th></tr></thead><tbody id="mcStatusTable"></tbody></table>
+</div>
+
+<!-- APPROVALS -->
+<div class="mc-page" id="mc-approvals">
+  <div class="mc-page-title">Approvals</div>
+  <div class="mc-page-sub">Queue items awaiting boss action — from state/queue.json</div>
+  <div class="rule-card"><h4>How Approvals Work</h4><p>Every customer-facing action (blog publish, email send, phone call, product copy change) goes through the approval queue. Agents queue items. Boss approves via Telegram (<code>/approve &lt;id&gt;</code>). GM processes the queue daily at 18:51.</p></div>
+  <h2>Approval Channels</h2>
+  <table><thead><tr><th>Type</th><th>Created By</th><th>Approved Via</th><th>Executed By</th></tr></thead><tbody>
+    <tr><td>Blog publish</td><td>PRESS</td><td>Telegram /approve</td><td>PRESS → Shopify API</td></tr>
+    <tr><td>Email campaign</td><td>BEACON</td><td>Telegram /approve</td><td>Resend API</td></tr>
+    <tr><td>Phone call</td><td>XAVIER</td><td>Telegram /approve</td><td>Vapi.ai</td></tr>
+    <tr><td>Product copy</td><td>E-Commerce</td><td>Telegram /approve</td><td>Shopify API</td></tr>
+    <tr><td>Social post</td><td>VIBE</td><td>Auto-approved</td><td>Postiz API</td></tr>
+  </tbody></table>
+</div>
+
+<!-- RULES -->
+<div class="mc-page" id="mc-rules">
+  <div class="mc-page-title">Rules & Governance</div>
+  <div class="mc-page-sub">How the organization operates — hierarchy, briefings, error learning</div>
+  <div class="rule-card"><h4><span class="rule-num">1</span> Every Agent Has Their Own Space</h4><p>Each agent operates in its own department directory. SCRIBE writes in departments/content/. LENS writes in departments/social/. No agent touches another agent's output files directly.</p></div>
+  <div class="rule-card"><h4><span class="rule-num">2</span> The Boss is the Orchestrator</h4><p>The Boss (you) doesn't do the work — you make decisions. Every agent briefs you via Telegram. Standups at 06:00, retros at 20:00, board meetings Monday.</p></div>
+  <div class="rule-card"><h4><span class="rule-num">3</span> Meetings Are for Synchronization</h4><p>Morning standup = everyone reports status. Evening retro = what shipped, what failed. Board meeting = strategic direction.</p></div>
+  <div class="rule-card"><h4><span class="rule-num">4</span> Chain of Command</h4><p>Boss → CHIEF → VP Content / VP Growth / VP Operations → Department agents. Issues escalate UP. Decisions flow DOWN.</p></div>
+  <div class="rule-card"><h4><span class="rule-num">5</span> Learn From Every Error</h4><p>Every failure gets logged in incident-log.json with a post-mortem. CHIEF reads incidents in every standup. The org doesn't repeat mistakes.</p></div>
+  <div class="rule-card"><h4><span class="rule-num">6</span> Boss Gets Briefed — Always</h4><p>06:00 — Morning standup. 07:00 — Daily Telegram summary. 15:00 — Blog status. 20:00 — Evening retro. Monday — Board meeting. Friday — Weekly report.</p></div>
+  <div class="rule-card"><h4><span class="rule-num">7</span> Nothing Ships Without Quality Gates</h4><p>Blogs pass 25-check QA. Image prompts pass 17-check QA. All customer-facing actions require approval. The queue is the chokepoint.</p></div>
+  <div class="rule-card"><h4><span class="rule-num">8</span> Shifts Operate Like a Real Business</h4><p>Morning = CREATE. Afternoon = SELL. Night = MONITOR. Every shift has a lead. Handoff notes are mandatory.</p></div>
+  <div class="rule-card"><h4><span class="rule-num">9</span> Scale by Adding Agents, Not Complexity</h4><p>New capability = new agent with its own prompt, schedule, and output directory. Plugs into existing data flow.</p></div>
+  <div class="rule-card"><h4><span class="rule-num">10</span> State is the Single Source of Truth</h4><p>Agents read and write JSON state files. daily-standup.json, queue.json, incident-log.json — these are the shared brain. Every run commits to Git.</p></div>
+</div>
+
+<!-- DATA FLOW -->
+<div class="mc-page" id="mc-flow">
+  <div class="mc-page-title">Data Flow</div>
+  <div class="mc-page-sub">How departments feed into each other</div>
+  <h2>Full System Flow</h2>
+  <div class="flow"><span class="a">SENTINEL</span> → night-report.json → shift-handoff.json
+     ↓
+<span class="a">CHIEF</span> → reads ALL states → daily-standup.json → Telegram
+     ↓
+<span class="a">PIXEL</span> (SEO) → keywords.json, opportunities.json
+<span class="a">ECHO</span> (X Intel) → daily-brief.json
+<span class="a">SCOUT</span> (Intel) → trends.json, competitors.json, customer-language.json
+     ↓
+<span class="a">Content Agent</span> → blog briefs from SEO + intel
+     ↓
+<span class="a">SCRIBE</span> → writes blog draft
+     ↓
+<span class="a">QUILL</span> → 25-check QA
+     ↓
+<span class="a">PRESS</span> → queue for approval → <span class="g">LIVE</span>
+
+<span class="a">LENS</span> → 10 prompts → <span class="a">FOCUS</span> QA → Gemini images → <span class="a">CANVAS</span> designs → <span class="a">VIBE</span> posts → <span class="g">LIVE</span>
+<span class="a">BEACON</span> → email campaigns → queue → <span class="g">SENT</span>
+<span class="a">XAVIER</span> → call lists → queue → <span class="g">CALLED</span>
+<span class="a">OPTIMIZER</span> → CRO experiments → queue
+
+<span class="a">VIBE</span> (PM) → engagement tracking
+<span class="a">GM</span> → queue processing + weekly report
+<span class="a">CHIEF</span> → evening retro → shift-handoff → <span class="a">SENTINEL</span></div>
+</div>
+
+<!-- MEMORY -->
+<div class="mc-page" id="mc-memory">
+  <div class="mc-page-title">Memory</div>
+  <div class="mc-page-sub">Institutional knowledge — incidents, learnings, decisions</div>
+  <h2>State Files</h2>
+  <table><thead><tr><th>File</th><th>Purpose</th><th>Updated By</th></tr></thead><tbody>
+    <tr><td>state/master.json</td><td>Department run status + counts</td><td>Engine (every run)</td></tr>
+    <tr><td>state/daily-standup.json</td><td>Morning standup compilation</td><td>CHIEF (06:00)</td></tr>
+    <tr><td>state/daily-retro.json</td><td>Evening retro compilation</td><td>CHIEF (20:00)</td></tr>
+    <tr><td>state/shift-handoff.json</td><td>Shift transition notes</td><td>SENTINEL/CHIEF</td></tr>
+    <tr><td>state/night-report.json</td><td>Overnight health checks</td><td>SENTINEL</td></tr>
+    <tr><td>state/queue.json</td><td>Approval queue</td><td>All agents</td></tr>
+    <tr><td>state/run-history.json</td><td>Historical runs + token usage</td><td>Engine</td></tr>
+    <tr><td>state/incident-log.json</td><td>Post-mortems + error learning</td><td>Any agent</td></tr>
+    <tr><td>state/alert-history.json</td><td>API error tracking</td><td>Engine</td></tr>
+  </tbody></table>
+  <h2>Error Learning Protocol</h2>
+  <div class="rule-card"><h4>When Something Fails</h4><p>1. Logged in incident-log.json with timestamp, department, error, severity.<br>2. SENTINEL detects in next health check.<br>3. CHIEF includes in next standup/retro.<br>4. Post-mortem: what happened, why, what prevents recurrence.<br>5. All agents read the standup — they learn from every org-wide failure.</p></div>
+</div>
+
+</div><!-- /mc-main -->
+
+<!-- MC Modal -->
+<div class="modal-overlay" id="mcModal" onclick="if(event.target===this)mcCloseModal()">
+  <div class="mc-modal">
+    <div class="mc-modal-header">
+      <h3 id="mcModalTitle">Task Detail</h3>
+      <button class="mc-modal-close" onclick="mcCloseModal()">&times;</button>
+    </div>
+    <div class="mc-modal-body" id="mcModalBody"></div>
+  </div>
+</div>
+
+</div><!-- /view-mc -->
+
+<!-- ============================================================ -->
+<!-- SCRIPTS -->
+<!-- ============================================================ -->
+
+<!-- God Mode canvas (loads first) -->
+<script src="app.js"></script>
+
+<!-- View toggle -->
+<script>
+function switchView(view) {
+  var office = document.getElementById('view-office');
+  var mc = document.getElementById('view-mc');
+  if (view === 'mc') {
+    office.classList.remove('active');
+    mc.classList.add('active');
+    document.body.classList.add('mc-active');
+    if (!window._mcInitialized) { window._mcInitialized = true; mcInit(); }
+  } else {
+    mc.classList.remove('active');
+    office.classList.add('active');
+    document.body.classList.remove('mc-active');
+  }
+}
+</script>
+
+<!-- Mission Control JS (namespaced) -->
+<script>
+(function() {
+  var MC_REPO = 'mindfulcrumb/gadgetgeeks-marketing-org';
+  var MC_RAW = 'https://raw.githubusercontent.com/' + MC_REPO + '/main';
+
+  // Navigation
+  window.mcNav = function(page, btn) {
+    document.querySelectorAll('#view-mc .mc-page').forEach(function(p) { p.classList.remove('active'); });
+    document.querySelectorAll('#view-mc .mc-sidebar nav button').forEach(function(b) { b.classList.remove('active'); });
+    var el = document.getElementById('mc-' + page);
+    if (el) el.classList.add('active');
+    if (btn) btn.classList.add('active');
+    var main = document.querySelector('#view-mc .mc-main');
+    if (main) main.scrollTop = 0;
+  };
+
+  // Clock
+  function mcToAZ(date) {
+    return new Date(date.toLocaleString('en-US', {timeZone: 'America/Phoenix'}));
+  }
+  function mcUpdateClock() {
+    var az = mcToAZ(new Date());
+    var h = String(az.getHours()).padStart(2,'0');
+    var m = String(az.getMinutes()).padStart(2,'0');
+    var s = String(az.getSeconds()).padStart(2,'0');
+    var el = document.getElementById('mcSidebarClock');
+    if (el) el.textContent = h + ':' + m + ':' + s + ' AZ';
+  }
+  setInterval(mcUpdateClock, 1000);
+  mcUpdateClock();
+
+  // Task data
+  var MC_TASKS = [
+    {id:'standup',time:'06:00',name:'Morning Standup',agent:'CHIEF',cat:'c-governance',freq:'daily',desc:'Reads ALL department states + night handoff. Compiles standup. Sends Telegram briefing to boss.',workflow:'morning-standup.yml',output:'state/daily-standup.json + Telegram'},
+    {id:'trends',time:'06:00',name:'Daily Trends Scan',agent:'TREND',cat:'c-intel',freq:'daily',desc:'Google Trends scout — scan trending topics, breakout queries, rising searches.',workflow:'trends-scan.yml',output:'departments/intel/trends-daily.json'},
+    {id:'seo-d',time:'06:23',name:'Daily SEO Scan',agent:'PIXEL',cat:'c-seo',freq:'daily',desc:'Analyze keyword opportunities. Write today\'s SEO recommendation.',workflow:'seo-daily.yml',output:'departments/seo/'},
+    {id:'x-intel',time:'07:00',name:'X Intelligence',agent:'ECHO',cat:'c-intel',freq:'daily',desc:'Scan Twitter/X for market signals, competitor mentions, trending topics, sentiment.',workflow:'x-intel.yml',output:'departments/x-intel/daily-brief.json'},
+    {id:'tg-summary',time:'07:00',name:'Telegram Summary',agent:'BOT',cat:'c-system',freq:'daily',desc:'Daily summary sent to boss on Telegram.',workflow:'telegram-summary.yml',output:'Telegram'},
+    {id:'analytics',time:'07:30',name:'GA/GSC Analysis',agent:'SIGNAL',cat:'c-intel',freq:'daily',desc:'Google Analytics + Search Console analysis.',workflow:'analytics-daily.yml',output:'departments/intel/analytics-daily.json'},
+    {id:'content',time:'07:41',name:'Content Briefs',agent:'Content',cat:'c-content',freq:'daily',desc:'Generate blog briefs from SEO opportunities + intel signals.',workflow:'content.yml',output:'departments/content/'},
+    {id:'lens',time:'08:19',name:'Image Prompts (10)',agent:'LENS',cat:'c-visual',freq:'daily',desc:'Write 10 photorealistic AI image prompts.',workflow:'image-prompts.yml',output:'departments/social/image-prompts.json'},
+    {id:'focus',time:'08:49',name:'Prompt QA',agent:'FOCUS',cat:'c-visual',freq:'daily',desc:'17-check quality audit on all prompts from LENS.',workflow:'prompt-qa.yml',output:'departments/social/image-prompts.json'},
+    {id:'gemini',time:'08:55',name:'Image Generation',agent:'Gemini',cat:'c-visual',freq:'daily',desc:'Generate images via Gemini Imagen 4 from approved prompts.',workflow:'image-generate.yml',output:'Shopify CDN'},
+    {id:'canvas',time:'09:25',name:'Canva Designs (10)',agent:'CANVAS',cat:'c-visual',freq:'daily',desc:'Create 10 branded social media designs.',workflow:'canva-post.yml',output:'departments/canva/pipeline.json'},
+    {id:'social-am',time:'09:45',name:'Social Morning Posts',agent:'VIBE',cat:'c-social',freq:'daily',desc:'Pick up CANVAS designs, write copy, post across platforms.',workflow:'social-morning.yml',output:'departments/social/calendar.json'},
+    {id:'scribe',time:'12:00',name:'Daily Blog',agent:'SCRIBE',cat:'c-content',freq:'daily',desc:'Pick next brief_ready topic, write 1,200-2,000 word blog.',workflow:'blog-writer.yml',output:'departments/content/blog-pipeline.json'},
+    {id:'quill',time:'13:00',name:'Blog QA',agent:'QUILL',cat:'c-content',freq:'daily',desc:'25-check anti-AI copy audit + deep qualitative review.',workflow:'blog-qa.yml',output:'departments/content/blog-pipeline.json'},
+    {id:'press',time:'14:30',name:'Blog Publish',agent:'PRESS',cat:'c-content',freq:'daily',desc:'Package qa_approved blogs for boss approval.',workflow:'blog-publish.yml',output:'state/queue.json'},
+    {id:'blog-rpt',time:'15:00',name:'Blog Status Report',agent:'SYSTEM',cat:'c-system',freq:'daily',desc:'Send Telegram report: pipeline status, upcoming drafts, failures.',workflow:'blog-status-report.yml',output:'Telegram'},
+    {id:'social-pm',time:'16:37',name:'Social Engagement',agent:'VIBE',cat:'c-social',freq:'daily',desc:'Monitor post performance, track engagement.',workflow:'social-afternoon.yml',output:'departments/social/engagement-log.md'},
+    {id:'blog-pm',time:'18:00',name:'Evergreen Blog (PM)',agent:'SCRIBE',cat:'c-content',freq:'daily',desc:'SCRIBE 2nd shift — evergreen blog post.',workflow:'blog-writer-pm.yml',output:'departments/content/blog-pipeline.json'},
+    {id:'gm-queue',time:'18:51',name:'Queue Processing',agent:'GM',cat:'c-ops',freq:'daily',desc:'Process approval queue, flag overdue items.',workflow:'gm-queue.yml',output:'state/queue.json'},
+    {id:'retro',time:'20:00',name:'Evening Retro',agent:'CHIEF',cat:'c-governance',freq:'daily',desc:'Compile day results. What shipped, in progress, failed. Telegram summary.',workflow:'evening-retro.yml',output:'state/daily-retro.json + Telegram'},
+    {id:'night-00',time:'00:00',name:'Midnight Health Check',agent:'SENTINEL',cat:'c-governance',freq:'daily',desc:'Store uptime, API health, workflow status.',workflow:'night-ops.yml',output:'state/night-report.json'},
+    {id:'night-03',time:'03:00',name:'Pre-dawn Check',agent:'SENTINEL',cat:'c-governance',freq:'daily',desc:'Verify no overnight failures.',workflow:'night-ops.yml',output:'state/night-report.json'},
+    {id:'night-05',time:'05:00',name:'Morning Prep',agent:'SENTINEL',cat:'c-governance',freq:'daily',desc:'Collect metrics, prepare standup data.',workflow:'night-ops.yml',output:'state/night-report.json'},
+    {id:'night-0530',time:'05:30',name:'Night Handoff',agent:'SENTINEL',cat:'c-governance',freq:'daily',desc:'Write handoff notes for morning shift.',workflow:'night-ops.yml',output:'state/shift-handoff.json'},
+    {id:'seo-w',time:'05:17',name:'Weekly SEO Audit',agent:'PIXEL',cat:'c-seo',freq:'mon',desc:'Deep weekly audit: content gap analysis, competitor SERPs.',workflow:'seo-weekly.yml',output:'departments/seo/'},
+    {id:'board',time:'06:30',name:'Board Meeting',agent:'CHIEF',cat:'c-governance',freq:'mon',desc:'Full org strategic review. Uses Opus model.',workflow:'weekly-board.yml',output:'state/ + Telegram'},
+    {id:'beacon-1',time:'08:53',name:'Email Campaign',agent:'BEACON',cat:'c-email',freq:'tue,thu',desc:'Design email campaign, A/B test, subject lines.',workflow:'email.yml',output:'departments/email/'},
+    {id:'scout',time:'10:47',name:'Market Intel',agent:'SCOUT',cat:'c-intel',freq:'mon,thu',desc:'Deep competitor analysis, trend identification.',workflow:'intel.yml',output:'departments/intel/'},
+    {id:'cro',time:'11:29',name:'CRO Audit',agent:'OPTIMIZER',cat:'c-revenue',freq:'wed',desc:'Conversion rate analysis, A/B test review.',workflow:'cro.yml',output:'departments/cro/'},
+    {id:'dialer-list',time:'14:15',name:'Build Call List',agent:'XAVIER',cat:'c-ops',freq:'weekday',desc:'Scan Shopify: abandoned carts, win-back, review requests.',workflow:'dialer.yml',output:'departments/dialer/'},
+    {id:'dialer-exec',time:'15:45',name:'Execute Calls',agent:'XAVIER',cat:'c-ops',freq:'weekday',desc:'Make calls from approved list via Vapi.ai.',workflow:'dialer-execute.yml',output:'departments/dialer/'},
+    {id:'gm-rpt',time:'07:03',name:'Weekly Report',agent:'GM',cat:'c-revenue',freq:'fri',desc:'Org-wide performance report. KPIs, budget. Opus model.',workflow:'gm-report.yml',output:'departments/gm/'}
+  ];
+
+  var MC_DAYS = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  var MC_DAY_MAP = {sun:0,mon:1,tue:2,wed:3,thu:4,fri:5,sat:6};
+  var MC_AZ_OFFSET = -7;
+
+  function mcUtcToAZ(timeStr) { var p=timeStr.split(':').map(Number); var h=p[0]+MC_AZ_OFFSET; if(h<0)h+=24; if(h>=24)h-=24; return String(h).padStart(2,'0')+':'+String(p[1]).padStart(2,'0'); }
+  function mcTaskAZTime(t) { return mcUtcToAZ(t.time); }
+  function mcTaskRunsOnDay(t, d) { var f=t.freq; if(f==='daily')return true; if(f==='weekday')return d>=1&&d<=5; var ds=f.split(','); for(var i=0;i<ds.length;i++){if(MC_DAY_MAP[ds[i].trim()]===d)return true;} return false; }
+
+  function mcBuildCalendar() {
+    var grid=document.getElementById('mcCalGrid'); if(!grid) return; grid.innerHTML='';
+    var today=mcToAZ(new Date()).getDay();
+    for(var d=0;d<7;d++){var hdr=document.createElement('div');hdr.className='cal-day-header'+(d===today?' today-h':'');hdr.textContent=MC_DAYS[d];grid.appendChild(hdr);}
+    for(var d=0;d<7;d++){var col=document.createElement('div');col.className='cal-col';
+      var dayTasks=MC_TASKS.filter(function(t){return mcTaskRunsOnDay(t,d);}).sort(function(a,b){return mcTaskAZTime(a).localeCompare(mcTaskAZTime(b));});
+      for(var i=0;i<dayTasks.length;i++){(function(t){var card=document.createElement('div');card.className='cal-card '+t.cat;card.innerHTML='<div class="card-name">'+t.name+'</div><div class="card-time">'+mcTaskAZTime(t)+' AZ &middot; '+t.agent+'</div>';card.onclick=function(){mcOpenModal(t);};col.appendChild(card);})(dayTasks[i]);}
+      grid.appendChild(col);}
+  }
+
+  function mcBuildDashToday() {
+    var container=document.getElementById('mcDashboardToday'); if(!container) return;
+    var today=mcToAZ(new Date()).getDay();
+    var dayTasks=MC_TASKS.filter(function(t){return mcTaskRunsOnDay(t,today);}).sort(function(a,b){return mcTaskAZTime(a).localeCompare(mcTaskAZTime(b));});
+    var html='<div style="display:flex;flex-direction:column;gap:4px;">';
+    for(var i=0;i<dayTasks.length;i++){var t=dayTasks[i];html+='<div class="cal-card '+t.cat+'" style="max-width:600px;cursor:pointer" data-task-id="'+t.id+'"><div class="card-name">'+t.name+'</div><div class="card-time">'+mcTaskAZTime(t)+' AZ &middot; '+t.agent+'</div></div>';}
+    html+='</div>'; container.innerHTML=html;
+    container.querySelectorAll('.cal-card').forEach(function(card){card.onclick=function(){var tid=card.dataset.taskId;var task=MC_TASKS.find(function(t){return t.id===tid;});if(task)mcOpenModal(task);};});
+  }
+
+  function mcBuildNextUp() {
+    var now=new Date(); var todayDay=mcToAZ(now).getDay(); var az=mcToAZ(now); var nowMin=az.getHours()*60+az.getMinutes();
+    var upcoming=MC_TASKS.filter(function(t){return mcTaskRunsOnDay(t,todayDay);}).map(function(t){var at=mcTaskAZTime(t);var p=at.split(':').map(Number);return Object.assign({},t,{mins:p[0]*60+p[1],azTime:at});}).filter(function(t){return t.mins>nowMin;}).sort(function(a,b){return a.mins-b.mins;}).slice(0,5);
+    ['mcNextUpDash','mcNextUpCal'].forEach(function(id){
+      var el=document.getElementById(id); if(!el)return;
+      var html='<div class="next-up-title">&#128197; Next Up</div>';
+      if(!upcoming.length){html+='<div style="padding:8px 0;color:var(--text-dim);font-size:13px;">No more tasks today</div>';}
+      else{for(var i=0;i<upcoming.length;i++){var t=upcoming[i];var diff=t.mins-nowMin;var dh=Math.floor(diff/60);var dm=diff%60;var countdown=dh>0?'in '+dh+'h '+dm+'m':'in '+dm+'m';html+='<div class="next-item"><div><span class="ni-name">'+t.name+'</span> <span class="ni-agent">'+t.agent+'</span></div><div class="ni-countdown">'+countdown+'</div></div>';}}
+      el.innerHTML=html;
+    });
+  }
+
+  // Modal
+  window.mcOpenModal = function(task) {
+    document.getElementById('mcModalTitle').textContent=task.name;
+    document.getElementById('mcModalBody').innerHTML='<div class="modal-row"><div class="modal-label">Agent</div><div class="modal-value"><span class="codename">'+task.agent+'</span></div></div><div class="modal-row"><div class="modal-label">Time (AZ)</div><div class="modal-value">'+mcTaskAZTime(task)+' AZ ('+task.time+' UTC)</div></div><div class="modal-row"><div class="modal-label">Frequency</div><div class="modal-value">'+task.freq+'</div></div><div class="modal-row"><div class="modal-label">Category</div><div class="modal-value">'+task.cat.replace('c-','')+'</div></div><div class="modal-row"><div class="modal-label">Workflow</div><div class="modal-value" style="font-family:monospace;font-size:12px;">'+task.workflow+'</div></div><div class="modal-row"><div class="modal-label">Output</div><div class="modal-value" style="font-family:monospace;font-size:12px;">'+task.output+'</div></div><div class="modal-row"><div class="modal-label">Description</div><div class="modal-value">'+task.desc+'</div></div>';
+    document.getElementById('mcModal').classList.add('open');
+  };
+  window.mcCloseModal = function() { document.getElementById('mcModal').classList.remove('open'); };
+  document.addEventListener('keydown', function(e) { if(e.key==='Escape') mcCloseModal(); });
+
+  // Live data
+  var MC_DEPT_META = {
+    intel:{cn:'SCOUT',dept:'Market Intel',model:'sonnet'},seo:{cn:'PIXEL',dept:'Daily SEO',model:'sonnet'},seo_weekly:{cn:'PIXEL',dept:'Weekly SEO Audit',model:'sonnet'},content:{cn:'CONTENT',dept:'Content Briefs',model:'sonnet'},email:{cn:'BEACON',dept:'Email Marketing',model:'sonnet'},social_morning:{cn:'VIBE',dept:'Social (Morning)',model:'sonnet'},social_afternoon:{cn:'VIBE',dept:'Social (Afternoon)',model:'sonnet'},cro:{cn:'OPTIMIZER',dept:'CRO',model:'sonnet'},x_intel:{cn:'ECHO',dept:'X Intelligence',model:'sonnet'},gm_report:{cn:'GM',dept:'Weekly Report',model:'opus'},gm_queue:{cn:'GM',dept:'Queue Processing',model:'sonnet'},image_prompts:{cn:'LENS',dept:'Image Prompting',model:'sonnet'},prompt_qa:{cn:'FOCUS',dept:'Prompt QA',model:'sonnet'},standup:{cn:'CHIEF',dept:'Morning Standup',model:'sonnet'},retro:{cn:'CHIEF',dept:'Evening Retro',model:'sonnet'},board_meeting:{cn:'CHIEF',dept:'Board Meeting',model:'opus'},night_ops:{cn:'SENTINEL',dept:'Night Operations',model:'sonnet'}
+  };
+
+  function mcFetchJSON(path) {
+    return fetch(MC_RAW+'/'+path,{cache:'no-store'}).then(function(r){return r.ok?r.json():null;}).catch(function(){return null;});
+  }
+  function mcFmtDate(iso) {
+    if(!iso)return'Never';var d=mcToAZ(new Date(iso));var months=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];return months[d.getMonth()]+' '+d.getDate()+', '+String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')+' AZ';
+  }
+
+  function mcLoadLiveData() {
+    Promise.all([mcFetchJSON('state/master.json'),mcFetchJSON('state/queue.json')]).then(function(results) {
+      var master=results[0], queue=results[1];
+      if(master) mcBuildStatusTable(master);
+      if(master) mcUpdateDashStats(master, queue);
+    });
+  }
+
+  function mcBuildStatusTable(master) {
+    var depts=master.departments||{}; var rows=[];
+    for(var key in depts){var data=depts[key];var meta=MC_DEPT_META[key]||{cn:'?',dept:key,model:'sonnet'};var s=(data.runs_total||0)>0?(data.status||'ok'):'idle';rows.push({s:s,cn:meta.cn,dept:meta.dept,runs:data.runs_total||0,last:mcFmtDate(data.last_run),model:meta.model});}
+    rows.sort(function(a,b){return b.runs-a.runs;});
+    var tbody=document.getElementById('mcStatusTable'); if(!tbody) return;
+    tbody.innerHTML=rows.map(function(d){return '<tr'+(d.s==='idle'?' style="opacity:0.5"':'')+'><td><span class="dot dot-'+d.s+'"></span><span class="tag tag-'+d.s+'">'+d.s.toUpperCase()+'</span></td><td><span class="codename">'+d.cn+'</span></td><td>'+d.dept+'</td><td>'+d.runs+'</td><td>'+d.last+'</td><td><span class="tag tag-'+d.model+'">'+d.model.charAt(0).toUpperCase()+d.model.slice(1)+'</span></td></tr>';}).join('');
+  }
+
+  function mcUpdateDashStats(master, queue) {
+    var depts=master.departments||{}; var active=0,idle=0,errors=0;
+    for(var k in depts){var d=depts[k];if(d.status==='error')errors++;else if((d.runs_total||0)===0)idle++;else active++;}
+    var pending=queue?(queue.pending||queue.items||[]).filter(function(i){return i.status==='pending';}).length:0;
+    document.querySelectorAll('#view-mc .mc-stat-n').forEach(function(el){
+      var label=el.nextElementSibling?el.nextElementSibling.textContent.trim():'';
+      if(label==='Active')el.textContent=active;
+      else if(label==='Idle')el.textContent=idle;
+      else if(label==='Errors')el.textContent=errors;
+      else if(label==='Incidents')el.textContent=pending;
+    });
+  }
+
+  // Init (called lazily on first MC view)
+  window.mcInit = function() {
+    mcBuildCalendar();
+    mcBuildDashToday();
+    mcBuildNextUp();
+    mcLoadLiveData();
+    setInterval(mcBuildNextUp, 60000);
+    setInterval(mcLoadLiveData, 30000);
+  };
+})();
+</script>
+
 </body>
 </html>

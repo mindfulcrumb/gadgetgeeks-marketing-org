@@ -1,0 +1,77 @@
+{
+  "_campaign": "Grade C iPhone Bundle Test",
+  "_created": "2026-03-14",
+  "_purpose": "Test which Grade C positioning angle resonates most on TikTok. Each prompt tests a different hook backed by org data. Results inform whether to scale Grade C as a product line push.",
+  "_blog_correlation": "refurbished-iphone-buying-guide-2026 — Grade C section, Bundle deals section, Spring 2026 section, Sweet Spot Formula",
+  "_products": ["iPhone 14 Grade C", "iPhone 13 Grade C"],
+  "_bundle_includes": ["phone", "silicone case", "tempered glass screen protector", "clip-on camera lens kit"],
+  "_price_point": "$249-$299",
+
+  "angles": [
+    {
+      "id": "bundle_value_stack",
+      "prompt_id": "prompt_20260314_gc001",
+      "hook": "Look what you get for $279",
+      "hypothesis": "Flat lay showing full bundle contents triggers 'I need that' impulse. Accessory Compatibility Paralysis trend means showing everything included removes friction.",
+      "data_backing": "trends.json: Accessory Compatibility Paralysis | customer-language: '$800 phone for $350'",
+      "post_copy_direction": "List everything in the bundle with prices if bought separately. Show total savings.",
+      "status": "pending",
+      "image_generated": false,
+      "posted": false,
+      "engagement": null,
+      "notes": ""
+    },
+    {
+      "id": "case_reveal_transformation",
+      "prompt_id": "prompt_20260314_gc002",
+      "hook": "Grade C doesn't mean what you think",
+      "hypothesis": "Before/after comparison — scratches visible without case, phone looks brand new with case. Directly addresses 'what's the catch?' objection. Behind-the-scenes content format has proven engagement.",
+      "data_backing": "customer-language: 'can't tell the difference' | engagement-log: behind-the-scenes builds trust",
+      "post_copy_direction": "Hook with 'the catch' then reveal it's just cosmetic. Case makes it invisible.",
+      "status": "pending",
+      "image_generated": false,
+      "posted": false,
+      "engagement": null,
+      "notes": ""
+    },
+    {
+      "id": "value_hero_premium_look",
+      "prompt_id": "prompt_20260314_gc003",
+      "hook": "$279 and it looks like this",
+      "hypothesis": "Show the end result — Grade C phone in case on a premium desk setup. Looks indistinguishable from new. Dollar amount in hook triggers 40% higher engagement per engagement-log data.",
+      "data_backing": "engagement-log: 'dollar amounts outperform by 40%' | trends: Spring Supply Surge pricing",
+      "post_copy_direction": "Lead with price. Show lifestyle. 'Your friends won't know.'",
+      "status": "pending",
+      "image_generated": false,
+      "posted": false,
+      "engagement": null,
+      "notes": ""
+    },
+    {
+      "id": "deal_urgency_premium",
+      "prompt_id": "prompt_20260314_gc004",
+      "hook": "Spring clearance — iPhone 14 bundle under $300",
+      "hypothesis": "Dramatic cinematic lighting makes a budget phone look premium. Spring supply surge creates real urgency. Back Market crisis means competitors are weak right now.",
+      "data_backing": "trends: Spring Supply Surge 23% | daily-brief: Back Market multi-national crisis",
+      "post_copy_direction": "Urgency + premium feel. Limited spring inventory. Price anchor against retail.",
+      "status": "pending",
+      "image_generated": false,
+      "posted": false,
+      "engagement": null,
+      "notes": ""
+    }
+  ],
+
+  "iteration_plan": {
+    "round_1": "Generate 4 images, post to TikTok over 2 days (2 per day). Track engagement for 48 hours.",
+    "round_2": "Double down on top 2 performing angles. Generate 2 more variations of each winner.",
+    "round_3": "Scale winner to other platforms (Instagram, Twitter, Facebook) when connected.",
+    "success_metrics": {
+      "engagement_rate": "Track likes, comments, shares per post",
+      "click_through": "Track link-in-bio clicks if available",
+      "winner_threshold": "2x engagement vs average TikTok post = scale signal"
+    }
+  },
+
+  "results_log": []
+}

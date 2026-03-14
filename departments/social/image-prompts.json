@@ -189,6 +189,70 @@
       "recommended_tool": "midjourney",
       "generation_status": "error",
       "generation_error": "429 Too Many Requests: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/r"
+    },
+    {
+      "id": "prompt_20260314_gc001",
+      "use_case": "product_hero",
+      "platform": "tiktok",
+      "aspect_ratio": "9:16",
+      "prompt": "Flat lay product arrangement on light grey concrete surface. Center: iPhone 14 in Midnight showing minor cosmetic scratches on back glass, screen pristine and OFF. Surrounding the phone in organized layout: matte black silicone phone case, tempered glass screen protector in packaging, clip-on camera lens kit with wide angle and macro attachments. Small white card reading 'Grade C Bundle' handwritten in marker. Soft overhead studio lighting, even illumination, no harsh shadows. Shot from directly above. Sony A7R V, 35mm f/2.8, sharp focus across entire frame. Clean editorial flat lay style, magazine product spread. Neutral color grading, high detail, 8K. IMG_6201.CR3 unedited RAW.",
+      "negative_prompt": "NO text overlays, NO watermark, NO CGI, NO cartoon, NO illustration, NO fake screens, NO people",
+      "platform_params": "--ar 9:16 --style raw --s 250",
+      "notes": "Grade C Bundle Campaign — Angle: 'Look what you get for $279'. Shows full bundle value stack. TikTok vertical format.",
+      "keywords_targeted": ["iPhone 14 Grade C", "phone bundle deal", "refurbished bundle"],
+      "recommended_tool": "gemini",
+      "driven_by": "trends.json: Accessory Compatibility Paralysis + customer-language: 'basically got a $800 phone for $350'",
+      "campaign": "grade_c_bundle_test",
+      "campaign_angle": "bundle_value_stack",
+      "blog_correlation": "refurbished-iphone-buying-guide-2026 — Bundle deals save 20-30% section"
+    },
+    {
+      "id": "prompt_20260314_gc002",
+      "use_case": "comparison",
+      "platform": "tiktok",
+      "aspect_ratio": "9:16",
+      "prompt": "Two-panel vertical composition on white marble surface. Top half: iPhone 13 in Pink with visible light scratches and minor scuffs on back glass and aluminum frame, no case, raw honest look under neutral lighting. Bottom half: same iPhone 13 in Pink now wearing a slim clear case with screen protector applied, looking pristine and like-new, warm golden lighting suggesting premium feel. Clean dividing line between panels. Both shots from same 45-degree angle showing Apple logo. Phase One IQ4 150MP, 80mm f/2.8, sharp detail on scratches in top panel and clean finish in bottom panel. Editorial comparison photography, magazine quality. IMG_3301.CR3 unedited RAW.",
+      "negative_prompt": "NO text overlays, NO watermark, NO CGI, NO cartoon, NO people, NO fake screens, NO logos added",
+      "platform_params": "--ar 9:16 --style raw --s 250",
+      "notes": "Grade C Campaign — Angle: 'Grade C disappears with a case'. Before/after reveal showing scratches vanish. TikTok vertical.",
+      "keywords_targeted": ["iPhone 13 Grade C", "refurbished iPhone case", "Grade C before after"],
+      "recommended_tool": "gemini",
+      "driven_by": "customer-language: 'can't tell the difference' + engagement-log: behind-the-scenes content builds trust",
+      "campaign": "grade_c_bundle_test",
+      "campaign_angle": "case_reveal_transformation",
+      "blog_correlation": "refurbished-iphone-buying-guide-2026 — Grade C section: 'looks used, works perfectly'"
+    },
+    {
+      "id": "prompt_20260314_gc003",
+      "use_case": "product_hero",
+      "platform": "tiktok",
+      "aspect_ratio": "9:16",
+      "prompt": "iPhone 13 in Starlight color inside a slim matte black case, positioned at slight angle on warm oak wood desk surface. Phone looks pristine and premium in its case. Screen OFF with subtle reflections. Wireless charging pad in white nearby, ceramic coffee mug with latte art, single AirPods Pro case. Warm natural window light from left side creating soft shadows and golden highlights on the wood grain. Shallow depth of field with background softly blurred. Canon EOS R5, 50mm f/1.4, natural bokeh. Warm amber color grade, Kodak Portra 400 emulation, lifted shadows, fine grain. IMG_4901.CR3 unedited RAW.",
+      "negative_prompt": "NO text, NO watermark, NO CGI, NO cartoon, NO people, NO fake UI, NO harsh lighting",
+      "platform_params": "--ar 9:16 --style raw --s 250",
+      "notes": "Grade C Campaign — Angle: '$279 and it looks like this'. Shows Grade C phone IN case looking premium. Lifestyle desk setup without people. TikTok vertical.",
+      "keywords_targeted": ["iPhone 13 refurbished", "cheap refurbished phones", "budget iPhone deal"],
+      "recommended_tool": "gemini",
+      "driven_by": "engagement-log: 'Customer testimonials with specific dollar amounts outperform by 40%' + trends: Spring Supply Surge pricing",
+      "campaign": "grade_c_bundle_test",
+      "campaign_angle": "value_hero_premium_look",
+      "blog_correlation": "refurbished-iphone-buying-guide-2026 — Sweet Spot Formula: Budget under $300 = iPhone 13 Grade B"
+    },
+    {
+      "id": "prompt_20260314_gc004",
+      "use_case": "deal_urgency",
+      "platform": "tiktok",
+      "aspect_ratio": "9:16",
+      "prompt": "iPhone 14 in Blue positioned at dynamic tilt on dark slate surface. Dramatic split lighting with warm key light from left creating golden highlights on the aluminum frame, deep shadows on right. Phone wearing a transparent case showing the blue color through. Screen OFF with dark reflections. Background fades to solid black. Subtle teal accent rim light along top edge for depth separation. Tight vertical framing, phone fills 70% of frame. ARRI Alexa 35, 85mm anamorphic lens, cinematic oval bokeh in background highlights. Teal and warm amber color grade, crushed blacks, fine grain. Commercial product photography, 8K. IMG_8821.CR3.",
+      "negative_prompt": "NO text, NO watermark, NO cheap lighting, NO cartoon, NO CGI, NO fake screens, NO people",
+      "platform_params": "--ar 9:16 --style raw --s 250",
+      "notes": "Grade C Campaign — Angle: 'Spring deal urgency'. Dramatic premium feel for iPhone 14 Grade C bundle. TikTok vertical.",
+      "keywords_targeted": ["iPhone 14 deal", "refurbished iPhone 14", "spring phone deals"],
+      "recommended_tool": "gemini",
+      "driven_by": "trends.json: Spring Supply Surge 23% more inventory + daily-brief: Back Market crisis = competitor weakness",
+      "campaign": "grade_c_bundle_test",
+      "campaign_angle": "deal_urgency_premium",
+      "blog_correlation": "refurbished-iphone-buying-guide-2026 — Spring 2026 Prime Time section"
     }
   ],
   "folders": {
@@ -230,6 +294,16 @@
       "description": "Side-by-side refurbished vs new — split frame, consistent lighting",
       "prompts": [
         "prompt_20260313_005"
+      ]
+    },
+    "grade_c_campaign": {
+      "label": "Grade C Bundle Campaign — Test Batch",
+      "description": "4 product-only shots testing Grade C iPhone 14/13 bundle angles. Campaign: grade_c_bundle_test. Blog: refurbished-iphone-buying-guide-2026",
+      "prompts": [
+        "prompt_20260314_gc001",
+        "prompt_20260314_gc002",
+        "prompt_20260314_gc003",
+        "prompt_20260314_gc004"
       ]
     }
   },

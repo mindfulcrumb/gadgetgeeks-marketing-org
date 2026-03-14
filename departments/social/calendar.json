@@ -415,19 +415,67 @@
       "source_prompt_id": "real_product_photo_iphone_14",
       "driven_by": "Real product photos — iPhone 13/14 bundles from gadgetgeekspro.myshopify.com",
       "posted_via": "post_ready_tiktok.py"
+    },
+    {
+      "date": "2026-03-14",
+      "time": "13:36 UTC",
+      "content_type": "iPhone 17e vs refurbished flagship reality check",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook",
+        "linkedin"
+      ],
+      "trending_topic": "iPhone 17e vs Refurbished Flagship Direct Comparison Gaining Momentum + Reality Check Format",
+      "customer_language_used": [
+        "Why wait and pay 30% more for a number?",
+        "The math doesn't add up"
+      ],
+      "canva_design_used": "canva_20260314_095115_001",
+      "image_used": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/ccbd1225-724f-4354-be40-e6b45ff4920a/canva-blog-prompt_20260313_002-20260314_095109.png",
+      "source_prompt_id": "prompt_20260313_002",
+      "driven_by": "x-intel trending: iPhone 17e comparison + reality check format showing 155 likes, 19 replies"
+    },
+    {
+      "date": "2026-03-14",
+      "time": "13:36 UTC",
+      "content_type": "iPhone 17e budget math/refurbished flagship positioning",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook",
+        "linkedin"
+      ],
+      "trending_topic": "iPhone 17e vs Refurbished Flagship Direct Comparison + Budget Phone Math",
+      "customer_language_used": [
+        "iPhone 17e isn't the budget choice",
+        "Do the math"
+      ],
+      "canva_design_used": "canva_20260314_095120_002",
+      "image_used": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/41ac0a03-c9eb-4b07-88f8-1f939d8d66eb/canva-email-prompt_20260313_008-20260314_095115.png",
+      "source_prompt_id": "prompt_20260313_008",
+      "driven_by": "x-intel trending: iPhone 17e vs refurbished comparison gaining retweet momentum"
     }
   ],
-  "postiz_calls_used": 12,
-  "postiz_calls_remaining": 3,
-  "last_updated": "2026-03-14 13:24 UTC",
-  "notes": "Morning posting session - successfully used 2 unused Canva designs with export URLs. Both posts capitalize on trending topics from x-intel: iPhone 17e comparison and Reality Check format. Strong customer language integration.",
+  "postiz_calls_used": 14,
+  "postiz_calls_remaining": 1,
+  "last_updated": "2026-03-14 13:36 UTC",
+  "notes": "Afternoon posting session - used final 2 unused Canva designs with export URLs. Both posts capitalize on sustained iPhone 17e comparison trend from x-intel. Reality check format showing high engagement (155 likes, 19 replies). Strong budget math messaging aligns with customer language patterns.",
   "tomorrow_priorities": [
-    "Continue iPhone 17e positioning trend if momentum sustains",
+    "REQUEST NEW IMAGE GENERATION - all Canva designs now used",
+    "Continue iPhone 17e positioning if trend sustains",
     "Create video content for TikTok using behind-the-scenes quality testing",
     "Bundle deals with family/teenager targeting for spring supply surge",
-    "More reality check style content - format showing high engagement"
+    "More reality check style content - format showing high engagement",
+    "Back Market differentiation content while crisis continues"
   ],
   "platform_issues": [
+    {
+      "issue": "Need new image generation - all current designs used",
+      "impact": "No fresh visuals for future posts",
+      "action_needed": "Queue image generation request for LENS/FOCUS departments",
+      "priority": "high"
+    },
     {
       "issue": "Need more video content for TikTok",
       "impact": "Missing engagement opportunity on primary connected platform",

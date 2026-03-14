@@ -54,7 +54,9 @@
       "details": {
         "content_type": "behind_the_scenes_video",
         "topic": "Phone quality testing process - battery health verification, screen inspection, biometric testing",
-        "platforms": ["tiktok"],
+        "platforms": [
+          "tiktok"
+        ],
         "urgency": "high",
         "reasoning": "TikTok requires video content and we have 0 posts there. Behind-the-scenes content addresses 'what's the catch?' skepticism effectively based on today's performance."
       },
@@ -67,7 +69,12 @@
       "summary": "Expand Reddit presence during spring supply surge",
       "details": {
         "content_type": "reddit_community_engagement",
-        "suggested_subreddits": ["r/frugal", "r/technology", "r/BuyItForLife", "r/sustainability"],
+        "suggested_subreddits": [
+          "r/frugal",
+          "r/technology",
+          "r/BuyItForLife",
+          "r/sustainability"
+        ],
         "content_angle": "Educational posts about refurbished phone benefits, AMA about quality grading",
         "urgency": "medium",
         "reasoning": "Only 1 Reddit post today vs 10+ on other platforms. Reddit users respond well to educational content and authentic discussions."
@@ -100,7 +107,12 @@
       "department": "social_morning",
       "summary": "Connect social platforms to Postiz for multi-platform posting",
       "details": {
-        "platforms_to_connect": ["twitter", "instagram", "facebook", "linkedin"],
+        "platforms_to_connect": [
+          "twitter",
+          "instagram",
+          "facebook",
+          "linkedin"
+        ],
         "current_status": "Only TikTok connected",
         "impact": "Cannot execute multi-platform social strategy",
         "url": "app.postiz.com",
@@ -209,6 +221,24 @@
       },
       "created": "2026-03-14 07:31 UTC",
       "id": "x_intel_20260314_073252"
+    },
+    {
+      "priority": "high",
+      "reason": "Zero unused images remaining in pipeline - all export_urls and source_image_urls have been posted",
+      "content_needs": [
+        "Spring supply surge timing advantage",
+        "Behind the scenes quality grading transparency",
+        "Back Market differentiation content",
+        "iPhone 17e vs refurbished comparisons (if trend continues)",
+        "Bundle deal spotlights"
+      ],
+      "target_departments": [
+        "LENS",
+        "FOCUS",
+        "Canva"
+      ],
+      "urgency": "Need images generated today for tomorrow morning posting",
+      "id": "social_morning_20260314_133808"
     }
   ],
   "approved": [

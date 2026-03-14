@@ -1378,8 +1378,10 @@ function renderEnforcerLog() {
 // ═══════════════════════════════════════════
 function updateHUD() {
   const now = new Date();
-  document.getElementById('hud-time').textContent = pad(now.getUTCHours())+':'+pad(now.getUTCMinutes())+' UTC';
-  document.getElementById('hud-date').textContent = now.toUTCString().slice(0,16);
+  const az = new Date(now.toLocaleString('en-US', { timeZone: 'America/Phoenix' }));
+  let hh = az.getHours(); const ampm = hh >= 12 ? 'PM' : 'AM'; hh = hh % 12 || 12;
+  document.getElementById('hud-time').textContent = hh+':'+pad(az.getMinutes())+' '+ampm+' AZ';
+  document.getElementById('hud-date').textContent = az.toLocaleDateString('en-US', { weekday:'short', month:'short', day:'numeric', year:'numeric' });
   if (!masterState) return;
   let working=0, idle=0;
   for (const e of [...EMPLOYEES, X_INTEL, IMAGE_PROMPT, PROMPT_QA]) { const s=getDeptStatus(e.id); if(s==='working')working++; else if(s==='idle')idle++; }
@@ -1391,8 +1393,9 @@ function updateHUD() {
 function updateScheduleBar() {
   const tl = document.getElementById('schedule-timeline');
   const now = new Date();
-  const day = now.getUTCDay();
-  const mins = now.getUTCHours()*60 + now.getUTCMinutes();
+  const azNow = new Date(now.toLocaleString('en-US', { timeZone: 'America/Phoenix' }));
+  const day = azNow.getDay();
+  const mins = azNow.getHours()*60 + azNow.getMinutes();
   const sched = [
     {t:'05:17',m:317,l:'SEO Deep',d:[1],c:'#0f8'},{t:'06:23',m:383,l:'SEO',d:[0,1,2,3,4,5,6],c:'#0f8'},
     {t:'07:00',m:420,l:'X-Intel',d:[0,1,2,3,4,5,6],c:'#1DA1F2'},
@@ -1473,7 +1476,7 @@ function pad(n){return String(n).padStart(2,'0');}
 function lightenColor(hex,f){const r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);return`rgb(${Math.min(255,Math.floor(r*f))},${Math.min(255,Math.floor(g*f))},${Math.min(255,Math.floor(b*f))})`;}
 function darkenColor(hex,f){return lightenColor(hex,f);}
 function pickRandom(arr){return arr[Math.floor(Math.random()*arr.length)];}
-function addEnforcerLog(type,msg){const t=pad(new Date().getUTCHours())+':'+pad(new Date().getUTCMinutes());enforcerLog.push({type,msg,time:t});if(enforcerLog.length>50)enforcerLog.shift();renderEnforcerLog();}
+function addEnforcerLog(type,msg){const _az=new Date(new Date().toLocaleString('en-US',{timeZone:'America/Phoenix'}));const t=pad(_az.getHours())+':'+pad(_az.getMinutes());enforcerLog.push({type,msg,time:t});if(enforcerLog.length>50)enforcerLog.shift();renderEnforcerLog();}
 function addNotification(type,msg){const el=document.getElementById('notifications');const n=document.createElement('div');n.className=`notif ${type}`;n.textContent=msg;el.appendChild(n);setTimeout(()=>n.remove(),4000);}
 
 // ═══════════════════════════════════════════

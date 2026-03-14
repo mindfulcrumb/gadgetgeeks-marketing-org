@@ -16,7 +16,7 @@
       ],
       "recommended_tool": "midjourney",
       "generation_status": "error",
-      "generation_error": "400 Client Error: Bad Request for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=AIzaSyDfLg-9Amhq3wstjaRykHBTQNpGdSuucds"
+      "generation_error": "400 Bad Request: {\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"API key expired. Please renew the API key.\",\n    \"status\": \"INVALID_ARGUMENT\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"API_KEY_INVALID\",\n        \"domain\": \"googleapis.com"
     },
     {
       "id": "prompt_20260313_002",
@@ -56,7 +56,7 @@
       ],
       "recommended_tool": "midjourney",
       "generation_status": "error",
-      "generation_error": "400 Client Error: Bad Request for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=AIzaSyDfLg-9Amhq3wstjaRykHBTQNpGdSuucds"
+      "generation_error": "400 Bad Request: {\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"API key expired. Please renew the API key.\",\n    \"status\": \"INVALID_ARGUMENT\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"API_KEY_INVALID\",\n        \"domain\": \"googleapis.com"
     },
     {
       "id": "prompt_20260313_004",
@@ -74,7 +74,7 @@
       ],
       "recommended_tool": "midjourney",
       "generation_status": "error",
-      "generation_error": "400 Client Error: Bad Request for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=AIzaSyDfLg-9Amhq3wstjaRykHBTQNpGdSuucds"
+      "generation_error": "400 Bad Request: {\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"API key expired. Please renew the API key.\",\n    \"status\": \"INVALID_ARGUMENT\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"API_KEY_INVALID\",\n        \"domain\": \"googleapis.com"
     },
     {
       "id": "prompt_20260313_005",
@@ -93,7 +93,7 @@
       ],
       "recommended_tool": "midjourney",
       "generation_status": "error",
-      "generation_error": "400 Client Error: Bad Request for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=AIzaSyDfLg-9Amhq3wstjaRykHBTQNpGdSuucds"
+      "generation_error": "400 Bad Request: {\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"API key expired. Please renew the API key.\",\n    \"status\": \"INVALID_ARGUMENT\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"API_KEY_INVALID\",\n        \"domain\": \"googleapis.com"
     },
     {
       "id": "prompt_20260313_006",
@@ -111,7 +111,7 @@
       ],
       "recommended_tool": "midjourney",
       "generation_status": "error",
-      "generation_error": "400 Client Error: Bad Request for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=AIzaSyDfLg-9Amhq3wstjaRykHBTQNpGdSuucds"
+      "generation_error": "400 Bad Request: {\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"API key expired. Please renew the API key.\",\n    \"status\": \"INVALID_ARGUMENT\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"API_KEY_INVALID\",\n        \"domain\": \"googleapis.com"
     },
     {
       "id": "prompt_20260313_007",
@@ -129,7 +129,7 @@
       ],
       "recommended_tool": "midjourney",
       "generation_status": "error",
-      "generation_error": "400 Client Error: Bad Request for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=AIzaSyDfLg-9Amhq3wstjaRykHBTQNpGdSuucds"
+      "generation_error": "400 Bad Request: {\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"API key expired. Please renew the API key.\",\n    \"status\": \"INVALID_ARGUMENT\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"API_KEY_INVALID\",\n        \"domain\": \"googleapis.com"
     },
     {
       "id": "prompt_20260313_008",
@@ -169,7 +169,7 @@
       ],
       "recommended_tool": "midjourney",
       "generation_status": "error",
-      "generation_error": "400 Client Error: Bad Request for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=AIzaSyDfLg-9Amhq3wstjaRykHBTQNpGdSuucds"
+      "generation_error": "400 Bad Request: {\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"API key expired. Please renew the API key.\",\n    \"status\": \"INVALID_ARGUMENT\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"API_KEY_INVALID\",\n        \"domain\": \"googleapis.com"
     },
     {
       "id": "prompt_20260313_010",
@@ -188,7 +188,7 @@
       ],
       "recommended_tool": "midjourney",
       "generation_status": "error",
-      "generation_error": "400 Client Error: Bad Request for url: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=AIzaSyDfLg-9Amhq3wstjaRykHBTQNpGdSuucds"
+      "generation_error": "400 Bad Request: {\n  \"error\": {\n    \"code\": 400,\n    \"message\": \"API key expired. Please renew the API key.\",\n    \"status\": \"INVALID_ARGUMENT\",\n    \"details\": [\n      {\n        \"@type\": \"type.googleapis.com/google.rpc.ErrorInfo\",\n        \"reason\": \"API_KEY_INVALID\",\n        \"domain\": \"googleapis.com"
     }
   ],
   "folders": {

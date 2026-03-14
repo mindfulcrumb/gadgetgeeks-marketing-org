@@ -39,11 +39,10 @@ AGENTS_DIR = REPO_ROOT / "agents"
 CONFIG_DIR = REPO_ROOT / "config"
 STATE_DIR = REPO_ROOT / "state"
 
-# Model selection: opus for GM weekly report + board meetings, sonnet for everything else
+# Model selection: opus for GM weekly report, sonnet for everything else
 MODELS = {
     "default": "claude-sonnet-4-20250514",
     "gm_report": "claude-opus-4-20250514",
-    "board_meeting": "claude-opus-4-20250514",
 }
 
 MAX_TOKENS = 4096
@@ -136,8 +135,6 @@ DEPARTMENT_CONFIG = {
         "context_files": [
             "departments/social/calendar.json",
             "departments/social/platform-config.json",
-            "departments/social/image-prompts.json",
-            "departments/canva/pipeline.json",
             "departments/intel/trends.json",
             "departments/intel/customer-language.json",
             "departments/x-intel/daily-brief.json",
@@ -154,8 +151,6 @@ DEPARTMENT_CONFIG = {
             "departments/social/calendar.json",
             "departments/social/engagement-log.md",
             "departments/social/platform-config.json",
-            "departments/social/image-prompts.json",
-            "departments/canva/pipeline.json",
         ],
         "output_files": [
             "departments/social/calendar.json",
@@ -251,176 +246,6 @@ DEPARTMENT_CONFIG = {
         ],
         "output_files": [
             "departments/social/image-prompts.json",
-        ],
-    },
-    # --- Enterprise Governance (CHIEF + SENTINEL) ---
-    "standup": {
-        "agent_prompt": "agents/custom/chief-of-staff-agent.md",
-        "context_files": [
-            "state/shift-handoff.json",
-            "state/master.json",
-            "state/queue.json",
-            "state/incident-log.json",
-            "state/daily-retro.json",
-            "state/night-report.json",
-            "departments/content/blog-pipeline.json",
-            "departments/social/calendar.json",
-            "departments/seo/opportunities.json",
-            "departments/intel/trends.json",
-            "departments/x-intel/daily-brief.json",
-            "departments/canva/pipeline.json",
-            "departments/email/campaigns.json",
-            "departments/dialer/call-list.json",
-            "departments/cro/experiments.json",
-            "config/weekly-cadence.json",
-            "config/org-chart.json",
-            "config/daily-schedule.json",
-        ],
-        "output_files": [
-            "state/daily-standup.json",
-        ],
-    },
-    "retro": {
-        "agent_prompt": "agents/custom/chief-of-staff-agent.md",
-        "context_files": [
-            "state/master.json",
-            "state/queue.json",
-            "state/incident-log.json",
-            "state/daily-standup.json",
-            "state/run-history.json",
-            "departments/content/blog-pipeline.json",
-            "departments/social/calendar.json",
-            "departments/social/engagement-log.md",
-            "departments/email/campaigns.json",
-            "departments/dialer/call-list.json",
-            "departments/cro/experiments.json",
-            "config/weekly-cadence.json",
-            "config/org-chart.json",
-        ],
-        "output_files": [
-            "state/daily-retro.json",
-            "state/shift-handoff.json",
-        ],
-    },
-    "board_meeting": {
-        "agent_prompt": "agents/custom/chief-of-staff-agent.md",
-        "context_files": [
-            "state/master.json",
-            "state/queue.json",
-            "state/incident-log.json",
-            "state/run-history.json",
-            "state/daily-standup.json",
-            "departments/gm/weekly-report.md",
-            "departments/content/blog-pipeline.json",
-            "departments/content/calendar.json",
-            "departments/social/calendar.json",
-            "departments/social/engagement-log.md",
-            "departments/seo/keywords.json",
-            "departments/seo/opportunities.json",
-            "departments/intel/competitors.json",
-            "departments/intel/trends.json",
-            "departments/intel/customer-language.json",
-            "departments/x-intel/daily-brief.json",
-            "departments/email/campaigns.json",
-            "departments/email/ab-tests.json",
-            "departments/cro/experiments.json",
-            "departments/cro/metrics.json",
-            "departments/dialer/call-list.json",
-            "config/weekly-cadence.json",
-            "config/org-chart.json",
-            "config/niche.json",
-        ],
-        "output_files": [
-            "departments/gm/weekly-board-minutes.md",
-        ],
-    },
-    "night_ops": {
-        "agent_prompt": "agents/custom/night-ops-agent.md",
-        "context_files": [
-            "state/shift-handoff.json",
-            "state/master.json",
-            "state/queue.json",
-            "state/incident-log.json",
-            "state/alert-history.json",
-            "state/run-history.json",
-            "departments/content/blog-pipeline.json",
-            "config/daily-schedule.json",
-        ],
-        "output_files": [
-            "state/night-report.json",
-            "state/shift-handoff.json",
-        ],
-    },
-    # --- Blog Pipeline (SCRIBE → QUILL → PRESS) ---
-    "blog_writer": {
-        "agent_prompt": "agents/custom/blog-writer-agent.md",
-        "context_files": [
-            "departments/content/blog-pipeline.json",
-            "departments/seo/opportunities.json",
-            "departments/seo/keywords.json",
-            "departments/intel/trends.json",
-            "departments/intel/customer-language.json",
-            "departments/x-intel/daily-brief.json",
-            "state/daily-standup.json",
-            "config/niche.json",
-            "config/copy-rules.json",
-        ],
-        "output_files": [
-            "departments/content/blog-pipeline.json",
-        ],
-    },
-    "blog_qa": {
-        "agent_prompt": "agents/custom/blog-qa-agent.md",
-        "context_files": [
-            "departments/content/blog-pipeline.json",
-            "config/copy-rules.json",
-        ],
-        "output_files": [
-            "departments/content/blog-pipeline.json",
-        ],
-    },
-    "blog_publish": {
-        "agent_prompt": "agents/custom/blog-publisher-agent.md",
-        "context_files": [
-            "departments/content/blog-pipeline.json",
-            "config/niche.json",
-            "config/store-inventory.json",
-            "state/incident-log.json",
-        ],
-        "output_files": [
-            "departments/content/blog-pipeline.json",
-            "state/queue.json",
-        ],
-    },
-    # --- Google Trends Scout (TREND) ---
-    "google_trends": {
-        "agent_prompt": "agents/custom/google-trends-agent.md",
-        "context_files": [
-            "departments/intel/trends.json",
-            "departments/seo/keywords.json",
-            "departments/seo/opportunities.json",
-            "departments/trends/daily-trends.json",
-            "config/niche.json",
-        ],
-        "output_files": [
-            "departments/trends/daily-trends.json",
-            "departments/trends/trending-briefs.json",
-        ],
-    },
-    # --- Analytics Optimizer (SIGNAL) ---
-    "analytics": {
-        "agent_prompt": "agents/custom/analytics-agent.md",
-        "context_files": [
-            "departments/seo/keywords.json",
-            "departments/seo/opportunities.json",
-            "departments/content/blog-pipeline.json",
-            "departments/intel/trends.json",
-            "departments/analytics/daily-report.json",
-            "config/niche.json",
-        ],
-        "output_files": [
-            "departments/analytics/daily-report.json",
-            "departments/analytics/optimization-queue.json",
         ],
     },
 }
@@ -579,56 +404,23 @@ def parse_response(response_text: str) -> dict:
         "social_posts": [],
     }
 
-    # Save raw response for debugging (last run only)
-    try:
-        debug_path = Path(__file__).parent.parent / "state" / "last-response-debug.txt"
-        debug_path.write_text(response_text, encoding="utf-8")
-    except Exception:
-        pass
-
     # Extract JSON blocks with headers
-    # Note: use [^\S\n]* instead of \s* to avoid consuming newlines in wrong places
     json_blocks = re.findall(
-        r'```json[^\S\n]*\n[^\S\n]*//[^\S\n]*(UPDATE|QUEUE_ITEM|SOCIAL_POST):?[^\S\n]*(.*?)\n(.*?)```',
+        r'```json\s*\n\s*//\s*(UPDATE|QUEUE_ITEM|SOCIAL_POST):?\s*(.*?)\n(.*?)```',
         response_text,
         re.DOTALL,
     )
-    print(f"  DEBUG: Found {len(json_blocks)} JSON blocks in response")
 
     for block_type, header, content in json_blocks:
         content = content.strip()
-        data = None
-
-        # Fix common LLM issues: invalid JSON escapes like \$ \# \' etc.
-        fixed = re.sub(r'\\([^"\\/bfnrtu])', r'\1', content)
-
-        # Try multiple parsing strategies in order
-        for attempt_content in [content, fixed]:
-            if data is not None:
-                break
-            # Strategy 1: direct parse
-            try:
-                data = json.loads(attempt_content)
-                break
-            except json.JSONDecodeError:
-                pass
-            # Strategy 2: wrap in braces (LLMs sometimes omit outer {})
-            if not attempt_content.startswith('{'):
-                wrapped = attempt_content.rstrip().rstrip(',')
-                try:
-                    data = json.loads('{' + wrapped + '}')
-                    break
-                except json.JSONDecodeError as e:
-                    if attempt_content == fixed:
-                        print(f"  DEBUG parse attempt ({block_type}): wrap-in-braces failed: {e}")
-
-        if data is None:
+        try:
+            data = json.loads(content)
+        except json.JSONDecodeError:
             # If it's an UPDATE with non-JSON content (like markdown), treat as raw text
             if block_type == "UPDATE" and header.strip():
                 result["file_updates"].append({"path": header.strip(), "data": content})
                 continue
             print(f"WARNING: Failed to parse JSON block ({block_type}): {content[:100]}...")
-            print(f"  DEBUG: first 500 chars: {repr(content[:500])}")
             continue
 
         if block_type == "UPDATE":
@@ -685,19 +477,12 @@ def execute_actions(department: str, parsed: dict):
     # 3. Post to social media (only if Postiz API key is available)
     postiz_key = os.environ.get("POSTIZ_API_KEY")
     for post in parsed["social_posts"]:
-        # Block posts without images — Postiz needs media
-        media = post.get("media_url")
-        if not media:
-            print(f"  BLOCKED social post (no media_url): {post['content'][:60]}...")
-            print(f"  Rule: Never post without an image. Check Canva pipeline for export_url or source_image_url.")
-            continue
-
         if postiz_key:
             try:
                 post_to_social(
                     content=post["content"],
                     platforms=post.get("platforms", []),
-                    media_url=media,
+                    media_url=post.get("media_url"),
                     api_key=postiz_key,
                 )
                 print(f"  Posted to social: {post['content'][:60]}...")

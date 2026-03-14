@@ -1,350 +1,30 @@
 {
-  "prompts": [
-    {
-      "id": "prompt_20260313_001",
-      "use_case": "lifestyle",
-      "platform": "instagram",
-      "aspect_ratio": "4:5",
-      "prompt": "25-year-old Black woman with natural hair in loose twist-out, wearing cream oversized sweater, sitting cross-legged on hardwood floor of bright Brooklyn apartment. She's holding iPhone 15 Pro in Natural Titanium, screen showing simple abstract wallpaper, genuine smile as she video calls someone. Natural morning light streaming through large windows creates soft rim lighting on her face and hair. Potted fiddle leaf fig and white ceramic mug on oak coffee table in background. Canon EOS R5, 85mm f/1.2, shallow depth of field, subject sharp, creamy bokeh background. Kodak Portra 400 film emulation, warm amber grade, lifted shadows, natural skin with visible pores, subsurface scattering, eye detail with corneal catchlight. IMG_4829.CR3 untitled unedited RAW file.",
-      "negative_prompt": "NO plastic skin, mannequin, CGI, airbrushed, doll-like, cartoon, text, watermark, logo",
-      "platform_params": "--ar 4:5 --style raw --s 250",
-      "notes": "For iPhone 16 anticipation positioning content - shows current flagship in real lifestyle use",
-      "keywords_targeted": [
-        "iPhone 15 Pro",
-        "refurbished iPhone",
-        "current flagship"
-      ],
-      "recommended_tool": "midjourney",
-      "generation_status": "done",
-      "generation_error": "429 Too Many Requests: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/r",
-      "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/a10082a4-495a-4084-8f06-4760a0b50174/gg-prompt_20260313_001.png",
-      "generated_at": "2026-03-14T13:09:03.964475+00:00"
-    },
-    {
-      "id": "prompt_20260313_002",
-      "use_case": "product_hero",
-      "platform": "blog",
-      "aspect_ratio": "16:9",
-      "prompt": "iPhone 15 Pro Max in Blue Titanium positioned at slight angle on white Carrara marble surface, creating subtle reflections. Titanium frame catching studio light with precision edge highlights. Screen OFF showing curved glass reflections. Single strip light from left creates gentle gradient shadow. AirPods Pro case in white and woven Lightning cable arranged nearby, suggesting premium ecosystem. Phase One IQ4 150MP, 100mm macro f/2.8, focus stacked, product fills 60% of frame. Professional product photography, commercial studio lighting, 8K ultra-detailed. IMG_2851.CR3 unedited RAW.",
-      "negative_prompt": "NO text, watermark, logo on image, cartoon, CGI, illustration",
-      "platform_params": "--ar 16:9 --style raw --s 250",
-      "notes": "Hero shot for iPhone 16 anticipation blog post - current flagship quality",
-      "keywords_targeted": [
-        "iPhone 15 Pro Max",
-        "Blue Titanium",
-        "refurbished flagship"
-      ],
-      "recommended_tool": "midjourney",
-      "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/f1bc1edb-88ed-4233-94b0-a45f4e2ab992/gg-prompt_20260313_002.jpg",
-      "generated_at": "2026-03-13T18:39:06.478225+00:00",
-      "generation_status": "done",
-      "canva_design_status": "designed",
-      "canva_design_id": "DAHD6T8hi8A",
-      "canva_export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/ccbd1225-724f-4354-be40-e6b45ff4920a/canva-blog-prompt_20260313_002-20260314_095109.png"
-    },
-    {
-      "id": "prompt_20260313_003",
-      "use_case": "deal_urgency",
-      "platform": "facebook",
-      "aspect_ratio": "1:1",
-      "prompt": "Galaxy S24 Ultra in Titanium Gray tilted at dynamic 25-degree angle on dark concrete surface. Dramatic split lighting with strong key light from left creating deep shadows on right side. Neon teal accent light as rim light along phone's edge, suggesting exclusivity. Screen displays simple dark wallpaper with subtle gradient. Background fades to deep black with spotlight pool effect. ARRI Alexa 35, Cooke Anamorphic 50mm, anamorphic oval bokeh, subtle horizontal lens flare. Teal and orange color grade, crushed blacks, cinematic contrast, fine grain. Commercial advertising photography, 8K. IMG_8805.CR3.",
-      "negative_prompt": "NO text, watermark, logo, cartoon, CGI, cheap looking, fake UI",
-      "platform_params": "--ar 1:1 --style raw --s 250",
-      "notes": "For spring supply surge urgency messaging - dramatic premium feel",
-      "keywords_targeted": [
-        "Galaxy S24 Ultra",
-        "spring deals",
-        "supply surge"
-      ],
-      "recommended_tool": "midjourney",
-      "generation_status": "error",
-      "generation_error": "HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=120)"
-    },
-    {
-      "id": "prompt_20260313_004",
-      "use_case": "lifestyle",
-      "platform": "twitter",
-      "aspect_ratio": "9:16",
-      "prompt": "33-year-old Latino man with short beard wearing navy henley shirt, sitting at wooden cafe table with iPhone 14 Pro in Deep Purple lying flat beside his laptop. He's typing, focused expression, natural candid moment. Austin coffee shop with exposed brick walls, pendant lighting, other customers blurred in background. Golden hour afternoon light through large windows creates warm atmosphere. Ceramic coffee cup, small succulent plant, worn leather messenger bag visible. Canon EOS R5, 85mm f/1.2, shallow depth of field. Kodak Portra 400, warm amber grade, natural skin texture, fine organic grain. IMG_4833.CR3 unedited RAW.",
-      "negative_prompt": "NO plastic skin, mannequin, CGI, airbrushed, perfect skin, cartoon",
-      "platform_params": "--ar 9:16 --style raw --s 250",
-      "notes": "For bundle deal content showing phone in natural work environment",
-      "keywords_targeted": [
-        "iPhone 14 Pro",
-        "work setup",
-        "bundle deals"
-      ],
-      "recommended_tool": "midjourney",
-      "generation_status": "done",
-      "generation_error": "429 Too Many Requests: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/r",
-      "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/a87153fd-6bdc-4e02-b5f1-91fde28699b0/gg-prompt_20260313_004.png",
-      "generated_at": "2026-03-14T13:09:22.752034+00:00"
-    },
-    {
-      "id": "prompt_20260313_005",
-      "use_case": "comparison",
-      "platform": "instagram",
-      "aspect_ratio": "1:1",
-      "prompt": "Split composition showing quality grading process: Left side shows iPhone with minor scratches under magnifying glass, labeled 'Grade B'. Right side shows pristine iPhone under same lighting, labeled 'Grade A+'. Both phones on white inspection mat with GadgetGeeks quality control tools nearby - microfiber cloths, precision screwdrivers, battery testing equipment. Professional lighting from overhead panels creates even illumination. Sony A7R V, 50mm f/1.4, sharp focus across entire frame. Editorial documentation style, magazine quality. Natural color grading, high detail. IMG_3295.CR3 RAW.",
-      "negative_prompt": "NO text overlays, fake screens, cartoon tools, CGI, watermarks",
-      "platform_params": "--ar 1:1 --style raw --s 250",
-      "notes": "For behind-the-scenes quality grading process content",
-      "keywords_targeted": [
-        "quality grading",
-        "Grade A",
-        "Grade B",
-        "inspection process"
-      ],
-      "recommended_tool": "midjourney",
-      "generation_status": "done",
-      "generation_error": "429 Too Many Requests: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/r",
-      "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/0ca2425a-23d1-4d4f-a68a-8f225e1e65c7/gg-prompt_20260313_005.png",
-      "generated_at": "2026-03-14T13:17:32.794019+00:00"
-    },
-    {
-      "id": "prompt_20260313_006",
-      "use_case": "sustainability",
-      "platform": "linkedin",
-      "aspect_ratio": "4:5",
-      "prompt": "Hands of 28-year-old Asian woman with natural nails holding refurbished iPhone 13 in Pink, surrounded by eco-friendly workspace elements. Bamboo desk with potted snake plant, reusable glass water bottle, canvas tote bag, recycled paper notebook. Soft natural window light creates gentle volumetric rays through air. Phone screen shows simple nature wallpaper - forest canopy. Warm, authentic workspace with visible wood grain, natural textures. Leica M11, 50mm f/1.4, natural Leica color rendering, documentary feel. Kodak Portra 400 emulation, warm earth tones, lifted shadows. IMG_5518.CR3 unedited.",
-      "negative_prompt": "NO plastic materials, fake plants, sterile environment, CGI, mannequin hands",
-      "platform_params": "--ar 4:5 --style raw --s 250",
-      "notes": "Fresh sustainability angle focused on conscious workspace choices",
-      "keywords_targeted": [
-        "refurbished iPhone 13",
-        "sustainability",
-        "eco-conscious"
-      ],
-      "recommended_tool": "midjourney",
-      "generation_status": "done",
-      "generation_error": "429 Too Many Requests: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/r",
-      "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/960d1ed2-60fb-4013-a31e-122c4f230b3e/gg-prompt_20260313_006.png",
-      "generated_at": "2026-03-14T13:13:35.754275+00:00"
-    },
-    {
-      "id": "prompt_20260313_007",
-      "use_case": "lifestyle",
-      "platform": "facebook",
-      "aspect_ratio": "16:9",
-      "prompt": "19-year-old mixed-race college student with curly hair in oversized university hoodie, sitting on dorm room bed with textbooks scattered around. She's holding iPhone 15 in Blue, genuine concentration as she studies, phone displaying simple timer app screen. Warm desk lamp lighting mixed with natural afternoon light from window. Dorm essentials visible: water bottle, highlighters, laptop charging cable. Authentic college environment, slightly messy but organized. Canon EOS R5, 50mm f/1.8, natural depth of field. Kodak Portra 400, warm tone mapping, natural skin texture with fine detail. IMG_4841.CR3 unedited RAW.",
-      "negative_prompt": "NO perfect dorm room, plastic skin, airbrushed, fake UI, cartoon",
-      "platform_params": "--ar 16:9 --style raw --s 250",
-      "notes": "For student/young adult demographic targeting bundle deals",
-      "keywords_targeted": [
-        "iPhone 15",
-        "student",
-        "budget phone"
-      ],
-      "recommended_tool": "midjourney",
-      "generation_status": "done",
-      "generation_error": "429 Too Many Requests: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/r",
-      "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/76722081-7bef-4352-969c-d4769764f5af/gg-prompt_20260313_007.png",
-      "generated_at": "2026-03-14T13:09:50.213416+00:00"
-    },
-    {
-      "id": "prompt_20260313_008",
-      "use_case": "product_hero",
-      "platform": "email",
-      "aspect_ratio": "4:5",
-      "prompt": "iPhone 14 Pro in Space Black positioned on dark walnut wood surface with subtle wood grain texture. Screen reflecting soft studio lights, titanium frame catching precision highlights along edges. Three-point lighting setup with key light, fill light, and subtle rim light for edge separation. Single AirPods Pro case in white positioned at artistic angle nearby. Background gradates from warm brown to dark chocolate. Phase One IQ4 150MP, 100mm macro f/2.8, focus stacked for maximum detail. Professional commercial photography, museum-quality lighting. IMG_2859.CR3 unedited RAW.",
-      "negative_prompt": "NO text, watermark, logo, cartoon, CGI, fake reflections",
-      "platform_params": "--ar 4:5 --style raw --s 250",
-      "notes": "Email hero image for iPhone 14 Pro deals messaging",
-      "keywords_targeted": [
-        "iPhone 14 Pro",
-        "Space Black",
-        "premium refurbished"
-      ],
-      "recommended_tool": "midjourney",
-      "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/7ac51c3e-6123-4840-ac61-9b4c98f0a679/gg-prompt_20260313_008.jpg",
-      "generated_at": "2026-03-13T18:39:27.773489+00:00",
-      "generation_status": "done",
-      "canva_design_status": "designed",
-      "canva_design_id": "DAHD6fL87vI",
-      "canva_export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/41ac0a03-c9eb-4b07-88f8-1f939d8d66eb/canva-email-prompt_20260313_008-20260314_095115.png"
-    },
-    {
-      "id": "prompt_20260313_009",
-      "use_case": "deal_urgency",
-      "platform": "instagram",
-      "aspect_ratio": "1:1",
-      "prompt": "Samsung Galaxy S23 in Phantom Black on reflective dark surface with dramatic lighting creating strong contrast shadows. Single powerful key light from 45-degree angle with no fill light for maximum drama. Phone positioned at slight forward tilt showing screen with dark wallpaper. Background completely black with subtle spotlight effect around phone. Red accent lighting as hair light along back edge suggesting urgency. ARRI Alexa 35, 85mm anamorphic, tight framing with phone filling 80% of frame. Cinematic grade with teal shadows, warm highlights, crushed blacks. IMG_8813.CR3.",
-      "negative_prompt": "NO text, watermark, cheap lighting, cartoon, CGI, fake screens",
-      "platform_params": "--ar 1:1 --style raw --s 250",
-      "notes": "For flash sale urgency content with dramatic premium feel",
-      "keywords_targeted": [
-        "Galaxy S23",
-        "flash sale",
-        "limited time"
-      ],
-      "recommended_tool": "midjourney",
-      "generation_status": "done",
-      "generation_error": "429 Too Many Requests: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/r",
-      "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/b7f5ef76-aa4e-4a1e-a201-3bb3c97b49ed/gg-prompt_20260313_009.png",
-      "generated_at": "2026-03-14T13:15:58.988536+00:00"
-    },
-    {
-      "id": "prompt_20260313_010",
-      "use_case": "lifestyle",
-      "platform": "twitter",
-      "aspect_ratio": "4:5",
-      "prompt": "42-year-old Middle Eastern father wearing casual button-down shirt, sitting in living room armchair with 16-year-old daughter beside him. Both looking at iPhone 15 Pro Max in Natural Titanium he's holding, genuine moment of connection as they set up her 'new' phone together. Daughter has excited expression, father has satisfied smile. Warm living room with family photos on side table, soft lamp lighting mixed with natural window light. Cozy family environment, authentic interaction. Canon EOS R5, 85mm f/1.2, shallow focus on subjects, natural bokeh. Kodak Portra 400, warm family portrait grade, natural skin tones. IMG_4847.CR3 unedited RAW.",
-      "negative_prompt": "NO posed staging, plastic skin, airbrushed, mannequin, fake family dynamic",
-      "platform_params": "--ar 4:5 --style raw --s 250",
-      "notes": "For family/parent targeting - teenager phone upgrade story",
-      "keywords_targeted": [
-        "iPhone 15 Pro Max",
-        "family",
-        "teenager phone",
-        "parent purchase"
-      ],
-      "recommended_tool": "midjourney",
-      "generation_status": "error",
-      "generation_error": "HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=120)"
-    },
-    {
-      "id": "prompt_20260314_gc001",
-      "use_case": "product_hero",
-      "platform": "tiktok",
-      "aspect_ratio": "9:16",
-      "prompt": "Flat lay product arrangement on light grey concrete surface. Center: iPhone 14 in Midnight showing minor cosmetic scratches on back glass, screen pristine and OFF. Surrounding the phone in organized layout: matte black silicone phone case, tempered glass screen protector in packaging, clip-on camera lens kit with wide angle and macro attachments. Small white card reading 'Grade C Bundle' handwritten in marker. Soft overhead studio lighting, even illumination, no harsh shadows. Shot from directly above. Sony A7R V, 35mm f/2.8, sharp focus across entire frame. Clean editorial flat lay style, magazine product spread. Neutral color grading, high detail, 8K. IMG_6201.CR3 unedited RAW.",
-      "negative_prompt": "NO text overlays, NO watermark, NO CGI, NO cartoon, NO illustration, NO fake screens, NO people",
-      "platform_params": "--ar 9:16 --style raw --s 250",
-      "notes": "Grade C Bundle Campaign — Angle: 'Look what you get for $279'. Shows full bundle value stack. TikTok vertical format.",
-      "keywords_targeted": [
-        "iPhone 14 Grade C",
-        "phone bundle deal",
-        "refurbished bundle"
-      ],
-      "recommended_tool": "gemini",
-      "driven_by": "trends.json: Accessory Compatibility Paralysis + customer-language: 'basically got a $800 phone for $350'",
-      "campaign": "grade_c_bundle_test",
-      "campaign_angle": "bundle_value_stack",
-      "blog_correlation": "refurbished-iphone-buying-guide-2026 — Bundle deals save 20-30% section",
-      "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/42ffd222-d192-44e8-84a5-e8fefabf719a/gg-prompt_20260314_gc001.png",
-      "generated_at": "2026-03-14T13:17:47.758721+00:00",
-      "generation_status": "done"
-    },
-    {
-      "id": "prompt_20260314_gc002",
-      "use_case": "comparison",
-      "platform": "tiktok",
-      "aspect_ratio": "9:16",
-      "prompt": "Two-panel vertical composition on white marble surface. Top half: iPhone 13 in Pink with visible light scratches and minor scuffs on back glass and aluminum frame, no case, raw honest look under neutral lighting. Bottom half: same iPhone 13 in Pink now wearing a slim clear case with screen protector applied, looking pristine and like-new, warm golden lighting suggesting premium feel. Clean dividing line between panels. Both shots from same 45-degree angle showing Apple logo. Phase One IQ4 150MP, 80mm f/2.8, sharp detail on scratches in top panel and clean finish in bottom panel. Editorial comparison photography, magazine quality. IMG_3301.CR3 unedited RAW.",
-      "negative_prompt": "NO text overlays, NO watermark, NO CGI, NO cartoon, NO people, NO fake screens, NO logos added",
-      "platform_params": "--ar 9:16 --style raw --s 250",
-      "notes": "Grade C Campaign — Angle: 'Grade C disappears with a case'. Before/after reveal showing scratches vanish. TikTok vertical.",
-      "keywords_targeted": [
-        "iPhone 13 Grade C",
-        "refurbished iPhone case",
-        "Grade C before after"
-      ],
-      "recommended_tool": "gemini",
-      "driven_by": "customer-language: 'can't tell the difference' + engagement-log: behind-the-scenes content builds trust",
-      "campaign": "grade_c_bundle_test",
-      "campaign_angle": "case_reveal_transformation",
-      "blog_correlation": "refurbished-iphone-buying-guide-2026 — Grade C section: 'looks used, works perfectly'",
-      "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/64343a8f-c9c3-49a5-afb0-82463caa1033/gg-prompt_20260314_gc002.png",
-      "generated_at": "2026-03-14T13:18:02.807612+00:00",
-      "generation_status": "done"
-    },
-    {
-      "id": "prompt_20260314_gc003",
-      "use_case": "product_hero",
-      "platform": "tiktok",
-      "aspect_ratio": "9:16",
-      "prompt": "iPhone 13 in Starlight color inside a slim matte black case, positioned at slight angle on warm oak wood desk surface. Phone looks pristine and premium in its case. Screen OFF with subtle reflections. Wireless charging pad in white nearby, ceramic coffee mug with latte art, single AirPods Pro case. Warm natural window light from left side creating soft shadows and golden highlights on the wood grain. Shallow depth of field with background softly blurred. Canon EOS R5, 50mm f/1.4, natural bokeh. Warm amber color grade, Kodak Portra 400 emulation, lifted shadows, fine grain. IMG_4901.CR3 unedited RAW.",
-      "negative_prompt": "NO text, NO watermark, NO CGI, NO cartoon, NO people, NO fake UI, NO harsh lighting",
-      "platform_params": "--ar 9:16 --style raw --s 250",
-      "notes": "Grade C Campaign — Angle: '$279 and it looks like this'. Shows Grade C phone IN case looking premium. Lifestyle desk setup without people. TikTok vertical.",
-      "keywords_targeted": [
-        "iPhone 13 refurbished",
-        "cheap refurbished phones",
-        "budget iPhone deal"
-      ],
-      "recommended_tool": "gemini",
-      "driven_by": "engagement-log: 'Customer testimonials with specific dollar amounts outperform by 40%' + trends: Spring Supply Surge pricing",
-      "campaign": "grade_c_bundle_test",
-      "campaign_angle": "value_hero_premium_look",
-      "blog_correlation": "refurbished-iphone-buying-guide-2026 — Sweet Spot Formula: Budget under $300 = iPhone 13 Grade B",
-      "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/6124c70b-1182-435b-920c-9545a14562bd/gg-prompt_20260314_gc003.png",
-      "generated_at": "2026-03-14T13:18:15.843067+00:00",
-      "generation_status": "done"
-    },
-    {
-      "id": "prompt_20260314_gc004",
-      "use_case": "deal_urgency",
-      "platform": "tiktok",
-      "aspect_ratio": "9:16",
-      "prompt": "iPhone 14 in Blue positioned at dynamic tilt on dark slate surface. Dramatic split lighting with warm key light from left creating golden highlights on the aluminum frame, deep shadows on right. Phone wearing a transparent case showing the blue color through. Screen OFF with dark reflections. Background fades to solid black. Subtle teal accent rim light along top edge for depth separation. Tight vertical framing, phone fills 70% of frame. ARRI Alexa 35, 85mm anamorphic lens, cinematic oval bokeh in background highlights. Teal and warm amber color grade, crushed blacks, fine grain. Commercial product photography, 8K. IMG_8821.CR3.",
-      "negative_prompt": "NO text, NO watermark, NO cheap lighting, NO cartoon, NO CGI, NO fake screens, NO people",
-      "platform_params": "--ar 9:16 --style raw --s 250",
-      "notes": "Grade C Campaign — Angle: 'Spring deal urgency'. Dramatic premium feel for iPhone 14 Grade C bundle. TikTok vertical.",
-      "keywords_targeted": [
-        "iPhone 14 deal",
-        "refurbished iPhone 14",
-        "spring phone deals"
-      ],
-      "recommended_tool": "gemini",
-      "driven_by": "trends.json: Spring Supply Surge 23% more inventory + daily-brief: Back Market crisis = competitor weakness",
-      "campaign": "grade_c_bundle_test",
-      "campaign_angle": "deal_urgency_premium",
-      "blog_correlation": "refurbished-iphone-buying-guide-2026 — Spring 2026 Prime Time section",
-      "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/cf9f5291-fe94-48a4-82a8-143b458b7e77/gg-prompt_20260314_gc004.png",
-      "generated_at": "2026-03-14T13:18:37.482168+00:00",
-      "generation_status": "done"
-    }
-  ],
+  "prompts": [],
   "folders": {
     "product_hero": {
       "label": "Product Hero Shots",
       "description": "Clean product photography — Phase One IQ4, macro lens, studio lighting",
-      "prompts": [
-        "prompt_20260313_002",
-        "prompt_20260313_008"
-      ]
+      "prompts": []
     },
     "lifestyle": {
       "label": "Lifestyle / Social",
       "description": "People using phones in real settings — Canon R5, Portra 400, natural light",
-      "prompts": [
-        "prompt_20260313_001",
-        "prompt_20260313_004",
-        "prompt_20260313_007",
-        "prompt_20260313_010"
-      ]
+      "prompts": []
     },
     "sustainability": {
       "label": "Sustainability / Eco",
       "description": "Environmental messaging — Leica M11, earth tones, nature settings",
-      "prompts": [
-        "prompt_20260313_006"
-      ]
+      "prompts": []
     },
     "deal_urgency": {
       "label": "Deals / Urgency",
       "description": "Sale promotions — dynamic lighting, bold framing, energy",
-      "prompts": [
-        "prompt_20260313_003",
-        "prompt_20260313_009"
-      ]
+      "prompts": []
     },
     "comparison": {
       "label": "Before / After / Comparison",
       "description": "Side-by-side refurbished vs new — split frame, consistent lighting",
-      "prompts": [
-        "prompt_20260313_005"
-      ]
-    },
-    "grade_c_campaign": {
-      "label": "Grade C Bundle Campaign — Test Batch",
-      "description": "4 product-only shots testing Grade C iPhone 14/13 bundle angles. Campaign: grade_c_bundle_test. Blog: refurbished-iphone-buying-guide-2026",
-      "prompts": [
-        "prompt_20260314_gc001",
-        "prompt_20260314_gc002",
-        "prompt_20260314_gc003",
-        "prompt_20260314_gc004"
-      ]
+      "prompts": []
     }
   },
   "qa_summary": {
@@ -354,7 +34,7 @@
     "needs_work": 0,
     "blocked": 0
   },
-  "last_generated": "2026-03-13 17:25 UTC",
+  "last_generated": null,
   "last_reviewed": null,
-  "notes": "Generated 10 prompts for tomorrow's content supporting iPhone 16 anticipation positioning, spring supply surge, quality grading transparency, and family targeting. Avoided recently covered themes (support standards, right to repair). Phone models rotated: iPhone 15 Pro (2x), iPhone 14 Pro (2x), iPhone 15 Pro Max, iPhone 13, iPhone 15, Galaxy S24 Ultra, Galaxy S23. Aspect ratios varied: 4:5 (4x), 1:1 (3x), 16:9 (2x), 9:16 (1x). Diverse people representation across all lifestyle shots."
+  "notes": "LENS generates prompts into folders by use_case. FOCUS reviews and scores them. Prompts with EXCELLENT/GOOD rating go to production."
 }

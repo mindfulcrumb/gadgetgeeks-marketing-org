@@ -1,222 +1,249 @@
-## X Intelligence Analysis - March 14, 2026 07:31 UTC
+## Analysis & Daily Image Generation
 
-### Key Signals Detected
+Looking at the calendar and trends, I need to generate **10 fresh image prompts** for today (March 14, 2026) that support the trending content opportunities:
 
-**CRITICAL TREND CONTINUATION**: @mantech_ug's "iPhone 17e isn't worth it, buy refurbished iPhone 15 ProMax instead" is gaining MORE traction - now getting retweeted by the same account, showing this message has staying power. This direct comparison between rumored new entry model vs proven refurbished flagship is exactly the positioning we need.
+1. **iPhone 17e vs iPhone 15 Pro comparison** (gaining momentum)
+2. **Spring supply surge messaging** (23% inventory increase)
+3. **Reality check honest content format** (trending engagement)
+4. **Tamper-evident packaging/security** (Back Market crisis)
+5. **Family/teenager targeting** (spring upgrade season)
 
-**BACK MARKET CRISIS ESCALATION**: The support disaster is now multi-continental:
-- @_daniVLC_ (Spain): Received manipulated package with broken security seals, can't reach support via chat
-- @OneOptimusPrice (UK): STILL fighting "empty box" accusation after a month, has Royal Mail proof showing 1kg weight, account locked
-- @YungRoyalt42789: Address typo causing week+ delays, policy prevents postal service from confirming address changes
-- @eve04293447: Can't even get response about refund destination
+**Avoiding recent themes from yesterday:** Support standards, right to repair, accessory compatibility (covered extensively March 13)
 
-**NEW SIGNAL - REFURBISHED REALITY CHECK CONTENT**: @GyanTherapy posted "I Bought Brand Certified Refurbished Phone - Reality Check!" getting 155 likes, 4 RTs, 19 replies. This shows high engagement for honest refurbished experiences.
+**Phone model rotation:** Will vary across iPhone 15 Pro, iPhone 14, Galaxy S24, Pixel 9, iPhone 16 Pro, Galaxy S23, iPhone 15, iPhone 13 to avoid repetition.
 
-**SUSTAINABILITY MOMENTUM SUSTAINED**: Right to repair discussions gaining traction (@sumanth_thatti getting engagement on engineering ethics), e-waste conversations continuing across multiple threads.
+**Aspect ratio targets:** 5+ vertical (9:16) for TikTok-first, rest distributed 1:1, 4:5, 16:9.
 
-**PRICE COMPARISON CONVERSATIONS**: Multiple mentions of "cheap iPhone" in various contexts, showing ongoing price sensitivity and comparison shopping behavior.
+**People representation:** Describing style, clothing, hairstyle, accessories only — no age/race/ethnicity specifics to avoid AI safety blocks.
 
-### Immediate Opportunities
+---
 
-1. **TODAY URGENCY**: iPhone 17e vs iPhone 15 Pro refurbished comparison content - trend has momentum and retweet activity
-2. **TODAY URGENCY**: Package security standards content - Back Market's broken seals creating perfect contrast opportunity
-3. **THIS WEEK**: "Reality Check" style content capitalizing on @GyanTherapy's engagement format
-
-### Competitor Positioning
-
-Back Market's reputation continues free-falling across multiple countries with consistent themes: package tampering, support unavailability, dispute resolution failures. This creates massive differentiation opportunity on trust, security, and customer service standards.
+## 10 New Image Prompts for March 14, 2026
 
 ```json
-// UPDATE: departments/x-intel/daily-brief.json
+// UPDATE: departments/social/image-prompts.json
 {
-  "date": "2026-03-14",
-  "trending_topics": [
+  "prompts": [
     {
-      "topic": "iPhone 17e vs Refurbished Flagship Direct Comparison Gaining Momentum",
-      "summary": "@mantech_ug's 'iPhone 17e isn't worth it, buy refurbished iPhone 15 ProMax instead' now getting retweeted by same account, showing message has staying power beyond single viral moment",
-      "relevance": "high",
-      "opportunity": "Strike while trend is hot - create definitive iPhone 17e vs iPhone 15 Pro refurbished comparison with exact numbers",
-      "for_departments": ["content", "social", "email"]
+      "id": "prompt_20260314_001",
+      "use_case": "comparison",
+      "platform": "instagram",
+      "aspect_ratio": "9:16",
+      "prompt": "Split screen comparison: Left side shows iPhone 17e concept render (blurred, hypothetical) with '6+ months away' text overlay area. Right side shows pristine iPhone 15 Pro in Natural Titanium on white marble surface, clearly real and available now. Lighting creates stark contrast — left side cooler blue tones suggesting future/uncertainty, right side warm golden light suggesting immediate availability. Both phones positioned at identical angles for fair comparison. Sony A7R V, 50mm f/1.4, sharp focus on right phone, left phone slightly out of focus. Editorial comparison photography, magazine quality. Kodak Portra 400 for right side warmth. IMG_3301.CR3 RAW.",
+      "negative_prompt": "NO fake UI screens, cartoon renders, text overlays in image, watermarks, logos",
+      "platform_params": "--ar 9:16 --style raw --s 250",
+      "notes": "For trending iPhone 17e vs current flagship comparison content",
+      "keywords_targeted": [
+        "iPhone 17e comparison",
+        "iPhone 15 Pro",
+        "available now vs waiting"
+      ],
+      "recommended_tool": "midjourney"
     },
     {
-      "topic": "Refurbished Reality Check Content Format Trending",
-      "summary": "@GyanTherapy's 'I Bought Brand Certified Refurbished Phone - Reality Check!' getting 155 likes, 4 RTs, 19 replies - honest experience content performing well",
-      "relevance": "high",
-      "opportunity": "Create our own 'Reality Check' style content - honest, detailed refurbished experience stories",
-      "for_departments": ["content", "social"]
+      "id": "prompt_20260314_002",
+      "use_case": "lifestyle",
+      "platform": "tiktok",
+      "aspect_ratio": "9:16",
+      "prompt": "Person with shoulder-length wavy hair wearing olive green oversized blazer, sitting at bright cafe window counter. They're holding iPhone 14 in Purple, genuine surprise expression as they compare their phone to friend's identical model off-camera. Natural morning light streaming through large windows creates soft fill lighting. Coffee cup, croissant, small potted succulent on reclaimed wood counter. Austin coffee shop vibe with exposed brick visible. Canon EOS R5, 85mm f/1.2, shallow depth focusing on subject, creamy background bokeh. Natural skin texture with fine pores, subsurface scattering, corneal catchlight in eyes. Kodak Portra 400, warm amber grade, lifted shadows. IMG_4851.CR3 unedited RAW.",
+      "negative_prompt": "NO plastic skin, mannequin, CGI, airbrushed, perfect skin, cartoon, posed staging",
+      "platform_params": "--ar 9:16 --style raw --s 250",
+      "notes": "For 'reality check' style content - genuine refurbished experience",
+      "keywords_targeted": [
+        "iPhone 14",
+        "refurbished reality",
+        "can't tell difference"
+      ],
+      "recommended_tool": "midjourney"
     },
     {
-      "topic": "Right to Repair Engineering Ethics Discussions",
-      "summary": "@sumanth_thatti discussing right to repair as ethical engineering topic, getting engagement on corporate interests vs consumer duty",
-      "relevance": "medium",
-      "opportunity": "Position refurbished as ethical choice supporting right to repair principles",
-      "for_departments": ["content", "social"]
+      "id": "prompt_20260314_003",
+      "use_case": "product_hero",
+      "platform": "email",
+      "aspect_ratio": "4:5",
+      "prompt": "Galaxy S24 Ultra in Titanium Gray positioned on brushed aluminum surface with subtle geometric patterns etched in background. Screen OFF showing curved edge reflections. Camera module catching precise rim lighting to highlight premium build quality. Single softbox from 45-degree angle creates gentle gradient shadows. Minimal props: single AirPods Pro case in background suggesting ecosystem flexibility. Phase One IQ4 150MP, 100mm macro f/2.8, focus stacked for maximum detail across entire phone. Professional product photography, commercial studio lighting, 8K ultra-detailed. IMG_2863.CR3 unedited RAW.",
+      "negative_prompt": "NO text, watermark, logo on image, cartoon, CGI, illustration, fake reflections",
+      "platform_params": "--ar 4:5 --style raw --s 250",
+      "notes": "Hero shot for Galaxy S24 Ultra spring supply surge messaging",
+      "keywords_targeted": [
+        "Galaxy S24 Ultra",
+        "Titanium Gray",
+        "spring inventory"
+      ],
+      "recommended_tool": "midjourney"
+    },
+    {
+      "id": "prompt_20260314_004",
+      "use_case": "sustainability",
+      "platform": "linkedin",
+      "aspect_ratio": "1:1",
+      "prompt": "Hands with simple silver ring holding Pixel 9 Pro in Obsidian, surrounded by eco-conscious workspace elements. Bamboo standing desk with monstera plant, glass water bottle with wooden cap, hemp notebook, wooden pen holder. Phone screen displays nature wallpaper - mountain lake reflection. Soft natural window light creates volumetric dust particles, golden hour warmth. Authentic sustainable workspace with visible wood grain textures, organic materials. Leica M11, 50mm f/1.4, natural Leica color rendering, documentary authenticity. Kodak Portra 400 emulation, earth tone color grading. IMG_5522.CR3 unedited.",
+      "negative_prompt": "NO plastic materials, fake plants, sterile environment, CGI, mannequin hands, corporate staging",
+      "platform_params": "--ar 1:1 --style raw --s 250",
+      "notes": "Sustainability angle for eco-conscious professional audience",
+      "keywords_targeted": [
+        "Pixel 9 Pro",
+        "eco-conscious",
+        "sustainable tech"
+      ],
+      "recommended_tool": "midjourney"
+    },
+    {
+      "id": "prompt_20260314_005",
+      "use_case": "lifestyle",
+      "platform": "instagram",
+      "aspect_ratio": "9:16",
+      "prompt": "Parent with graying temples wearing navy cardigan, sitting on couch with teenage child (curly hair, band t-shirt, ripped jeans). Both looking at iPhone 16 Pro in Desert Titanium, parent pointing at screen showing simple settings menu, teaching moment about phone features. Teenager has focused but excited expression. Cozy living room with family photos on side table, warm lamp lighting mixed with afternoon window light. Dog sleeping on rug in background. Authentic family interaction, not staged. Canon EOS R5, 85mm f/1.2, shallow focus on subjects. Natural skin texture, fine facial detail. Kodak Portra 400, warm family portrait grade. IMG_4855.CR3 unedited RAW.",
+      "negative_prompt": "NO posed staging, plastic skin, airbrushed, mannequin, fake family dynamic, perfect lighting",
+      "platform_params": "--ar 9:16 --style raw --s 250",
+      "notes": "Family targeting - spring upgrade season for teenagers",
+      "keywords_targeted": [
+        "iPhone 16 Pro",
+        "family upgrade",
+        "teenager phone"
+      ],
+      "recommended_tool": "midjourney"
+    },
+    {
+      "id": "prompt_20260314_006",
+      "use_case": "deal_urgency",
+      "platform": "facebook",
+      "aspect_ratio": "1:1",
+      "prompt": "Galaxy S23 in Cream positioned at dramatic 30-degree tilt on dark concrete surface. Strong key light from upper left creates deep dramatic shadows on right side, suggesting exclusivity and urgency. Neon green accent light as rim light along phone's left edge matching brand colors. Screen shows dark abstract wallpaper with subtle gradient. Background fades to complete black with focused spotlight pool around phone. ARRI Alexa 35, Cooke Anamorphic 75mm, anamorphic oval bokeh, subtle horizontal lens flare. Cinematic teal and orange color grade, crushed blacks, fine grain texture. IMG_8821.CR3.",
+      "negative_prompt": "NO text, watermark, logo, cartoon, CGI, cheap lighting effects, fake screens",
+      "platform_params": "--ar 1:1 --style raw --s 250",
+      "notes": "Spring supply surge urgency - limited time premium inventory",
+      "keywords_targeted": [
+        "Galaxy S23",
+        "spring deals",
+        "limited inventory"
+      ],
+      "recommended_tool": "midjourney"
+    },
+    {
+      "id": "prompt_20260314_007",
+      "use_case": "lifestyle",
+      "platform": "twitter",
+      "aspect_ratio": "9:16",
+      "prompt": "Person with braids wearing denim jacket over white t-shirt, sitting at outdoor picnic table with iPhone 15 in Blue lying flat beside open laptop. They're typing, focused concentration, natural candid work moment. Portland food truck pod background with other customers blurred, colorful umbrellas overhead. Golden hour late afternoon light creates warm rim lighting on hair and shoulders. Craft beer in mason jar, succulent centerpiece, laptop stickers visible. Canon EOS R5, 85mm f/1.2, shallow depth of field. Natural skin with visible texture, subsurface scattering. Kodak Portra 400, warm golden grade, organic grain. IMG_4859.CR3 unedited RAW.",
+      "negative_prompt": "NO plastic skin, mannequin, CGI, airbrushed, perfect skin, cartoon, staged poses",
+      "platform_params": "--ar 9:16 --style raw --s 250",
+      "notes": "Authentic work-life usage for young professional demographic",
+      "keywords_targeted": [
+        "iPhone 15",
+        "mobile productivity",
+        "lifestyle integration"
+      ],
+      "recommended_tool": "midjourney"
+    },
+    {
+      "id": "prompt_20260314_008",
+      "use_case": "comparison",
+      "platform": "blog",
+      "aspect_ratio": "16:9",
+      "prompt": "Security packaging comparison: Left side shows damaged cardboard box with broken security tape, contents scattered. Right side shows pristine tamper-evident packaging with multiple security seals intact, phone safely nestled in custom foam. Both on same white inspection table under even lighting. Quality control checklist clipboard, inspection tools visible. Professional documentation photography showing clear contrast between secure vs compromised packaging. Sony A7R V, 50mm f/1.4, even sharp focus across frame. Editorial style, neutral color grading. IMG_3307.CR3 RAW.",
+      "negative_prompt": "NO fake brands, cartoon packaging, CGI, text overlays in image, watermarks",
+      "platform_params": "--ar 16:9 --style raw --s 250",
+      "notes": "For tamper-evident packaging content addressing Back Market security issues",
+      "keywords_targeted": [
+        "secure packaging",
+        "tamper-evident",
+        "quality control"
+      ],
+      "recommended_tool": "midjourney"
+    },
+    {
+      "id": "prompt_20260314_009",
+      "use_case": "product_hero",
+      "platform": "instagram",
+      "aspect_ratio": "4:5",
+      "prompt": "iPhone 13 in Midnight positioned on white Carrara marble with subtle natural veining. Screen reflecting soft studio lights, aluminum frame catching precision edge highlights. Three-point lighting with key, fill, and subtle rim light for perfect product separation. Single Lightning cable coiled artistically nearby, emphasizing proven connectivity. Background gradually fades from white to light gray. Phase One IQ4 150MP, 100mm macro f/2.8, focus stacked for maximum sharpness. Professional commercial photography, museum lighting quality. IMG_2867.CR3 unedited RAW.",
+      "negative_prompt": "NO text, watermark, logo, cartoon, CGI, fake reflections, illustration",
+      "platform_params": "--ar 4:5 --style raw --s 250",
+      "notes": "Clean product shot for iPhone 13 value positioning content",
+      "keywords_targeted": [
+        "iPhone 13",
+        "Lightning connector",
+        "proven technology"
+      ],
+      "recommended_tool": "midjourney"
+    },
+    {
+      "id": "prompt_20260314_010",
+      "use_case": "lifestyle",
+      "platform": "facebook",
+      "aspect_ratio": "1:1",
+      "prompt": "Person with short silver hair wearing burgundy sweater, sitting in university library study carrel with textbooks and notebooks spread out. They're holding iPhone 14 Pro in Space Black, genuine smile while video calling (screen shows simple dark wallpaper). Warm desk lamp lighting mixed with natural library lighting from tall windows. Other students visible studying in background, authentic academic environment. Stack of philosophy books, highlighters, reusable coffee cup visible. Canon EOS R5, 85mm f/1.2, natural depth of field focusing on subject. Natural skin texture with age lines, authentic human detail. Kodak Portra 400, warm educational environment grade. IMG_4863.CR3 unedited RAW.",
+      "negative_prompt": "NO plastic skin, mannequin, CGI, airbrushed, fake academic setting, posed staging",
+      "platform_params": "--ar 1:1 --style raw --s 250",
+      "notes": "Mature student/continuing education demographic for budget-conscious messaging",
+      "keywords_targeted": [
+        "iPhone 14 Pro",
+        "student budget",
+        "continuing education"
+      ],
+      "recommended_tool": "midjourney"
     }
   ],
-  "competitor_signals": [
-    {
-      "competitor": "Back Market",
-      "signal": "Multi-national support crisis now includes Spain - customer received manipulated package with broken security seals, unable to reach chat support",
-      "source": "@_daniVLC_",
-      "action_needed": "Immediate content about tamper-evident packaging and chat support accessibility"
+  "folders": {
+    "product_hero": {
+      "label": "Product Hero Shots",
+      "description": "Clean product photography — Phase One IQ4, macro lens, studio lighting",
+      "prompts": [
+        "prompt_20260313_002",
+        "prompt_20260313_008",
+        "prompt_20260314_003",
+        "prompt_20260314_009"
+      ]
     },
-    {
-      "competitor": "Back Market", 
-      "signal": "UK customer @OneOptimusPrice STILL fighting 'empty box' accusation after month+ with Royal Mail proof showing 1kg package weight, account now locked",
-      "source": "@OneOptimusPrice - crisis continuation",
-      "action_needed": "Content about fair dispute resolution and evidence-based investigations"
+    "lifestyle": {
+      "label": "Lifestyle / Social",
+      "description": "People using phones in real settings — Canon R5, Portra 400, natural light",
+      "prompts": [
+        "prompt_20260313_001",
+        "prompt_20260313_004",
+        "prompt_20260313_007",
+        "prompt_20260313_010",
+        "prompt_20260314_002",
+        "prompt_20260314_005",
+        "prompt_20260314_007",
+        "prompt_20260314_010"
+      ]
     },
-    {
-      "competitor": "Back Market",
-      "signal": "US customer @YungRoyalt42789 experiencing week+ delays due to address typo, company policy prevents postal service from confirming address changes",
-      "source": "@YungRoyalt42789",
-      "action_needed": "Highlight our flexible address correction and proactive communication"
+    "sustainability": {
+      "label": "Sustainability / Eco",
+      "description": "Environmental messaging — Leica M11, earth tones, nature settings",
+      "prompts": [
+        "prompt_20260313_006",
+        "prompt_20260314_004"
+      ]
     },
-    {
-      "competitor": "Back Market",
-      "signal": "Customer @eve04293447 can't get response about where refund is going - complete communication breakdown",
-      "source": "@eve04293447",
-      "action_needed": "Content about transparent refund process and communication"
+    "deal_urgency": {
+      "label": "Deals / Urgency",
+      "description": "Sale promotions — dynamic lighting, bold framing, energy",
+      "prompts": [
+        "prompt_20260313_003",
+        "prompt_20260313_009",
+        "prompt_20260314_006"
+      ]
+    },
+    "comparison": {
+      "label": "Before / After / Comparison",
+      "description": "Side-by-side refurbished vs new — split frame, consistent lighting",
+      "prompts": [
+        "prompt_20260313_005",
+        "prompt_20260314_001",
+        "prompt_20260314_008"
+      ]
     }
-  ],
-  "customer_voices": [
-    {
-      "quote_or_paraphrase": "iPhone 17e isn't worth it, buy refurbished iPhone 15 ProMax instead (getting retweeted for emphasis)",
-      "sentiment": "positive",
-      "pain_point_or_desire": "Wants flagship features without paying premium for latest model number, sees refurbished as smart choice",
-      "source_context": "@mantech_ug - gaining retweet momentum showing message resonance"
-    },
-    {
-      "quote_or_paraphrase": "iPhone reacondicionado ha venido con el paquete manipulado y el precinto de seguridad roto y abierto, es imposible hablar con vosotros",
-      "sentiment": "negative",
-      "pain_point_or_desire": "Expects secure packaging with intact seals, needs accessible customer support when problems arise",
-      "source_context": "@_daniVLC_ - Back Market Spain customer with tampered package"
-    },
-    {
-      "quote_or_paraphrase": "I Bought Brand Certified Refurbished Phone - Reality Check!",
-      "sentiment": "neutral",
-      "pain_point_or_desire": "Wants honest, detailed experience sharing about refurbished phone reality vs expectations",
-      "source_context": "@GyanTherapy - 155 likes, 19 replies showing high engagement for honest refurb experiences"
-    },
-    {
-      "quote_or_paraphrase": "The security team have said I shipped an empty box but the Royal Mail receipt shows a 1000g item weight, now nobody will respond and my account is locked",
-      "sentiment": "negative", 
-      "pain_point_or_desire": "Wants fair dispute resolution based on evidence, not automatic customer blame",
-      "source_context": "@OneOptimusPrice - month-long Back Market dispute with proof"
-    }
-  ],
-  "content_opportunities": [
-    {
-      "topic": "iPhone 17e Rumors vs iPhone 15 Pro Refurbished: The Smart Money Says...",
-      "why_now": "Direct comparison trending and gaining retweet momentum, perfect timing to capitalize",
-      "suggested_angle": "iPhone 17e rumored at $X vs iPhone 15 Pro refurbished with identical core features for 40% less - why wait and pay more for a number?",
-      "format": "blog",
-      "urgency": "today"
-    },
-    {
-      "topic": "Tamper-Evident Packaging: What Real Security Looks Like",
-      "why_now": "Back Market customer received manipulated package with broken security seals in Spain",
-      "suggested_angle": "Our multi-layer security: tamper-evident packaging, integrity seals, photo documentation, chain of custody",
-      "format": "social",
-      "urgency": "today"
-    },
-    {
-      "topic": "Refurbished Phone Reality Check: What Actually Happens When You Order",
-      "why_now": "@GyanTherapy's reality check format getting 155 likes, 19 replies - high engagement for honest experiences",
-      "suggested_angle": "Step-by-step honest breakdown of our refurbishment process, what to expect, real customer photos",
-      "format": "blog",
-      "urgency": "this_week"
-    },
-    {
-      "topic": "Address Typo? No Problem. Here's How We Handle It",
-      "why_now": "Back Market customer experiencing week+ delays due to inflexible address policies",
-      "suggested_angle": "Our address verification process, easy corrections, proactive communication when issues arise",
-      "format": "social",
-      "urgency": "today"
-    }
-  ],
-  "viral_formats": [
-    {
-      "format": "Reality Check style honest breakdown with engagement numbers",
-      "example": "'I Bought Brand Certified Refurbished Phone - Reality Check!' - 155 likes, 4 RTs, 19 replies",
-      "how_to_adapt": "Thread format: 'Refurbished iPhone Reality Check: Here's What Actually Happened' with step-by-step honest experience"
-    },
-    {
-      "format": "Direct model comparison with 'isn't worth it' framing",
-      "example": "'iPhone 17e isn't worth it, buy refurbished iPhone 15 ProMax instead' getting retweets",
-      "how_to_adapt": "Tweet format: 'iPhone 17e at $X isn't worth it. iPhone 15 Pro refurbished at $Y gives you 99% of the experience for 60% of the price.'"
-    }
-  ],
-  "engagement_opportunities": [
-    {
-      "thread_or_post": "@mantech_ug's retweeted iPhone 17e vs refurbished comparison (multiple RTs showing momentum)",
-      "suggested_reply_angle": "Supportive validation: 'This is exactly the smart thinking that saves hundreds. iPhone 15 Pro refurbished = flagship performance without the new model tax.'",
-      "why": "Reinforces trending sentiment, positions us as agreeing with smart consumer choice"
-    },
-    {
-      "thread_or_post": "@GyanTherapy's refurbished reality check getting 155 likes, 19 replies",
-      "suggested_reply_angle": "Appreciate honesty: 'Love the honest breakdown! Reality checks like this help buyers make informed decisions instead of guessing.'",
-      "why": "High engagement thread, positions us as appreciating transparency and honest experiences"
-    },
-    {
-      "thread_or_post": "@_daniVLC_'s Back Market package tampering complaint (1 like, 1 RT, 4 replies)",
-      "suggested_reply_angle": "Sympathetic response: 'Tampered packaging is completely unacceptable - especially for refurbished where trust is everything. Security seals should be standard.'",
-      "why": "Shows we understand trust requirements and have higher standards"
-    }
-  ],
-  "industry_news": [
-    {
-      "headline": "iPhone 17e rumors creating sustained customer preference for proven refurbished flagships over new entry models",
-      "impact_on_us": "Perfect long-term positioning opportunity - trend has staying power beyond single viral moment",
-      "action": "Create definitive comparison content series positioning refurbished flagships vs new entry models"
-    },
-    {
-      "headline": "Back Market reputation crisis now spanning multiple continents with consistent patterns: security, support, dispute resolution failures",
-      "impact_on_us": "Massive sustained differentiation opportunity on trust, security, and customer service",
-      "action": "Aggressive content highlighting our security standards, support accessibility, and fair dispute resolution"
-    },
-    {
-      "headline": "Honest refurbished experience content showing high engagement - customers want reality over marketing",
-      "impact_on_us": "Opportunity to lead with transparency and honest experience sharing vs competitor marketing speak",
-      "action": "Develop reality check style content showing actual refurbishment process and real experiences"
-    },
-    {
-      "headline": "Right to repair discussions gaining momentum in engineering ethics conversations",
-      "impact_on_us": "Opportunity to position refurbished as aligned with ethical engineering and right to repair values",
-      "action": "Content connecting refurbished purchases to broader right to repair movement"
-    }
-  ]
-}
-```
-
-```json
-// QUEUE_ITEM
-{
-  "type": "social_post",
-  "department": "x_intel",
-  "summary": "iPhone 17e vs iPhone 15 Pro refurbished comparison post capitalizing on trending momentum",
-  "details": {
-    "content": "iPhone 17e rumors at $699+ aren't worth it.\n\niPhone 15 Pro refurbished at $429?\n\nSame A17 Pro chip ✅\nSame Pro cameras ✅ \nSame build quality ✅\nSame iOS updates ✅\n\n99% of the experience.\n60% of the price.\n\nWhy pay the new model tax?",
-    "platforms": ["twitter"],
-    "timing": "immediate - trend has momentum",
-    "engagement_target": "@mantech_ug thread showing sustained interest"
   },
-  "created": "2026-03-14 07:31 UTC"
-}
-```
-
-```json
-// QUEUE_ITEM  
-{
-  "type": "social_post",
-  "department": "x_intel", 
-  "summary": "Package security standards post highlighting Back Market tampering issues",
-  "details": {
-    "content": "Refurbished phone arrived with broken security seals? 🚨\n\nThat's unacceptable.\n\nOur packaging standards:\n✅ Tamper-evident seals\n✅ Multi-layer security wrapping  \n✅ Photo documentation at every step\n✅ Chain of custody tracking\n\nTrust shouldn't be optional in refurbished.",
-    "platforms": ["twitter"],
-    "timing": "immediate - Back Market crisis ongoing",
-    "reference": "@_daniVLC_ Spain customer complaint"
+  "qa_summary": {
+    "total_reviewed": 0,
+    "excellent": 0,
+    "good": 0,
+    "needs_work": 0,
+    "blocked": 0
   },
-  "created": "2026-03-14 07:31 UTC"
-}
-```
+  "last_generated": "2026-03-14 08:52 UTC",
+  "last_reviewed": null,
+  "notes": "Generated 10 fresh

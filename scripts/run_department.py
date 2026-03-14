@@ -257,6 +257,53 @@ DEPARTMENT_CONFIG = {
             "departments/social/lens-focus-feedback.json",
         ],
     },
+    "blog_writer": {
+        "agent_prompt": "agents/custom/blog-writer-agent.md",
+        "context_files": [
+            "departments/content/blog-pipeline.json",
+            "departments/intel/customer-language.json",
+            "departments/intel/trends.json",
+            "departments/x-intel/daily-brief.json",
+            "departments/seo/keywords.json",
+            "config/niche.json",
+            "config/copy-rules.json",
+        ],
+        "output_files": [
+            "departments/content/blog-pipeline.json",
+        ],
+    },
+    "blog_qa": {
+        "agent_prompt": "agents/custom/blog-qa-agent.md",
+        "context_files": [
+            "departments/content/blog-pipeline.json",
+            "config/copy-rules.json",
+        ],
+        "output_files": [
+            "departments/content/blog-pipeline.json",
+        ],
+    },
+    "blog_publish": {
+        "agent_prompt": "agents/custom/blog-publisher-agent.md",
+        "context_files": [
+            "departments/content/blog-pipeline.json",
+            "departments/social/image-prompts.json",
+            "state/queue.json",
+        ],
+        "output_files": [
+            "departments/content/blog-pipeline.json",
+            "state/queue.json",
+        ],
+    },
+    "dialer": {
+        "agent_prompt": "agents/custom/dialer-agent.md",
+        "context_files": [
+            "state/queue.json",
+            "config/niche.json",
+        ],
+        "output_files": [
+            "state/queue.json",
+        ],
+    },
 }
 
 

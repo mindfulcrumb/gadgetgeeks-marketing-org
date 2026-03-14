@@ -348,6 +348,66 @@ const PROMPT_QA = {
   dataFlow:{reads:['departments/social/image-prompts.json','agents/custom/image-prompting-agent.md'],writes:['departments/social/image-prompts.json'],feeds:['Social','Content','Email']},
 };
 
+const BLOG_WRITER = {
+  id:'blog_writer', name:'SCRIBE', fullName:'Scribe Delacroix',
+  title:'Blog Writer', dept:'Content Division',
+  color:'#10b981', hair:'#3a2a1a', skin:'#f0c8a0', pants:'#1a3a2a', shoes:'#0a1a0a',
+  schedule:'Daily 12:00 UTC', cronDays:[0,1,2,3,4,5,6], cronH:12, cronM:0,
+  stateKeys:['blog_writer'], deskTile:{x:23,y:5}, roomId:'content',
+  tasks:['Read intel trends, SEO keywords, customer language','Write 1200-2000 word SEO-optimized blog posts','Internal links to products (iPhone, Galaxy, Pixel)','Structure: H1, meta desc, H2/H3, FAQ schema','Match brand voice — confident, anti-corporate','Pass blog to QUILL for anti-AI review'],
+  rules:['Every blog targets specific SEO keywords','Use real customer language from intel','Specific numbers beat vague claims','One clear CTA per post','NO AI-generated copy tells','3+ internal product links minimum'],
+  apis:[{name:'Claude API',icon:'🧠',color:'#d97706'}],
+  dataFlow:{reads:['departments/intel/trends.json','departments/seo/keywords.json','departments/x-intel/daily-brief.json','departments/intel/customer-language.json'],writes:['departments/content/blog-pipeline.json'],feeds:['QUILL (QA)','PRESS (publish)']},
+};
+
+const BLOG_QA = {
+  id:'blog_qa', name:'QUILL QA', fullName:'Quill Okafor',
+  title:'Blog Copy Police', dept:'Content Division',
+  color:'#ef4444', hair:'#1a1a1a', skin:'#8d5524', pants:'#2a1a1a', shoes:'#0a0505',
+  schedule:'Daily 13:00 UTC', cronDays:[0,1,2,3,4,5,6], cronH:13, cronM:0,
+  stateKeys:['blog_qa'], deskTile:{x:25,y:5}, roomId:'content',
+  tasks:['Run 23-check anti-AI audit on every blog draft','Check banned words (60+) and phrases (40+)','Verify sentence rhythm variance & burstiness','Ensure brand voice — not corporate, not AI','Check SEO: title tags, meta desc, keyword density','Approve, reject, or block with specific fixes'],
+  rules:['23 checks on EVERY blog — no exceptions','Zero banned words or it fails','Sentence length must vary 5-25 words','Must have contractions and conversational tone','EXCELLENT ships, NEEDS WORK returns to SCRIBE','BLOCKED = full rewrite required'],
+  apis:[{name:'Claude API',icon:'🧠',color:'#d97706'}],
+  dataFlow:{reads:['departments/content/blog-pipeline.json','config/copy-rules.json'],writes:['departments/content/blog-pipeline.json'],feeds:['PRESS (publish)','SCRIBE (fixes)']},
+};
+
+const BLOG_PUBLISHER = {
+  id:'blog_publish', name:'PRESS', fullName:'Press Hawthorne',
+  title:'Blog Publisher', dept:'Publishing Division',
+  color:'#6366f1', hair:'#2a1a3a', skin:'#e0c8a0', pants:'#1a1a3a', shoes:'#0a0a1a',
+  schedule:'Daily 14:00 UTC', cronDays:[0,1,2,3,4,5,6], cronH:14, cronM:0,
+  stateKeys:['blog_publish'], deskTile:{x:30,y:12}, roomId:'cro',
+  tasks:['Take QA-approved blogs from pipeline','Format HTML for Shopify Blog API','Add structured data (Article, FAQ, Breadcrumb)','Insert internal links to product pages','Add related products section','Queue for human approval before publishing'],
+  rules:['NEVER auto-publish — always queue for approval','Every blog gets Article + FAQ schema','3+ internal product links required','Proper og:tags and SEO metadata','Image prompt reference for header','Shopify publish only after human approves'],
+  apis:[{name:'Claude API',icon:'🧠',color:'#d97706'},{name:'Shopify API',icon:'🛍️',color:'#96bf48'}],
+  dataFlow:{reads:['departments/content/blog-pipeline.json','departments/social/image-prompts.json'],writes:['departments/content/blog-pipeline.json','state/queue.json'],feeds:['You (approval queue)','Shopify (after approval)']},
+};
+
+const DIALER = {
+  id:'dialer', name:'XAVIER', fullName:'Xavier Voss',
+  title:'Outbound Call Agent', dept:'Sales Division',
+  color:'#16a34a', hair:'#2a1a0a', skin:'#c68642', pants:'#1a2a1a', shoes:'#0a0a0a',
+  schedule:'Mon-Fri 14:15 UTC', cronDays:[1,2,3,4,5], cronH:14, cronM:15,
+  stateKeys:['dialer'], deskTile:{x:30,y:5}, roomId:'email',
+  tasks:['Scan Shopify for abandoned carts ($300+)','Identify 60-day inactive customers for win-back','Build prioritized call lists with reasons','Queue call lists for human approval','Execute approved calls via Vapi.ai','Log call outcomes and do-not-call requests'],
+  rules:['NEVER make calls without approval','Max 20 calls per day','No calls on Sundays','Respect do-not-call permanently','One attempt per customer per week','Abandoned cart calls within 48hrs only'],
+  apis:[{name:'Vapi.ai',icon:'📞',color:'#16a34a'},{name:'Shopify API',icon:'🛍️',color:'#96bf48'},{name:'Claude API',icon:'🧠',color:'#d97706'}],
+  dataFlow:{reads:['Shopify abandoned carts','Shopify customer history','departments/dialer/call-list.json'],writes:['departments/dialer/call-list.json','state/queue.json'],feeds:['You (approval)','Vapi.ai (calls)']},
+};
+
+const TELEGRAM_BOT = {
+  id:'telegram', name:'RELAY', fullName:'Relay Nakamura',
+  title:'Telegram Comms Officer', dept:'Communications',
+  color:'#0088cc', hair:'#1a2a3a', skin:'#d4a574', pants:'#1a1a2a', shoes:'#0a0a1a',
+  schedule:'Every 5 min (polling)', cronDays:[0,1,2,3,4,5,6], cronH:0, cronM:0,
+  stateKeys:['telegram'], deskTile:{x:18,y:1}, roomId:'lobby',
+  tasks:['Poll Telegram for incoming commands','Route /status /queue /blog /approve commands','Send department completion notifications','Send error alerts immediately','Daily org summary at 7:00 UTC','Relay approval requests to owner'],
+  rules:['Respond to ALL messages within 5 min','Send notification on every department run','Error alerts = highest priority','Never expose API keys in messages','Auto-discover chat ID on first /start','Queue approvals flow through Telegram'],
+  apis:[{name:'Telegram Bot API',icon:'✈️',color:'#0088cc'}],
+  dataFlow:{reads:['state/master.json','state/queue.json','departments/content/blog-pipeline.json','departments/social/image-prompts.json'],writes:['config/telegram.json','state/telegram_offset.json','state/queue.json'],feeds:['You (Telegram)','All departments (notifications)']},
+};
+
 const GM = {
   id:'gm', name:'BOSS', fullName:'Boss Morgan',
   title:'General Manager / Enforcer', dept:'Executive',
@@ -360,7 +420,67 @@ const GM = {
   dataFlow:{reads:['state/master.json','state/queue.json','ALL department outputs'],writes:['departments/gm/weekly-report.md','state/queue.json'],feeds:['You (weekly report)']},
 };
 
-const ALL_CHARS = [...EMPLOYEES, X_INTEL, IMAGE_PROMPT, PROMPT_QA, GM];
+const CHIEF = {
+  id:'standup', name:'CHIEF', fullName:'Chief Calloway',
+  title:'Chief of Staff', dept:'Executive',
+  color:'#ff6600', hair:'#1a0a00', skin:'#d4a574', pants:'#3a2a1a', shoes:'#1a0a0a',
+  schedule:'Daily 6:00 + 20:00 UTC', cronDays:[0,1,2,3,4,5,6], cronH:6, cronM:0,
+  stateKeys:['standup','retro','board_meeting'], deskTile:{x:9,y:18}, roomId:'strategy',
+  tasks:['Morning standup — all-dept status review','Evening retro — day summary + night handoff','Monday board meeting (Opus model)','Coordinate cross-department priorities','Track blockers and escalate to GM'],
+  rules:['Read ALL department outputs before standup','Standup must cover every active dept','Retro includes metrics + what shipped','Board meeting = strategic, not operational','Always brief GM on critical issues'],
+  apis:[{name:'Claude API',icon:'🧠',color:'#d97706'},{name:'All Dept Data',icon:'📊',color:'#a855f7'}],
+  dataFlow:{reads:['state/master.json','state/queue.json','state/incident-log.json','ALL department outputs'],writes:['state/daily-standup.json','state/daily-retro.json','state/shift-handoff.json'],feeds:['All departments','GM']},
+};
+
+const SENTINEL = {
+  id:'night_ops', name:'SENTINEL', fullName:'Sentinel Knox',
+  title:'Night Operations', dept:'Operations',
+  color:'#334488', hair:'#0a0a1a', skin:'#c68642', pants:'#1a1a2a', shoes:'#0a0a1a',
+  schedule:'00:00, 03:00, 05:00 UTC', cronDays:[0,1,2,3,4,5,6], cronH:0, cronM:0,
+  stateKeys:['night_ops'], deskTile:{x:12,y:18}, roomId:'strategy',
+  tasks:['Midnight health check — all systems','Pre-dawn health check at 03:00','Morning prep at 05:00 — collect metrics','Night-to-morning handoff notes at 05:30','Monitor for errors and incidents overnight'],
+  rules:['Check every API connection','Log all anomalies','Handoff must be complete before morning shift','Escalate critical errors to Telegram immediately','Never skip a health check'],
+  apis:[{name:'Claude API',icon:'🧠',color:'#d97706'},{name:'System Monitor',icon:'🔍',color:'#334488'}],
+  dataFlow:{reads:['state/master.json','state/queue.json','state/incident-log.json','state/alert-history.json'],writes:['state/night-report.json','state/shift-handoff.json'],feeds:['CHIEF (morning handoff)']},
+};
+
+const CANVAS = {
+  id:'canva', name:'CANVAS', fullName:'Canvas Moreno',
+  title:'Canva Post Designer', dept:'Creative Division',
+  color:'#cc44dd', hair:'#2a0a2a', skin:'#e0c8a0', pants:'#2a1a3a', shoes:'#1a0a1a',
+  schedule:'Daily 9:25 UTC', cronDays:[0,1,2,3,4,5,6], cronH:9, cronM:25,
+  stateKeys:['canva'], deskTile:{x:9,y:21}, roomId:'strategy',
+  tasks:['Design 10 branded social media posts daily','Apply brand templates to approved image prompts','Add text overlays, CTAs, and branding','Export in platform-specific dimensions','Feed designs to VIBE for posting'],
+  rules:['Brand colors and fonts only','No text on product images — overlay separately','Platform-specific dimensions (1080x1080, 1080x1920, etc)','Every design needs a clear CTA','QA-approved prompts only as source images'],
+  apis:[{name:'Claude API',icon:'🧠',color:'#d97706'},{name:'Canva API',icon:'🎨',color:'#cc44dd'}],
+  dataFlow:{reads:['departments/social/image-prompts.json','departments/social/calendar.json'],writes:['departments/canva/pipeline.json'],feeds:['Social (VIBE)']},
+};
+
+const TREND = {
+  id:'google_trends', name:'TREND', fullName:'Trend Nakamura',
+  title:'Google Trends Scout', dept:'Intelligence Division',
+  color:'#22cc66', hair:'#1a2a1a', skin:'#f0c8a0', pants:'#1a3a1a', shoes:'#0a1a0a',
+  schedule:'Daily 6:00 UTC', cronDays:[0,1,2,3,4,5,6], cronH:6, cronM:0,
+  stateKeys:['google_trends'], deskTile:{x:16,y:18}, roomId:'analytics_lab',
+  tasks:['Scan Google Trends for rising smartphone/refurb queries','Identify breakout searches before they peak','Cross-reference with existing SEO keywords','Generate trending blog topic briefs for AM slot','Flag seasonal trends and product launch waves'],
+  rules:['Never fabricate trend data','Always include source query','Prioritize breakout trends (100%+ growth)','Focus on rankable long-tail topics','Ignore trends unrelated to phones/tech/sustainability'],
+  apis:[{name:'Claude API',icon:'🧠',color:'#d97706'},{name:'Google Trends',icon:'📈',color:'#22cc66'}],
+  dataFlow:{reads:['departments/intel/trends.json','departments/seo/keywords.json','departments/seo/opportunities.json'],writes:['departments/trends/daily-trends.json','departments/trends/trending-briefs.json'],feeds:['Blog Writer (SCRIBE)','Content','SEO']},
+};
+
+const SIGNAL = {
+  id:'analytics', name:'SIGNAL', fullName:'Signal Park',
+  title:'Analytics Optimizer', dept:'Intelligence Division',
+  color:'#0088aa', hair:'#1a1a2a', skin:'#8d5524', pants:'#1a2a3a', shoes:'#0a0a1a',
+  schedule:'Daily 7:30 UTC', cronDays:[0,1,2,3,4,5,6], cronH:7, cronM:30,
+  stateKeys:['analytics'], deskTile:{x:19,y:18}, roomId:'analytics_lab',
+  tasks:['Pull GA4 data — top pages, bounce rates, conversions','Pull GSC data — queries, impressions, CTR, positions','Identify pages losing traffic week-over-week','Find high-impression/low-CTR optimization opportunities','Track blog performance and ROI','Generate optimization recommendations'],
+  rules:['Never fabricate metrics','Always compare to previous period','Flag drops >20% immediately','Prioritize quick wins (high impression + low CTR)','Track blog ROI: effort vs traffic generated'],
+  apis:[{name:'Claude API',icon:'🧠',color:'#d97706'},{name:'GA4 API',icon:'📊',color:'#E37400'},{name:'GSC API',icon:'🔍',color:'#4285F4'}],
+  dataFlow:{reads:['departments/seo/keywords.json','departments/content/blog-pipeline.json','departments/intel/trends.json'],writes:['departments/analytics/daily-report.json','departments/analytics/optimization-queue.json'],feeds:['SEO (PIXEL)','Content','Blog Writer (SCRIBE)','CRO (METRIC)']},
+};
+
+const ALL_CHARS = [...EMPLOYEES, X_INTEL, IMAGE_PROMPT, PROMPT_QA, BLOG_WRITER, BLOG_QA, BLOG_PUBLISHER, DIALER, TELEGRAM_BOT, GM, CHIEF, SENTINEL, CANVAS, TREND, SIGNAL];
 
 // ═══════════════════════════════════════════
 // POINTS OF INTEREST (where chars go for life sim)
@@ -1432,7 +1552,7 @@ function updateHUD() {
   document.getElementById('hud-date').textContent = az.toLocaleDateString('en-US', { weekday:'short', month:'short', day:'numeric', year:'numeric' });
   if (!masterState) return;
   let working=0, idle=0;
-  for (const e of [...EMPLOYEES, X_INTEL, IMAGE_PROMPT, PROMPT_QA]) { const s=getDeptStatus(e.id); if(s==='working')working++; else if(s==='idle')idle++; }
+  for (const e of ALL_CHARS) { const s=getDeptStatus(e.id); if(s==='working')working++; else if(s==='idle')idle++; }
   document.getElementById('hud-working').textContent = working;
   document.getElementById('hud-idle').textContent = idle;
   document.getElementById('hud-queue').textContent = queueState?(queueState.pending||[]).length:0;

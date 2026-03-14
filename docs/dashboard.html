@@ -533,7 +533,7 @@
     <button onclick="nav('memory')"><span class="icon">&#9729;</span> Memory</button>
   </nav>
   <div class="sidebar-footer">
-    <div class="clock" id="sidebarClock">--:-- UTC</div>
+    <div class="clock" id="sidebarClock">--:-- AZ</div>
     <div style="margin-top:4px;">v2.0 — 24 agents online</div>
   </div>
 </div>
@@ -722,11 +722,11 @@ VP CONTENT  VP GROWTH  VP OPS
   <table>
     <thead><tr><th>Meeting</th><th>When</th><th>Led By</th><th>Model</th><th>Purpose</th></tr></thead>
     <tbody>
-      <tr><td>Morning Standup</td><td>Daily 06:00 UTC</td><td><span class="codename">CHIEF</span></td><td><span class="tag tag-sonnet">Sonnet</span></td><td>Reads ALL dept states + night handoff. Compiles what each dept did yesterday, what's planned today, blockers. Sends Telegram briefing to boss.</td></tr>
-      <tr><td>Evening Retro</td><td>Daily 20:00 UTC</td><td><span class="codename">CHIEF</span></td><td><span class="tag tag-sonnet">Sonnet</span></td><td>Compiles day results: what shipped, what's in progress, what failed. Writes night handoff notes. Telegram summary.</td></tr>
-      <tr><td>Weekly Board</td><td>Monday 06:30 UTC</td><td><span class="codename">CHIEF</span></td><td><span class="tag tag-opus">Opus</span></td><td>Full org strategic review. KPIs, what worked, what didn't, priorities for the week. Uses Opus for deeper analysis.</td></tr>
-      <tr><td>Weekly Report</td><td>Friday 07:03 UTC</td><td><span class="codename">GM</span></td><td><span class="tag tag-opus">Opus</span></td><td>Org-wide performance report. Budget tracking, strategic recommendations. Week in review.</td></tr>
-      <tr><td>Night Handoff</td><td>Daily 05:30 UTC</td><td><span class="codename">SENTINEL</span></td><td><span class="tag tag-sonnet">Sonnet</span></td><td>Overnight incidents, pending items, API status, what needs morning attention.</td></tr>
+      <tr><td>Night Handoff</td><td>Daily 10:30 PM AZ</td><td><span class="codename">SENTINEL</span></td><td><span class="tag tag-sonnet">Sonnet</span></td><td>Overnight incidents, pending items, API status, what needs morning attention.</td></tr>
+      <tr><td>Morning Standup</td><td>Daily 11:00 PM AZ</td><td><span class="codename">CHIEF</span></td><td><span class="tag tag-sonnet">Sonnet</span></td><td>Reads ALL dept states + night handoff. Compiles what each dept did yesterday, what's planned today, blockers. Sends Telegram briefing to boss.</td></tr>
+      <tr><td>Weekly Board</td><td>Monday 11:30 PM AZ</td><td><span class="codename">CHIEF</span></td><td><span class="tag tag-opus">Opus</span></td><td>Full org strategic review. KPIs, what worked, what didn't, priorities for the week. Uses Opus for deeper analysis.</td></tr>
+      <tr><td>Weekly Report</td><td>Friday 12:03 AM AZ</td><td><span class="codename">GM</span></td><td><span class="tag tag-opus">Opus</span></td><td>Org-wide performance report. Budget tracking, strategic recommendations. Week in review.</td></tr>
+      <tr><td>Evening Retro</td><td>Daily 1:00 PM AZ</td><td><span class="codename">CHIEF</span></td><td><span class="tag tag-sonnet">Sonnet</span></td><td>Compiles day results: what shipped, what's in progress, what failed. Writes night handoff notes. Telegram summary.</td></tr>
     </tbody>
   </table>
 
@@ -1143,13 +1143,16 @@ function nav(page) {
   document.querySelector('.main').scrollTop = 0;
 }
 
-// ===== CLOCK =====
+// ===== CLOCK (Arizona Time — MST, no DST) =====
 function updateClock() {
   const n = new Date();
-  const h = n.getUTCHours().toString().padStart(2,'0');
-  const m = n.getUTCMinutes().toString().padStart(2,'0');
-  const s = n.getUTCSeconds().toString().padStart(2,'0');
-  document.getElementById('sidebarClock').textContent = `${h}:${m}:${s} UTC`;
+  const az = new Date(n.toLocaleString('en-US', { timeZone: 'America/Phoenix' }));
+  let h = az.getHours();
+  const ampm = h >= 12 ? 'PM' : 'AM';
+  h = h % 12 || 12;
+  const m = az.getMinutes().toString().padStart(2,'0');
+  const s = az.getSeconds().toString().padStart(2,'0');
+  document.getElementById('sidebarClock').textContent = `${h}:${m}:${s} ${ampm} AZ`;
 }
 setInterval(updateClock, 1000);
 updateClock();
@@ -1263,7 +1266,8 @@ function buildDashToday() {
 function buildNextUp() {
   const now = new Date();
   const todayDay = now.getDay();
-  const nowMin = now.getUTCHours() * 60 + now.getUTCMinutes();
+  const az = new Date(now.toLocaleString('en-US', { timeZone: 'America/Phoenix' }));
+  const nowMin = az.getHours() * 60 + az.getMinutes();
 
   const upcoming = TASKS
     .filter(t => taskRunsOnDay(t, todayDay))
@@ -1305,7 +1309,7 @@ function openModal(task) {
   document.getElementById('modalTitle').textContent = task.name;
   document.getElementById('modalBody').innerHTML = `
     <div class="modal-row"><div class="modal-label">Agent</div><div class="modal-value"><span class="codename">${task.agent}</span></div></div>
-    <div class="modal-row"><div class="modal-label">Time (UTC)</div><div class="modal-value">${task.time}</div></div>
+    <div class="modal-row"><div class="modal-label">Time (AZ)</div><div class="modal-value">${(() => { const [h,m] = task.time.split(':').map(Number); let az = h - 7; if (az < 0) az += 24; const ampm = az >= 12 ? 'PM' : 'AM'; const h12 = az % 12 || 12; return h12 + ':' + m.toString().padStart(2,'0') + ' ' + ampm; })()}</div></div>
     <div class="modal-row"><div class="modal-label">Frequency</div><div class="modal-value">${task.freq}</div></div>
     <div class="modal-row"><div class="modal-label">Category</div><div class="modal-value">${task.cat.replace('c-','')}</div></div>
     <div class="modal-row"><div class="modal-label">Workflow</div><div class="modal-value" style="font-family:monospace;font-size:12px;">${task.workflow}</div></div>

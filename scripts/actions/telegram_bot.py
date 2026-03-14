@@ -1111,7 +1111,13 @@ def _cmd_fix_image(args: list) -> str:
     bp = json.loads(bp_path.read_text(encoding="utf-8"))
     blogs_to_fix = []
 
-    for blog in bp.get("blogs", []):
+    # Handle both single-blog and multi-blog pipeline formats
+    if "blogs" in bp and isinstance(bp["blogs"], list):
+        all_blogs = bp["blogs"]
+    else:
+        all_blogs = [bp]  # single blog object
+
+    for blog in all_blogs:
         if blog.get("status") != "published":
             continue
         if target == "all" or blog.get("slug") == target or blog.get("handle") == target:

@@ -276,6 +276,27 @@
       },
       "created": "2026-03-14 06:43 UTC",
       "id": "standup_20260314_064425"
+    },
+    {
+      "type": "product_copy",
+      "department": "seo",
+      "summary": "Update refurbished iPad collection page with optimized meta data and structured data",
+      "details": {
+        "page": "/collections/refurbished-ipads",
+        "meta_title": "Refurbished iPad - Battery Health 85%+ Guaranteed | Gadget Geeks Pro",
+        "meta_description": "Shop refurbished iPads that look brand new. Battery lasts all day, perfect screen quality. Save $200+ with warranty. Browse certified iPad deals now.",
+        "structured_data_needed": "Product schema with battery health percentage, screen condition grade, warranty coverage, compatibility with Apple Pencil/keyboards",
+        "h1_suggestion": "Refurbished iPads - Battery Health 85%+ Guaranteed",
+        "key_messaging": [
+          "Lead with battery health guarantee (85%+)",
+          "Emphasize screen quality for tablet users",
+          "Highlight compatibility with accessories",
+          "Use customer language 'looks brand new'",
+          "Include specific savings claims"
+        ]
+      },
+      "created": "2026-03-14 07:08 UTC",
+      "id": "seo_20260314_070850"
     }
   ],
   "approved": [

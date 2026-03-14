@@ -1,28 +1,37 @@
 {
-  "_docs": "Product photo registry for GadgetGeeks Pro. Maps phone models to REAL product cutout images. These are actual Apple/Samsung renders and professional product photos — NOT AI-generated. LENS and CANVAS use this registry to select real product images instead of asking AI to render phones (which always looks fake). Rule 25 in operations-rulebook.json enforces this.",
+  "_docs": "Product photo registry for GADGET GEEKS PRO. Maps phone models to REAL product photos — professional renders with GGP branding context. NO competitor branding (Device Plug, etc.). Rule 25 in operations-rulebook.json enforces this. Rule 26: ALL product data comes from gadgetgeekspro.myshopify.com Refresh theme ONLY.",
   "photo_sources": {
     "repo_path": "assets/product-photos/",
     "shopify_cdn": "Upload via image_gen.upload_to_shopify() for CDN URLs",
-    "notes": "Product cutouts are transparent-background PNGs or white-background JPGs. These are the ONLY phone images that should appear in final posts. AI generates backgrounds/scenes — real photos provide the phones."
+    "shopify_store": "gadgetgeekspro.myshopify.com — Refresh theme #157805740283 — THE ONLY DATA SOURCE",
+    "notes": "All product photos are clean, professional renders with NO competitor branding. Desktop (16:9) and mobile (9:16) variants available. These are the ONLY phone images that should appear in final posts."
   },
   "products": {
     "iphone_13": {
       "model": "iPhone 13",
       "brand": "Apple",
-      "local_path": "assets/product-photos/iPhone 13.jpg",
+      "variants": {
+        "desktop": "assets/product-photos/iphone-13-desktop.png",
+        "mobile": "assets/product-photos/iphone-13-mobile.png"
+      },
+      "local_path": "assets/product-photos/iphone-13-desktop.png",
       "cdn_url": "",
-      "type": "bundle_cutout",
-      "description": "iPhone 13 product bundle — multiple angles, accessories, professional product photo",
+      "type": "bundle_render",
+      "description": "iPhone 13 bundle — phone with MagSafe case, screen protector, camera lens protector, charger + cable. Clean gradient background, premium product photography. Multiple color variants (Red, White, Teal, Pink) visible.",
       "colors_available": ["Midnight", "Starlight", "Blue", "Pink", "Red", "Green"],
       "use_for": ["product_hero", "deal_urgency", "comparison", "lifestyle_composite"]
     },
     "iphone_14": {
       "model": "iPhone 14",
       "brand": "Apple",
-      "local_path": "assets/product-photos/iphone 14.jpg",
+      "variants": {
+        "desktop": "assets/product-photos/iphone-14-desktop.png",
+        "mobile": "assets/product-photos/iphone-14-mobile.png"
+      },
+      "local_path": "assets/product-photos/iphone-14-desktop.png",
       "cdn_url": "",
-      "type": "bundle_cutout",
-      "description": "iPhone 14 product bundle — multiple angles, accessories, professional product photo",
+      "type": "bundle_render",
+      "description": "iPhone 14 bundle — phone (Starlight) with MagSafe case, screen protector, camera lens protector, charger + cable. Dark/black cinematic background with smoke/haze effect, reflective surface. Premium commercial look.",
       "colors_available": ["Midnight", "Starlight", "Blue", "Purple", "Red"],
       "use_for": ["product_hero", "deal_urgency", "comparison", "lifestyle_composite"]
     }
@@ -38,13 +47,14 @@
     "Google Pixel 9 Pro",
     "Google Pixel 8"
   ],
-  "instructions_for_missing": "For models without real product photos: (1) Use Apple/Samsung official press renders if available. (2) Screenshot product from gadgetgeekspro.com product pages. (3) Use AI for BACKGROUND ONLY — composite real product photo on top. (4) NEVER ask AI to generate the phone itself.",
+  "instructions_for_missing": "For models without real product photos: (1) Pull product images from gadgetgeekspro.myshopify.com product pages. (2) Use Apple/Samsung official press renders. (3) Use AI for BACKGROUND ONLY — composite real product photo on top. (4) NEVER ask AI to generate the phone itself. (5) NEVER use images with competitor branding (Device Plug, Back Market, etc.).",
   "image_pipeline_rules": {
     "product_hero_shots": "MUST use real product photo from this registry. AI generates NOTHING for product hero.",
     "lifestyle_composite": "AI generates the SCENE (person, environment, lighting). Real product photo composited in via Canva/Pillow.",
     "deal_urgency": "MUST use real product photo. AI generates background gradient/lighting only if needed.",
     "comparison": "MUST use real product photos for both sides. AI generates NOTHING.",
     "sustainability": "AI generates the SCENE (hands, plants, desk). Real product photo composited in.",
-    "blog_headers": "AI can generate full scene IF no phone is prominently featured. If phone is visible, use real photo composite."
+    "blog_headers": "AI can generate full scene IF no phone is prominently featured. If phone is visible, use real photo composite.",
+    "branding": "ALL images represent GADGET GEEKS PRO. Zero tolerance for competitor branding in any asset."
   }
 }

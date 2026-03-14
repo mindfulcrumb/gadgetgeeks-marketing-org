@@ -448,5 +448,40 @@
       "CANVAS (canva_designer.py) handles compositing real product photos onto AI-generated backgrounds/scenes"
     ],
     "incident_reference": "INC-009 — AI-generated phone images showed cameras where screens should be, looked obviously fake"
+  },
+
+  "rule_26_single_source_of_truth": {
+    "description": "ALL product data, pricing, inventory, images, descriptions, collections, pages, and analysis MUST come from ONE source: gadgetgeekspro.myshopify.com, Refresh theme (#157805740283). NO OTHER SOURCE. EVER. This is the #1 rule of the organization. Everything is GADGET GEEKS PRO.",
+    "the_store": {
+      "shopify_store": "gadgetgeekspro.myshopify.com",
+      "custom_domain": "gadgetgeekspro.com",
+      "theme_id": 157805740283,
+      "theme_name": "Refresh",
+      "api_endpoint": "https://gadgetgeekspro.myshopify.com/admin/api/2026-01/graphql.json"
+    },
+    "rules": [
+      "EVERY agent MUST pull product data (titles, prices, handles, descriptions, images, inventory) from gadgetgeekspro.myshopify.com Shopify Admin API ONLY",
+      "EVERY product image used in marketing MUST come from gadgetgeekspro.myshopify.com product pages OR the product-photos.json registry — NEVER from external sites, competitors, or AI generation of phones",
+      "EVERY product link in blogs, social posts, and emails MUST resolve to gadgetgeekspro.com/products/{handle} — validate against config/store-inventory.json",
+      "EVERY collection reference MUST exist on gadgetgeekspro.com/collections/{handle}",
+      "EVERY page reference MUST exist on gadgetgeekspro.com/pages/{handle}",
+      "NEVER reference, use data from, or link to deviceplug.myshopify.com, Back Market, Swappa, Gazelle, or any competitor store",
+      "NEVER fabricate product handles, prices, or inventory counts — if you don't know, query the Shopify API",
+      "NEVER use images with competitor branding (Device Plug, Back Market, etc.) in any GADGET GEEKS PRO marketing material",
+      "Product descriptions in social posts and blogs MUST match what's on the actual product page — no inventing specs or features",
+      "If a product is out of stock or doesn't exist on gadgetgeekspro.com, do NOT promote it. Check before posting.",
+      "The brand is GADGET GEEKS PRO. Not Device Plug. Not Gadget Geek. Not GG. GADGET GEEKS PRO. Everywhere."
+    ],
+    "enforcement": {
+      "ALL_AGENTS": "Every agent reads this rule at session start. Violations are CRITICAL incidents.",
+      "SCRIBE": "Reads store-inventory.json before every blog. All product links validated against gadgetgeekspro.com.",
+      "LENS": "Reads product-photos.json. Only uses registered GGP product photos. Zero competitor images.",
+      "VIBE": "All post links resolve to gadgetgeekspro.com. No dead links. No competitor URLs.",
+      "CANVAS": "All branded assets use GADGET GEEKS PRO identity. Zero competitor branding in any visual.",
+      "ECHO": "Social replies reference gadgetgeekspro.com products only.",
+      "PIXEL": "SEO keywords target gadgetgeekspro.com pages and collections only.",
+      "PRESS": "Blog publication goes to gadgetgeekspro.myshopify.com blog only."
+    },
+    "incident_reference": "March 10, 2026 — swapped bundle images on deviceplug instead of gadgetgeekspro. Wrong store. Never again."
   }
 }

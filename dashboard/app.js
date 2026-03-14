@@ -480,7 +480,19 @@ const SIGNAL = {
   dataFlow:{reads:['departments/seo/keywords.json','departments/content/blog-pipeline.json','departments/intel/trends.json'],writes:['departments/analytics/daily-report.json','departments/analytics/optimization-queue.json'],feeds:['SEO (PIXEL)','Content','Blog Writer (SCRIBE)','CRO (METRIC)']},
 };
 
-const ALL_CHARS = [...EMPLOYEES, X_INTEL, IMAGE_PROMPT, PROMPT_QA, BLOG_WRITER, BLOG_QA, BLOG_PUBLISHER, DIALER, TELEGRAM_BOT, GM, CHIEF, SENTINEL, CANVAS, TREND, SIGNAL];
+const STOCK = {
+  id:'ecommerce', name:'STOCK', fullName:'Stock Beaumont',
+  title:'E-Commerce Specialist', dept:'Commerce Division',
+  color:'#96bf48', hair:'#2a1a0a', skin:'#e0ac69', pants:'#1a2a1a', shoes:'#0a1a0a',
+  schedule:'Daily 10:00 UTC', cronDays:[0,1,2,3,4,5,6], cronH:10, cronM:0,
+  stateKeys:['ecommerce'], deskTile:{x:22,y:18}, roomId:'analytics_lab',
+  tasks:['Monitor product catalog & inventory levels','Analyze order data & pricing trends','Optimize product pages for search & conversion','Track competitor pricing (plug.tech, Back Market)','Queue all store changes for human approval','Feed insights to SEO, Content, CRO'],
+  rules:['NEVER push changes to live store without approval','Read-only access to Shopify products','All pricing changes queued for review','Data-driven recommendations only','Flag out-of-stock or low-inventory items'],
+  apis:[{name:'Claude API',icon:'🧠',color:'#d97706'},{name:'Shopify GraphQL',icon:'🛍️',color:'#96bf48'}],
+  dataFlow:{reads:['Shopify product catalog','departments/intel/competitors.json','departments/cro/metrics.json'],writes:['departments/ecommerce/catalog-report.json','departments/ecommerce/pricing-alerts.json'],feeds:['SEO (PIXEL)','CRO (METRIC)','Content (QUILL)']},
+};
+
+const ALL_CHARS = [...EMPLOYEES, X_INTEL, IMAGE_PROMPT, PROMPT_QA, BLOG_WRITER, BLOG_QA, BLOG_PUBLISHER, DIALER, TELEGRAM_BOT, GM, CHIEF, SENTINEL, CANVAS, TREND, SIGNAL, STOCK];
 
 // ═══════════════════════════════════════════
 // POINTS OF INTEREST (where chars go for life sim)
@@ -1556,6 +1568,7 @@ function updateHUD() {
   document.getElementById('hud-working').textContent = working;
   document.getElementById('hud-idle').textContent = idle;
   document.getElementById('hud-queue').textContent = queueState?(queueState.pending||[]).length:0;
+  document.getElementById('hud-employees').textContent = ALL_CHARS.length;
 }
 
 function updateScheduleBar() {

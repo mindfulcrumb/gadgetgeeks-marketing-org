@@ -1351,16 +1351,64 @@ function updateSidebar() {
 }
 
 function renderQueue() {
+  const DEPT_NAMES_Q = {intel:'Market Intel',seo:'SEO',content:'Content',email:'Email',social_morning:'Social',cro:'CRO',x_intel:'X Intel',dialer:'Dialer',image_prompts:'Image Prompts',blog_writer:'Blog Writer'};
   const list = document.getElementById('queue-list');
   if (!queueState || !(queueState.pending||[]).length) {
     list.innerHTML = '<div class="q-empty">No items pending</div>';
     return;
   }
-  list.innerHTML = queueState.pending.map(i => `
-    <div class="q-item"><span class="q-type">${i.type||'ITEM'}</span>
-    <span class="q-desc">${i.description||i.title||''}</span>
-    <span class="q-dept">${i.department||''}</span></div>`).join('');
+  const skip = new Set(['id','department','type','summary']);
+  list.innerHTML = queueState.pending.map(i => {
+    const dept = i.department || '?';
+    const deptName = DEPT_NAMES_Q[dept] || dept;
+    const details = Object.entries(i).filter(([k])=>!skip.has(k)).slice(0,5).map(([k,v])=>{
+      let val = typeof v === 'string' ? v : JSON.stringify(v);
+      if(val.length>120) val = val.slice(0,120)+'…';
+      return `<span class="q-detail-line"><b>${k}</b>: ${val}</span>`;
+    }).join('');
+    return `<div class="q-item" data-id="${i.id||''}">
+      <span class="q-type">${(i.type||'ITEM').toUpperCase()}</span> <span class="q-dept">${deptName}</span>
+      <div class="q-summary">${i.summary||i.description||i.title||'No description'}</div>
+      ${details?`<div class="q-detail">${details}</div>`:''}
+      <div class="q-actions">
+        <button class="q-btn q-btn-approve" onclick="dashApprove('${i.id||''}')">APPROVE</button>
+        <button class="q-btn q-btn-reject" onclick="dashReject('${i.id||''}')">REJECT</button>
+      </div>
+      <span class="q-id">${i.id||''}</span>
+    </div>`;
+  }).join('');
 }
+
+const WORKER_URL = 'https://gadgetgeeks-telegram-webhook.gadgetgeeks.workers.dev';
+
+async function dashAction(itemId, action) {
+  try {
+    addNotification('info', `${action==='approve'?'Approving':'Rejecting'} ${itemId}...`);
+    const resp = await fetch(WORKER_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        message: { chat: { id: 0 }, text: `/${action} ${itemId}` },
+        _source: 'dashboard',
+      }),
+    });
+    const data = await resp.json().catch(() => ({}));
+    if (resp.ok && data.ok !== false) {
+      addNotification('info', `${action==='approve'?'Approved':'Rejected'}: ${itemId}`);
+      addEnforcerLog('ok', `BOSS ${action}d item ${itemId.slice(-8)}`);
+      const el = document.querySelector(`.q-item[data-id="${itemId}"]`);
+      if (el) { el.style.opacity = '0.3'; el.querySelectorAll('.q-btn').forEach(b => b.disabled = true); }
+      setTimeout(async () => { await loadData(); }, 3000);
+    } else {
+      const errMsg = data.error || data.result || `Worker returned ${resp.status}`;
+      addNotification('alert', `Failed: ${errMsg}`);
+    }
+  } catch (e) {
+    addNotification('alert', `Failed: ${e.message}. Check network connection.`);
+  }
+}
+function dashApprove(id) { dashAction(id, 'approve'); }
+function dashReject(id) { dashAction(id, 'reject'); }
 
 function renderEnforcerLog() {
   const el = document.getElementById('enforcer-log');
@@ -1424,7 +1472,7 @@ async function loadData() {
   const [m,q] = await Promise.all([fetchJSON('state/master.json'),fetchJSON('state/queue.json')]);
   masterState=m; queueState=q;
   updateSidebar(); updateHUD(); updateScheduleBar();
-  runEnforcer(); loadImagePrompts();
+  runEnforcer(); loadImagePrompts(); loadBlogPipeline();
 }
 
 function runEnforcer() {
@@ -1588,6 +1636,186 @@ function openGalleryFolder(folderKey) {
 }
 
 // ═══════════════════════════════════════════
+// BLOG PIPELINE
+// ═══════════════════════════════════════════
+let blogPipelineData = null;
+
+async function loadBlogPipeline() {
+  blogPipelineData = await fetchJSON('departments/content/blog-pipeline.json');
+  renderBlogPipeline();
+}
+
+function renderBlogPipeline() {
+  const statsEl = document.getElementById('blog-pipeline-stats');
+  const listEl = document.getElementById('blog-pipeline-list');
+  if (!blogPipelineData) {
+    statsEl.innerHTML = '';
+    listEl.innerHTML = '<div class="bp-empty">No blogs in pipeline yet — SCRIBE hasn\'t run</div>';
+    return;
+  }
+
+  const ps = blogPipelineData.pipeline_stats || {};
+  statsEl.innerHTML = `
+    <div class="bp-stat"><span class="bp-stat-val" style="color:var(--yellow)">${ps.total_drafted||0}</span><span class="bp-stat-label">DRAFTED</span></div>
+    <div class="bp-stat"><span class="bp-stat-val" style="color:var(--green)">${ps.total_approved||0}</span><span class="bp-stat-label">APPROVED</span></div>
+    <div class="bp-stat"><span class="bp-stat-val" style="color:var(--red)">${ps.total_rejected||0}</span><span class="bp-stat-label">REJECTED</span></div>
+    <div class="bp-stat"><span class="bp-stat-val" style="color:var(--cyan)">${ps.total_published||0}</span><span class="bp-stat-label">PUBLISHED</span></div>
+  `;
+
+  const blogs = blogPipelineData.blogs || [];
+  if (!blogs.length) {
+    listEl.innerHTML = '<div class="bp-empty">Pipeline empty — SCRIBE will draft blogs daily</div>';
+    return;
+  }
+
+  listEl.innerHTML = blogs.slice(-10).reverse().map(b => {
+    const status = (b.status||'unknown').replace(/_/g,' ');
+    const statusClass = status.includes('approved') ? 'approved' : status.includes('reject') ? 'rejected' : status.includes('publish') ? 'published' : status.includes('queued') ? 'queued' : status.includes('block') ? 'blocked' : 'draft';
+    const keywords = (b.target_keywords||[]).slice(0,3);
+    return `<div class="bp-blog">
+      <div class="bp-blog-title">${b.title||'Untitled'}</div>
+      <div class="bp-blog-meta">
+        <span class="bp-status ${statusClass}">${status.toUpperCase()}</span>
+        ${b.qa_score?`<span class="bp-keyword">QA: ${b.qa_score}</span>`:''}
+        ${keywords.map(k => `<span class="bp-keyword">${k}</span>`).join('')}
+      </div>
+    </div>`;
+  }).join('');
+}
+
+// ═══════════════════════════════════════════
+// COMMS CENTER
+// ═══════════════════════════════════════════
+let commsMessages = [];
+let commsTarget = 'gm';
+
+function initComms() {
+  const DEPT_NAMES_C = {gm:'GM',intel:'Intel',seo:'SEO',content:'Content',email:'Email',social_morning:'Social',cro:'CRO',x_intel:'X Intel',dialer:'Xavier',image_prompts:'Lens',blog_writer:'Scribe'};
+
+  const tabs = document.getElementById('comms-tabs');
+  const deptSelect = document.getElementById('comms-dept');
+  tabs.innerHTML = '';
+  for (const opt of deptSelect.options) {
+    const btn = document.createElement('button');
+    btn.className = 'comms-tab' + (opt.value === commsTarget ? ' active' : '');
+    btn.dataset.target = opt.value;
+    btn.textContent = DEPT_NAMES_C[opt.value] || opt.value;
+    btn.addEventListener('click', () => {
+      commsTarget = opt.value;
+      deptSelect.value = opt.value;
+      tabs.querySelectorAll('.comms-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      renderComms();
+    });
+    tabs.appendChild(btn);
+  }
+
+  deptSelect.addEventListener('change', () => {
+    commsTarget = deptSelect.value;
+    tabs.querySelectorAll('.comms-tab').forEach(t => {
+      t.classList.toggle('active', t.dataset.target === commsTarget);
+    });
+    renderComms();
+  });
+
+  document.getElementById('comms-send').addEventListener('click', sendCommsMessage);
+  document.getElementById('comms-msg').addEventListener('keydown', e => {
+    if (e.key === 'Enter') sendCommsMessage();
+  });
+
+  loadCommsHistory();
+}
+
+async function loadCommsHistory() {
+  const history = await fetchJSON('state/run-history.json');
+  if (!history) return;
+
+  const runs = history.runs || [];
+  commsMessages = [];
+
+  for (const run of runs.slice(-20)) {
+    const dept = run.department || '?';
+    const ts = run.timestamp || '';
+    const summary = run.summary || '';
+    if (summary) {
+      commsMessages.push({ from: dept, type: 'dept', text: summary.slice(0, 200), time: ts });
+    }
+    if (run.had_boss_instructions) {
+      commsMessages.push({ from: 'boss', type: 'boss', text: `Instruction sent to ${dept}`, time: ts });
+    }
+  }
+
+  if (queueState && queueState.pending) {
+    for (const item of queueState.pending) {
+      commsMessages.push({
+        from: item.department || '?',
+        type: 'dept',
+        text: `[Needs Approval] ${item.summary || item.type || 'New item'}`,
+        time: new Date().toISOString(),
+        dept: item.department,
+      });
+    }
+  }
+
+  renderComms();
+}
+
+function renderComms() {
+  const feed = document.getElementById('comms-feed');
+  const filtered = commsTarget === 'gm'
+    ? commsMessages
+    : commsMessages.filter(m => m.from === commsTarget || m.dept === commsTarget || m.from === 'boss');
+
+  if (!filtered.length) {
+    feed.innerHTML = '<div class="comms-empty">No messages yet — send an instruction below</div>';
+    return;
+  }
+
+  const DEPT_NAMES_C = {gm:'GM',intel:'Intel',seo:'SEO',content:'Content',email:'Email',social_morning:'Social',cro:'CRO',x_intel:'X Intel',dialer:'Xavier',image_prompts:'Lens',blog_writer:'Scribe',boss:'BOSS'};
+
+  feed.innerHTML = filtered.slice(-15).map(m => {
+    let timeStr = '';
+    if (m.time) {
+      try { const d = new Date(m.time); timeStr = pad(d.getUTCHours()) + ':' + pad(d.getUTCMinutes()); } catch(e) {}
+    }
+    return `<div class="comms-msg ${m.type}">
+      <span class="comms-from">${DEPT_NAMES_C[m.from]||m.from}<span class="comms-time">${timeStr}</span></span>
+      <span class="comms-text">${m.text}</span>
+    </div>`;
+  }).join('');
+
+  feed.scrollTop = feed.scrollHeight;
+}
+
+async function sendCommsMessage() {
+  const input = document.getElementById('comms-msg');
+  const dept = document.getElementById('comms-dept').value;
+  const text = input.value.trim();
+  if (!text) return;
+
+  input.value = '';
+
+  commsMessages.push({ from: 'boss', type: 'boss', text: `[→ ${dept}] ${text}`, time: new Date().toISOString() });
+  renderComms();
+
+  try {
+    const cmd = dept === 'gm' ? text : `/boss ${dept} ${text}`;
+    await fetch(WORKER_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        message: { chat: { id: 0 }, text: cmd },
+        _source: 'dashboard',
+      }),
+    });
+    addNotification('info', `Instruction sent to ${dept}`);
+    addEnforcerLog('ok', `BOSS sent instruction to ${dept}`);
+  } catch (e) {
+    addNotification('alert', `Send failed: ${e.message}`);
+  }
+}
+
+// ═══════════════════════════════════════════
 // INIT
 // ═══════════════════════════════════════════
 async function init() {
@@ -1604,6 +1832,8 @@ async function init() {
   await loadData();
   setInterval(loadData, 30000);
   setInterval(()=>{updateHUD();},1000);
+
+  initComms();
 
   addEnforcerLog('info','BOSS online — monitoring all departments');
   addEnforcerLog('info','God Mode activated');

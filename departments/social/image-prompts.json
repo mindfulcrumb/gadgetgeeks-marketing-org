@@ -35,7 +35,10 @@
       "recommended_tool": "midjourney",
       "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/f1bc1edb-88ed-4233-94b0-a45f4e2ab992/gg-prompt_20260313_002.jpg",
       "generated_at": "2026-03-13T18:39:06.478225+00:00",
-      "generation_status": "done"
+      "generation_status": "done",
+      "canva_design_status": "designed",
+      "canva_design_id": "DAHD6T8hi8A",
+      "canva_export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/ccbd1225-724f-4354-be40-e6b45ff4920a/canva-blog-prompt_20260313_002-20260314_095109.png"
     },
     {
       "id": "prompt_20260313_003",
@@ -145,7 +148,10 @@
       "recommended_tool": "midjourney",
       "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/7ac51c3e-6123-4840-ac61-9b4c98f0a679/gg-prompt_20260313_008.jpg",
       "generated_at": "2026-03-13T18:39:27.773489+00:00",
-      "generation_status": "done"
+      "generation_status": "done",
+      "canva_design_status": "designed",
+      "canva_design_id": "DAHD6fL87vI",
+      "canva_export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/41ac0a03-c9eb-4b07-88f8-1f939d8d66eb/canva-email-prompt_20260313_008-20260314_095115.png"
     },
     {
       "id": "prompt_20260313_009",

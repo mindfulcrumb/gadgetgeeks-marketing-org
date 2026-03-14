@@ -1,7 +1,7 @@
 {
   "_docs": "Canva Post Design Pipeline — tracks image-to-finished-post conversion. The Canva department takes generated images from departments/social/image-prompts.json and creates finished social media posts using Canva.",
   "_created": "2026-03-12",
-  "_last_run": "2026-03-13T18:40:56.628946+00:00",
+  "_last_run": "2026-03-14T09:51:20.481630+00:00",
   "designs": [
     {
       "id": "canva_20260313_095823_001",
@@ -128,6 +128,42 @@
       },
       "status": "exported",
       "created_at": "2026-03-13T18:40:56.628865+00:00"
+    },
+    {
+      "id": "canva_20260314_095115_001",
+      "source_prompt_id": "prompt_20260313_002",
+      "source_image_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/f1bc1edb-88ed-4233-94b0-a45f4e2ab992/gg-prompt_20260313_002.jpg",
+      "canva_design_id": "DAHD6T8hi8A",
+      "canva_edit_url": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc2MDczODc1MTg5fQ..Q3fDDhMkWORdsamA.fO9T28L9fzWxzSvt6BDiQRP4js6JKcyMe3v0Oy04q_U_xUpKnwxmQCs4nPSZ3I5S81XFj19KqpsMejNqoCUb9kCbwq16UW2YOYc7uLIyZxS08iM.iebxxEZ-6N4d2YEZopMzow/edit?utm_source=OC-AZziwCpO4uv4&utm_medium=referral&utm_term=038a7d3f-b944-4115-9136-3dfc3a0bcf20&utm_campaign=public_api_create_design_clicked_hyperlink",
+      "export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/ccbd1225-724f-4354-be40-e6b45ff4920a/canva-blog-prompt_20260313_002-20260314_095109.png",
+      "platform": "blog",
+      "dimensions": "1080x1080",
+      "design_type": "product_spotlight",
+      "text_overlay": {
+        "headline": "iPhone 15 Pro Max",
+        "subline": "65-Point Inspected. Like New.",
+        "cta": "Shop Now"
+      },
+      "status": "exported",
+      "created_at": "2026-03-14T09:51:15.217054+00:00"
+    },
+    {
+      "id": "canva_20260314_095120_002",
+      "source_prompt_id": "prompt_20260313_008",
+      "source_image_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/7ac51c3e-6123-4840-ac61-9b4c98f0a679/gg-prompt_20260313_008.jpg",
+      "canva_design_id": "DAHD6fL87vI",
+      "canva_edit_url": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc2MDczODgwNDU1fQ..qcX9--d2yCH1lWjz.KGKxrbyx05XS1HrjK2FP0jN5Z347vQiMEmlvG2NfSus4aL11VYJZqnxTVKrisKpCXlBEDCxwxCO76FisK-Dw0-f-xr7-3v-VVcL7SGLEKBZRkOU._-MGB4JNQwgTZlqRlJ35ng/edit?utm_source=OC-AZziwCpO4uv4&utm_medium=referral&utm_term=e0c0a2c6-7354-46c6-b760-c66cfafff6ca&utm_campaign=public_api_create_design_clicked_hyperlink",
+      "export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/41ac0a03-c9eb-4b07-88f8-1f939d8d66eb/canva-email-prompt_20260313_008-20260314_095115.png",
+      "platform": "email",
+      "dimensions": "1080x1080",
+      "design_type": "product_spotlight",
+      "text_overlay": {
+        "headline": "iPhone 14 Pro",
+        "subline": "65-Point Inspected. Like New.",
+        "cta": "Shop Now"
+      },
+      "status": "exported",
+      "created_at": "2026-03-14T09:51:20.481579+00:00"
     }
   ],
   "templates": {
@@ -186,8 +222,8 @@
     ]
   },
   "stats": {
-    "total_designs": 7,
+    "total_designs": 9,
     "designs_today": 2,
-    "last_design_at": "2026-03-13T18:40:56.628943+00:00"
+    "last_design_at": "2026-03-14T09:51:20.481627+00:00"
   }
 }

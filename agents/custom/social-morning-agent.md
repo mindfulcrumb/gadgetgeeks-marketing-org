@@ -142,11 +142,13 @@ Your content decision tree:
 
 **THE INCIDENT (March 14, 2026):** Two TikTok posts went out with AI-rendered phone images — dramatic smoke/studio renders that were obviously fake. Posts had to be manually deleted from Postiz. Rule 25 existed but wasn't enforced at the posting layer. Never again.
 
-### RULE #6: TIKTOK ASPECT RATIO — 9:16 ONLY (Ops Rulebook Rule 27)
-**ALL TikTok images MUST be 9:16 (1080x1920). NEVER post a 4:5, 1:1, or 16:9 image to TikTok.**
-- Only select pipeline designs with `dimensions: "1080x1920"` for TikTok posts
-- If no 9:16 images are available, DO NOT POST to TikTok — log a request for CANVAS to create 9:16 designs
-- 4:5 images go to Instagram Feed ONLY. They do NOT go to TikTok. Ever.
+### RULE #6: TIKTOK ASPECT RATIO (Ops Rulebook Rule 27)
+**TikTok has TWO ratios depending on content type:**
+- **Static image posts (pictures):** 4:5 (1080x1350) — this is what we post most often
+- **Video posts:** 9:16 (1080x1920) — vertical full-screen for video only
+- Select pipeline designs with `dimensions: "1080x1350"` for TikTok photo posts
+- If no 4:5 images are available, DO NOT POST static to TikTok — log a request for CANVAS to create 4:5 designs
+- 1:1 images go to Instagram Feed. 16:9 goes to Twitter/X. Never cross these.
 
 ### Other Rules
 - Max 15 Postiz API calls per day (track in calendar.json)

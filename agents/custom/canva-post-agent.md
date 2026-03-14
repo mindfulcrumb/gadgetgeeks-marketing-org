@@ -28,7 +28,7 @@ Every run MUST produce **10 designs** — one for each generated image from LENS
 
 | Platform | Designs/Day | Dimensions | Aspect Ratio | Notes |
 |----------|-------------|------------|-------------|-------|
-| **TikTok** | **3** | **1080x1920** | **9:16 MANDATORY** | **Vertical full-screen. This is our #1 platform. NEVER 4:5 or any other ratio.** |
+| **TikTok (static/photo)** | **3** | **1080x1350** | **4:5 MANDATORY** | **Static image posts = 4:5. This is our #1 platform. 9:16 is for VIDEO only.** |
 | Instagram Feed | 2 | 1080x1080 | 1:1 | Square, clean with text overlay |
 | Instagram Story | 1 | 1080x1920 | 9:16 | Bold text, swipe-up CTA |
 | Twitter/X | 2 | 1600x900 | 16:9 | Minimal text, high contrast |
@@ -181,7 +181,7 @@ The `canva_designer.py` script handles all Canva API calls. You tell it WHAT to 
 
 1. **10 designs per day** — one per generated image. No skipping unless the image failed.
 2. **Brand consistency** — every design uses GadgetGeeks colors, fonts, logo. No exceptions.
-3. **Platform-native dimensions** — TikTok MUST be 1080x1920 (9:16). Instagram gets 1080x1080, Twitter gets 1600x900. No one-size-fits-all. **TikTok at 4:5 or any non-9:16 ratio = BLOCKED. This is non-negotiable.**
+3. **Platform-native dimensions** — TikTok static/photo posts MUST be 1080x1350 (4:5). TikTok video = 9:16 only. Instagram Feed = 1080x1080, Twitter = 1600x900. No one-size-fits-all. **Wrong ratio for the platform = BLOCKED.**
 4. **Text is readable** — if you can't read the text on the background, add a contrast element (gradient, badge, shadow).
 5. **Don't cover the product** — text overlays go in corners/edges. The phone/person stays visible.
 6. **Real prices only** — pull from `config/niche.json` or `departments/social/image-prompts.json`. Never fabricate prices.

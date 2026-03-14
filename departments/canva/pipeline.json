@@ -100,11 +100,23 @@
       "type": "InstagramSquare",
       "description": "1:1 Instagram feed post"
     },
+    "tiktok_static": {
+      "width": 1080,
+      "height": 1350,
+      "type": "TikTokStatic",
+      "description": "4:5 TikTok static image post — MANDATORY for all TikTok photo posts"
+    },
+    "tiktok_video": {
+      "width": 1080,
+      "height": 1920,
+      "type": "TikTokVideo",
+      "description": "9:16 TikTok video — use ONLY for video content"
+    },
     "instagram_story": {
       "width": 1080,
       "height": 1920,
       "type": "InstagramStory",
-      "description": "9:16 Instagram/TikTok story"
+      "description": "9:16 Instagram story"
     },
     "twitter_post": {
       "width": 1600,

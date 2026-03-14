@@ -2,176 +2,16 @@
   "_docs": "Canva Post Design Pipeline — tracks image-to-finished-post conversion. The Canva department takes generated images from departments/social/image-prompts.json and creates finished social media posts using Canva.",
   "_created": "2026-03-12",
   "_last_run": "2026-03-14T09:51:20.481630+00:00",
+  "_WARNING": "RULE 25: Only designs with source='real_product_photo' may be posted. AI-generated images (shopify-staged-uploads) are BURNED. See config/operations-rulebook.json Rule 25.",
   "designs": [
     {
-      "id": "canva_20260313_095823_001",
-      "source_prompt_id": "prompt_20260311_006",
-      "source_image_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/70bf9c68-179b-4c16-96bb-013cc2289d30/gg-prompt_20260311_006.png",
-      "canva_design_id": "DAHD0YSaeA4",
-      "canva_edit_url": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc1OTg3OTAzNDAwfQ..4bgWREn39LBYMa_y.0Q82OT64kkoLMoi9bIctijXoVzPKqzd9qTFMyWxGDIYR9S6Vk9WHGVJvQhKjS-MSeu4WprPeICmTTU1em8xjzaB-ySldRyhShP4l2dICdamFX-o.U0kliJhpZ5zz_QA4528zLg/edit?utm_source=OC-AZziwCpO4uv4&utm_medium=referral&utm_term=56417e15-2c43-4855-a64a-a951d1103ba6&utm_campaign=public_api_create_design_clicked_hyperlink",
-      "export_url": "",
-      "platform": "blog",
-      "dimensions": "1080x1080",
-      "design_type": "product_spotlight",
-      "text_overlay": {
-        "headline": "Premium Refurbished",
-        "subline": "65-Point Inspected. Like New.",
-        "cta": "Shop Now"
-      },
-      "status": "exported",
-      "created_at": "2026-03-13T09:58:23.455967+00:00"
-    },
-    {
-      "id": "canva_20260313_095828_002",
-      "source_prompt_id": "prompt_20260311_001",
-      "source_image_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/a8bd0d3c-37af-4db9-916c-6f06c8ba90bc/gg-prompt_20260311_001.png",
-      "canva_design_id": "DAHD0XgHVk8",
-      "canva_edit_url": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc1OTg3OTA4NjQxfQ..R2iYwnBGi11z5owF.HXK-AT05dMrJ_G7niOTk-o_JVuI3vzEieqRpNuU4pWHPaRsO6VEoh8sSnk4WY91he1iOEqej2JEYFduc7NglHy_KOJZn42HpnvMfFCMRzNJhHlM.w4NVVUESJQRQiiUJSalbuQ/edit?utm_source=OC-AZziwCpO4uv4&utm_medium=referral&utm_term=af42f7d1-8726-4275-bf01-12dda84684f8&utm_campaign=public_api_create_design_clicked_hyperlink",
-      "export_url": "",
-      "platform": "twitter",
-      "dimensions": "1600x900",
-      "design_type": "lifestyle",
-      "text_overlay": {
-        "headline": "refurbished iPhone",
-        "subline": "Refurbished. Inspected. Guaranteed.",
-        "cta": "Find Yours"
-      },
-      "status": "exported",
-      "created_at": "2026-03-13T09:58:28.691280+00:00"
-    },
-    {
-      "id": "canva_20260313_095834_003",
-      "source_prompt_id": "prompt_20260311_003",
-      "source_image_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/1774134f-1139-453f-8304-eb33c318d46d/gg-prompt_20260311_003.png",
-      "canva_design_id": "DAHD0fSU5Dw",
-      "canva_edit_url": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc1OTg3OTE0MTMwfQ..9VfIdIksJGuZHPgY._2pm8L9WQkdNZJmFjFwHLkodQsDex2vBjYrY6_lK8-ZwEoTu8r7E-q_5INpx-7aglzw4GhfR0kF8XJcLtftpBXJq7IJxuS6BmFHArI9whPaAejo.ErMEQsK5w-uH3rzi732VKg/edit?utm_source=OC-AZziwCpO4uv4&utm_medium=referral&utm_term=9159d07d-c674-404c-b5ba-7d7879ccbed2&utm_campaign=public_api_create_design_clicked_hyperlink",
-      "export_url": "",
-      "platform": "twitter",
-      "dimensions": "1600x900",
-      "design_type": "lifestyle",
-      "text_overlay": {
-        "headline": "customer service",
-        "subline": "Refurbished. Inspected. Guaranteed.",
-        "cta": "Find Yours"
-      },
-      "status": "exported",
-      "created_at": "2026-03-13T09:58:34.192179+00:00"
-    },
-    {
-      "id": "canva_20260313_095839_004",
-      "source_prompt_id": "prompt_20260311_005",
-      "source_image_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/07618bb8-975d-4109-9105-e44e22c922a1/gg-prompt_20260311_005.png",
-      "canva_design_id": "DAHD0Xke2jo",
-      "canva_edit_url": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc1OTg3OTE5NTYyfQ..u-J47F4PNvKzMnZV.ZZ-GsMCGVWdMojlVhP3PBtdS40jQk6Emik7Eu__DPwDQ47zlHUm4bHqUgvt1UqLr828QdwHrojDklqRIM06q2SKSOxCHloX8yZk9lYLUv8qNv24.pxQn_7a_YOpUxl4fv1C-nA/edit?utm_source=OC-AZziwCpO4uv4&utm_medium=referral&utm_term=84ed0882-58e4-48a1-90eb-ff58da297ca3&utm_campaign=public_api_create_design_clicked_hyperlink",
-      "export_url": "",
-      "platform": "twitter",
-      "dimensions": "1600x900",
-      "design_type": "lifestyle",
-      "text_overlay": {
-        "headline": "budget refurbished phone",
-        "subline": "Refurbished. Inspected. Guaranteed.",
-        "cta": "Find Yours"
-      },
-      "status": "exported",
-      "created_at": "2026-03-13T09:58:39.614645+00:00"
-    },
-    {
-      "id": "canva_20260313_095845_005",
-      "source_prompt_id": "prompt_20260311_004",
-      "source_image_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/7847405b-fab4-4688-a795-0a929c65fa24/gg-prompt_20260311_004.png",
-      "canva_design_id": "DAHD0Y7gNJw",
-      "canva_edit_url": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc1OTg3OTI0OTg1fQ..sxQHR12ErCOvj6cB.QCi8O-JosfMtcF6JoqKHksQMBtP0UNiyhkYx2WoopCS8FYQbtZeD9pQnsuWbpYjTq5NiXXLfS1kBDBxJkObfrmOOHKt12M84WtJ4RIGB83LIWW0.c8Lp5-3OzX-RCT3Vu6XzUA/edit?utm_source=OC-AZziwCpO4uv4&utm_medium=referral&utm_term=e61b0b2c-d261-4ea9-85f0-71e6c5357461&utm_campaign=public_api_create_design_clicked_hyperlink",
-      "export_url": "",
-      "platform": "instagram",
-      "dimensions": "1080x1080",
-      "design_type": "sustainability",
-      "text_overlay": {
-        "headline": "Choose Refurbished",
-        "subline": "Same phone. Less waste.",
-        "cta": "Save Money & Planet"
-      },
-      "status": "exported",
-      "created_at": "2026-03-13T09:58:45.035022+00:00"
-    },
-    {
-      "id": "canva_20260313_184050_001",
-      "source_prompt_id": "prompt_20260313_002",
-      "source_image_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/f1bc1edb-88ed-4233-94b0-a45f4e2ab992/gg-prompt_20260313_002.jpg",
-      "canva_design_id": "DAHD2s4oZdk",
-      "canva_edit_url": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc2MDE5MjUwNzQ3fQ..BaF0kGm2PvwfeID4.ws2fld1FSSIJl4_vK-wXNtUyjNQIApBzD8WZIDiZKL0i7erh68UO3HAYwcoH5kryidrUQxzZqUUcF3UF622iEqE4XJuR4if-rTSj0x_H3fZuT14.Nux3tuv9MgWRmUzSaRGDNg/edit?utm_source=OC-AZziwCpO4uv4&utm_medium=referral&utm_term=8ed189fb-7991-4a35-9aa9-583eb4f0cfd3&utm_campaign=public_api_create_design_clicked_hyperlink",
-      "export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/81bbb30a-4abb-40e0-9eb1-93df2b17171e/canva-blog-prompt_20260313_002-20260313_184044.png",
-      "platform": "blog",
-      "dimensions": "1080x1080",
-      "design_type": "product_spotlight",
-      "text_overlay": {
-        "headline": "iPhone 15 Pro Max",
-        "subline": "65-Point Inspected. Like New.",
-        "cta": "Shop Now"
-      },
-      "status": "exported",
-      "created_at": "2026-03-13T18:40:50.783020+00:00"
-    },
-    {
-      "id": "canva_20260313_184056_002",
-      "source_prompt_id": "prompt_20260313_008",
-      "source_image_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/7ac51c3e-6123-4840-ac61-9b4c98f0a679/gg-prompt_20260313_008.jpg",
-      "canva_design_id": "DAHD2lZoKsA",
-      "canva_edit_url": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc2MDE5MjU2NTg1fQ..BxQj4m157ZX49d41.5yIuVhjXpRp3Rinz1SuVjDFo78yogGzmnROC4k7J5C-unHnwVl6xRnxtJ9nySiTIpEB7Pv0-C3WZujvVG4FVML_0B3WWtfKNzd3g20Sh70VADfs.iEMRkL8FBLLKVepWUjKMcg/edit?utm_source=OC-AZziwCpO4uv4&utm_medium=referral&utm_term=3f4c0dd3-d4be-40ee-b9eb-d9303f1b2f12&utm_campaign=public_api_create_design_clicked_hyperlink",
-      "export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/cb3bc0bc-8066-41cf-9ef9-e7e0e13ffb63/canva-email-prompt_20260313_008-20260313_184050.png",
-      "platform": "email",
-      "dimensions": "1080x1080",
-      "design_type": "product_spotlight",
-      "text_overlay": {
-        "headline": "iPhone 14 Pro",
-        "subline": "65-Point Inspected. Like New.",
-        "cta": "Shop Now"
-      },
-      "status": "exported",
-      "created_at": "2026-03-13T18:40:56.628865+00:00"
-    },
-    {
-      "id": "canva_20260314_095115_001",
-      "source_prompt_id": "prompt_20260313_002",
-      "source_image_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/f1bc1edb-88ed-4233-94b0-a45f4e2ab992/gg-prompt_20260313_002.jpg",
-      "canva_design_id": "DAHD6T8hi8A",
-      "canva_edit_url": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc2MDczODc1MTg5fQ..Q3fDDhMkWORdsamA.fO9T28L9fzWxzSvt6BDiQRP4js6JKcyMe3v0Oy04q_U_xUpKnwxmQCs4nPSZ3I5S81XFj19KqpsMejNqoCUb9kCbwq16UW2YOYc7uLIyZxS08iM.iebxxEZ-6N4d2YEZopMzow/edit?utm_source=OC-AZziwCpO4uv4&utm_medium=referral&utm_term=038a7d3f-b944-4115-9136-3dfc3a0bcf20&utm_campaign=public_api_create_design_clicked_hyperlink",
-      "export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/ccbd1225-724f-4354-be40-e6b45ff4920a/canva-blog-prompt_20260313_002-20260314_095109.png",
-      "platform": "blog",
-      "dimensions": "1080x1080",
-      "design_type": "product_spotlight",
-      "text_overlay": {
-        "headline": "iPhone 15 Pro Max",
-        "subline": "65-Point Inspected. Like New.",
-        "cta": "Shop Now"
-      },
-      "status": "exported",
-      "created_at": "2026-03-14T09:51:15.217054+00:00"
-    },
-    {
-      "id": "canva_20260314_095120_002",
-      "source_prompt_id": "prompt_20260313_008",
-      "source_image_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/7ac51c3e-6123-4840-ac61-9b4c98f0a679/gg-prompt_20260313_008.jpg",
-      "canva_design_id": "DAHD6fL87vI",
-      "canva_edit_url": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc2MDczODgwNDU1fQ..qcX9--d2yCH1lWjz.KGKxrbyx05XS1HrjK2FP0jN5Z347vQiMEmlvG2NfSus4aL11VYJZqnxTVKrisKpCXlBEDCxwxCO76FisK-Dw0-f-xr7-3v-VVcL7SGLEKBZRkOU._-MGB4JNQwgTZlqRlJ35ng/edit?utm_source=OC-AZziwCpO4uv4&utm_medium=referral&utm_term=e0c0a2c6-7354-46c6-b760-c66cfafff6ca&utm_campaign=public_api_create_design_clicked_hyperlink",
-      "export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/41ac0a03-c9eb-4b07-88f8-1f939d8d66eb/canva-email-prompt_20260313_008-20260314_095115.png",
-      "platform": "email",
-      "dimensions": "1080x1080",
-      "design_type": "product_spotlight",
-      "text_overlay": {
-        "headline": "iPhone 14 Pro",
-        "subline": "65-Point Inspected. Like New.",
-        "cta": "Shop Now"
-      },
-      "status": "exported",
-      "created_at": "2026-03-14T09:51:20.481579+00:00"
-    },
-    {
-      "id": "ready_20260314_iphone13_hero",
+      "id": "canva_20260314_iphone13_flatlay",
       "source_prompt_id": "real_product_photo_iphone_13",
-      "source_image_url": "https://raw.githubusercontent.com/mindfulcrumb/gadgetgeeks-marketing-org/main/departments/social/ready-to-post/gg-iphone13-hero-tiktok.png",
-      "canva_design_id": "",
-      "canva_edit_url": "",
-      "export_url": "https://raw.githubusercontent.com/mindfulcrumb/gadgetgeeks-marketing-org/main/departments/social/ready-to-post/gg-iphone13-hero-tiktok.png",
+      "source_image_url": "gc001 from Shopify Files (gadgetgeekspro.myshopify.com)",
+      "canva_design_id": "DAHD7jU4OMw",
+      "canva_edit_url": "https://www.canva.com/design/DAHD7jU4OMw/edit",
+      "export_url": "https://cdn.shopify.com/s/files/1/0664/1664/0251/files/gg-tiktok-design1.png?v=1773498404",
+      "shopify_media_id": "gid://shopify/MediaImage/40835710812411",
       "platform": "tiktok",
       "dimensions": "1080x1920",
       "design_type": "product_hero",
@@ -181,17 +21,19 @@
         "cta": "Link in Bio"
       },
       "keywords_targeted": ["iPhone 13", "refurbished", "bundle", "deal"],
-      "status": "exported",
+      "status": "posted",
+      "posted_at": "2026-03-14T14:31:00.000000+00:00",
       "created_at": "2026-03-14T13:17:00.000000+00:00",
       "source": "real_product_photo"
     },
     {
-      "id": "ready_20260314_iphone14_hero",
+      "id": "canva_20260314_iphone14_hero",
       "source_prompt_id": "real_product_photo_iphone_14",
-      "source_image_url": "https://raw.githubusercontent.com/mindfulcrumb/gadgetgeeks-marketing-org/main/departments/social/ready-to-post/gg-iphone14-hero-tiktok.png",
-      "canva_design_id": "",
-      "canva_edit_url": "",
-      "export_url": "https://raw.githubusercontent.com/mindfulcrumb/gadgetgeeks-marketing-org/main/departments/social/ready-to-post/gg-iphone14-hero-tiktok.png",
+      "source_image_url": "gc002 from Shopify Files (gadgetgeekspro.myshopify.com)",
+      "canva_design_id": "DAHD7nNxlN4",
+      "canva_edit_url": "https://www.canva.com/design/DAHD7nNxlN4/edit",
+      "export_url": "https://cdn.shopify.com/s/files/1/0664/1664/0251/files/gg-tiktok-design2.png?v=1773498404",
+      "shopify_media_id": "gid://shopify/MediaImage/40835710845179",
       "platform": "tiktok",
       "dimensions": "1080x1920",
       "design_type": "product_hero",
@@ -201,17 +43,19 @@
         "cta": "Link in Bio"
       },
       "keywords_targeted": ["iPhone 14", "refurbished", "bundle", "premium"],
-      "status": "exported",
+      "status": "posted",
+      "posted_at": "2026-03-14T15:01:00.000000+00:00",
       "created_at": "2026-03-14T13:17:00.000000+00:00",
       "source": "real_product_photo"
     },
     {
-      "id": "ready_20260314_iphone13_deal",
+      "id": "canva_20260314_iphone13_deal",
       "source_prompt_id": "real_product_photo_iphone_13",
-      "source_image_url": "https://raw.githubusercontent.com/mindfulcrumb/gadgetgeeks-marketing-org/main/departments/social/ready-to-post/gg-iphone13-deal-tiktok.png",
-      "canva_design_id": "",
-      "canva_edit_url": "",
-      "export_url": "https://raw.githubusercontent.com/mindfulcrumb/gadgetgeeks-marketing-org/main/departments/social/ready-to-post/gg-iphone13-deal-tiktok.png",
+      "source_image_url": "gc003 from Shopify Files (gadgetgeekspro.myshopify.com)",
+      "canva_design_id": "DAHD7ox7jyY",
+      "canva_edit_url": "https://www.canva.com/design/DAHD7ox7jyY/edit",
+      "export_url": "https://cdn.shopify.com/s/files/1/0664/1664/0251/files/gg-tiktok-design3.png?v=1773498404",
+      "shopify_media_id": "gid://shopify/MediaImage/40835710877947",
       "platform": "tiktok",
       "dimensions": "1080x1920",
       "design_type": "deal_urgency",
@@ -221,17 +65,19 @@
         "cta": "Save This"
       },
       "keywords_targeted": ["iPhone 13", "deal", "bundle deal", "phone deal"],
-      "status": "exported",
+      "status": "posted",
+      "posted_at": "2026-03-14T15:31:00.000000+00:00",
       "created_at": "2026-03-14T13:17:00.000000+00:00",
       "source": "real_product_photo"
     },
     {
-      "id": "ready_20260314_iphone14_eco",
+      "id": "canva_20260314_iphone14_ugc",
       "source_prompt_id": "real_product_photo_iphone_14",
-      "source_image_url": "https://raw.githubusercontent.com/mindfulcrumb/gadgetgeeks-marketing-org/main/departments/social/ready-to-post/gg-iphone14-eco-tiktok.png",
-      "canva_design_id": "",
-      "canva_edit_url": "",
-      "export_url": "https://raw.githubusercontent.com/mindfulcrumb/gadgetgeeks-marketing-org/main/departments/social/ready-to-post/gg-iphone14-eco-tiktok.png",
+      "source_image_url": "gc004 from Shopify Files (gadgetgeekspro.myshopify.com)",
+      "canva_design_id": "DAHD7pxTtSI",
+      "canva_edit_url": "https://www.canva.com/design/DAHD7pxTtSI/edit",
+      "export_url": "https://cdn.shopify.com/s/files/1/0664/1664/0251/files/gg-tiktok-design4.png?v=1773498404",
+      "shopify_media_id": "gid://shopify/MediaImage/40835710910715",
       "platform": "tiktok",
       "dimensions": "1080x1920",
       "design_type": "sustainability",
@@ -241,7 +87,8 @@
         "cta": "Follow for More"
       },
       "keywords_targeted": ["iPhone 14", "sustainable", "eco-friendly", "refurbished"],
-      "status": "exported",
+      "status": "posted",
+      "posted_at": "2026-03-14T16:01:00.000000+00:00",
       "created_at": "2026-03-14T13:17:00.000000+00:00",
       "source": "real_product_photo"
     }

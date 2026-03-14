@@ -1,0 +1,52 @@
+{
+  "_docs": "LENS↔FOCUS Feedback Loop — FOCUS writes patterns after each QA session, LENS reads them before generating. This is the learning mechanism that makes prompts get better over time.",
+  "_created": "2026-03-14",
+  "_last_updated": null,
+
+  "focus_to_lens": {
+    "_docs": "FOCUS writes this after every QA batch. Tracks recurring failures so LENS avoids repeating them.",
+    "recurring_failures": [],
+    "auto_block_history": [],
+    "check_failure_rates": {
+      "check_1_camera_body": 0,
+      "check_2_lens_spec": 0,
+      "check_3_film_stock": 0,
+      "check_4_filename_hack": 0,
+      "check_5_negative_prompt": 0,
+      "check_6_skin_realism": 0,
+      "check_7_dark_skin_lighting": 0,
+      "check_8_anti_uncanny": 0,
+      "check_9_diversity": 0,
+      "check_10_phone_model": 0,
+      "check_11_condition_language": 0,
+      "check_12_brand_visibility": 0,
+      "check_13_prompt_length": 0,
+      "check_14_platform_match": 0,
+      "check_15_no_text": 0,
+      "check_16_fake_screens": 0,
+      "check_17_cellphone_realism": 0,
+      "check_18_data_driven": 0,
+      "check_19_ai_rendered_phones": 0
+    },
+    "batch_pass_rate_history": [],
+    "top_corrections": [],
+    "last_batch_summary": null
+  },
+
+  "engagement_to_lens": {
+    "_docs": "Social afternoon agent writes structured performance data here. LENS reads it to adjust visual style allocation.",
+    "top_visual_styles": [],
+    "worst_visual_styles": [],
+    "top_content_types": [],
+    "style_allocation_override": null,
+    "image_performance": [],
+    "last_updated": null
+  },
+
+  "canvas_to_lens": {
+    "_docs": "CANVAS writes designability feedback here. Images that don't work for design get flagged so LENS avoids those compositions.",
+    "design_issues": [],
+    "composition_feedback": [],
+    "last_updated": null
+  }
+}

@@ -9,6 +9,7 @@ Check how today's posts performed, log metrics, flag standout content, and **pro
 ## Load First
 - `state/incident-log.json`
 - `config/operations-rulebook.json` — rules 21-24 are MANDATORY
+- `departments/social/lens-focus-feedback.json` — write engagement performance data here for LENS
 
 ## Tasks
 
@@ -71,8 +72,52 @@ If any post underperformed or images were reused:
 - **If same image appeared in multiple posts, log an INCIDENT per Ops Rulebook Rule 21**
 - **If a content type consistently underperforms (3+ days), recommend removing it from rotation**
 
+### 6. Update LENS Feedback File — STRUCTURED PERFORMANCE DATA (MANDATORY)
+
+After writing engagement-log.md, you MUST also update `departments/social/lens-focus-feedback.json` with structured performance data that LENS reads directly. This is not prose — it's JSON that LENS parses to adjust its prompt generation.
+
+```json
+// UPDATE: departments/social/lens-focus-feedback.json
+{
+  "engagement_to_lens": {
+    "top_visual_styles": [
+      {"style": "lifestyle", "reason": "iPhone lifestyle shots averaging 2x engagement vs product hero", "days_trending": 3}
+    ],
+    "worst_visual_styles": [
+      {"style": "comparison", "reason": "Split-frame comparisons getting 50% less engagement than average", "days_underperforming": 2}
+    ],
+    "top_content_types": [
+      {"type": "behind_the_scenes", "reason": "Trust-building content outperforms sales content by 1.8x"}
+    ],
+    "style_allocation_override": {
+      "lifestyle": 5,
+      "product_hero": 2,
+      "deal_urgency": 2,
+      "sustainability": 1,
+      "comparison": 0
+    },
+    "image_performance": [
+      {
+        "date": "2026-03-14",
+        "image_source": "ready_20260314_iphone13_hero",
+        "platform": "tiktok",
+        "visual_style": "product_hero",
+        "engagement_level": "high|medium|low",
+        "notes": "Clean product shot with bold CTA performed well"
+      }
+    ],
+    "last_updated": "2026-03-14T16:45:00Z"
+  }
+}
+```
+
+**Rules for this update:**
+- `style_allocation_override`: Only set this if data clearly shows some styles outperform. Otherwise leave as `null` and LENS uses its default allocation.
+- `image_performance`: Link specific images (by their design ID from canva/pipeline.json or calendar.json) to their engagement results. This is how LENS learns which compositions work.
+- `top_visual_styles` / `worst_visual_styles`: Only include styles with 2+ days of data. Single-day flukes don't go here.
+
 ## Output Format
-Update engagement-log.md and calendar.json using the structured format above.
+Update engagement-log.md, calendar.json, AND departments/social/lens-focus-feedback.json using the structured formats above.
 
 ## Rules
 - Base analysis on patterns, not single data points

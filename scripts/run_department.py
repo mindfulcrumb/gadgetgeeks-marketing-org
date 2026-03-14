@@ -154,10 +154,13 @@ DEPARTMENT_CONFIG = {
             "departments/social/calendar.json",
             "departments/social/engagement-log.md",
             "departments/social/platform-config.json",
+            "departments/social/lens-focus-feedback.json",
+            "departments/canva/pipeline.json",
         ],
         "output_files": [
             "departments/social/calendar.json",
             "departments/social/engagement-log.md",
+            "departments/social/lens-focus-feedback.json",
         ],
     },
     "cro": {
@@ -229,6 +232,7 @@ DEPARTMENT_CONFIG = {
         "context_files": [
             "departments/social/calendar.json",
             "departments/social/image-prompts.json",
+            "departments/social/lens-focus-feedback.json",
             "departments/content/calendar.json",
             "departments/x-intel/daily-brief.json",
             "departments/intel/trends.json",
@@ -243,12 +247,14 @@ DEPARTMENT_CONFIG = {
         "agent_prompt": "agents/custom/prompt-qa-agent.md",
         "context_files": [
             "departments/social/image-prompts.json",
+            "departments/social/lens-focus-feedback.json",
             "agents/custom/image-prompting-agent.md",
             "agents/custom/department-context.md",
             "config/niche.json",
         ],
         "output_files": [
             "departments/social/image-prompts.json",
+            "departments/social/lens-focus-feedback.json",
         ],
     },
 }

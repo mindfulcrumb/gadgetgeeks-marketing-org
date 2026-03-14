@@ -8,7 +8,7 @@ Create 1-2 social media posts and schedule them via Postiz to all connected plat
 
 ## Load First
 - `state/incident-log.json`
-- `config/operations-rulebook.json` — rules 21-24 are MANDATORY
+- `config/operations-rulebook.json` — rules 21-28 are MANDATORY (especially Rule 25, 27, 28)
 
 ## Tasks
 
@@ -132,6 +132,21 @@ Your content decision tree:
 5. **Only if none of the above apply** → Fall back to content type rotation.
 
 **Every post in calendar.json MUST include a `driven_by` field** explaining what data drove the content decision. Example: `"driven_by": "x-intel trending: iPhone 17e vs refurbished comparison gaining retweets"` or `"driven_by": "engagement-log: customer testimonials with dollar amounts outperform by 40%"`
+
+### RULE #5: IMAGE SOURCE VALIDATION — NO AI-RENDERED PHONES (Ops Rulebook Rules 25, 28)
+**Before posting ANY image, validate its source:**
+1. Check that the image URL exists in `canva/pipeline.json` with `source: "real_product_photo"` — OR is from the `ready-to-post/` folder
+2. If the image is from `image-prompts.json` `generated_url` (Shopify staged upload), it is BURNED — it's an AI-generated image and MUST NOT be posted directly. It must go through CANVAS design first.
+3. AI-rendered phone images (dramatic lighting, smoke effects, too-perfect studio renders) are INSTANTLY recognizable as fake. If an image looks like a CGI render of a phone, DO NOT POST IT.
+4. If you're unsure whether an image is AI-rendered or a real photo, DO NOT POST. Log an incident instead.
+
+**THE INCIDENT (March 14, 2026):** Two TikTok posts went out with AI-rendered phone images — dramatic smoke/studio renders that were obviously fake. Posts had to be manually deleted from Postiz. Rule 25 existed but wasn't enforced at the posting layer. Never again.
+
+### RULE #6: TIKTOK ASPECT RATIO — 9:16 ONLY (Ops Rulebook Rule 27)
+**ALL TikTok images MUST be 9:16 (1080x1920). NEVER post a 4:5, 1:1, or 16:9 image to TikTok.**
+- Only select pipeline designs with `dimensions: "1080x1920"` for TikTok posts
+- If no 9:16 images are available, DO NOT POST to TikTok — log a request for CANVAS to create 9:16 designs
+- 4:5 images go to Instagram Feed ONLY. They do NOT go to TikTok. Ever.
 
 ### Other Rules
 - Max 15 Postiz API calls per day (track in calendar.json)

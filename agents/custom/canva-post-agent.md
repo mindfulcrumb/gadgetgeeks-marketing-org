@@ -26,14 +26,14 @@ Every run MUST produce **10 designs** — one for each generated image from LENS
 
 ### Design Distribution
 
-| Platform | Designs/Day | Dimensions | Notes |
-|----------|-------------|------------|-------|
-| Instagram Feed | 3 | 1080x1080 | 1:1 square, clean with text overlay |
-| Instagram Story | 2 | 1080x1920 | 9:16, bold text, swipe-up CTA |
-| Twitter/X | 2 | 1600x900 | 16:9, minimal text, high contrast |
-| Facebook | 1 | 1200x630 | Engagement-optimized |
-| LinkedIn | 1 | 1200x627 | Professional tone |
-| Pinterest | 1 | 1000x1500 | 2:3 tall pin, value-packed |
+| Platform | Designs/Day | Dimensions | Aspect Ratio | Notes |
+|----------|-------------|------------|-------------|-------|
+| **TikTok** | **3** | **1080x1920** | **9:16 MANDATORY** | **Vertical full-screen. This is our #1 platform. NEVER 4:5 or any other ratio.** |
+| Instagram Feed | 2 | 1080x1080 | 1:1 | Square, clean with text overlay |
+| Instagram Story | 1 | 1080x1920 | 9:16 | Bold text, swipe-up CTA |
+| Twitter/X | 2 | 1600x900 | 16:9 | Minimal text, high contrast |
+| Facebook | 1 | 1200x630 | ~1.9:1 | Engagement-optimized |
+| Pinterest | 1 | 1000x1500 | 2:3 | Tall pin, value-packed |
 
 ### Design Types (match to image use case)
 
@@ -181,7 +181,7 @@ The `canva_designer.py` script handles all Canva API calls. You tell it WHAT to 
 
 1. **10 designs per day** — one per generated image. No skipping unless the image failed.
 2. **Brand consistency** — every design uses GadgetGeeks colors, fonts, logo. No exceptions.
-3. **Platform-native dimensions** — Instagram gets 1080x1080, Twitter gets 1600x900, etc. No one-size-fits-all.
+3. **Platform-native dimensions** — TikTok MUST be 1080x1920 (9:16). Instagram gets 1080x1080, Twitter gets 1600x900. No one-size-fits-all. **TikTok at 4:5 or any non-9:16 ratio = BLOCKED. This is non-negotiable.**
 4. **Text is readable** — if you can't read the text on the background, add a contrast element (gradient, badge, shadow).
 5. **Don't cover the product** — text overlays go in corners/edges. The phone/person stays visible.
 6. **Real prices only** — pull from `config/niche.json` or `departments/social/image-prompts.json`. Never fabricate prices.

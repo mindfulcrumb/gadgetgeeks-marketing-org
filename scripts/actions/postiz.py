@@ -184,6 +184,26 @@ def post_to_social(
 
     # Note: TikTok can accept image posts via Postiz — no video-only filter needed
 
+    # Step 2b: Image source validation (Rule 25, Rule 28)
+    # Log the image source for audit trail. Warn on suspicious sources.
+    if media_url:
+        print(f"  Postiz: image source audit — {media_url[:120]}")
+        _source_lower = media_url.lower()
+        # Approved sources: Shopify CDN product photos, ready-to-post folder, GitHub raw
+        _approved = any(s in _source_lower for s in [
+            "cdn.shopify.com", "raw.githubusercontent.com/mindfulcrumb/gadgetgeeks-marketing-org",
+            "ready-to-post", "product-photos",
+        ])
+        # Suspicious: Shopify staged uploads (AI-generated), random URLs
+        _staged = "shopify-staged-uploads" in _source_lower
+        if _staged:
+            print(f"  ⚠️  WARNING: Image is from Shopify staged uploads (likely AI-generated).")
+            print(f"  ⚠️  Rule 25/28: AI-generated phone images are BURNED. Verify this is not an AI-rendered phone.")
+        elif not _approved:
+            print(f"  ⚠️  WARNING: Image source not in approved list. Verify it's a real product photo.")
+        else:
+            print(f"  ✅ Image source approved.")
+
     # Step 3: Upload image to Postiz CDN if media_url provided
     image_payload = []
     if media_url:

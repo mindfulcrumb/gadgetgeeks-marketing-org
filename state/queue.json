@@ -226,6 +226,17 @@
       },
       "created": "2026-03-13 18:12 UTC",
       "id": "social_morning_20260313_181347"
+    },
+    {
+      "type": "telegram_alert",
+      "department": "night_ops",
+      "summary": "URGENT: Critical queue items pending >48 hours + departments offline",
+      "details": {
+        "alert_type": "URGENT",
+        "message": "🚨 SENTINEL NIGHT ALERT — 02:37 UTC\nType: URGENT\nIssue: Multiple critical items pending >48 hours\nCritical Items:\n• Charbel call pending 50+ hours (boss requested twice)\n• Cross-sell email pending 41+ hours\n• Data request pending 50+ hours\n\nAdditionally: 4 departments idle >72 hours (intel, content, email, cro)\n\nAction needed: Review and approve/reject pending queue items immediately. Check why scheduled departments aren't running.\n\nQueue depth: 13 pending items total"
+      },
+      "created": "2026-03-14 02:37 UTC",
+      "id": "night_ops_20260314_023800"
     }
   ],
   "approved": [

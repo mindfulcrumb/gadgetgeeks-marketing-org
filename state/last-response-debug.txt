@@ -1,278 +1,141 @@
-Looking at the state files, I need to compile the evening retro for March 13, 2026. Let me analyze what happened today across all departments and prepare the night handoff.
+# SENTINEL Night Operations Report — 2026-03-14 02:37 UTC
 
-# DAILY RETRO — March 13, 2026
+**RUN TYPE: PRE-DAWN CHECK (03:00 UTC)**
 
-## Analysis
+Reading shift handoff and conducting pre-dawn health assessment...
 
-Today was a significant day for the organization. We had 14 workflow runs across 8 departments, with heavy activity in morning operations and social media. The social media department had an exceptional burst of activity with 18 posts published in concentrated windows. However, we're facing critical infrastructure issues with image generation and platform connectivity that are blocking full execution.
+## Health Check Analysis
 
-Key patterns:
-- Strong social media momentum (18 posts vs usual 4) 
-- Blog pipeline progressing but blocked on image generation
-- Multiple queue items building up without resolution
-- Platform connectivity issues limiting multi-platform posting
-- Image generation system completely down (403 errors across all prompts)
+**Load Status:**
+- Evening handoff received from CHIEF at 20:47 UTC (6h50m ago) ✓
+- Critical blockers identified: Image generation API down, social platform connectivity at 20%
+- 13 pending approvals in queue requiring boss decision
+- One critical incident (INC-007) still open from 2026-03-12
 
-## Department Performance
+**Workflow Health Assessment:**
 
-**Intel departments performed well:** SCOUT and ECHO delivered strong market intelligence on iPhone 17e trends, battery health obsession (400% increase), and competitor crises (Back Market support failures).
+Checking scheduled runs vs actual execution for 2026-03-13:
 
-**Content pipeline showed progress:** SCRIBE drafted content, QUILL reviewed, but PRESS couldn't publish due to missing header image generation.
+**✅ COMPLETED SUCCESSFULLY:**
+- SEO (07:15) - ran on time
+- X Intel (07:41) - ran on time  
+- GM Report (07:52) - ran on time
+- Image Prompts (09:01) - ran on time
+- Prompt QA (09:27) - ran on time
+- Blog Writer (10:07) - ran on time
+- Blog QA (10:24) - ran on time
+- Social Morning (multiple runs) - last at 12:45
+- Blog Publish (11:04) - ran on time
 
-**Social media had breakthrough day:** VIBE executed 18 high-quality posts with excellent authentic customer language and strategic trend alignment, but hit technical barriers.
+**❌ MISSED SCHEDULED RUNS:**
+- Intel (10:47) - supposed to run Mon/Thu - MISSED (last run 2026-03-11)
+- CRO (11:29 Wed) - not scheduled for today ✓
+- Email (08:53 Tue/Thu) - not scheduled for today ✓
+- Dialer (14:15) - supposed to run weekdays - MISSED (last run 2026-03-12)
+- Social Afternoon (16:37) - ran at 17:10, slight delay but acceptable
+- GM Queue (18:51) - ran at 19:27, acceptable
+- Evening Retro (20:00) - ran at 20:48, acceptable
 
-**Operations struggling:** Queue depth growing, multiple system integration failures, image generation completely down.
+**🚨 IDLE DEPARTMENTS (>48h without runs):**
+- Intel: Last run 2026-03-11 (72+ hours ago) - supposed to run Mon/Thu
+- Content: Last run 2026-03-11 (72+ hours ago) 
+- Email: Last run 2026-03-11 (72+ hours ago)
+- CRO: Last run 2026-03-11 (72+ hours ago)
+
+**API Health Inference from Alert History:**
+- No API errors in recent alerts - all showing "info" level queue additions
+- Image generation known DOWN per handoff (403 errors)
+- Shopify: appears healthy based on successful workflow runs
+- Telegram: appears healthy based on successful polling
+- Postiz: limited to TikTok only per handoff
+
+**Queue Health:**
+- 13 pending items, oldest from 2026-03-12 00:48 (50+ hours) - URGENT ESCALATION NEEDED
+- Several items pending >24 hours
+- Cross-sell email campaign pending boss approval since 2026-03-12 09:31 (41+ hours)
+- SEO brief pending since 2026-03-13 07:15 (19 hours)
+
+**Critical Issues Found:**
+1. Dialer urgent call to Charbel pending 50+ hours - boss requested twice
+2. Multiple departments idle >72 hours
+3. Image generation API still down blocking blog publication
+4. Social platform connectivity severely limited
 
 ```json
-// UPDATE: state/daily-retro.json
+// UPDATE: state/night-report.json
 {
-  "_docs": "Daily retro report compiled by CHIEF. Updated every evening at 20:00 UTC. Summarizes the day and prepares night handoff.",
-  "date": "2026-03-13",
-  "day_theme": "Thursday — ENGAGE & SELL",
-  "shift": "evening",
-  
-  "shipped_today": [
-    "18 social media posts across all platforms (record high)",
-    "Blog content drafted and QA reviewed for 'How to Buy Used Phones Online Safely'", 
-    "Strong market intelligence on iPhone 17e trends and battery health obsession",
-    "10 image prompts created (though generation failed)",
-    "Updated weekly GM report"
-  ],
-  
-  "in_progress": [
-    "Blog 'How to Buy Used Phones Online Safely' - awaiting header image generation",
-    "Multiple queue items pending boss approval (13 items)",
-    "Cross-sell protection email campaign queued",
-    "Social platform connectivity setup needed"
-  ],
-  
-  "failed_blocked": [
-    "Image generation system completely down - all prompts failed with 403 errors",
-    "Blog publication blocked due to missing header image",
-    "Multi-platform social posting limited - only TikTok connected to Postiz",
-    "Dialer data access still missing - cannot build targeted call lists",
-    "Canva exports all empty - design pipeline broken"
-  ],
-  
-  "metrics": {
-    "content": {
-      "blogs_published": 0,
-      "blogs_drafted": 1,
-      "words_written": 1580,
-      "blogs_in_qa": 1
-    },
-    "visual": {
-      "images_requested": 10,
-      "images_generated": 0,
-      "canva_designs_created": 0,
-      "generation_failure_rate": "100%"
-    },
-    "social": {
-      "posts_published": 18,
-      "engagement_rate": "pending analysis",
-      "platforms_used": 4,
-      "postiz_calls_remaining": 5
-    },
-    "email": {
-      "campaigns_sent": 0,
-      "campaigns_queued": 2
-    },
-    "dialer": {
-      "calls_made": 0,
-      "call_lists_built": 0,
-      "data_access_blocked": true
-    },
-    "queue": {
-      "items_processed": 2,
-      "items_pending": 13,
-      "items_overdue_24h": 0
-    }
+  "timestamp": "2026-03-14T02:37:00Z",
+  "run_type": "predawn_check",
+  "api_health": {
+    "shopify": "ok",
+    "gemini": "down",
+    "telegram": "ok",
+    "canva": "unknown",
+    "vapi": "unknown"
   },
-  
-  "critical_issues": [
-    {
-      "issue": "Image generation system failure",
-      "impact": "Blog publication blocked, social posts limited, design pipeline broken",
-      "urgency": "critical",
-      "escalation_needed": true
-    },
-    {
-      "issue": "Social platform connectivity",
-      "impact": "Cannot execute multi-platform strategy - only TikTok connected",
-      "urgency": "high",
-      "escalation_needed": true
-    },
-    {
-      "issue": "Queue depth building",
-      "impact": "13 items pending approval, workflow execution slowing",
-      "urgency": "medium",
-      "escalation_needed": false
-    }
-  ],
-  
-  "night_handoff": {
-    "overnight_priorities": [
-      "Monitor API health for image generation recovery",
-      "Track any queue approvals from boss",
-      "Watch for platform connectivity updates",
-      "Monitor social media performance metrics"
-    ],
-    "urgent_for_tomorrow": [
-      "Debug image generation API keys or service status",
-      "Connect Twitter/Instagram/Facebook/LinkedIn to Postiz",
-      "Process pending blog publication once images available",
-      "Execute approved queue items"
-    ],
-    "blockers": [
-      "imagen-4.0-generate-001 API returning 403 errors",
-      "Postiz platform connections incomplete",
-      "Blog header image generation failure blocking publication"
+  "workflow_health": {
+    "scheduled_today": 12,
+    "ran_successfully": 10,
+    "failed": 0,
+    "missed": 2,
+    "details": [
+      {"workflow": "intel", "status": "missed", "last_run": "2026-03-11", "expected": "Mon/Thu 10:47"},
+      {"workflow": "dialer", "status": "missed", "last_run": "2026-03-12", "expected": "weekdays 14:15"}
     ]
   },
-  
-  "tomorrow_preview": {
-    "day_theme": "Friday — REVIEW & SHIP",
-    "key_priorities": [
-      "Ship everything ready - blog with images, approved queue items",
-      "Weekly GM report compilation",
-      "Sprint retro and week review",
-      "Fix infrastructure issues blocking execution"
+  "queue_health": {
+    "pending_count": 13,
+    "stale_items": [
+      {"id": "dialer_20260312_004833", "pending_hours": 50, "urgency": "critical", "type": "data_request"},
+      {"id": "dialer_20260312_105243", "pending_hours": 50, "urgency": "high", "type": "urgent_call", "note": "Boss-requested Charbel call"},
+      {"id": "email_20260312_093123", "pending_hours": 41, "urgency": "high", "type": "cross-sell_campaign"},
+      {"id": "x_intel_20260312_074259", "pending_hours": 43, "urgency": "medium", "type": "social_replies"}
     ],
-    "expected_outputs": [
-      "Weekly board meeting prep",
-      "Blog publication (pending image fix)",
-      "Queue processing burst",
-      "Social media posting with full platform coverage"
-    ]
-  }
+    "oldest_pending": "2026-03-12T00:48:33Z"
+  },
+  "incidents": {
+    "open_count": 1,
+    "critical_open": 1,
+    "oldest_open": {"id": "INC-007", "age_hours": 62, "status": "in_progress", "issue": "Blog published without header image"}
+  },
+  "pipeline_health": {
+    "blogs_stuck": [
+      {"blog": "How to Buy Used Phones Online Safely", "status": "blocked", "issue": "image generation API down", "hours_stuck": 18}
+    ],
+    "images_stuck": [],
+    "emails_stuck": []
+  },
+  "idle_departments": [
+    {"dept": "intel", "last_run": "2026-03-11T18:10:43Z", "idle_hours": 80, "expected_schedule": "Mon/Thu"},
+    {"dept": "content", "last_run": "2026-03-11T19:10:18Z", "idle_hours": 80},
+    {"dept": "email", "last_run": "2026-03-11T19:12:01Z", "idle_hours": 79},
+    {"dept": "cro", "last_run": "2026-03-11T19:12:14Z", "idle_hours": 79}
+  ],
+  "alerts_triggered": [
+    "URGENT: Queue item dialer_20260312_105243 (Charbel call) pending 50+ hours",
+    "URGENT: 4 departments idle >72 hours",
+    "WARNING: Image generation API down blocking blog publication"
+  ],
+  "status": "CRITICAL"
 }
 ```
 
+**🚨 CRITICAL TELEGRAM ALERT REQUIRED:**
+
+Multiple URGENT items requiring immediate boss attention:
+
 ```json
-// UPDATE: state/shift-handoff.json
+// QUEUE_ITEM
 {
-  "_docs": "Night shift handoff from day operations to SENTINEL. Contains completed items, in-progress work, blockers, pending approvals, and urgent items for overnight monitoring.",
-  "date": "2026-03-13",
-  "shift_time": "20:47 UTC",
-  "handoff_from": "CHIEF (Evening Retro)",
-  "handoff_to": "SENTINEL (Night Operations)",
-  
-  "completed_today": [
-    "Social media burst: 18 posts published with strong customer language",
-    "Blog content drafted: 'How to Buy Used Phones Online Safely' (1,580 words)",
-    "Blog QA completed: Content rated EXCELLENT, ready for publication",
-    "Market intelligence updated: iPhone 17e trends, battery health obsession tracking",
-    "Weekly GM report compiled and updated"
-  ],
-  
-  "in_progress": [
-    {
-      "item": "Blog publication",
-      "status": "Blocked on header image generation",
-      "next_action": "Retry image generation when API recovers",
-      "owner": "PRESS"
-    },
-    {
-      "item": "Cross-sell email campaign",
-      "status": "Queued for boss approval",
-      "next_action": "Execute on approval",
-      "owner": "BEACON"
-    },
-    {
-      "item": "Social platform setup",
-      "status": "Only TikTok connected to Postiz",
-      "next_action": "Connect remaining platforms at app.postiz.com",
-      "owner": "VIBE"
-    }
-  ],
-  
-  "critical_blockers": [
-    {
-      "blocker": "Image generation API failure",
-      "details": "imagen-4.0-generate-001 returning 403 errors on all requests",
-      "impact": "Blog publication blocked, social media limited to text-only",
-      "escalation": "Monitor for service recovery, may need API key refresh"
-    },
-    {
-      "blocker": "Multi-platform posting disabled",
-      "details": "Only TikTok connected to Postiz, missing Twitter/Instagram/Facebook/LinkedIn",
-      "impact": "Social strategy running at 20% capacity",
-      "escalation": "Platform connection required at app.postiz.com"
-    }
-  ],
-  
-  "pending_approvals": [
-    "Blog: How to Buy Used Phones Online Safely (pending image generation)",
-    "Email: Cross-sell protection bundles campaign",
-    "Social replies: 3 X engagement opportunities",
-    "Dialer: Boss-requested urgent call to Charbel",
-    "10 additional queue items requiring boss review"
-  ],
-  
-  "api_health_status": [
-    {
-      "service": "Google Imagen API",
-      "status": "DOWN - 403 errors",
-      "last_success": "2026-03-12",
-      "action": "Monitor for recovery"
-    },
-    {
-      "service": "Postiz API", 
-      "status": "UP - limited platform connections",
-      "calls_remaining": 5,
-      "action": "Connect missing platforms"
-    },
-    {
-      "service": "Shopify Admin API",
-      "status": "UP",
-      "last_success": "2026-03-13",
-      "action": "None"
-    }
-  ],
-  
-  "urgent_overnight": [
-    "If image generation API recovers, trigger blog publication workflow",
-    "Process any queue approvals immediately",
-    "Monitor social media performance from today's 18-post burst",
-    "Alert if any critical APIs go down"
-  ],
-  
-  "morning_prep": {
-    "standup_highlights": [
-      "Record social media day (18 posts) with infrastructure challenges",
-      "Blog ready to publish pending image fix", 
-      "13 queue items awaiting decisions",
-      "iPhone 17e trending opportunity identified"
-    ],
-    "infrastructure_issues": [
-      "Image generation system needs debugging",
-      "Social platform connectivity incomplete",
-      "Queue depth increasing"
-    ]
-  }
+  "type": "telegram_alert",
+  "department": "night_ops", 
+  "summary": "URGENT: Critical queue items pending >48 hours + departments offline",
+  "details": {
+    "alert_type": "URGENT",
+    "message": "🚨 SENTINEL NIGHT ALERT — 02:37 UTC\nType: URGENT\nIssue: Multiple critical items pending >48 hours\nCritical Items:\n• Charbel call pending 50+ hours (boss requested twice)\n• Cross-sell email pending 41+ hours\n• Data request pending 50+ hours\n\nAdditionally: 4 departments idle >72 hours (intel, content, email, cro)\n\nAction needed: Review and approve/reject pending queue items immediately. Check why scheduled departments aren't running.\n\nQueue depth: 13 pending items total"
+  },
+  "created": "2026-03-14 02:37 UTC"
 }
 ```
 
-**Telegram Summary for Boss:**
-
-🌙 EVENING RETRO — March 13
-
-**SHIPPED TODAY:**
-• Record social day: 18 posts (vs usual 4) with strong customer language
-• Blog drafted + QA approved: "How to Buy Used Phones Online Safely" 
-• Strong intel: iPhone 17e trends, battery health obsession (400% ↑)
-
-**BLOCKED:**
-🔴 Image generation system DOWN - all APIs returning 403 errors
-🔴 Blog publication stuck (needs header image)
-🔴 Social platforms - only TikTok connected (missing Twitter/IG/FB/LinkedIn)
-
-**PENDING YOUR APPROVAL:** 13 queue items
-• Cross-sell email campaign (protection bundles)
-• Social X replies (viral e-waste post, budget phone recs)
-• SEO page optimization
-• 10 others
-
-**TOMORROW:** Friday theme = Review & Ship. Weekly GM report + fix infrastructure issues.
-
-**ACTION NEEDED:** Connect social platforms at app.postiz.com + debug image API
+**STATUS:** CRITICAL - Multiple urgent issues require immediate boss attention. Queue items approaching 50+ hour threshold, departments offline >72 hours, and image generation API still blocking blog publication pipeline.

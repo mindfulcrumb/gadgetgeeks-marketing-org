@@ -1,37 +1,113 @@
 {
-  "_docs": "Night operations report from SENTINEL. Updated at 00:00, 03:00, and 05:00 UTC.",
-  "timestamp": null,
-  "run_type": null,
+  "timestamp": "2026-03-14T02:37:00Z",
+  "run_type": "predawn_check",
   "api_health": {
-    "shopify": "unknown",
-    "gemini": "unknown",
-    "telegram": "unknown",
+    "shopify": "ok",
+    "gemini": "down",
+    "telegram": "ok",
     "canva": "unknown",
     "vapi": "unknown"
   },
   "workflow_health": {
-    "scheduled_today": 0,
-    "ran_successfully": 0,
+    "scheduled_today": 12,
+    "ran_successfully": 10,
     "failed": 0,
-    "missed": 0,
-    "details": []
+    "missed": 2,
+    "details": [
+      {
+        "workflow": "intel",
+        "status": "missed",
+        "last_run": "2026-03-11",
+        "expected": "Mon/Thu 10:47"
+      },
+      {
+        "workflow": "dialer",
+        "status": "missed",
+        "last_run": "2026-03-12",
+        "expected": "weekdays 14:15"
+      }
+    ]
   },
   "queue_health": {
-    "pending_count": 0,
-    "stale_items": [],
-    "oldest_pending": null
+    "pending_count": 13,
+    "stale_items": [
+      {
+        "id": "dialer_20260312_004833",
+        "pending_hours": 50,
+        "urgency": "critical",
+        "type": "data_request"
+      },
+      {
+        "id": "dialer_20260312_105243",
+        "pending_hours": 50,
+        "urgency": "high",
+        "type": "urgent_call",
+        "note": "Boss-requested Charbel call"
+      },
+      {
+        "id": "email_20260312_093123",
+        "pending_hours": 41,
+        "urgency": "high",
+        "type": "cross-sell_campaign"
+      },
+      {
+        "id": "x_intel_20260312_074259",
+        "pending_hours": 43,
+        "urgency": "medium",
+        "type": "social_replies"
+      }
+    ],
+    "oldest_pending": "2026-03-12T00:48:33Z"
   },
   "incidents": {
-    "open_count": 0,
-    "critical_open": 0,
-    "oldest_open": null
+    "open_count": 1,
+    "critical_open": 1,
+    "oldest_open": {
+      "id": "INC-007",
+      "age_hours": 62,
+      "status": "in_progress",
+      "issue": "Blog published without header image"
+    }
   },
   "pipeline_health": {
-    "blogs_stuck": [],
+    "blogs_stuck": [
+      {
+        "blog": "How to Buy Used Phones Online Safely",
+        "status": "blocked",
+        "issue": "image generation API down",
+        "hours_stuck": 18
+      }
+    ],
     "images_stuck": [],
     "emails_stuck": []
   },
-  "idle_departments": [],
-  "alerts_triggered": [],
-  "status": "INITIALIZED"
+  "idle_departments": [
+    {
+      "dept": "intel",
+      "last_run": "2026-03-11T18:10:43Z",
+      "idle_hours": 80,
+      "expected_schedule": "Mon/Thu"
+    },
+    {
+      "dept": "content",
+      "last_run": "2026-03-11T19:10:18Z",
+      "idle_hours": 80
+    },
+    {
+      "dept": "email",
+      "last_run": "2026-03-11T19:12:01Z",
+      "idle_hours": 79
+    },
+    {
+      "dept": "cro",
+      "last_run": "2026-03-11T19:12:14Z",
+      "idle_hours": 79
+    }
+  ],
+  "alerts_triggered": [
+    "URGENT: Queue item dialer_20260312_105243 (Charbel call) pending 50+ hours",
+    "URGENT: 4 departments idle >72 hours",
+    "WARNING: Image generation API down blocking blog publication"
+  ],
+  "status": "CRITICAL"
 }

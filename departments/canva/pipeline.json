@@ -164,6 +164,86 @@
       },
       "status": "exported",
       "created_at": "2026-03-14T09:51:20.481579+00:00"
+    },
+    {
+      "id": "ready_20260314_iphone13_hero",
+      "source_prompt_id": "real_product_photo_iphone_13",
+      "source_image_url": "https://raw.githubusercontent.com/mindfulcrumb/gadgetgeeks-marketing-org/main/departments/social/ready-to-post/gg-iphone13-hero-tiktok.png",
+      "canva_design_id": "",
+      "canva_edit_url": "",
+      "export_url": "https://raw.githubusercontent.com/mindfulcrumb/gadgetgeeks-marketing-org/main/departments/social/ready-to-post/gg-iphone13-hero-tiktok.png",
+      "platform": "tiktok",
+      "dimensions": "1080x1920",
+      "design_type": "product_hero",
+      "text_overlay": {
+        "headline": "iPhone 13 Bundle",
+        "subline": "65-Point Inspected. 90-Day Warranty.",
+        "cta": "Link in Bio"
+      },
+      "keywords_targeted": ["iPhone 13", "refurbished", "bundle", "deal"],
+      "status": "exported",
+      "created_at": "2026-03-14T13:17:00.000000+00:00",
+      "source": "real_product_photo"
+    },
+    {
+      "id": "ready_20260314_iphone14_hero",
+      "source_prompt_id": "real_product_photo_iphone_14",
+      "source_image_url": "https://raw.githubusercontent.com/mindfulcrumb/gadgetgeeks-marketing-org/main/departments/social/ready-to-post/gg-iphone14-hero-tiktok.png",
+      "canva_design_id": "",
+      "canva_edit_url": "",
+      "export_url": "https://raw.githubusercontent.com/mindfulcrumb/gadgetgeeks-marketing-org/main/departments/social/ready-to-post/gg-iphone14-hero-tiktok.png",
+      "platform": "tiktok",
+      "dimensions": "1080x1920",
+      "design_type": "product_hero",
+      "text_overlay": {
+        "headline": "iPhone 14 Bundle",
+        "subline": "65-Point Inspected. Like New.",
+        "cta": "Link in Bio"
+      },
+      "keywords_targeted": ["iPhone 14", "refurbished", "bundle", "premium"],
+      "status": "exported",
+      "created_at": "2026-03-14T13:17:00.000000+00:00",
+      "source": "real_product_photo"
+    },
+    {
+      "id": "ready_20260314_iphone13_deal",
+      "source_prompt_id": "real_product_photo_iphone_13",
+      "source_image_url": "https://raw.githubusercontent.com/mindfulcrumb/gadgetgeeks-marketing-org/main/departments/social/ready-to-post/gg-iphone13-deal-tiktok.png",
+      "canva_design_id": "",
+      "canva_edit_url": "",
+      "export_url": "https://raw.githubusercontent.com/mindfulcrumb/gadgetgeeks-marketing-org/main/departments/social/ready-to-post/gg-iphone13-deal-tiktok.png",
+      "platform": "tiktok",
+      "dimensions": "1080x1920",
+      "design_type": "deal_urgency",
+      "text_overlay": {
+        "headline": "iPhone 13 Deal",
+        "subline": "Full Bundle. One Price.",
+        "cta": "Save This"
+      },
+      "keywords_targeted": ["iPhone 13", "deal", "bundle deal", "phone deal"],
+      "status": "exported",
+      "created_at": "2026-03-14T13:17:00.000000+00:00",
+      "source": "real_product_photo"
+    },
+    {
+      "id": "ready_20260314_iphone14_eco",
+      "source_prompt_id": "real_product_photo_iphone_14",
+      "source_image_url": "https://raw.githubusercontent.com/mindfulcrumb/gadgetgeeks-marketing-org/main/departments/social/ready-to-post/gg-iphone14-eco-tiktok.png",
+      "canva_design_id": "",
+      "canva_edit_url": "",
+      "export_url": "https://raw.githubusercontent.com/mindfulcrumb/gadgetgeeks-marketing-org/main/departments/social/ready-to-post/gg-iphone14-eco-tiktok.png",
+      "platform": "tiktok",
+      "dimensions": "1080x1920",
+      "design_type": "sustainability",
+      "text_overlay": {
+        "headline": "Choose Refurbished",
+        "subline": "Good for wallet. Good for planet.",
+        "cta": "Follow for More"
+      },
+      "keywords_targeted": ["iPhone 14", "sustainable", "eco-friendly", "refurbished"],
+      "status": "exported",
+      "created_at": "2026-03-14T13:17:00.000000+00:00",
+      "source": "real_product_photo"
     }
   ],
   "templates": {
@@ -222,8 +302,8 @@
     ]
   },
   "stats": {
-    "total_designs": 9,
-    "designs_today": 2,
+    "total_designs": 13,
+    "designs_today": 6,
     "last_design_at": "2026-03-14T09:51:20.481627+00:00"
   }
 }

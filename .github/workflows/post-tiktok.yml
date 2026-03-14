@@ -1,0 +1,28 @@
+name: Post Ready TikTok Content
+
+on:
+  workflow_dispatch:
+
+jobs:
+  post-tiktok:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Post to TikTok via Postiz
+        env:
+          POSTIZ_API_KEY: ${{ secrets.POSTIZ_API_KEY }}
+        run: python scripts/actions/post_ready_tiktok.py
+
+      - name: Commit calendar updates
+        run: |
+          git config user.name "GGP Marketing Bot"
+          git config user.email "bot@gadgetgeekspro.com"
+          git add departments/social/calendar.json
+          git diff --cached --quiet || git commit -m "[social] TikTok posts scheduled via post_ready_tiktok.py — $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git push

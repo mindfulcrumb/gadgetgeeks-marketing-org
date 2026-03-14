@@ -27,13 +27,16 @@ Create 1-2 social media posts and schedule them via Postiz to all connected plat
 **NEVER post to Postiz without a media_url. Text-only posts are BLOCKED.**
 
 Image source priority (use the first one that has a URL):
-1. `departments/canva/pipeline.json` → designs with `status: "exported"` and `export_url` not empty → use `export_url`
+1. `departments/canva/pipeline.json` → designs with `status: "exported"` and `export_url` not empty → use `export_url` — **PREFER designs with `source: "real_product_photo"` — these use REAL product photos, not AI-generated images**
 2. `departments/canva/pipeline.json` → designs with `source_image_url` not empty → use `source_image_url` as fallback
 3. `departments/social/image-prompts.json` → prompts with `generated_url` not empty → use `generated_url`
 
+**TikTok-first**: When posting to TikTok, prioritize pipeline designs with `platform: "tiktok"` and `dimensions: "1080x1920"` (9:16 vertical).
+
 **If NONE of these have a valid URL, DO NOT create a SOCIAL_POST block. Skip posting entirely.**
 
-- Match post platform to the design's target platform (instagram design → instagram post)
+- Match post platform to the design's target platform (tiktok design → tiktok post, instagram design → instagram post)
+- Match post CONTENT to the image's `keywords_targeted` and `design_type` — if the image shows an iPhone 13, the post MUST be about iPhone 13
 - Mark used designs by noting their ID in calendar.json
 
 ### 2. Create Posts

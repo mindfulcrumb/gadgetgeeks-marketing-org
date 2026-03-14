@@ -45,7 +45,7 @@ MODELS = {
     "gm_report": "claude-opus-4-20250514",
 }
 
-MAX_TOKENS = 4096
+MAX_TOKENS = 8192
 
 
 # ---------------------------------------------------------------------------
@@ -135,6 +135,9 @@ DEPARTMENT_CONFIG = {
         "context_files": [
             "departments/social/calendar.json",
             "departments/social/platform-config.json",
+            "departments/social/image-prompts.json",
+            "departments/canva/pipeline.json",
+            "departments/social/engagement-log.md",
             "departments/intel/trends.json",
             "departments/intel/customer-language.json",
             "departments/x-intel/daily-brief.json",

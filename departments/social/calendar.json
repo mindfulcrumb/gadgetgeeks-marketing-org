@@ -480,29 +480,59 @@
   ],
   "postiz_calls_used": 15,
   "postiz_calls_remaining": 0,
-  "last_updated": "2026-03-14 13:44 UTC",
-  "notes": "Final post of the day - used last Postiz call. Posted iPhone 13 bundle deal using real product photo from ready-to-post designs. Strong authentic customer language with specific pricing and comparison to friend's purchase. Matched Spring supply surge trend with budget phone math.",
+  "last_updated": "2026-03-14 13:48 UTC",
+  "notes": "BLOCKED FROM POSTING: Daily Postiz API limit reached (15/15). Morning shift attempted to post but cannot exceed API limits. 2 unused images remain in pipeline (iPhone 14 hero & eco designs) - these MUST be posted first thing tomorrow morning.",
   "tomorrow_priorities": [
-    "REQUEST NEW IMAGE GENERATION - all current designs now used across platforms",
+    "IMMEDIATE: Post 2 unused iPhone 14 designs (ready_20260314_iphone14_hero & ready_20260314_iphone14_eco) - these have valid export URLs",
     "Continue iPhone 17e positioning if trend sustains",
-    "Create video content for TikTok using behind-the-scenes quality testing",
-    "Bundle deals with family/teenager targeting for spring supply surge",
-    "More reality check style content - format showing high engagement",
-    "Back Market differentiation content while crisis continues",
-    "Cross-platform posting of remaining ready-to-post designs (iPhone 14 hero, iPhone 14 eco)"
+    "Reality Check format content - viral format showing 155 likes, 19 replies",
+    "Back Market differentiation content while crisis continues across Spain/UK/US",
+    "Cross-platform posting strategy - reduce TikTok-only posting, increase multi-platform reach",
+    "REQUEST NEW IMAGE GENERATION - running low on fresh visuals after heavy usage week",
+    "Bundle deals with family/teenager targeting for spring supply surge"
+  ],
+  "unused_images_available": [
+    {
+      "id": "ready_20260314_iphone14_hero",
+      "export_url": "https://raw.githubusercontent.com/mindfulcrumb/gadgetgeeks-marketing-org/main/departments/social/ready-to-post/gg-iphone14-hero-tiktok.png",
+      "design_type": "product_hero",
+      "keywords": [
+        "iPhone 14",
+        "refurbished",
+        "bundle",
+        "premium"
+      ]
+    },
+    {
+      "id": "ready_20260314_iphone14_eco",
+      "export_url": "https://raw.githubusercontent.com/mindfulcrumb/gadgetgeeks-marketing-org/main/departments/social/ready-to-post/gg-iphone14-eco-tiktok.png",
+      "design_type": "sustainability",
+      "keywords": [
+        "iPhone 14",
+        "sustainable",
+        "eco-friendly",
+        "refurbished"
+      ]
+    }
   ],
   "platform_issues": [
     {
-      "issue": "Daily Postiz limit reached - no more posts today",
-      "impact": "Cannot create additional posts until tomorrow",
-      "action_needed": "Reset tomorrow, prioritize high-impact posts first",
-      "priority": "medium"
+      "issue": "Daily Postiz limit reached - BLOCKED from posting",
+      "impact": "Cannot create any posts until tomorrow's reset",
+      "action_needed": "Reset at midnight UTC, post unused iPhone 14 images immediately",
+      "priority": "critical"
     },
     {
-      "issue": "Need new image generation - all pipeline designs used",
+      "issue": "Need new image generation - running low on unused designs",
       "impact": "Limited fresh visuals for next week",
       "action_needed": "Queue urgent image generation request for LENS/FOCUS departments",
       "priority": "high"
+    },
+    {
+      "issue": "TikTok-heavy posting pattern vs multi-platform strategy",
+      "impact": "Missing engagement opportunities on Twitter/Instagram/LinkedIn",
+      "action_needed": "Rebalance posting strategy for broader platform reach",
+      "priority": "medium"
     }
   ]
 }

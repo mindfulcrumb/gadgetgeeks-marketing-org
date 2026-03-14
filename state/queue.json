@@ -239,6 +239,38 @@
       ],
       "urgency": "Need images generated today for tomorrow morning posting",
       "id": "social_morning_20260314_133808"
+    },
+    {
+      "reason": "Only 2 unused iPhone 14 images remain after heavy posting week. Need fresh visuals for next week.",
+      "priority_topics": [
+        "iPhone 17e vs refurbished flagship comparison (trending)",
+        "Reality Check format content (155 likes, 19 replies)",
+        "Customer service differentiation (Back Market crisis)",
+        "Bundle deals with family/teenager targeting",
+        "Battery health transparency content"
+      ],
+      "platforms_needed": [
+        "tiktok",
+        "instagram",
+        "twitter",
+        "facebook"
+      ],
+      "urgency": "critical",
+      "for_tomorrow": "2 iPhone 14 images must be posted immediately at midnight UTC reset",
+      "id": "social_morning_20260314_135415"
+    },
+    {
+      "issue": "Recent pattern shows TikTok-heavy posting (4 TikTok-only posts today) vs broader platform strategy",
+      "missed_opportunity": "Twitter/Instagram/LinkedIn have higher engagement potential based on trends",
+      "recommendation": "Tomorrow's 2 iPhone 14 posts should go to ALL connected platforms, not just TikTok",
+      "platforms_to_prioritize": [
+        "twitter",
+        "instagram",
+        "facebook",
+        "linkedin"
+      ],
+      "reasoning": "x-intel shows trending topics performing well across multiple platforms simultaneously",
+      "id": "social_morning_20260314_135415"
     }
   ],
   "approved": [

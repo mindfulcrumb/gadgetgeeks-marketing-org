@@ -480,15 +480,15 @@
   ],
   "postiz_calls_used": 15,
   "postiz_calls_remaining": 0,
-  "last_updated": "2026-03-14 13:48 UTC",
-  "notes": "BLOCKED FROM POSTING: Daily Postiz API limit reached (15/15). Morning shift attempted to post but cannot exceed API limits. 2 unused images remain in pipeline (iPhone 14 hero & eco designs) - these MUST be posted first thing tomorrow morning.",
+  "last_updated": "2026-03-14 13:52 UTC",
+  "notes": "BLOCKED FROM POSTING: Daily Postiz API limit reached (15/15). Morning shift cannot post until midnight UTC reset. URGENT: Need new image generation - only 2 unused iPhone 14 images remain after heavy posting week. Tomorrow priorities: Post unused iPhone 14 images immediately at reset, request new image generation, rebalance multi-platform strategy.",
   "tomorrow_priorities": [
-    "IMMEDIATE: Post 2 unused iPhone 14 designs (ready_20260314_iphone14_hero & ready_20260314_iphone14_eco) - these have valid export URLs",
-    "Continue iPhone 17e positioning if trend sustains",
+    "IMMEDIATE at midnight UTC reset: Post 2 unused iPhone 14 designs (ready_20260314_iphone14_hero & ready_20260314_iphone14_eco) to ALL PLATFORMS not just TikTok",
+    "URGENT: Queue new image generation request - critically low on fresh visuals",
+    "Rebalance posting strategy - reduce TikTok-only posts, increase multi-platform reach for better engagement",
+    "Continue iPhone 17e positioning if trend sustains (currently gaining retweet momentum)",
     "Reality Check format content - viral format showing 155 likes, 19 replies",
     "Back Market differentiation content while crisis continues across Spain/UK/US",
-    "Cross-platform posting strategy - reduce TikTok-only posting, increase multi-platform reach",
-    "REQUEST NEW IMAGE GENERATION - running low on fresh visuals after heavy usage week",
     "Bundle deals with family/teenager targeting for spring supply surge"
   ],
   "unused_images_available": [
@@ -518,21 +518,21 @@
   "platform_issues": [
     {
       "issue": "Daily Postiz limit reached - BLOCKED from posting",
-      "impact": "Cannot create any posts until tomorrow's reset",
+      "impact": "Cannot create any posts until tomorrow's reset at midnight UTC",
       "action_needed": "Reset at midnight UTC, post unused iPhone 14 images immediately",
       "priority": "critical"
     },
     {
-      "issue": "Need new image generation - running low on unused designs",
-      "impact": "Limited fresh visuals for next week",
+      "issue": "Need new image generation - critically low on unused designs",
+      "impact": "Limited fresh visuals for next week after heavy usage",
       "action_needed": "Queue urgent image generation request for LENS/FOCUS departments",
-      "priority": "high"
+      "priority": "critical"
     },
     {
       "issue": "TikTok-heavy posting pattern vs multi-platform strategy",
-      "impact": "Missing engagement opportunities on Twitter/Instagram/LinkedIn",
-      "action_needed": "Rebalance posting strategy for broader platform reach",
-      "priority": "medium"
+      "impact": "Missing engagement opportunities on Twitter/Instagram/LinkedIn where trends are performing",
+      "action_needed": "Tomorrow's iPhone 14 posts must go to ALL platforms for maximum reach",
+      "priority": "high"
     }
   ]
 }

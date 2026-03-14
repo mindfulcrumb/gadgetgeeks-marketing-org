@@ -15,8 +15,10 @@
         "current flagship"
       ],
       "recommended_tool": "midjourney",
-      "generation_status": "error",
-      "generation_error": "429 Too Many Requests: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/r"
+      "generation_status": "done",
+      "generation_error": "429 Too Many Requests: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/r",
+      "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/a10082a4-495a-4084-8f06-4760a0b50174/gg-prompt_20260313_001.png",
+      "generated_at": "2026-03-14T13:09:03.964475+00:00"
     },
     {
       "id": "prompt_20260313_002",
@@ -56,7 +58,7 @@
       ],
       "recommended_tool": "midjourney",
       "generation_status": "error",
-      "generation_error": "429 Too Many Requests: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/r"
+      "generation_error": "HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=120)"
     },
     {
       "id": "prompt_20260313_004",
@@ -73,8 +75,10 @@
         "bundle deals"
       ],
       "recommended_tool": "midjourney",
-      "generation_status": "error",
-      "generation_error": "429 Too Many Requests: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/r"
+      "generation_status": "done",
+      "generation_error": "429 Too Many Requests: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/r",
+      "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/a87153fd-6bdc-4e02-b5f1-91fde28699b0/gg-prompt_20260313_004.png",
+      "generated_at": "2026-03-14T13:09:22.752034+00:00"
     },
     {
       "id": "prompt_20260313_005",
@@ -92,8 +96,10 @@
         "inspection process"
       ],
       "recommended_tool": "midjourney",
-      "generation_status": "error",
-      "generation_error": "429 Too Many Requests: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/r"
+      "generation_status": "done",
+      "generation_error": "429 Too Many Requests: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/r",
+      "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/0ca2425a-23d1-4d4f-a68a-8f225e1e65c7/gg-prompt_20260313_005.png",
+      "generated_at": "2026-03-14T13:17:32.794019+00:00"
     },
     {
       "id": "prompt_20260313_006",
@@ -110,8 +116,10 @@
         "eco-conscious"
       ],
       "recommended_tool": "midjourney",
-      "generation_status": "error",
-      "generation_error": "429 Too Many Requests: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/r"
+      "generation_status": "done",
+      "generation_error": "429 Too Many Requests: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/r",
+      "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/960d1ed2-60fb-4013-a31e-122c4f230b3e/gg-prompt_20260313_006.png",
+      "generated_at": "2026-03-14T13:13:35.754275+00:00"
     },
     {
       "id": "prompt_20260313_007",
@@ -128,8 +136,10 @@
         "budget phone"
       ],
       "recommended_tool": "midjourney",
-      "generation_status": "error",
-      "generation_error": "429 Too Many Requests: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/r"
+      "generation_status": "done",
+      "generation_error": "429 Too Many Requests: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/r",
+      "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/76722081-7bef-4352-969c-d4769764f5af/gg-prompt_20260313_007.png",
+      "generated_at": "2026-03-14T13:09:50.213416+00:00"
     },
     {
       "id": "prompt_20260313_008",
@@ -168,8 +178,10 @@
         "limited time"
       ],
       "recommended_tool": "midjourney",
-      "generation_status": "error",
-      "generation_error": "429 Too Many Requests: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/r"
+      "generation_status": "done",
+      "generation_error": "429 Too Many Requests: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/r",
+      "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/b7f5ef76-aa4e-4a1e-a201-3bb3c97b49ed/gg-prompt_20260313_009.png",
+      "generated_at": "2026-03-14T13:15:58.988536+00:00"
     },
     {
       "id": "prompt_20260313_010",
@@ -188,7 +200,7 @@
       ],
       "recommended_tool": "midjourney",
       "generation_status": "error",
-      "generation_error": "429 Too Many Requests: {\n  \"error\": {\n    \"code\": 429,\n    \"message\": \"You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/r"
+      "generation_error": "HTTPSConnectionPool(host='generativelanguage.googleapis.com', port=443): Read timed out. (read timeout=120)"
     },
     {
       "id": "prompt_20260314_gc001",
@@ -199,12 +211,19 @@
       "negative_prompt": "NO text overlays, NO watermark, NO CGI, NO cartoon, NO illustration, NO fake screens, NO people",
       "platform_params": "--ar 9:16 --style raw --s 250",
       "notes": "Grade C Bundle Campaign — Angle: 'Look what you get for $279'. Shows full bundle value stack. TikTok vertical format.",
-      "keywords_targeted": ["iPhone 14 Grade C", "phone bundle deal", "refurbished bundle"],
+      "keywords_targeted": [
+        "iPhone 14 Grade C",
+        "phone bundle deal",
+        "refurbished bundle"
+      ],
       "recommended_tool": "gemini",
       "driven_by": "trends.json: Accessory Compatibility Paralysis + customer-language: 'basically got a $800 phone for $350'",
       "campaign": "grade_c_bundle_test",
       "campaign_angle": "bundle_value_stack",
-      "blog_correlation": "refurbished-iphone-buying-guide-2026 — Bundle deals save 20-30% section"
+      "blog_correlation": "refurbished-iphone-buying-guide-2026 — Bundle deals save 20-30% section",
+      "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/42ffd222-d192-44e8-84a5-e8fefabf719a/gg-prompt_20260314_gc001.png",
+      "generated_at": "2026-03-14T13:17:47.758721+00:00",
+      "generation_status": "done"
     },
     {
       "id": "prompt_20260314_gc002",
@@ -215,12 +234,19 @@
       "negative_prompt": "NO text overlays, NO watermark, NO CGI, NO cartoon, NO people, NO fake screens, NO logos added",
       "platform_params": "--ar 9:16 --style raw --s 250",
       "notes": "Grade C Campaign — Angle: 'Grade C disappears with a case'. Before/after reveal showing scratches vanish. TikTok vertical.",
-      "keywords_targeted": ["iPhone 13 Grade C", "refurbished iPhone case", "Grade C before after"],
+      "keywords_targeted": [
+        "iPhone 13 Grade C",
+        "refurbished iPhone case",
+        "Grade C before after"
+      ],
       "recommended_tool": "gemini",
       "driven_by": "customer-language: 'can't tell the difference' + engagement-log: behind-the-scenes content builds trust",
       "campaign": "grade_c_bundle_test",
       "campaign_angle": "case_reveal_transformation",
-      "blog_correlation": "refurbished-iphone-buying-guide-2026 — Grade C section: 'looks used, works perfectly'"
+      "blog_correlation": "refurbished-iphone-buying-guide-2026 — Grade C section: 'looks used, works perfectly'",
+      "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/64343a8f-c9c3-49a5-afb0-82463caa1033/gg-prompt_20260314_gc002.png",
+      "generated_at": "2026-03-14T13:18:02.807612+00:00",
+      "generation_status": "done"
     },
     {
       "id": "prompt_20260314_gc003",
@@ -231,12 +257,19 @@
       "negative_prompt": "NO text, NO watermark, NO CGI, NO cartoon, NO people, NO fake UI, NO harsh lighting",
       "platform_params": "--ar 9:16 --style raw --s 250",
       "notes": "Grade C Campaign — Angle: '$279 and it looks like this'. Shows Grade C phone IN case looking premium. Lifestyle desk setup without people. TikTok vertical.",
-      "keywords_targeted": ["iPhone 13 refurbished", "cheap refurbished phones", "budget iPhone deal"],
+      "keywords_targeted": [
+        "iPhone 13 refurbished",
+        "cheap refurbished phones",
+        "budget iPhone deal"
+      ],
       "recommended_tool": "gemini",
       "driven_by": "engagement-log: 'Customer testimonials with specific dollar amounts outperform by 40%' + trends: Spring Supply Surge pricing",
       "campaign": "grade_c_bundle_test",
       "campaign_angle": "value_hero_premium_look",
-      "blog_correlation": "refurbished-iphone-buying-guide-2026 — Sweet Spot Formula: Budget under $300 = iPhone 13 Grade B"
+      "blog_correlation": "refurbished-iphone-buying-guide-2026 — Sweet Spot Formula: Budget under $300 = iPhone 13 Grade B",
+      "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/6124c70b-1182-435b-920c-9545a14562bd/gg-prompt_20260314_gc003.png",
+      "generated_at": "2026-03-14T13:18:15.843067+00:00",
+      "generation_status": "done"
     },
     {
       "id": "prompt_20260314_gc004",
@@ -247,12 +280,19 @@
       "negative_prompt": "NO text, NO watermark, NO cheap lighting, NO cartoon, NO CGI, NO fake screens, NO people",
       "platform_params": "--ar 9:16 --style raw --s 250",
       "notes": "Grade C Campaign — Angle: 'Spring deal urgency'. Dramatic premium feel for iPhone 14 Grade C bundle. TikTok vertical.",
-      "keywords_targeted": ["iPhone 14 deal", "refurbished iPhone 14", "spring phone deals"],
+      "keywords_targeted": [
+        "iPhone 14 deal",
+        "refurbished iPhone 14",
+        "spring phone deals"
+      ],
       "recommended_tool": "gemini",
       "driven_by": "trends.json: Spring Supply Surge 23% more inventory + daily-brief: Back Market crisis = competitor weakness",
       "campaign": "grade_c_bundle_test",
       "campaign_angle": "deal_urgency_premium",
-      "blog_correlation": "refurbished-iphone-buying-guide-2026 — Spring 2026 Prime Time section"
+      "blog_correlation": "refurbished-iphone-buying-guide-2026 — Spring 2026 Prime Time section",
+      "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/cf9f5291-fe94-48a4-82a8-143b458b7e77/gg-prompt_20260314_gc004.png",
+      "generated_at": "2026-03-14T13:18:37.482168+00:00",
+      "generation_status": "done"
     }
   ],
   "folders": {

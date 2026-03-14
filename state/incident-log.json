@@ -2,6 +2,20 @@
   "_docs": "Incident log for the GadgetGeeks Marketing Org. Every mistake, fix, and lesson learned goes here. The GM reads this weekly. Every agent reads their relevant incidents before running. The boss reviews this to delegate and correct. Format: newest first.",
   "incidents": [
     {
+      "id": "INC-008",
+      "date": "2026-03-14",
+      "severity": "critical",
+      "department": "social",
+      "agents_involved": ["VIBE (social morning)", "LENS (image prompts)", "CANVAS (canva designer)"],
+      "title": "Same images posted repeatedly — no deduplication, no data-driven selection",
+      "what_happened": "Postiz scheduled posts reused the same 2 images (iPhone 15 Pro Max hero, iPhone 14 Pro hero) across multiple posts and multiple days. Only 2 of 10 image prompts generated (Gemini API 429 quota exhausted 48+ hours). Social morning agent had no dedup logic. LENS generated prompts blind without checking trending data. Canva designer recreated designs from same source images daily.",
+      "root_cause": "1) Gemini free tier quota exhausted. 2) No image usage tracking. 3) LENS did not read x-intel or engagement data. 4) No cross-day dedup. 5) No fallback image provider.",
+      "fix_applied": "1) Added Ops Rulebook Rules 21-24. 2) Updated VIBE with burned images tracking. 3) Updated LENS with mandatory data reads. 4) Updated FOCUS with Check 18. 5) Updated social afternoon with structured feedback. 6) Added OpenAI DALL-E 3 fallback to image_gen.py. 7) Added short-form blog support to SCRIBE.",
+      "lesson": "Never post without checking what was already posted. Never generate content blind. Always have a fallback API. Image reuse looks sloppy and unprofessional.",
+      "preventive_rule": "Rules 21-24 in operations-rulebook.json. Add OPENAI_API_KEY as fallback.",
+      "status": "in_progress"
+    },
+    {
       "id": "INC-007",
       "date": "2026-03-12",
       "severity": "critical",

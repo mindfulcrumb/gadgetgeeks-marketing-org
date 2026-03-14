@@ -89,8 +89,32 @@ H2: FAQ → 3-5 real questions from intel, FAQ schema format
 [Closing -- no summary. Specific CTA or forward-looking statement.]
 ```
 
-### Word Count
-1,200-2,000 words. Sweet spot: 1,400-1,700. If 1,300 words says it all, stop there. Fluff is worse than brevity.
+### Word Count (TWO FORMATS — Ops Rulebook Rule 24)
+
+**Choose format based on topic type:**
+
+| Format | Word Count | Use When | Structure |
+|--------|-----------|----------|-----------|
+| **Long-form** | 1,200-2,000 | Buying guides, deep comparisons, comprehensive how-to, evergreen | Full structure below |
+| **Short-form** | 400-800 | Trending news, quick tips, product spotlights, competitor responses, opinion pieces | H1 + 2-3 H2s + CTA |
+
+**Short-form rules:**
+- No FAQ section required (optional if relevant)
+- 1-2 product callouts max (not 2-4)
+- 1-2 internal links min (not 3-7)
+- All Chad Rules still apply (original insight, no triples, em dash budget, rough edges)
+- Anti-AI audit still applies (all 23 checks)
+- Header image still MANDATORY
+- A short blog published TODAY about a trending topic beats a long blog published NEXT WEEK. Speed matters.
+
+**Decision tree:**
+1. Is the topic from x-intel with urgency "today"? → **Short-form**
+2. Is it a reaction to competitor news? → **Short-form**
+3. Is it a quick product spotlight or opinion piece? → **Short-form**
+4. Is it a buying guide, comparison, or how-to? → **Long-form**
+5. Is it evergreen content meant to rank for months? → **Long-form**
+
+Long-form sweet spot: 1,400-1,700. If 1,300 words says it all, stop there. Fluff is worse than brevity.
 
 ### Headlines
 - H1: Keyword + hook. "Best Refurbished iPhones in 2026 (Tested and Ranked)" NOT "A Comprehensive Guide to Purchasing Refurbished iPhones"
@@ -292,6 +316,7 @@ Also update `departments/content/calendar.json` with the new post entry and stat
 
 ## Quality Gate (ALL Must Pass or Rewrite)
 
+### Long-form (1,200-2,000 words):
 1. Word count 1,200-2,000
 2. Primary keyword in H1, first 100 words, one H2, meta description, slug
 3. 3+ internal links to product/collection/info pages
@@ -301,6 +326,18 @@ Also update `departments/content/calendar.json` with the new post entry and stat
 7. Opening hook under 3 sentences, no definition opener or throat-clearing
 8. Every H2 works as a standalone search query
 9. 5+ phrases pulled from customer-language.json
+10. CTA is specific -- exact action, exact outcome
+
+### Short-form (400-800 words):
+1. Word count 400-800
+2. Primary keyword in H1, first 100 words, meta description, slug
+3. 1+ internal links to product/collection/info pages (validated against store-inventory.json)
+4. 1+ product callout box with real handle and price
+5. FAQ section OPTIONAL (skip if not natural)
+6. Anti-AI audit: zero banned words, zero structural tells, PASS
+7. Opening hook under 2 sentences — get to the point FAST
+8. Max 3 H2 sections
+9. 3+ phrases pulled from customer-language.json or x-intel customer voices
 10. CTA is specific -- exact action, exact outcome
 
 ---

@@ -360,5 +360,76 @@
       "KPIs are defined in config/weekly-cadence.json and tracked in the weekly board meeting",
       "No agent operates without a department. No department operates without KPIs."
     ]
+  },
+
+  "rule_21_no_duplicate_images": {
+    "description": "NEVER post the same image twice. Every social post gets a unique image. Image reuse is sloppy and unacceptable.",
+    "rules": [
+      "Social morning agent MUST check departments/social/calendar.json 'canva_design_used' and 'image_used' fields before selecting an image",
+      "If an image URL or design ID appears in ANY previous calendar entry, it is BURNED — do NOT reuse it",
+      "Canva designer MUST NOT create duplicate designs from the same source image — check pipeline.json for existing designs with same source_prompt_id before creating",
+      "If only 1 unique unused image exists, create only 1 post. NEVER stretch 1 image across 2 posts",
+      "If ZERO unused images exist, do NOT post. Queue an URGENT request for new image generation instead",
+      "Track every image used in calendar.json with fields: image_used (URL), canva_design_used (ID), source_prompt_id (original prompt)"
+    ],
+    "incident_reference": "March 14, 2026 — Postiz scheduled posts had same images repeating. Only 2 of 10 images generated, both reused across multiple posts and days. Unacceptable."
+  },
+
+  "rule_22_data_driven_image_selection": {
+    "description": "Image prompts MUST be driven by trending data and engagement performance. LENS does NOT generate blind.",
+    "rules": [
+      "LENS MUST read departments/x-intel/daily-brief.json BEFORE generating ANY prompts — trending topics and content opportunities dictate what images to create",
+      "LENS MUST read departments/social/engagement-log.md BEFORE generating — see what content types and visuals performed best",
+      "LENS MUST read departments/social/calendar.json BEFORE generating — see what was posted recently to avoid repetition",
+      "At least 4 of 10 daily prompts MUST directly match a trending topic or content opportunity from x-intel",
+      "At least 2 of 10 daily prompts MUST target the content type that performed best in engagement-log.md",
+      "Image prompts MUST include a 'driven_by' field citing the specific x-intel topic, engagement insight, or content opportunity that inspired the prompt",
+      "Prompts generated without data context are REJECTED by FOCUS during QA"
+    ],
+    "feedback_loop": {
+      "input_from": ["departments/x-intel/daily-brief.json", "departments/social/engagement-log.md", "departments/social/calendar.json"],
+      "what_to_extract": {
+        "x_intel": "trending_topics (high relevance), content_opportunities (today/this_week urgency), viral_formats, competitor_signals",
+        "engagement_log": "which content types got highest engagement, which platforms performed best, what visual styles resonated",
+        "calendar": "what was already posted (avoid repeats), what themes are overused, what gaps exist"
+      }
+    }
+  },
+
+  "rule_23_engagement_feedback_loop": {
+    "description": "Social afternoon agent MUST write actionable feedback that upstream agents (LENS, VIBE, SCRIBE) consume. No department operates in a vacuum.",
+    "rules": [
+      "Social afternoon MUST write a structured 'engagement_insights' section to departments/social/engagement-log.md after every run",
+      "Engagement insights MUST include: top_performing_content_type, top_performing_visual_style, best_posting_time, worst_performing_content_type, specific_recommendation_for_lens",
+      "LENS reads engagement-log.md at start of every run and adjusts prompt mix based on what's working",
+      "SCRIBE reads engagement-log.md to align blog topics with what resonates on social",
+      "If a content type consistently underperforms (3+ days), flag it in queue.json as a strategy review item",
+      "If a content type outperforms (2x average engagement), double its allocation in next day's prompt mix"
+    ]
+  },
+
+  "rule_24_short_form_blogs": {
+    "description": "Not every blog needs to be 1,200-2,000 words. Short-form blogs (400-800 words) are valid and often better for trending/timely topics.",
+    "blog_types": {
+      "long_form": {
+        "word_count": "1,200-2,000",
+        "use_when": "Buying guides, deep comparisons, comprehensive how-to, evergreen content",
+        "frequency": "2-3 per week"
+      },
+      "short_form": {
+        "word_count": "400-800",
+        "use_when": "Trending news reactions, quick tips, product spotlights, timely competitor responses, opinion pieces",
+        "frequency": "2-4 per week",
+        "structure": "H1 + 2-3 H2 sections max + CTA. No FAQ section required. 1-2 product callouts max. 1-2 internal links min."
+      }
+    },
+    "rules": [
+      "SCRIBE chooses blog length based on topic type — trending/timely = short, evergreen/guide = long",
+      "Short-form blogs still MUST pass anti-AI copy audit (all 23 checks apply)",
+      "Short-form blogs still MUST have a header image",
+      "Short-form blogs still MUST have at least 1 internal link validated against store-inventory.json",
+      "Short-form Chad Rules still apply: original insight required, no triple lists, em dash budget, rough edges",
+      "A short blog published TODAY about a trending topic beats a long blog published NEXT WEEK"
+    ]
   }
 }

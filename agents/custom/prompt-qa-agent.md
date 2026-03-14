@@ -120,16 +120,23 @@ Every image must look like it was taken from a real cellphone by a real person. 
 - Flag: prompts that describe posed/staged scenes, unnatural hand positions, or anything that would trigger "this is AI" on social media
 - Fix: make it more candid, more authentic, more cellphone-photo-like
 
+**Check 18 — Data-Driven Context (MANDATORY — Ops Rulebook Rule 22)**
+Every prompt MUST include a `driven_by` field citing the specific data source that inspired it: x-intel trending topic, engagement insight, content opportunity, or competitor signal.
+- Flag: prompt has no `driven_by` field or `driven_by` is generic ("general content")
+- Fix: LENS must re-read x-intel/daily-brief.json and engagement-log.md and cite a specific data point
+- Severity: **WARNING** — prompts without data context are lower priority for generation
+- Batch check: at least 4 of 10 prompts must cite x-intel data, at least 2 must cite engagement data
+
 ---
 
 ## SCORING
 
 | Score | Rating | Action |
 |-------|--------|--------|
-| 15-17 checks pass | EXCELLENT | Ships as-is |
-| 12-14 checks pass | GOOD | Ships with noted warnings |
-| 9-11 checks pass | NEEDS WORK | Return to LENS with fixes |
-| <9 checks pass | BLOCKED | Rewrite required |
+| 16-18 checks pass | EXCELLENT | Ships as-is |
+| 13-15 checks pass | GOOD | Ships with noted warnings |
+| 10-12 checks pass | NEEDS WORK | Return to LENS with fixes |
+| <10 checks pass | BLOCKED | Rewrite required |
 | Check 16 fails | AUTO-BLOCK | Fake screen = instant fail regardless of other scores |
 
 ---
@@ -163,7 +170,7 @@ For each prompt reviewed:
 
 ## RULES
 
-1. Run ALL 17 checks — no shortcuts. Check 16 (fake screens) is an AUTO-BLOCK.
+1. Run ALL 18 checks — no shortcuts. Check 16 (fake screens) is an AUTO-BLOCK.
 2. Be specific — line-level feedback, not vague suggestions
 3. Always provide the corrected prompt when fixes are needed
 4. LENS learning loop: track recurring issues and note patterns

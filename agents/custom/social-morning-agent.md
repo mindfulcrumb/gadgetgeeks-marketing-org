@@ -8,11 +8,14 @@ Create 1-2 social media posts and schedule them via Postiz to all connected plat
 
 ## Load First
 - `state/incident-log.json`
+- `config/operations-rulebook.json` — rules 21-24 are MANDATORY
 
 ## Tasks
 
-### 1. Check Context
-- Read social/calendar.json for what's been posted recently (avoid repeating)
+### 1. Check Context (DATA-DRIVEN — not blind posting)
+- Read social/calendar.json — **extract ALL `image_used`, `canva_design_used`, and `source_prompt_id` values from previous posts. These images are BURNED — never reuse them.**
+- Read **departments/x-intel/daily-brief.json** — trending topics, content opportunities, viral formats. **Your post topics MUST align with what's trending TODAY.**
+- Read **departments/social/engagement-log.md** — what content types performed best. **Prioritize the content type with highest engagement.**
 - Read **departments/canva/pipeline.json** for finished Canva designs ready to post (status: "exported")
 - Read departments/social/image-prompts.json for generated images (if no Canva designs available)
 - Read intel/trends.json for trending topics to ride
@@ -86,8 +89,25 @@ If you create 2 posts, you MUST output 2 separate SOCIAL_POST blocks. No excepti
 
 **If you return 0 SOCIAL_POST blocks when images exist, you have FAILED your primary job.**
 
-### RULE #2: EACH POST MUST USE A DIFFERENT IMAGE
-**NEVER reuse the same image URL across multiple SOCIAL_POST blocks.** Every post needs its own unique image. If only 1 image is available, create only 1 post. Scan ALL available images from Canva pipeline AND image-prompts.json and assign each post a unique image.
+### RULE #2: ZERO IMAGE REUSE — ACROSS POSTS AND ACROSS DAYS (Ops Rulebook Rule 21)
+**NEVER reuse ANY image that has been posted before — not just within today, but across ALL previous days.**
+
+**Before selecting an image, you MUST:**
+1. Read calendar.json and extract every `image_used` URL, `canva_design_used` ID, and `source_prompt_id` from ALL previous entries
+2. Build a "burned images" list — these are OFF LIMITS
+3. Only select images from Canva pipeline or image-prompts.json that do NOT appear in the burned list
+4. If only 1 unused image exists, create only 1 post
+5. If ZERO unused images exist, **DO NOT POST** — instead queue an URGENT item requesting new image generation
+
+**When logging to calendar.json, you MUST include:**
+- `image_used`: the exact URL posted
+- `canva_design_used`: the Canva design ID (if from pipeline)
+- `source_prompt_id`: the original image prompt ID that generated the source image
+
+**THE INCIDENT (March 14, 2026):** Same 2 images (iPhone 15 Pro Max product hero, iPhone 14 Pro product hero) posted over and over because only 2 of 10 images generated and no dedup tracking existed. Unacceptable.
+
+### RULE #2b: POST CONTENT MUST MATCH THE IMAGE
+**If the image shows an iPhone 15 Pro Max, the post copy MUST be about the iPhone 15 Pro Max.** Never post a "Galaxy S24 deal" with an iPhone image. Match the image's `keywords_targeted` or `design_type` to your post topic. If no matching image exists for your desired topic, pick a different topic that matches an available image.
 
 ### RULE #3: TIKTOK FORMAT GUIDELINES
 TikTok is our primary connected platform. All content must follow TikTok best practices:
@@ -97,6 +117,18 @@ TikTok is our primary connected platform. All content must follow TikTok best pr
 - **Hook first**: Start with the most attention-grabbing line. You have 1 second to stop the scroll.
 - **CTA**: Simple, direct ("link in bio", "follow for more deals", "save this for later")
 - **Tone**: Gen Z/Millennial friendly. No corporate speak. Contractions, slang OK.
+
+### RULE #4: DATA-DRIVEN CONTENT — NO BLIND POSTING (Ops Rulebook Rule 22)
+**Every post MUST be tied to real data. You do NOT decide what to post based on vibes.**
+
+Your content decision tree:
+1. **Check x-intel/daily-brief.json** → Are there content opportunities with urgency "today"? Post about those FIRST.
+2. **Check engagement-log.md** → What content type performed best recently? Prioritize that type.
+3. **Check viral_formats in x-intel** → Can you adapt a trending format? Do it.
+4. **Check competitor_signals** → Is a competitor having a crisis? Capitalize with differentiation content.
+5. **Only if none of the above apply** → Fall back to content type rotation.
+
+**Every post in calendar.json MUST include a `driven_by` field** explaining what data drove the content decision. Example: `"driven_by": "x-intel trending: iPhone 17e vs refurbished comparison gaining retweets"` or `"driven_by": "engagement-log: customer testimonials with dollar amounts outperform by 40%"`
 
 ### Other Rules
 - Max 15 Postiz API calls per day (track in calendar.json)

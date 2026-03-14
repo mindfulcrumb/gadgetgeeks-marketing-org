@@ -127,7 +127,7 @@
       "summary": "URGENT: Critical queue items pending >48 hours + departments offline",
       "details": {
         "alert_type": "URGENT",
-        "message": "🚨 SENTINEL NIGHT ALERT — 02:37 UTC\nType: URGENT\nIssue: Multiple critical items pending >48 hours\nCritical Items:\n• Charbel call pending 50+ hours (boss requested twice)\n• Cross-sell email pending 41+ hours\n• Data request pending 50+ hours\n\nAdditionally: 4 departments idle >72 hours (intel, content, email, cro)\n\nAction needed: Review and approve/reject pending queue items immediately. Check why scheduled departments aren't running.\n\nQueue depth: 13 pending items total"
+        "message": "\ud83d\udea8 SENTINEL NIGHT ALERT \u2014 02:37 UTC\nType: URGENT\nIssue: Multiple critical items pending >48 hours\nCritical Items:\n\u2022 Charbel call pending 50+ hours (boss requested twice)\n\u2022 Cross-sell email pending 41+ hours\n\u2022 Data request pending 50+ hours\n\nAdditionally: 4 departments idle >72 hours (intel, content, email, cro)\n\nAction needed: Review and approve/reject pending queue items immediately. Check why scheduled departments aren't running.\n\nQueue depth: 13 pending items total"
       },
       "created": "2026-03-14 02:37 UTC",
       "id": "night_ops_20260314_023800"
@@ -197,7 +197,7 @@
       "department": "x_intel",
       "summary": "iPhone 17e vs iPhone 15 Pro refurbished comparison post capitalizing on trending momentum",
       "details": {
-        "content": "iPhone 17e rumors at $699+ aren't worth it.\n\niPhone 15 Pro refurbished at $429?\n\nSame A17 Pro chip ✅\nSame Pro cameras ✅ \nSame build quality ✅\nSame iOS updates ✅\n\n99% of the experience.\n60% of the price.\n\nWhy pay the new model tax?",
+        "content": "iPhone 17e rumors at $699+ aren't worth it.\n\niPhone 15 Pro refurbished at $429?\n\nSame A17 Pro chip \u2705\nSame Pro cameras \u2705 \nSame build quality \u2705\nSame iOS updates \u2705\n\n99% of the experience.\n60% of the price.\n\nWhy pay the new model tax?",
         "platforms": [
           "twitter"
         ],
@@ -212,7 +212,7 @@
       "department": "x_intel",
       "summary": "Package security standards post highlighting Back Market tampering issues",
       "details": {
-        "content": "Refurbished phone arrived with broken security seals? 🚨\n\nThat's unacceptable.\n\nOur packaging standards:\n✅ Tamper-evident seals\n✅ Multi-layer security wrapping  \n✅ Photo documentation at every step\n✅ Chain of custody tracking\n\nTrust shouldn't be optional in refurbished.",
+        "content": "Refurbished phone arrived with broken security seals? \ud83d\udea8\n\nThat's unacceptable.\n\nOur packaging standards:\n\u2705 Tamper-evident seals\n\u2705 Multi-layer security wrapping  \n\u2705 Photo documentation at every step\n\u2705 Chain of custody tracking\n\nTrust shouldn't be optional in refurbished.",
         "platforms": [
           "twitter"
         ],
@@ -340,7 +340,7 @@
     {
       "department": "seo",
       "type": "seo_recommendation",
-      "summary": "Meta title/description update for /collections/refurbished-samsung — switch to pre-owned terminology",
+      "summary": "Meta title/description update for /collections/refurbished-samsung \u2014 switch to pre-owned terminology",
       "page": "/collections/refurbished-samsung",
       "id": "seo_20260312_001430",
       "status": "ready_for_implementation",
@@ -362,7 +362,7 @@
     {
       "department": "seo",
       "type": "content_brief",
-      "summary": "Blog brief: 'Cheap Refurbished Phones — How to Get $800 Phone for $350' targeting keyword 'cheap refurbished phones'",
+      "summary": "Blog brief: 'Cheap Refurbished Phones \u2014 How to Get $800 Phone for $350' targeting keyword 'cheap refurbished phones'",
       "page": "/blogs/deals/cheap-refurbished-phones-guide",
       "target_keyword": "cheap refurbished phones",
       "meta_title": "Cheap Refurbished Phones: How to Get $800 Phone for $350 (2026 Guide)",
@@ -384,6 +384,13 @@
       "id": "seo_20260312_071601",
       "status": "ready_for_content_department",
       "processed_at": "2026-03-14T19:17:00Z"
+    },
+    {
+      "title": "Best Refurbished iPhone in 2026 (Tested & Ranked)",
+      "handle": "best-refurbished-iphone-2026-tested-ranked",
+      "id": "blog_publish_20260314_120000",
+      "status": "published",
+      "shopify_article_id": "gid://shopify/Article/597530706171"
     }
   ]
 }

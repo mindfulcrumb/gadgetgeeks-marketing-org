@@ -95,7 +95,7 @@
   ],
   "word_count": 1247,
   "category": "buying_guide",
-  "status": "publish_blocked",
+  "status": "published",
   "publish_blocked_reason": "Missing header image - no prompts available in image-prompts.json",
   "publish_blocked_at": "2026-03-14T19:36:00Z",
   "publish_blocked_by": "PRESS",
@@ -163,5 +163,7 @@
   "qa_reviewed_at": "2026-03-14T19:32:00Z",
   "qa_reviewed_by": "QUILL",
   "created": "2026-03-14T18:30:00Z",
-  "scheduled_publish": "2026-03-17T09:30:00Z"
+  "scheduled_publish": "2026-03-17T09:30:00Z",
+  "shopify_article_id": "gid://shopify/Article/597530706171",
+  "published_at": "2026-03-14T12:00:00Z"
 }

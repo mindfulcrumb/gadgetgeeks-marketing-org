@@ -1,242 +1,411 @@
-# FOCUS QA REVIEW — Batch 2026-03-13
+## Context Analysis
 
-Reviewing all 10 prompts from the current batch. Each prompt will be evaluated against all 17 mandatory checks.
+I can see we have 2 fresh Canva designs ready with export URLs:
+1. iPhone 15 Pro Max design (canva_20260314_095115_001) with export_url: https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/ccbd1225-724f-4354-be40-e6b45ff4920a/canva-blog-prompt_20260313_002-20260314_095109.png
+2. iPhone 14 Pro design (canva_20260314_095120_002) with export_url: https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/41ac0a03-c9eb-4b07-88f8-1f939d8d66eb/canva-email-prompt_20260313_008-20260314_095115.png
 
-## INDIVIDUAL PROMPT REVIEWS
+Both images are available - this is perfect timing! According to RULE #1, since images exist, I MUST post.
 
-### Prompt 1 (prompt_20260313_001) — BLOCKED
-**Score: 7/17 (BLOCKED)**
+Looking at recent content types from calendar.json, I see we've covered customer service, battery health, iPhone 17e comparison, testimonials, environmental consciousness, and support standards extensively. Today I'll focus on:
 
-**Issues Found:**
-- Check 4 FAIL: Missing camera filename hack
-- Check 5 FAIL: Weak negative prompt - missing "illustration", "watermark"
-- Check 8 FAIL: Uses "genuine smile" - perfection language triggers uncanny valley
-- Check 11 FAIL: Phone not described with positive condition language
-- Check 12 FAIL: No specific brand identifiers mentioned
-- Check 16 **AUTO-BLOCK**: Describes "screen showing simple abstract wallpaper" - this is fake screen content
-- Check 17 FAIL: Hand pose holding phone during video call would look staged/unnatural
+1. **Product spotlight** - iPhone 15 Pro Max (using the fresh Canva export)
+2. **Behind the scenes quality grading** - iPhone 14 Pro (using the second Canva export)
 
-**Critical Issue:** Check 16 violation means automatic block regardless of other scores.
+Both posts will be adapted for TikTok format (our primary connected platform) while also posting to other platforms.
 
-### Prompt 2 (prompt_20260313_002) — GOOD
-**Score: 14/17 (GOOD)**
+## Creating Posts
 
-**Issues Found:**
-- Check 6 FAIL: No people, so skin realism stack not applicable (pass)
-- Check 8 FAIL: Uses "precision" which could trigger perfection language
-- Check 17 FAIL: Studio product shot wouldn't pass cellphone realism test
+### Post 1: iPhone 15 Pro Max Product Spotlight
 
-**This is a clean product hero shot that serves its purpose well.**
+This rides the iPhone 17e vs flagship refurbished trend that's gaining momentum. Using customer language "basically got a $800 phone for $350" and "can't tell the difference."
 
-### Prompt 3 (prompt_20260313_003) — GOOD
-**Score: 13/17 (GOOD)**
+Content: "iPhone 17e rumors got everyone waiting 6+ months to pay $899. Meanwhile, iPhone 15 Pro Max refurbished delivers the exact same titanium build, 48MP camera system, and Action Button for $549. Why wait and pay 64% more for a newer model number? Your photos won't know the difference. 🔥 #refurbished #iphone #techdeals #fyp"
 
-**Issues Found:**
-- Check 4 FAIL: Missing ".CR3 untitled unedited RAW file" suffix
-- Check 11 FAIL: Phone not described with positive condition language
-- Check 16 FAIL: "Screen displays simple dark wallpaper" - fake screen content
-- Check 17 FAIL: Dramatic staged lighting wouldn't pass cellphone realism
+### Post 2: Behind the Scenes Quality Grading
 
-### Prompt 4 (prompt_20260313_004) — GOOD
-**Score: 13/17 (GOOD)**
+This addresses the "what's the catch?" concern with transparency about our grading process.
 
-**Issues Found:**
-- Check 8 FAIL: Uses "focused expression, natural candid moment" - perfection language
-- Check 11 FAIL: Phone not described with positive condition language
-- Check 12 FAIL: No specific brand identifiers mentioned
-- Check 16 FAIL: No mention of screen content, but lying "flat beside laptop" suggests screen would be visible
+Content: "POV: You're wondering what 'Grade A refurbished' actually means 👀
 
-### Prompt 5 (prompt_20260313_005) — BLOCKED
-**Score: 8/17 (BLOCKED)**
+Grade A = looks brand new, zero cosmetic wear
+Grade B = light scratches, 30% less cost, same performance
+Grade C = visible wear, 50% savings, full function
 
-**Issues Found:**
-- Check 3 FAIL: No film stock specified for people (quality control workers)
-- Check 6 FAIL: No skin realism stack for people
-- Check 11 FAIL: Describes phones as having "minor scratches" - negative condition language
-- Check 15 **AUTO-BLOCK**: Explicitly asks for text labels 'Grade B' and 'Grade A+' in the image
-- Check 16 FAIL: Implies readable text/labels on surfaces
-- Check 17 FAIL: Split composition with labels would look obviously AI-generated
-
-**Critical Issue:** Check 15 violation (text in image) means automatic block.
-
-### Prompt 6 (prompt_20260313_006) — GOOD
-**Score: 14/17 (GOOD)**
-
-**Issues Found:**
-- Check 6 FAIL: Hands visible but no skin realism stack specified
-- Check 16 FAIL: "screen shows simple nature wallpaper" - fake screen content
-- Check 17 FAIL: Overly curated eco-workspace would look staged
-
-### Prompt 7 (prompt_20260313_007) — BLOCKED
-**Score: 6/17 (BLOCKED)**
-
-**Issues Found:**
-- Check 6 FAIL: Person present but no skin realism stack
-- Check 8 FAIL: Uses "genuine concentration" - perfection language
-- Check 11 FAIL: Phone not described with positive condition language
-- Check 12 FAIL: No specific brand identifiers
-- Check 16 **AUTO-BLOCK**: "phone displaying simple timer app screen" - fake app UI
-- Check 17 FAIL: Studying scene with specific app would look staged
-
-**Critical Issue:** Check 16 violation - AI cannot render convincing app interfaces.
-
-### Prompt 8 (prompt_20260313_008) — EXCELLENT
-**Score: 15/17 (EXCELLENT)**
-
-**Issues Found:**
-- Check 17 FAIL: Professional studio shot wouldn't pass cellphone realism test
-- Check 12 FAIL: No specific Apple logo or brand identifier mentioned
-
-**Strong product hero shot that serves its commercial purpose.**
-
-### Prompt 9 (prompt_20260313_009) — GOOD
-**Score: 13/17 (GOOD)**
-
-**Issues Found:**
-- Check 4 FAIL: Missing ".CR3 untitled unedited RAW file" suffix
-- Check 11 FAIL: Phone not described with positive condition language
-- Check 16 FAIL: "screen with dark wallpaper" - fake screen content
-- Check 17 FAIL: Dramatic commercial lighting wouldn't pass cellphone test
-
-### Prompt 10 (prompt_20260313_010) — BLOCKED
-**Score: 8/17 (BLOCKED)**
-
-**Issues Found:**
-- Check 6 FAIL: Two people present but no skin realism stack
-- Check 8 FAIL: Uses "genuine moment", "excited expression", "satisfied smile" - perfection language
-- Check 11 FAIL: Phone not described with positive condition language
-- Check 12 FAIL: No specific brand identifiers
-- Check 16 **AUTO-BLOCK**: Describes setting up phone together - implies UI/settings screens
-- Check 17 FAIL: Father-daughter phone setup would look staged
-- Check 4 FAIL: Missing camera filename hack
-
-**Critical Issue:** Check 16 violation - phone setup implies settings screens which AI cannot render convincingly.
-
-## BATCH SUMMARY
-
-| Rating | Count | Prompt IDs |
-|---------|-------|------------|
-| BLOCKED | 4 | 001, 005, 007, 010 |
-| GOOD | 5 | 002, 003, 004, 006, 009 |
-| EXCELLENT | 1 | 008 |
-| NEEDS WORK | 0 | - |
-
-**Critical Pattern:** 4 prompts auto-blocked for fake screen content (Check 16). This is the most serious quality issue in this batch.
-
-## RECURRING ISSUES ACROSS BATCH
-
-1. **Fake Screen Content (Check 16)** - 60% of prompts describe specific screen content
-2. **Missing Skin Realism (Check 6)** - 50% of people prompts lack skin detail stack  
-3. **Perfection Language (Check 8)** - 40% use uncanny valley triggers
-4. **Missing Condition Language (Check 11)** - 70% don't describe phones as "pristine" or "like-new"
-5. **Cellphone Realism Failure (Check 17)** - 90% would fail the "scroll test"
+Same 90-day warranty on all grades. You pick your savings level. No catch, just options. ✨ #qualitygrading #transparency #refurbished #fyp"
 
 ```json
-// UPDATE: departments/social/image-prompts.json
+// SOCIAL_POST
 {
-  "prompts": [
+  "content": "iPhone 17e rumors got everyone waiting 6+ months to pay $899. Meanwhile, iPhone 15 Pro Max refurbished delivers the exact same titanium build, 48MP camera system, and Action Button for $549. Why wait and pay 64% more for a newer model number? Your photos won't know the difference. 🔥 #refurbished #iphone #techdeals #fyp",
+  "platforms": ["tiktok", "twitter", "instagram", "facebook", "linkedin"],
+  "media_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/ccbd1225-724f-4354-be40-e6b45ff4920a/canva-blog-prompt_20260313_002-20260314_095109.png"
+}
+```
+
+```json
+// SOCIAL_POST
+{
+  "content": "POV: You're wondering what 'Grade A refurbished' actually means 👀\n\nGrade A = looks brand new, zero cosmetic wear\nGrade B = light scratches, 30% less cost, same performance  \nGrade C = visible wear, 50% savings, full function\n\nSame 90-day warranty on all grades. You pick your savings level. No catch, just options. ✨ #qualitygrading #transparency #refurbished #fyp",
+  "platforms": ["tiktok", "twitter", "instagram", "facebook", "linkedin"],
+  "media_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/41ac0a03-c9eb-4b07-88f8-1f939d8d66eb/canva-email-prompt_20260313_008-20260314_095115.png"
+}
+```
+
+```json
+// UPDATE: departments/social/calendar.json
+{
+  "posts": [
     {
-      "id": "prompt_20260313_001",
-      "use_case": "lifestyle",
-      "platform": "instagram",
-      "aspect_ratio": "4:5",
-      "prompt": "Person with natural twist-out hair wearing cream oversized sweater, sitting cross-legged on hardwood floor of bright Brooklyn apartment. Holding pristine iPhone 15 Pro in Natural Titanium, screen OFF showing subtle reflections. Natural morning light streaming through large windows creates soft rim lighting. Potted fiddle leaf fig and white ceramic mug on oak coffee table. Canon EOS R5, 85mm f/1.2, shallow depth of field, natural skin with visible pores, subsurface scattering, fine vellus hair, natural facial asymmetry, eye detail with corneal catchlight. Kodak Portra 400 film emulation, warm amber grade. IMG_4829.CR3 untitled unedited RAW file.",
-      "negative_prompt": "NO plastic skin, mannequin, CGI, airbrushed, doll-like, cartoon, text, watermark, logo, illustration",
-      "platform_params": "--ar 4:5 --style raw --s 250",
-      "notes": "CORRECTED: Removed fake screen content, added skin realism stack, fixed condition language",
-      "keywords_targeted": [
-        "iPhone 15 Pro",
-        "refurbished iPhone",
-        "current flagship"
+      "date": "2026-03-12",
+      "time": "00:14 UTC",
+      "content_type": "sustainability/anti-consumerism",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook",
+        "reddit",
+        "linkedin"
       ],
-      "recommended_tool": "midjourney"
+      "trending_topic": "Sustainability in Tech Purchases",
+      "customer_language_used": [
+        "Can't tell the difference",
+        "battery still lasts all day",
+        "saved $347",
+        "feels like I got away with something"
+      ]
     },
     {
-      "id": "prompt_20260313_002",
-      "use_case": "product_hero",
-      "platform": "blog",
-      "aspect_ratio": "16:9",
-      "prompt": "iPhone 15 Pro Max in Blue Titanium positioned at slight angle on white Carrara marble surface, creating subtle reflections. Titanium frame catching studio light with edge highlights. Screen OFF showing curved glass reflections. Apple logo visible on back. Single strip light from left creates gentle gradient shadow. AirPods Pro case in white and woven Lightning cable arranged nearby, suggesting premium ecosystem. Phase One IQ4 150MP, 100mm macro f/2.8, focus stacked, product fills 60% of frame. Professional product photography, commercial studio lighting, 8K ultra-detailed. IMG_2851.CR3 unedited RAW.",
-      "negative_prompt": "NO text, watermark, logo on image, cartoon, CGI, illustration",
-      "platform_params": "--ar 16:9 --style raw --s 250",
-      "notes": "CORRECTED: Added Apple logo visibility, removed perfection language",
-      "keywords_targeted": [
-        "iPhone 15 Pro Max",
-        "Blue Titanium",
-        "refurbished flagship"
+      "date": "2026-03-12",
+      "time": "00:14 UTC",
+      "content_type": "battery health transparency",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook",
+        "linkedin"
       ],
-      "recommended_tool": "midjourney",
-      "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/f1bc1edb-88ed-4233-94b0-a45f4e2ab992/gg-prompt_20260313_002.jpg",
-      "generated_at": "2026-03-13T18:39:06.478225+00:00",
-      "generation_status": "done"
+      "trending_topic": "Battery Health Transparency",
+      "customer_language_used": [
+        "good battery isn't good enough"
+      ]
     },
     {
-      "id": "prompt_20260313_003",
-      "use_case": "deal_urgency",
-      "platform": "facebook",
-      "aspect_ratio": "1:1",
-      "prompt": "Pristine Galaxy S24 Ultra in Titanium Gray tilted at dynamic 25-degree angle on dark concrete surface. Samsung branding visible on back. Dramatic split lighting with strong key light from left creating deep shadows on right side. Screen OFF with subtle reflections. Neon teal accent light as rim light along phone's edge, suggesting exclusivity. Background fades to deep black with spotlight pool effect. ARRI Alexa 35, Cooke Anamorphic 50mm, anamorphic oval bokeh, subtle horizontal lens flare. Teal and orange color grade, crushed blacks, cinematic contrast, fine grain. Commercial advertising photography, 8K. IMG_8805.CR3 untitled unedited RAW file.",
-      "negative_prompt": "NO text, watermark, logo, cartoon, CGI, cheap looking, fake UI",
-      "platform_params": "--ar 1:1 --style raw --s 250",
-      "notes": "CORRECTED: Added condition language, Samsung branding, screen OFF, filename hack",
-      "keywords_targeted": [
-        "Galaxy S24 Ultra",
-        "spring deals",
-        "supply surge"
+      "date": "2026-03-12",
+      "time": "10:46 UTC",
+      "content_type": "product spotlight - budget phone math",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook",
+        "linkedin"
       ],
-      "recommended_tool": "midjourney"
+      "trending_topic": "Active Budget Phone Shopping Requests",
+      "customer_language_used": [
+        "basically got a $800 phone for $350",
+        "can't tell the difference"
+      ]
     },
     {
-      "id": "prompt_20260313_004",
-      "use_case": "lifestyle",
-      "platform": "twitter",
-      "aspect_ratio": "9:16",
-      "prompt": "Person with short beard wearing navy henley shirt, sitting at wooden cafe table with pristine iPhone 14 Pro in Deep Purple lying flat, screen OFF. Typing on laptop, concentrated expression. Austin coffee shop with exposed brick walls, pendant lighting, other customers blurred in background. Golden hour afternoon light through large windows creates warm atmosphere. Apple logo visible on phone. Ceramic coffee cup, small succulent plant, worn leather messenger bag visible. Canon EOS R5, 85mm f/1.2, shallow depth of field. Natural skin with visible pores, subsurface scattering. Kodak Portra 400, warm amber grade. IMG_4833.CR3 unedited RAW file.",
-      "negative_prompt": "NO plastic skin, mannequin, CGI, airbrushed, perfect skin, cartoon, text, watermark, logo, illustration",
-      "platform_params": "--ar 9:16 --style raw --s 250",
-      "notes": "CORRECTED: Added condition language, skin realism, Apple branding, filename hack",
-      "keywords_targeted": [
-        "iPhone 14 Pro",
-        "work setup",
-        "bundle deals"
+      "date": "2026-03-12",
+      "time": "10:46 UTC",
+      "content_type": "behind the scenes - quality assurance",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook",
+        "linkedin"
       ],
-      "recommended_tool": "midjourney"
+      "trending_topic": "Biometric Function Anxiety + Back Market Support Failures",
+      "customer_language_used": [
+        "what's the catch?"
+      ]
     },
     {
-      "id": "prompt_20260313_005",
-      "use_case": "comparison",
-      "platform": "instagram",
-      "aspect_ratio": "1:1",
-      "prompt": "Split composition showing refurbishing process: Left side shows iPhone with visible wear under magnifying glass on white inspection mat. Right side shows same phone model after refurbishing process, looking pristine under same lighting. Both phones screen OFF. GadgetGeeks quality control tools nearby - microfiber cloths, precision screwdrivers, battery testing equipment. Professional lighting from overhead panels creates even illumination. Sony A7R V, 50mm f/1.4, sharp focus across entire frame. Hands wearing inspection gloves visible, natural skin with visible pores, subsurface scattering. Editorial documentation style, magazine quality. Natural color grading, high detail. Kodak Portra 400. IMG_3295.CR3 unedited RAW file.",
-      "negative_prompt": "NO text overlays, fake screens, cartoon tools, CGI, watermarks, plastic skin, mannequin hands, illustration",
-      "platform_params": "--ar 1:1 --style raw --s 250",
-      "notes": "CORRECTED: Removed text labels, added skin realism for hands, positive refurbishment framing",
-      "keywords_targeted": [
-        "quality grading",
-        "refurbishing process",
-        "inspection quality"
+      "date": "2026-03-13",
+      "time": "10:19 UTC",
+      "content_type": "customer service differentiation",
+      "platforms": [
+        "twitter",
+        "facebook",
+        "linkedin"
       ],
-      "recommended_tool": "midjourney"
+      "trending_topic": "Back Market Support Crisis - Multi-national Support Failures",
+      "customer_language_used": [
+        "what's the catch?"
+      ],
+      "canva_design_used": "canva_20260313_095834_003"
     },
     {
-      "id": "prompt_20260313_006",
-      "use_case": "sustainability",
-      "platform": "linkedin",
-      "aspect_ratio": "4:5",
-      "prompt": "Hands with natural nails holding pristine refurbished iPhone 13 in Pink, surrounded by eco-friendly workspace elements. Natural skin with visible pores, subsurface scattering, fine vellus hair. Bamboo desk with potted snake plant, reusable glass water bottle, canvas tote bag, recycled paper notebook. Soft natural window light creates gentle volumetric rays through air. Phone screen OFF showing subtle reflections. Apple logo visible on back. Warm, authentic workspace with visible wood grain, natural textures. Leica M11, 50mm f/1.4, natural Leica color rendering, documentary feel. Kodak Portra 400 emulation, warm earth tones, lifted shadows. IMG_5518.CR3 unedited RAW file.",
-      "negative_prompt": "NO plastic materials, fake plants, sterile environment, CGI, mannequin hands, fake screens, cartoon, watermark, logo, illustration",
-      "platform_params": "--ar 4:5 --style raw --s 250",
-      "notes": "CORRECTED: Added skin realism for hands, screen OFF, Apple branding, condition language",
-      "keywords_targeted": [
-        "refurbished iPhone 13",
-        "sustainability",
-        "eco-conscious"
+      "date": "2026-03-13",
+      "time": "10:19 UTC",
+      "content_type": "battery health education/process transparency",
+      "platforms": [
+        "instagram",
+        "facebook",
+        "linkedin"
       ],
-      "recommended_tool": "midjourney"
+      "trending_topic": "Battery Health Obsession Peak (400% increase in mentions)",
+      "customer_language_used": [
+        "How do I know the battery health is real",
+        "battery still lasts all day"
+      ],
+      "canva_design_used": "canva_20260313_095845_005"
     },
     {
-      "id": "prompt_20260313_007",
-      "use_case": "lifestyle",
-      "platform": "facebook",
-      "aspect_ratio": "16:9",
-      "prompt": "College student with curly hair in oversized university hoodie, sitting on dorm room bed with textbooks scattered around. Holding pristine iPhone 15 in Blue, screen OFF showing subtle reflections, Apple logo visible. Warm desk lamp lighting mixed with natural afternoon light from window. Dorm essentials visible: water bottle, highlighters, laptop charging cable. Authentic college environment, lived-in but organized. Natural skin with visible pores, subsurface scattering, fine vellus hair, natural facial asymmetry, eye detail with corneal catchlight. Canon
+      "date": "2026-03-13",
+      "time": "12:44 UTC",
+      "content_type": "budget math/iPhone 17e comparison",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "linkedin"
+      ],
+      "trending_topic": "iPhone 17e vs Refurbished Flagship Direct Comparison",
+      "customer_language_used": [
+        "iPhone 17e isn't worth it, buy refurbished iPhone 15 ProMax instead"
+      ],
+      "canva_design_used": "canva_20260313_095839_004"
+    },
+    {
+      "date": "2026-03-13",
+      "time": "12:44 UTC",
+      "content_type": "customer testimonial/social proof",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook"
+      ],
+      "trending_topic": "Quality assurance and trust building",
+      "customer_language_used": [
+        "can't tell the difference from my friend's new one",
+        "saved $347"
+      ],
+      "canva_design_used": "canva_20260313_095828_002"
+    },
+    {
+      "date": "2026-03-13",
+      "time": "12:47 UTC",
+      "content_type": "environmental consciousness + customer testimonial",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook"
+      ],
+      "trending_topic": "E-waste Awareness Sustained Viral Momentum",
+      "customer_language_used": [
+        "can't tell the difference",
+        "saved $347"
+      ]
+    },
+    {
+      "date": "2026-03-13",
+      "time": "12:50 UTC",
+      "content_type": "customer service differentiation/support standards",
+      "platforms": [
+        "twitter",
+        "facebook",
+        "linkedin"
+      ],
+      "trending_topic": "Back Market Multi-National Support Crisis",
+      "customer_language_used": [
+        "what's the catch?",
+        "Don't want to get burned on a lemon"
+      ]
+    },
+    {
+      "date": "2026-03-13",
+      "time": "12:53 UTC",
+      "content_type": "iPhone 17e comparison + environmental consciousness",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook",
+        "linkedin"
+      ],
+      "trending_topic": "iPhone 17e vs Refurbished Flagship Direct Comparison + E-waste Awareness",
+      "customer_language_used": [
+        "Why wait and pay 60% more for a newer model number?"
+      ]
+    },
+    {
+      "date": "2026-03-13",
+      "time": "13:00 UTC",
+      "content_type": "accessory compatibility guide",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook",
+        "linkedin"
+      ],
+      "trending_topic": "Accessory Compatibility Paralysis",
+      "customer_language_used": [
+        "do I need a different charger for this one"
+      ]
+    },
+    {
+      "date": "2026-03-13",
+      "time": "13:00 UTC",
+      "content_type": "bundle deal spotlight",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook"
+      ],
+      "trending_topic": "Spring Upgrade Cycle Supply Surge",
+      "customer_language_used": [
+        "perfect for my teenager - half the price"
+      ]
+    },
+    {
+      "date": "2026-03-13",
+      "time": "13:03 UTC",
+      "content_type": "behind the scenes - biometric testing process",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook",
+        "linkedin"
+      ],
+      "trending_topic": "Biometric Function Anxiety",
+      "customer_language_used": [
+        "Will Face ID still work perfectly?"
+      ]
+    },
+    {
+      "date": "2026-03-13",
+      "time": "13:03 UTC",
+      "content_type": "right to repair alignment",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "linkedin"
+      ],
+      "trending_topic": "Right to Repair Movement Momentum",
+      "customer_language_used": [
+        "want to upgrade without breaking the bank"
+      ]
+    },
+    {
+      "date": "2026-03-13",
+      "time": "13:05 UTC",
+      "content_type": "spring tech sustainability/e-waste consciousness",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook",
+        "linkedin"
+      ],
+      "trending_topic": "E-waste Awareness Sustained Viral Momentum + Spring Cleaning Season",
+      "customer_language_used": [
+        "can't tell the difference"
+      ]
+    },
+    {
+      "date": "2026-03-13",
+      "time": "13:05 UTC",
+      "content_type": "spring supply surge opportunity/timing advantage",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook"
+      ],
+      "trending_topic": "Spring Upgrade Cycle Supply Surge (23% increase)",
+      "customer_language_used": [
+        "looks brand new",
+        "saved $347"
+      ]
+    },
+    {
+      "date": "2026-03-13",
+      "time": "13:08 UTC",
+      "content_type": "customer testimonial/authentic savings story",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook"
+      ],
+      "trending_topic": "Social proof and trust building",
+      "customer_language_used": [
+        "basically got a $800 phone for $350",
+        "can't tell the difference from my friend's new one"
+      ]
+    },
+    {
+      "date": "2026-03-13",
+      "time": "13:08 UTC",
+      "content_type": "accessory compatibility guide/educational content",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook",
+        "linkedin"
+      ],
+      "trending_topic": "Accessory Compatibility Paralysis",
+      "customer_language_used": [
+        "do I need a different charger for this one"
+      ]
+    },
+    {
+      "date": "2026-03-13",
+      "time": "13:11 UTC",
+      "content_type": "support standards differentiation",
+      "platforms": [
+        "twitter",
+        "facebook",
+        "linkedin"
+      ],
+      "trending_topic": "Back Market Multi-National Support Crisis",
+      "customer_language_used": [
+        "Don't want to get burned on a lemon",
+        "what's the catch?"
+      ]
+    },
+    {
+      "date": "2026-03-13",
+      "time": "13:11 UTC",
+      "content_type": "right to repair alignment/sustainability positioning",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "linkedin"
+      ],
+      "trending_topic": "Right to Repair Movement Momentum + E-waste Awareness",
+      "customer_language_used": [
+        "want to upgrade without breaking the bank"
+      ]
+    },
+    {
+      "date": "2026-03-14",
+      "time": "10:00 UTC",
+      "content_type": "iPhone 17e vs flagship refurbished comparison",
+      "platforms": [
+        "tiktok",
+        "twitter",
+        "instagram",
+        "facebook",
+        "linkedin"
+      ],
+      "trending_topic": "iPhone 17e vs Refurbished Flagship Direct Comparison Gaining Momentum",
+      "customer_language_used": [
+        "iPhone 17e isn't worth it, buy refurbished iPhone 15 ProMax instead",
+        "can't tell the difference"
+      ],
+      "canva_design_used": "canva_20260314_095115_001"
+    },
+    {
+      "date": "2026-03-14",
+      "time": "10:00 UTC",
+      "content_type": "behind the scenes - quality grading transparency",
+      "platforms": [
+        "tiktok",
+        "twitter",
+        "instagram",
+        "facebook",
+        "linkedin"
+      ],
+      "trending_topic": "Quality assurance transparency demand",
+      "customer_language_used": [
+        "what's the catch?",
+        "what does Grade A actually mean?"
+      ],
+      "canva_design_used": "canva_20260314_095120_002

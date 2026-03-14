@@ -95,7 +95,10 @@
   ],
   "word_count": 1247,
   "category": "buying_guide",
-  "status": "qa_approved",
+  "status": "publish_blocked",
+  "publish_blocked_reason": "Missing header image - no prompts available in image-prompts.json",
+  "publish_blocked_at": "2026-03-14T19:36:00Z",
+  "publish_blocked_by": "PRESS",
   "anti_ai_audit": {
     "banned_words": 0,
     "structural_tells": 0,

@@ -307,6 +307,31 @@
       ],
       "business_impact": "Cannot publish blogs, social media at 20% capacity, marketing completely stalled",
       "id": "gm_queue_20260314_191852"
+    },
+    {
+      "article_id": "blog_20260317_001",
+      "article_title": "Best Refurbished iPhone in 2026 (Tested & Ranked)",
+      "blocking_issues": [
+        {
+          "issue": "No header image available",
+          "details": "departments/social/image-prompts.json shows zero prompts generated. Article cannot publish without featured image.",
+          "required_action": "LENS agent must generate header image prompt for refurbished iPhone buying guide"
+        },
+        {
+          "issue": "Store inventory data missing",
+          "details": "Cannot validate internal product links without config/store-inventory.json loaded",
+          "required_action": "Load store inventory to validate product handles in article"
+        },
+        {
+          "issue": "Infrastructure failures",
+          "details": "Gemini image API down 48+ hours according to queue alerts",
+          "required_action": "Fix image generation API or implement alternative"
+        }
+      ],
+      "article_ready_except_images": true,
+      "scheduled_publish_date": "2026-03-17T09:30:00Z",
+      "urgency": "high - scheduled for Monday publication",
+      "id": "blog_publish_20260314_193743"
     }
   ],
   "approved": [],

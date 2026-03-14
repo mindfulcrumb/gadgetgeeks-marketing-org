@@ -13,15 +13,15 @@ from datetime import datetime, timezone
 
 
 GEMINI_API_BASE = "https://generativelanguage.googleapis.com/v1beta"
-GEMINI_IMAGE_MODEL = "gemini-2.0-flash-exp"
+GEMINI_IMAGE_MODEL = "gemini-2.0-flash-exp-image-generation"
 
 
 # ---------------------------------------------------------------------------
-# Gemini 2.0 Flash image generation (Nano Banana Pro)
+# Gemini image generation
 # ---------------------------------------------------------------------------
 
 def generate_image(prompt: str, aspect_ratio: str = "16:9") -> dict:
-    """Generate an image using Gemini 2.0 Flash image generation.
+    """Generate an image using Gemini image generation.
 
     Args:
         prompt:       Text description of the image to generate.
@@ -53,12 +53,14 @@ def generate_image(prompt: str, aspect_ratio: str = "16:9") -> dict:
                 }
             ],
             "generationConfig": {
-                "responseModalities": ["TEXT", "IMAGE"],
+                "responseModalities": ["IMAGE"],
             },
         },
         timeout=120,
     )
-    resp.raise_for_status()
+    if not resp.ok:
+        err_body = resp.text[:500]
+        raise RuntimeError(f"{resp.status_code} {resp.reason}: {err_body}")
     data = resp.json()
 
     # Extract image from response parts

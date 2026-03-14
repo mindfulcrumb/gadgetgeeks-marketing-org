@@ -284,36 +284,32 @@
       "priority": "critical_blocking",
       "timeline": "needed_for_tomorrow_posts",
       "id": "social_afternoon_20260314_170139"
-    }
-  ],
-  "approved": [
+    },
     {
-      "department": "seo",
-      "type": "content_brief",
-      "summary": "Blog brief: 'Cheap Refurbished Phones — How to Get $800 Phone for $350' targeting keyword 'cheap refurbished phones'",
-      "page": "/blogs/deals/cheap-refurbished-phones-guide",
-      "target_keyword": "cheap refurbished phones",
-      "meta_title": "Cheap Refurbished Phones: How to Get $800 Phone for $350 (2026 Guide)",
-      "meta_description": "Smart buyers save 50%+ on refurbished phones with 80%+ battery health. No catch - just timing the market right. Find your deal before prices jump.",
-      "word_count_target": "1500-2000 words",
-      "key_messaging": [
-        "Address 'what's the catch?' objection directly",
-        "Leverage iPhone 16 timing trend for urgency",
-        "Lead with battery health guarantees",
-        "Use customer language throughout",
-        "Educational approach builds trust"
+      "critical_departments_offline": [
+        "intel (79+ hours)",
+        "seo (72+ hours)",
+        "content (72+ hours)",
+        "email (72+ hours)",
+        "cro (72+ hours)",
+        "x_intel (72+ hours)"
       ],
-      "internal_links_needed": [
-        "Link to /collections/refurbished-iphones",
-        "Link to /collections/refurbished-samsung",
-        "Link to /collections/certified-refurbished-phones",
-        "Link to warranty/return policy pages"
+      "infrastructure_failures": [
+        "Gemini image API down 48+ hours",
+        "Only TikTok connected to Postiz (need Twitter/Instagram/Facebook/LinkedIn)",
+        "All social media images consumed - pipeline empty"
       ],
-      "id": "seo_20260312_071601",
-      "_action": "approve",
-      "_actioned_at": "2026-03-13T12:33:46.094Z"
+      "immediate_actions_required": [
+        "Fix Gemini API or implement alternative image generation",
+        "Reconnect social platforms at app.postiz.com",
+        "Restart offline departments",
+        "Generate emergency image batch for social posting"
+      ],
+      "business_impact": "Cannot publish blogs, social media at 20% capacity, marketing completely stalled",
+      "id": "gm_queue_20260314_191852"
     }
   ],
+  "approved": [],
   "rejected": [],
   "completed": [
     {
@@ -337,6 +333,32 @@
       "handle": "cheap-refurbished-phones-guide",
       "id": "blog_publish_20260312_143000",
       "status": "published"
+    },
+    {
+      "department": "seo",
+      "type": "content_brief",
+      "summary": "Blog brief: 'Cheap Refurbished Phones — How to Get $800 Phone for $350' targeting keyword 'cheap refurbished phones'",
+      "page": "/blogs/deals/cheap-refurbished-phones-guide",
+      "target_keyword": "cheap refurbished phones",
+      "meta_title": "Cheap Refurbished Phones: How to Get $800 Phone for $350 (2026 Guide)",
+      "meta_description": "Smart buyers save 50%+ on refurbished phones with 80%+ battery health. No catch - just timing the market right. Find your deal before prices jump.",
+      "word_count_target": "1500-2000 words",
+      "key_messaging": [
+        "Address 'what's the catch?' objection directly",
+        "Leverage iPhone 16 timing trend for urgency",
+        "Lead with battery health guarantees",
+        "Use customer language throughout",
+        "Educational approach builds trust"
+      ],
+      "internal_links_needed": [
+        "Link to /collections/refurbished-iphones",
+        "Link to /collections/refurbished-samsung",
+        "Link to /collections/certified-refurbished-phones",
+        "Link to warranty/return policy pages"
+      ],
+      "id": "seo_20260312_071601",
+      "status": "ready_for_content_department",
+      "processed_at": "2026-03-14T19:17:00Z"
     }
   ]
 }

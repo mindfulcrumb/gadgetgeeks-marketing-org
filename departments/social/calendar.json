@@ -476,63 +476,73 @@
       "image_used": "https://raw.githubusercontent.com/mindfulcrumb/gadgetgeeks-marketing-org/main/departments/social/ready-to-post/gg-iphone13-deal-tiktok.png",
       "source_prompt_id": "real_product_photo_iphone_13",
       "driven_by": "engagement-log: customer testimonials with dollar amounts outperform by 40%"
+    },
+    {
+      "date": "2026-03-14",
+      "time": "13:56 UTC",
+      "content_type": "iPhone 17e vs refurbished flagship budget math",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook",
+        "linkedin"
+      ],
+      "trending_topic": "iPhone 17e vs Refurbished Flagship Direct Comparison Gaining Momentum",
+      "customer_language_used": [
+        "Do the math",
+        "Why wait and pay 60% more for a number?"
+      ],
+      "canva_design_used": "ready_20260314_iphone14_hero",
+      "image_used": "https://raw.githubusercontent.com/mindfulcrumb/gadgetgeeks-marketing-org/main/departments/social/ready-to-post/gg-iphone14-hero-tiktok.png",
+      "source_prompt_id": "real_product_photo_iphone_14",
+      "driven_by": "x-intel trending: iPhone 17e vs refurbished comparison gaining retweet momentum"
+    },
+    {
+      "date": "2026-03-14",
+      "time": "13:56 UTC",
+      "content_type": "sustainability reality check/customer testimonial",
+      "platforms": [
+        "twitter",
+        "instagram",
+        "facebook",
+        "linkedin"
+      ],
+      "trending_topic": "Reality Check style honest breakdown with engagement numbers + E-waste Awareness",
+      "customer_language_used": [
+        "looks brand new",
+        "feels like getting away with something",
+        "saved $311"
+      ],
+      "canva_design_used": "ready_20260314_iphone14_eco",
+      "image_used": "https://raw.githubusercontent.com/mindfulcrumb/gadgetgeeks-marketing-org/main/departments/social/ready-to-post/gg-iphone14-eco-tiktok.png",
+      "source_prompt_id": "real_product_photo_iphone_14",
+      "driven_by": "x-intel viral format: Reality Check style honest breakdown getting 155 likes, 19 replies"
     }
   ],
-  "postiz_calls_used": 0,
-  "postiz_calls_remaining": 15,
-  "last_updated": "2026-03-14 14:00 UTC",
-  "notes": "Counter reset for Grade C bundle campaign test. 4 new Grade C iPhone images generated and ready to post. Priority: Post gc001 (bundle flat lay) and gc003 (value hero) to TikTok.",
+  "postiz_calls_used": 2,
+  "postiz_calls_remaining": 13,
+  "last_updated": "2026-03-14 13:56 UTC",
+  "notes": "Posted 2 iPhone 14 designs using unused images from ready-to-post collection. Both posts align with trending topics: iPhone 17e comparison and reality check format. Used authentic customer language and specific dollar amounts per engagement data showing 40% higher performance.",
   "tomorrow_priorities": [
-    "IMMEDIATE at midnight UTC reset: Post 2 unused iPhone 14 designs (ready_20260314_iphone14_hero & ready_20260314_iphone14_eco) to ALL PLATFORMS not just TikTok",
-    "URGENT: Queue new image generation request - critically low on fresh visuals",
-    "Rebalance posting strategy - reduce TikTok-only posts, increase multi-platform reach for better engagement",
+    "URGENT: Queue new image generation request - now completely out of unused visuals after using final 2 iPhone 14 designs",
     "Continue iPhone 17e positioning if trend sustains (currently gaining retweet momentum)",
     "Reality Check format content - viral format showing 155 likes, 19 replies",
     "Back Market differentiation content while crisis continues across Spain/UK/US",
     "Bundle deals with family/teenager targeting for spring supply surge"
   ],
-  "unused_images_available": [
-    {
-      "id": "ready_20260314_iphone14_hero",
-      "export_url": "https://raw.githubusercontent.com/mindfulcrumb/gadgetgeeks-marketing-org/main/departments/social/ready-to-post/gg-iphone14-hero-tiktok.png",
-      "design_type": "product_hero",
-      "keywords": [
-        "iPhone 14",
-        "refurbished",
-        "bundle",
-        "premium"
-      ]
-    },
-    {
-      "id": "ready_20260314_iphone14_eco",
-      "export_url": "https://raw.githubusercontent.com/mindfulcrumb/gadgetgeeks-marketing-org/main/departments/social/ready-to-post/gg-iphone14-eco-tiktok.png",
-      "design_type": "sustainability",
-      "keywords": [
-        "iPhone 14",
-        "sustainable",
-        "eco-friendly",
-        "refurbished"
-      ]
-    }
-  ],
+  "unused_images_available": [],
   "platform_issues": [
     {
-      "issue": "Daily Postiz limit reached - BLOCKED from posting",
-      "impact": "Cannot create any posts until tomorrow's reset at midnight UTC",
-      "action_needed": "Reset at midnight UTC, post unused iPhone 14 images immediately",
+      "issue": "CRITICAL: Zero unused images remaining - all visuals exhausted",
+      "impact": "Cannot create any more posts until new images are generated",
+      "action_needed": "URGENT image generation request for LENS/FOCUS departments",
       "priority": "critical"
     },
     {
-      "issue": "Need new image generation - critically low on unused designs",
-      "impact": "Limited fresh visuals for next week after heavy usage",
-      "action_needed": "Queue urgent image generation request for LENS/FOCUS departments",
-      "priority": "critical"
-    },
-    {
-      "issue": "TikTok-heavy posting pattern vs multi-platform strategy",
-      "impact": "Missing engagement opportunities on Twitter/Instagram/LinkedIn where trends are performing",
-      "action_needed": "Tomorrow's iPhone 14 posts must go to ALL platforms for maximum reach",
-      "priority": "high"
+      "issue": "Heavy posting pattern may need moderation",
+      "impact": "Posted 31 times across 3 days - may need to reduce volume for quality",
+      "action_needed": "Consider reducing to 8-10 posts per day for better engagement",
+      "priority": "medium"
     }
   ]
 }

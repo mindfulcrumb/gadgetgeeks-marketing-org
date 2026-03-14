@@ -419,30 +419,61 @@ def parse_response(response_text: str) -> dict:
         try:
             data = json.loads(content)
         except json.JSONDecodeError:
-            # Try fixing common LLM JSON issues: unescaped newlines in string values
+            # Strategy 1: Replace literal newlines inside JSON string values
             try:
-                # Replace literal newlines inside JSON string values with \n
                 fixed = re.sub(r'(?<=": ")(.*?)(?="[,\s}])', lambda m: m.group(0).replace('\n', '\\n'), content, flags=re.DOTALL)
                 data = json.loads(fixed)
             except (json.JSONDecodeError, Exception):
+                # Strategy 2: Extract the first { ... } object manually
                 try:
-                    import json_repair
-                    data = json_repair.loads(content)
-                except Exception:
-                    # If it's an UPDATE with non-JSON content (like markdown), treat as raw text
-                    if block_type == "UPDATE" and header.strip():
-                        result["file_updates"].append({"path": header.strip(), "data": content})
+                    brace_start = content.index('{')
+                    depth = 0
+                    brace_end = brace_start
+                    for i, ch in enumerate(content[brace_start:], brace_start):
+                        if ch == '{':
+                            depth += 1
+                        elif ch == '}':
+                            depth -= 1
+                            if depth == 0:
+                                brace_end = i + 1
+                                break
+                    obj_str = content[brace_start:brace_end]
+                    # Escape newlines inside strings
+                    obj_fixed = re.sub(r'(?<=": ")(.*?)(?="[,\s}])', lambda m: m.group(0).replace('\n', '\\n'), obj_str, flags=re.DOTALL)
+                    data = json.loads(obj_fixed)
+                except (ValueError, json.JSONDecodeError):
+                    # Strategy 3: json_repair as final fallback
+                    try:
+                        import json_repair
+                        data = json_repair.loads(content)
+                    except Exception:
+                        if block_type == "UPDATE" and header.strip():
+                            result["file_updates"].append({"path": header.strip(), "data": content})
+                            continue
+                        print(f"WARNING: Failed to parse JSON block ({block_type}): {content[:100]}...")
                         continue
-                    print(f"WARNING: Failed to parse JSON block ({block_type}): {content[:100]}...")
-                    continue
 
         if block_type == "UPDATE":
             file_path = header.strip()
             result["file_updates"].append({"path": file_path, "data": data})
         elif block_type == "QUEUE_ITEM":
-            result["queue_items"].append(data)
+            if isinstance(data, dict):
+                result["queue_items"].append(data)
+            else:
+                print(f"WARNING: QUEUE_ITEM parsed as {type(data).__name__}, skipping")
         elif block_type == "SOCIAL_POST":
-            result["social_posts"].append(data)
+            if isinstance(data, dict) and "content" in data:
+                result["social_posts"].append(data)
+            elif isinstance(data, list):
+                # json_repair may return a list if JSON was malformed — try to find a dict in it
+                for item in data:
+                    if isinstance(item, dict) and "content" in item:
+                        result["social_posts"].append(item)
+                        break
+                else:
+                    print(f"WARNING: SOCIAL_POST parsed as list with no valid post dict: {str(data)[:100]}")
+            else:
+                print(f"WARNING: SOCIAL_POST parsed as {type(data).__name__}, skipping: {str(data)[:100]}")
 
     # Also catch markdown blocks with UPDATE headers
     md_blocks = re.findall(

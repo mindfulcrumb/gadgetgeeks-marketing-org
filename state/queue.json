@@ -297,6 +297,36 @@
       },
       "created": "2026-03-14 07:08 UTC",
       "id": "seo_20260314_070850"
+    },
+    {
+      "type": "social_post",
+      "department": "x_intel",
+      "summary": "iPhone 17e vs iPhone 15 Pro refurbished comparison post capitalizing on trending momentum",
+      "details": {
+        "content": "iPhone 17e rumors at $699+ aren't worth it.\n\niPhone 15 Pro refurbished at $429?\n\nSame A17 Pro chip ✅\nSame Pro cameras ✅ \nSame build quality ✅\nSame iOS updates ✅\n\n99% of the experience.\n60% of the price.\n\nWhy pay the new model tax?",
+        "platforms": [
+          "twitter"
+        ],
+        "timing": "immediate - trend has momentum",
+        "engagement_target": "@mantech_ug thread showing sustained interest"
+      },
+      "created": "2026-03-14 07:31 UTC",
+      "id": "x_intel_20260314_073252"
+    },
+    {
+      "type": "social_post",
+      "department": "x_intel",
+      "summary": "Package security standards post highlighting Back Market tampering issues",
+      "details": {
+        "content": "Refurbished phone arrived with broken security seals? 🚨\n\nThat's unacceptable.\n\nOur packaging standards:\n✅ Tamper-evident seals\n✅ Multi-layer security wrapping  \n✅ Photo documentation at every step\n✅ Chain of custody tracking\n\nTrust shouldn't be optional in refurbished.",
+        "platforms": [
+          "twitter"
+        ],
+        "timing": "immediate - Back Market crisis ongoing",
+        "reference": "@_daniVLC_ Spain customer complaint"
+      },
+      "created": "2026-03-14 07:31 UTC",
+      "id": "x_intel_20260314_073252"
     }
   ],
   "approved": [

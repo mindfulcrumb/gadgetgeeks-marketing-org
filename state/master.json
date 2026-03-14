@@ -64,6 +64,11 @@
       "last_run": null,
       "status": "idle",
       "runs_total": 0
+    },
+    "blog_writer": {
+      "last_run": "2026-03-14T18:25:50.336369+00:00",
+      "status": "ok",
+      "runs_total": 1
     }
   },
   "created": "2026-03-11",

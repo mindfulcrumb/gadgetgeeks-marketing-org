@@ -136,6 +136,19 @@ def post_to_social(
     if not integrations:
         raise Exception("No connected integrations found in Postiz. Connect accounts at app.postiz.com first.")
 
+    # Debug: log integration structure
+    print(f"  Postiz: {len(integrations)} integrations found")
+    # Ensure integrations are dicts (API may return nested lists)
+    valid_integrations = []
+    for item in integrations:
+        if isinstance(item, dict):
+            valid_integrations.append(item)
+        else:
+            print(f"  Postiz: skipping non-dict integration: {type(item).__name__} = {str(item)[:100]}")
+    integrations = valid_integrations
+    if not integrations:
+        raise Exception("No valid integration objects found in Postiz response.")
+
     # Step 2: Filter integrations by requested platforms
     target_integrations = []
     if platforms:

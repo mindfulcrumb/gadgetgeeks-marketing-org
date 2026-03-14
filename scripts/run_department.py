@@ -392,6 +392,37 @@ DEPARTMENT_CONFIG = {
             "state/queue.json",
         ],
     },
+    # --- Google Trends Scout (TREND) ---
+    "google_trends": {
+        "agent_prompt": "agents/custom/google-trends-agent.md",
+        "context_files": [
+            "departments/intel/trends.json",
+            "departments/seo/keywords.json",
+            "departments/seo/opportunities.json",
+            "departments/trends/daily-trends.json",
+            "config/niche.json",
+        ],
+        "output_files": [
+            "departments/trends/daily-trends.json",
+            "departments/trends/trending-briefs.json",
+        ],
+    },
+    # --- Analytics Optimizer (SIGNAL) ---
+    "analytics": {
+        "agent_prompt": "agents/custom/analytics-agent.md",
+        "context_files": [
+            "departments/seo/keywords.json",
+            "departments/seo/opportunities.json",
+            "departments/content/blog-pipeline.json",
+            "departments/intel/trends.json",
+            "departments/analytics/daily-report.json",
+            "config/niche.json",
+        ],
+        "output_files": [
+            "departments/analytics/daily-report.json",
+            "departments/analytics/optimization-queue.json",
+        ],
+    },
 }
 
 

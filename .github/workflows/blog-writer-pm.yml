@@ -1,0 +1,41 @@
+name: Blog Writer (Evergreen PM)
+on:
+  schedule:
+    - cron: '00 18 * * *'  # Daily 18:00 UTC (11 AM AZ) — afternoon evergreen blog slot
+  workflow_dispatch:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  run-blog-writer-pm:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Blog Writer (Evergreen PM)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          BLOG_SLOT: evergreen
+        run: python scripts/run_department.py blog_writer
+
+      - name: Push changes
+        run: |
+          git config user.name "Marketing Org Bot"
+          git config user.email "bot@gadgetgeekspro.com"
+          git add -A
+          git diff --cached --quiet || git commit -m "[blog-writer-pm] Automated run — $(date -u '+%Y-%m-%d %H:%M UTC')"
+          for i in 1 2 3; do
+            git pull --rebase origin main || { git rebase --abort 2>/dev/null; git pull origin main --no-edit; }
+            git push && break || sleep 5
+          done

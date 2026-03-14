@@ -1,102 +1,6 @@
 {
   "pending": [
     {
-      "department": "dialer",
-      "type": "data_request",
-      "summary": "Build targeted outbound call lists â abandoned carts $300+, win-back inactive customers, review requests",
-      "required_data": [
-        "Shopify abandoned carts (last 48 hours, $300+ value)",
-        "Customer purchase history (60+ days inactive for win-back)",
-        "Recent orders (7-14 days ago for review requests)",
-        "Customer phone numbers and contact preferences",
-        "Previous call outcomes and do-not-call status"
-      ],
-      "purpose": "Build targeted outbound call lists focusing on battery health concerns and iPhone 16 anticipation trends",
-      "compliance_notes": "All calls will be queued for human approval before execution",
-      "id": "dialer_20260312_004833"
-    },
-    {
-      "department": "x_intel",
-      "type": "social_reply",
-      "summary": "Reply to @filocapri's viral e-waste post (7.5K+ likes) â eco angle, brand alignment",
-      "target_post": "@filocapri's e-waste awareness post (7.5K+ likes)",
-      "reply_content": "This! ð Choosing refurbished over new = same phone, 70% less environmental impact. Every device saved from e-waste makes a difference. Our refurbished iPhones work like new but help the planet too. ð±ð",
-      "why_engage": "Massive viral engagement, environmentally conscious audience, perfect brand alignment",
-      "timing": "Immediately - while post is still trending",
-      "status": "flagged_for_processing",
-      "id": "x_intel_20260312_074259"
-    },
-    {
-      "department": "x_intel",
-      "type": "social_reply",
-      "summary": "Reply to @taqd33z asking for budget phone recs â pitch refurbished flagship vs new budget",
-      "target_post": "@taqd33z asking for budget phone recommendations",
-      "reply_content": "Instead of new budget phone with weak specs, consider refurbished flagship! iPhone 14 Pro refurbished ($500) vs new budget Android ($400) - better camera, performance, longevity. Sometimes spending slightly more upfront saves money long-term ð±â¨",
-      "why_engage": "Direct engagement with active shopper, demonstrates expertise",
-      "timing": "Today - while they're actively researching",
-      "status": "flagged_for_processing",
-      "id": "x_intel_20260312_074259_2"
-    },
-    {
-      "department": "x_intel",
-      "type": "social_reply",
-      "summary": "Reply to @mrs_johnson909's Back Market complaint â differentiate on customer service",
-      "target_post": "@mrs_johnson909's Back Market support complaint",
-      "reply_content": "Sorry this happened to you ð This is exactly why we guarantee 2-hour response times and have real humans handling returns. No one should have to chase for weeks to return a defective device. Customer service should be as reliable as the phones we sell.",
-      "why_engage": "Shows we care about customer experience, differentiates from competitor failures",
-      "timing": "Today - while complaint is fresh",
-      "status": "flagged_for_processing",
-      "id": "x_intel_20260312_074259_3"
-    },
-    {
-      "department": "email",
-      "type": "email_campaign",
-      "summary": "Cross-sell protection bundles to recent phone buyers â 'Don't let a $5 drop ruin your $350 steal'",
-      "campaign_id": "crosssell-protection-001",
-      "subject_variants": {
-        "a": "Don't let a $5 drop ruin your $350 steal",
-        "b": "Smart buyers grab these next"
-      },
-      "segment": "recent_phone_buyers_30d",
-      "estimated_send_count": "~300-500 customers",
-      "preview_text": "You scored an $800 phone for $350. Now protect that win.",
-      "key_cta": "Shop Protection Bundles",
-      "theme": "Investment protection + environmental responsibility",
-      "body_preview": "Starts with congratulating their smart purchase, frames accessories as protecting their investment, includes environmental angle about extending device life, features customer testimonials using their language ('feels like I got away with something'), single CTA button for case/charger bundles",
-      "mobile_optimized": true,
-      "anti_ai_checks": "Passed all 25 copy rules - includes contractions, sentence length variation, strategic fragments, customer language integration",
-      "environmental_tie_in": "Protecting devices = fewer replacements = less e-waste (riding viral sustainability wave)",
-      "loss_aversion": "Frames $15 case as preventing loss of $350 investment rather than just 'buying protection'",
-      "status": "flagged_for_processing",
-      "id": "email_20260312_093123"
-    },
-    {
-      "phone_number": "+15202881507",
-      "customer_name": "Charbel",
-      "reason": "Direct boss instruction from Telegram - requested twice",
-      "priority": "urgent",
-      "timestamp_received": "2026-03-12T00:47:29",
-      "approval_needed": "Immediate - boss priority",
-      "id": "dialer_20260312_105243",
-      "department": "dialer",
-      "type": "urgent_call",
-      "summary": "Boss-requested urgent call to Charbel"
-    },
-    {
-      "id": "blog_publish_20260312_143000",
-      "department": "content",
-      "type": "blog_publish",
-      "summary": "Blog: Cheap Refurbished Phones â How to Get an $800 Phone for $350",
-      "handle": "cheap-refurbished-phones-guide",
-      "title": "Cheap Refurbished Phones: How to Get an $800 Phone for $350",
-      "action_on_approve": "Generate header image via Gemini â Upload to Shopify CDN â Publish article â Send confirmation with live URL",
-      "qa_rating": "EXCELLENT",
-      "word_count": 1488,
-      "internal_links": 5,
-      "product_callouts": 3,
-      "created_at": "2026-03-12T14:41:48.172431+00:00"
-    },
-    {
       "recommendation": "Schedule posts for 15:00-17:00 UTC window tomorrow",
       "rationale": "Current posting times (00:14 and 10:46) leave afternoon engagement gap",
       "suggested_content": "Customer success stories or product education content",
@@ -104,16 +8,6 @@
       "department": "social_afternoon",
       "type": "scheduling_recommendation",
       "summary": "Optimize afternoon posting schedule"
-    },
-    {
-      "blog_handle": "cheap-refurbished-phones-guide",
-      "image_needed": "Header image generation via Gemini",
-      "priority": "urgent",
-      "boss_instruction": "/fix_image_cheap-refurbished-phones-guide",
-      "id": "gm_queue_20260312_193411",
-      "department": "gm_queue",
-      "type": "gm_queue",
-      "summary": "New gm_queue item"
     },
     {
       "page": "/pages/how-to-buy-used-phones-online-safely",
@@ -160,9 +54,7 @@
       "details": {
         "content_type": "behind_the_scenes_video",
         "topic": "Phone quality testing process - battery health verification, screen inspection, biometric testing",
-        "platforms": [
-          "tiktok"
-        ],
+        "platforms": ["tiktok"],
         "urgency": "high",
         "reasoning": "TikTok requires video content and we have 0 posts there. Behind-the-scenes content addresses 'what's the catch?' skepticism effectively based on today's performance."
       },
@@ -175,12 +67,7 @@
       "summary": "Expand Reddit presence during spring supply surge",
       "details": {
         "content_type": "reddit_community_engagement",
-        "suggested_subreddits": [
-          "r/frugal",
-          "r/technology",
-          "r/BuyItForLife",
-          "r/sustainability"
-        ],
+        "suggested_subreddits": ["r/frugal", "r/technology", "r/BuyItForLife", "r/sustainability"],
         "content_angle": "Educational posts about refurbished phone benefits, AMA about quality grading",
         "urgency": "medium",
         "reasoning": "Only 1 Reddit post today vs 10+ on other platforms. Reddit users respond well to educational content and authentic discussions."
@@ -213,12 +100,7 @@
       "department": "social_morning",
       "summary": "Connect social platforms to Postiz for multi-platform posting",
       "details": {
-        "platforms_to_connect": [
-          "twitter",
-          "instagram",
-          "facebook",
-          "linkedin"
-        ],
+        "platforms_to_connect": ["twitter", "instagram", "facebook", "linkedin"],
         "current_status": "Only TikTok connected",
         "impact": "Cannot execute multi-platform social strategy",
         "url": "app.postiz.com",
@@ -333,7 +215,7 @@
     {
       "department": "seo",
       "type": "content_brief",
-      "summary": "Blog brief: 'Cheap Refurbished Phones â How to Get $800 Phone for $350' targeting keyword 'cheap refurbished phones'",
+      "summary": "Blog brief: 'Cheap Refurbished Phones — How to Get $800 Phone for $350' targeting keyword 'cheap refurbished phones'",
       "page": "/blogs/deals/cheap-refurbished-phones-guide",
       "target_keyword": "cheap refurbished phones",
       "meta_title": "Cheap Refurbished Phones: How to Get $800 Phone for $350 (2026 Guide)",
@@ -362,72 +244,24 @@
     {
       "department": "seo",
       "type": "seo_recommendation",
-      "summary": "Meta title/description update for /collections/refurbished-samsung â switch to pre-owned terminology",
+      "summary": "Meta title/description update for /collections/refurbished-samsung — switch to pre-owned terminology",
       "page": "/collections/refurbished-samsung",
-      "meta_title": "Pre-Owned Samsung Galaxy - Tested & Certified | Gadget Geeks Pro",
-      "meta_description": "Shop pre-owned Samsung Galaxy phones that can't tell the difference from new. Battery lasts all day. Save half the price with warranty. Find your Galaxy now.",
-      "page_copy_improvements": [
-        "Use 'pre-owned' terminology to build trust vs 'refurbished'",
-        "Address battery anxiety with specific 'lasts all day' messaging",
-        "Emphasize savings with 'half the price' customer language",
-        "Include warranty reassurance to overcome buying objections",
-        "Add specific condition grading explanations (A/B/C grades)"
-      ],
-      "structured_data": "Add Product schema with condition grade, battery life estimates, warranty coverage details",
-      "customer_language_to_use": [
-        "can't tell the difference from new",
-        "battery lasts all day",
-        "half the price",
-        "feels like I got away with something"
-      ],
       "id": "seo_20260312_001430",
       "status": "ready_for_implementation",
       "processed_at": "2026-03-12T19:33:00Z"
     },
     {
       "title": "How to Avoid Activation Lock When Buying Used Phones Online (2026 Guide)",
-      "excerpt": "Your refurbished iPhone arrives. You're excited. You power it on, and... \"This iPhone is linked to an Apple ID. Sign in with the Apple ID that was used to set up this iPhone.\" Game over. You just bought a $400 paperweight.",
       "handle": "avoid-activation-lock-buying-used-phones-online",
-      "author": "Gadget Geeks Team",
-      "tags": [
-        "how-to",
-        "refurbished-phones",
-        "activation-lock",
-        "iphone",
-        "buying-guide",
-        "phone-security"
-      ],
-      "product_links": [
-        {
-          "anchor": "iPhone 14 Pro Max Refurbished",
-          "url": "/products/iphone-14-pro-max-refurbished"
-        },
-        {
-          "anchor": "iPhone 13 Pro Refurbished",
-          "url": "/products/iphone-13-pro-refurbished"
-        },
-        {
-          "anchor": "Galaxy S24 Ultra Refurbished",
-          "url": "/products/galaxy-s24-ultra-refurbished"
-        }
-      ],
-      "collection_links": [],
-      "related_products": [
-        "iphone-14-pro-max-refurbished",
-        "iphone-13-pro-refurbished",
-        "galaxy-s24-ultra-refurbished",
-        "iphone-12-refurbished"
-      ],
-      "seo": {
-        "title_tag": "How to Avoid Activation Lock When Buying Used Phones Online (2026)",
-        "description_tag": "Don't get stuck with a locked phone. Learn the 5 red flags to watch for when buying refurbished iPhones online, plus how verified sellers prevent activation lock.",
-        "og_title": "5 Red Flags That Scream \"Activation Lock Risk\" When Buying Used Phones",
-        "og_description": "Your $400 iPhone arrives locked to someone else's Apple ID. Here's how to spot the warning signs before you buy and avoid getting burned by activation lock."
-      },
-      "header_image_prompt_id": "prompt_20260311_006",
       "id": "blog_publish_20260311_200339",
       "status": "published",
       "shopify_article_id": "gid://shopify/Article/597497839867"
+    },
+    {
+      "title": "Cheap Refurbished Phones: How to Get an $800 Phone for $350",
+      "handle": "cheap-refurbished-phones-guide",
+      "id": "blog_publish_20260312_143000",
+      "status": "published"
     }
   ]
 }

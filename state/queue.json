@@ -271,6 +271,19 @@
       ],
       "reasoning": "x-intel shows trending topics performing well across multiple platforms simultaneously",
       "id": "social_morning_20260314_135415"
+    },
+    {
+      "issue": "All unused images consumed as of 2026-03-14 13:56 UTC",
+      "impact": "Cannot create any social media posts until new images are generated",
+      "departments_needed": [
+        "lens",
+        "focus",
+        "canva"
+      ],
+      "request": "Emergency image generation batch focusing on iPhone 17e comparison visuals and TikTok-native 9:16 vertical product shots",
+      "priority": "critical_blocking",
+      "timeline": "needed_for_tomorrow_posts",
+      "id": "social_afternoon_20260314_170139"
     }
   ],
   "approved": [

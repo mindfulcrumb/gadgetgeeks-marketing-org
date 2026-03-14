@@ -480,19 +480,43 @@ const SIGNAL = {
   dataFlow:{reads:['departments/seo/keywords.json','departments/content/blog-pipeline.json','departments/intel/trends.json'],writes:['departments/analytics/daily-report.json','departments/analytics/optimization-queue.json'],feeds:['SEO (PIXEL)','Content','Blog Writer (SCRIBE)','CRO (METRIC)']},
 };
 
-const STOCK = {
-  id:'ecommerce', name:'STOCK', fullName:'Stock Beaumont',
-  title:'E-Commerce Specialist', dept:'Commerce Division',
-  color:'#96bf48', hair:'#2a1a0a', skin:'#e0ac69', pants:'#1a2a1a', shoes:'#0a1a0a',
-  schedule:'Daily 10:00 UTC', cronDays:[0,1,2,3,4,5,6], cronH:10, cronM:0,
-  stateKeys:['ecommerce'], deskTile:{x:22,y:18}, roomId:'analytics_lab',
-  tasks:['Monitor product catalog & inventory levels','Analyze order data & pricing trends','Optimize product pages for search & conversion','Track competitor pricing (plug.tech, Back Market)','Queue all store changes for human approval','Feed insights to SEO, Content, CRO'],
-  rules:['NEVER push changes to live store without approval','Read-only access to Shopify products','All pricing changes queued for review','Data-driven recommendations only','Flag out-of-stock or low-inventory items'],
-  apis:[{name:'Claude API',icon:'🧠',color:'#d97706'},{name:'Shopify GraphQL',icon:'🛍️',color:'#96bf48'}],
-  dataFlow:{reads:['Shopify product catalog','departments/intel/competitors.json','departments/cro/metrics.json'],writes:['departments/ecommerce/catalog-report.json','departments/ecommerce/pricing-alerts.json'],feeds:['SEO (PIXEL)','CRO (METRIC)','Content (QUILL)']},
+const RECAP = {
+  id:'retro', name:'RECAP', fullName:'Recap Lindgren',
+  title:'Retro & Review Lead', dept:'Executive',
+  color:'#ff9944', hair:'#2a1a0a', skin:'#c68642', pants:'#3a2a1a', shoes:'#1a0a0a',
+  schedule:'Daily 20:00 UTC', cronDays:[0,1,2,3,4,5,6], cronH:20, cronM:0,
+  stateKeys:['retro'], deskTile:{x:7,y:18}, roomId:'strategy',
+  tasks:['Evening retro — summarize what shipped today','Collect metrics from all departments','Write night-to-morning handoff notes','Flag unresolved blockers for next day'],
+  rules:['Retro must cover every active dept','Include metrics + what shipped','Handoff notes must be complete before night shift','Always brief GM on critical issues'],
+  apis:[{name:'Claude API',icon:'🧠',color:'#d97706'},{name:'All Dept Data',icon:'📊',color:'#a855f7'}],
+  dataFlow:{reads:['state/master.json','state/queue.json','ALL department outputs'],writes:['state/daily-retro.json','state/shift-handoff.json'],feeds:['SENTINEL (night handoff)','GM']},
 };
 
-const ALL_CHARS = [...EMPLOYEES, X_INTEL, IMAGE_PROMPT, PROMPT_QA, BLOG_WRITER, BLOG_QA, BLOG_PUBLISHER, DIALER, TELEGRAM_BOT, GM, CHIEF, SENTINEL, CANVAS, TREND, SIGNAL, STOCK];
+const BOARD = {
+  id:'board_meeting', name:'BOARD', fullName:'Board Calloway',
+  title:'Board Meeting Coordinator', dept:'Executive',
+  color:'#cc6600', hair:'#1a0a00', skin:'#e0ac69', pants:'#2a1a0a', shoes:'#0a0500',
+  schedule:'Mon 6:30 UTC', cronDays:[1], cronH:6, cronM:30,
+  stateKeys:['board_meeting'], deskTile:{x:14,y:18}, roomId:'strategy',
+  tasks:['Monday board meeting — weekly strategic review','Cross-department priority alignment','Resource allocation decisions','Escalation review from previous week','Set weekly OKRs and targets'],
+  rules:['Board meeting = strategic, not operational','Opus model for deep analysis','Review all department KPIs','Decisions must have clear owners and deadlines'],
+  apis:[{name:'Claude Opus',icon:'🧠',color:'#d97706'},{name:'All Dept Data',icon:'📊',color:'#a855f7'}],
+  dataFlow:{reads:['state/master.json','state/queue.json','departments/gm/weekly-report.md','ALL department outputs'],writes:['state/board-decisions.json'],feeds:['All departments','GM']},
+};
+
+const DEEP = {
+  id:'seo_weekly', name:'DEEP', fullName:'Deep Vasquez',
+  title:'SEO Deep Audit Specialist', dept:'Search Division',
+  color:'#00dd99', hair:'#1a2a1a', skin:'#e0c8a0', pants:'#1a3a2a', shoes:'#0a1a0a',
+  schedule:'Mon 05:17 UTC', cronDays:[1], cronH:5, cronM:17,
+  stateKeys:['seo_weekly'], deskTile:{x:11,y:6}, roomId:'seo',
+  tasks:['Weekly full keyword research deep-dive','Audit JSON-LD structured data across all pages','Analyze ranking movements week-over-week','Identify content gaps and cannibalization','Feed deep audit findings to PIXEL for daily action'],
+  rules:['Deep audit = comprehensive, not surface-level','Compare rankings to previous 4 weeks','Prioritize high-impact keyword opportunities','Flag technical SEO issues immediately'],
+  apis:[{name:'Claude API',icon:'🧠',color:'#d97706'},{name:'Shopify GraphQL',icon:'🛍️',color:'#96bf48'}],
+  dataFlow:{reads:['departments/seo/keywords.json','departments/seo/opportunities.json','departments/intel/trends.json'],writes:['departments/seo/weekly-audit.json','departments/seo/opportunities.json'],feeds:['SEO (PIXEL)','Content','Blog Writer (SCRIBE)']},
+};
+
+const ALL_CHARS = [...EMPLOYEES, X_INTEL, IMAGE_PROMPT, PROMPT_QA, BLOG_WRITER, BLOG_QA, BLOG_PUBLISHER, DIALER, TELEGRAM_BOT, GM, CHIEF, SENTINEL, CANVAS, TREND, SIGNAL, RECAP, BOARD, DEEP];
 
 // ═══════════════════════════════════════════
 // POINTS OF INTEREST (where chars go for life sim)

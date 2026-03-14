@@ -2,6 +2,20 @@
   "_docs": "Incident log for the GadgetGeeks Marketing Org. Every mistake, fix, and lesson learned goes here. The GM reads this weekly. Every agent reads their relevant incidents before running. The boss reviews this to delegate and correct. Format: newest first.",
   "incidents": [
     {
+      "id": "INC-009",
+      "date": "2026-03-14",
+      "severity": "critical",
+      "department": "social",
+      "agents_involved": ["LENS (image prompts)", "FOCUS (prompt QA)", "CANVAS (canva designer)"],
+      "title": "AI-generated phone images look obviously fake — cameras where screens should be",
+      "what_happened": "AI image generation (Gemini/DALL-E) produced phone images where the camera module appeared on the screen side, proportions were wrong, and logos were garbled. These images are instantly recognizable as AI-generated and destroy brand credibility. The test image (test-gemini.png) clearly showed a phone with the camera array facing the viewer where the screen should be.",
+      "root_cause": "1) AI image models cannot reliably generate realistic phone hardware — they hallucinate camera placement, button positions, screen bezels, and brand logos. 2) The pipeline had no mechanism to use real product photos. 3) LENS was instructed to describe phones in AI prompts, expecting AI to render them accurately. 4) No QA check existed to catch AI-rendered phone quality issues.",
+      "fix_applied": "1) Created config/product-photos.json — registry of REAL product photos (Apple/Samsung renders, professional cutouts). 2) Added Rule 25 to operations-rulebook.json: NEVER ask AI to generate phones. 3) Updated LENS with two-layer approach: AI generates scenes/backgrounds ONLY, real product photos provide the phones. 4) Added FOCUS Check 19: auto-blocks any prompt asking AI to render phones. 5) Updated canva_designer.py with composite_product_on_background() and composite_product_on_scene() functions. 6) Copied real product photos (iPhone 13, iPhone 14) to assets/product-photos/.",
+      "lesson": "AI cannot generate realistic phone hardware. Period. Always use real product photos for any image where a phone device needs to be visible. AI is good at scenes, environments, people, and lighting — not at rendering specific consumer electronics with correct brand details.",
+      "preventive_rule": "Rule 25 in operations-rulebook.json. FOCUS Check 19 auto-blocks AI phone rendering. config/product-photos.json is the single source of truth for available product images.",
+      "status": "resolved"
+    },
+    {
       "id": "INC-008",
       "date": "2026-03-14",
       "severity": "critical",

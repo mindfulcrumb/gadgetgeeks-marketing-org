@@ -431,5 +431,22 @@
       "Short-form Chad Rules still apply: original insight required, no triple lists, em dash budget, rough edges",
       "A short blog published TODAY about a trending topic beats a long blog published NEXT WEEK"
     ]
+  },
+
+  "rule_25_real_product_photos": {
+    "description": "NEVER ask AI to generate/render phone images. AI-generated phones show cameras where screens should be, wrong proportions, garbled logos — they are INSTANTLY recognizable as fake and destroy credibility. ALL phone images MUST come from real product photos.",
+    "registry": "config/product-photos.json — the SINGLE SOURCE OF TRUTH for available real product photos",
+    "rules": [
+      "Product hero, deal/urgency, and comparison images use REAL product photos ONLY — no AI generation",
+      "Lifestyle and sustainability scenes: AI generates the SCENE (person, environment, lighting) with NO phone visible. CANVAS composites the real product photo into the scene",
+      "Blog headers: AI generates full scene ONLY if no phone is prominently featured. If a phone needs to be visible, use real product photo composite",
+      "LENS must read config/product-photos.json before every batch to know what real photos are available",
+      "LENS uses 'source: product_photo' + 'product_photo_id' for hero/deal/comparison prompts (NO AI prompt needed)",
+      "LENS uses 'composite_product' field for lifestyle/eco prompts — tells CANVAS which real phone to layer in",
+      "FOCUS Check 19 auto-blocks ANY prompt that asks AI to render a phone device",
+      "If a phone model has no real product photo in the registry, request one from the boss — do NOT fall back to AI generation",
+      "CANVAS (canva_designer.py) handles compositing real product photos onto AI-generated backgrounds/scenes"
+    ],
+    "incident_reference": "INC-009 — AI-generated phone images showed cameras where screens should be, looked obviously fake"
   }
 }

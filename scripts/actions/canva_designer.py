@@ -28,6 +28,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 CANVA_API_BASE = "https://api.canva.com/rest/v1"
 REPO_ROOT = Path(__file__).parent.parent.parent
+PRODUCT_PHOTOS_CONFIG = REPO_ROOT / "config" / "product-photos.json"
 
 
 def _fetch_token_from_worker() -> str:
@@ -77,6 +78,151 @@ BRAND_ACCENT = "#5B21A8"
 BRAND_TEXT = "#FFFFFF"
 BRAND_LOGO = "GADGET GEEKS PRO"
 BRAND_TAGLINE = "Premium Refurbished Tech"
+
+
+# ---------------------------------------------------------------------------
+# Product photo loading (Rule 25 — real product photos, never AI phones)
+# ---------------------------------------------------------------------------
+
+def _load_product_photo_registry() -> dict:
+    """Load the product photo registry from config."""
+    if not PRODUCT_PHOTOS_CONFIG.exists():
+        return {}
+    return json.loads(PRODUCT_PHOTOS_CONFIG.read_text(encoding="utf-8"))
+
+
+def _get_product_photo(product_photo_id: str):
+    """Load a real product photo by ID from the registry.
+
+    Tries local path first, then CDN URL if available.
+    Returns raw image bytes or None if not found.
+    """
+    registry = _load_product_photo_registry()
+    product = registry.get("products", {}).get(product_photo_id)
+    if not product:
+        print(f"    WARNING: Product photo '{product_photo_id}' not in registry")
+        return None
+
+    # Try local path first
+    local_path = REPO_ROOT / product.get("local_path", "")
+    if local_path.exists():
+        return local_path.read_bytes()
+
+    # Try CDN URL
+    cdn_url = product.get("cdn_url", "")
+    if cdn_url:
+        try:
+            resp = requests.get(cdn_url, timeout=30)
+            resp.raise_for_status()
+            return resp.content
+        except Exception as e:
+            print(f"    WARNING: Failed to download product photo from CDN: {e}")
+
+    print(f"    WARNING: Product photo '{product_photo_id}' has no accessible file")
+    return None
+
+
+def composite_product_on_background(
+    product_bytes: bytes,
+    width: int,
+    height: int,
+    background_style: str = "dark gradient",
+) -> bytes:
+    """Place a real product photo on a branded background.
+
+    Used for product_hero, deal_urgency, and comparison designs
+    where the phone image MUST be real (Rule 25).
+
+    Args:
+        product_bytes: Raw image bytes of the real product photo.
+        width:         Target canvas width.
+        height:        Target canvas height.
+        background_style: "dark gradient", "marble surface", "brand purple", etc.
+
+    Returns:
+        PNG bytes of the product on background.
+    """
+    canvas = Image.new("RGBA", (width, height))
+    draw = ImageDraw.Draw(canvas)
+
+    # Generate background based on style
+    bg_colors = {
+        "dark gradient": ((13, 13, 13), (40, 20, 60)),
+        "brand purple": ((91, 33, 168), (30, 10, 50)),
+        "marble surface": ((240, 235, 230), (220, 215, 210)),
+        "midnight": ((10, 10, 20), (25, 25, 40)),
+    }
+    top_color, bottom_color = bg_colors.get(background_style, bg_colors["dark gradient"])
+
+    for y in range(height):
+        ratio = y / height
+        r = int(top_color[0] + (bottom_color[0] - top_color[0]) * ratio)
+        g = int(top_color[1] + (bottom_color[1] - top_color[1]) * ratio)
+        b = int(top_color[2] + (bottom_color[2] - top_color[2]) * ratio)
+        draw.line([(0, y), (width, y)], fill=(r, g, b, 255))
+
+    # Load and resize product photo to fit (max 60% of canvas)
+    product_img = Image.open(io.BytesIO(product_bytes)).convert("RGBA")
+    max_w = int(width * 0.6)
+    max_h = int(height * 0.6)
+    product_img.thumbnail((max_w, max_h), Image.LANCZOS)
+
+    # Center the product on canvas
+    paste_x = (width - product_img.width) // 2
+    paste_y = (height - product_img.height) // 2
+
+    canvas.paste(product_img, (paste_x, paste_y), product_img)
+
+    return canvas
+
+
+def composite_product_on_scene(
+    scene_bytes: bytes,
+    product_bytes: bytes,
+    width: int,
+    height: int,
+    position: str = "center-right",
+) -> bytes:
+    """Composite a real product photo onto an AI-generated scene.
+
+    Used for lifestyle and sustainability designs where AI generates
+    the scene and the real product photo is layered on top (Rule 25).
+
+    Args:
+        scene_bytes:   Raw bytes of the AI-generated scene (no phone in it).
+        product_bytes: Raw bytes of the real product photo.
+        width:         Target width.
+        height:        Target height.
+        position:      Where to place the product: "center-right", "bottom-center", "hand-area".
+
+    Returns:
+        PIL Image (RGBA) of the composite — caller adds text overlays.
+    """
+    scene = Image.open(io.BytesIO(scene_bytes)).convert("RGBA")
+    scene = scene.resize((width, height), Image.LANCZOS)
+
+    product_img = Image.open(io.BytesIO(product_bytes)).convert("RGBA")
+
+    # Size product to ~25% of canvas width for natural look in scene
+    product_max_w = int(width * 0.25)
+    product_max_h = int(height * 0.4)
+    product_img.thumbnail((product_max_w, product_max_h), Image.LANCZOS)
+
+    # Position mapping
+    positions = {
+        "center-right": (int(width * 0.65), int(height * 0.35)),
+        "bottom-center": (int(width * 0.38), int(height * 0.55)),
+        "hand-area": (int(width * 0.45), int(height * 0.40)),
+        "left": (int(width * 0.10), int(height * 0.30)),
+    }
+    paste_x, paste_y = positions.get(position, positions["center-right"])
+
+    # Add subtle drop shadow for realism
+    shadow = Image.new("RGBA", product_img.size, (0, 0, 0, 40))
+    scene.paste(shadow, (paste_x + 4, paste_y + 4), shadow)
+    scene.paste(product_img, (paste_x, paste_y), product_img)
+
+    return scene
 
 
 def _hex_to_rgb(hex_color: str) -> tuple:
@@ -340,6 +486,10 @@ def build_branded_post(
     design_type: str,
     text_overlay: dict,
     prompt_id: str,
+    source: str = "ai_generated",
+    product_photo_id: str = "",
+    composite_product: str = "",
+    background_style: str = "dark gradient",
 ) -> dict:
     """Build a complete branded social media post.
 
@@ -374,13 +524,52 @@ def build_branded_post(
     title = f"GGP_{platform}_{design_type}_{now}"
 
     try:
-        # 1. Download the raw image
-        print(f"    Downloading raw image...")
-        img_resp = requests.get(image_url, timeout=60)
-        img_resp.raise_for_status()
-        raw_bytes = img_resp.content
+        # --- Rule 25: Product photo source handling ---
+        if source == "product_photo" and product_photo_id:
+            # Product hero / deal / comparison: use REAL product photo on branded background
+            print(f"    Loading real product photo: {product_photo_id}")
+            product_bytes = _get_product_photo(product_photo_id)
+            if not product_bytes:
+                raise RuntimeError(f"Product photo '{product_photo_id}' not found in registry")
 
-        # 2. Composite branded post with Pillow
+            print(f"    Compositing product on branded background ({width}x{height})...")
+            product_canvas = composite_product_on_background(
+                product_bytes, width, height, background_style,
+            )
+            # Convert PIL Image to bytes for branded post overlay
+            buf = io.BytesIO()
+            product_canvas.convert("RGB").save(buf, format="PNG", quality=95)
+            raw_bytes = buf.getvalue()
+
+        elif composite_product and image_url:
+            # Lifestyle / sustainability: AI scene + real product photo composited in
+            print(f"    Downloading AI scene...")
+            img_resp = requests.get(image_url, timeout=60)
+            img_resp.raise_for_status()
+            scene_bytes = img_resp.content
+
+            print(f"    Loading real product photo for composite: {composite_product}")
+            product_bytes = _get_product_photo(composite_product)
+            if product_bytes:
+                print(f"    Compositing product onto scene ({width}x{height})...")
+                composite_canvas = composite_product_on_scene(
+                    scene_bytes, product_bytes, width, height,
+                )
+                buf = io.BytesIO()
+                composite_canvas.convert("RGB").save(buf, format="PNG", quality=95)
+                raw_bytes = buf.getvalue()
+            else:
+                print(f"    WARNING: Product photo not found, using AI scene as-is")
+                raw_bytes = scene_bytes
+
+        else:
+            # Standard path: AI-generated image (blog headers, no-phone scenes)
+            print(f"    Downloading raw image...")
+            img_resp = requests.get(image_url, timeout=60)
+            img_resp.raise_for_status()
+            raw_bytes = img_resp.content
+
+        # 2. Composite branded post with Pillow (text overlays, gradient, logo, CTA)
         print(f"    Compositing branded post ({width}x{height})...")
         branded_bytes = composite_branded_post(
             raw_bytes, width, height, text_overlay, design_type,
@@ -493,8 +682,11 @@ def process_batch() -> dict:
                 results["skipped"] += 1
                 continue
 
-            # Skip if no generated image
-            if not prompt_item.get("generated_url"):
+            # Skip if no image source available
+            # Rule 25: product_photo source doesn't need generated_url
+            has_product_photo = prompt_item.get("source") == "product_photo" and prompt_item.get("product_photo_id")
+            has_generated_url = bool(prompt_item.get("generated_url"))
+            if not has_product_photo and not has_generated_url:
                 results["skipped"] += 1
                 continue
 
@@ -522,13 +714,26 @@ def process_batch() -> dict:
 
             print(f"  Designing: {prompt_item.get('id', '?')} → {platform} {design_type}")
 
+            # Determine source type (Rule 25)
+            item_source = prompt_item.get("source", "ai_generated")
+            item_product_photo_id = prompt_item.get("product_photo_id", "")
+            item_composite_product = prompt_item.get("composite_product", "")
+            item_bg_style = prompt_item.get("background_style", "dark gradient")
+
+            # For product_photo source, we may not have a generated_url
+            image_url_for_build = prompt_item.get("generated_url", "")
+
             # Build the branded post
             result = build_branded_post(
-                image_url=prompt_item["generated_url"],
+                image_url=image_url_for_build,
                 platform=platform,
                 design_type=design_type,
                 text_overlay=text_overlay,
                 prompt_id=prompt_item.get("id", "unknown"),
+                source=item_source,
+                product_photo_id=item_product_photo_id,
+                composite_product=item_composite_product,
+                background_style=item_bg_style,
             )
 
             now = datetime.now(timezone.utc).isoformat()

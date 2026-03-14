@@ -95,7 +95,7 @@
   ],
   "word_count": 1247,
   "category": "buying_guide",
-  "status": "draft_ready",
+  "status": "qa_approved",
   "anti_ai_audit": {
     "banned_words": 0,
     "structural_tells": 0,
@@ -106,6 +106,59 @@
     "customer_language_phrases": 6,
     "result": "PASS"
   },
+  "qa_score": {
+    "rating": "GOOD",
+    "total_flags": 4,
+    "critical_violations": 0,
+    "warnings": 4,
+    "tier1_banned_words": 0,
+    "banned_phrases": 0,
+    "structural_flags": 0,
+    "rhythm_sd": 6.2,
+    "burstiness_ratio": "3:2",
+    "contraction_rate": 78,
+    "passive_count": 1,
+    "customer_language_phrases": 6,
+    "seo_pass": true,
+    "internal_links": 5,
+    "word_count": 1247
+  },
+  "qa_feedback": [
+    {
+      "check_id": 6,
+      "check_name": "Uniform Bullet Length",
+      "severity": "warning",
+      "location": "iPhone 13 Pro section, 'What you get'/'What you miss' bullets",
+      "issue": "Bullet points are similar lengths (12-15 words each)",
+      "fix": "Vary bullet lengths: make one short (4-6 words), keep one medium, expand one to 20+ words with specific detail"
+    },
+    {
+      "check_id": 10,
+      "check_name": "Vague Superlatives",
+      "severity": "warning",
+      "location": "Multiple sections use 'incredible'",
+      "issue": "'incredible photos', 'incredible value', 'incredible phone' appears 3 times without proof",
+      "fix": "Replace with specific claims: 'photos with 2x better low-light performance than iPhone 11' or 'saves $400 vs buying new' instead of 'incredible value'"
+    },
+    {
+      "check_id": 14,
+      "check_name": "Rhetorical Questions",
+      "severity": "warning",
+      "location": "Throughout 1,247-word post",
+      "issue": "Only 1 clear rhetorical question found, should have 2-3",
+      "fix": "Add questions like: 'Why pay $1,000 for a new iPhone when refurbished gives you the same experience?' or 'What's the real difference between a $300 and $500 refurbished iPhone?'"
+    },
+    {
+      "check_id": 21,
+      "check_name": "Mechanism Explanation",
+      "severity": "warning",
+      "location": "Technical chip mentions throughout",
+      "issue": "A17 Pro chip and A15 Bionic mentioned without explaining user benefit",
+      "fix": "Add 'which means' bridges: 'A17 Pro chip, which means apps open 25% faster and games run without dropping frames' or 'A15 Bionic, which means smooth multitasking and all-day battery life'"
+    }
+  ],
+  "qa_reviewed_at": "2026-03-14T19:32:00Z",
+  "qa_reviewed_by": "QUILL",
   "created": "2026-03-14T18:30:00Z",
   "scheduled_publish": "2026-03-17T09:30:00Z"
 }

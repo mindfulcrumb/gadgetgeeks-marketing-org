@@ -1,0 +1,80 @@
+name: Fix Blog Image (Direct)
+on:
+  workflow_dispatch:
+    inputs:
+      article_id:
+        description: 'Shopify Article GID'
+        required: true
+      blog_title:
+        description: 'Blog title for image prompt'
+        required: true
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  fix-image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install requests
+
+      - name: Get Shopify token
+        id: shopify
+        run: |
+          RESPONSE=$(curl -s -X POST "https://gadgetgeekspro.myshopify.com/admin/oauth/access_token" \
+            -H "Content-Type: application/x-www-form-urlencoded" \
+            -d "grant_type=client_credentials" \
+            -d "client_id=${{ secrets.SHOPIFY_CLIENT_ID }}" \
+            -d "client_secret=${{ secrets.SHOPIFY_CLIENT_SECRET }}")
+          TOKEN=$(echo "$RESPONSE" | python3 -c "import sys,json; print(json.load(sys.stdin)['access_token'])")
+          echo "::add-mask::$TOKEN"
+          echo "token=$TOKEN" >> "$GITHUB_OUTPUT"
+
+      - name: Generate image and attach to article
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          SHOPIFY_ACCESS_TOKEN: ${{ steps.shopify.outputs.token }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          ARTICLE_ID: ${{ github.event.inputs.article_id }}
+          BLOG_TITLE: ${{ github.event.inputs.blog_title }}
+        run: |
+          python3 << 'PYEOF'
+          import os, sys
+          sys.path.insert(0, "scripts/actions")
+          from image_gen import generate_blog_header, upload_to_shopify, _shopify_graphql
+
+          title = os.environ["BLOG_TITLE"]
+          article_id = os.environ["ARTICLE_ID"]
+          handle = title.lower().replace(" ", "-").replace("(", "").replace(")", "")[:60]
+
+          print(f"Generating header image for: {title}")
+          img = generate_blog_header(title, "refurbished iphones comparison guide")
+          print(f"  Provider: {img.get('provider')}, Size: {len(img['image_bytes'])} bytes")
+
+          filename = f"blog-header-{handle}.png"
+          cdn_url = upload_to_shopify(img["image_bytes"], filename, img.get("mime_type", "image/png"))
+          print(f"  CDN URL: {cdn_url}")
+
+          # Attach image to article
+          mutation = """
+          mutation articleUpdate($id: ID!, $article: ArticleUpdateInput!) {
+            articleUpdate(id: $id, article: $article) {
+              article { id title image { url } }
+              userErrors { field message }
+            }
+          }
+          """
+          variables = {
+              "id": article_id,
+              "article": {"image": {"url": cdn_url}}
+          }
+          result = _shopify_graphql(mutation, variables)
+          print(f"  Result: {result}")
+          print("Done!")
+          PYEOF

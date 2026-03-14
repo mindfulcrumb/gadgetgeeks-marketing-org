@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-03-14T04:28:00Z",
-  "run_type": "predawn_check",
+  "timestamp": "2026-03-14T05:52:00Z",
+  "run_type": "morning_prep",
   "api_health": {
     "shopify": "ok",
     "gemini": "down",
@@ -9,92 +9,78 @@
     "vapi": "unknown"
   },
   "workflow_health": {
-    "scheduled_today": 15,
-    "ran_successfully": 11,
+    "scheduled_today": 0,
+    "ran_successfully": 0,
     "failed": 0,
-    "missed": 4,
-    "details": [
-      {
-        "workflow": "intel",
-        "status": "idle",
-        "last_run": "2026-03-11T18:10:43",
-        "idle_hours": 82
-      },
-      {
-        "workflow": "content",
-        "status": "idle",
-        "last_run": "2026-03-11T19:10:18",
-        "idle_hours": 81
-      },
-      {
-        "workflow": "email",
-        "status": "idle",
-        "last_run": "2026-03-11T19:12:01",
-        "idle_hours": 81
-      },
-      {
-        "workflow": "cro",
-        "status": "idle",
-        "last_run": "2026-03-11T19:12:14",
-        "idle_hours": 81
-      }
-    ]
+    "missed": 0,
+    "details": []
   },
   "queue_health": {
-    "pending_count": 13,
+    "pending_count": 14,
     "stale_items": [
       {
-        "id": "dialer_20260312_105243",
-        "pending_hours": 50,
+        "id": "dialer_20260312_004833",
+        "pending_hours": 54,
         "urgency": "critical"
       },
       {
         "id": "email_20260312_093123",
         "pending_hours": 44,
-        "urgency": "critical"
-      },
-      {
-        "id": "dialer_20260312_004833",
-        "pending_hours": 52,
-        "urgency": "critical"
-      },
-      {
-        "id": "seo_20260313_071521",
-        "pending_hours": 21,
         "urgency": "high"
+      },
+      {
+        "id": "dialer_20260312_105243",
+        "pending_hours": 53,
+        "urgency": "critical"
       }
     ],
     "oldest_pending": "2026-03-12T00:48:33Z"
   },
   "incidents": {
     "open_count": 1,
-    "critical_open": 0,
+    "critical_open": 1,
     "oldest_open": {
       "id": "INC-007",
-      "age_hours": 26
+      "age_hours": 58
     }
   },
   "pipeline_health": {
     "blogs_stuck": [
       {
-        "id": "blog_publish_20260312_143000",
-        "status": "blocked_on_image_generation",
-        "hours": 44
+        "title": "How to Buy Used Phones Online Safely",
+        "status": "blocked on image generation",
+        "pending_hours": 19
       }
     ],
-    "images_stuck": [
-      "Gemini API down 48+ hours - all image generation blocked"
-    ],
+    "images_stuck": [],
     "emails_stuck": []
   },
   "idle_departments": [
-    "intel",
-    "content",
-    "email",
-    "cro"
+    {
+      "department": "intel",
+      "idle_hours": 69,
+      "last_run": "2026-03-12T11:23:23Z"
+    },
+    {
+      "department": "content",
+      "idle_hours": 58,
+      "last_run": "2026-03-11T19:10:18Z"
+    },
+    {
+      "department": "email",
+      "idle_hours": 58,
+      "last_run": "2026-03-11T19:12:01Z"
+    },
+    {
+      "department": "cro",
+      "idle_hours": 58,
+      "last_run": "2026-03-11T19:12:14Z"
+    }
   ],
   "alerts_triggered": [
-    "URGENT alert sent at 02:37 UTC regarding 48+ hour queue items"
+    "Queue items pending >48h: 3 critical items require immediate attention",
+    "Image generation API down: blocking blog publication",
+    "Social platform connectivity: only TikTok connected (80% capacity loss)"
   ],
   "status": "CRITICAL"
 }

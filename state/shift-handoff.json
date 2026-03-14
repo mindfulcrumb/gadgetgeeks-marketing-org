@@ -1,94 +1,50 @@
 {
-  "_docs": "Night shift handoff from day operations to SENTINEL. Contains completed items, in-progress work, blockers, pending approvals, and urgent items for overnight monitoring.",
-  "date": "2026-03-13",
-  "shift_time": "20:47 UTC",
-  "handoff_from": "CHIEF (Evening Retro)",
-  "handoff_to": "SENTINEL (Night Operations)",
-  "completed_today": [
-    "Social media burst: 18 posts published with strong customer language",
-    "Blog content drafted: 'How to Buy Used Phones Online Safely' (1,580 words)",
-    "Blog QA completed: Content rated EXCELLENT, ready for publication",
-    "Market intelligence updated: iPhone 17e trends, battery health obsession tracking",
-    "Weekly GM report compiled and updated"
+  "from_shift": "night",
+  "to_shift": "morning",
+  "timestamp": "2026-03-14T05:52:00Z",
+  "overnight_summary": "Critical queue backlog situation developed with multiple items pending >48 hours including boss-priority Charbel call (53h pending). Image generation API remains down blocking blog publication. Four departments idle 48-72 hours. Social posting at 20% capacity due to platform connectivity issues.",
+  "issues_found": [
+    "3 queue items pending >48 hours requiring immediate escalation",
+    "Google Imagen API down since 2026-03-12 (403 errors)",
+    "4 departments idle >48 hours (intel, content, email, cro)",
+    "Social platforms disconnected - only TikTok active",
+    "Blog 'How to Buy Used Phones Online Safely' blocked on image generation 19+ hours"
   ],
-  "in_progress": [
-    {
-      "item": "Blog publication",
-      "status": "Blocked on header image generation",
-      "next_action": "Retry image generation when API recovers",
-      "owner": "PRESS"
-    },
-    {
-      "item": "Cross-sell email campaign",
-      "status": "Queued for boss approval",
-      "next_action": "Execute on approval",
-      "owner": "BEACON"
-    },
-    {
-      "item": "Social platform setup",
-      "status": "Only TikTok connected to Postiz",
-      "next_action": "Connect remaining platforms at app.postiz.com",
-      "owner": "VIBE"
-    }
-  ],
-  "critical_blockers": [
-    {
-      "blocker": "Image generation API failure",
-      "details": "imagen-4.0-generate-001 returning 403 errors on all requests",
-      "impact": "Blog publication blocked, social media limited to text-only",
-      "escalation": "Monitor for service recovery, may need API key refresh"
-    },
-    {
-      "blocker": "Multi-platform posting disabled",
-      "details": "Only TikTok connected to Postiz, missing Twitter/Instagram/Facebook/LinkedIn",
-      "impact": "Social strategy running at 20% capacity",
-      "escalation": "Platform connection required at app.postiz.com"
-    }
+  "alerts_sent": [
+    "02:37 UTC URGENT alert sent to Telegram about critical queue items"
   ],
   "pending_approvals": [
-    "Blog: How to Buy Used Phones Online Safely (pending image generation)",
-    "Email: Cross-sell protection bundles campaign",
-    "Social replies: 3 X engagement opportunities",
-    "Dialer: Boss-requested urgent call to Charbel",
-    "10 additional queue items requiring boss review"
+    "URGENT: Charbel call (53 hours pending - boss requested twice)",
+    "Cross-sell email campaign (44 hours pending)",
+    "Data request for dialer (54 hours pending)",
+    "Blog: How to Buy Used Phones Online Safely (pending image fix)",
+    "10 additional queue items requiring review"
   ],
-  "api_health_status": [
-    {
-      "service": "Google Imagen API",
-      "status": "DOWN - 403 errors",
-      "last_success": "2026-03-12",
-      "action": "Monitor for recovery"
+  "api_health": {
+    "shopify": "ok",
+    "gemini": "down - 403 errors blocking image generation",
+    "telegram": "ok",
+    "postiz": "limited - only TikTok connected",
+    "vapi": "unknown"
+  },
+  "recommendations_for_morning": [
+    "CRITICAL: Process queue items pending >48h immediately - especially Charbel call",
+    "Connect social platforms at app.postiz.com (Twitter, Instagram, Facebook, LinkedIn)",
+    "Debug image generation API or find workaround for blog publication",
+    "Investigate why intel/content/email/cro departments haven't run in 48-72 hours",
+    "Consider manual image generation for stuck blog to unblock publication"
+  ],
+  "metrics_snapshot": {
+    "blogs_in_pipeline": {
+      "brief_ready": 1,
+      "draft_ready": 0,
+      "qa_passed": 1,
+      "blocked": 1
     },
-    {
-      "service": "Postiz API",
-      "status": "UP - limited platform connections",
-      "calls_remaining": 5,
-      "action": "Connect missing platforms"
+    "queue_depth": {
+      "pending": 14,
+      "approved": 1
     },
-    {
-      "service": "Shopify Admin API",
-      "status": "UP",
-      "last_success": "2026-03-13",
-      "action": "None"
-    }
-  ],
-  "urgent_overnight": [
-    "If image generation API recovers, trigger blog publication workflow",
-    "Process any queue approvals immediately",
-    "Monitor social media performance from today's 18-post burst",
-    "Alert if any critical APIs go down"
-  ],
-  "morning_prep": {
-    "standup_highlights": [
-      "Record social media day (18 posts) with infrastructure challenges",
-      "Blog ready to publish pending image fix",
-      "13 queue items awaiting decisions",
-      "iPhone 17e trending opportunity identified"
-    ],
-    "infrastructure_issues": [
-      "Image generation system needs debugging",
-      "Social platform connectivity incomplete",
-      "Queue depth increasing"
-    ]
+    "incidents_open": 1
   }
 }

@@ -237,6 +237,45 @@
       },
       "created": "2026-03-14 02:37 UTC",
       "id": "night_ops_20260314_023800"
+    },
+    {
+      "type": "infrastructure_fix",
+      "department": "standup",
+      "summary": "URGENT: Debug Gemini image generation API - 48+ hours of 403 errors blocking all blog publication",
+      "details": {
+        "issue": "imagen-4.0-generate-001 API returning 403 errors for 48+ hours",
+        "impact": "All blog publication blocked, social media limited to text-only",
+        "priority": "critical",
+        "suggested_actions": [
+          "Check Gemini API key validity",
+          "Verify billing/quota status",
+          "Test alternative image generation services",
+          "Manual image upload as temporary workaround"
+        ],
+        "blocked_content": "Blog 'How to Buy Used Phones Online Safely' ready except for header image"
+      },
+      "created": "2026-03-14 06:43 UTC",
+      "id": "standup_20260314_064425"
+    },
+    {
+      "type": "platform_setup",
+      "department": "standup",
+      "summary": "URGENT: Reconnect social media platforms to Postiz - operating at 20% capacity",
+      "details": {
+        "issue": "Only TikTok connected to Postiz, missing Twitter/Instagram/Facebook/LinkedIn",
+        "impact": "Cannot execute multi-platform social strategy, 80% capacity loss",
+        "priority": "critical",
+        "action_url": "app.postiz.com",
+        "platforms_to_connect": [
+          "Twitter",
+          "Instagram",
+          "Facebook",
+          "LinkedIn"
+        ],
+        "current_limitation": "TikTok requires video content we cannot currently produce"
+      },
+      "created": "2026-03-14 06:43 UTC",
+      "id": "standup_20260314_064425"
     }
   ],
   "approved": [

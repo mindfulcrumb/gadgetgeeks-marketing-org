@@ -1,150 +1,133 @@
-Looking at the context, I'm running at 05:52 UTC which is my **Run 3: MORNING PREP** - the most critical handoff of the night shift. Let me analyze the overnight situation and prepare the morning shift.
+This is a critical organizational crisis requiring immediate escalation. Multiple systems are down and the organization is effectively operating at 20% capacity.
 
-## Overnight Analysis (05:52 UTC - Morning Prep)
+## CRITICAL SITUATION ANALYSIS
 
-### Critical Issues Found
+**Queue Backlog Crisis:** 3 items pending >48 hours, including boss-priority Charbel call (53h pending). This violates our same-day processing SLA.
 
-**URGENT QUEUE SITUATION:**
-- Multiple items pending >48 hours requiring immediate escalation
-- Charbel call pending 53+ hours (boss requested twice via Telegram)
-- Cross-sell email campaign pending 44+ hours 
-- Data request pending 54+ hours
+**Infrastructure Failures:**
+- Image generation API down 48+ hours (403 errors)
+- Blog publication blocked due to missing images
+- Social platforms disconnected (only TikTok active = 80% capacity loss)
+- 4 departments idle 48-72 hours (intel, content, email, cro)
 
-**DEPARTMENT IDLE DETECTION:**
-- Intel: Last run 2026-03-12 11:23 (69+ hours idle)
-- Content: Last run 2026-03-11 19:10 (58+ hours idle) 
-- Email: Last run 2026-03-11 19:12 (58+ hours idle)
-- CRO: Last run 2026-03-11 19:12 (58+ hours idle)
+**Operational Impact:**
+- Blog "How to Buy Used Phones Online Safely" stuck 19+ hours
+- Social posting at 20% capacity
+- No multi-platform campaigns possible
+- Queue processing stalled
 
-**API HEALTH STATUS:**
-- Google Imagen API: DOWN (403 errors since 2026-03-12) - blocking blog publication
-- Shopify: Appears OK (no recent errors in alert history)
-- Telegram: OK (polling runs continuing)
-- Postiz: LIMITED (only TikTok connected)
-
-**WORKFLOW HEALTH:**
-- Blog pipeline stuck: "How to Buy Used Phones Online Safely" needs image generation to publish
-- Social posting at 20% capacity due to platform connection issues
-- Queue depth: 14 pending items (highest I've seen)
-
-### Morning Priorities
-1. **IMMEDIATE**: Boss needs to process 48+ hour queue items
-2. **HIGH**: Connect remaining social platforms at app.postiz.com
-3. **HIGH**: Debug/retry image generation API for blog publication
-4. **MEDIUM**: Investigate why 4 departments haven't run in 48-72 hours
+This is exactly what Rule 8 in operations-rulebook.json warns against: "No dead ends. Every approval must produce an action or explicit next step."
 
 ```json
-// UPDATE: state/night-report.json
+// UPDATE: state/daily-standup.json
 {
-  "timestamp": "2026-03-14T05:52:00Z",
-  "run_type": "morning_prep",
-  "api_health": {
-    "shopify": "ok",
-    "gemini": "down",
-    "telegram": "ok",
-    "canva": "unknown",
-    "vapi": "unknown"
+  "date": "2026-03-14",
+  "day_theme": "Friday — REVIEW & SHIP",
+  "shift": "morning",
+  "overnight_summary": "CRITICAL: Multiple system failures overnight. Image generation API down 48+ hours (403 errors blocking blog publication). 3 queue items pending >48h including boss-priority Charbel call (53h overdue). Only TikTok connected to Postiz - 80% social capacity lost. 4 departments idle 48-72 hours due to infrastructure issues.",
+  "departments": {
+    "intel": {
+      "yesterday": "DID NOT RUN - idle 69 hours",
+      "today": "BLOCKED - needs infrastructure debug",
+      "signal": "Using stale market data from 2026-03-12 - iPhone 16 anticipation and battery health obsession trends"
+    },
+    "seo": {
+      "yesterday": "Recommendation queued: 'How to Buy Used Phones Online Safely' page optimization",
+      "today": "BLOCKED - waiting for content pipeline recovery",
+      "feeds": "1 brief ready for SCRIBE when systems recover"
+    },
+    "content": {
+      "yesterday": "DID NOT RUN - idle 58 hours",
+      "today": "BLOCKED - SCRIBE needs functional systems to draft",
+      "pipeline": "1 blog ready for publication pending image generation fix",
+      "blockers": "Blog 'How to Buy Used Phones Online Safely' stuck 19+ hours on image generation failure"
+    },
+    "visual": {
+      "yesterday": "ALL FAILURES - 10 image prompts created but generation returned 403 errors",
+      "today": "CRITICAL - debug Gemini API or find workaround",
+      "feeds": "Cannot feed Social - no valid image URLs available"
+    },
+    "social": {
+      "yesterday": "18 posts published but LIMITED to TikTok only due to platform disconnection",
+      "today": "BLOCKED - needs platform reconnection at app.postiz.com + image sources",
+      "needs_from": "Visual (working image generation), Operations (platform connectivity)"
+    },
+    "email": {
+      "yesterday": "DID NOT RUN - idle 58 hours", 
+      "today": "2 campaigns queued pending approval for 44+ hours",
+      "needs_from": "Boss approval to execute queued campaigns"
+    },
+    "cro": {
+      "yesterday": "DID NOT RUN - idle 58 hours",
+      "today": "3 experiments queued but unable to implement due to system issues"
+    },
+    "dialer": {
+      "yesterday": "0 calls - data request pending 54 hours",
+      "today": "URGENT - Charbel call 53 hours overdue, boss requested twice",
+      "pending_approval": "Boss-priority call requires immediate processing"
+    },
+    "operations": {
+      "yesterday": "Night ops ran but flagged critical queue backlog",
+      "today": "14 pending items, 3 critical overdue >48h",
+      "overdue_items": "Charbel call (53h), email campaign (44h), data request (54h)"
+    }
   },
-  "workflow_health": {
-    "scheduled_today": 0,
-    "ran_successfully": 0,
-    "failed": 0,
-    "missed": 0,
-    "details": []
-  },
-  "queue_health": {
-    "pending_count": 14,
-    "stale_items": [
-      {"id": "dialer_20260312_004833", "pending_hours": 54, "urgency": "critical"},
-      {"id": "email_20260312_093123", "pending_hours": 44, "urgency": "high"},
-      {"id": "dialer_20260312_105243", "pending_hours": 53, "urgency": "critical"}
+  "escalations": [
+    "URGENT: Charbel call pending 53 hours - boss requested twice, requires immediate approval/execution",
+    "CRITICAL: Image generation API failure blocking all blog publication for 48+ hours",
+    "HIGH: Social platform connectivity - only TikTok connected, cannot execute multi-platform strategy",
+    "HIGH: 4 departments idle due to infrastructure dependencies"
+  ],
+  "priorities": [
+    "Fix image generation API or implement workaround for blog publication",
+    "Process overdue queue items immediately - especially boss-priority Charbel call",
+    "Reconnect social platforms (Twitter/Instagram/Facebook/LinkedIn) at app.postiz.com"
+  ],
+  "cross_department_handoffs": [
+    "Operations → Boss: URGENT queue approval needed for 3 items pending >48h",
+    "Visual → Social: Image generation must be fixed before social posting can resume at full capacity",
+    "Content → Visual: Blog publication blocked until header image can be generated"
+  ],
+  "telegram_summary": "🚨 CRITICAL: Org operating at 20% capacity. Image API down 48h blocking blogs. Charbel call 53h overdue. Only TikTok social connected. 4 departments idle. Urgent attention needed."
+}
+```
+
+```json
+// QUEUE_ITEM
+{
+  "type": "infrastructure_fix",
+  "department": "standup",
+  "summary": "URGENT: Debug Gemini image generation API - 48+ hours of 403 errors blocking all blog publication",
+  "details": {
+    "issue": "imagen-4.0-generate-001 API returning 403 errors for 48+ hours",
+    "impact": "All blog publication blocked, social media limited to text-only",
+    "priority": "critical",
+    "suggested_actions": [
+      "Check Gemini API key validity",
+      "Verify billing/quota status", 
+      "Test alternative image generation services",
+      "Manual image upload as temporary workaround"
     ],
-    "oldest_pending": "2026-03-12T00:48:33Z"
+    "blocked_content": "Blog 'How to Buy Used Phones Online Safely' ready except for header image"
   },
-  "incidents": {
-    "open_count": 1,
-    "critical_open": 1,
-    "oldest_open": {"id": "INC-007", "age_hours": 58}
-  },
-  "pipeline_health": {
-    "blogs_stuck": [
-      {"title": "How to Buy Used Phones Online Safely", "status": "blocked on image generation", "pending_hours": 19}
-    ],
-    "images_stuck": [],
-    "emails_stuck": []
-  },
-  "idle_departments": [
-    {"department": "intel", "idle_hours": 69, "last_run": "2026-03-12T11:23:23Z"},
-    {"department": "content", "idle_hours": 58, "last_run": "2026-03-11T19:10:18Z"},
-    {"department": "email", "idle_hours": 58, "last_run": "2026-03-11T19:12:01Z"},
-    {"department": "cro", "idle_hours": 58, "last_run": "2026-03-11T19:12:14Z"}
-  ],
-  "alerts_triggered": [
-    "Queue items pending >48h: 3 critical items require immediate attention",
-    "Image generation API down: blocking blog publication",
-    "Social platform connectivity: only TikTok connected (80% capacity loss)"
-  ],
-  "status": "CRITICAL"
+  "created": "2026-03-14 06:43 UTC"
 }
 ```
 
 ```json
-// UPDATE: state/shift-handoff.json
+// QUEUE_ITEM
 {
-  "from_shift": "night",
-  "to_shift": "morning", 
-  "timestamp": "2026-03-14T05:52:00Z",
-  "overnight_summary": "Critical queue backlog situation developed with multiple items pending >48 hours including boss-priority Charbel call (53h pending). Image generation API remains down blocking blog publication. Four departments idle 48-72 hours. Social posting at 20% capacity due to platform connectivity issues.",
-  "issues_found": [
-    "3 queue items pending >48 hours requiring immediate escalation",
-    "Google Imagen API down since 2026-03-12 (403 errors)",
-    "4 departments idle >48 hours (intel, content, email, cro)",
-    "Social platforms disconnected - only TikTok active",
-    "Blog 'How to Buy Used Phones Online Safely' blocked on image generation 19+ hours"
-  ],
-  "alerts_sent": [
-    "02:37 UTC URGENT alert sent to Telegram about critical queue items"
-  ],
-  "pending_approvals": [
-    "URGENT: Charbel call (53 hours pending - boss requested twice)",
-    "Cross-sell email campaign (44 hours pending)",
-    "Data request for dialer (54 hours pending)",
-    "Blog: How to Buy Used Phones Online Safely (pending image fix)",
-    "10 additional queue items requiring review"
-  ],
-  "api_health": {
-    "shopify": "ok",
-    "gemini": "down - 403 errors blocking image generation",
-    "telegram": "ok", 
-    "postiz": "limited - only TikTok connected",
-    "vapi": "unknown"
+  "type": "platform_setup",
+  "department": "standup", 
+  "summary": "URGENT: Reconnect social media platforms to Postiz - operating at 20% capacity",
+  "details": {
+    "issue": "Only TikTok connected to Postiz, missing Twitter/Instagram/Facebook/LinkedIn",
+    "impact": "Cannot execute multi-platform social strategy, 80% capacity loss",
+    "priority": "critical",
+    "action_url": "app.postiz.com",
+    "platforms_to_connect": ["Twitter", "Instagram", "Facebook", "LinkedIn"],
+    "current_limitation": "TikTok requires video content we cannot currently produce"
   },
-  "recommendations_for_morning": [
-    "CRITICAL: Process queue items pending >48h immediately - especially Charbel call",
-    "Connect social platforms at app.postiz.com (Twitter, Instagram, Facebook, LinkedIn)",
-    "Debug image generation API or find workaround for blog publication",
-    "Investigate why intel/content/email/cro departments haven't run in 48-72 hours",
-    "Consider manual image generation for stuck blog to unblock publication"
-  ],
-  "metrics_snapshot": {
-    "blogs_in_pipeline": {"brief_ready": 1, "draft_ready": 0, "qa_passed": 1, "blocked": 1},
-    "queue_depth": {"pending": 14, "approved": 1},
-    "incidents_open": 1
-  }
+  "created": "2026-03-14 06:43 UTC"
 }
 ```
-
-## Telegram Morning Brief
-
-Sending brief all-clear + critical issues summary to boss:
-
-```json
-// SOCIAL_POST
-{
-  "content": "🌅 SENTINEL NIGHT REPORT — 05:52 UTC\n\n⚠️ CRITICAL QUEUE BACKLOG:\n• Charbel call pending 53 hours (you requested twice)\n• Cross-sell email pending 44 hours  \n• Data request pending 54 hours\n\n🔧 INFRASTRUCTURE:\n• Image API down - blog blocked\n• Social platforms disconnected (only TikTok works)\n• 4 departments idle 48-72 hours\n\n📋 MORNING PRIORITIES:\n1. Process 48h+ queue items immediately\n2. Connect platforms at app.postiz.com\n3. Debug image generation\n\nNight shift clear. Handoff ready for CHIEF standup.",
-  "platforms": ["telegram"],
-  "media_url": null
-}
-```
-
-**Night watch complete. The morning shift needs to move fast on these queue items - especially that Charbel call that's been pending since Tuesday. Critical infrastructure issues documented and prioritized for immediate action.**

@@ -137,7 +137,9 @@ def post_to_social(
         raise Exception("No connected integrations found in Postiz. Connect accounts at app.postiz.com first.")
 
     # Debug: log integration structure
-    print(f"  Postiz: {len(integrations)} integrations found")
+    print(f"  Postiz: {len(integrations)} integrations found, type={type(integrations).__name__}")
+    for i, integ in enumerate(integrations):
+        print(f"  Postiz integ[{i}]: type={type(integ).__name__}, keys={list(integ.keys()) if isinstance(integ, dict) else 'N/A'}, val={str(integ)[:150]}")
     # Ensure integrations are dicts (API may return nested lists)
     valid_integrations = []
     for item in integrations:

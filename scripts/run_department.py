@@ -489,7 +489,11 @@ def execute_actions(department: str, parsed: dict):
 
     # 3. Post to social media (only if Postiz API key is available)
     postiz_key = os.environ.get("POSTIZ_API_KEY")
-    for post in parsed["social_posts"]:
+    for idx, post in enumerate(parsed["social_posts"]):
+        print(f"  Social post #{idx+1}: type={type(post).__name__}, keys={list(post.keys()) if isinstance(post, dict) else 'N/A'}")
+        print(f"  Social post #{idx+1} content: {str(post.get('content', ''))[:80] if isinstance(post, dict) else str(post)[:80]}...")
+        print(f"  Social post #{idx+1} media_url: {post.get('media_url', 'NONE') if isinstance(post, dict) else 'N/A'}")
+        print(f"  Social post #{idx+1} platforms: {post.get('platforms', []) if isinstance(post, dict) else 'N/A'}")
         if postiz_key:
             try:
                 post_to_social(
@@ -500,7 +504,9 @@ def execute_actions(department: str, parsed: dict):
                 )
                 print(f"  Posted to social: {post['content'][:60]}...")
             except Exception as e:
+                import traceback
                 print(f"  ERROR posting to social: {e}")
+                traceback.print_exc()
         else:
             print(f"  SKIPPED social post (no POSTIZ_API_KEY): {post['content'][:60]}...")
 

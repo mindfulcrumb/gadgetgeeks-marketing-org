@@ -475,6 +475,44 @@ def parse_response(response_text: str) -> dict:
             else:
                 print(f"WARNING: SOCIAL_POST parsed as {type(data).__name__}, skipping: {str(data)[:100]}")
 
+    # Fallback: Direct scan for SOCIAL_POST blocks by finding // SOCIAL_POST + next {...}
+    if not result["social_posts"]:
+        for match in re.finditer(r'//\s*SOCIAL_POST', response_text):
+            start = match.end()
+            # Find the next { after the marker
+            brace_pos = response_text.find('{', start)
+            if brace_pos == -1 or brace_pos - start > 50:
+                continue
+            # Brace-match to find the closing }
+            depth = 0
+            end_pos = brace_pos
+            for i in range(brace_pos, min(brace_pos + 5000, len(response_text))):
+                if response_text[i] == '{':
+                    depth += 1
+                elif response_text[i] == '}':
+                    depth -= 1
+                    if depth == 0:
+                        end_pos = i + 1
+                        break
+            raw_obj = response_text[brace_pos:end_pos]
+            # Try parsing with newline escaping
+            try:
+                data = json.loads(raw_obj)
+            except json.JSONDecodeError:
+                try:
+                    fixed = re.sub(r'(?<=": ")(.*?)(?="[,\s}])', lambda m: m.group(0).replace('\n', '\\n'), raw_obj, flags=re.DOTALL)
+                    data = json.loads(fixed)
+                except (json.JSONDecodeError, Exception):
+                    try:
+                        import json_repair
+                        data = json_repair.loads(raw_obj)
+                    except Exception:
+                        print(f"WARNING: Fallback SOCIAL_POST scan failed: {raw_obj[:100]}...")
+                        continue
+            if isinstance(data, dict) and "content" in data:
+                result["social_posts"].append(data)
+                print(f"  Recovered SOCIAL_POST via fallback scan: {str(data.get('content', ''))[:60]}...")
+
     # Also catch markdown blocks with UPDATE headers
     md_blocks = re.findall(
         r'```(?:markdown|md)\s*\n\s*//\s*UPDATE:?\s*(.*?)\n(.*?)```',

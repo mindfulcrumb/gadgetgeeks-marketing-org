@@ -419,12 +419,22 @@ def parse_response(response_text: str) -> dict:
         try:
             data = json.loads(content)
         except json.JSONDecodeError:
-            # If it's an UPDATE with non-JSON content (like markdown), treat as raw text
-            if block_type == "UPDATE" and header.strip():
-                result["file_updates"].append({"path": header.strip(), "data": content})
-                continue
-            print(f"WARNING: Failed to parse JSON block ({block_type}): {content[:100]}...")
-            continue
+            # Try fixing common LLM JSON issues: unescaped newlines in string values
+            try:
+                # Replace literal newlines inside JSON string values with \n
+                fixed = re.sub(r'(?<=": ")(.*?)(?="[,\s}])', lambda m: m.group(0).replace('\n', '\\n'), content, flags=re.DOTALL)
+                data = json.loads(fixed)
+            except (json.JSONDecodeError, Exception):
+                try:
+                    import json_repair
+                    data = json_repair.loads(content)
+                except Exception:
+                    # If it's an UPDATE with non-JSON content (like markdown), treat as raw text
+                    if block_type == "UPDATE" and header.strip():
+                        result["file_updates"].append({"path": header.strip(), "data": content})
+                        continue
+                    print(f"WARNING: Failed to parse JSON block ({block_type}): {content[:100]}...")
+                    continue
 
         if block_type == "UPDATE":
             file_path = header.strip()

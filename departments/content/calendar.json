@@ -1,13 +1,20 @@
 {
-  "2026-03-14": [
-    {
-      "type": "blog",
-      "title": "iPhone 17e vs Refurbished iPhone 15 Pro: Why the 17e Is a Trap",
-      "status": "draft_ready",
-      "department": "blog_writer",
-      "blog_id": "blog_20260314_001",
-      "scheduled_time": "21:30 UTC",
-      "category": "trending"
+  "March_2026": {
+    "14": {
+      "blog": {
+        "title": "iPhone 17e vs Refurbished iPhone 15 Pro: Why the 17e Is a Trap",
+        "status": "scheduled",
+        "publish_time": "21:30 UTC",
+        "category": "trending"
+      }
+    },
+    "17": {
+      "blog": {
+        "title": "Best Refurbished iPhone in 2026 (Tested & Ranked)",
+        "status": "draft_ready",
+        "publish_time": "09:30 UTC",
+        "category": "buying_guide"
+      }
     }
-  ]
+  }
 }

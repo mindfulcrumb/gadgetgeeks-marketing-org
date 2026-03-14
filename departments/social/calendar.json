@@ -455,61 +455,54 @@
       "image_used": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/41ac0a03-c9eb-4b07-88f8-1f939d8d66eb/canva-email-prompt_20260313_008-20260314_095115.png",
       "source_prompt_id": "prompt_20260313_008",
       "driven_by": "x-intel trending: iPhone 17e vs refurbished comparison gaining retweet momentum"
-    }
-  ],
-  "postiz_calls_used": 14,
-  "postiz_calls_remaining": 1,
-  "last_updated": "2026-03-14 13:36 UTC",
-  "notes": "Afternoon posting session - used final 2 unused Canva designs with export URLs. Both posts capitalize on sustained iPhone 17e comparison trend from x-intel. Reality check format showing high engagement (155 likes, 19 replies). Strong budget math messaging aligns with customer language patterns.",
-  "tomorrow_priorities": [
-    "REQUEST NEW IMAGE GENERATION - all Canva designs now used",
-    "Continue iPhone 17e positioning if trend sustains",
-    "Create video content for TikTok using behind-the-scenes quality testing",
-    "Bundle deals with family/teenager targeting for spring supply surge",
-    "More reality check style content - format showing high engagement",
-    "Back Market differentiation content while crisis continues"
-  ],
-  "platform_issues": [
-    {
-      "issue": "Need new image generation - all current designs used",
-      "impact": "No fresh visuals for future posts",
-      "action_needed": "Queue image generation request for LENS/FOCUS departments",
-      "priority": "high"
     },
     {
-      "issue": "Need more video content for TikTok",
-      "impact": "Missing engagement opportunity on primary connected platform",
-      "action_needed": "Create behind-the-scenes quality testing videos",
-      "priority": "medium"
-    }
-  ],
-  "content_ready_for_tomorrow": [
-    {
-      "content_type": "spring supply surge timing advantage",
-      "post_text": "March is refurb phone heaven — 23% more inventory than winter, better grades, lower prices. Spring upgrade cycle means we're seeing flagship phones that barely lived 6 months. Best selection of the year happening right now. #springdeals #refurbished #techdeals",
-      "angle": "FOMO on current supply surge timing",
-      "customer_language": "looks brand new, perfect timing",
-      "trending_topic": "Spring Upgrade Cycle Supply Surge",
-      "platforms_suggested": [
-        "twitter",
-        "instagram",
-        "facebook"
-      ],
-      "needs_image": true
-    },
-    {
-      "content_type": "behind the scenes quality grading transparency",
-      "post_text": "What's the real difference between Grade A and Grade B refurbished? Grade A: zero cosmetic wear, looks new out the box. Grade B: light scratches that don't affect function, 30% less cost. Same 90-day warranty, same performance. You choose the savings level. #qualitygrading #transparency",
-      "angle": "Educational transparency addressing 'what's the catch?' concern",
-      "customer_language": "what's the catch?, what does Grade A actually mean?",
-      "trending_topic": "Quality assurance transparency demand",
-      "platforms_suggested": [
+      "date": "2026-03-14",
+      "time": "13:44 UTC",
+      "content_type": "bundle deal/authentic savings story",
+      "platforms": [
         "twitter",
         "instagram",
         "facebook",
         "linkedin"
       ],
-      "needs_image": true
+      "trending_topic": "Spring Upgrade Cycle Supply Surge + Budget Phone Math",
+      "customer_language_used": [
+        "deal is honestly ridiculous",
+        "can't tell the difference from hers except mine has more accessories",
+        "Why are we still paying retail?"
+      ],
+      "canva_design_used": "ready_20260314_iphone13_deal",
+      "image_used": "https://raw.githubusercontent.com/mindfulcrumb/gadgetgeeks-marketing-org/main/departments/social/ready-to-post/gg-iphone13-deal-tiktok.png",
+      "source_prompt_id": "real_product_photo_iphone_13",
+      "driven_by": "engagement-log: customer testimonials with dollar amounts outperform by 40%"
+    }
+  ],
+  "postiz_calls_used": 15,
+  "postiz_calls_remaining": 0,
+  "last_updated": "2026-03-14 13:44 UTC",
+  "notes": "Final post of the day - used last Postiz call. Posted iPhone 13 bundle deal using real product photo from ready-to-post designs. Strong authentic customer language with specific pricing and comparison to friend's purchase. Matched Spring supply surge trend with budget phone math.",
+  "tomorrow_priorities": [
+    "REQUEST NEW IMAGE GENERATION - all current designs now used across platforms",
+    "Continue iPhone 17e positioning if trend sustains",
+    "Create video content for TikTok using behind-the-scenes quality testing",
+    "Bundle deals with family/teenager targeting for spring supply surge",
+    "More reality check style content - format showing high engagement",
+    "Back Market differentiation content while crisis continues",
+    "Cross-platform posting of remaining ready-to-post designs (iPhone 14 hero, iPhone 14 eco)"
+  ],
+  "platform_issues": [
+    {
+      "issue": "Daily Postiz limit reached - no more posts today",
+      "impact": "Cannot create additional posts until tomorrow",
+      "action_needed": "Reset tomorrow, prioritize high-impact posts first",
+      "priority": "medium"
+    },
+    {
+      "issue": "Need new image generation - all pipeline designs used",
+      "impact": "Limited fresh visuals for next week",
+      "action_needed": "Queue urgent image generation request for LENS/FOCUS departments",
+      "priority": "high"
     }
   ]
 }

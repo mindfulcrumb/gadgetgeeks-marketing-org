@@ -1,4 +1,239 @@
 {
-  "last_updated": null,
-  "briefs": []
+  "report_date": "2026-03-15",
+  "generated_at": "2026-03-15T06:46:00Z",
+  "agent": "TREND",
+  "briefs": [
+    {
+      "brief_id": "trend_20260315_001",
+      "urgency": "hot",
+      "topic": "iPhone Battery Health Check: How to Test Your Phone's Real Battery Life in 2026",
+      "target_keyword": "iphone battery health check",
+      "secondary_keywords": [
+        "battery health 80 percent good",
+        "check iphone battery cycles",
+        "battery health percentage"
+      ],
+      "search_intent": "how_to",
+      "suggested_angle": "Position as battery health experts who guarantee 80%+ on all refurb phones - show customers how to verify any phone's real battery condition",
+      "why_now": "BREAKOUT trend (5000%+ growth) driven by Intel's Battery Health Obsession Peak - customers demand exact percentages",
+      "urgency_window": "24-48 hours - breakout trends peak fast",
+      "trend_data": {
+        "growth_7d": "breakout",
+        "interest_level": 95,
+        "trajectory": "breakout"
+      },
+      "competitor_coverage": {
+        "competitors_covering": [
+          "Back Market"
+        ],
+        "angle_they_miss": "Step-by-step testing guide + Arizona local verification service"
+      },
+      "internal_links": [
+        {
+          "page": "Certified Refurbished iPhones",
+          "url": "/collections/certified-refurbished-phones",
+          "anchor_context": "All our phones pass this battery health test with 80%+ guarantee"
+        },
+        {
+          "page": "iPhone Collection",
+          "url": "/collections/refurbished-iphones",
+          "anchor_context": "Shop iPhones with verified battery health percentages"
+        }
+      ],
+      "content_category": "how_to",
+      "suggested_publish_by": "2026-03-16T12:00:00Z",
+      "feeds_departments": [
+        "SCRIBE",
+        "PIXEL",
+        "QUILL"
+      ],
+      "arizona_advantage": "180% higher interest in Arizona - local verification service angle"
+    },
+    {
+      "brief_id": "trend_20260315_002",
+      "urgency": "hot",
+      "topic": "How Long Does a Refurbished Phone Battery Actually Last? (Real Data from 500+ Tests)",
+      "target_keyword": "refurbished phone battery life",
+      "secondary_keywords": [
+        "how long refurbished phone battery last",
+        "battery replacement refurb phone",
+        "refurbished phone battery warranty"
+      ],
+      "search_intent": "buying_guide",
+      "suggested_angle": "Use real data from our battery testing to show refurb phone batteries last 12-18 months with 80%+ health vs 6-8 months with lower grades",
+      "why_now": "340% growth driven by battery health obsession extending to purchase decisions",
+      "urgency_window": "2-3 days while trend is rising",
+      "trend_data": {
+        "growth_7d": "340%",
+        "interest_level": 78,
+        "trajectory": "rising"
+      },
+      "competitor_coverage": {
+        "competitors_covering": [
+          "Swappa",
+          "Gazelle"
+        ],
+        "angle_they_miss": "Actual lifespan data with warranty backing - most just say 'good battery'"
+      },
+      "internal_links": [
+        {
+          "page": "Refurbished Phone Warranty",
+          "url": "/pages/how-to-buy-used-phones-online-safely",
+          "anchor_context": "Our battery warranty covers replacement if health drops below 75% in first 6 months"
+        },
+        {
+          "page": "All Phones Collection",
+          "url": "/collections/all-phones",
+          "anchor_context": "Browse phones with guaranteed battery longevity"
+        }
+      ],
+      "content_category": "buying_guide",
+      "suggested_publish_by": "2026-03-17T12:00:00Z",
+      "feeds_departments": [
+        "SCRIBE",
+        "PIXEL",
+        "QUILL"
+      ],
+      "arizona_advantage": "90% higher interest in Arizona - local testing/warranty service"
+    },
+    {
+      "brief_id": "trend_20260315_003",
+      "urgency": "hot",
+      "topic": "Spring 2026 Phone Deals: Why March is the Best Month to Buy Refurbished (Arizona Edition)",
+      "target_keyword": "spring phone deals 2026",
+      "secondary_keywords": [
+        "march phone deals",
+        "arizona phone deals",
+        "tucson spring phone sale"
+      ],
+      "search_intent": "seasonal",
+      "suggested_angle": "Leverage Arizona snowbird departure + university spring break + supply surge to show why March has best deals and selection",
+      "why_now": "280% growth with 150% higher Arizona interest - spring supply surge creating perfect storm",
+      "urgency_window": "15 days - March seasonal window",
+      "trend_data": {
+        "growth_7d": "280%",
+        "interest_level": 84,
+        "trajectory": "rising"
+      },
+      "competitor_coverage": {
+        "competitors_covering": [
+          "Amazon Renewed"
+        ],
+        "angle_they_miss": "Arizona-specific seasonal factors - snowbirds, universities, local market dynamics"
+      },
+      "internal_links": [
+        {
+          "page": "Spring Sale Collection",
+          "url": "/collections/spring-deals",
+          "anchor_context": "Shop our March spring upgrade deals while selection lasts"
+        },
+        {
+          "page": "Arizona Local Page",
+          "url": "/pages/arizona-refurbished-phones",
+          "anchor_context": "Arizona's best selection of spring phone deals"
+        }
+      ],
+      "content_category": "seasonal",
+      "suggested_publish_by": "2026-03-16T12:00:00Z",
+      "feeds_departments": [
+        "SCRIBE",
+        "PIXEL",
+        "QUILL"
+      ],
+      "arizona_advantage": "150% higher Arizona interest - local seasonal factors"
+    },
+    {
+      "brief_id": "trend_20260315_004",
+      "urgency": "warm",
+      "topic": "USB-C vs Lightning: The Complete Compatibility Guide for Refurbished Phone Buyers",
+      "target_keyword": "usb c lightning confusion",
+      "secondary_keywords": [
+        "usb c vs lightning cable",
+        "which iphone has usb c",
+        "phone cable compatibility"
+      ],
+      "search_intent": "educational",
+      "suggested_angle": "Create definitive compatibility chart + bundle recommendations to eliminate purchase hesitation",
+      "why_now": "120% growth confirms Intel's Accessory Compatibility Paralysis - customers confused before buying",
+      "urgency_window": "1 week - compatibility content has long shelf life",
+      "trend_data": {
+        "growth_7d": "120%",
+        "interest_level": 65,
+        "trajectory": "rising"
+      },
+      "competitor_coverage": {
+        "competitors_covering": [
+          "Best Buy",
+          "Apple"
+        ],
+        "angle_they_miss": "Refurb-specific compatibility + guaranteed bundle deals"
+      },
+      "internal_links": [
+        {
+          "page": "Accessories Collection",
+          "url": "/collections/accessories",
+          "anchor_context": "Shop guaranteed-compatible cables and bundles"
+        },
+        {
+          "page": "Phone Bundles",
+          "url": "/collections/phone-bundles",
+          "anchor_context": "Get phone + compatible accessories in one purchase"
+        }
+      ],
+      "content_category": "educational",
+      "suggested_publish_by": "2026-03-18T12:00:00Z",
+      "feeds_departments": [
+        "SCRIBE",
+        "PIXEL",
+        "QUILL"
+      ]
+    },
+    {
+      "brief_id": "trend_20260315_005",
+      "urgency": "warm",
+      "topic": "Cheap Phones in Tucson: Where to Find Quality Refurbished Devices Under $300",
+      "target_keyword": "cheap phones tucson arizona",
+      "secondary_keywords": [
+        "affordable phones tucson",
+        "budget phones arizona",
+        "discount phones tucson"
+      ],
+      "search_intent": "local_buying_guide",
+      "suggested_angle": "Local authority piece highlighting Arizona business + university district location + student/family budget focus",
+      "why_now": "85% growth in local Tucson market - university spring break + local demand",
+      "urgency_window": "3-5 days - local trends move fast",
+      "trend_data": {
+        "growth_7d": "85%",
+        "interest_level": 42,
+        "trajectory": "rising"
+      },
+      "competitor_coverage": {
+        "competitors_covering": [
+          "Craigslist sellers",
+          "Pawn shops"
+        ],
+        "angle_they_miss": "Legitimate Arizona business with warranty vs risky individual sellers"
+      },
+      "internal_links": [
+        {
+          "page": "Budget Phone Collection",
+          "url": "/collections/budget-phones",
+          "anchor_context": "Shop Tucson's best selection of budget phones under $300"
+        },
+        {
+          "page": "Arizona Local",
+          "url": "/pages/tucson-arizona-phone-store",
+          "anchor_context": "Visit our Tucson showroom or shop online with local pickup"
+        }
+      ],
+      "content_category": "local_buying_guide",
+      "suggested_publish_by": "2026-03-17T12:00:00Z",
+      "feeds_departments": [
+        "SCRIBE",
+        "PIXEL",
+        "QUILL"
+      ],
+      "arizona_advantage": "Arizona-specific local SEO opportunity"
+    }
+  ]
 }

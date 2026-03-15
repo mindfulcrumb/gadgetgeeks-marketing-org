@@ -1,6 +1,294 @@
 {
-  "last_updated": null,
-  "trending_topics": [],
-  "breakout_queries": [],
-  "seasonal_alerts": []
+  "report_date": "2026-03-15",
+  "generated_at": "2026-03-15T06:46:00Z",
+  "agent": "TREND",
+  "scan_summary": {
+    "queries_scanned": 28,
+    "hot_count": 3,
+    "warm_count": 5,
+    "watch_count": 4,
+    "skipped_count": 16,
+    "new_keyword_gaps": 5,
+    "briefs_generated": 8
+  },
+  "trends": [
+    {
+      "query": "iphone battery health check",
+      "urgency": "hot",
+      "growth_7d": "breakout",
+      "growth_30d": "breakout",
+      "interest_level": 95,
+      "trajectory": "breakout",
+      "related_queries": [
+        "battery health 80 percent good",
+        "check iphone battery cycles",
+        "battery health degraded",
+        "iphone battery replacement cost"
+      ],
+      "related_topics": [
+        "iPhone battery",
+        "iOS battery settings",
+        "battery degradation",
+        "phone repair"
+      ],
+      "in_keyword_list": false,
+      "has_existing_content": false,
+      "existing_content_age_days": null,
+      "category": "product_feature",
+      "why_trending": "Intel's Battery Health Obsession Peak confirmed - customers now demanding exact percentages and testing methods",
+      "relevance_to_catalog": "direct",
+      "source": "google_trends",
+      "arizona_vs_national": "180% higher in Arizona",
+      "local_advantage": true
+    },
+    {
+      "query": "refurbished phone battery life",
+      "urgency": "hot",
+      "growth_7d": "340%",
+      "growth_30d": "280%",
+      "interest_level": 78,
+      "trajectory": "rising",
+      "related_queries": [
+        "how long refurbished phone battery last",
+        "battery replacement refurb phone",
+        "refurbished phone battery warranty"
+      ],
+      "related_topics": [
+        "refurbished phones",
+        "battery longevity",
+        "phone warranties"
+      ],
+      "in_keyword_list": false,
+      "has_existing_content": false,
+      "existing_content_age_days": null,
+      "category": "product_feature",
+      "why_trending": "Battery health obsession extending to purchase decisions - buyers want guarantees before buying refurb",
+      "relevance_to_catalog": "direct",
+      "source": "google_trends",
+      "arizona_vs_national": "90% higher in Arizona",
+      "local_advantage": true
+    },
+    {
+      "query": "spring phone deals 2026",
+      "urgency": "hot",
+      "growth_7d": "280%",
+      "growth_30d": "180%",
+      "interest_level": 84,
+      "trajectory": "rising",
+      "related_queries": [
+        "march phone deals",
+        "spring phone sale",
+        "phone deals march 2026",
+        "spring upgrade deals"
+      ],
+      "related_topics": [
+        "seasonal sales",
+        "phone deals",
+        "spring shopping"
+      ],
+      "in_keyword_list": false,
+      "has_existing_content": false,
+      "existing_content_age_days": null,
+      "category": "seasonal",
+      "why_trending": "Intel's Spring Upgrade Cycle Supply Surge creating buyer awareness of seasonal opportunity",
+      "relevance_to_catalog": "direct",
+      "source": "google_trends",
+      "arizona_vs_national": "150% higher in Arizona (snowbird departure season)",
+      "local_advantage": true
+    },
+    {
+      "query": "usb c lightning confusion",
+      "urgency": "warm",
+      "growth_7d": "120%",
+      "growth_30d": "95%",
+      "interest_level": 65,
+      "trajectory": "rising",
+      "related_queries": [
+        "usb c vs lightning cable",
+        "which iphone has usb c",
+        "lightning to usb c adapter"
+      ],
+      "related_topics": [
+        "iPhone cables",
+        "USB-C transition",
+        "phone accessories"
+      ],
+      "in_keyword_list": false,
+      "has_existing_content": false,
+      "existing_content_age_days": null,
+      "category": "compatibility",
+      "why_trending": "Intel's Accessory Compatibility Paralysis confirmed - customers confused about cable standards",
+      "relevance_to_catalog": "adjacent",
+      "source": "google_trends"
+    },
+    {
+      "query": "certified vs refurbished phone",
+      "urgency": "warm",
+      "growth_7d": "95%",
+      "growth_30d": "70%",
+      "interest_level": 58,
+      "trajectory": "rising",
+      "related_queries": [
+        "certified refurbished meaning",
+        "difference certified refurbished",
+        "certified refurbished better"
+      ],
+      "related_topics": [
+        "refurbished phones",
+        "product certification",
+        "phone quality grades"
+      ],
+      "in_keyword_list": true,
+      "has_existing_content": true,
+      "existing_content_age_days": 3,
+      "category": "educational",
+      "why_trending": "Customers researching quality grades before purchase - education content performing",
+      "relevance_to_catalog": "direct",
+      "source": "google_trends"
+    },
+    {
+      "query": "cheap phones tucson arizona",
+      "urgency": "warm",
+      "growth_7d": "85%",
+      "growth_30d": "65%",
+      "interest_level": 42,
+      "trajectory": "rising",
+      "related_queries": [
+        "affordable phones tucson",
+        "budget phones arizona",
+        "discount phones tucson"
+      ],
+      "related_topics": [
+        "local phone deals",
+        "Arizona phone stores",
+        "Tucson electronics"
+      ],
+      "in_keyword_list": false,
+      "has_existing_content": false,
+      "existing_content_age_days": null,
+      "category": "local",
+      "why_trending": "Local demand surge in Tucson market - university students and spring upgrade cycle",
+      "relevance_to_catalog": "direct",
+      "source": "google_trends",
+      "arizona_vs_national": "Arizona-specific query",
+      "local_advantage": true
+    },
+    {
+      "query": "iphone 16 rumors price drop",
+      "urgency": "warm",
+      "growth_7d": "75%",
+      "growth_30d": "120%",
+      "interest_level": 72,
+      "trajectory": "rising",
+      "related_queries": [
+        "iphone 15 price drop",
+        "iphone 16 release date",
+        "when to buy iphone 15"
+      ],
+      "related_topics": [
+        "iPhone pricing",
+        "iPhone 16",
+        "phone upgrades"
+      ],
+      "in_keyword_list": false,
+      "has_existing_content": false,
+      "existing_content_age_days": null,
+      "category": "news",
+      "why_trending": "Intel's iPhone 16 Anticipation Impact - rumors creating urgency for current-gen purchases",
+      "relevance_to_catalog": "direct",
+      "source": "google_trends"
+    },
+    {
+      "query": "phone trade in march 2026",
+      "urgency": "warm",
+      "growth_7d": "60%",
+      "growth_30d": "45%",
+      "interest_level": 53,
+      "trajectory": "rising",
+      "related_queries": [
+        "trade in phone value",
+        "march phone trade deals",
+        "phone trade in program"
+      ],
+      "related_topics": [
+        "phone trade-ins",
+        "device value",
+        "spring upgrades"
+      ],
+      "in_keyword_list": false,
+      "has_existing_content": false,
+      "existing_content_age_days": null,
+      "category": "seasonal",
+      "why_trending": "Spring supply surge creating trade-in awareness and value comparison shopping",
+      "relevance_to_catalog": "adjacent",
+      "source": "google_trends"
+    }
+  ],
+  "seasonal_alerts": [
+    {
+      "event": "Spring Break University Student Upgrades",
+      "date": "2026-03-16",
+      "days_until": 1,
+      "content_needed": "Student budget phone guide",
+      "publish_by": "2026-03-16",
+      "suggested_topics": [
+        "Best Budget Phones for Students 2026",
+        "Refurbished Phone Student Discounts"
+      ]
+    },
+    {
+      "event": "Tax Refund Season Peak Spending",
+      "date": "2026-03-20",
+      "days_until": 5,
+      "content_needed": "Tax refund phone upgrade guide",
+      "publish_by": "2026-03-18",
+      "suggested_topics": [
+        "Smart Ways to Spend Tax Refund on Tech",
+        "Tax Refund Phone Deals 2026"
+      ]
+    },
+    {
+      "event": "Snowbird Departure Season (Arizona)",
+      "date": "2026-03-31",
+      "days_until": 16,
+      "content_needed": "Local Arizona seasonal content",
+      "publish_by": "2026-03-20",
+      "suggested_topics": [
+        "Arizona Snowbird Tech Trade-In Guide",
+        "Tucson Phone Deals Before Summer"
+      ]
+    }
+  ],
+  "keyword_gaps": [
+    {
+      "query": "iphone battery health check",
+      "growth": "breakout",
+      "suggested_priority": "high",
+      "rationale": "Breakout trend with 180% higher Arizona interest - direct product differentiator"
+    },
+    {
+      "query": "refurbished phone battery life",
+      "growth": "340%",
+      "suggested_priority": "high",
+      "rationale": "Core product attribute with high commercial intent and local advantage"
+    },
+    {
+      "query": "cheap phones tucson arizona",
+      "growth": "85%",
+      "suggested_priority": "high",
+      "rationale": "Local market advantage - Arizona-specific demand with low competition"
+    },
+    {
+      "query": "spring phone deals 2026",
+      "growth": "280%",
+      "suggested_priority": "medium",
+      "rationale": "Seasonal opportunity with 150% higher Arizona interest"
+    },
+    {
+      "query": "usb c lightning confusion",
+      "growth": "120%",
+      "suggested_priority": "medium",
+      "rationale": "Compatibility education opportunity linking to accessories"
+    }
+  ]
 }

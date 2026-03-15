@@ -1,98 +1,246 @@
 {
   "report_date": "2026-03-15",
   "period": {
-    "current": "2026-03-08 to 2026-03-15",
-    "previous": "2026-03-01 to 2026-03-08"
+    "current": "2026-03-08 to 2026-03-14",
+    "previous": "2026-03-01 to 2026-03-07"
   },
   "summary": {
     "total_sessions": {
-      "current": "API_ERROR",
-      "previous": "API_ERROR",
-      "change_pct": "NO_DATA"
+      "current": 227,
+      "previous": 0,
+      "change_pct": "NEW_SITE"
     },
     "total_conversions": {
-      "current": "API_ERROR",
-      "previous": "API_ERROR",
+      "current": 0,
+      "previous": 0,
       "change_pct": "NO_DATA"
     },
     "total_revenue": {
-      "current": "API_ERROR",
-      "previous": "API_ERROR",
+      "current": 0.0,
+      "previous": 0.0,
       "change_pct": "NO_DATA"
     },
     "organic_sessions": {
-      "current": "API_ERROR",
-      "previous": "API_ERROR",
-      "change_pct": "NO_DATA"
+      "current": 51,
+      "previous": 0,
+      "change_pct": "NEW_SITE"
     },
     "avg_bounce_rate": {
-      "current": "API_ERROR",
-      "previous": "API_ERROR",
-      "change_pct": "NO_DATA"
+      "current": 0.176,
+      "previous": 0.0,
+      "change_pct": "NEW_SITE"
     }
   },
   "alerts": [
     {
       "severity": "critical",
-      "type": "api_unavailable",
-      "message": "Google Analytics 4 API not configured - cannot pull traffic data",
-      "page_or_query": "all_data",
-      "metric": "all_metrics",
-      "current_value": "ERROR",
-      "previous_value": "ERROR",
-      "change_pct": "NO_DATA",
-      "recommended_action": "Configure GA4 Data API access immediately - business operating blind"
-    },
-    {
-      "severity": "critical",
-      "type": "api_unavailable",
-      "message": "Google Search Console API not configured - cannot track search performance",
-      "page_or_query": "all_search_queries",
-      "metric": "impressions_clicks_ctr_position",
-      "current_value": "ERROR",
-      "previous_value": "ERROR",
-      "change_pct": "NO_DATA",
-      "recommended_action": "Configure GSC API access to track keyword rankings and search visibility"
+      "type": "conversion_drop",
+      "message": "Zero conversions across 227 sessions - conversion tracking or funnel issue",
+      "page_or_query": "all_pages",
+      "metric": "conversions",
+      "current_value": 0,
+      "previous_value": 0,
+      "change_pct": 0,
+      "recommended_action": "Verify GA4 conversion tracking setup and review checkout funnel immediately"
     },
     {
       "severity": "high",
+      "type": "ctr_drop",
+      "message": "Multiple high-impression queries with 0% CTR - major ranking without clicks",
+      "page_or_query": "computer_repair_tucson",
+      "metric": "ctr",
+      "current_value": 0,
+      "previous_value": 0,
+      "change_pct": 0,
+      "recommended_action": "Rewrite meta titles/descriptions for computer repair queries - quick traffic wins"
+    },
+    {
+      "severity": "medium",
       "type": "content_gap",
-      "message": "Only 1 published blog for refurbished electronics business - insufficient content volume",
-      "page_or_query": "/blogs/",
-      "metric": "content_count",
-      "current_value": 1,
+      "message": "Site showing up for repair services but selling refurbished phones - content mismatch",
+      "page_or_query": "repair_vs_refurbished",
+      "metric": "relevance",
+      "current_value": "mismatch",
       "previous_value": "unknown",
-      "change_pct": "NO_BASELINE",
-      "recommended_action": "Accelerate blog publishing schedule - need 2-3 posts per week minimum"
+      "change_pct": "NO_DATA",
+      "recommended_action": "Create content bridge between repair services and refurbished phone sales"
     }
   ],
-  "top_pages": "DATA_UNAVAILABLE_API_ERROR",
-  "traffic_sources": "DATA_UNAVAILABLE_API_ERROR",
+  "top_pages": [
+    {
+      "page": "/",
+      "sessions": {
+        "current": 165,
+        "previous": 0,
+        "change_pct": "NEW"
+      },
+      "bounce_rate": {
+        "current": 0.121,
+        "previous": 0.0,
+        "change_pct": "NEW"
+      },
+      "conversions": {
+        "current": 0,
+        "previous": 0,
+        "change_pct": "NO_DATA"
+      }
+    },
+    {
+      "page": "/collections/sale",
+      "sessions": {
+        "current": 30,
+        "previous": 0,
+        "change_pct": "NEW"
+      },
+      "bounce_rate": {
+        "current": 0.067,
+        "previous": 0.0,
+        "change_pct": "NEW"
+      },
+      "conversions": {
+        "current": 0,
+        "previous": 0,
+        "change_pct": "NO_DATA"
+      }
+    },
+    {
+      "page": "/blogs/news",
+      "sessions": {
+        "current": 21,
+        "previous": 0,
+        "change_pct": "NEW"
+      },
+      "bounce_rate": {
+        "current": 0.048,
+        "previous": 0.0,
+        "change_pct": "NEW"
+      },
+      "conversions": {
+        "current": 0,
+        "previous": 0,
+        "change_pct": "NO_DATA"
+      }
+    },
+    {
+      "page": "/products/iphone-14-bundle",
+      "sessions": {
+        "current": 20,
+        "previous": 0,
+        "change_pct": "NEW"
+      },
+      "bounce_rate": {
+        "current": 0.05,
+        "previous": 0.0,
+        "change_pct": "NEW"
+      },
+      "conversions": {
+        "current": 0,
+        "previous": 0,
+        "change_pct": "NO_DATA"
+      }
+    }
+  ],
+  "traffic_sources": [
+    {
+      "source_medium": "(direct) / (none)",
+      "sessions": {
+        "current": 163,
+        "previous": 0,
+        "change_pct": "NEW"
+      },
+      "conversion_rate": {
+        "current": 0.0,
+        "previous": 0.0,
+        "change_pct": "NO_DATA"
+      }
+    },
+    {
+      "source_medium": "google / organic",
+      "sessions": {
+        "current": 51,
+        "previous": 0,
+        "change_pct": "NEW"
+      },
+      "conversion_rate": {
+        "current": 0.0,
+        "previous": 0.0,
+        "change_pct": "NO_DATA"
+      }
+    }
+  ],
   "search_queries": {
-    "top_queries": "DATA_UNAVAILABLE_API_ERROR",
-    "new_keywords": "DATA_UNAVAILABLE_API_ERROR",
-    "high_impression_low_ctr": "DATA_UNAVAILABLE_API_ERROR"
+    "top_queries": [
+      {
+        "query": "gadget geeks pro",
+        "clicks": 6,
+        "impressions": 14,
+        "ctr": 42.86,
+        "position": 1.0,
+        "change_vs_previous": "NEW"
+      },
+      {
+        "query": "computer repair tucson",
+        "clicks": 0,
+        "impressions": 31,
+        "ctr": 0.0,
+        "position": 4.9,
+        "change_vs_previous": "NEW"
+      }
+    ],
+    "new_keywords": [
+      "computer repair tucson",
+      "cell phone repairs near me",
+      "smart home automation",
+      "electronics repair tucson"
+    ],
+    "high_impression_low_ctr": [
+      {
+        "query": "computer repair tucson",
+        "impressions": 31,
+        "clicks": 0,
+        "ctr": 0.0,
+        "position": 4.9,
+        "page": "https://gadgetgeekspro.com/",
+        "recommendation": "Rewrite homepage meta - currently ranking for repair but selling refurbished phones"
+      },
+      {
+        "query": "smart home automation",
+        "impressions": 104,
+        "clicks": 0,
+        "ctr": 0.0,
+        "position": 17.5,
+        "page": "https://gadgetgeekspro.com/smart-home-automation/",
+        "recommendation": "Optimize smart home page meta title and description for higher CTR"
+      }
+    ]
   },
-  "declining_pages": "DATA_UNAVAILABLE_API_ERROR",
+  "declining_pages": "NO_BASELINE_DATA_NEW_SITE",
   "blog_performance": {
-    "winners": "DATA_UNAVAILABLE_API_ERROR",
-    "flatliners": "DATA_UNAVAILABLE_API_ERROR",
-    "declining": "DATA_UNAVAILABLE_API_ERROR"
+    "winners": [
+      {
+        "page": "/blogs/news/cheap-refurbished-phones-guide",
+        "sessions": 11,
+        "bounce_rate": 0.091,
+        "avg_session_duration": 259.2,
+        "status": "Strong performer - high engagement"
+      }
+    ],
+    "flatliners": [],
+    "declining": []
   },
   "device_breakdown": {
     "desktop": {
-      "sessions": "ERROR",
-      "conversion_rate": "ERROR"
+      "sessions": 155,
+      "conversion_rate": 0.0
     },
     "mobile": {
-      "sessions": "ERROR",
-      "conversion_rate": "ERROR"
+      "sessions": 74,
+      "conversion_rate": 0.0
     },
     "tablet": {
-      "sessions": "ERROR",
-      "conversion_rate": "ERROR"
+      "sessions": 0,
+      "conversion_rate": 0.0
     }
   },
-  "crawl_errors": "DATA_UNAVAILABLE_API_ERROR",
-  "data_quality_notice": "This report is incomplete due to missing API access. All metrics marked as ERROR/NO_DATA require Google Analytics 4 and Search Console API configuration."
+  "crawl_errors": []
 }

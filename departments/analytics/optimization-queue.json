@@ -2,47 +2,110 @@
   "last_updated": "2026-03-15",
   "recommendations": [
     {
-      "id": "OPT-20260315-001",
+      "id": "OPT-20260315-003",
       "date_added": "2026-03-15",
       "priority_score": 10,
       "impact": 5,
       "effort": 5,
-      "type": "api_configuration",
-      "target_department": "operations",
-      "page_url": "system_wide",
-      "query": "all_analytics_data",
+      "type": "conversion_tracking",
+      "target_department": "cro",
+      "page_url": "site_wide",
+      "query": "conversion_setup",
       "current_metrics": {
-        "impressions": "ERROR",
-        "clicks": "ERROR",
-        "ctr": "ERROR",
-        "position": "ERROR",
-        "sessions": "ERROR"
+        "sessions": 227,
+        "conversions": 0,
+        "conversion_rate": 0.0
       },
-      "recommendation": "CRITICAL: Configure Google Analytics 4 and Search Console APIs immediately. Analytics department cannot function without data access.",
-      "suggested_meta_title": "N/A - System Configuration Issue",
-      "suggested_meta_description": "N/A - System Configuration Issue",
+      "recommendation": "CRITICAL: Zero conversions across 227 sessions indicates broken conversion tracking or checkout funnel. Verify GA4 purchase events and test checkout flow immediately.",
       "status": "pending",
-      "assigned_to": "operations_team",
+      "assigned_to": "metric",
       "completed_date": null
     },
     {
-      "id": "OPT-20260315-002",
+      "id": "OPT-20260315-004",
+      "date_added": "2026-03-15",
+      "priority_score": 9,
+      "impact": 4,
+      "effort": 5,
+      "type": "meta_rewrite",
+      "target_department": "seo",
+      "page_url": "https://gadgetgeekspro.com/",
+      "query": "computer repair tucson",
+      "current_metrics": {
+        "impressions": 31,
+        "clicks": 0,
+        "ctr": 0.0,
+        "position": 4.9
+      },
+      "recommendation": "Homepage ranking #5 for 'computer repair tucson' (31 impressions) but getting 0 clicks. Site sells refurbished phones, not repair services. Rewrite meta to capture phone buyers instead.",
+      "suggested_meta_title": "Refurbished Phones Tucson - Certified iPhones & Galaxy | Gadget Geeks Pro",
+      "suggested_meta_description": "Shop refurbished phones in Tucson, AZ. Certified iPhones & Samsung Galaxy with warranty. Save 50% vs new. Local Arizona business with same-day pickup.",
+      "status": "pending",
+      "assigned_to": "pixel",
+      "completed_date": null
+    },
+    {
+      "id": "OPT-20260315-005",
       "date_added": "2026-03-15",
       "priority_score": 8,
       "impact": 4,
       "effort": 4,
-      "type": "content_acceleration",
+      "type": "meta_rewrite",
+      "target_department": "seo",
+      "page_url": "https://gadgetgeekspro.com/smart-home-automation/",
+      "query": "smart home automation",
+      "current_metrics": {
+        "impressions": 104,
+        "clicks": 0,
+        "ctr": 0.0,
+        "position": 17.5
+      },
+      "recommendation": "Smart home page getting 104 impressions but 0 clicks at position 17. Need compelling meta to improve CTR and potentially rank higher.",
+      "suggested_meta_title": "Smart Home Automation Tucson - Professional Setup & Support",
+      "suggested_meta_description": "Complete smart home automation in Tucson, AZ. Professional installation, device setup, and ongoing support. Transform your home today with local experts.",
+      "status": "pending",
+      "assigned_to": "pixel",
+      "completed_date": null
+    },
+    {
+      "id": "OPT-20260315-006",
+      "date_added": "2026-03-15",
+      "priority_score": 7,
+      "impact": 3,
+      "effort": 4,
+      "type": "content_gap",
       "target_department": "content",
       "page_url": "/blogs/",
-      "query": "content_volume_increase",
+      "query": "cell phone repairs near me",
       "current_metrics": {
-        "published_blogs": 1,
-        "blog_publish_rate": "1 per week",
-        "content_coverage": "minimal"
+        "impressions": 3,
+        "clicks": 0,
+        "ctr": 0.0,
+        "position": 3.0
       },
-      "recommendation": "Accelerate blog publishing to 2-3 posts per week minimum. Single blog cannot capture search volume for competitive refurbished phone keywords.",
+      "recommendation": "Ranking well for 'cell phone repairs near me' but site focuses on refurbished sales. Create content bridging repair needs to refurbished alternatives - 'Instead of expensive repairs, consider certified refurbished'.",
       "status": "pending",
       "assigned_to": "scribe",
+      "completed_date": null
+    },
+    {
+      "id": "OPT-20260315-007",
+      "date_added": "2026-03-15",
+      "priority_score": 6,
+      "impact": 3,
+      "effort": 3,
+      "type": "internal_linking",
+      "target_department": "seo",
+      "page_url": "/blogs/news/cheap-refurbished-phones-guide",
+      "query": "internal_link_power",
+      "current_metrics": {
+        "sessions": 11,
+        "bounce_rate": 0.091,
+        "avg_session_duration": 259.2
+      },
+      "recommendation": "Blog post getting good engagement (259 sec avg time, 9% bounce rate). Link to this high-performing content from homepage and product pages to boost its ranking power.",
+      "status": "pending",
+      "assigned_to": "pixel",
       "completed_date": null
     }
   ]

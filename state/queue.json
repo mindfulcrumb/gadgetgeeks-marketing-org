@@ -117,6 +117,21 @@
       "impact": "80% capacity loss in social media operations",
       "priority": "P1 - Major operational limitation",
       "id": "gm_queue_20260315_191951"
+    },
+    {
+      "issue": "GA4 showing zero conversions despite good traffic volume and engagement",
+      "sessions": 227,
+      "bounce_rate": "17.6% (excellent)",
+      "avg_session_duration": "341 seconds (5.7 minutes - very good)",
+      "investigation_needed": [
+        "Verify GA4 Enhanced Ecommerce tracking setup",
+        "Test purchase funnel end-to-end",
+        "Check if purchase events are firing",
+        "Confirm conversion goals are properly configured",
+        "Test checkout process for technical issues"
+      ],
+      "business_impact": "Cannot measure ROI or optimize conversion funnel without working conversion tracking",
+      "id": "analytics_20260315_212352"
     }
   ],
   "approved": [],

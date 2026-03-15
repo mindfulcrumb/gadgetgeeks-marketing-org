@@ -1,0 +1,209 @@
+name: Publish Blog (Direct)
+on:
+  workflow_dispatch:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install requests
+
+      - name: Get Shopify token
+        id: shopify
+        run: |
+          RESPONSE=$(curl -s -X POST "https://gadgetgeekspro.myshopify.com/admin/oauth/access_token" \
+            -H "Content-Type: application/x-www-form-urlencoded" \
+            -d "grant_type=client_credentials" \
+            -d "client_id=${{ secrets.SHOPIFY_CLIENT_ID }}" \
+            -d "client_secret=${{ secrets.SHOPIFY_CLIENT_SECRET }}")
+          TOKEN=$(echo "$RESPONSE" | python3 -c "import sys,json; print(json.load(sys.stdin)['access_token'])")
+          echo "::add-mask::$TOKEN"
+          echo "token=$TOKEN" >> "$GITHUB_OUTPUT"
+
+      - name: Generate image, upload, and publish article
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          SHOPIFY_ACCESS_TOKEN: ${{ steps.shopify.outputs.token }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+        run: |
+          python3 << 'PYEOF'
+          import os, sys, json, time
+          sys.path.insert(0, "scripts/actions")
+          from image_gen import generate_blog_header, upload_to_shopify, _shopify_graphql
+
+          # Load blog content from pipeline
+          with open("departments/content/blog-pipeline.json", "r") as f:
+              pipeline = json.load(f)
+
+          title = pipeline["title"]
+          body_html = pipeline["content"]
+          slug = pipeline.get("slug", "")
+          meta_desc = pipeline.get("meta_description", "")
+          topic = ", ".join(pipeline.get("target_keywords", {}).get("secondary", ["refurbished phone packaging"]))
+
+          print(f"=== STEP 1: Generate blog header image ===")
+          print(f"Title: {title}")
+          img = generate_blog_header(title, topic)
+          print(f"  Provider: {img.get('provider')}")
+          print(f"  Image size: {len(img['image_bytes'])} bytes")
+
+          print(f"\n=== STEP 2: Upload to Shopify CDN ===")
+          handle = slug or title.lower().replace(" ", "-")[:60]
+          filename = f"blog-header-{handle[:50]}.png"
+          cdn_url = upload_to_shopify(img["image_bytes"], filename, img.get("mime_type", "image/png"))
+          print(f"  CDN URL: {cdn_url}")
+
+          # Wait for CDN processing
+          time.sleep(5)
+
+          print(f"\n=== STEP 3: Find blog ID for 'news' ===")
+          blog_query = """
+          {
+            blogs(first: 10) {
+              edges {
+                node {
+                  id
+                  handle
+                  title
+                }
+              }
+            }
+          }
+          """
+          blog_data = _shopify_graphql(blog_query)
+          blog_id = None
+          for edge in blog_data.get("blogs", {}).get("edges", []):
+              node = edge["node"]
+              print(f"  Found blog: {node['handle']} ({node['title']}) -> {node['id']}")
+              if node["handle"] == "news":
+                  blog_id = node["id"]
+
+          if not blog_id:
+              print("ERROR: Blog with handle 'news' not found!")
+              # Try creating the blog
+              create_blog = """
+              mutation blogCreate($blog: BlogCreateInput!) {
+                blogCreate(blog: $blog) {
+                  blog { id handle }
+                  userErrors { field message }
+                }
+              }
+              """
+              result = _shopify_graphql(create_blog, {"blog": {"title": "News", "handle": "news"}})
+              print(f"  Created blog: {result}")
+              blog_id = result.get("blogCreate", {}).get("blog", {}).get("id")
+              if not blog_id:
+                  sys.exit(1)
+
+          print(f"  Using blog ID: {blog_id}")
+
+          # Add FAQ schema as script tag in body
+          faq_schema = pipeline.get("faq_schema")
+          if faq_schema:
+              schema_script = f'\n<script type="application/ld+json">\n{json.dumps(faq_schema, indent=2)}\n</script>'
+              body_html += schema_script
+
+          print(f"\n=== STEP 4: Create article via articleCreate ===")
+          article_mutation = """
+          mutation articleCreate($article: ArticleCreateInput!) {
+            articleCreate(article: $article) {
+              article {
+                id
+                title
+                handle
+                onlineStoreUrl
+                image {
+                  url
+                }
+              }
+              userErrors {
+                field
+                message
+              }
+            }
+          }
+          """
+          article_vars = {
+              "article": {
+                  "blogId": blog_id,
+                  "title": title,
+                  "handle": slug,
+                  "body": body_html,
+                  "summary": meta_desc,
+                  "isPublished": True,
+                  "image": {
+                      "url": cdn_url,
+                      "altText": title
+                  }
+              }
+          }
+
+          result = _shopify_graphql(article_mutation, article_vars)
+          print(f"  Raw result: {json.dumps(result, indent=2)}")
+
+          article_data = result.get("articleCreate", {})
+          user_errors = article_data.get("userErrors", [])
+          if user_errors:
+              print(f"  ERRORS: {user_errors}")
+              sys.exit(1)
+
+          article = article_data.get("article", {})
+          print(f"\n{'='*60}")
+          print(f"  PUBLISHED SUCCESSFULLY!")
+          print(f"  Article ID: {article.get('id')}")
+          print(f"  Title: {article.get('title')}")
+          print(f"  Handle: {article.get('handle')}")
+          print(f"  URL: {article.get('onlineStoreUrl')}")
+          print(f"  Image: {article.get('image', {}).get('url', 'N/A')}")
+          print(f"  CDN URL: {cdn_url}")
+          print(f"{'='*60}")
+
+          # Write results to file for the summary
+          with open("/tmp/publish-result.json", "w") as f:
+              json.dump({
+                  "article_id": article.get("id"),
+                  "title": article.get("title"),
+                  "handle": article.get("handle"),
+                  "url": article.get("onlineStoreUrl"),
+                  "image_url": article.get("image", {}).get("url"),
+                  "cdn_url": cdn_url,
+              }, f, indent=2)
+          PYEOF
+
+      - name: Update pipeline status
+        run: |
+          python3 << 'PYEOF'
+          import json
+          from datetime import datetime, timezone
+
+          with open("departments/content/blog-pipeline.json", "r") as f:
+              pipeline = json.load(f)
+
+          pipeline["status"] = "published"
+          pipeline["published_at"] = datetime.now(timezone.utc).isoformat()
+
+          with open("departments/content/blog-pipeline.json", "w") as f:
+              json.dump(pipeline, f, indent=2, ensure_ascii=False)
+
+          print("Pipeline status updated to 'published'")
+          PYEOF
+
+      - name: Push changes
+        run: |
+          git config user.name "Marketing Org Bot"
+          git config user.email "bot@gadgetgeekspro.com"
+          git add -A
+          git diff --cached --quiet || git commit -m "[blog-publish] Direct publish — $(date -u '+%Y-%m-%d %H:%M UTC')"
+          for i in 1 2 3; do
+            git pull --rebase origin main || { git rebase --abort 2>/dev/null; git pull origin main --no-edit; }
+            git push && break || sleep 5
+          done

@@ -120,7 +120,9 @@ jobs:
                 id
                 title
                 handle
-                onlineStoreUrl
+                blog {
+                  handle
+                }
                 image {
                   url
                 }
@@ -157,14 +159,18 @@ jobs:
               sys.exit(1)
 
           article = article_data.get("article", {})
+          blog_handle = article.get("blog", {}).get("handle", "news")
+          article_handle = article.get("handle", slug)
+          live_url = f"https://gadgetgeekspro.com/blogs/{blog_handle}/{article_handle}"
+          image_cdn = article.get("image", {}).get("url", cdn_url)
           print(f"\n{'='*60}")
           print(f"  PUBLISHED SUCCESSFULLY!")
           print(f"  Article ID: {article.get('id')}")
           print(f"  Title: {article.get('title')}")
-          print(f"  Handle: {article.get('handle')}")
-          print(f"  URL: {article.get('onlineStoreUrl')}")
-          print(f"  Image: {article.get('image', {}).get('url', 'N/A')}")
-          print(f"  CDN URL: {cdn_url}")
+          print(f"  Handle: {article_handle}")
+          print(f"  Live URL: {live_url}")
+          print(f"  Image CDN: {image_cdn}")
+          print(f"  Staged CDN: {cdn_url}")
           print(f"{'='*60}")
 
           # Write results to file for the summary
@@ -172,10 +178,10 @@ jobs:
               json.dump({
                   "article_id": article.get("id"),
                   "title": article.get("title"),
-                  "handle": article.get("handle"),
-                  "url": article.get("onlineStoreUrl"),
-                  "image_url": article.get("image", {}).get("url"),
-                  "cdn_url": cdn_url,
+                  "handle": article_handle,
+                  "live_url": live_url,
+                  "image_cdn": image_cdn,
+                  "staged_cdn": cdn_url,
               }, f, indent=2)
           PYEOF
 

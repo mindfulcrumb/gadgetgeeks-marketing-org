@@ -398,6 +398,7 @@ DEPARTMENT_CONFIG = {
     "analytics": {
         "agent_prompt": "agents/custom/analytics-agent.md",
         "context_files": [
+            "departments/analytics/google-api-data.json",
             "departments/analytics/daily-report.json",
             "departments/analytics/optimization-queue.json",
             "departments/seo/keywords.json",

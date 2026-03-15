@@ -20,6 +20,9 @@ Never put credentials in source code. Scripts use `os.environ.get("KEY", "")` wi
 | `RESEND_API_KEY` | Resend email API | gm-queue (sends approved emails) | No expiry |
 | `X_BEARER_TOKEN` | X/Twitter API v2 bearer token | x-intel.yml | No expiry |
 | `VAPI_API_KEY` | Vapi.ai phone calling API | dialer-execute.yml | No expiry |
+| `GOOGLE_SERVICE_ACCOUNT_KEY` | Google Cloud service account JSON key | analytics.yml | No expiry |
+| `GA4_PROPERTY_ID` | GA4 property ID (527689586) | analytics.yml | Static |
+| `GSC_SITE_URL` | Search Console site URL | analytics.yml | Static |
 
 ---
 
@@ -40,14 +43,15 @@ This is handled automatically in workflow YAML files via the "Get fresh Shopify 
 
 ## Which Workflows Need Which Secrets
 
-| Workflow | ANTHROPIC | TELEGRAM | SHOPIFY_* | GEMINI | RESEND | X_BEARER | VAPI |
-|----------|-----------|----------|-----------|--------|--------|----------|------|
-| All departments | x | x | | | | | |
-| telegram-poll | | x | x | x | | | |
-| blog-publish | x | x | x | x | | | |
-| x-intel | x | x | | | | x | |
-| gm-queue | x | x | | | x | | |
-| dialer-execute | | x | | | | | x |
+| Workflow | ANTHROPIC | TELEGRAM | SHOPIFY_* | GEMINI | RESEND | X_BEARER | VAPI | GOOGLE_* |
+|----------|-----------|----------|-----------|--------|--------|----------|------|----------|
+| All departments | x | x | | | | | | |
+| analytics | x | x | | | | | | x |
+| telegram-poll | | x | x | x | | | | |
+| blog-publish | x | x | x | x | | | | |
+| x-intel | x | x | | | | x | | |
+| gm-queue | x | x | | | x | | | |
+| dialer-execute | | x | | | | | x | |
 
 ---
 

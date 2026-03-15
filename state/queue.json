@@ -342,6 +342,40 @@
       "alert_type": "CRITICAL",
       "message": "🚨 SENTINEL CODE RED ALERT — 06:07 UTC\nType: CRITICAL SYSTEM FAILURE\n\nISSUE: GitHub Actions workflows stopped triggering 2026-03-11\n• 6 core departments offline 84+ hours (intel, seo, content, email, cro, x_intel)\n• Gemini image API down 48+ hours (403 errors)\n• Social media at 20% capacity (only TikTok connected)\n• 19 queue items pending, 3 critical >48h\n• Monday blog blocked on missing image\n\nBUSINESS IMPACT:\n• No content generation for 4 days\n• Marketing completely stalled\n• Cannot fulfill scheduled commitments\n\nIMMEDIATE ACTION NEEDED:\n1. Check GitHub Actions tab - workflows not triggering\n2. Fix Gemini API or implement OpenAI fallback\n3. Connect social platforms at app.postiz.com\n4. Process critical queue backlog\n\nThis is a complete operational breakdown requiring emergency intervention.\n\nNote: SENTINEL ran 67 minutes late - morning shift started without proper handoff.",
       "id": "night_ops_20260315_060838"
+    },
+    {
+      "severity": "code_red",
+      "departments_offline": [
+        "intel",
+        "seo",
+        "content",
+        "email",
+        "cro",
+        "x_intel"
+      ],
+      "offline_duration": "84+ hours since 2026-03-11",
+      "root_cause": "GitHub Actions workflows not triggering",
+      "api_failures": [
+        "Gemini imagen-4.0-generate-001 returning 403 errors for 48+ hours"
+      ],
+      "platform_failures": [
+        "Only TikTok connected to Postiz vs 4 required platforms"
+      ],
+      "blocked_deliverables": [
+        "Blog 'Best Refurbished iPhone 2026' scheduled Monday 09:30 UTC",
+        "All social media posting (zero images remaining)",
+        "All content briefs, SEO recommendations, email campaigns"
+      ],
+      "immediate_actions_required": [
+        "Check GitHub repository Actions tab - workflows appear completely broken",
+        "Test Gemini API with fresh credentials or implement OpenAI DALL-E fallback",
+        "Connect Twitter, Instagram, Facebook, LinkedIn at app.postiz.com",
+        "Process 3 queue items pending >48h including boss-requested Charbel call",
+        "Generate emergency image batch to restore social posting capacity"
+      ],
+      "business_impact": "Marketing organization completely non-functional. Cannot fulfill scheduled commitments or generate new content.",
+      "health_score": "25/100 - CRITICAL",
+      "id": "standup_20260315_065616"
     }
   ],
   "approved": [],

@@ -1,70 +1,75 @@
 {
-  "date": "2026-03-14",
-  "day_theme": "Friday — REVIEW & SHIP",
+  "date": "2026-03-15",
+  "day_theme": "Saturday — WEEKEND OPTIMIZE & PREP",
   "shift": "morning",
-  "overnight_summary": "CRITICAL: Multiple system failures overnight. Image generation API down 48+ hours (403 errors blocking blog publication). 3 queue items pending >48h including boss-priority Charbel call (53h overdue). Only TikTok connected to Postiz - 80% social capacity lost. 4 departments idle 48-72 hours due to infrastructure issues.",
+  "emergency_late_handoff": true,
+  "late_by_minutes": 67,
+  "overnight_summary": "SYSTEM-WIDE OPERATIONAL FAILURE. Six core production departments offline 84+ hours since 2026-03-11. GitHub Actions scheduling failure - workflows not triggering. Gemini image API down 48+ hours blocking blog publication. Social platforms disconnected leaving only TikTok. 19 queue items backed up including 3 critical >48h. This is code red requiring immediate boss escalation and emergency recovery.",
   "departments": {
     "intel": {
-      "yesterday": "DID NOT RUN - idle 69 hours",
-      "today": "BLOCKED - needs infrastructure debug",
-      "signal": "Using stale market data from 2026-03-12 - iPhone 16 anticipation and battery health obsession trends"
+      "yesterday": "DID NOT RUN - offline 79+ hours",
+      "today": "CRITICAL FAILURE - needs emergency restart",
+      "signal": "NO DATA - department offline since 2026-03-11"
     },
     "seo": {
-      "yesterday": "Recommendation queued: 'How to Buy Used Phones Online Safely' page optimization",
-      "today": "BLOCKED - waiting for content pipeline recovery",
-      "feeds": "1 brief ready for SCRIBE when systems recover"
+      "yesterday": "DID NOT RUN - offline 72+ hours",
+      "today": "CRITICAL FAILURE - needs emergency restart",
+      "feeds": "BLOCKED - cannot provide briefs to Content department"
     },
     "content": {
-      "yesterday": "DID NOT RUN - idle 58 hours",
-      "today": "BLOCKED - SCRIBE needs functional systems to draft",
-      "pipeline": "1 blog ready for publication pending image generation fix",
-      "blockers": "Blog 'How to Buy Used Phones Online Safely' stuck 19+ hours on image generation failure"
+      "pipeline": "1 blog BLOCKED (missing header image) | 0 draft_ready | 0 qa_passed | 1 approved but blocked",
+      "yesterday": "DID NOT RUN - offline 72+ hours",
+      "today": "CRITICAL FAILURE - 'Best Refurbished iPhone 2026' scheduled Monday BLOCKED",
+      "blockers": "Gemini API down 48+ hours, no image generation possible"
     },
     "visual": {
-      "yesterday": "ALL FAILURES - 10 image prompts created but generation returned 403 errors",
-      "today": "CRITICAL - debug Gemini API or find workaround",
-      "feeds": "Cannot feed Social - no valid image URLs available"
+      "yesterday": "NO NEW IMAGES - pipeline exhausted all visuals",
+      "today": "CRITICAL - cannot create any social posts without emergency image generation",
+      "feeds": "BLOCKED - Social has zero unused images remaining"
     },
     "social": {
-      "yesterday": "18 posts published but LIMITED to TikTok only due to platform disconnection",
-      "today": "BLOCKED - needs platform reconnection at app.postiz.com + image sources",
-      "needs_from": "Visual (working image generation), Operations (platform connectivity)"
+      "yesterday": "Posted to TikTok only (4 posts), consumed last 2 iPhone images",
+      "today": "BLOCKED - zero unused images, only TikTok connected (80% capacity loss)",
+      "needs_from": "EMERGENCY: Visual (new image batch), Platform setup (Twitter/Instagram/Facebook/LinkedIn)"
     },
     "email": {
-      "yesterday": "DID NOT RUN - idle 58 hours",
-      "today": "2 campaigns queued pending approval for 44+ hours",
-      "needs_from": "Boss approval to execute queued campaigns"
+      "status": "DID NOT RUN - offline 72+ hours",
+      "needs_from": "Department restart required"
     },
     "cro": {
-      "yesterday": "DID NOT RUN - idle 58 hours",
-      "today": "3 experiments queued but unable to implement due to system issues"
+      "active_experiments": "UNKNOWN - department offline 72+ hours",
+      "last_result": "NO DATA since 2026-03-11",
+      "next": "BLOCKED until department restart"
     },
     "dialer": {
-      "yesterday": "0 calls - data request pending 54 hours",
-      "today": "URGENT - Charbel call 53 hours overdue, boss requested twice",
-      "pending_approval": "Boss-priority call requires immediate processing"
+      "yesterday": "NO DATA - may be operational",
+      "today": "Charbel call pending 52+ hours (boss requested twice)",
+      "pending_approval": "CRITICAL: Process Charbel call immediately"
     },
     "operations": {
-      "yesterday": "Night ops ran but flagged critical queue backlog",
-      "today": "14 pending items, 3 critical overdue >48h",
-      "overdue_items": "Charbel call (53h), email campaign (44h), data request (54h)"
+      "queue_depth": "19 pending, 0 approved, 5 completed",
+      "overdue_items": "3 items pending >48h (Charbel call, cross-sell email, data request)",
+      "open_incidents": "2 incidents logged, system failure ongoing"
     }
   },
   "escalations": [
-    "URGENT: Charbel call pending 53 hours - boss requested twice, requires immediate approval/execution",
-    "CRITICAL: Image generation API failure blocking all blog publication for 48+ hours",
-    "HIGH: Social platform connectivity - only TikTok connected, cannot execute multi-platform strategy",
-    "HIGH: 4 departments idle due to infrastructure dependencies"
+    "EMERGENCY: GitHub Actions workflows completely broken - 6 departments not triggering since 2026-03-11",
+    "EMERGENCY: Gemini image API down 48+ hours with 403 errors - blog publication blocked",
+    "EMERGENCY: Social platforms disconnected - only TikTok works, need Twitter/Instagram/Facebook/LinkedIn at app.postiz.com",
+    "CRITICAL: Process 3 queue items pending >48h including boss-requested Charbel call",
+    "CRITICAL: Generate emergency image batch - social media completely blocked"
   ],
   "priorities": [
-    "Fix image generation API or implement workaround for blog publication",
-    "Process overdue queue items immediately - especially boss-priority Charbel call",
-    "Reconnect social platforms (Twitter/Instagram/Facebook/LinkedIn) at app.postiz.com"
+    "1. EMERGENCY: Fix GitHub Actions or manually restart 6 offline departments",
+    "2. EMERGENCY: Fix Gemini API or implement OpenAI fallback for Monday blog",
+    "3. EMERGENCY: Connect social platforms at app.postiz.com to restore 80% lost capacity"
   ],
   "cross_department_handoffs": [
-    "Operations → Boss: URGENT queue approval needed for 3 items pending >48h",
-    "Visual → Social: Image generation must be fixed before social posting can resume at full capacity",
-    "Content → Visual: Blog publication blocked until header image can be generated"
+    "BLOCKED: SEO cannot provide briefs to Content (department offline)",
+    "BLOCKED: Content cannot publish blog (Gemini API down)",
+    "BLOCKED: Visual cannot generate images (Gemini API down)",
+    "BLOCKED: Social cannot post (no images + platforms disconnected)",
+    "BLOCKED: All workflows dependent on GitHub Actions (not triggering)"
   ],
-  "telegram_summary": "🚨 CRITICAL: Org operating at 20% capacity. Image API down 48h blocking blogs. Charbel call 53h overdue. Only TikTok social connected. 4 departments idle. Urgent attention needed."
+  "telegram_summary": "🚨 CODE RED STANDUP — 06:55 UTC\n\n6 departments offline 84+ hours (GitHub Actions broken)\nGemini API down 48+ hours (Monday blog blocked)\nSocial at 20% capacity (only TikTok connected)\n19 queue items backed up (3 critical >48h)\n\nIMMEDIATE ACTION NEEDED:\n1. Check GitHub Actions tab\n2. Fix Gemini API or use OpenAI fallback\n3. Connect platforms at app.postiz.com\n4. Process Charbel call (52+ hours pending)\n\nThis is complete operational breakdown requiring emergency intervention."
 }

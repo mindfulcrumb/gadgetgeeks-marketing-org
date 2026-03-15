@@ -185,22 +185,27 @@ def generate_image(prompt: str, aspect_ratio: str = "16:9") -> dict:
 def generate_blog_header(blog_title: str, blog_topic: str) -> dict:
     """Generate a photorealistic blog header image.
 
+    RULES — NEVER VIOLATE:
+    - NO phones, NO devices, NO screens in the image
+    - NO text, NO documents, NO readable writing, NO UI elements
+    - NO logos, NO watermarks, NO brand names
+    - Scene ONLY: environment, lighting, mood, atmosphere
+    - The image should FEEL like the topic without literally showing products
+
     Returns:
         {"image_bytes": bytes, "mime_type": str}
     """
     prompt = (
-        f"Photorealistic editorial photograph for a tech blog article titled "
-        f'"{blog_title}". '
-        f"Topic: {blog_topic}. "
-        f"Clean, modern composition with soft natural lighting. "
-        f"Shallow depth of field, shot on Sony A7IV with 35mm f/1.4 lens. "
-        f"Muted color palette with a slight teal-and-amber grade. "
-        f"CRITICAL: If phones are shown, they must NOT be mirrored. "
-        f"Rear camera module must be in the correct top-left position when viewing the back. "
-        f"Front-facing camera in the correct top-right notch/Dynamic Island position. "
-        f"Do NOT flip or mirror the phone orientation. "
-        f"No text, no watermarks, no logos. "
-        f"Wide 16:9 blog header image."
+        f"Photorealistic editorial photograph that evokes the mood of: {blog_topic}. "
+        f"Clean, modern environment shot. NO phones, NO devices, NO screens, NO text, "
+        f"NO documents, NO readable writing, NO packaging with labels, NO UI elements. "
+        f"Show ONLY: a clean workspace, natural materials, ambient environment, or abstract "
+        f"textures that suggest the topic through mood and atmosphere. "
+        f"Shallow depth of field, shot on Canon EOS R5 with 35mm f/1.4 lens. "
+        f"Soft natural window light, muted color palette with teal-and-amber grade. "
+        f"Kodak Portra 400 film emulation, fine organic grain. "
+        f"No text, no watermarks, no logos, no phones, no screens. "
+        f"Wide 16:9 editorial blog header. IMG_7291.CR3 unedited RAW."
     )
     return generate_image(prompt, aspect_ratio="16:9")
 

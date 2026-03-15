@@ -62,7 +62,7 @@
   ],
   "word_count": 695,
   "category": "trending",
-  "status": "ready_to_publish",
+  "status": "published",
   "anti_ai_audit": {
     "banned_words": 0,
     "structural_tells": 0,
@@ -97,5 +97,6 @@
   "scheduled_publish": "2026-03-15T18:00:00Z",
   "unblocked_at": "2026-03-15T18:32:00Z",
   "unblocked_by": "SCRIBE",
-  "unblocking_notes": "QA issues resolved: added 2 rhetorical questions, strengthened benefit bridges in Layer descriptions and FAQ, reduced em-dash count from 4 to 2. Content addresses trending crisis and ready for immediate publication despite infrastructure issues."
+  "unblocking_notes": "QA issues resolved: added 2 rhetorical questions, strengthened benefit bridges in Layer descriptions and FAQ, reduced em-dash count from 4 to 2. Content addresses trending crisis and ready for immediate publication despite infrastructure issues.",
+  "published_at": "2026-03-15T22:25:05.297251+00:00"
 }

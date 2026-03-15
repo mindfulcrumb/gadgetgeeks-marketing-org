@@ -134,10 +134,11 @@ Prompts MUST NOT ask AI to generate/render phone devices. AI-generated phones sh
 - **Product hero, deal/urgency, comparison prompts**: MUST have `"source": "product_photo"` and reference a `product_photo_id` from `config/product-photos.json`. These should NOT have an AI prompt at all.
 - **Lifestyle, sustainability prompts (phone in scene)**: The AI prompt MUST NOT include any phone/device in the scene. Must have `"composite_product"` field referencing a real product photo. Negative prompt MUST include "NO phone, NO device, NO screen".
 - **Blog headers / general (no phone)**: AI prompt is fine IF no phone is prominently featured.
-- Flag: ANY prompt that asks AI to generate, render, or include a phone/smartphone/device in the image
-- Fix: Change to `source: product_photo` for hero/deal/comparison, or add `composite_product` and remove phone from AI prompt for lifestyle
-- Severity: **BLOCK** — AI-rendered phones are an automatic fail, no exceptions
-- Reference: `config/product-photos.json` for available real product photos
+- **REGISTRY VALIDATION (CRITICAL)**: If `product_photo_id` or `composite_product` is set, the value MUST exist in `config/product-photos.json` → `products` keys. Currently ONLY `iphone_13` and `iphone_14` exist. Any other value (galaxy_s24_ultra, iphone_14_pro, iphone_15_pro_max, galaxy_s22, iphone_13_mini, iphone_15_pro, etc.) causes a downstream pipeline ERROR because the photo file doesn't exist. **AUTO-BLOCK any prompt with a product_photo_id not in the registry.**
+- Flag: ANY prompt that asks AI to generate, render, or include a phone/smartphone/device in the image. Also flag ANY prompt referencing a product_photo_id not in the registry.
+- Fix: Change to `source: product_photo` for hero/deal/comparison, or add `composite_product` and remove phone from AI prompt for lifestyle. If product_photo_id doesn't exist in registry, change to `iphone_13` or `iphone_14`, or set `composite_product: null` and skip phone composite.
+- Severity: **BLOCK** — AI-rendered phones AND invalid product_photo_ids are automatic fails, no exceptions
+- Reference: `config/product-photos.json` for available real product photos (currently: `iphone_13`, `iphone_14` ONLY)
 
 ---
 

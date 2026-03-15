@@ -14,7 +14,7 @@ from datetime import datetime, timezone
 
 
 GEMINI_API_BASE = "https://generativelanguage.googleapis.com/v1beta"
-GEMINI_IMAGE_MODEL = "gemini-3.1-flash-image-preview"
+GEMINI_IMAGE_MODEL = "gemini-2.0-flash-exp"
 
 # Aspect ratio to DALL-E 3 size mapping
 DALLE_SIZE_MAP = {
@@ -157,12 +157,8 @@ def generate_image(prompt: str, aspect_ratio: str = "16:9") -> dict:
             result = _generate_gemini(prompt, aspect_ratio)
             print(f"    [Gemini] Success")
             return result
-        except RuntimeError as e:
-            err_str = str(e)
-            if "429" in err_str or "quota" in err_str.lower():
-                print(f"    [Gemini] Quota exceeded — trying DALL-E fallback...")
-            else:
-                print(f"    [Gemini] Error: {err_str[:200]} — trying DALL-E fallback...")
+        except (RuntimeError, Exception) as e:
+            print(f"    [Gemini] Failed: {str(e)[:200]} — trying DALL-E fallback...")
 
     # Fallback to OpenAI DALL-E 3
     openai_key = os.environ.get("OPENAI_API_KEY", "")

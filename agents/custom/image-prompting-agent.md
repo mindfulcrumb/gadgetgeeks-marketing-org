@@ -98,10 +98,15 @@ Instead, use this two-layer approach:
 - Write prompts normally — AI generates the full image
 - These are tech/lifestyle scenes where no specific phone model needs to be visible
 
-### Available Product Photos (check `config/product-photos.json` for current list)
-- iPhone 13 — bundle cutout, professional product photo
-- iPhone 14 — bundle cutout, professional product photo
-- More models: check `missing_models` in product-photos.json and request from boss
+### Available Product Photos — ONLY THESE EXIST (from `config/product-photos.json`)
+- `iphone_13` — iPhone 13 bundle cutout, professional product photo
+- `iphone_14` — iPhone 14 bundle cutout, professional product photo
+
+**THAT'S IT. Only 2 products have real photos. DO NOT reference any other product_photo_id.**
+
+**HARD BLOCK**: If you set `"source": "product_photo"` or `"composite_product"`, the `product_photo_id` or `composite_product` value MUST be exactly `"iphone_13"` or `"iphone_14"`. Any other value (galaxy_s24_ultra, iphone_14_pro, iphone_15_pro_max, etc.) will cause a pipeline ERROR because those photos don't exist. For lifestyle/sustainability prompts where you want to show a different brand, set `"composite_product": null` and let CANVAS handle it with text overlays only — no phone composite.
+
+**DO NOT invent product photo IDs. DO NOT use model names not in the registry. This caused 9 pipeline errors on March 15.**
 
 ---
 

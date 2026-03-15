@@ -442,6 +442,30 @@
         "5. Add service account keys to GitHub Secrets"
       ],
       "id": "analytics_20260315_075946"
+    },
+    {
+      "issue": "Generated prompts reference Galaxy S24 Ultra, S22, and other Samsung models not in config/product-photos.json registry",
+      "impact": "CANVAS cannot composite real Samsung photos, may resort to AI-generated phones (violates Rule 25)",
+      "action_needed": "Add real Samsung Galaxy product photos to registry: S24 Ultra, S22, S21, S23 variants",
+      "urgency": "critical",
+      "blocking_prompts": [
+        "prompt_20260315_001",
+        "prompt_20260315_003",
+        "prompt_20260315_007",
+        "prompt_20260315_012"
+      ],
+      "id": "image_prompts_20260315_085809"
+    },
+    {
+      "issue": "Generated prompts reference iPhone 14 Pro, 15 Pro Max, 13 mini not confirmed in product registry",
+      "action_needed": "Verify and add missing iPhone variants to config/product-photos.json: 14 Pro, 15 Pro Max, 13 mini, other model variations",
+      "urgency": "high",
+      "blocking_prompts": [
+        "prompt_20260315_004",
+        "prompt_20260315_005",
+        "prompt_20260315_006"
+      ],
+      "id": "image_prompts_20260315_085809"
     }
   ],
   "approved": [],

@@ -1,30 +1,362 @@
 {
-  "prompts": [],
+  "prompts": [
+    {
+      "id": "prompt_20260315_001",
+      "use_case": "product_hero",
+      "source": "product_photo",
+      "platform": "tiktok",
+      "aspect_ratio": "9:16",
+      "prompt": null,
+      "product_photo_id": "galaxy_s24_ultra",
+      "design_instructions": "Use real Galaxy S24 Ultra product photo from config/product-photos.json. CANVAS applies: dark gradient background with teal accent lighting, text overlay emphasizing refurbished vs S25 Ultra new pricing comparison. TikTok vertical format.",
+      "text_overlay": {
+        "headline": "Galaxy S24 Ultra Refurbished",
+        "subline": "S25 Ultra features. 40% less price.",
+        "cta": "Shop Galaxy Deals"
+      },
+      "background_style": "dark gradient with teal rim lighting",
+      "driven_by": "x-intel trending: Galaxy S25 Ultra giveaway surge showing strong Samsung demand",
+      "platform_params": "--ar 9:16 --style raw --s 250",
+      "notes": "Capitalizes on S25 Ultra trending interest by positioning S24 Ultra refurbished as smart alternative",
+      "keywords_targeted": [
+        "galaxy s24 ultra",
+        "samsung refurbished"
+      ],
+      "recommended_tool": "product_photo_reference"
+    },
+    {
+      "id": "prompt_20260315_002",
+      "use_case": "product_hero",
+      "source": "product_photo",
+      "platform": "instagram",
+      "aspect_ratio": "1:1",
+      "prompt": null,
+      "product_photo_id": "iphone_13",
+      "design_instructions": "Use real iPhone 13 product photo. CANVAS applies: clean white background with subtle shadow, budget-friendly messaging overlay. Instagram square format for budget phone guidance content.",
+      "text_overlay": {
+        "headline": "iPhone 13 — Budget Winner",
+        "subline": "Still gets iOS updates. Under $350.",
+        "cta": "See Budget Guide"
+      },
+      "background_style": "clean white studio background",
+      "driven_by": "x-intel trending: Budget phone guidance requests getting 39 likes shows demand",
+      "platform_params": "--ar 1:1 --style raw --s 250",
+      "notes": "Responds to viral budget phone guidance request trend",
+      "keywords_targeted": [
+        "budget iphone",
+        "cheap iphone 13"
+      ],
+      "recommended_tool": "product_photo_reference"
+    },
+    {
+      "id": "prompt_20260315_003",
+      "use_case": "product_hero",
+      "source": "product_photo",
+      "platform": "facebook",
+      "aspect_ratio": "16:9",
+      "prompt": null,
+      "product_photo_id": "galaxy_s22",
+      "design_instructions": "Use real Galaxy S22 product photo. CANVAS applies: premium marble surface background, family-friendly messaging for budget-conscious parents. Facebook landscape format.",
+      "text_overlay": {
+        "headline": "Galaxy S22 — Perfect for Students",
+        "subline": "Premium features. Student budget.",
+        "cta": "Shop Student Deals"
+      },
+      "background_style": "marble surface with soft lighting",
+      "driven_by": "x-intel trending: Budget phone guidance + Galaxy surge combination",
+      "platform_params": "--ar 16:9 --style raw --s 250",
+      "notes": "Addresses budget guidance need with Samsung option",
+      "keywords_targeted": [
+        "galaxy s22 budget",
+        "student phone deals"
+      ],
+      "recommended_tool": "product_photo_reference"
+    },
+    {
+      "id": "prompt_20260315_004",
+      "use_case": "product_hero",
+      "source": "product_photo",
+      "platform": "tiktok",
+      "aspect_ratio": "9:16",
+      "prompt": null,
+      "product_photo_id": "iphone_14_pro",
+      "design_instructions": "Use real iPhone 14 Pro product photo. CANVAS applies: dark cinematic background with purple brand accent lighting, premium positioning against iPhone 17e. TikTok vertical format.",
+      "text_overlay": {
+        "headline": "iPhone 14 Pro Refurbished",
+        "subline": "Pro features. Non-Pro price.",
+        "cta": "Skip the iPhone 17e"
+      },
+      "background_style": "cinematic dark with purple accent rim lighting",
+      "driven_by": "x-intel trending: Refurbished vs new iPhone comparison continues momentum",
+      "platform_params": "--ar 9:16 --style raw --s 250",
+      "notes": "Continues iPhone 17e vs refurbished flagship positioning trend",
+      "keywords_targeted": [
+        "iphone 14 pro refurbished",
+        "iphone 17e alternative"
+      ],
+      "recommended_tool": "product_photo_reference"
+    },
+    {
+      "id": "prompt_20260315_005",
+      "use_case": "product_hero",
+      "source": "product_photo",
+      "platform": "instagram",
+      "aspect_ratio": "4:5",
+      "prompt": null,
+      "product_photo_id": "iphone_15_pro_max",
+      "design_instructions": "Use real iPhone 15 Pro Max product photo. CANVAS applies: premium black background with gold accent lighting, luxury positioning. Instagram portrait format for premium audience.",
+      "text_overlay": {
+        "headline": "iPhone 15 Pro Max",
+        "subline": "Titanium. Action Button. $400 off.",
+        "cta": "Shop Premium"
+      },
+      "background_style": "premium black with gold accent lighting",
+      "driven_by": "engagement data: Product hero with real photos expected 2-3x performance vs AI",
+      "platform_params": "--ar 4:5 --style raw --s 250",
+      "notes": "Premium positioning for high-end refurbished flagship",
+      "keywords_targeted": [
+        "iphone 15 pro max refurbished",
+        "premium refurbished"
+      ],
+      "recommended_tool": "product_photo_reference"
+    },
+    {
+      "id": "prompt_20260315_006",
+      "use_case": "product_hero",
+      "source": "product_photo",
+      "platform": "twitter",
+      "aspect_ratio": "16:9",
+      "prompt": null,
+      "product_photo_id": "iphone_13_mini",
+      "design_instructions": "Use real iPhone 13 mini product photo. CANVAS applies: bright, energetic background with teal brand color, compact phone messaging. Twitter landscape format.",
+      "text_overlay": {
+        "headline": "iPhone 13 mini — Compact Power",
+        "subline": "Full iPhone features. Pocket-sized.",
+        "cta": "Perfect Size"
+      },
+      "background_style": "bright white with teal accent elements",
+      "driven_by": "diversification: Need variety in iPhone models beyond 13/14 standard focus",
+      "platform_params": "--ar 16:9 --style raw --s 250",
+      "notes": "Addresses compact phone market segment",
+      "keywords_targeted": [
+        "iphone 13 mini",
+        "compact iphone"
+      ],
+      "recommended_tool": "product_photo_reference"
+    },
+    {
+      "id": "prompt_20260315_007",
+      "use_case": "comparison",
+      "source": "product_photo",
+      "platform": "instagram",
+      "aspect_ratio": "1:1",
+      "prompt": null,
+      "product_photo_id": "galaxy_s24_ultra",
+      "design_instructions": "CANVAS creates split layout: left side = Galaxy S25 Ultra stock photo (or mockup) with '$1,299 NEW' label, right side = real Galaxy S24 Ultra product photo with '$799 REFURBISHED' label. Include feature comparison highlighting 95% feature parity.",
+      "text_overlay": {
+        "headline": "S25 Ultra vs S24 Ultra Refurbished",
+        "subline": "95% same features. 38% less price.",
+        "cta": "Why Pay More?"
+      },
+      "driven_by": "x-intel trending: Galaxy S25 Ultra giveaway surge + comparison trend momentum",
+      "platform_params": "--ar 1:1 --style raw --s 250",
+      "notes": "Capitalizes on S25 Ultra buzz with smart refurbished alternative positioning",
+      "keywords_targeted": [
+        "galaxy s25 vs s24",
+        "samsung comparison"
+      ],
+      "recommended_tool": "product_photo_reference"
+    },
+    {
+      "id": "prompt_20260315_008",
+      "use_case": "comparison",
+      "source": "product_photo",
+      "platform": "tiktok",
+      "aspect_ratio": "9:16",
+      "prompt": null,
+      "product_photo_id": "iphone_15_pro",
+      "design_instructions": "CANVAS creates vertical split: top half = iPhone 17e mockup/concept with '$699 NEW (when released)' label, bottom half = real iPhone 15 Pro product photo with '$549 REFURBISHED NOW' label. Feature comparison showing Pro features vs base model.",
+      "text_overlay": {
+        "headline": "iPhone 17e vs 15 Pro Refurbished",
+        "subline": "Pro features vs base model. Available now.",
+        "cta": "Don't Wait & Pay More"
+      },
+      "driven_by": "x-intel trending: Refurbished vs new iPhone comparison + iPhone 17e positioning momentum",
+      "platform_params": "--ar 9:16 --style raw --s 250",
+      "notes": "Continues 3-day iPhone 17e comparison trend with TikTok vertical format",
+      "keywords_targeted": [
+        "iphone 17e vs refurbished",
+        "iphone comparison"
+      ],
+      "recommended_tool": "product_photo_reference"
+    },
+    {
+      "id": "prompt_20260315_009",
+      "use_case": "comparison",
+      "source": "product_photo",
+      "platform": "facebook",
+      "aspect_ratio": "16:9",
+      "prompt": null,
+      "product_photo_id": "iphone_13",
+      "design_instructions": "CANVAS creates side-by-side layout: left side = pile of cash/bills representing '$800+ for new phone', right side = real iPhone 13 product photo with '$349 + accessories bundle' pricing. Include savings calculator showing '$400+ saved'.",
+      "text_overlay": {
+        "headline": "New Phone Math vs Smart Phone Math",
+        "subline": "Same daily experience. $400+ saved.",
+        "cta": "Do the Math"
+      },
+      "driven_by": "engagement data: Customer testimonials with specific dollar amounts drive 40% higher engagement",
+      "platform_params": "--ar 16:9 --style raw --s 250",
+      "notes": "Uses specific dollar amounts proven to drive higher engagement",
+      "keywords_targeted": [
+        "phone savings calculator",
+        "budget phone math"
+      ],
+      "recommended_tool": "product_photo_reference"
+    },
+    {
+      "id": "prompt_20260315_010",
+      "use_case": "deal_urgency",
+      "source": "ai_generated",
+      "platform": "tiktok",
+      "aspect_ratio": "9:16",
+      "prompt": "Dynamic product display setup with dramatic lighting. Multiple smartphone boxes arranged on dark surface with gradient lighting from deep purple to teal. Phones NOT visible in frame - boxes only. Dramatic shadows, commercial photography lighting with strong key light from left creating depth. Abstract bokeh lights in background suggesting urgency and exclusivity. ARRI Alexa 35, Cooke Anamorphic lens, anamorphic oval bokeh, horizontal lens flare. Teal and orange color grade, crushed blacks, cinematic contrast. Fine grain. Commercial advertising photography, 8K. IMG_8801.CR3.",
+      "negative_prompt": "NO phones visible, NO screens, NO text on boxes, NO brand logos, NO people, NO hands, cartoon, CGI, plastic, fake, watermark, text overlay",
+      "design_instructions": "AI generates dramatic box/packaging scene. CANVAS adds urgent deal messaging and countdown timer overlay.",
+      "text_overlay": {
+        "headline": "48-Hour Flash Sale",
+        "subline": "Extra 15% off all bundles",
+        "cta": "Shop Before It Ends"
+      },
+      "driven_by": "calendar analysis: Need deal urgency content, missing from recent posts",
+      "platform_params": "--ar 9:16 --style raw --s 300",
+      "notes": "Creates urgency without showing specific products - CANVAS adds deal details",
+      "keywords_targeted": [
+        "phone deals",
+        "flash sale"
+      ],
+      "recommended_tool": "midjourney"
+    },
+    {
+      "id": "prompt_20260315_011",
+      "use_case": "deal_urgency",
+      "source": "ai_generated",
+      "platform": "instagram",
+      "aspect_ratio": "1:1",
+      "prompt": "Budget-friendly tech workspace scene. Clean white desk with scattered tech accessories - wireless charger, USB-C cables, phone case, AirPods case, but NO phones visible. Natural window light streaming across desk creating soft shadows. Person's hands reaching into frame wearing simple clothing - rolled sleeves, no jewelry except simple watch. Hands positioned as if placing or organizing accessories. Canon EOS R5, 50mm f/1.4, shallow depth of field. Kodak Portra 400 film emulation, warm natural grade. Documentary style, authentic moment. IMG_4827.CR3.",
+      "negative_prompt": "NO phone, NO device screens, NO text, NO brand logos on accessories, plastic skin, mannequin, CGI, airbrushed, cartoon",
+      "composite_product": "iphone_13",
+      "design_instructions": "AI generates accessory/workspace scene. CANVAS composites real iPhone 13 product photo into natural hand position and adds budget deal messaging.",
+      "driven_by": "x-intel trending: Budget phone guidance requests + need for deal urgency content",
+      "platform_params": "--ar 1:1 --style raw --s 250",
+      "notes": "Budget-focused deal scene with real phone composited by CANVAS",
+      "keywords_targeted": [
+        "budget phone deals",
+        "phone bundle deals"
+      ],
+      "recommended_tool": "midjourney"
+    },
+    {
+      "id": "prompt_20260315_012",
+      "use_case": "lifestyle",
+      "source": "ai_generated",
+      "platform": "tiktok",
+      "aspect_ratio": "9:16",
+      "prompt": "Young person with curly hair wearing oversized denim jacket and white sneakers sitting at trendy coffee shop. Looking down at hands resting on wooden table with warm ceramic mug nearby. NO phone visible - hands positioned naturally where phone would be for texting. Golden hour morning light streaming through large windows creating volumetric dust particles. Other customers blurred in background. Natural skin with visible pores, subsurface scattering, natural facial asymmetry. Canon EOS R5, 85mm f/1.2, shallow depth of field, subject sharp, creamy background bokeh. Kodak Portra 400 film emulation, warm amber grade, lifted shadows. Emmanuel Lubezki natural lighting. IMG_5512.CR3 unedited.",
+      "negative_prompt": "NO phone, NO device, NO screen, NO plastic skin, NO mannequin, NO CGI, NO airbrushed, NO doll-like, NO cartoon, NO text, NO age specification",
+      "composite_product": "galaxy_s22",
+      "design_instructions": "AI generates coffee shop lifestyle scene. CANVAS composites real Galaxy S22 product photo into natural hand position.",
+      "driven_by": "diversification: Need Samsung lifestyle content + TikTok vertical format priority",
+      "platform_params": "--ar 9:16 --style raw --s 250",
+      "notes": "Lifestyle scene for Galaxy content with TikTok format - real phone composited",
+      "keywords_targeted": [
+        "samsung lifestyle",
+        "galaxy s22 daily use"
+      ],
+      "recommended_tool": "midjourney"
+    },
+    {
+      "id": "prompt_20260315_013",
+      "use_case": "lifestyle",
+      "source": "ai_generated",
+      "platform": "instagram",
+      "aspect_ratio": "4:5",
+      "prompt": "Person with sleek bob haircut wearing minimalist black turtleneck sitting at modern desk workspace. Hands positioned naturally on desk surface with laptop partially visible, ceramic plant pot, and notebook nearby. NO phone in frame - natural hand positioning suggests phone interaction. Soft overcast window light creating even illumination. Natural skin texture with realistic detail, eye detail with iris texture and corneal catchlight. Modern Scandinavian interior with clean lines. Leica M11, 50mm f/1.4, natural color rendering. Documentary style photography, authentic candid moment. IMG_6834.CR3 unedited RAW file.",
+      "negative_prompt": "NO phone, NO device, NO screen, NO text, NO plastic skin, NO mannequin, NO CGI, NO airbrushed, NO doll-like, NO cartoon, NO age/race specification",
+      "composite_product": "iphone_15_pro",
+      "design_instructions": "AI generates modern workspace lifestyle scene. CANVAS composites real iPhone 15 Pro product photo into natural desk position.",
+      "driven_by": "engagement data: Lifestyle content needed for platform diversity + Instagram portrait format",
+      "platform_params": "--ar 4:5 --style raw --s 250",
+      "notes": "Professional lifestyle scene with iPhone 15 Pro composite for Instagram",
+      "keywords_targeted": [
+        "iphone professional use",
+        "premium lifestyle"
+      ],
+      "recommended_tool": "midjourney"
+    },
+    {
+      "id": "prompt_20260315_014",
+      "use_case": "sustainability",
+      "source": "ai_generated",
+      "platform": "instagram",
+      "aspect_ratio": "1:1",
+      "prompt": "Hands with natural nails and simple silver ring holding small potted succulent plant on reclaimed wood desk surface. Scattered around: canvas tote bag with 'Reduce Reuse' visible, reusable bamboo coffee cup, recycled cardboard packaging materials. NO phone visible in frame - hands positioned to suggest placing plant next to where phone would rest. Soft natural window light creating gentle shadows. Documentary style environmental consciousness without being preachy. Natural skin texture, realistic hand positioning. Leica M11, 50mm f/1.4, natural color palette emphasizing earth tones. Kodak Tri-X 400 black and white film stock converted to subtle color. IMG_7945.CR3 authentic moment.",
+      "negative_prompt": "NO phone, NO device, NO screen, NO text, NO plastic, NO CGI, NO mannequin, NO airbrushed, NO cartoon, NO fake plants",
+      "composite_product": "iphone_13",
+      "design_instructions": "AI generates sustainability-focused scene with natural elements. CANVAS composites real iPhone 13 product photo next to plant in natural arrangement.",
+      "driven_by": "lens-focus-feedback: Sustainability underperforming but still needed for eco-conscious audience segment",
+      "platform_params": "--ar 1:1 --style raw --s 250",
+      "notes": "Reduced sustainability allocation per feedback, but maintains eco messaging for targeted audience",
+      "keywords_targeted": [
+        "sustainable phones",
+        "eco refurbished"
+      ],
+      "recommended_tool": "midjourney"
+    }
+  ],
   "folders": {
     "product_hero": {
       "label": "Product Hero Shots",
-      "description": "Clean product photography — Phase One IQ4, macro lens, studio lighting",
-      "prompts": []
+      "description": "Clean product photography — Real product photos with branded backgrounds",
+      "prompts": [
+        "prompt_20260315_001",
+        "prompt_20260315_002",
+        "prompt_20260315_003",
+        "prompt_20260315_004",
+        "prompt_20260315_005",
+        "prompt_20260315_006"
+      ]
     },
     "lifestyle": {
       "label": "Lifestyle / Social",
-      "description": "People using phones in real settings — Canon R5, Portra 400, natural light",
-      "prompts": []
+      "description": "People using phones in real settings — AI scene + real phone composite",
+      "prompts": [
+        "prompt_20260315_012",
+        "prompt_20260315_013"
+      ]
     },
     "sustainability": {
       "label": "Sustainability / Eco",
-      "description": "Environmental messaging — Leica M11, earth tones, nature settings",
-      "prompts": []
+      "description": "Environmental messaging — AI scene + real phone composite",
+      "prompts": [
+        "prompt_20260315_014"
+      ]
     },
     "deal_urgency": {
       "label": "Deals / Urgency",
       "description": "Sale promotions — dynamic lighting, bold framing, energy",
-      "prompts": []
+      "prompts": [
+        "prompt_20260315_010",
+        "prompt_20260315_011"
+      ]
     },
     "comparison": {
       "label": "Before / After / Comparison",
-      "description": "Side-by-side refurbished vs new — split frame, consistent lighting",
-      "prompts": []
+      "description": "Side-by-side refurbished vs new — Real product photos with comparison layouts",
+      "prompts": [
+        "prompt_20260315_007",
+        "prompt_20260315_008",
+        "prompt_20260315_009"
+      ]
     }
   },
   "qa_summary": {
@@ -34,7 +366,7 @@
     "needs_work": 0,
     "blocked": 0
   },
-  "last_generated": null,
+  "last_generated": "2026-03-15 08:56 UTC",
   "last_reviewed": null,
-  "notes": "LENS generates prompts into folders by use_case. FOCUS reviews and scores them. Prompts with EXCELLENT/GOOD rating go to production."
+  "notes": "EMERGENCY batch generated due to zero unused images. Heavy focus on Galaxy content (trending but missing from recent posts) and budget guidance (39 likes trend). All product hero prompts use real photos per Rule 25. Lifestyle/sustainability prompts generate scenes only - CANVAS composites real phones. Style allocation follows engagement feedback: 6 hero, 3 comparison, 2 deal, 2 lifestyle, 1 sustainability."
 }

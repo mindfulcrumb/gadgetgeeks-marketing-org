@@ -56,9 +56,9 @@
       "runs_total": 6
     },
     "image_prompts": {
-      "last_run": "2026-03-15T08:58:09.648198+00:00",
+      "last_run": "2026-03-15T21:46:10.767568+00:00",
       "status": "ok",
-      "runs_total": 1
+      "runs_total": 2
     },
     "prompt_qa": {
       "last_run": "2026-03-15T09:21:13.577786+00:00",

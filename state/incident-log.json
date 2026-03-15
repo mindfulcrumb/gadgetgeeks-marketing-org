@@ -1,131 +1,31 @@
-{
-  "_docs": "Incident log for the GadgetGeeks Marketing Org. Every mistake, fix, and lesson learned goes here. The GM reads this weekly. Every agent reads their relevant incidents before running. The boss reviews this to delegate and correct. Format: newest first.",
-  "incidents": [
-    {
-      "id": "INC-009",
-      "date": "2026-03-14",
-      "severity": "critical",
-      "department": "social",
-      "agents_involved": ["LENS (image prompts)", "FOCUS (prompt QA)", "CANVAS (canva designer)"],
-      "title": "AI-generated phone images look obviously fake — cameras where screens should be",
-      "what_happened": "AI image generation (Gemini/DALL-E) produced phone images where the camera module appeared on the screen side, proportions were wrong, and logos were garbled. These images are instantly recognizable as AI-generated and destroy brand credibility. The test image (test-gemini.png) clearly showed a phone with the camera array facing the viewer where the screen should be.",
-      "root_cause": "1) AI image models cannot reliably generate realistic phone hardware — they hallucinate camera placement, button positions, screen bezels, and brand logos. 2) The pipeline had no mechanism to use real product photos. 3) LENS was instructed to describe phones in AI prompts, expecting AI to render them accurately. 4) No QA check existed to catch AI-rendered phone quality issues.",
-      "fix_applied": "1) Created config/product-photos.json — registry of REAL product photos (Apple/Samsung renders, professional cutouts). 2) Added Rule 25 to operations-rulebook.json: NEVER ask AI to generate phones. 3) Updated LENS with two-layer approach: AI generates scenes/backgrounds ONLY, real product photos provide the phones. 4) Added FOCUS Check 19: auto-blocks any prompt asking AI to render phones. 5) Updated canva_designer.py with composite_product_on_background() and composite_product_on_scene() functions. 6) Copied real product photos (iPhone 13, iPhone 14) to assets/product-photos/.",
-      "lesson": "AI cannot generate realistic phone hardware. Period. Always use real product photos for any image where a phone device needs to be visible. AI is good at scenes, environments, people, and lighting — not at rendering specific consumer electronics with correct brand details.",
-      "preventive_rule": "Rule 25 in operations-rulebook.json. FOCUS Check 19 auto-blocks AI phone rendering. config/product-photos.json is the single source of truth for available product images.",
-      "status": "resolved"
+[
+  {
+    "id": "INC-006",
+    "timestamp": "2026-03-15T14:53:00Z",
+    "agent": "PRESS",
+    "type": "publication_blocked",
+    "severity": "high",
+    "issue": "Blog publication blocked due to missing header image and context files",
+    "details": {
+      "article_id": "blog_20260315_001",
+      "article_title": "What Secure Packaging Actually Looks Like (No Broken Seals Here)",
+      "scheduled_publish": "2026-03-15T18:00:00Z",
+      "blocking_factors": [
+        "No matching image prompt in image-prompts.json for article slug",
+        "Cannot load required context files (department-context.md, niche.json, store-inventory.json)",
+        "Image generation infrastructure down per queue alerts (Gemini API 403 errors)"
+      ]
     },
-    {
-      "id": "INC-008",
-      "date": "2026-03-14",
-      "severity": "critical",
-      "department": "social",
-      "agents_involved": ["VIBE (social morning)", "LENS (image prompts)", "CANVAS (canva designer)"],
-      "title": "Same images posted repeatedly — no deduplication, no data-driven selection",
-      "what_happened": "Postiz scheduled posts reused the same 2 images (iPhone 15 Pro Max hero, iPhone 14 Pro hero) across multiple posts and multiple days. Only 2 of 10 image prompts generated (Gemini API 429 quota exhausted 48+ hours). Social morning agent had no dedup logic. LENS generated prompts blind without checking trending data. Canva designer recreated designs from same source images daily.",
-      "root_cause": "1) Gemini free tier quota exhausted. 2) No image usage tracking. 3) LENS did not read x-intel or engagement data. 4) No cross-day dedup. 5) No fallback image provider.",
-      "fix_applied": "1) Added Ops Rulebook Rules 21-24. 2) Updated VIBE with burned images tracking. 3) Updated LENS with mandatory data reads. 4) Updated FOCUS with Check 18. 5) Updated social afternoon with structured feedback. 6) Added OpenAI DALL-E 3 fallback to image_gen.py. 7) Added short-form blog support to SCRIBE.",
-      "lesson": "Never post without checking what was already posted. Never generate content blind. Always have a fallback API. Image reuse looks sloppy and unprofessional.",
-      "preventive_rule": "Rules 21-24 in operations-rulebook.json. Add OPENAI_API_KEY as fallback.",
-      "status": "in_progress"
-    },
-    {
-      "id": "INC-007",
-      "date": "2026-03-12",
-      "severity": "critical",
-      "department": "content",
-      "agents_involved": ["PRESS (telegram_bot.py)", "manual publish (bypassed pipeline)"],
-      "title": "Blog #2 published without header image — pipeline bypassed",
-      "what_happened": "Blog 'Cheap Refurbished Phones' was published to Shopify via direct articleCreate call during a manual session, bypassing _auto_publish_blog() which contains the image generation step. The blog went live at gadgetgeekspro.com/blogs/news/cheap-refurbished-phones-guide with NO header image. Article ID: gid://shopify/Article/597502787835.",
-      "root_cause": "Publication happened outside the autonomous pipeline. The articleCreate was called directly from a local session without GEMINI_API_KEY, bypassing the _auto_publish_blog() function which generates the image, blocks on failure, and then publishes.",
-      "fix_applied": "1) Added /fix_image command to Telegram bot — retroactively generates and attaches images to published blogs via articleUpdate. 2) Added Rule 11 to operations-rulebook.json: EVERY blog MUST have a header image, publication BLOCKED without one, all publishing MUST go through _auto_publish_blog(). 3) Added Rule 12: all blog workflows run daily. 4) Changed image-generate.yml to daily schedule. 5) /fix_image cheap-refurbished-phones-guide will be triggered via GitHub Actions to fix the published blog.",
-      "lesson": "NEVER publish a blog outside of the autonomous pipeline. _auto_publish_blog() is the ONLY code path that creates Shopify articles. Local/manual sessions must not bypass the pipeline because they lack the API keys (GEMINI_API_KEY) needed for image generation.",
-      "preventive_rule": "Rule 11 in operations-rulebook.json: All publication MUST go through _auto_publish_blog(). No direct articleCreate calls. If image generation fails, publication is BLOCKED. /fix_image exists as a safety net but should never be needed.",
-      "status": "in_progress"
-    },
-    {
-      "id": "INC-006",
-      "date": "2026-03-12",
-      "severity": "high",
-      "department": "operations",
-      "agents_involved": ["telegram_bot.py", "all agents"],
-      "title": "Dead-end approvals — boss approved SEO recommendation but nothing happened",
-      "what_happened": "Boss approved queue item seo_20260312_001430 (SEO meta title/description update for Samsung collection) via /approve on Telegram. The system responded 'Approved: [summary]' but took NO action. The SEO change was never applied to Shopify. Boss expected seamless execution — approve means it happens. The system had no action handler for seo_recommendation type items. Additionally, queue items had inconsistent types ('dialer' instead of 'dialer_call', 'content_brief' vs 'seo_content_brief') making routing impossible.",
-      "root_cause": "1) _cmd_approve only had one action handler (blog_publish). All other types were approved with a generic message and no follow-up action. 2) No operations rulebook existed — agents created queue items with ad-hoc types and no guarantee that approval would trigger anything. 3) No validation that a queue item's type has an action handler before it gets queued.",
-      "fix_applied": "1) Created config/operations-rulebook.json — 10 rules covering queue format, allowed types, action mapping, pipeline flow, link validation, copy quality, notifications, incident logging, no dead ends, and agent independence. 2) Rewrote _cmd_approve to route EVERY item type to a specific action handler. 3) Added handlers: _apply_seo_recommendation (Shopify GraphQL update), _queue_content_brief (adds to blog pipeline), _post_social_reply (X API), _send_email_campaign (Resend), _execute_dialer_call (Vapi), _process_data_request (data fetch). 4) Unknown types now log an incident and notify the boss instead of silently doing nothing.",
-      "lesson": "Every approval MUST result in a visible action. If the system can't automate something, it must tell the boss explicitly what to do manually. No silent dead ends. The operations rulebook is the law — every agent reads it.",
-      "preventive_rule": "Rule 8 in operations-rulebook.json: Before adding an item to queue.json, verify the type maps to an action handler. If no handler exists, don't queue it. Every /approve must produce: (1) an action, (2) a confirmation, (3) a way to verify.",
-      "status": "resolved"
-    },
-    {
-      "id": "INC-005",
-      "date": "2026-03-11",
-      "severity": "critical",
-      "department": "content",
-      "agents_involved": ["LENS (image_gen.py)"],
-      "title": "Imagen 3 API deprecated — blog published without header image",
-      "what_happened": "Blog was auto-published to Shopify but the header image was missing. The image_gen.py script called imagen-3.0-generate-002 which returned 404 — Google had deprecated the endpoint. The auto-publish flow in telegram_bot.py silently caught the error and published without an image instead of blocking.",
-      "root_cause": "Hardcoded model version (imagen-3.0-generate-002) that Google deprecated. No model availability check. Error handling in auto-publish swallowed the failure instead of blocking publication.",
-      "fix_applied": "Updated image_gen.py to use imagen-4.0-generate-001. Manually generated and attached image via Shopify staged upload + articleUpdate.",
-      "lesson": "Pin API model versions in config, not code. When image generation fails, block publication and notify on Telegram — never publish without the image silently.",
-      "preventive_rule": "PRESS and telegram_bot.py: if image generation fails, set status to 'publish_blocked' and send Telegram alert. Do NOT publish without an image.",
-      "status": "resolved"
-    },
-    {
-      "id": "INC-004",
-      "date": "2026-03-11",
-      "severity": "critical",
-      "department": "content",
-      "agents_involved": ["SCRIBE (blog writer)", "QUILL (blog QA)"],
-      "title": "All blog internal links pointed to nonexistent product/page handles",
-      "what_happened": "Published blog had 6 broken links. Product links used wrong format (e.g., /products/iphone-14-pro-max-refurbished instead of /products/apple-iphone-14-pro-max). Page links pointed to pages that don't exist (/pages/warranty, /pages/grading-guide, /pages/our-inspection-process).",
-      "root_cause": "SCRIBE's agent prompt contained fabricated product handles in its Internal Linking section. No validation existed to check links against real store inventory before publishing. QUILL had no link validation check.",
-      "fix_applied": "1) Created config/store-inventory.json with all real product/collection/page handles + 95 aliases. 2) Added Check 26 (Link Validation) to copy_audit.py — any broken link = CRITICAL block. 3) Updated SCRIBE's prompt with correct handles and 'common mistakes to avoid' section. 4) Updated QUILL to document Check 26. 5) Fixed all 6 links in blog-pipeline.json and pushed corrected article to Shopify.",
-      "lesson": "Never trust agent-generated URLs. Every link must be validated against a single source of truth (store-inventory.json) before publication.",
-      "preventive_rule": "SCRIBE: always read config/store-inventory.json before writing links. copy_audit.py Check 26 blocks any blog with invalid handles. PRESS: verify all links before Shopify push.",
-      "status": "resolved"
-    },
-    {
-      "id": "INC-003",
-      "date": "2026-03-11",
-      "severity": "critical",
-      "department": "content",
-      "agents_involved": ["SCRIBE (blog writer)", "QUILL (blog QA)"],
-      "title": "Blog published with AI-generated copy — SCRIBE self-graded as GOOD, actual score was BLOCKED",
-      "what_happened": "First blog post ('Activation Lock Guide') was published with copy that had 6 critical violations and 3 warnings. SCRIBE's self-reported anti_ai_audit said 'PASS' with rating 'GOOD'. Actual independent scan: BLOCKED. Violations included staccato machine-gun fragments, period-conjunction patterns, transition word starters, marketing clichés ('selling peace of mind'), and contraction rate below threshold (67% vs 75% required).",
-      "root_cause": "No independent QA agent existed. SCRIBE was grading its own work and always reporting PASS. The pipeline had no enforcement gate between writing and publishing.",
-      "fix_applied": "1) Created QUILL agent (blog-qa-agent.md) as independent copy enforcer. 2) Created copy_audit.py — automated 26-check scanner that runs in GitHub Actions. 3) Added blog-qa.yml workflow: scanner runs BEFORE QUILL, blocks publication on failures. 4) Rewrote blog from scratch — went from BLOCKED (6 critical) to EXCELLENT (0 critical). 5) Rule: SCRIBE's self-reported audit is advisory only — QUILL's independent scan is gospel.",
-      "lesson": "Never let a writer grade their own work. Independent QA with automated enforcement is mandatory. Self-reported scores are advisory only.",
-      "preventive_rule": "Pipeline: SCRIBE writes → copy_audit.py scans (automated, 26 checks) → QUILL reviews (deep qualitative) → only then PRESS publishes. Any critical violation = publication blocked.",
-      "status": "resolved"
-    },
-    {
-      "id": "INC-002",
-      "date": "2026-03-11",
-      "severity": "high",
-      "department": "engineering",
-      "agents_involved": ["telegram_bot.py", "image_gen.py"],
-      "title": "Shopify credentials hardcoded in source code",
-      "what_happened": "telegram_bot.py and image_gen.py had Shopify client_id and client_secret as default values in os.environ.get() calls. This means credentials would be visible in the git repo.",
-      "root_cause": "During initial development, credentials were added as fallback defaults for testing and never removed.",
-      "fix_applied": "Removed all hardcoded credential defaults. Scripts now use empty string defaults and fail explicitly if env vars are not set. All credentials must come from GitHub Secrets or environment variables.",
-      "lesson": "Never put credentials in source code, even as 'defaults'. Scripts must fail loudly when credentials are missing, not fall back to hardcoded values.",
-      "preventive_rule": "All API keys, tokens, and secrets: os.environ.get('KEY', '') only — empty default, explicit error if missing. Never commit credentials.",
-      "status": "resolved"
-    },
-    {
-      "id": "INC-001",
-      "date": "2026-03-11",
-      "severity": "medium",
-      "department": "content",
-      "agents_involved": ["copy_audit.py"],
-      "title": "Banned word 'unlock' false positive in activation lock content",
-      "what_happened": "The copy scanner flagged 'unlock' as a banned word in the activation lock blog, even though it was used literally (not as marketing fluff). 'Unlock activation lock' is a technical term, not the metaphorical 'unlock your potential' usage the rule targets.",
-      "root_cause": "Banned word scanner had no context awareness — it flagged every instance of every banned word regardless of whether the usage was literal or metaphorical.",
-      "fix_applied": "Added context-sensitive checking to copy_audit.py. Words like 'unlock', 'navigate', 'journey', 'landscape' now check surrounding text (±40 chars) against literal context patterns. If the usage matches a literal pattern (e.g., 'activation lock', 'navigate to', 'carrier unlock'), the flag is skipped.",
-      "lesson": "Banned word lists need context awareness. The same word can be marketing fluff in one context and a precise technical term in another.",
-      "preventive_rule": "When adding new banned words to copy-rules.json, consider if the word has legitimate literal uses in refurbished phone content. If yes, add it to the context_sensitive set with appropriate literal_contexts patterns.",
-      "status": "resolved"
-    }
-  ]
-}
+    "impact": "Article scheduled for 18:00 UTC publication cannot proceed. Scheduled content delivery compromised.",
+    "preventive_actions_taken": [
+      "Blocked publication per Rule 11 rather than proceeding without header image",
+      "Updated pipeline status to 'publish_blocked'",
+      "Created queue item for human review and infrastructure fixes"
+    ],
+    "resolution_needed": [
+      "Generate appropriate header image prompt for packaging security theme",
+      "Fix image generation API or implement fallback",
+      "Restore access to required context files"
+    ]
+  }
+]

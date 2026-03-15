@@ -62,7 +62,7 @@
   ],
   "word_count": 623,
   "category": "trending",
-  "status": "qa_approved",
+  "status": "publish_blocked",
   "anti_ai_audit": {
     "banned_words": 0,
     "structural_tells": 0,
@@ -119,5 +119,13 @@
   "qa_reviewed_at": "2026-03-15T13:48:00Z",
   "qa_reviewed_by": "QUILL",
   "created": "2026-03-15T12:51:00Z",
-  "scheduled_publish": "2026-03-15T18:00:00Z"
+  "scheduled_publish": "2026-03-15T18:00:00Z",
+  "blocked_at": "2026-03-15T14:53:00Z",
+  "blocked_by": "PRESS",
+  "blocking_reasons": [
+    "No header image available - no matching prompt in image-prompts.json",
+    "Missing required context files: department-context.md, niche.json, store-inventory.json",
+    "Cannot validate product links without store inventory data",
+    "Image generation infrastructure down per queue alerts"
+  ]
 }

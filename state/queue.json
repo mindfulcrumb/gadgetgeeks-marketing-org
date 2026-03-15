@@ -487,6 +487,36 @@
       "key_issue": "LENS misunderstands Rule 25 for lifestyle content - generating scenes designed for phone compositing violates the rule's intent",
       "solution": "Lifestyle content should use product photos with CANVAS backgrounds, not AI composite approach",
       "id": "prompt_qa_20260315_092113"
+    },
+    {
+      "article_title": "What Secure Packaging Actually Looks Like (No Broken Seals Here)",
+      "scheduled_publish": "2026-03-15T18:00:00Z",
+      "blocking_issues": [
+        {
+          "issue": "No header image available",
+          "details": "No prompt in image-prompts.json matches article slug 'secure-refurbished-phone-packaging-standards'",
+          "required_action": "LENS must generate header image prompt for packaging security article"
+        },
+        {
+          "issue": "Missing context files",
+          "details": "Cannot load department-context.md, niche.json, or store-inventory.json",
+          "required_action": "Load required context files to validate links and follow brand voice"
+        },
+        {
+          "issue": "Image infrastructure down",
+          "details": "Multiple queue alerts report Gemini API failures blocking image generation",
+          "required_action": "Fix image generation API or implement alternative"
+        }
+      ],
+      "article_ready_except_images": true,
+      "content_word_count": 623,
+      "qa_status": "GOOD - ready for publication once images resolved",
+      "id": "blog_publish_20260315_145518"
+    },
+    {
+      "alert_type": "CRITICAL",
+      "message": "🚨 PRESS CRITICAL ALERT — 14:53 UTC\nType: PUBLICATION BLOCKED\nIssue: Scheduled blog cannot publish\n\nBLOCKED ARTICLE:\n• 'What Secure Packaging Actually Looks Like' \n• Scheduled: TODAY 18:00 UTC (3 hours)\n• Status: QA approved, ready except images\n\nBLOCKING ISSUES:\n• No header image prompt exists for this article\n• Cannot load required context files\n• Image generation API still down (Gemini 403 errors)\n• Missing store inventory for link validation\n\nACTION NEEDED:\n1. LENS must generate header image prompt for packaging theme\n2. Fix image API or implement fallback immediately  \n3. Restore access to context files\n4. Consider manual image upload as emergency workaround\n\nThis is the second scheduled publication blocked this week. System reliability critical.",
+      "id": "blog_publish_20260315_145518"
     }
   ],
   "approved": [],

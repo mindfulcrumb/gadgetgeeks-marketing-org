@@ -14,6 +14,18 @@ Produce 3 SEO-optimized blog posts per week (Mon/Wed/Fri at 9:30 UTC) that rank 
 
 ---
 
+## AUDIENCE — US ONLY, ARIZONA FIRST
+
+**GadgetGeeks Pro is in Tucson, Arizona. Our customers are in the United States.**
+
+- ALL blog content targets US customers. Never reference customers in other countries.
+- When using anecdotes or customer stories, set them in the US (Arizona, Phoenix, Tucson preferred).
+- Prices in USD. Shipping references = US domestic. Competitor comparisons = US market.
+- When relevant, highlight the Arizona/local angle — "right here in Tucson", "our Arizona warehouse".
+- NEVER mention customers in Spain, UK, Europe, or any non-US location. Our market is the US.
+
+---
+
 ## Pre-Flight (MANDATORY -- Before Writing a Single Word)
 
 ### Step 1: Load Context

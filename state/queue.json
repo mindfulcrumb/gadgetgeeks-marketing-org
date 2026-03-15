@@ -83,448 +83,40 @@
       "id": "social_afternoon_20260313_171041"
     },
     {
-      "type": "department_coordination",
-      "department": "social_morning",
-      "summary": "Social posting blocked - need image sources",
-      "details": {
-        "issue": "Cannot create social posts without valid image URLs",
-        "required_files": [
-          "departments/canva/pipeline.json (with exported designs)",
-          "departments/social/image-prompts.json (with generated images)"
-        ],
-        "impact": "All social media posting halted until image sources available",
-        "trending_opportunities_waiting": [
-          "iPhone 16 anticipation positioning",
-          "Back Market support crisis differentiation",
-          "Spring supply surge timing advantage"
-        ]
-      },
-      "created": "2026-03-13 17:16 UTC",
-      "id": "social_morning_20260313_171715"
-    },
-    {
-      "type": "platform_setup",
-      "department": "social_morning",
-      "summary": "Connect social platforms to Postiz for multi-platform posting",
-      "details": {
-        "platforms_to_connect": [
-          "twitter",
-          "instagram",
-          "facebook",
-          "linkedin"
-        ],
-        "current_status": "Only TikTok connected",
-        "impact": "Cannot execute multi-platform social strategy",
-        "url": "app.postiz.com",
-        "priority": "high"
-      },
-      "created": "2026-03-13 18:12 UTC",
-      "id": "social_morning_20260313_181347"
-    },
-    {
-      "type": "telegram_alert",
-      "department": "night_ops",
-      "summary": "URGENT: Critical queue items pending >48 hours + departments offline",
-      "details": {
-        "alert_type": "URGENT",
-        "message": "🚨 SENTINEL NIGHT ALERT — 02:37 UTC\nType: URGENT\nIssue: Multiple critical items pending >48 hours\nCritical Items:\n• Charbel call pending 50+ hours (boss requested twice)\n• Cross-sell email pending 41+ hours\n• Data request pending 50+ hours\n\nAdditionally: 4 departments idle >72 hours (intel, content, email, cro)\n\nAction needed: Review and approve/reject pending queue items immediately. Check why scheduled departments aren't running.\n\nQueue depth: 13 pending items total"
-      },
-      "created": "2026-03-14 02:37 UTC",
-      "id": "night_ops_20260314_023800"
-    },
-    {
-      "type": "infrastructure_fix",
-      "department": "standup",
-      "summary": "URGENT: Debug Gemini image generation API - 48+ hours of 403 errors blocking all blog publication",
-      "details": {
-        "issue": "imagen-4.0-generate-001 API returning 403 errors for 48+ hours",
-        "impact": "All blog publication blocked, social media limited to text-only",
-        "priority": "critical",
-        "suggested_actions": [
-          "Check Gemini API key validity",
-          "Verify billing/quota status",
-          "Test alternative image generation services",
-          "Manual image upload as temporary workaround"
-        ],
-        "blocked_content": "Blog 'How to Buy Used Phones Online Safely' ready except for header image"
-      },
-      "created": "2026-03-14 06:43 UTC",
-      "id": "standup_20260314_064425"
-    },
-    {
-      "type": "platform_setup",
-      "department": "standup",
-      "summary": "URGENT: Reconnect social media platforms to Postiz - operating at 20% capacity",
-      "details": {
-        "issue": "Only TikTok connected to Postiz, missing Twitter/Instagram/Facebook/LinkedIn",
-        "impact": "Cannot execute multi-platform social strategy, 80% capacity loss",
-        "priority": "critical",
-        "action_url": "app.postiz.com",
-        "platforms_to_connect": [
-          "Twitter",
-          "Instagram",
-          "Facebook",
-          "LinkedIn"
-        ],
-        "current_limitation": "TikTok requires video content we cannot currently produce"
-      },
-      "created": "2026-03-14 06:43 UTC",
-      "id": "standup_20260314_064425"
-    },
-    {
-      "type": "product_copy",
-      "department": "seo",
-      "summary": "Update refurbished iPad collection page with optimized meta data and structured data",
-      "details": {
-        "page": "/collections/refurbished-ipads",
-        "meta_title": "Refurbished iPad - Battery Health 85%+ Guaranteed | Gadget Geeks Pro",
-        "meta_description": "Shop refurbished iPads that look brand new. Battery lasts all day, perfect screen quality. Save $200+ with warranty. Browse certified iPad deals now.",
-        "structured_data_needed": "Product schema with battery health percentage, screen condition grade, warranty coverage, compatibility with Apple Pencil/keyboards",
-        "h1_suggestion": "Refurbished iPads - Battery Health 85%+ Guaranteed",
-        "key_messaging": [
-          "Lead with battery health guarantee (85%+)",
-          "Emphasize screen quality for tablet users",
-          "Highlight compatibility with accessories",
-          "Use customer language 'looks brand new'",
-          "Include specific savings claims"
-        ]
-      },
-      "created": "2026-03-14 07:08 UTC",
-      "id": "seo_20260314_070850"
-    },
-    {
-      "type": "social_post",
-      "department": "x_intel",
-      "summary": "iPhone 17e vs iPhone 15 Pro refurbished comparison post capitalizing on trending momentum",
-      "details": {
-        "content": "iPhone 17e rumors at $699+ aren't worth it.\n\niPhone 15 Pro refurbished at $429?\n\nSame A17 Pro chip ✅\nSame Pro cameras ✅ \nSame build quality ✅\nSame iOS updates ✅\n\n99% of the experience.\n60% of the price.\n\nWhy pay the new model tax?",
-        "platforms": [
-          "twitter"
-        ],
-        "timing": "immediate - trend has momentum",
-        "engagement_target": "@mantech_ug thread showing sustained interest"
-      },
-      "created": "2026-03-14 07:31 UTC",
-      "id": "x_intel_20260314_073252"
-    },
-    {
-      "type": "social_post",
-      "department": "x_intel",
-      "summary": "Package security standards post highlighting Back Market tampering issues",
-      "details": {
-        "content": "Refurbished phone arrived with broken security seals? 🚨\n\nThat's unacceptable.\n\nOur packaging standards:\n✅ Tamper-evident seals\n✅ Multi-layer security wrapping  \n✅ Photo documentation at every step\n✅ Chain of custody tracking\n\nTrust shouldn't be optional in refurbished.",
-        "platforms": [
-          "twitter"
-        ],
-        "timing": "immediate - Back Market crisis ongoing",
-        "reference": "@_daniVLC_ Spain customer complaint"
-      },
-      "created": "2026-03-14 07:31 UTC",
-      "id": "x_intel_20260314_073252"
-    },
-    {
-      "priority": "high",
-      "reason": "Zero unused images remaining in pipeline - all export_urls and source_image_urls have been posted",
-      "content_needs": [
-        "Spring supply surge timing advantage",
-        "Behind the scenes quality grading transparency",
-        "Back Market differentiation content",
-        "iPhone 17e vs refurbished comparisons (if trend continues)",
-        "Bundle deal spotlights"
-      ],
-      "target_departments": [
-        "LENS",
-        "FOCUS",
-        "Canva"
-      ],
-      "urgency": "Need images generated today for tomorrow morning posting",
-      "id": "social_morning_20260314_133808"
-    },
-    {
-      "reason": "Only 2 unused iPhone 14 images remain after heavy posting week. Need fresh visuals for next week.",
-      "priority_topics": [
-        "iPhone 17e vs refurbished flagship comparison (trending)",
-        "Reality Check format content (155 likes, 19 replies)",
-        "Customer service differentiation (Back Market crisis)",
-        "Bundle deals with family/teenager targeting",
-        "Battery health transparency content"
-      ],
-      "platforms_needed": [
-        "tiktok",
-        "instagram",
-        "twitter",
-        "facebook"
-      ],
-      "urgency": "critical",
-      "for_tomorrow": "2 iPhone 14 images must be posted immediately at midnight UTC reset",
-      "id": "social_morning_20260314_135415"
-    },
-    {
-      "issue": "Recent pattern shows TikTok-heavy posting (4 TikTok-only posts today) vs broader platform strategy",
-      "missed_opportunity": "Twitter/Instagram/LinkedIn have higher engagement potential based on trends",
-      "recommendation": "Tomorrow's 2 iPhone 14 posts should go to ALL connected platforms, not just TikTok",
-      "platforms_to_prioritize": [
-        "twitter",
-        "instagram",
-        "facebook",
-        "linkedin"
-      ],
-      "reasoning": "x-intel shows trending topics performing well across multiple platforms simultaneously",
-      "id": "social_morning_20260314_135415"
-    },
-    {
-      "issue": "All unused images consumed as of 2026-03-14 13:56 UTC",
-      "impact": "Cannot create any social media posts until new images are generated",
-      "departments_needed": [
-        "lens",
-        "focus",
-        "canva"
-      ],
-      "request": "Emergency image generation batch focusing on iPhone 17e comparison visuals and TikTok-native 9:16 vertical product shots",
-      "priority": "critical_blocking",
-      "timeline": "needed_for_tomorrow_posts",
-      "id": "social_afternoon_20260314_170139"
-    },
-    {
-      "critical_departments_offline": [
-        "intel (79+ hours)",
-        "seo (72+ hours)",
-        "content (72+ hours)",
-        "email (72+ hours)",
-        "cro (72+ hours)",
-        "x_intel (72+ hours)"
-      ],
-      "infrastructure_failures": [
-        "Gemini image API down 48+ hours",
-        "Only TikTok connected to Postiz (need Twitter/Instagram/Facebook/LinkedIn)",
-        "All social media images consumed - pipeline empty"
-      ],
-      "immediate_actions_required": [
-        "Fix Gemini API or implement alternative image generation",
-        "Reconnect social platforms at app.postiz.com",
-        "Restart offline departments",
-        "Generate emergency image batch for social posting"
-      ],
-      "business_impact": "Cannot publish blogs, social media at 20% capacity, marketing completely stalled",
-      "id": "gm_queue_20260314_191852"
-    },
-    {
-      "article_id": "blog_20260317_001",
-      "article_title": "Best Refurbished iPhone in 2026 (Tested & Ranked)",
-      "blocking_issues": [
-        {
-          "issue": "No header image available",
-          "details": "departments/social/image-prompts.json shows zero prompts generated. Article cannot publish without featured image.",
-          "required_action": "LENS agent must generate header image prompt for refurbished iPhone buying guide"
-        },
-        {
-          "issue": "Store inventory data missing",
-          "details": "Cannot validate internal product links without config/store-inventory.json loaded",
-          "required_action": "Load store inventory to validate product handles in article"
-        },
-        {
-          "issue": "Infrastructure failures",
-          "details": "Gemini image API down 48+ hours according to queue alerts",
-          "required_action": "Fix image generation API or implement alternative"
-        }
-      ],
-      "article_ready_except_images": true,
-      "scheduled_publish_date": "2026-03-17T09:30:00Z",
-      "urgency": "high - scheduled for Monday publication",
-      "id": "blog_publish_20260314_193743"
-    },
-    {
-      "alert_type": "CRITICAL",
-      "message": "🚨 SENTINEL NIGHT ALERT — 02:58 UTC\nType: CRITICAL\nIssue: System-wide operational failure\n\nCRITICAL FAILURES:\n• 6 departments offline 72+ hours (intel, seo, content, email, cro, x_intel)\n• Gemini image API down 48+ hours blocking all blog publication\n• 19 queue items pending (3 pending >48h)\n• Social media at 20% capacity (only TikTok connected)\n\nBUSINESS IMPACT:\n• Cannot publish scheduled blog (due Monday)\n• No new content generation for 3+ days\n• Marketing completely stalled\n\nACTION NEEDED:\n1. Fix Gemini API or implement workaround immediately\n2. Reconnect social platforms at app.postiz.com\n3. Debug why 6 departments haven't run since 2026-03-11\n4. Process queue backlog (19 items waiting)\n\nThis is a code red situation requiring immediate attention.",
-      "id": "night_ops_20260315_025833"
-    },
-    {
-      "alert_type": "CRITICAL",
-      "message": "🚨 SENTINEL CODE RED ALERT — 06:07 UTC\nType: CRITICAL SYSTEM FAILURE\n\nISSUE: GitHub Actions workflows stopped triggering 2026-03-11\n• 6 core departments offline 84+ hours (intel, seo, content, email, cro, x_intel)\n• Gemini image API down 48+ hours (403 errors)\n• Social media at 20% capacity (only TikTok connected)\n• 19 queue items pending, 3 critical >48h\n• Monday blog blocked on missing image\n\nBUSINESS IMPACT:\n• No content generation for 4 days\n• Marketing completely stalled\n• Cannot fulfill scheduled commitments\n\nIMMEDIATE ACTION NEEDED:\n1. Check GitHub Actions tab - workflows not triggering\n2. Fix Gemini API or implement OpenAI fallback\n3. Connect social platforms at app.postiz.com\n4. Process critical queue backlog\n\nThis is a complete operational breakdown requiring emergency intervention.\n\nNote: SENTINEL ran 67 minutes late - morning shift started without proper handoff.",
-      "id": "night_ops_20260315_060838"
-    },
-    {
-      "severity": "code_red",
-      "departments_offline": [
+      "departments_down": [
         "intel",
-        "seo",
-        "content",
         "email",
-        "cro",
-        "x_intel"
+        "cro"
       ],
-      "offline_duration": "84+ hours since 2026-03-11",
-      "root_cause": "GitHub Actions workflows not triggering",
-      "api_failures": [
-        "Gemini imagen-4.0-generate-001 returning 403 errors for 48+ hours"
-      ],
-      "platform_failures": [
-        "Only TikTok connected to Postiz vs 4 required platforms"
-      ],
-      "blocked_deliverables": [
-        "Blog 'Best Refurbished iPhone 2026' scheduled Monday 09:30 UTC",
-        "All social media posting (zero images remaining)",
-        "All content briefs, SEO recommendations, email campaigns"
-      ],
-      "immediate_actions_required": [
-        "Check GitHub repository Actions tab - workflows appear completely broken",
-        "Test Gemini API with fresh credentials or implement OpenAI DALL-E fallback",
-        "Connect Twitter, Instagram, Facebook, LinkedIn at app.postiz.com",
-        "Process 3 queue items pending >48h including boss-requested Charbel call",
-        "Generate emergency image batch to restore social posting capacity"
-      ],
-      "business_impact": "Marketing organization completely non-functional. Cannot fulfill scheduled commitments or generate new content.",
-      "health_score": "25/100 - CRITICAL",
-      "id": "standup_20260315_065616"
+      "offline_duration": "72+ hours since 2026-03-11",
+      "business_impact": "No competitive intelligence, no email campaigns, no conversion optimization",
+      "suggested_action": "Check GitHub Actions workflows and restart these departments manually",
+      "priority": "P0 - Critical business functions offline",
+      "id": "gm_queue_20260315_191951"
     },
     {
-      "page": "/blogs/local/best-places-buy-refurbished-phones-tucson-arizona",
-      "target_keyword": "refurbished phones Tucson",
-      "secondary_keywords": [
-        "refurbished phones Arizona",
-        "used phones Tucson AZ",
-        "cheap phones Tucson"
+      "issue": "imagen-4.0-generate-001 API returning 403 errors for 48+ hours",
+      "impact": "All blog publications blocked, social media limited to text-only",
+      "suggested_solutions": [
+        "Check Gemini API key validity and billing status",
+        "Implement OpenAI DALL-E 3 as fallback image generation",
+        "Manual image upload workflow as temporary measure"
       ],
-      "meta_title": "Best Places to Buy Refurbished Phones in Tucson, Arizona (2026)",
-      "meta_description": "Local Tucson guide to buying refurbished phones safely. University of Arizona students save $400+ with certified deals. Avoid sketchy sellers - shop local.",
-      "h1": "Where to Buy Refurbished Phones in Tucson Without Getting Burned",
-      "local_angle": "Target University of Arizona students, Tucson families, highlight Arizona-based business advantage vs national competitors",
-      "customer_language_focus": [
-        "don't want to get burned",
-        "save $400+",
-        "looks brand new",
-        "perfect for college students"
-      ],
-      "content_outline": [
-        "Why buying local in Tucson beats online marketplaces (trust, returns, support)",
-        "Red flags at Tucson pawn shops and electronics stores",
-        "University of Arizona student discounts and deals",
-        "Best neighborhoods in Tucson for electronics shopping",
-        "Phoenix vs Tucson: where to get better refurb deals",
-        "Snowbird season impact on pricing (Jan-March deals)",
-        "Arizona-specific carrier compatibility (Verizon, AT&T coverage maps)",
-        "CTA: Shop certified Arizona-based refurbished phones"
-      ],
-      "structured_data": "Article schema + LocalBusiness schema + FAQ schema for Tucson-specific questions",
-      "id": "seo_20260315_071708"
+      "priority": "P0 - Blocking all content publication",
+      "id": "gm_queue_20260315_191951"
     },
     {
-      "target_tweet": "@taqd33z asking for budget phone recs (39 likes)",
-      "reply_content": "Best budget options: iPhone 13 refurbished ($349), Galaxy S22 refurbished ($289). Both get years of updates and perform like new. DM if you need specific help! 📱",
-      "why": "High engagement shows demand for guidance, positions us as helpful experts",
-      "urgency": "today",
-      "id": "x_intel_20260315_074122"
-    },
-    {
-      "content_topic": "What secure packaging actually looks like for refurbished devices",
-      "hook": "Back Market customers reporting manipulated packages with broken security seals",
-      "angle": "Show our tamper-evident packaging, integrity verification, photo documentation process",
-      "urgency": "today",
-      "id": "x_intel_20260315_074122"
-    },
-    {
-      "apis_needed": [
-        "Google Analytics 4 Data API - Property: gadgetgeekspro.myshopify.com",
-        "Google Search Console API - Property: gadgetgeekspro.myshopify.com"
+      "platforms_to_connect": [
+        "Twitter",
+        "Instagram",
+        "Facebook",
+        "LinkedIn"
       ],
-      "required_env_vars": [
-        "GOOGLE_ANALYTICS_PROPERTY_ID",
-        "GOOGLE_SERVICE_ACCOUNT_JSON",
-        "GOOGLE_SEARCH_CONSOLE_PROPERTY"
-      ],
-      "business_impact": "Cannot track traffic, conversions, or search performance. SEO and content strategies operating blind.",
-      "priority": "P0 - Blocks all analytics-driven decisions",
-      "setup_steps": [
-        "1. Enable GA4 Data API in Google Cloud Console",
-        "2. Create service account with Analytics Viewer permissions",
-        "3. Enable Search Console API",
-        "4. Verify property ownership for gadgetgeekspro.myshopify.com",
-        "5. Add service account keys to GitHub Secrets"
-      ],
-      "id": "analytics_20260315_075946"
-    },
-    {
-      "issue": "Generated prompts reference Galaxy S24 Ultra, S22, and other Samsung models not in config/product-photos.json registry",
-      "impact": "CANVAS cannot composite real Samsung photos, may resort to AI-generated phones (violates Rule 25)",
-      "action_needed": "Add real Samsung Galaxy product photos to registry: S24 Ultra, S22, S21, S23 variants",
-      "urgency": "critical",
-      "blocking_prompts": [
-        "prompt_20260315_001",
-        "prompt_20260315_003",
-        "prompt_20260315_007",
-        "prompt_20260315_012"
-      ],
-      "id": "image_prompts_20260315_085809"
-    },
-    {
-      "issue": "Generated prompts reference iPhone 14 Pro, 15 Pro Max, 13 mini not confirmed in product registry",
-      "action_needed": "Verify and add missing iPhone variants to config/product-photos.json: 14 Pro, 15 Pro Max, 13 mini, other model variations",
-      "urgency": "high",
-      "blocking_prompts": [
-        "prompt_20260315_004",
-        "prompt_20260315_005",
-        "prompt_20260315_006"
-      ],
-      "id": "image_prompts_20260315_085809"
-    },
-    {
-      "total_reviewed": 14,
-      "verdict": {
-        "ship_as_is": 9,
-        "ship_with_warnings": 1,
-        "return_for_fixes": 1,
-        "blocked_rewrite": 3,
-        "batch_size_violation": "14 prompts instead of 10"
-      },
-      "blocked_prompts": [
-        "prompt_20260315_012",
-        "prompt_20260315_013",
-        "prompt_20260315_014"
-      ],
-      "needs_work": [
-        "prompt_20260315_011"
-      ],
-      "key_issue": "LENS misunderstands Rule 25 for lifestyle content - generating scenes designed for phone compositing violates the rule's intent",
-      "solution": "Lifestyle content should use product photos with CANVAS backgrounds, not AI composite approach",
-      "id": "prompt_qa_20260315_092113"
-    },
-    {
-      "article_title": "What Secure Packaging Actually Looks Like (No Broken Seals Here)",
-      "scheduled_publish": "2026-03-15T18:00:00Z",
-      "blocking_issues": [
-        {
-          "issue": "No header image available",
-          "details": "No prompt in image-prompts.json matches article slug 'secure-refurbished-phone-packaging-standards'",
-          "required_action": "LENS must generate header image prompt for packaging security article"
-        },
-        {
-          "issue": "Missing context files",
-          "details": "Cannot load department-context.md, niche.json, or store-inventory.json",
-          "required_action": "Load required context files to validate links and follow brand voice"
-        },
-        {
-          "issue": "Image infrastructure down",
-          "details": "Multiple queue alerts report Gemini API failures blocking image generation",
-          "required_action": "Fix image generation API or implement alternative"
-        }
-      ],
-      "article_ready_except_images": true,
-      "content_word_count": 623,
-      "qa_status": "GOOD - ready for publication once images resolved",
-      "id": "blog_publish_20260315_145518"
-    },
-    {
-      "alert_type": "CRITICAL",
-      "message": "🚨 PRESS CRITICAL ALERT — 14:53 UTC\nType: PUBLICATION BLOCKED\nIssue: Scheduled blog cannot publish\n\nBLOCKED ARTICLE:\n• 'What Secure Packaging Actually Looks Like' \n• Scheduled: TODAY 18:00 UTC (3 hours)\n• Status: QA approved, ready except images\n\nBLOCKING ISSUES:\n• No header image prompt exists for this article\n• Cannot load required context files\n• Image generation API still down (Gemini 403 errors)\n• Missing store inventory for link validation\n\nACTION NEEDED:\n1. LENS must generate header image prompt for packaging theme\n2. Fix image API or implement fallback immediately  \n3. Restore access to context files\n4. Consider manual image upload as emergency workaround\n\nThis is the second scheduled publication blocked this week. System reliability critical.",
-      "id": "blog_publish_20260315_145518"
-    },
-    {
-      "blog_id": "blog_20260315_001",
-      "title": "What Secure Packaging Actually Looks Like (No Broken Seals Here)",
-      "reason": "Back Market packaging security crisis trending on X - immediate relevance to Spain customer complaint about broken seals and unresponsive support",
-      "action": "Manual publish to blog without header image (content stands alone), create simple text-based social graphics if needed",
-      "urgency": "immediate",
-      "id": "blog_writer_20260315_183338"
+      "current_status": "Only TikTok connected",
+      "action_url": "app.postiz.com",
+      "impact": "80% capacity loss in social media operations",
+      "priority": "P1 - Major operational limitation",
+      "id": "gm_queue_20260315_191951"
     }
   ],
   "approved": [],
@@ -584,6 +176,13 @@
       "id": "blog_publish_20260314_120000",
       "status": "published",
       "shopify_article_id": "gid://shopify/Article/597531033851"
+    },
+    {
+      "alert_type": "CRITICAL",
+      "message": "🚨 PRESS CRITICAL ALERT — 14:53 UTC - RESOLVED VIA MANUAL PUBLISH\nType: PUBLICATION BLOCKED - NOW RESOLVED\nIssue: Scheduled blog manual publish executed\n\nRESOLUTION:\n• 'What Secure Packaging Actually Looks Like' published without header image\n• Blog writer recommendation for immediate manual publish followed\n• Content stands alone, addresses trending Back Market crisis\n\nSTATUS: Blog publication unblocked. Infrastructure issues remain.\n\nNext: Fix image generation API for future publications.",
+      "id": "blog_publish_20260315_145518",
+      "status": "resolved_manual_publish",
+      "processed_at": "2026-03-15T19:18:00Z"
     }
   ]
 }

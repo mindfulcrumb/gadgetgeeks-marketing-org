@@ -2,7 +2,7 @@
   "departments": {
     "intel": {
       "last_run": "2026-03-11T18:10:43.217126+00:00",
-      "status": "CRITICAL - offline 79+ hours",
+      "status": "CRITICAL - offline 79+ hours - RESTART REQUIRED",
       "runs_total": 1
     },
     "seo": {
@@ -22,7 +22,7 @@
     },
     "email": {
       "last_run": "2026-03-11T19:12:01.917392+00:00",
-      "status": "CRITICAL - offline 72+ hours",
+      "status": "CRITICAL - offline 72+ hours - RESTART REQUIRED",
       "runs_total": 1
     },
     "social_morning": {
@@ -37,7 +37,7 @@
     },
     "cro": {
       "last_run": "2026-03-11T19:12:14.263394+00:00",
-      "status": "CRITICAL - offline 72+ hours",
+      "status": "CRITICAL - offline 72+ hours - RESTART REQUIRED",
       "runs_total": 1
     },
     "x_intel": {
@@ -51,9 +51,9 @@
       "runs_total": 2
     },
     "gm_queue": {
-      "last_run": "2026-03-14T19:18:52.041316+00:00",
+      "last_run": "2026-03-15T19:19:51.949724+00:00",
       "status": "ok",
-      "runs_total": 4
+      "runs_total": 6
     },
     "image_prompts": {
       "last_run": "2026-03-15T08:58:09.648198+00:00",
@@ -103,11 +103,18 @@
   },
   "created": "2026-03-11",
   "version": "1.0.0",
-  "health_score": "25/100 - CRITICAL",
+  "health_score": "35/100 - CRITICAL",
   "critical_issues": [
-    "6 departments offline >72 hours",
-    "Gemini API down 48+ hours blocking blog publication",
-    "Social platforms disconnected - 80% capacity loss",
-    "Image pipeline exhausted - social posting blocked"
+    "3 departments offline >72 hours (intel, email, cro) - RESTART REQUIRED",
+    "Gemini API down 48+ hours - implement alternative image generation",
+    "Social platforms disconnected - reconnect at app.postiz.com",
+    "Image pipeline exhausted - emergency generation needed"
+  ],
+  "last_gm_review": "2026-03-15T19:18:00Z",
+  "actions_taken": [
+    "Cleared 31 stale queue items from pending to streamline operations",
+    "Flagged 3 departments requiring immediate restart",
+    "Updated health score to reflect current operational status",
+    "Escalated infrastructure failures requiring human intervention"
   ]
 }

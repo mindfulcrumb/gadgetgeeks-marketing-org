@@ -1,17 +1,36 @@
 {
   "_docs": "LENS↔FOCUS Feedback Loop — FOCUS writes patterns after each QA session, LENS reads them before generating. This is the learning mechanism that makes prompts get better over time.",
   "_created": "2026-03-14",
-  "_last_updated": "2026-03-14T17:00:00Z",
+  "_last_updated": "2026-03-15T09:20:00Z",
   "focus_to_lens": {
     "_docs": "FOCUS writes this after every QA batch. Tracks recurring failures so LENS avoids repeating them.",
-    "recurring_failures": [],
-    "auto_block_history": [],
+    "recurring_failures": [
+      {
+        "check_number": 25,
+        "check_name": "AI Rendered Phones Rule",
+        "frequency": "3 of 14 prompts",
+        "pattern": "LENS generating lifestyle scenes designed for phone compositing - creates unnatural hand positioning and violates Rule 25 intent",
+        "fix_instruction": "LENS: For lifestyle content, use source: product_photo with CANVAS background scenes instead of AI composite approach. Rule 25 means NO phone-centric scenes in AI generation."
+      }
+    ],
+    "auto_block_history": [
+      {
+        "date": "2026-03-15",
+        "prompt_ids": [
+          "prompt_20260315_012",
+          "prompt_20260315_013",
+          "prompt_20260315_014"
+        ],
+        "check": 19,
+        "reason": "Lifestyle prompts generating scenes designed for phone compositing - violates Rule 25 intent"
+      }
+    ],
     "check_failure_rates": {
       "check_1_camera_body": 0,
       "check_2_lens_spec": 0,
       "check_3_film_stock": 0,
       "check_4_filename_hack": 0,
-      "check_5_negative_prompt": 0,
+      "check_5_negative_prompt": 7,
       "check_6_skin_realism": 0,
       "check_7_dark_skin_lighting": 0,
       "check_8_anti_uncanny": 0,
@@ -19,17 +38,33 @@
       "check_10_phone_model": 0,
       "check_11_condition_language": 0,
       "check_12_brand_visibility": 0,
-      "check_13_prompt_length": 0,
+      "check_13_prompt_length": 14,
       "check_14_platform_match": 0,
       "check_15_no_text": 0,
       "check_16_fake_screens": 0,
       "check_17_cellphone_realism": 0,
       "check_18_data_driven": 0,
-      "check_19_ai_rendered_phones": 0
+      "check_19_ai_rendered_phones": 21
     },
-    "batch_pass_rate_history": [],
-    "top_corrections": [],
-    "last_batch_summary": null
+    "batch_pass_rate_history": [
+      {
+        "date": "2026-03-15",
+        "total": 14,
+        "excellent": 9,
+        "good": 1,
+        "needs_work": 1,
+        "blocked": 3,
+        "pass_rate_pct": 71
+      }
+    ],
+    "top_corrections": [
+      "3 lifestyle prompts blocked for Rule 25 violations - generating scenes designed for phone compositing",
+      "1 prompt length over 1000 chars - trimmed to 900",
+      "Batch size 14 instead of 10 - LENS must follow daily limits",
+      "Product hero prompts perfect - proper real photo usage",
+      "Need clearer Rule 25 guidance for lifestyle content"
+    ],
+    "last_batch_summary": "2026-03-15: 10/14 shipped (9 EXCELLENT, 1 GOOD). 1 NEEDS_WORK, 3 BLOCKED for Rule 25 violations. Major issue: LENS generated 14 prompts instead of 10. Product hero/comparison prompts are perfect - proper real photo usage. Critical problem: LENS misunderstands Rule 25 for lifestyle content. Generating scenes 'designed for phone compositing' still violates the rule's intent. Solution: lifestyle content should use product photos with CANVAS backgrounds, not AI composite approach. LENS needs to read Rule 25 more carefully."
   },
   "engagement_to_lens": {
     "_docs": "Social afternoon agent writes structured performance data here. LENS reads it to adjust visual style allocation.",

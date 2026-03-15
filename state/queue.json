@@ -466,6 +466,27 @@
         "prompt_20260315_006"
       ],
       "id": "image_prompts_20260315_085809"
+    },
+    {
+      "total_reviewed": 14,
+      "verdict": {
+        "ship_as_is": 9,
+        "ship_with_warnings": 1,
+        "return_for_fixes": 1,
+        "blocked_rewrite": 3,
+        "batch_size_violation": "14 prompts instead of 10"
+      },
+      "blocked_prompts": [
+        "prompt_20260315_012",
+        "prompt_20260315_013",
+        "prompt_20260315_014"
+      ],
+      "needs_work": [
+        "prompt_20260315_011"
+      ],
+      "key_issue": "LENS misunderstands Rule 25 for lifestyle content - generating scenes designed for phone compositing violates the rule's intent",
+      "solution": "Lifestyle content should use product photos with CANVAS backgrounds, not AI composite approach",
+      "id": "prompt_qa_20260315_092113"
     }
   ],
   "approved": [],

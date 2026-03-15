@@ -407,6 +407,20 @@
       ],
       "structured_data": "Article schema + LocalBusiness schema + FAQ schema for Tucson-specific questions",
       "id": "seo_20260315_071708"
+    },
+    {
+      "target_tweet": "@taqd33z asking for budget phone recs (39 likes)",
+      "reply_content": "Best budget options: iPhone 13 refurbished ($349), Galaxy S22 refurbished ($289). Both get years of updates and perform like new. DM if you need specific help! 📱",
+      "why": "High engagement shows demand for guidance, positions us as helpful experts",
+      "urgency": "today",
+      "id": "x_intel_20260315_074122"
+    },
+    {
+      "content_topic": "What secure packaging actually looks like for refurbished devices",
+      "hook": "Back Market customers reporting manipulated packages with broken security seals",
+      "angle": "Show our tamper-evident packaging, integrity verification, photo documentation process",
+      "urgency": "today",
+      "id": "x_intel_20260315_074122"
     }
   ],
   "approved": [],

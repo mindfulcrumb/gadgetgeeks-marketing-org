@@ -81,9 +81,9 @@
       "runs_total": 1
     },
     "night_ops": {
-      "last_run": "2026-03-15T05:02:02.637604+00:00",
+      "last_run": "2026-03-15T06:08:38.709612+00:00",
       "status": "ok",
-      "runs_total": 2
+      "runs_total": 3
     }
   },
   "created": "2026-03-11",

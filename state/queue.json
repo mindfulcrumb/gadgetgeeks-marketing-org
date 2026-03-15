@@ -337,6 +337,11 @@
       "alert_type": "CRITICAL",
       "message": "🚨 SENTINEL NIGHT ALERT — 02:58 UTC\nType: CRITICAL\nIssue: System-wide operational failure\n\nCRITICAL FAILURES:\n• 6 departments offline 72+ hours (intel, seo, content, email, cro, x_intel)\n• Gemini image API down 48+ hours blocking all blog publication\n• 19 queue items pending (3 pending >48h)\n• Social media at 20% capacity (only TikTok connected)\n\nBUSINESS IMPACT:\n• Cannot publish scheduled blog (due Monday)\n• No new content generation for 3+ days\n• Marketing completely stalled\n\nACTION NEEDED:\n1. Fix Gemini API or implement workaround immediately\n2. Reconnect social platforms at app.postiz.com\n3. Debug why 6 departments haven't run since 2026-03-11\n4. Process queue backlog (19 items waiting)\n\nThis is a code red situation requiring immediate attention.",
       "id": "night_ops_20260315_025833"
+    },
+    {
+      "alert_type": "CRITICAL",
+      "message": "🚨 SENTINEL CODE RED ALERT — 06:07 UTC\nType: CRITICAL SYSTEM FAILURE\n\nISSUE: GitHub Actions workflows stopped triggering 2026-03-11\n• 6 core departments offline 84+ hours (intel, seo, content, email, cro, x_intel)\n• Gemini image API down 48+ hours (403 errors)\n• Social media at 20% capacity (only TikTok connected)\n• 19 queue items pending, 3 critical >48h\n• Monday blog blocked on missing image\n\nBUSINESS IMPACT:\n• No content generation for 4 days\n• Marketing completely stalled\n• Cannot fulfill scheduled commitments\n\nIMMEDIATE ACTION NEEDED:\n1. Check GitHub Actions tab - workflows not triggering\n2. Fix Gemini API or implement OpenAI fallback\n3. Connect social platforms at app.postiz.com\n4. Process critical queue backlog\n\nThis is a complete operational breakdown requiring emergency intervention.\n\nNote: SENTINEL ran 67 minutes late - morning shift started without proper handoff.",
+      "id": "night_ops_20260315_060838"
     }
   ],
   "approved": [],

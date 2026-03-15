@@ -1,25 +1,28 @@
 {
   "from_shift": "night",
   "to_shift": "morning",
-  "timestamp": "2026-03-15T05:01:00Z",
-  "overnight_summary": "System-wide operational failure detected. Six core production departments offline 81+ hours since 2026-03-11. Gemini image API down 48+ hours blocking blog publication. Massive queue backlog with critical items pending >48 hours. Social platforms disconnected. This requires immediate boss escalation and emergency recovery procedures.",
+  "timestamp": "2026-03-15T06:07:00Z",
+  "emergency_late_handoff": true,
+  "late_by_minutes": 67,
+  "overnight_summary": "SYSTEM-WIDE OPERATIONAL FAILURE. Six core production departments offline 84+ hours since 2026-03-11. Appears to be GitHub Actions scheduling failure - workflows not triggering. Gemini image API down 48+ hours blocking blog publication. Social platforms disconnected leaving only TikTok. 19 queue items backed up including 3 critical >48h. This is code red requiring immediate boss escalation and emergency recovery.",
   "issues_found": [
-    "6 departments offline 81+ hours: intel, seo, content, email, cro, x_intel",
-    "Gemini image API down 48+ hours with 403 errors",
-    "19 queue items pending including 3 critical >48h",
-    "Only TikTok connected to Postiz (need Twitter/Instagram/Facebook/LinkedIn)",
-    "Blog publication blocked 48+ hours on missing header image",
-    "All social media images consumed - pipeline empty",
-    "Health score 25/100 - worst recorded"
+    "CRITICAL: GitHub Actions workflows not triggering - 6 departments missed their schedules",
+    "CRITICAL: Gemini image API down 48+ hours with 403 errors",
+    "CRITICAL: Blog 'Best Refurbished iPhone 2026' blocked on missing image (scheduled Monday 09:30)",
+    "CRITICAL: Only TikTok connected to Postiz - need Twitter/Instagram/Facebook/LinkedIn",
+    "URGENT: 3 queue items pending >48h including boss-requested Charbel call",
+    "URGENT: All social media images consumed - pipeline empty",
+    "URGENT: 19 total queue items awaiting approval/processing"
   ],
   "alerts_sent": [
-    "05:01 UTC - This handoff serves as CRITICAL alert - no additional Telegram needed (avoid night spam)"
+    "06:07 UTC - Emergency late handoff serves as CRITICAL alert"
   ],
   "pending_approvals": [
-    "CRITICAL: Infrastructure fixes for Gemini API + social platform connectivity",
-    "URGENT: Process 19 queue items including 3 critical stale (>48h)",
-    "HIGH: Blog 'Best Refurbished iPhone 2026' ready except image (48h blocked)",
-    "Queue items requiring boss review and approval/rejection decisions"
+    "EMERGENCY: Fix GitHub Actions scheduling (6 departments not running)",
+    "EMERGENCY: Resolve Gemini API 403 errors or implement OpenAI fallback",
+    "EMERGENCY: Reconnect social platforms at app.postiz.com",
+    "CRITICAL: Process 19 queue items including 3 stale >48h",
+    "HIGH: Generate emergency image batch to unblock blog publication"
   ],
   "api_health": {
     "shopify": "ok",
@@ -29,14 +32,27 @@
     "vapi": "unknown"
   },
   "recommendations_for_morning": [
-    "EMERGENCY: This is code red - escalate to boss immediately at standup",
-    "Fix Gemini API or implement alternative image generation (OpenAI DALL-E fallback)",
-    "Reconnect social platforms at app.postiz.com (Twitter, Instagram, Facebook, LinkedIn)",
-    "Debug why 6 core departments haven't run since 2026-03-11 (GitHub Actions issue?)",
-    "Process critical queue backlog - especially items pending >48h",
-    "Generate emergency image batch to unblock social posting and blog publication",
-    "Consider manual workarounds for Monday blog publication if API can't be fixed immediately"
+    "IMMEDIATE: This is code red - escalate to boss at morning standup ASAP",
+    "Check GitHub Actions settings - workflows appear completely broken since 2026-03-11",
+    "Test Gemini API with fresh credentials or implement OpenAI DALL-E fallback immediately",
+    "Connect Twitter, Instagram, Facebook, LinkedIn at app.postiz.com to restore social capacity",
+    "Process critical queue items especially Charbel call (boss requested twice, now 52+ hours)",
+    "Consider manual blog publication with stock image if API can't be fixed before Monday",
+    "Generate emergency image batch to prevent further social posting blocks"
   ],
+  "github_actions_diagnosis": {
+    "suspected_cause": "GitHub Actions workflows not triggering since 2026-03-11",
+    "evidence": "6 departments show last_run dates of 2026-03-11 despite daily/weekly schedules",
+    "affected_workflows": [
+      "seo-daily.yml",
+      "x-intel.yml",
+      "content.yml",
+      "intel.yml",
+      "cro.yml",
+      "email.yml"
+    ],
+    "immediate_action": "Check repository Actions tab, workflow permissions, secrets configuration"
+  },
   "metrics_snapshot": {
     "blogs_in_pipeline": {
       "brief_ready": 1,
@@ -51,6 +67,7 @@
     "incidents_open": 2,
     "departments_active": 4,
     "departments_offline": 6,
-    "health_score": "25/100"
+    "health_score": "25/100",
+    "system_status": "CODE_RED"
   }
 }

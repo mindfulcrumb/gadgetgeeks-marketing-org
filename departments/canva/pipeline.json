@@ -1,7 +1,7 @@
 {
   "_docs": "Canva Post Design Pipeline — tracks image-to-finished-post conversion. The Canva department takes generated images from departments/social/image-prompts.json and creates finished social media posts using Canva.",
   "_created": "2026-03-12",
-  "_last_run": "2026-03-14T09:51:20.481630+00:00",
+  "_last_run": "2026-03-15T09:53:23.091509+00:00",
   "_WARNING": "RULE 25: Only designs with source='real_product_photo' may be posted. AI-generated images (shopify-staged-uploads) are BURNED. See config/operations-rulebook.json Rule 25.",
   "designs": [
     {
@@ -20,7 +20,12 @@
         "subline": "65-Point Inspected. 90-Day Warranty.",
         "cta": "Link in Bio"
       },
-      "keywords_targeted": ["iPhone 13", "refurbished", "bundle", "deal"],
+      "keywords_targeted": [
+        "iPhone 13",
+        "refurbished",
+        "bundle",
+        "deal"
+      ],
       "status": "posted",
       "posted_at": "2026-03-14T14:31:00.000000+00:00",
       "created_at": "2026-03-14T13:17:00.000000+00:00",
@@ -42,7 +47,12 @@
         "subline": "65-Point Inspected. Like New.",
         "cta": "Link in Bio"
       },
-      "keywords_targeted": ["iPhone 14", "refurbished", "bundle", "premium"],
+      "keywords_targeted": [
+        "iPhone 14",
+        "refurbished",
+        "bundle",
+        "premium"
+      ],
       "status": "posted",
       "posted_at": "2026-03-14T15:01:00.000000+00:00",
       "created_at": "2026-03-14T13:17:00.000000+00:00",
@@ -64,7 +74,12 @@
         "subline": "Full Bundle. One Price.",
         "cta": "Save This"
       },
-      "keywords_targeted": ["iPhone 13", "deal", "bundle deal", "phone deal"],
+      "keywords_targeted": [
+        "iPhone 13",
+        "deal",
+        "bundle deal",
+        "phone deal"
+      ],
       "status": "posted",
       "posted_at": "2026-03-14T15:31:00.000000+00:00",
       "created_at": "2026-03-14T13:17:00.000000+00:00",
@@ -86,11 +101,275 @@
         "subline": "Good for wallet. Good for planet.",
         "cta": "Follow for More"
       },
-      "keywords_targeted": ["iPhone 14", "sustainable", "eco-friendly", "refurbished"],
+      "keywords_targeted": [
+        "iPhone 14",
+        "sustainable",
+        "eco-friendly",
+        "refurbished"
+      ],
       "status": "posted",
       "posted_at": "2026-03-14T16:01:00.000000+00:00",
       "created_at": "2026-03-14T13:17:00.000000+00:00",
       "source": "real_product_photo"
+    },
+    {
+      "id": "canva_20260315_095243_001",
+      "source_prompt_id": "prompt_20260315_001",
+      "source_image_url": "",
+      "canva_design_id": "",
+      "canva_edit_url": "",
+      "export_url": "",
+      "platform": "tiktok",
+      "dimensions": "1080x1920",
+      "design_type": "product_spotlight",
+      "text_overlay": {
+        "headline": "Premium Refurbished",
+        "subline": "65-Point Inspected. Like New.",
+        "cta": "Shop Now"
+      },
+      "status": "error",
+      "created_at": "2026-03-15T09:52:43.770376+00:00",
+      "error": "Product photo 'galaxy_s24_ultra' not found in registry"
+    },
+    {
+      "id": "canva_20260315_095249_002",
+      "source_prompt_id": "prompt_20260315_002",
+      "source_image_url": "",
+      "canva_design_id": "DAHEAeRjaTU",
+      "canva_edit_url": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc2MTYwMzY5NDI1fQ..z-SOrr3XhAWdnvBm.M7qfywKYD1oWMphykqQXNgUwEoDPGWHWwKDMCPYiaziagF4zeRziJgn-6wgq8zNRbsq6pozyyIbBNgDHBz_RM2qIM1ZjqjUu676nC0LgHOZbNPs.do6wcTdaMGvghajuRKjlAA/edit?utm_source=OC-AZziwCpO4uv4&utm_medium=referral&utm_term=91ca1a26-627c-4380-822c-d2de19eec5e9&utm_campaign=public_api_create_design_clicked_hyperlink",
+      "export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/3160f0b3-b916-4fb3-9977-e436b146d6ce/canva-instagram-prompt_20260315_002-20260315_095243.png",
+      "platform": "instagram",
+      "dimensions": "1080x1080",
+      "design_type": "product_spotlight",
+      "text_overlay": {
+        "headline": "Premium Refurbished",
+        "subline": "65-Point Inspected. Like New.",
+        "cta": "Shop Now"
+      },
+      "status": "exported",
+      "created_at": "2026-03-15T09:52:49.452511+00:00"
+    },
+    {
+      "id": "canva_20260315_095249_003",
+      "source_prompt_id": "prompt_20260315_003",
+      "source_image_url": "",
+      "canva_design_id": "",
+      "canva_edit_url": "",
+      "export_url": "",
+      "platform": "facebook",
+      "dimensions": "1200x630",
+      "design_type": "product_spotlight",
+      "text_overlay": {
+        "headline": "Premium Refurbished",
+        "subline": "65-Point Inspected. Like New.",
+        "cta": "Shop Now"
+      },
+      "status": "error",
+      "created_at": "2026-03-15T09:52:49.452723+00:00",
+      "error": "Product photo 'galaxy_s22' not found in registry"
+    },
+    {
+      "id": "canva_20260315_095249_004",
+      "source_prompt_id": "prompt_20260315_004",
+      "source_image_url": "",
+      "canva_design_id": "",
+      "canva_edit_url": "",
+      "export_url": "",
+      "platform": "tiktok",
+      "dimensions": "1080x1920",
+      "design_type": "product_spotlight",
+      "text_overlay": {
+        "headline": "Premium Refurbished",
+        "subline": "65-Point Inspected. Like New.",
+        "cta": "Shop Now"
+      },
+      "status": "error",
+      "created_at": "2026-03-15T09:52:49.452828+00:00",
+      "error": "Product photo 'iphone_14_pro' not found in registry"
+    },
+    {
+      "id": "canva_20260315_095249_005",
+      "source_prompt_id": "prompt_20260315_005",
+      "source_image_url": "",
+      "canva_design_id": "",
+      "canva_edit_url": "",
+      "export_url": "",
+      "platform": "instagram",
+      "dimensions": "1080x1080",
+      "design_type": "product_spotlight",
+      "text_overlay": {
+        "headline": "Premium Refurbished",
+        "subline": "65-Point Inspected. Like New.",
+        "cta": "Shop Now"
+      },
+      "status": "error",
+      "created_at": "2026-03-15T09:52:49.452927+00:00",
+      "error": "Product photo 'iphone_15_pro_max' not found in registry"
+    },
+    {
+      "id": "canva_20260315_095249_006",
+      "source_prompt_id": "prompt_20260315_006",
+      "source_image_url": "",
+      "canva_design_id": "",
+      "canva_edit_url": "",
+      "export_url": "",
+      "platform": "twitter",
+      "dimensions": "1600x900",
+      "design_type": "product_spotlight",
+      "text_overlay": {
+        "headline": "Premium Refurbished",
+        "subline": "65-Point Inspected. Like New.",
+        "cta": "Shop Now"
+      },
+      "status": "error",
+      "created_at": "2026-03-15T09:52:49.453017+00:00",
+      "error": "Product photo 'iphone_13_mini' not found in registry"
+    },
+    {
+      "id": "canva_20260315_095255_007",
+      "source_prompt_id": "prompt_20260315_012",
+      "source_image_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/984189e8-1cc6-4270-b159-f133ed69c53e/gg-prompt_20260315_012.png",
+      "canva_design_id": "DAHEARF77MU",
+      "canva_edit_url": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc2MTYwMzc1MTg5fQ..G5vRXi5-iRg1fabf.YiLaY6IKDiF_ZhpWxzuL534x5zg_qCotQ46KMxH5OMkJPqFvjqhAMk2_hl1vMuw1zbYf-xn8V-hO15hPVLXcy4nE1axWhKVUDbwR69tqivS7Tgk.Oi46zXDacvQ3NJLJmFQsqg/edit?utm_source=OC-AZziwCpO4uv4&utm_medium=referral&utm_term=7847c780-93c8-4024-b7fc-97979c2ed230&utm_campaign=public_api_create_design_clicked_hyperlink",
+      "export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/37a79d5f-5244-46ad-83e6-81c9584e1700/canva-tiktok-prompt_20260315_012-20260315_095249.png",
+      "platform": "tiktok",
+      "dimensions": "1080x1920",
+      "design_type": "lifestyle",
+      "text_overlay": {
+        "headline": "samsung lifestyle",
+        "subline": "Refurbished. Inspected. Guaranteed.",
+        "cta": "Find Yours"
+      },
+      "status": "exported",
+      "created_at": "2026-03-15T09:52:55.217929+00:00"
+    },
+    {
+      "id": "canva_20260315_095300_008",
+      "source_prompt_id": "prompt_20260315_013",
+      "source_image_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/68fc8ba2-df4f-4697-b440-f9c2ce5be67a/gg-prompt_20260315_013.png",
+      "canva_design_id": "DAHEAZM6lHw",
+      "canva_edit_url": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc2MTYwMzgwNTc0fQ..B7Vyet_mcOqyMsj5.EqoCeb-VtXjjKNO4EX93fArMx1z-nIpsLwAxruhO3c5QSD53rg_XMTW-6vbfejJepZdazQ340Ks92yesGCkbgACzAguwgcc1byunpyfPnggPXrQ.4dNHt1hBlGIa_emha7fRKg/edit?utm_source=OC-AZziwCpO4uv4&utm_medium=referral&utm_term=ed794eb6-0c31-4567-9fe8-2736228c94ae&utm_campaign=public_api_create_design_clicked_hyperlink",
+      "export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/fd1c93f7-ae85-4c54-b8b3-60dbea8bab29/canva-instagram-prompt_20260315_013-20260315_095255.png",
+      "platform": "instagram",
+      "dimensions": "1080x1080",
+      "design_type": "lifestyle",
+      "text_overlay": {
+        "headline": "iphone professional use",
+        "subline": "Refurbished. Inspected. Guaranteed.",
+        "cta": "Find Yours"
+      },
+      "status": "exported",
+      "created_at": "2026-03-15T09:53:00.599460+00:00"
+    },
+    {
+      "id": "canva_20260315_095306_009",
+      "source_prompt_id": "prompt_20260315_014",
+      "source_image_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/19eaeb38-ff89-49f0-989c-131df9e0648f/gg-prompt_20260315_014.png",
+      "canva_design_id": "DAHEAeeiu_E",
+      "canva_edit_url": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc2MTYwMzg2NDYzfQ..E-16Jmqg1z5GTWSV.Jc8kYDX7iX6Vm-3wU8Blfppu2vP0riO7q6AcsVttL5pbOV3WG_VMNc81PH8BC0cgHKJUAHctxq6OmvRm-Qw3ybROYoVfYkkkl3CP8RzC8I1UaAM.IegE7DfKnlThIsqBB3ozPQ/edit?utm_source=OC-AZziwCpO4uv4&utm_medium=referral&utm_term=55e1d666-9d44-4ad0-b3d9-686c020cd10a&utm_campaign=public_api_create_design_clicked_hyperlink",
+      "export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/8fd64694-85f9-4c53-b0b7-a7e235fa909f/canva-instagram-prompt_20260315_014-20260315_095300.png",
+      "platform": "instagram",
+      "dimensions": "1080x1080",
+      "design_type": "sustainability",
+      "text_overlay": {
+        "headline": "Choose Refurbished",
+        "subline": "Same phone. Less waste.",
+        "cta": "Save Money & Planet"
+      },
+      "status": "exported",
+      "created_at": "2026-03-15T09:53:06.490742+00:00"
+    },
+    {
+      "id": "canva_20260315_095312_010",
+      "source_prompt_id": "prompt_20260315_010",
+      "source_image_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/c6663f20-14a2-4c16-9e3e-09aa4f4b76e9/gg-prompt_20260315_010.png",
+      "canva_design_id": "DAHEAX1065U",
+      "canva_edit_url": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc2MTYwMzkyMjU1fQ..W5KDLQCIdLbpEQEu.IFNjWIvCGw1oR0tE3TK1JCxADRQgMWORr1UNDgi-KHxt999idLhYBDDsIEkrk8a8y5CM8SRJFCOvzBdxKA_lzRpmNtdSMrhW1_YG7a1C9B6YfCs.yP-xYSsQJz07DC9xe-eclw/edit?utm_source=OC-AZziwCpO4uv4&utm_medium=referral&utm_term=18572283-047a-41bb-a926-40d1de4d07d5&utm_campaign=public_api_create_design_clicked_hyperlink",
+      "export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/fec8aea1-3695-4626-83e6-2f114bc67163/canva-tiktok-prompt_20260315_010-20260315_095306.png",
+      "platform": "tiktok",
+      "dimensions": "1080x1920",
+      "design_type": "deal_urgency",
+      "text_overlay": {
+        "headline": "Flash Deal",
+        "subline": "Save 40-60% vs Retail",
+        "cta": "Check Price"
+      },
+      "status": "exported",
+      "created_at": "2026-03-15T09:53:12.281507+00:00"
+    },
+    {
+      "id": "canva_20260315_095318_011",
+      "source_prompt_id": "prompt_20260315_011",
+      "source_image_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/ea3a423d-6ee2-4dac-b570-5f8c5a5367a1/gg-prompt_20260315_011.png",
+      "canva_design_id": "DAHEAXu88u0",
+      "canva_edit_url": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc2MTYwMzk4MzA0fQ..f07Q6wtoIm-b86Cq.Lcq06B7HEU525Mf1FDfomXjIlPC3Bwm-FXudkkkUW_z5iSZ3We4QMRQy0wvHCd0POHocpareI4XODswta2PUSmQl41aykLn6WFLhbS-cpjsrCiY.WJY1AyjxcBYs0Nqw3ym1_g/edit?utm_source=OC-AZziwCpO4uv4&utm_medium=referral&utm_term=a8584f45-a90f-4566-afea-da1ed5881df6&utm_campaign=public_api_create_design_clicked_hyperlink",
+      "export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/8ffbf133-c878-49f9-a4d7-5c6cca06b223/canva-instagram-prompt_20260315_011-20260315_095312.png",
+      "platform": "instagram",
+      "dimensions": "1080x1080",
+      "design_type": "deal_urgency",
+      "text_overlay": {
+        "headline": "Flash Deal",
+        "subline": "Save 40-60% vs Retail",
+        "cta": "Check Price"
+      },
+      "status": "exported",
+      "created_at": "2026-03-15T09:53:18.330749+00:00"
+    },
+    {
+      "id": "canva_20260315_095318_012",
+      "source_prompt_id": "prompt_20260315_007",
+      "source_image_url": "",
+      "canva_design_id": "",
+      "canva_edit_url": "",
+      "export_url": "",
+      "platform": "instagram",
+      "dimensions": "1080x1080",
+      "design_type": "comparison",
+      "text_overlay": {
+        "headline": "New vs Refurbished",
+        "subline": "Same specs. Half the price.",
+        "cta": "See the Savings"
+      },
+      "status": "error",
+      "created_at": "2026-03-15T09:53:18.330934+00:00",
+      "error": "Product photo 'galaxy_s24_ultra' not found in registry"
+    },
+    {
+      "id": "canva_20260315_095318_013",
+      "source_prompt_id": "prompt_20260315_008",
+      "source_image_url": "",
+      "canva_design_id": "",
+      "canva_edit_url": "",
+      "export_url": "",
+      "platform": "tiktok",
+      "dimensions": "1080x1920",
+      "design_type": "comparison",
+      "text_overlay": {
+        "headline": "New vs Refurbished",
+        "subline": "Same specs. Half the price.",
+        "cta": "See the Savings"
+      },
+      "status": "error",
+      "created_at": "2026-03-15T09:53:18.331024+00:00",
+      "error": "Product photo 'iphone_15_pro' not found in registry"
+    },
+    {
+      "id": "canva_20260315_095323_014",
+      "source_prompt_id": "prompt_20260315_009",
+      "source_image_url": "",
+      "canva_design_id": "DAHEARNqaaw",
+      "canva_edit_url": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc2MTYwNDAzMDY2fQ..oqkzE-as2qWylB1g.lB2fL0TXLrEC6-5w8DK0t7zc1Ynq4dr4YMRuyuA19SHnKsiCnhRJwfDgGzCAaK-OK23L03hOmbLAHfFKuaKZfNlGmUEHyk_U84_MPipbj3xetjE.h0ph-ZuBdDjejjjxT4upfA/edit?utm_source=OC-AZziwCpO4uv4&utm_medium=referral&utm_term=c1ce1138-931f-4097-9e2d-9b8249da6d84&utm_campaign=public_api_create_design_clicked_hyperlink",
+      "export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/25620bc7-4ec4-4f7c-8ca1-d16e2b644399/canva-facebook-prompt_20260315_009-20260315_095318.png",
+      "platform": "facebook",
+      "dimensions": "1200x630",
+      "design_type": "comparison",
+      "text_overlay": {
+        "headline": "New vs Refurbished",
+        "subline": "Same specs. Half the price.",
+        "cta": "See the Savings"
+      },
+      "status": "exported",
+      "created_at": "2026-03-15T09:53:23.091457+00:00"
     }
   ],
   "templates": {
@@ -161,8 +440,8 @@
     ]
   },
   "stats": {
-    "total_designs": 13,
-    "designs_today": 6,
-    "last_design_at": "2026-03-14T09:51:20.481627+00:00"
+    "total_designs": 20,
+    "designs_today": 7,
+    "last_design_at": "2026-03-15T09:53:23.091505+00:00"
   }
 }

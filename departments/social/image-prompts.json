@@ -22,7 +22,9 @@
         "galaxy s24 ultra",
         "samsung refurbished"
       ],
-      "recommended_tool": "product_photo_reference"
+      "recommended_tool": "product_photo_reference",
+      "canva_design_status": "error",
+      "canva_design_error": "Product photo 'galaxy_s24_ultra' not found in registry"
     },
     {
       "id": "prompt_20260315_002",
@@ -46,7 +48,10 @@
         "budget iphone",
         "cheap iphone 13"
       ],
-      "recommended_tool": "product_photo_reference"
+      "recommended_tool": "product_photo_reference",
+      "canva_design_status": "designed",
+      "canva_design_id": "DAHEAeRjaTU",
+      "canva_export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/3160f0b3-b916-4fb3-9977-e436b146d6ce/canva-instagram-prompt_20260315_002-20260315_095243.png"
     },
     {
       "id": "prompt_20260315_003",
@@ -70,7 +75,9 @@
         "galaxy s22 budget",
         "student phone deals"
       ],
-      "recommended_tool": "product_photo_reference"
+      "recommended_tool": "product_photo_reference",
+      "canva_design_status": "error",
+      "canva_design_error": "Product photo 'galaxy_s22' not found in registry"
     },
     {
       "id": "prompt_20260315_004",
@@ -94,7 +101,9 @@
         "iphone 14 pro refurbished",
         "iphone 17e alternative"
       ],
-      "recommended_tool": "product_photo_reference"
+      "recommended_tool": "product_photo_reference",
+      "canva_design_status": "error",
+      "canva_design_error": "Product photo 'iphone_14_pro' not found in registry"
     },
     {
       "id": "prompt_20260315_005",
@@ -118,7 +127,9 @@
         "iphone 15 pro max refurbished",
         "premium refurbished"
       ],
-      "recommended_tool": "product_photo_reference"
+      "recommended_tool": "product_photo_reference",
+      "canva_design_status": "error",
+      "canva_design_error": "Product photo 'iphone_15_pro_max' not found in registry"
     },
     {
       "id": "prompt_20260315_006",
@@ -142,7 +153,9 @@
         "iphone 13 mini",
         "compact iphone"
       ],
-      "recommended_tool": "product_photo_reference"
+      "recommended_tool": "product_photo_reference",
+      "canva_design_status": "error",
+      "canva_design_error": "Product photo 'iphone_13_mini' not found in registry"
     },
     {
       "id": "prompt_20260315_007",
@@ -165,7 +178,9 @@
         "galaxy s25 vs s24",
         "samsung comparison"
       ],
-      "recommended_tool": "product_photo_reference"
+      "recommended_tool": "product_photo_reference",
+      "canva_design_status": "error",
+      "canva_design_error": "Product photo 'galaxy_s24_ultra' not found in registry"
     },
     {
       "id": "prompt_20260315_008",
@@ -188,7 +203,9 @@
         "iphone 17e vs refurbished",
         "iphone comparison"
       ],
-      "recommended_tool": "product_photo_reference"
+      "recommended_tool": "product_photo_reference",
+      "canva_design_status": "error",
+      "canva_design_error": "Product photo 'iphone_15_pro' not found in registry"
     },
     {
       "id": "prompt_20260315_009",
@@ -211,7 +228,10 @@
         "phone savings calculator",
         "budget phone math"
       ],
-      "recommended_tool": "product_photo_reference"
+      "recommended_tool": "product_photo_reference",
+      "canva_design_status": "designed",
+      "canva_design_id": "DAHEARNqaaw",
+      "canva_export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/25620bc7-4ec4-4f7c-8ca1-d16e2b644399/canva-facebook-prompt_20260315_009-20260315_095318.png"
     },
     {
       "id": "prompt_20260315_010",
@@ -237,7 +257,10 @@
       "recommended_tool": "midjourney",
       "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/c6663f20-14a2-4c16-9e3e-09aa4f4b76e9/gg-prompt_20260315_010.png",
       "generated_at": "2026-03-15T09:21:02.123513+00:00",
-      "generation_status": "done"
+      "generation_status": "done",
+      "canva_design_status": "designed",
+      "canva_design_id": "DAHEAX1065U",
+      "canva_export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/fec8aea1-3695-4626-83e6-2f114bc67163/canva-tiktok-prompt_20260315_010-20260315_095306.png"
     },
     {
       "id": "prompt_20260315_011",
@@ -259,7 +282,10 @@
       "recommended_tool": "midjourney",
       "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/ea3a423d-6ee2-4dac-b570-5f8c5a5367a1/gg-prompt_20260315_011.png",
       "generated_at": "2026-03-15T09:21:14.216790+00:00",
-      "generation_status": "done"
+      "generation_status": "done",
+      "canva_design_status": "designed",
+      "canva_design_id": "DAHEAXu88u0",
+      "canva_export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/8ffbf133-c878-49f9-a4d7-5c6cca06b223/canva-instagram-prompt_20260315_011-20260315_095312.png"
     },
     {
       "id": "prompt_20260315_012",
@@ -281,7 +307,10 @@
       "recommended_tool": "midjourney",
       "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/984189e8-1cc6-4270-b159-f133ed69c53e/gg-prompt_20260315_012.png",
       "generated_at": "2026-03-15T09:20:17.195116+00:00",
-      "generation_status": "done"
+      "generation_status": "done",
+      "canva_design_status": "designed",
+      "canva_design_id": "DAHEARF77MU",
+      "canva_export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/37a79d5f-5244-46ad-83e6-81c9584e1700/canva-tiktok-prompt_20260315_012-20260315_095249.png"
     },
     {
       "id": "prompt_20260315_013",
@@ -303,7 +332,10 @@
       "recommended_tool": "midjourney",
       "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/68fc8ba2-df4f-4697-b440-f9c2ce5be67a/gg-prompt_20260315_013.png",
       "generated_at": "2026-03-15T09:20:35.268494+00:00",
-      "generation_status": "done"
+      "generation_status": "done",
+      "canva_design_status": "designed",
+      "canva_design_id": "DAHEAZM6lHw",
+      "canva_export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/fd1c93f7-ae85-4c54-b8b3-60dbea8bab29/canva-instagram-prompt_20260315_013-20260315_095255.png"
     },
     {
       "id": "prompt_20260315_014",
@@ -325,7 +357,10 @@
       "recommended_tool": "midjourney",
       "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/19eaeb38-ff89-49f0-989c-131df9e0648f/gg-prompt_20260315_014.png",
       "generated_at": "2026-03-15T09:20:48.448103+00:00",
-      "generation_status": "done"
+      "generation_status": "done",
+      "canva_design_status": "designed",
+      "canva_design_id": "DAHEAeeiu_E",
+      "canva_export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/8fd64694-85f9-4c53-b0b7-a7e235fa909f/canva-instagram-prompt_20260315_014-20260315_095300.png"
     }
   ],
   "folders": {

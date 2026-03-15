@@ -1,73 +1,63 @@
 {
-  "from_shift": "night",
-  "to_shift": "morning",
-  "timestamp": "2026-03-15T06:07:00Z",
-  "emergency_late_handoff": true,
-  "late_by_minutes": 67,
-  "overnight_summary": "SYSTEM-WIDE OPERATIONAL FAILURE. Six core production departments offline 84+ hours since 2026-03-11. Appears to be GitHub Actions scheduling failure - workflows not triggering. Gemini image API down 48+ hours blocking blog publication. Social platforms disconnected leaving only TikTok. 19 queue items backed up including 3 critical >48h. This is code red requiring immediate boss escalation and emergency recovery.",
+  "from_shift": "evening",
+  "to_shift": "night",
+  "timestamp": "2026-03-15T20:39:00Z",
+  "emergency_handoff": false,
+  "overnight_summary": "Infrastructure crisis ongoing but some progress made. Blog production pipeline unblocked, social maintaining TikTok presence, GM actively managing crisis. 3 critical departments still offline 79+ hours requiring immediate GitHub Actions intervention.",
   "issues_found": [
-    "CRITICAL: GitHub Actions workflows not triggering - 6 departments missed their schedules",
-    "CRITICAL: Gemini image API down 48+ hours with 403 errors",
-    "CRITICAL: Blog 'Best Refurbished iPhone 2026' blocked on missing image (scheduled Monday 09:30)",
-    "CRITICAL: Only TikTok connected to Postiz - need Twitter/Instagram/Facebook/LinkedIn",
-    "URGENT: 3 queue items pending >48h including boss-requested Charbel call",
-    "URGENT: All social media images consumed - pipeline empty",
-    "URGENT: 19 total queue items awaiting approval/processing"
+    "CRITICAL: GitHub Actions workflows still not triggering - 6 departments missed schedules since 2026-03-11",
+    "CRITICAL: Gemini API still down 48+ hours with 403 errors - need alternative",
+    "CRITICAL: Social platforms except TikTok disconnected - 80% capacity loss",
+    "URGENT: Image pipeline completely exhausted - no unused visuals remaining",
+    "URGENT: Charbel call pending 52+ hours (boss requested twice)",
+    "URGENT: 7 queue items awaiting processing including infrastructure fixes"
   ],
   "alerts_sent": [
-    "06:07 UTC - Emergency late handoff serves as CRITICAL alert"
+    "None - monitoring continues"
   ],
   "pending_approvals": [
-    "EMERGENCY: Fix GitHub Actions scheduling (6 departments not running)",
-    "EMERGENCY: Resolve Gemini API 403 errors or implement OpenAI fallback",
-    "EMERGENCY: Reconnect social platforms at app.postiz.com",
-    "CRITICAL: Process 19 queue items including 3 stale >48h",
-    "HIGH: Generate emergency image batch to unblock blog publication"
+    "EMERGENCY: GitHub Actions restart for intel, email, cro departments",
+    "EMERGENCY: Resolve Gemini API 403 or implement OpenAI DALL-E fallback",
+    "EMERGENCY: Reconnect Twitter, Instagram, Facebook, LinkedIn at app.postiz.com",
+    "CRITICAL: Process Charbel call approval (52+ hours pending)",
+    "HIGH: Generate emergency image batch for visual pipeline"
   ],
   "api_health": {
     "shopify": "ok",
-    "gemini": "down - 403 errors blocking image generation 48+ hours",
+    "gemini": "down - 403 errors blocking all image generation 48+ hours",
     "telegram": "ok",
-    "postiz": "degraded - only TikTok connected vs 4 platforms required",
+    "postiz": "degraded - only TikTok connected of 5 required platforms",
+    "github_actions": "broken - workflows not triggering since 2026-03-11",
     "vapi": "unknown"
   },
-  "recommendations_for_morning": [
-    "IMMEDIATE: This is code red - escalate to boss at morning standup ASAP",
-    "Check GitHub Actions settings - workflows appear completely broken since 2026-03-11",
-    "Test Gemini API with fresh credentials or implement OpenAI DALL-E fallback immediately",
-    "Connect Twitter, Instagram, Facebook, LinkedIn at app.postiz.com to restore social capacity",
-    "Process critical queue items especially Charbel call (boss requested twice, now 52+ hours)",
-    "Consider manual blog publication with stock image if API can't be fixed before Monday",
-    "Generate emergency image batch to prevent further social posting blocks"
+  "recommendations_for_night": [
+    "Monitor active departments for any additional failures",
+    "Test Gemini API periodically - watch for error resolution",
+    "Check GitHub Actions overnight - see if any workflows trigger",
+    "Alert immediately if remaining 12 active departments show issues",
+    "Continue monitoring TikTok posting - only functional social platform"
   ],
-  "github_actions_diagnosis": {
-    "suspected_cause": "GitHub Actions workflows not triggering since 2026-03-11",
-    "evidence": "6 departments show last_run dates of 2026-03-11 despite daily/weekly schedules",
-    "affected_workflows": [
-      "seo-daily.yml",
-      "x-intel.yml",
-      "content.yml",
-      "intel.yml",
-      "cro.yml",
-      "email.yml"
-    ],
-    "immediate_action": "Check repository Actions tab, workflow permissions, secrets configuration"
-  },
+  "progress_made_today": [
+    "Blog 'What Secure Packaging Actually Looks Like' unblocked and ready to publish",
+    "GM queue management active - cleared stale items, flagged priorities",
+    "Maintained TikTok social presence despite platform disconnections",
+    "Infrastructure issues clearly documented and prioritized for resolution"
+  ],
   "metrics_snapshot": {
     "blogs_in_pipeline": {
-      "brief_ready": 1,
+      "brief_ready": 0,
       "draft_ready": 0,
-      "qa_passed": 0,
-      "blocked": 1
+      "qa_passed": 1,
+      "blocked": 0
     },
     "queue_depth": {
-      "pending": 19,
+      "pending": 7,
       "approved": 0
     },
-    "incidents_open": 2,
-    "departments_active": 4,
+    "incidents_open": 1,
+    "departments_active": 12,
     "departments_offline": 6,
-    "health_score": "25/100",
-    "system_status": "CODE_RED"
+    "health_score": "35/100",
+    "system_status": "CRITICAL_INFRASTRUCTURE_FAILURE"
   }
 }

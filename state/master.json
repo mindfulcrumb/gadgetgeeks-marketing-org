@@ -99,6 +99,11 @@
       "last_run": "2026-03-15T07:59:46.038987+00:00",
       "status": "ok",
       "runs_total": 1
+    },
+    "retro": {
+      "last_run": "2026-03-15T20:40:42.058361+00:00",
+      "status": "ok",
+      "runs_total": 1
     }
   },
   "created": "2026-03-11",

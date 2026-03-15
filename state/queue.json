@@ -376,6 +376,37 @@
       "business_impact": "Marketing organization completely non-functional. Cannot fulfill scheduled commitments or generate new content.",
       "health_score": "25/100 - CRITICAL",
       "id": "standup_20260315_065616"
+    },
+    {
+      "page": "/blogs/local/best-places-buy-refurbished-phones-tucson-arizona",
+      "target_keyword": "refurbished phones Tucson",
+      "secondary_keywords": [
+        "refurbished phones Arizona",
+        "used phones Tucson AZ",
+        "cheap phones Tucson"
+      ],
+      "meta_title": "Best Places to Buy Refurbished Phones in Tucson, Arizona (2026)",
+      "meta_description": "Local Tucson guide to buying refurbished phones safely. University of Arizona students save $400+ with certified deals. Avoid sketchy sellers - shop local.",
+      "h1": "Where to Buy Refurbished Phones in Tucson Without Getting Burned",
+      "local_angle": "Target University of Arizona students, Tucson families, highlight Arizona-based business advantage vs national competitors",
+      "customer_language_focus": [
+        "don't want to get burned",
+        "save $400+",
+        "looks brand new",
+        "perfect for college students"
+      ],
+      "content_outline": [
+        "Why buying local in Tucson beats online marketplaces (trust, returns, support)",
+        "Red flags at Tucson pawn shops and electronics stores",
+        "University of Arizona student discounts and deals",
+        "Best neighborhoods in Tucson for electronics shopping",
+        "Phoenix vs Tucson: where to get better refurb deals",
+        "Snowbird season impact on pricing (Jan-March deals)",
+        "Arizona-specific carrier compatibility (Verizon, AT&T coverage maps)",
+        "CTA: Shop certified Arizona-based refurbished phones"
+      ],
+      "structured_data": "Article schema + LocalBusiness schema + FAQ schema for Tucson-specific questions",
+      "id": "seo_20260315_071708"
     }
   ],
   "approved": [],

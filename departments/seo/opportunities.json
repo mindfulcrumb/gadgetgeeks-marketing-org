@@ -148,9 +148,30 @@
       "keyword": "refurbished apple watch",
       "type": "page_optimization",
       "page": "/collections/refurbished-apple-watch",
+      "status": "completed",
+      "content_type": "collection optimization",
+      "meta_title": "Refurbished Apple Watch - Heart Rate & Fitness Tracking Perfect | Gadget Geeks Pro",
+      "meta_description": "Shop refurbished Apple Watch with perfect sensors, water resistance tested. Battery lasts all day workouts. Save $150+ with warranty. Find your Watch now.",
+      "improvements": [
+        "Led with sensor accuracy (heart rate, fitness tracking) - key Apple Watch differentiator",
+        "Addressed water resistance integrity - major customer concern for fitness devices",
+        "Used customer language 'lasts all day workouts' - specific to watch usage patterns",
+        "Specific savings '$150+' builds credibility for this price range",
+        "Emphasized warranty for trust on premium wearable tech",
+        "Strong CTA 'Find your Watch now' - action-oriented"
+      ],
+      "structured_data": "Product schema with sensor accuracy testing, water resistance grade, battery performance metrics, compatibility with iPhone models, health app integration",
+      "completed": "2026-03-15 07:16 UTC"
+    },
+    {
+      "id": "local-arizona-phone-guide",
+      "priority": "high",
+      "keyword": "refurbished phones Tucson",
+      "type": "content_gap",
+      "page": "/blogs/local/best-places-buy-refurbished-phones-tucson-arizona",
       "status": "pending",
-      "content_type": "collection optimization"
+      "content_type": "local buying guide"
     }
   ],
-  "last_updated": "2026-03-14 07:08 UTC"
+  "last_updated": "2026-03-15 07:16 UTC"
 }

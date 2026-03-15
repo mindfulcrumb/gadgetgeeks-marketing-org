@@ -517,6 +517,14 @@
       "alert_type": "CRITICAL",
       "message": "🚨 PRESS CRITICAL ALERT — 14:53 UTC\nType: PUBLICATION BLOCKED\nIssue: Scheduled blog cannot publish\n\nBLOCKED ARTICLE:\n• 'What Secure Packaging Actually Looks Like' \n• Scheduled: TODAY 18:00 UTC (3 hours)\n• Status: QA approved, ready except images\n\nBLOCKING ISSUES:\n• No header image prompt exists for this article\n• Cannot load required context files\n• Image generation API still down (Gemini 403 errors)\n• Missing store inventory for link validation\n\nACTION NEEDED:\n1. LENS must generate header image prompt for packaging theme\n2. Fix image API or implement fallback immediately  \n3. Restore access to context files\n4. Consider manual image upload as emergency workaround\n\nThis is the second scheduled publication blocked this week. System reliability critical.",
       "id": "blog_publish_20260315_145518"
+    },
+    {
+      "blog_id": "blog_20260315_001",
+      "title": "What Secure Packaging Actually Looks Like (No Broken Seals Here)",
+      "reason": "Back Market packaging security crisis trending on X - immediate relevance to Spain customer complaint about broken seals and unresponsive support",
+      "action": "Manual publish to blog without header image (content stands alone), create simple text-based social graphics if needed",
+      "urgency": "immediate",
+      "id": "blog_writer_20260315_183338"
     }
   ],
   "approved": [],

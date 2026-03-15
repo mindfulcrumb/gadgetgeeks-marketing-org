@@ -139,6 +139,7 @@ jobs:
                   "blogId": blog_id,
                   "title": title,
                   "handle": slug,
+                  "author": {"name": "Gadget Geeks Pro"},
                   "body": body_html,
                   "summary": meta_desc,
                   "isPublished": True,

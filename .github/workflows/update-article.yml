@@ -1,0 +1,64 @@
+name: Update Article Content
+on:
+  workflow_dispatch:
+    inputs:
+      article_id:
+        description: 'Shopify Article GID'
+        required: true
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install requests
+
+      - name: Get Shopify token
+        id: shopify
+        run: |
+          RESPONSE=$(curl -s -X POST "https://gadgetgeekspro.myshopify.com/admin/oauth/access_token" \
+            -H "Content-Type: application/x-www-form-urlencoded" \
+            -d "grant_type=client_credentials" \
+            -d "client_id=${{ secrets.SHOPIFY_CLIENT_ID }}" \
+            -d "client_secret=${{ secrets.SHOPIFY_CLIENT_SECRET }}")
+          TOKEN=$(echo "$RESPONSE" | python3 -c "import sys,json; print(json.load(sys.stdin)['access_token'])")
+          echo "::add-mask::$TOKEN"
+          echo "token=$TOKEN" >> "$GITHUB_OUTPUT"
+
+      - name: Update article body from blog-pipeline.json
+        env:
+          SHOPIFY_ACCESS_TOKEN: ${{ steps.shopify.outputs.token }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+          ARTICLE_ID: ${{ github.event.inputs.article_id }}
+        run: |
+          python3 << 'PYEOF'
+          import json, os, sys
+          sys.path.insert(0, "scripts/actions")
+          from image_gen import _shopify_graphql
+
+          bp = json.load(open("departments/content/blog-pipeline.json"))
+          content = bp["content"]
+          article_id = os.environ["ARTICLE_ID"]
+
+          print(f"Updating article: {article_id}")
+          print(f"Content length: {len(content)} chars")
+          print(f"First 150 chars: {content[:150]}")
+
+          mutation = """
+          mutation articleUpdate($id: ID!, $article: ArticleUpdateInput!) {
+            articleUpdate(id: $id, article: $article) {
+              article { id title }
+              userErrors { field message }
+            }
+          }
+          """
+          result = _shopify_graphql(mutation, {"id": article_id, "article": {"body": content}})
+          print(f"Result: {result}")
+          PYEOF

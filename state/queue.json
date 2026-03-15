@@ -421,6 +421,27 @@
       "angle": "Show our tamper-evident packaging, integrity verification, photo documentation process",
       "urgency": "today",
       "id": "x_intel_20260315_074122"
+    },
+    {
+      "apis_needed": [
+        "Google Analytics 4 Data API - Property: gadgetgeekspro.myshopify.com",
+        "Google Search Console API - Property: gadgetgeekspro.myshopify.com"
+      ],
+      "required_env_vars": [
+        "GOOGLE_ANALYTICS_PROPERTY_ID",
+        "GOOGLE_SERVICE_ACCOUNT_JSON",
+        "GOOGLE_SEARCH_CONSOLE_PROPERTY"
+      ],
+      "business_impact": "Cannot track traffic, conversions, or search performance. SEO and content strategies operating blind.",
+      "priority": "P0 - Blocks all analytics-driven decisions",
+      "setup_steps": [
+        "1. Enable GA4 Data API in Google Cloud Console",
+        "2. Create service account with Analytics Viewer permissions",
+        "3. Enable Search Console API",
+        "4. Verify property ownership for gadgetgeekspro.myshopify.com",
+        "5. Add service account keys to GitHub Secrets"
+      ],
+      "id": "analytics_20260315_075946"
     }
   ],
   "approved": [],

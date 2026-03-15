@@ -1,4 +1,49 @@
 {
-  "last_updated": null,
-  "optimizations": []
+  "last_updated": "2026-03-15",
+  "recommendations": [
+    {
+      "id": "OPT-20260315-001",
+      "date_added": "2026-03-15",
+      "priority_score": 10,
+      "impact": 5,
+      "effort": 5,
+      "type": "api_configuration",
+      "target_department": "operations",
+      "page_url": "system_wide",
+      "query": "all_analytics_data",
+      "current_metrics": {
+        "impressions": "ERROR",
+        "clicks": "ERROR",
+        "ctr": "ERROR",
+        "position": "ERROR",
+        "sessions": "ERROR"
+      },
+      "recommendation": "CRITICAL: Configure Google Analytics 4 and Search Console APIs immediately. Analytics department cannot function without data access.",
+      "suggested_meta_title": "N/A - System Configuration Issue",
+      "suggested_meta_description": "N/A - System Configuration Issue",
+      "status": "pending",
+      "assigned_to": "operations_team",
+      "completed_date": null
+    },
+    {
+      "id": "OPT-20260315-002",
+      "date_added": "2026-03-15",
+      "priority_score": 8,
+      "impact": 4,
+      "effort": 4,
+      "type": "content_acceleration",
+      "target_department": "content",
+      "page_url": "/blogs/",
+      "query": "content_volume_increase",
+      "current_metrics": {
+        "published_blogs": 1,
+        "blog_publish_rate": "1 per week",
+        "content_coverage": "minimal"
+      },
+      "recommendation": "Accelerate blog publishing to 2-3 posts per week minimum. Single blog cannot capture search volume for competitive refurbished phone keywords.",
+      "status": "pending",
+      "assigned_to": "scribe",
+      "completed_date": null
+    }
+  ]
 }

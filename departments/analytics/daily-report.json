@@ -1,7 +1,98 @@
 {
-  "last_updated": null,
-  "ga4": {},
-  "gsc": {},
-  "alerts": [],
-  "recommendations": []
+  "report_date": "2026-03-15",
+  "period": {
+    "current": "2026-03-08 to 2026-03-15",
+    "previous": "2026-03-01 to 2026-03-08"
+  },
+  "summary": {
+    "total_sessions": {
+      "current": "API_ERROR",
+      "previous": "API_ERROR",
+      "change_pct": "NO_DATA"
+    },
+    "total_conversions": {
+      "current": "API_ERROR",
+      "previous": "API_ERROR",
+      "change_pct": "NO_DATA"
+    },
+    "total_revenue": {
+      "current": "API_ERROR",
+      "previous": "API_ERROR",
+      "change_pct": "NO_DATA"
+    },
+    "organic_sessions": {
+      "current": "API_ERROR",
+      "previous": "API_ERROR",
+      "change_pct": "NO_DATA"
+    },
+    "avg_bounce_rate": {
+      "current": "API_ERROR",
+      "previous": "API_ERROR",
+      "change_pct": "NO_DATA"
+    }
+  },
+  "alerts": [
+    {
+      "severity": "critical",
+      "type": "api_unavailable",
+      "message": "Google Analytics 4 API not configured - cannot pull traffic data",
+      "page_or_query": "all_data",
+      "metric": "all_metrics",
+      "current_value": "ERROR",
+      "previous_value": "ERROR",
+      "change_pct": "NO_DATA",
+      "recommended_action": "Configure GA4 Data API access immediately - business operating blind"
+    },
+    {
+      "severity": "critical",
+      "type": "api_unavailable",
+      "message": "Google Search Console API not configured - cannot track search performance",
+      "page_or_query": "all_search_queries",
+      "metric": "impressions_clicks_ctr_position",
+      "current_value": "ERROR",
+      "previous_value": "ERROR",
+      "change_pct": "NO_DATA",
+      "recommended_action": "Configure GSC API access to track keyword rankings and search visibility"
+    },
+    {
+      "severity": "high",
+      "type": "content_gap",
+      "message": "Only 1 published blog for refurbished electronics business - insufficient content volume",
+      "page_or_query": "/blogs/",
+      "metric": "content_count",
+      "current_value": 1,
+      "previous_value": "unknown",
+      "change_pct": "NO_BASELINE",
+      "recommended_action": "Accelerate blog publishing schedule - need 2-3 posts per week minimum"
+    }
+  ],
+  "top_pages": "DATA_UNAVAILABLE_API_ERROR",
+  "traffic_sources": "DATA_UNAVAILABLE_API_ERROR",
+  "search_queries": {
+    "top_queries": "DATA_UNAVAILABLE_API_ERROR",
+    "new_keywords": "DATA_UNAVAILABLE_API_ERROR",
+    "high_impression_low_ctr": "DATA_UNAVAILABLE_API_ERROR"
+  },
+  "declining_pages": "DATA_UNAVAILABLE_API_ERROR",
+  "blog_performance": {
+    "winners": "DATA_UNAVAILABLE_API_ERROR",
+    "flatliners": "DATA_UNAVAILABLE_API_ERROR",
+    "declining": "DATA_UNAVAILABLE_API_ERROR"
+  },
+  "device_breakdown": {
+    "desktop": {
+      "sessions": "ERROR",
+      "conversion_rate": "ERROR"
+    },
+    "mobile": {
+      "sessions": "ERROR",
+      "conversion_rate": "ERROR"
+    },
+    "tablet": {
+      "sessions": "ERROR",
+      "conversion_rate": "ERROR"
+    }
+  },
+  "crawl_errors": "DATA_UNAVAILABLE_API_ERROR",
+  "data_quality_notice": "This report is incomplete due to missing API access. All metrics marked as ERROR/NO_DATA require Google Analytics 4 and Search Console API configuration."
 }

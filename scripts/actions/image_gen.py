@@ -195,17 +195,17 @@ def generate_blog_header(blog_title: str, blog_topic: str) -> dict:
     Returns:
         {"image_bytes": bytes, "mime_type": str}
     """
+    # IMPORTANT: DALL-E ignores negative prompts ("NO phones").
+    # Describe ONLY what to show. Never mention phones/devices even as negatives.
     prompt = (
-        f"Photorealistic editorial photograph that evokes the mood of: {blog_topic}. "
-        f"Clean, modern environment shot. NO phones, NO devices, NO screens, NO text, "
-        f"NO documents, NO readable writing, NO packaging with labels, NO UI elements. "
-        f"Show ONLY: a clean workspace, natural materials, ambient environment, or abstract "
-        f"textures that suggest the topic through mood and atmosphere. "
-        f"Shallow depth of field, shot on Canon EOS R5 with 35mm f/1.4 lens. "
-        f"Soft natural window light, muted color palette with teal-and-amber grade. "
-        f"Kodak Portra 400 film emulation, fine organic grain. "
-        f"No text, no watermarks, no logos, no phones, no screens. "
-        f"Wide 16:9 editorial blog header. IMG_7291.CR3 unedited RAW."
+        f"Photorealistic editorial photograph of a clean minimalist workspace. "
+        f"A wooden desk surface with a ceramic coffee mug, a succulent plant in a "
+        f"terracotta pot, and soft morning sunlight streaming through linen curtains. "
+        f"Warm amber tones, shallow depth of field with creamy bokeh background. "
+        f"Shot on Canon EOS R5 with 35mm f/1.4 lens. Kodak Portra 400 film emulation. "
+        f"Fine organic grain, natural color, editorial magazine quality. "
+        f"The scene evokes trust, care, and attention to detail. "
+        f"Wide 16:9 composition. IMG_7291.CR3 unedited RAW photograph."
     )
     return generate_image(prompt, aspect_ratio="16:9")
 

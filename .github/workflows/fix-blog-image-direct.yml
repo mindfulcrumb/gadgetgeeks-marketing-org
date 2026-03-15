@@ -8,6 +8,10 @@ on:
       blog_title:
         description: 'Blog title for image prompt'
         required: true
+      custom_prompt:
+        description: 'Custom image prompt (overrides default)'
+        required: false
+        default: ''
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -43,6 +47,7 @@ jobs:
           SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
           ARTICLE_ID: ${{ github.event.inputs.article_id }}
           BLOG_TITLE: ${{ github.event.inputs.blog_title }}
+          CUSTOM_PROMPT: ${{ github.event.inputs.custom_prompt }}
         run: |
           python3 << 'PYEOF'
           import os, sys
@@ -54,7 +59,14 @@ jobs:
           handle = title.lower().replace(" ", "-").replace("(", "").replace(")", "")[:60]
 
           print(f"Generating header image for: {title}")
-          img = generate_blog_header(title, "refurbished iphones comparison guide")
+
+          # Custom prompt override via env var, otherwise use default
+          custom_prompt = os.environ.get("CUSTOM_PROMPT", "")
+          if custom_prompt:
+              from image_gen import generate_image
+              img = generate_image(custom_prompt, aspect_ratio="16:9")
+          else:
+              img = generate_blog_header(title, "refurbished iphones comparison guide")
           print(f"  Provider: {img.get('provider')}, Size: {len(img['image_bytes'])} bytes")
 
           filename = f"blog-header-{handle}.png"

@@ -1,139 +1,74 @@
 {
-  "timestamp": "2026-03-15T06:07:00Z",
-  "run_type": "emergency_late_morning_prep",
-  "emergency_note": "SENTINEL ran 67 minutes late - morning shift started without handoff",
+  "timestamp": "2026-03-16T03:00:00Z",
+  "run_type": "predawn_check",
   "api_health": {
     "shopify": "ok",
-    "gemini": "down - 403 errors blocking image generation 48+ hours",
+    "gemini": "down",
     "telegram": "ok",
-    "postiz": "degraded - only TikTok connected vs 4 platforms required",
+    "canva": "unknown",
     "vapi": "unknown"
   },
   "workflow_health": {
-    "scheduled_today": 0,
-    "ran_successfully": 0,
+    "scheduled_today": 15,
+    "ran_successfully": 12,
     "failed": 0,
-    "missed": 6,
+    "missed": 3,
     "details": [
       {
-        "workflow": "seo-daily.yml",
-        "status": "missed",
-        "scheduled": "06:23",
-        "error": "GitHub Actions not triggering"
+        "workflow": "intel",
+        "status": "offline",
+        "error": "GitHub Actions not triggering - offline 79+ hours"
       },
       {
-        "workflow": "x-intel.yml",
-        "status": "missed",
-        "scheduled": "07:00",
-        "error": "GitHub Actions not triggering"
+        "workflow": "email",
+        "status": "offline",
+        "error": "GitHub Actions not triggering - offline 79+ hours"
       },
       {
-        "workflow": "content.yml",
-        "status": "missed",
-        "scheduled": "07:41",
-        "error": "GitHub Actions not triggering"
-      },
-      {
-        "workflow": "intel.yml",
-        "status": "missed",
-        "scheduled": "10:47 Thu",
-        "error": "GitHub Actions not triggering"
-      },
-      {
-        "workflow": "cro.yml",
-        "status": "missed",
-        "scheduled": "11:29 Wed",
-        "error": "GitHub Actions not triggering"
-      },
-      {
-        "workflow": "email.yml",
-        "status": "missed",
-        "scheduled": "08:53 Thu",
-        "error": "GitHub Actions not triggering"
+        "workflow": "cro",
+        "status": "offline",
+        "error": "GitHub Actions not triggering - offline 79+ hours"
       }
     ]
   },
   "queue_health": {
-    "pending_count": 19,
+    "pending_count": 9,
     "stale_items": [
       {
-        "id": "night_ops_20260314_023800",
-        "pending_hours": 52,
-        "urgency": "critical"
+        "id": "seo_20260313_071521",
+        "pending_hours": 67,
+        "urgency": "high"
       },
       {
-        "id": "standup_20260314_064425",
-        "pending_hours": 42,
-        "urgency": "critical"
-      },
-      {
-        "id": "standup_20260314_064425",
-        "pending_hours": 42,
-        "urgency": "critical"
+        "id": "social_afternoon_20260313_171041",
+        "pending_hours": 60,
+        "urgency": "high"
       }
     ],
-    "oldest_pending": "2026-03-12T17:29:52Z"
+    "oldest_pending": "2026-03-13T07:15:21Z"
   },
   "incidents": {
-    "open_count": 2,
-    "critical_open": 1,
+    "open_count": 1,
+    "critical_open": 0,
     "oldest_open": {
-      "id": "INC-008",
-      "age_hours": 24
+      "id": "INC-006",
+      "age_hours": 36
     }
   },
   "pipeline_health": {
-    "blogs_stuck": [
-      {
-        "id": "blog_20260317_001",
-        "title": "Best Refurbished iPhone 2026",
-        "blocked_reason": "Missing header image - no prompts available",
-        "blocked_hours": 35,
-        "scheduled_publish": "2026-03-17T09:30:00Z"
-      }
-    ],
+    "blogs_stuck": [],
     "images_stuck": [
-      "All social media images consumed - pipeline empty"
+      "All image generation blocked by Gemini 403 errors"
     ],
-    "emails_stuck": []
+    "emails_stuck": [
+      "Email department offline - no campaigns possible"
+    ]
   },
   "idle_departments": [
-    {
-      "dept": "intel",
-      "idle_hours": 84,
-      "last_run": "2026-03-11T18:10:43Z"
-    },
-    {
-      "dept": "seo",
-      "idle_hours": 83,
-      "last_run": "2026-03-11T19:06:31Z"
-    },
-    {
-      "dept": "content",
-      "idle_hours": 83,
-      "last_run": "2026-03-11T19:10:18Z"
-    },
-    {
-      "dept": "email",
-      "idle_hours": 83,
-      "last_run": "2026-03-11T19:12:01Z"
-    },
-    {
-      "dept": "cro",
-      "idle_hours": 83,
-      "last_run": "2026-03-11T19:12:14Z"
-    },
-    {
-      "dept": "x_intel",
-      "idle_hours": 83,
-      "last_run": "2026-03-11T19:09:03Z"
-    }
+    "intel",
+    "email",
+    "cro"
   ],
-  "alerts_triggered": [
-    "CODE RED: System-wide operational failure",
-    "CRITICAL: 6 departments offline 81+ hours",
-    "CRITICAL: Blog publication blocked 48+ hours",
-    "URGENT: 3 queue items pending >48 hours"
-  ],
+  "alerts_triggered": [],
   "status": "CRITICAL"
 }

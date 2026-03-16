@@ -525,5 +525,24 @@
       "Social media images that look cartoonish, stylized, or obviously AI-generated must NOT be posted — they destroy brand credibility."
     ],
     "incident_reference": "March 16, 2026 — DALL-E fallback produced cartoonish TikTok images. Cost money and reputation. DALL-E permanently removed from image_gen.py."
+  },
+
+  "rule_30_us_market_only": {
+    "description": "ALL content, customer voices, competitor data, and marketing materials MUST target the US market ONLY. No UK. No EU. No international. Arizona is the primary local market. This has been corrected 10+ times — ZERO tolerance for violations.",
+    "rules": [
+      "ALL customer voices, reviews, and complaints used in content MUST be from US customers. Filter out UK/EU/international voices from x-intel and engagement data.",
+      "ALL competitor analysis must reference US market experiences. UK Back Market complaints, EU consumer issues, etc. are NOT relevant to our audience.",
+      "ALL pricing must be in USD. No euros, no pounds, no currency conversion references.",
+      "ALL shipping references must be US domestic shipping only. No Royal Mail, no international carriers.",
+      "ALL SEO keywords must target US search volume. No UK spelling variations (colour vs color, organisation vs organization).",
+      "ALL consumer protection references must cite US law (FTC, state consumer protection). No UK/EU consumer rights.",
+      "Arizona is the PRIMARY local market — Tucson AZ angle first, then broader US.",
+      "When referencing competitors, describe the PROBLEM without naming the competitor. 'Some refurbished sellers' or 'other sellers' — NOT company names that could confuse readers.",
+      "NEVER name competitors directly in blogs or social posts. 'Back Market' reads like 'black market' to customers who don't know the company. Describe behaviors, not brands.",
+      "x-intel agents MUST tag customer voices with country/region. Content agents MUST filter for US-only before using any customer voice.",
+      "If a trending topic is driven by UK/EU customer complaints, rewrite the angle using US-specific concerns and language before publishing.",
+      "Violation of this rule = content must be pulled and rewritten. No exceptions."
+    ],
+    "incident_reference": "March 16, 2026 — Blog and social content included UK customer complaints (Royal Mail disputes, UK Back Market users). Boss corrected this for the 10th time. US market ONLY. Non-negotiable."
   }
 }

@@ -364,6 +364,8 @@ Also update `departments/content/calendar.json` with the new post entry and stat
 6. **ALWAYS use customer language.** Intel says "works like new"? You write "works like new." Not "functions identically to a new device."
 7. **ALWAYS include brand differentiators.** Every post references 2+ of: 65-point inspection, 90-day warranty, free shipping, 30-day returns, eco-friendly.
 8. **ALWAYS front-load value.** Something useful in the first 200 words -- a rec, a fact, a direct answer. No making them scroll for the payoff.
+9. **US MARKET ONLY.** All content targets American customers. No UK/EU references. No international shipping, currencies, or consumer laws. Arizona is the primary local market, then broader US. If x-intel provides UK/EU customer voices, DO NOT USE THEM — rewrite using US-specific concerns and language.
+10. **NEVER name competitors directly in blog posts.** Describe the problem, not the brand. "Some sellers ship phones with visible fingerprints and call them 'excellent'" NOT "Back Market ships greasy phones." Naming competitors confuses readers ("Back Market" reads like "black market") and gives them free exposure.
 
 ---
 
@@ -373,6 +375,6 @@ Also update `departments/content/calendar.json` with the new post entry and stat
 - **Prices**: Phones $149-$899, Accessories $9.99-$49.99
 - **Grading**: Excellent (90%+ battery, looks new) / Good (85%+, light marks) / Fair (80%+, visible wear)
 - **Value props**: 65-point inspection, 90-day warranty, free shipping, 30-day returns, eco-friendly
-- **Competitors**: Back Market, Swappa, Gazelle, Decluttr, Amazon Renewed
+- **Competitors**: NEVER name competitors directly in content. Reference them as "other refurbished sellers" or "some sellers." Internal awareness only: Back Market, Swappa, Gazelle, Decluttr, Amazon Renewed.
 - **Voice**: Knowledgeable friend in tech. Confident, not cocky. Slightly nerdy. Anti-corporate. Pro-sustainability.
 - **Audience**: Budget tech buyers (40%), eco-conscious (25%), parents (20%), small business (15%)

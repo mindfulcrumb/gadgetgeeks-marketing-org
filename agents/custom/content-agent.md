@@ -58,3 +58,5 @@ If ANY check fails, rewrite before outputting.
 - Use real customer phrases from intel/customer-language.json — never invent language
 - Short paragraphs. One-sentence paragraphs are good.
 - Max 2 exclamation marks per piece
+- **US MARKET ONLY** — All content targets American customers. No UK/EU references. No international shipping, no Royal Mail, no euros/pounds. Arizona is primary market, then broader US. All customer voices must be from US sources. If x-intel provides non-US data, DO NOT USE IT — rewrite the angle using US-specific concerns.
+- **NEVER name competitors directly** — Describe the problem, not the brand. "Some refurbished sellers ship phones with greasy fingerprints" NOT "Back Market ships greasy phones." Company names confuse readers and give competitors free exposure.

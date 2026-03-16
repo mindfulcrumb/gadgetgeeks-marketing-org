@@ -1,61 +1,64 @@
 {
   "trends": [
     {
-      "trend": "Battery Health Obsession Peak",
-      "description": "Customer mentions of 'battery health' up 400% in March. Exact percentage now mandatory expectation, not nice-to-have.",
-      "impact": "Critical - must display exact battery percentages and guarantee minimums prominently",
-      "opportunity": "Lead with battery health data, offer battery replacement services, create battery health guides",
+      "trend": "Battery Health Transparency Mandate",
+      "description": "Customer mentions of 'battery health' up 400% in March. Exact percentage now mandatory expectation across all platforms. Even peer-to-peer sellers required to disclose.",
+      "impact": "Critical - must display exact battery percentages and guarantee minimums prominently on all listings",
+      "opportunity": "Lead market with battery health data, offer battery replacement services, create comprehensive battery health guides",
       "date_identified": "2026-03-12",
-      "evolution": "Now includes requests for battery cycle counts and charging history"
+      "evolution": "Now mandatory on Swappa, becoming standard across all platforms. Cycle counts and charging history becoming differentiators.",
+      "latest_insight": "Customers specifically asking for '85%+ battery health minimum' as baseline expectation"
     },
     {
-      "trend": "iPhone 16 Anticipation Impact",
-      "description": "iPhone 16 rumors accelerating current-gen price drops despite September release still 6 months away",
+      "trend": "iPhone 16 Anticipation Acceleration",
+      "description": "iPhone 16 rumors accelerating current-gen price drops despite September release still 6 months away. Spec leaks causing purchase delays.",
       "impact": "High - creates urgency messaging opportunity while managing price decline expectations",
-      "opportunity": "Frame current pricing as 'perfect timing' before next wave of upgrades",
+      "opportunity": "Frame current pricing as 'perfect timing' before next wave of upgrades, emphasize immediate satisfaction vs waiting",
       "date_identified": "2026-03-12",
-      "latest": "Leak of iPhone 16 specs causing iPhone 14/15 holders to delay purchases"
+      "latest": "Leak of iPhone 16 Pro specs causing iPhone 14/15 holders to delay purchases, increasing refurb supply"
+    },
+    {
+      "trend": "Spring Inventory Surge Peak",
+      "description": "March showing highest refurb supply levels in 6+ months as customers upgrade during spring cleaning season. Supply up 23% week-over-week.",
+      "impact": "High - best selection and pricing power window of the year",
+      "opportunity": "Aggressive inventory acquisition while prices at absolute lowest point before summer demand",
+      "date_identified": "2026-03-12",
+      "latest": "Grade A inventory up 31% - customers upgrading in better condition than usual, premium supply available",
+      "timing": "Window closes March 20th as spring sales end"
+    },
+    {
+      "trend": "Carrier Compatibility Anxiety Peak",
+      "description": "Massive customer confusion intensifying: 'unlocked' definitions, Verizon/AT&T/T-Mobile compatibility, 5G band support",
+      "impact": "High - creating purchase hesitation and returns from compatibility issues",
+      "opportunity": "Position as compatibility experts with clear carrier guides and guaranteed compatibility promises",
+      "date_identified": "2026-03-16",
+      "source": "Reddit threads showing daily questions: 'does unlocked mean it works on Verizon too?'"
     },
     {
       "trend": "Accessory Compatibility Paralysis",
-      "description": "Massive customer confusion about Lightning vs USB-C, which cases fit which models, wireless charging compatibility",
+      "description": "Lightning vs USB-C confusion, case compatibility across iPhone models, wireless charging standards creating decision paralysis",
       "impact": "High - creating purchase hesitation and returns from wrong accessories",
       "opportunity": "Create definitive compatibility guides, offer guaranteed-compatible bundles, build trust through expertise",
       "date_identified": "2026-03-12",
-      "source": "Reddit threads showing daily questions about cable/case compatibility"
+      "evolution": "Now includes specific questions: 'will my case from my old phone fit this model', 'do I need a different charger'",
+      "solution": "Bundle deals with guaranteed compatibility become major differentiator"
     },
     {
-      "trend": "USB-C Compatibility Anxiety",
-      "description": "Confusion intensifying as more devices transition to USB-C while older phones remain Lightning",
-      "impact": "High - perfect opportunity for clear compatibility guides and curated bundles",
-      "opportunity": "Position as compatibility experts with clear guides and guaranteed bundles",
-      "date_identified": "2026-03-11",
-      "evolution": "Now includes anxiety about fast charging compatibility and cable quality"
-    },
-    {
-      "trend": "Spring Upgrade Cycle Supply Surge",
-      "description": "March showing highest refurb supply levels as customers upgrade during spring cleaning season",
-      "impact": "High - best selection and pricing power in months",
-      "opportunity": "Aggressive inventory acquisition while prices at lowest point",
+      "trend": "Premium Refurb Tier Market Segmentation",
+      "description": "Multiple competitors launching 'like-new' premium tiers at 85-90% of retail prices, creating two-tier market",
+      "impact": "Medium - creates opportunity to own true value position vs premium positioning chase",
+      "opportunity": "Emphasize real savings and value rather than chasing premium margins - let others fight for premium tier",
       "date_identified": "2026-03-12",
-      "latest": "Supply up 23% week-over-week, quality grades improving"
+      "insight": "Premium tiers make standard refurb look like better value - use this positioning advantage"
     },
     {
-      "trend": "Premium Refurb Tier Wars",
-      "description": "Multiple competitors launching 'like-new' premium tiers at 85-90% of retail prices",
-      "impact": "Medium - creates opportunity to own true value position vs premium positioning",
-      "opportunity": "Emphasize real savings and value rather than chasing premium margins",
-      "date_identified": "2026-03-12",
-      "insight": "Premium tiers make standard refurb look like better value - use this positioning"
-    },
-    {
-      "trend": "Biometric Function Anxiety",
-      "description": "Growing customer concern about Face ID/Touch ID reliability on refurbished devices",
+      "trend": "Biometric Function Verification Demand",
+      "description": "Growing customer concern about Face ID/Touch ID reliability on refurbished devices, including mask compatibility",
       "impact": "Medium - requires specific quality assurance messaging and testing guarantees",
-      "opportunity": "Guarantee biometric function testing, offer replacement if biometrics fail",
+      "opportunity": "Guarantee biometric function testing, offer replacement if biometrics fail, test mask compatibility",
       "date_identified": "2026-03-12",
-      "addition": "Now includes concerns about Face ID with masks and Touch ID sensitivity"
+      "addition": "Specific concerns: Face ID with masks, Touch ID sensitivity, depth sensor functionality"
     }
   ],
-  "last_updated": "2026-03-12 11:22 UTC"
+  "last_updated": "2026-03-16 11:35 UTC"
 }

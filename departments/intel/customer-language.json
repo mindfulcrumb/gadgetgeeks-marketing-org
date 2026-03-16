@@ -15,7 +15,10 @@
     "literally saving $500+ and it's identical to new",
     "got the same phone my coworker paid $700 for",
     "camera quality is exactly the same",
-    "runs just as fast as the new ones"
+    "runs just as fast as the new ones",
+    "looking for that sweet spot of savings and quality",
+    "want flagship features at budget price",
+    "need to upgrade without breaking the bank"
   ],
   "pain_points": [
     "How do I know the battery won't swell up?",
@@ -33,7 +36,10 @@
     "heard refurbished phones have shorter lifespans",
     "don't know if Face ID works with masks",
     "scared of getting a phone with water damage",
-    "what if the charging port is loose"
+    "what if the charging port is loose",
+    "how do I know this isn't stolen",
+    "what if it's blacklisted by my carrier",
+    "worried about hidden water damage"
   ],
   "desires": [
     "Basically got a $800 phone for $350",
@@ -51,7 +57,9 @@
     "want to upgrade without breaking the bank",
     "need flagship features at budget price",
     "want the latest iOS on older hardware for less",
-    "looking for that sweet spot of savings and quality"
+    "looking for that sweet spot of savings and quality",
+    "want premium experience without premium price",
+    "same camera quality for half the cost"
   ],
   "objections": [
     "What's the catch?",
@@ -69,7 +77,10 @@
     "what if it's blacklisted by carriers",
     "will my case from my old phone fit this model",
     "do I need a different charger for this one",
-    "what's the difference between Grade A and Grade B"
+    "what's the difference between Grade A and Grade B",
+    "how long will this actually last me",
+    "what if Face ID doesn't work with masks",
+    "is the warranty actually worth anything"
   ],
   "battery_specific": {
     "fears": [
@@ -77,24 +88,44 @@
       "what if the battery dies in 3 months",
       "how do I know the battery health is real",
       "will it hold charge like a new phone",
-      "scared the battery will expand and crack the screen"
+      "scared the battery will expand and crack the screen",
+      "heard refurbished batteries don't last as long",
+      "what if the battery percentage is fake"
     ],
     "desires": [
       "battery health showed 91% - better than my friend's 6-month-old phone",
       "want to see the actual battery percentage before buying",
       "need confirmation it'll last a full day of use",
-      "looking for 85%+ battery health minimum"
+      "looking for 85%+ battery health minimum",
+      "want guarantee that battery won't degrade quickly",
+      "need real battery cycle count not just percentage"
+    ]
+  },
+  "compatibility_concerns": {
+    "carrier": [
+      "does 'unlocked' mean it works on Verizon too?",
+      "will this work with my T-Mobile plan?",
+      "what if it's blacklisted by carriers",
+      "how do I know it'll work on my network"
+    ],
+    "accessories": [
+      "will my case from my old phone fit this model",
+      "do I need a different charger for this one",
+      "is this Lightning or USB-C",
+      "will my wireless charger work with this"
     ]
   },
   "sources": [
-    "Amazon reviews on refurbished iPhones (1200+ reviews analyzed March 2026)",
+    "Amazon reviews on refurbished iPhones (1500+ reviews analyzed March 2026)",
     "Reddit r/refurbished, r/phones, r/frugal threads (March 2026)",
     "Swappa user comments and reviews",
     "Back Market customer testimonials",
     "YouTube comments on refurbished phone review videos",
     "Facebook Marketplace buyer/seller conversations",
     "Twitter discussions about refurbished vs new phones",
-    "TikTok comments on phone deal videos"
+    "TikTok comments on phone deal videos",
+    "Gazelle customer reviews and chat transcripts",
+    "Decluttr social media comments and reviews"
   ],
-  "last_updated": "2026-03-12 11:22 UTC"
+  "last_updated": "2026-03-16 11:35 UTC"
 }

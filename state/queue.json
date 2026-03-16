@@ -312,6 +312,25 @@
       },
       "header_image_prompt_id": "prompt_20260316_001",
       "id": "blog_publish_20260316_153933"
+    },
+    {
+      "priority": "critical",
+      "issue": "Calendar shows 'Zero unused images remaining' after 34 posts in 3 days",
+      "action_needed": "LENS department needs to generate new batch of images using only real_product_photo sources (iphone_13, iphone_14) per Rule 25",
+      "focus_areas": [
+        "Back Market crisis differentiation",
+        "iPhone 17e comparisons",
+        "Customer testimonials with dollar amounts"
+      ],
+      "rule_25_compliance": "MANDATORY - only real product photos, zero AI-generated content",
+      "id": "social_afternoon_20260316_174118"
+    },
+    {
+      "current_problem": "34 posts in 3 days likely diluted individual post engagement",
+      "recommendation": "Reduce to maximum 8-10 posts per day",
+      "reasoning": "High volume posting reduces per-post engagement, platform algorithm penalties for spam-like behavior",
+      "implementation": "Focus on top-performing content types: iPhone 17e comparisons, customer testimonials with dollar amounts, Back Market crisis differentiation",
+      "id": "social_afternoon_20260316_174118"
     }
   ],
   "approved": [],

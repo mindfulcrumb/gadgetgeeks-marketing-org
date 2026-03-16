@@ -63,7 +63,7 @@
   ],
   "word_count": 687,
   "category": "trending",
-  "status": "draft_ready",
+  "status": "published",
   "anti_ai_audit": {
     "banned_words": 0,
     "structural_tells": 0,
@@ -75,5 +75,6 @@
     "result": "PASS"
   },
   "created": "2026-03-16T18:55:00Z",
-  "scheduled_publish": "2026-03-17T09:30:00Z"
+  "scheduled_publish": "2026-03-17T09:30:00Z",
+  "published_at": "2026-03-16T21:59:22.330449+00:00"
 }

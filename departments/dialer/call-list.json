@@ -1,5 +1,15 @@
 {
-  "pending": [],
+  "pending": [
+    {
+      "phone_number": "+13055155936",
+      "customer_name": "Will",
+      "script_type": "direct_instruction",
+      "reason": "Boss instruction via Telegram: Hey Xavier, I want you to call Will new number and brief him on the new iPhone 14 and 13 that we have on sale make a cell convince him that he needs to buy the phone. This is his phone number.\n+1 (305",
+      "priority": "urgent",
+      "best_time": "NOW",
+      "status": "approved"
+    }
+  ],
   "stats": {
     "total_pending": 0,
     "last_updated": "2026-03-16T15:18:00Z",

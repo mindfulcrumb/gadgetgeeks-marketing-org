@@ -1,90 +1,15 @@
 {
   "pending": [],
-  "completed": [
-    {
-      "phone_number": "+15202881507",
-      "customer_name": "Charbel",
-      "script_type": "direct_instruction",
-      "reason": "Direct boss instruction - urgent call requested",
-      "priority": "urgent",
-      "best_time": "ASAP (during business hours 9AM-8PM PST)",
-      "status": "called",
-      "source": "Boss Telegram instruction 2026-03-12T00:47:29",
-      "notes": "Boss requested this call twice - high priority. Currently outside calling hours (3:56 AM PST).",
-      "script_focus": "Use battery health messaging, spring upgrade timing, address quality concerns proactively",
-      "call_id": "019ce1b7-a23d-7000-8bf3-660b2cf14186",
-      "called_at": "2026-03-12T11:03:55.417174+00:00"
-    },
-    {
-      "phone_number": "+14808765236",
-      "customer_name": "Will",
-      "script_type": "direct_instruction",
-      "reason": "Direct boss instruction – call Will now",
-      "priority": "urgent",
-      "best_time": "NOW",
-      "status": "called",
-      "call_id": "019ce1bd-b2ad-7000-8c45-d62e1a579c25",
-      "called_at": "2026-03-12T11:10:32.876478+00:00"
-    },
-    {
-      "phone_number": "+14808765236",
-      "customer_name": "Will",
-      "script_type": "direct_instruction",
-      "reason": "Boss instruction via Telegram: Hey Javier, call Will and offer him the latest deal that we have on the refurbished iPhone 14 and 15",
-      "priority": "urgent",
-      "best_time": "NOW",
-      "status": "called",
-      "call_id": "019ce1ea-4048-7221-9f37-2f9600f82bb2",
-      "called_at": "2026-03-12T11:59:12.480556+00:00"
-    },
-    {
-      "phone_number": "+14808765236",
-      "customer_name": "Will",
-      "script_type": "direct_instruction",
-      "reason": "Boss instruction via Telegram: Hey Javier, I want you to call Will and offer him the latest discount on the refurbished iPhone 14 and 15",
-      "priority": "urgent",
-      "best_time": "NOW",
-      "status": "called",
-      "call_id": "019ce1ed-c06b-7000-8c59-8f8eca50563a",
-      "called_at": "2026-03-12T12:03:03.253318+00:00"
-    }
-  ],
-  "do_not_call": [],
   "stats": {
-    "total_calls": 4,
-    "total_connected": 0,
-    "total_interested": 0,
-    "total_voicemail": 0,
-    "total_not_interested": 0
+    "total_pending": 0,
+    "last_updated": "2026-03-16T15:18:00Z",
+    "data_sources_checked": [
+      "shopify_abandoned_carts",
+      "customer_purchase_history",
+      "b2b_leads",
+      "previous_call_outcomes"
+    ],
+    "data_availability": "none_available"
   },
-  "last_run": "2026-03-12 15:06 UTC",
-  "status": "Cannot build call list - missing Shopify data access. Scripts updated with March intelligence. Within calling hours (7:06 AM PST).",
-  "priority_focus": [
-    "CRITICAL: Battery health messaging (400% increase in customer mentions - exact percentages mandatory)",
-    "iPhone 16 anticipation urgency - perfect upgrade timing messaging",
-    "Spring upgrade cycle - highest supply in months (23% week-over-week increase)",
-    "Accessory compatibility expertise - major confusion about Lightning vs USB-C",
-    "Biometric function quality assurance - Face ID/Touch ID reliability concerns"
-  ],
-  "data_access_needed": [
-    "Shopify abandoned cart API - past 48hrs, $300+ items",
-    "Customer purchase history API - identify 60+ day inactive customers",
-    "Recent order data - 7-14 days ago for review requests",
-    "B2B leads database access",
-    "Previous call outcome tracking system"
-  ],
-  "script_updates_needed": {
-    "abandoned_cart": "MUST lead with exact battery health % (85%+ minimum), emphasize spring timing advantage, address bloating fears proactively",
-    "winback": "iPhone 16 anticipation creates perfect upgrade timing pressure - 'best prices before next wave'",
-    "review_request": "Focus on compatibility expertise (Lightning vs USB-C confusion), bundle recommendations",
-    "b2b_outreach": "Spring supply advantage for bulk orders - 23% more inventory, better grades available"
-  },
-  "calling_hours_status": "Within calling hours (7:06 AM PST). Optimal calling window: 9:00 AM - 8:00 PM PST",
-  "next_actions": [
-    "Integrate with Shopify API for abandoned cart data",
-    "Set up customer purchase history access",
-    "Create previous call outcome tracking",
-    "Update scripts with battery health guarantees",
-    "Build compatibility expertise positioning"
-  ]
+  "notes": "No customer data sources available. Cannot build call list without Shopify customer data, abandoned cart information, and purchase history."
 }

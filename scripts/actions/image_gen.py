@@ -17,7 +17,7 @@ from datetime import datetime, timezone
 
 
 GEMINI_API_BASE = "https://generativelanguage.googleapis.com/v1beta"
-GEMINI_IMAGE_MODEL = "gemini-2.0-flash"
+GEMINI_IMAGE_MODEL = "gemini-2.5-flash-image"
 
 # DALL-E is BANNED — removed 2026-03-16. Gemini only.
 

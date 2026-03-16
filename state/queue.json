@@ -185,6 +185,18 @@
       ],
       "priority": "medium",
       "id": "seo_weekly_20260316_065157"
+    },
+    {
+      "actions_required": [
+        "Manually restart GitHub Actions workflows for intel, email, cro departments",
+        "Fix Gemini API 403 errors or implement OpenAI DALL-E 3 fallback",
+        "Reconnect social platforms at app.postiz.com (Twitter, Instagram, Facebook, LinkedIn)",
+        "Investigate GA4 conversion tracking - zero conversions despite good traffic"
+      ],
+      "business_impact": "Operating at 40% capacity - no competitive intelligence, no email campaigns, no CRO, limited social media",
+      "offline_duration": "79+ hours for core departments",
+      "priority": "P0 - Critical business functions offline",
+      "id": "standup_20260316_071524"
     }
   ],
   "approved": [],

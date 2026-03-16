@@ -274,6 +274,44 @@
       "infrastructure_concern": "GA4 showing 0 conversions suggests broader data collection issues",
       "compliance_note": "Will not make any calls until proper data sources and incident log are available",
       "id": "dialer_20260316_151831"
+    },
+    {
+      "title": "iPhone 12 & 13: The Last Great iPhones With Headphone Jacks",
+      "excerpt": "Apple removed the headphone jack from iPhone 14 and newer models. Yeah, that feature you actually use. So you're stuck choosing between modern performance and keeping your wired headphones.",
+      "handle": "iphone-12-13-last-headphone-jack-refurbished",
+      "author": "Gadget Geeks Team",
+      "tags": [
+        "iphones",
+        "apple",
+        "headphone-jack",
+        "refurbished",
+        "buying-guide",
+        "music"
+      ],
+      "product_links": [
+        {
+          "anchor": "iPhone 13 refurbished",
+          "url": "/products/apple-iphone-13"
+        },
+        {
+          "anchor": "iPhone 12",
+          "url": "/products/apple-iphone-12"
+        }
+      ],
+      "collection_links": [],
+      "related_products": [
+        "apple-iphone-13",
+        "apple-iphone-12",
+        "premium-headphones"
+      ],
+      "seo": {
+        "title_tag": "iPhone 12 & 13: Last Great iPhones With Headphone Jacks - Refurbished",
+        "description_tag": "iPhone 14+ removed the headphone jack. iPhone 12 & 13 refurbished give you modern performance plus the features Apple took away. Music lovers, this one's for you.",
+        "og_title": "The Last iPhones With Everything You Actually Need",
+        "og_description": "Modern performance + headphone jack Apple removed. iPhone 12/13 refurbished from $289."
+      },
+      "header_image_prompt_id": "prompt_20260316_001",
+      "id": "blog_publish_20260316_153933"
     }
   ],
   "approved": [],

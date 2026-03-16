@@ -164,21 +164,12 @@
       "completed": "2026-03-15 07:16 UTC"
     },
     {
-      "id": "local-arizona-phone-guide",
-      "priority": "high",
-      "keyword": "refurbished phones Tucson",
-      "type": "content_gap",
-      "page": "/blogs/local/best-places-buy-refurbished-phones-tucson-arizona",
-      "status": "pending",
-      "content_type": "local buying guide"
-    },
-    {
       "id": "battery-health-deep-dive",
       "priority": "critical",
       "keyword": "battery health percentage phones",
       "type": "content_gap",
       "page": "/blogs/guides/battery-health-percentage-refurbished-phones-explained",
-      "status": "pending",
+      "status": "completed",
       "content_type": "technical guide",
       "meta_title": "Battery Health Percentage Explained: What 91% Really Means for Your Phone",
       "meta_description": "Battery health 91% vs 85% vs 80% decoded. Real battery cycle counts, charging habits, and why percentages matter more than age. Get the facts.",
@@ -200,9 +191,21 @@
         "Uses exact customer language from intel data",
         "Educational approach builds expertise and trust",
         "Specific technical details differentiate from generic content",
-        "Real-world usage examples connect to customer concerns"
+        "Real-world usage examples connect to customer concerns",
+        "Leads with battery anxiety resolution vs selling approach",
+        "Incorporates cycle count education for authority building"
       ],
-      "structured_data": "Article schema + FAQ schema + HowTo schema for battery testing"
+      "structured_data": "Article schema + FAQ schema + HowTo schema for battery testing",
+      "completed": "2026-03-16 07:51 UTC"
+    },
+    {
+      "id": "local-arizona-phone-guide",
+      "priority": "high",
+      "keyword": "refurbished phones Tucson",
+      "type": "content_gap",
+      "page": "/blogs/local/best-places-buy-refurbished-phones-tucson-arizona",
+      "status": "pending",
+      "content_type": "local buying guide"
     },
     {
       "id": "compatibility-guide-hub",
@@ -304,5 +307,5 @@
       "structured_data": "Article schema + FAQ schema for timing questions + Comparison schema for iPhone models"
     }
   ],
-  "last_updated": "2026-03-16 06:49 UTC"
+  "last_updated": "2026-03-16 07:51 UTC"
 }

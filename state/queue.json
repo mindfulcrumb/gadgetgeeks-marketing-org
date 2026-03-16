@@ -197,6 +197,39 @@
       "offline_duration": "79+ hours for core departments",
       "priority": "P0 - Critical business functions offline",
       "id": "standup_20260316_071524"
+    },
+    {
+      "page": "/blogs/guides/battery-health-percentage-refurbished-phones-explained",
+      "meta_title": "Battery Health Percentage Explained: What 91% Really Means for Your Phone",
+      "meta_description": "Battery health 91% vs 85% vs 80% decoded. Real battery cycle counts, charging habits, and why percentages matter more than age. Get the facts.",
+      "target_keyword": "battery health percentage phones",
+      "priority": "critical",
+      "content_type": "educational guide",
+      "customer_language_focus": [
+        "battery health showed 91% - better than my friend's 6-month-old phone",
+        "worried about those battery bloating horror stories",
+        "what if the battery dies in 3 months",
+        "how do I know the battery health is real"
+      ],
+      "content_sections": [
+        "Why battery health percentage is the #1 thing that matters (not age, not model year)",
+        "What 91% vs 85% vs 80% actually means for daily use (real-world examples)",
+        "Battery cycle counts explained: Why 200 cycles at 91% beats 50 cycles at 85%",
+        "The charging habits that killed the original battery (and how to avoid them)",
+        "Why some 'new' phones have worse battery health than refurbished ones",
+        "How we test and verify battery health (not just software estimates)",
+        "What percentage should you target for different usage patterns",
+        "Battery health vs fast charging: the trade-offs explained",
+        "When battery replacement makes sense vs buying refurbished",
+        "CTA: Shop phones with verified battery health percentages"
+      ],
+      "structured_data_needed": "Article schema + FAQ schema + HowTo schema for battery testing",
+      "internal_links": [
+        "/collections/refurbished-iphones",
+        "/collections/certified-refurbished-phones",
+        "/pages/warranty-information"
+      ],
+      "id": "seo_20260316_075311"
     }
   ],
   "approved": [],

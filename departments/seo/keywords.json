@@ -1,23 +1,221 @@
 {
   "keywords": [
-    { "term": "refurbished iphone", "priority": "high", "volume_estimate": "high", "current_ranking": null },
-    { "term": "pre-owned samsung galaxy", "priority": "high", "volume_estimate": "medium", "current_ranking": null },
-    { "term": "certified refurbished phones", "priority": "high", "volume_estimate": "high", "current_ranking": null },
-    { "term": "refurbished ipad", "priority": "medium", "volume_estimate": "medium", "current_ranking": null },
-    { "term": "phone accessories bundle", "priority": "medium", "volume_estimate": "medium", "current_ranking": null },
-    { "term": "cheap refurbished phones", "priority": "high", "volume_estimate": "high", "current_ranking": null },
-    { "term": "refurbished apple watch", "priority": "medium", "volume_estimate": "medium", "current_ranking": null },
-    { "term": "phone case charger bundle", "priority": "medium", "volume_estimate": "low", "current_ranking": null },
-    { "term": "buy used phones online", "priority": "high", "volume_estimate": "high", "current_ranking": null },
-    { "term": "refurbished phone warranty", "priority": "medium", "volume_estimate": "low", "current_ranking": null },
-    { "term": "refurbished phones Tucson", "priority": "high", "volume_estimate": "low", "current_ranking": null, "geo": "local" },
-    { "term": "refurbished iphone Arizona", "priority": "high", "volume_estimate": "low", "current_ranking": null, "geo": "local" },
-    { "term": "used phones Tucson AZ", "priority": "high", "volume_estimate": "low", "current_ranking": null, "geo": "local" },
-    { "term": "buy used iphone Phoenix", "priority": "high", "volume_estimate": "medium", "current_ranking": null, "geo": "local" },
-    { "term": "cheap phones Tucson", "priority": "medium", "volume_estimate": "low", "current_ranking": null, "geo": "local" },
-    { "term": "refurbished electronics Arizona", "priority": "medium", "volume_estimate": "low", "current_ranking": null, "geo": "local" },
-    { "term": "phone deals Phoenix", "priority": "medium", "volume_estimate": "medium", "current_ranking": null, "geo": "local" },
-    { "term": "refurbished phones near me", "priority": "high", "volume_estimate": "high", "current_ranking": null, "geo": "local" }
+    {
+      "term": "refurbished iphone",
+      "priority": "high",
+      "volume_estimate": "high",
+      "current_ranking": null
+    },
+    {
+      "term": "pre-owned samsung galaxy",
+      "priority": "high",
+      "volume_estimate": "medium",
+      "current_ranking": null
+    },
+    {
+      "term": "certified refurbished phones",
+      "priority": "high",
+      "volume_estimate": "high",
+      "current_ranking": null
+    },
+    {
+      "term": "refurbished ipad",
+      "priority": "medium",
+      "volume_estimate": "medium",
+      "current_ranking": null
+    },
+    {
+      "term": "phone accessories bundle",
+      "priority": "medium",
+      "volume_estimate": "medium",
+      "current_ranking": null
+    },
+    {
+      "term": "cheap refurbished phones",
+      "priority": "high",
+      "volume_estimate": "high",
+      "current_ranking": null
+    },
+    {
+      "term": "refurbished apple watch",
+      "priority": "medium",
+      "volume_estimate": "medium",
+      "current_ranking": null
+    },
+    {
+      "term": "phone case charger bundle",
+      "priority": "medium",
+      "volume_estimate": "low",
+      "current_ranking": null
+    },
+    {
+      "term": "buy used phones online",
+      "priority": "high",
+      "volume_estimate": "high",
+      "current_ranking": null
+    },
+    {
+      "term": "refurbished phone warranty",
+      "priority": "medium",
+      "volume_estimate": "low",
+      "current_ranking": null
+    },
+    {
+      "term": "refurbished phones Tucson",
+      "priority": "high",
+      "volume_estimate": "low",
+      "current_ranking": null,
+      "geo": "local"
+    },
+    {
+      "term": "refurbished iphone Arizona",
+      "priority": "high",
+      "volume_estimate": "low",
+      "current_ranking": null,
+      "geo": "local"
+    },
+    {
+      "term": "used phones Tucson AZ",
+      "priority": "high",
+      "volume_estimate": "low",
+      "current_ranking": null,
+      "geo": "local"
+    },
+    {
+      "term": "buy used iphone Phoenix",
+      "priority": "high",
+      "volume_estimate": "medium",
+      "current_ranking": null,
+      "geo": "local"
+    },
+    {
+      "term": "cheap phones Tucson",
+      "priority": "medium",
+      "volume_estimate": "low",
+      "current_ranking": null,
+      "geo": "local"
+    },
+    {
+      "term": "refurbished electronics Arizona",
+      "priority": "medium",
+      "volume_estimate": "low",
+      "current_ranking": null,
+      "geo": "local"
+    },
+    {
+      "term": "phone deals Phoenix",
+      "priority": "medium",
+      "volume_estimate": "medium",
+      "current_ranking": null,
+      "geo": "local"
+    },
+    {
+      "term": "refurbished phones near me",
+      "priority": "high",
+      "volume_estimate": "high",
+      "current_ranking": null,
+      "geo": "local"
+    },
+    {
+      "term": "battery health percentage phones",
+      "priority": "critical",
+      "volume_estimate": "high",
+      "current_ranking": null,
+      "trend": "trending_peak"
+    },
+    {
+      "term": "iPhone 16 vs iPhone 15 refurbished",
+      "priority": "high",
+      "volume_estimate": "medium",
+      "current_ranking": null,
+      "trend": "anticipation_cycle"
+    },
+    {
+      "term": "USB-C vs Lightning compatibility guide",
+      "priority": "high",
+      "volume_estimate": "medium",
+      "current_ranking": null,
+      "trend": "customer_confusion"
+    },
+    {
+      "term": "Face ID works refurbished phones",
+      "priority": "high",
+      "volume_estimate": "medium",
+      "current_ranking": null,
+      "trend": "biometric_anxiety"
+    },
+    {
+      "term": "phone accessory compatibility checker",
+      "priority": "medium",
+      "volume_estimate": "medium",
+      "current_ranking": null,
+      "trend": "accessory_paralysis"
+    },
+    {
+      "term": "University of Arizona student phone deals",
+      "priority": "high",
+      "volume_estimate": "low",
+      "current_ranking": null,
+      "geo": "local",
+      "demographic": "students"
+    },
+    {
+      "term": "Phoenix Arizona refurbished electronics",
+      "priority": "high",
+      "volume_estimate": "medium",
+      "current_ranking": null,
+      "geo": "local"
+    },
+    {
+      "term": "Arizona phone repair vs refurbished",
+      "priority": "medium",
+      "volume_estimate": "low",
+      "current_ranking": null,
+      "geo": "local"
+    },
+    {
+      "term": "spring phone upgrade deals",
+      "priority": "medium",
+      "volume_estimate": "medium",
+      "current_ranking": null,
+      "trend": "seasonal"
+    },
+    {
+      "term": "best time buy refurbished phone 2026",
+      "priority": "medium",
+      "volume_estimate": "medium",
+      "current_ranking": null,
+      "trend": "educational"
+    },
+    {
+      "term": "refurbished phone battery replacement guarantee",
+      "priority": "high",
+      "volume_estimate": "medium",
+      "current_ranking": null,
+      "trend": "battery_anxiety"
+    },
+    {
+      "term": "refurbished phone battery cycles explained",
+      "priority": "high",
+      "volume_estimate": "low",
+      "current_ranking": null,
+      "trend": "low_competition"
+    },
+    {
+      "term": "how to check Face ID works used phone",
+      "priority": "medium",
+      "volume_estimate": "low",
+      "current_ranking": null,
+      "trend": "high_intent"
+    },
+    {
+      "term": "best refurbished phones University of Arizona",
+      "priority": "high",
+      "volume_estimate": "low",
+      "current_ranking": null,
+      "geo": "local",
+      "demographic": "students"
+    }
   ],
-  "last_updated": "2026-03-15"
+  "last_updated": "2026-03-16"
 }

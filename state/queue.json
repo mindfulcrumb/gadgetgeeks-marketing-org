@@ -137,6 +137,54 @@
       "alert_type": "OPERATIONAL",
       "message": "🌅 SENTINEL MORNING HANDOFF — 06:21 UTC\n\nType: LATE HANDOFF DELIVERED\nStatus: Morning shift can now proceed\n\nCRITICAL FOR TODAY:\n• SEO brief seo_20260313_071521 - 73 hours overdue - SCRIBE pickup needed\n• 3 departments offline 79+ hours - GitHub Actions restart required\n• 7 infrastructure approvals pending\n\nCHIEF: Standup data package ready. Sorry for 21-minute delay.\n\nHealth: 35/100 - Infrastructure failure stable",
       "id": "night_ops_20260316_062244"
+    },
+    {
+      "action": "Add structured FAQ schema to product collection pages",
+      "pages": [
+        "/collections/refurbished-iphones",
+        "/collections/refurbished-samsung",
+        "/collections/refurbished-ipads",
+        "/collections/refurbished-apple-watch"
+      ],
+      "common_faqs": [
+        "What does battery health percentage mean?",
+        "How do I know Face ID/Touch ID works properly?",
+        "What's the difference between Grade A, B, and C condition?",
+        "What warranty comes with refurbished devices?",
+        "Are these phones unlocked for all carriers?",
+        "How do I know this isn't a stolen phone?"
+      ],
+      "priority": "high",
+      "id": "seo_weekly_20260316_065157"
+    },
+    {
+      "action": "Implement Local Business schema markup",
+      "location": {
+        "name": "Gadget Geeks Pro",
+        "address": "Tucson, Arizona, USA",
+        "geo": {
+          "latitude": "32.2226",
+          "longitude": "-110.9747"
+        },
+        "service_area": [
+          "Tucson",
+          "Phoenix",
+          "Mesa",
+          "Scottsdale",
+          "Chandler",
+          "Gilbert",
+          "Tempe",
+          "Flagstaff"
+        ],
+        "business_type": "Electronics Store"
+      },
+      "pages": [
+        "homepage",
+        "about",
+        "contact"
+      ],
+      "priority": "medium",
+      "id": "seo_weekly_20260316_065157"
     }
   ],
   "approved": [],

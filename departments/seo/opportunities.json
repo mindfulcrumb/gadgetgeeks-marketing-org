@@ -171,7 +171,138 @@
       "page": "/blogs/local/best-places-buy-refurbished-phones-tucson-arizona",
       "status": "pending",
       "content_type": "local buying guide"
+    },
+    {
+      "id": "battery-health-deep-dive",
+      "priority": "critical",
+      "keyword": "battery health percentage phones",
+      "type": "content_gap",
+      "page": "/blogs/guides/battery-health-percentage-refurbished-phones-explained",
+      "status": "pending",
+      "content_type": "technical guide",
+      "meta_title": "Battery Health Percentage Explained: What 91% Really Means for Your Phone",
+      "meta_description": "Battery health 91% vs 85% vs 80% decoded. Real battery cycle counts, charging habits, and why percentages matter more than age. Get the facts.",
+      "h1": "Battery Health Percentage Decoded: What 91% Actually Means for Your Refurbished Phone",
+      "content_outline": [
+        "Why battery health percentage is the #1 thing that matters (not age, not model year)",
+        "What 91% vs 85% vs 80% actually means for daily use (real-world examples)",
+        "Battery cycle counts explained: Why 200 cycles at 91% beats 50 cycles at 85%",
+        "The charging habits that killed the original battery (and how to avoid them)",
+        "Why some 'new' phones have worse battery health than refurbished ones",
+        "How we test and verify battery health (not just software estimates)",
+        "What percentage should you target for different usage patterns",
+        "Battery health vs fast charging: the trade-offs explained",
+        "When battery replacement makes sense vs buying refurbished",
+        "CTA: Shop phones with verified battery health percentages"
+      ],
+      "improvements": [
+        "Addresses peak trending topic (400% increase in mentions)",
+        "Uses exact customer language from intel data",
+        "Educational approach builds expertise and trust",
+        "Specific technical details differentiate from generic content",
+        "Real-world usage examples connect to customer concerns"
+      ],
+      "structured_data": "Article schema + FAQ schema + HowTo schema for battery testing"
+    },
+    {
+      "id": "compatibility-guide-hub",
+      "priority": "high",
+      "keyword": "USB-C vs Lightning compatibility guide",
+      "type": "content_gap",
+      "page": "/pages/phone-accessory-compatibility-guide",
+      "status": "pending",
+      "content_type": "compatibility hub",
+      "meta_title": "Phone Compatibility Guide: USB-C vs Lightning, Cases, Wireless Charging | 2026",
+      "meta_description": "End the confusion. Which cables, cases, and chargers work with your phone model. iPhone, Samsung, iPad compatibility checker. No returns needed.",
+      "h1": "Phone Accessory Compatibility Guide: End the USB-C vs Lightning Confusion",
+      "content_outline": [
+        "The great connector confusion: USB-C vs Lightning in 2026",
+        "iPhone models by charging port (which ones use what)",
+        "Samsung Galaxy USB-C compatibility across generations",
+        "Fast charging: which cables actually deliver full speed",
+        "Wireless charging compatibility by phone model",
+        "Case compatibility: exact measurements that matter",
+        "Screen protector fit guide by model and generation",
+        "Car charger compatibility matrix",
+        "Which accessories work across multiple devices",
+        "Future-proofing your accessory purchases",
+        "CTA: Shop guaranteed-compatible bundles"
+      ],
+      "improvements": [
+        "Solves major customer pain point causing purchase hesitation",
+        "Reduces returns from incompatible accessories",
+        "Positions as compatibility experts vs competitors",
+        "Interactive elements for specific model lookup",
+        "Drives bundle purchases through education"
+      ],
+      "structured_data": "FAQ schema + Table schema for compatibility matrix + Product schema for recommended bundles"
+    },
+    {
+      "id": "university-arizona-student-guide",
+      "priority": "high",
+      "keyword": "University of Arizona student phone deals",
+      "type": "content_gap",
+      "page": "/blogs/local/university-arizona-student-phone-deals-guide",
+      "status": "pending",
+      "content_type": "local demographic guide",
+      "meta_title": "University of Arizona Student Phone Deals: Budget Smartphones That Last 4 Years",
+      "meta_description": "UA students save $400+ on phones that survive dorm life. Battery health 85%+, drop-tested, budget-friendly. Local Tucson business supports Wildcats.",
+      "h1": "University of Arizona Student Phone Deals: Phones That Survive College (And Your Budget)",
+      "content_outline": [
+        "Why UA students choose refurbished (saving for tuition vs phone payments)",
+        "Best phone models for college life (durability + performance + price)",
+        "Battery health that lasts 4 years of college use",
+        "Dorm-friendly features: wireless charging, fast charging, good cameras",
+        "Study abroad compatible: unlocked phones explained",
+        "Spring break durability: water resistance and drop protection",
+        "Campus WiFi optimization: which phones handle UA network best",
+        "Graduation upgrade path: trade-in value retention",
+        "Local advantage: support from Tucson business vs online gamble",
+        "Student budget breakdown: phone + case + protection for under $400",
+        "CTA: Shop UA student-approved phone deals"
+      ],
+      "improvements": [
+        "Targets untapped local demographic with high phone turnover",
+        "Addresses specific student concerns (durability, budget, longevity)",
+        "Local connection builds trust vs national competitors",
+        "Seasonal relevance (spring semester, graduation planning)",
+        "Price positioning perfect for student budgets"
+      ],
+      "structured_data": "Article schema + Local Business schema + FAQ schema for student-specific questions"
+    },
+    {
+      "id": "iphone-16-timing-guide",
+      "priority": "high",
+      "keyword": "iPhone 16 vs iPhone 15 refurbished",
+      "type": "content_gap",
+      "page": "/blogs/timing/iphone-16-release-refurbished-phone-deals",
+      "status": "pending",
+      "content_type": "timing/urgency guide",
+      "meta_title": "iPhone 16 Release: Perfect Time to Buy iPhone 15/14 Refurbished (Save $500+)",
+      "meta_description": "iPhone 16 coming September 2026. iPhone 15/14 prices dropping now. Get flagship features for half price before supply runs out. Smart timing saves big.",
+      "h1": "iPhone 16 Release Timing: Why March 2026 is Perfect for iPhone 15 Refurbished Deals",
+      "content_outline": [
+        "iPhone 16 release timeline: September 2026 confirmed, features leaked",
+        "The upgrade cycle opportunity: why March-May is the sweet spot",
+        "iPhone 15 vs iPhone 16 leaked specs: is the upgrade worth $500+?",
+        "Supply and demand reality: current iPhone 15/14 refurb availability peak",
+        "Price drop patterns: historical data shows best deals are NOW",
+        "Why waiting until iPhone 16 release means worse deals and less selection",
+        "iPhone 14 Pro vs iPhone 15 regular: which refurbished deal wins?",
+        "Future-proofing reality: iPhone 15 gets 6+ years of iOS updates",
+        "The psychology trap: paying $500 more for marginal improvements",
+        "Smart buyer strategy: upgrade every 3-4 years with refurbished timing",
+        "CTA: Lock in iPhone 15/14 deals before iPhone 16 hype kills availability"
+      ],
+      "improvements": [
+        "Leverages current trend of iPhone 16 anticipation",
+        "Creates urgency around current deals and supply levels",
+        "Educational approach builds smart buying confidence",
+        "Specific savings amounts and timeline create action motivation",
+        "Positions as expert timing advice vs reactive selling"
+      ],
+      "structured_data": "Article schema + FAQ schema for timing questions + Comparison schema for iPhone models"
     }
   ],
-  "last_updated": "2026-03-15 07:16 UTC"
+  "last_updated": "2026-03-16 06:49 UTC"
 }

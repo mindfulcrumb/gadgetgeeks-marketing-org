@@ -120,28 +120,57 @@ def generate_image(prompt: str, aspect_ratio: str = "16:9") -> dict:
 # ---------------------------------------------------------------------------
 
 def generate_blog_header(blog_title: str, blog_topic: str) -> dict:
-    """Generate a photorealistic blog header image.
+    """Get a blog header image that MATCHES the blog topic.
 
-    RULES — NEVER VIOLATE:
-    - NO phones, NO devices, NO screens in the image
-    - NO text, NO documents, NO readable writing, NO UI elements
-    - NO logos, NO watermarks, NO brand names
-    - Scene ONLY: environment, lighting, mood, atmosphere
-    - The image should FEEL like the topic without literally showing products
+    RULES:
+    1. If the blog is about a specific product (iPhone, Samsung, etc.),
+       use the REAL product photo from assets/product-photos/.
+       NEVER generate phones/devices with AI.
+    2. Only use AI-generated scenes for non-product blogs (buying guides,
+       general tips, industry news) where no specific device is featured.
+    3. The image MUST relate to the blog content. No generic desk scenes
+       for product-specific blogs.
 
     Returns:
-        {"image_bytes": bytes, "mime_type": str}
+        {"image_bytes": bytes, "mime_type": str, "provider": str}
     """
-    # IMPORTANT: DALL-E ignores negative prompts ("NO phones").
-    # Describe ONLY what to show. Never mention phones/devices even as negatives.
+    title_lower = blog_title.lower()
+    topic_lower = blog_topic.lower()
+    combined = f"{title_lower} {topic_lower}"
+
+    # --- Check for product-specific blogs: use REAL product photos ---
+    product_photo_map = {
+        "iphone 14": "assets/product-photos/iphone-14-desktop.png",
+        "iphone 13": "assets/product-photos/iphone-13-desktop.png",
+        "iphone 12": "assets/product-photos/iphone-13-desktop.png",  # closest match
+    }
+
+    for keyword, photo_path in product_photo_map.items():
+        if keyword in combined:
+            # Use real product photo — resolve path relative to repo root
+            import pathlib
+            # Try multiple base paths
+            for base in [pathlib.Path("."), pathlib.Path(__file__).parent.parent.parent]:
+                full_path = base / photo_path
+                if full_path.exists():
+                    print(f"    [Blog Header] Using REAL product photo: {photo_path}")
+                    with open(full_path, "rb") as f:
+                        return {
+                            "image_bytes": f.read(),
+                            "mime_type": "image/png",
+                            "provider": "real_product_photo",
+                        }
+            print(f"    [Blog Header] WARNING: Product photo not found at {photo_path}, falling back to AI scene")
+            break
+
+    # --- Non-product blog: generate a relevant AI scene (NO devices) ---
+    # Build a prompt that relates to the actual blog topic
     prompt = (
-        f"Photorealistic editorial photograph of a clean minimalist workspace. "
-        f"A wooden desk surface with a ceramic coffee mug, a succulent plant in a "
-        f"terracotta pot, and soft morning sunlight streaming through linen curtains. "
-        f"Warm amber tones, shallow depth of field with creamy bokeh background. "
+        f"Photorealistic editorial photograph that evokes the theme: {blog_title}. "
+        f"Clean composition, no phones, no devices, no screens, no text, no logos. "
+        f"Scene and mood only — environment, lighting, atmosphere that matches the topic. "
         f"Shot on Canon EOS R5 with 35mm f/1.4 lens. Kodak Portra 400 film emulation. "
         f"Fine organic grain, natural color, editorial magazine quality. "
-        f"The scene evokes trust, care, and attention to detail. "
         f"Wide 16:9 composition. IMG_7291.CR3 unedited RAW photograph."
     )
     return generate_image(prompt, aspect_ratio="16:9")

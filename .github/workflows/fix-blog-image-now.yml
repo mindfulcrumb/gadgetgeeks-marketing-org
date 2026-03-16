@@ -1,0 +1,97 @@
+name: Fix Blog Image — Use Real Product Photo
+on:
+  workflow_dispatch:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - run: pip install requests
+
+      - name: Get Shopify token
+        id: shopify
+        run: |
+          RESPONSE=$(curl -s -X POST "https://gadgetgeekspro.myshopify.com/admin/oauth/access_token" \
+            -H "Content-Type: application/x-www-form-urlencoded" \
+            -d "grant_type=client_credentials" \
+            -d "client_id=${{ secrets.SHOPIFY_CLIENT_ID }}" \
+            -d "client_secret=${{ secrets.SHOPIFY_CLIENT_SECRET }}")
+          TOKEN=$(echo "$RESPONSE" | python3 -c "import sys,json; print(json.load(sys.stdin)['access_token'])")
+          echo "::add-mask::$TOKEN"
+          echo "token=$TOKEN" >> "$GITHUB_OUTPUT"
+
+      - name: Upload real product photo and update article image
+        env:
+          SHOPIFY_ACCESS_TOKEN: ${{ steps.shopify.outputs.token }}
+          SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
+          SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
+        run: |
+          python3 << 'PYEOF'
+          import os, sys, json
+          sys.path.insert(0, "scripts/actions")
+          from image_gen import upload_to_shopify, _shopify_graphql
+
+          # Upload real iPhone 13 product photo to Shopify CDN
+          print("=== STEP 1: Upload real iPhone 13 product photo ===")
+          with open("assets/product-photos/iphone-13-desktop.png", "rb") as f:
+              photo_bytes = f.read()
+          print(f"  Photo size: {len(photo_bytes)} bytes")
+
+          cdn_url = upload_to_shopify(
+              photo_bytes,
+              "blog-header-iphone-13-bundle-real.png",
+              "image/png"
+          )
+          print(f"  CDN URL: {cdn_url}")
+
+          # Update the article image
+          print("\n=== STEP 2: Update article image ===")
+          article_id = "gid://shopify/Article/597538996475"
+
+          update_mutation = """
+          mutation articleUpdate($id: ID!, $article: ArticleUpdateInput!) {
+            articleUpdate(id: $id, article: $article) {
+              article {
+                id
+                title
+                image { url }
+              }
+              userErrors { field message }
+            }
+          }
+          """
+
+          result = _shopify_graphql(update_mutation, {
+              "id": article_id,
+              "article": {
+                  "image": {
+                      "url": cdn_url,
+                      "altText": "Refurbished iPhone 13 bundle with MagSafe case, screen protector, charger — multiple colors available"
+                  }
+              }
+          })
+          print(f"  Result: {json.dumps(result, indent=2)}")
+
+          article = result.get("articleUpdate", {}).get("article", {})
+          errors = result.get("articleUpdate", {}).get("userErrors", [])
+          if errors:
+              print(f"  ERRORS: {errors}")
+              sys.exit(1)
+
+          print(f"\n{'='*60}")
+          print(f"  IMAGE UPDATED SUCCESSFULLY")
+          print(f"  Article: {article.get('title')}")
+          print(f"  New image: {article.get('image', {}).get('url', cdn_url)}")
+          print(f"{'='*60}")
+          PYEOF

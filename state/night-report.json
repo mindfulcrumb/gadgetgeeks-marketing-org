@@ -1,33 +1,29 @@
 {
-  "timestamp": "2026-03-16T05:10:00Z",
-  "run_type": "morning_prep",
+  "timestamp": "2026-03-16T06:21:00Z",
+  "run_type": "morning_prep_late",
   "api_health": {
     "shopify": "ok",
     "gemini": "down",
     "telegram": "ok",
-    "canva": "unknown",
+    "postiz": "degraded",
+    "github_actions": "broken",
     "vapi": "unknown"
   },
   "workflow_health": {
-    "scheduled_today": 18,
-    "ran_successfully": 15,
+    "scheduled_today": 2,
+    "ran_successfully": 0,
     "failed": 0,
-    "missed": 3,
+    "missed": 2,
     "details": [
       {
-        "workflow": "intel",
-        "status": "missed",
-        "error": "GitHub Actions not triggering since 2026-03-11"
+        "workflow": "google_trends",
+        "scheduled": "06:48",
+        "status": "not_yet_due"
       },
       {
-        "workflow": "email",
-        "status": "missed",
-        "error": "GitHub Actions not triggering since 2026-03-11"
-      },
-      {
-        "workflow": "cro",
-        "status": "missed",
-        "error": "GitHub Actions not triggering since 2026-03-11"
+        "workflow": "standup",
+        "scheduled": "06:56",
+        "status": "overdue_by_25_minutes"
       }
     ]
   },
@@ -36,12 +32,12 @@
     "stale_items": [
       {
         "id": "seo_20260313_071521",
-        "pending_hours": 70,
-        "urgency": "high"
+        "pending_hours": 73,
+        "urgency": "critical"
       },
       {
         "id": "gm_queue_20260315_191951",
-        "pending_hours": 38,
+        "pending_hours": 35,
         "urgency": "high"
       }
     ],
@@ -52,17 +48,13 @@
     "critical_open": 0,
     "oldest_open": {
       "id": "INC-006",
-      "age_hours": 38
+      "age_hours": 39
     }
   },
   "pipeline_health": {
     "blogs_stuck": [],
-    "images_stuck": [
-      "All image generation blocked - Gemini API 403 errors"
-    ],
-    "emails_stuck": [
-      "Email department offline - no campaigns possible"
-    ]
+    "images_stuck": [],
+    "emails_stuck": []
   },
   "idle_departments": [
     "intel",
@@ -70,5 +62,6 @@
     "cro"
   ],
   "alerts_triggered": [],
-  "status": "CRITICAL"
+  "status": "CRITICAL",
+  "morning_shift_notes": "Running 21 minutes late - CHIEF standup overdue. Infrastructure crisis continues with 3 departments offline 79+ hours. SEO brief critical backlog at 73+ hours needs immediate SCRIBE pickup."
 }

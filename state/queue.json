@@ -84,14 +84,13 @@
     },
     {
       "departments_down": [
-        "intel",
         "email",
         "cro"
       ],
-      "offline_duration": "72+ hours since 2026-03-11",
-      "business_impact": "No competitive intelligence, no email campaigns, no conversion optimization",
-      "suggested_action": "Check GitHub Actions workflows and restart these departments manually",
-      "priority": "P0 - Critical business functions offline",
+      "offline_duration": "124+ hours since 2026-03-11 (ESCALATED - 5+ DAYS)",
+      "business_impact": "No email campaigns, no conversion optimization - REVENUE IMPACT CRITICAL",
+      "suggested_action": "IMMEDIATE GitHub Actions restart required - departments offline 5+ days",
+      "priority": "P0 - CRITICAL REVENUE FUNCTIONS OFFLINE 5+ DAYS",
       "id": "gm_queue_20260315_191951"
     },
     {
@@ -119,19 +118,22 @@
       "id": "gm_queue_20260315_191951"
     },
     {
-      "issue": "GA4 showing zero conversions despite good traffic volume and engagement",
-      "sessions": 227,
-      "bounce_rate": "17.6% (excellent)",
-      "avg_session_duration": "341 seconds (5.7 minutes - very good)",
-      "investigation_needed": [
-        "Verify GA4 Enhanced Ecommerce tracking setup",
-        "Test purchase funnel end-to-end",
-        "Check if purchase events are firing",
-        "Confirm conversion goals are properly configured",
-        "Test checkout process for technical issues"
+      "issue": "GA4 shows 0 conversions despite 251 sessions including product page visits",
+      "urgency": "critical",
+      "possible_causes": [
+        "GA4 e-commerce tracking not implemented",
+        "Shopify conversion events not firing",
+        "GA4 purchase event configuration error",
+        "Checkout funnel broken or untested"
       ],
-      "business_impact": "Cannot measure ROI or optimize conversion funnel without working conversion tracking",
-      "id": "analytics_20260315_212352"
+      "investigation_needed": [
+        "Test complete checkout flow",
+        "Verify GA4 enhanced e-commerce setup",
+        "Check Shopify Analytics integration",
+        "Review GA4 conversion event configuration"
+      ],
+      "impact": "Cannot measure ROI or optimize without conversion data",
+      "id": "analytics_20260316_083811"
     },
     {
       "alert_type": "OPERATIONAL",
@@ -188,14 +190,14 @@
     },
     {
       "actions_required": [
-        "Manually restart GitHub Actions workflows for intel, email, cro departments",
+        "URGENT: Restart email & cro departments - 5+ days offline - REVENUE IMPACT",
         "Fix Gemini API 403 errors or implement OpenAI DALL-E 3 fallback",
         "Reconnect social platforms at app.postiz.com (Twitter, Instagram, Facebook, LinkedIn)",
         "Investigate GA4 conversion tracking - zero conversions despite good traffic"
       ],
-      "business_impact": "Operating at 40% capacity - no competitive intelligence, no email campaigns, no CRO, limited social media",
-      "offline_duration": "79+ hours for core departments",
-      "priority": "P0 - Critical business functions offline",
+      "business_impact": "Operating at 30% capacity - no email campaigns (5+ days), no CRO (5+ days), limited social media",
+      "offline_duration": "124+ hours for critical revenue departments",
+      "priority": "P0 - CRITICAL REVENUE FUNCTIONS OFFLINE 5+ DAYS",
       "id": "standup_20260316_071524"
     },
     {
@@ -242,24 +244,6 @@
       "reply_content": "Exactly right. Refurbished flagship vs new entry model isn't even close - you get Pro cameras, better display, premium build for similar price.",
       "reason": "Tweet getting traction (4 likes, 2 RTs) reinforcing our core value messaging",
       "id": "x_intel_20260316_080534"
-    },
-    {
-      "issue": "GA4 shows 0 conversions despite 251 sessions including product page visits",
-      "urgency": "critical",
-      "possible_causes": [
-        "GA4 e-commerce tracking not implemented",
-        "Shopify conversion events not firing",
-        "GA4 purchase event configuration error",
-        "Checkout funnel broken or untested"
-      ],
-      "investigation_needed": [
-        "Test complete checkout flow",
-        "Verify GA4 enhanced e-commerce setup",
-        "Check Shopify Analytics integration",
-        "Review GA4 conversion event configuration"
-      ],
-      "impact": "Cannot measure ROI or optimize without conversion data",
-      "id": "analytics_20260316_083811"
     },
     {
       "required_data_sources": [
@@ -336,54 +320,6 @@
   "approved": [],
   "rejected": [],
   "completed": [
-    {
-      "department": "seo",
-      "type": "seo_recommendation",
-      "summary": "Meta title/description update for /collections/refurbished-samsung — switch to pre-owned terminology",
-      "page": "/collections/refurbished-samsung",
-      "id": "seo_20260312_001430",
-      "status": "ready_for_implementation",
-      "processed_at": "2026-03-12T19:33:00Z"
-    },
-    {
-      "title": "How to Avoid Activation Lock When Buying Used Phones Online (2026 Guide)",
-      "handle": "avoid-activation-lock-buying-used-phones-online",
-      "id": "blog_publish_20260311_200339",
-      "status": "published",
-      "shopify_article_id": "gid://shopify/Article/597497839867"
-    },
-    {
-      "title": "Cheap Refurbished Phones: How to Get an $800 Phone for $350",
-      "handle": "cheap-refurbished-phones-guide",
-      "id": "blog_publish_20260312_143000",
-      "status": "published"
-    },
-    {
-      "department": "seo",
-      "type": "content_brief",
-      "summary": "Blog brief: 'Cheap Refurbished Phones — How to Get $800 Phone for $350' targeting keyword 'cheap refurbished phones'",
-      "page": "/blogs/deals/cheap-refurbished-phones-guide",
-      "target_keyword": "cheap refurbished phones",
-      "meta_title": "Cheap Refurbished Phones: How to Get $800 Phone for $350 (2026 Guide)",
-      "meta_description": "Smart buyers save 50%+ on refurbished phones with 80%+ battery health. No catch - just timing the market right. Find your deal before prices jump.",
-      "word_count_target": "1500-2000 words",
-      "key_messaging": [
-        "Address 'what's the catch?' objection directly",
-        "Leverage iPhone 16 timing trend for urgency",
-        "Lead with battery health guarantees",
-        "Use customer language throughout",
-        "Educational approach builds trust"
-      ],
-      "internal_links_needed": [
-        "Link to /collections/refurbished-iphones",
-        "Link to /collections/refurbished-samsung",
-        "Link to /collections/certified-refurbished-phones",
-        "Link to warranty/return policy pages"
-      ],
-      "id": "seo_20260312_071601",
-      "status": "ready_for_content_department",
-      "processed_at": "2026-03-14T19:17:00Z"
-    },
     {
       "title": "Best Refurbished iPhone in 2026 (Tested & Ranked)",
       "handle": "best-refurbished-iphone-2026-tested-ranked",

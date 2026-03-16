@@ -1,19 +1,13 @@
 {
-  "entries": [
+  "scheduled": [
     {
-      "date": "2026-03-15",
-      "title": "What Secure Packaging Actually Looks Like (No Broken Seals Here)",
+      "date": "2026-03-17",
+      "time": "09:30",
       "type": "blog",
-      "status": "published",
-      "department": "blog_writer"
-    },
-    {
-      "date": "2026-03-16",
-      "title": "iPhone 12 & 13: The Last Great iPhones With Headphone Jacks",
-      "type": "blog",
+      "title": "Back Market Sells 'Excellent' Phones With Greasy Handprints",
+      "blog_id": "blog_20260316_002",
       "status": "scheduled",
-      "department": "blog_writer",
-      "scheduled_time": "13:30:00Z"
+      "department": "blog_writer"
     }
   ]
 }

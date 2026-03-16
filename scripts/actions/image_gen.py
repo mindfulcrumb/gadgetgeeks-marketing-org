@@ -2,8 +2,11 @@
 Image generation wrapper for GadgetGeeks Marketing Organization.
 
 Primary: Google Gemini API for image generation.
-Fallback: OpenAI DALL-E 3 when Gemini quota is exhausted (429).
+Fallback: NONE — DALL-E is BANNED. If Gemini fails, generation fails. No silent fallback.
 Hosting: Shopify staged uploads for CDN hosting.
+
+RULE: OpenAI DALL-E produces cartoonish/stylized images that damage brand credibility.
+DALL-E fallback was removed 2026-03-16. Gemini-only. No exceptions.
 """
 
 import base64
@@ -16,15 +19,7 @@ from datetime import datetime, timezone
 GEMINI_API_BASE = "https://generativelanguage.googleapis.com/v1beta"
 GEMINI_IMAGE_MODEL = "gemini-2.0-flash-exp"
 
-# Aspect ratio to DALL-E 3 size mapping
-DALLE_SIZE_MAP = {
-    "1:1": "1024x1024",
-    "16:9": "1792x1024",
-    "9:16": "1024x1792",
-    "4:5": "1024x1024",   # DALL-E doesn't support 4:5, use square
-    "4:3": "1792x1024",   # closest wide format
-    "3:4": "1024x1792",   # closest tall format
-}
+# DALL-E is BANNED — removed 2026-03-16. Gemini only.
 
 
 # ---------------------------------------------------------------------------
@@ -87,53 +82,10 @@ def _generate_gemini(prompt: str, aspect_ratio: str = "16:9") -> dict:
 
 
 # ---------------------------------------------------------------------------
-# OpenAI DALL-E 3 fallback
+# OpenAI DALL-E — PERMANENTLY REMOVED (2026-03-16)
+# Reason: Produces cartoonish/stylized images. Cost money and reputation.
+# DALL-E is BANNED from this organization. Gemini only.
 # ---------------------------------------------------------------------------
-
-def _generate_openai(prompt: str, aspect_ratio: str = "16:9") -> dict:
-    """Generate an image using OpenAI DALL-E 3. Raises on failure."""
-    api_key = os.environ.get("OPENAI_API_KEY", "")
-    if not api_key:
-        raise ValueError("OPENAI_API_KEY not set — cannot use DALL-E fallback")
-
-    size = DALLE_SIZE_MAP.get(aspect_ratio, "1024x1024")
-
-    # Trim prompt for DALL-E (4000 char limit) and add quality instructions
-    dalle_prompt = prompt[:3500] + (
-        "\n\nPhotorealistic photograph. High quality. "
-        "No text overlays, no watermarks, no logos."
-    )
-
-    resp = requests.post(
-        "https://api.openai.com/v1/images/generations",
-        headers={
-            "Authorization": f"Bearer {api_key}",
-            "Content-Type": "application/json",
-        },
-        json={
-            "model": "dall-e-3",
-            "prompt": dalle_prompt,
-            "n": 1,
-            "size": size,
-            "quality": "hd",
-            "response_format": "b64_json",
-        },
-        timeout=120,
-    )
-    if not resp.ok:
-        err_body = resp.text[:500]
-        raise RuntimeError(f"DALL-E {resp.status_code}: {err_body}")
-
-    data = resp.json()
-    images = data.get("data", [])
-    if not images or "b64_json" not in images[0]:
-        raise RuntimeError(f"DALL-E returned no image data: {data}")
-
-    return {
-        "image_bytes": base64.b64decode(images[0]["b64_json"]),
-        "mime_type": "image/png",
-        "provider": "openai_dalle3",
-    }
 
 
 # ---------------------------------------------------------------------------
@@ -141,7 +93,11 @@ def _generate_openai(prompt: str, aspect_ratio: str = "16:9") -> dict:
 # ---------------------------------------------------------------------------
 
 def generate_image(prompt: str, aspect_ratio: str = "16:9") -> dict:
-    """Generate an image. Tries Gemini first, falls back to OpenAI DALL-E 3.
+    """Generate an image using Gemini ONLY. No fallback. No DALL-E.
+
+    If Gemini fails, generation fails. This is intentional — DALL-E produces
+    cartoonish output that damages brand credibility. Better to skip an image
+    than post garbage.
 
     Args:
         prompt:       Text description of the image to generate.
@@ -150,32 +106,13 @@ def generate_image(prompt: str, aspect_ratio: str = "16:9") -> dict:
     Returns:
         {"image_bytes": bytes, "mime_type": str, "provider": str}
     """
-    # Try Gemini first
     gemini_key = os.environ.get("GEMINI_API_KEY", "")
-    if gemini_key:
-        try:
-            result = _generate_gemini(prompt, aspect_ratio)
-            print(f"    [Gemini] Success")
-            return result
-        except (RuntimeError, Exception) as e:
-            print(f"    [Gemini] Failed: {str(e)[:200]} — trying DALL-E fallback...")
+    if not gemini_key:
+        raise ValueError("GEMINI_API_KEY not set. DALL-E is BANNED — Gemini is the only image provider.")
 
-    # Fallback to OpenAI DALL-E 3
-    openai_key = os.environ.get("OPENAI_API_KEY", "")
-    if openai_key:
-        try:
-            result = _generate_openai(prompt, aspect_ratio)
-            print(f"    [DALL-E 3] Success")
-            return result
-        except Exception as e:
-            raise RuntimeError(f"Both Gemini and DALL-E failed. DALL-E error: {e}")
-
-    # Neither key available
-    if not gemini_key and not openai_key:
-        raise ValueError("No image generation API key set (GEMINI_API_KEY or OPENAI_API_KEY)")
-
-    # Only Gemini was available and it failed
-    raise RuntimeError("Gemini quota exceeded and OPENAI_API_KEY not configured as fallback")
+    result = _generate_gemini(prompt, aspect_ratio)
+    print(f"    [Gemini] Success")
+    return result
 
 
 # ---------------------------------------------------------------------------

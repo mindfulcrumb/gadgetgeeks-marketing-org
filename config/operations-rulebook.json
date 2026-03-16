@@ -511,5 +511,19 @@
       "AI-rendered phone images (dramatic lighting, smoke effects, too-perfect studio renders) are INSTANTLY recognizable and destroy credibility. If it looks rendered, it IS rendered, and it does NOT ship."
     ],
     "incident_reference": "March 14, 2026 — Two TikTok posts went out with AI-rendered phone images (dramatic smoke/studio renders). Obviously fake. Posts deleted from Postiz. Rule 25 was on the books but not enforced at the posting layer."
+  },
+
+  "rule_29_dalle_banned": {
+    "description": "OpenAI DALL-E is PERMANENTLY BANNED from this organization. Removed 2026-03-16 after producing cartoonish images that cost money and reputation.",
+    "rules": [
+      "DALL-E (all versions) is BANNED. Zero tolerance. No fallback, no 'just this once', no exceptions.",
+      "The ONLY image generation provider is Google Gemini Imagen.",
+      "If Gemini quota is exhausted or Gemini fails, image generation STOPS. No silent fallback to any other provider.",
+      "OPENAI_API_KEY must NOT be used for image generation in any workflow. It may only be used for non-image tasks if needed.",
+      "Any agent or script that attempts to call DALL-E for image generation triggers a CRITICAL incident.",
+      "image_gen.py has been stripped of all DALL-E code. If anyone re-adds it, that is a rule violation.",
+      "Social media images that look cartoonish, stylized, or obviously AI-generated must NOT be posted — they destroy brand credibility."
+    ],
+    "incident_reference": "March 16, 2026 — DALL-E fallback produced cartoonish TikTok images. Cost money and reputation. DALL-E permanently removed from image_gen.py."
   }
 }

@@ -1,12 +1,12 @@
 {
-  "report_date": "2026-03-15",
+  "report_date": "2026-03-16",
   "period": {
-    "current": "2026-03-08 to 2026-03-14",
-    "previous": "2026-03-01 to 2026-03-07"
+    "current": "2026-03-09 to 2026-03-15",
+    "previous": "2026-03-02 to 2026-03-08"
   },
   "summary": {
     "total_sessions": {
-      "current": 227,
+      "current": 251,
       "previous": 0,
       "change_pct": "NEW_SITE"
     },
@@ -21,12 +21,12 @@
       "change_pct": "NO_DATA"
     },
     "organic_sessions": {
-      "current": 51,
+      "current": 59,
       "previous": 0,
       "change_pct": "NEW_SITE"
     },
     "avg_bounce_rate": {
-      "current": 0.176,
+      "current": 0.251,
       "previous": 0.0,
       "change_pct": "NEW_SITE"
     }
@@ -35,47 +35,58 @@
     {
       "severity": "critical",
       "type": "conversion_drop",
-      "message": "Zero conversions across 227 sessions - conversion tracking or funnel issue",
-      "page_or_query": "all_pages",
+      "message": "Zero conversions across 251 sessions - conversion tracking or checkout funnel critical failure",
+      "page_or_query": "site_wide",
       "metric": "conversions",
       "current_value": 0,
       "previous_value": 0,
       "change_pct": 0,
-      "recommended_action": "Verify GA4 conversion tracking setup and review checkout funnel immediately"
+      "recommended_action": "URGENT: Verify GA4 e-commerce tracking, test checkout flow, check Shopify integration immediately"
     },
     {
       "severity": "high",
       "type": "ctr_drop",
-      "message": "Multiple high-impression queries with 0% CTR - major ranking without clicks",
-      "page_or_query": "computer_repair_tucson",
+      "message": "Homepage ranking #5 for 'computer repair tucson' (32 impressions) but 0 clicks - content mismatch",
+      "page_or_query": "computer repair tucson",
       "metric": "ctr",
       "current_value": 0,
       "previous_value": 0,
       "change_pct": 0,
-      "recommended_action": "Rewrite meta titles/descriptions for computer repair queries - quick traffic wins"
+      "recommended_action": "Rewrite homepage meta to target refurbished phone buyers, not repair seekers"
+    },
+    {
+      "severity": "high",
+      "type": "ctr_drop",
+      "message": "Smart home automation page: 104 impressions, 0 clicks at position 16.9 - meta optimization needed",
+      "page_or_query": "smart home automation",
+      "metric": "ctr",
+      "current_value": 0,
+      "previous_value": 0,
+      "change_pct": 0,
+      "recommended_action": "Optimize smart home page meta title and description for higher CTR"
     },
     {
       "severity": "medium",
       "type": "content_gap",
-      "message": "Site showing up for repair services but selling refurbished phones - content mismatch",
-      "page_or_query": "repair_vs_refurbished",
+      "message": "Ranking well for repair queries but selling refurbished phones - need content bridge",
+      "page_or_query": "repair_service_disconnect",
       "metric": "relevance",
       "current_value": "mismatch",
       "previous_value": "unknown",
       "change_pct": "NO_DATA",
-      "recommended_action": "Create content bridge between repair services and refurbished phone sales"
+      "recommended_action": "Create content connecting repair costs to refurbished alternatives"
     }
   ],
   "top_pages": [
     {
       "page": "/",
       "sessions": {
-        "current": 165,
+        "current": 183,
         "previous": 0,
         "change_pct": "NEW"
       },
       "bounce_rate": {
-        "current": 0.121,
+        "current": 0.202,
         "previous": 0.0,
         "change_pct": "NEW"
       },
@@ -83,17 +94,22 @@
         "current": 0,
         "previous": 0,
         "change_pct": "NO_DATA"
+      },
+      "avg_session_duration": {
+        "current": 394.0,
+        "previous": 0.0,
+        "change_pct": "NEW"
       }
     },
     {
       "page": "/collections/sale",
       "sessions": {
-        "current": 30,
+        "current": 33,
         "previous": 0,
         "change_pct": "NEW"
       },
       "bounce_rate": {
-        "current": 0.067,
+        "current": 0.152,
         "previous": 0.0,
         "change_pct": "NEW"
       },
@@ -106,12 +122,12 @@
     {
       "page": "/blogs/news",
       "sessions": {
-        "current": 21,
+        "current": 27,
         "previous": 0,
         "change_pct": "NEW"
       },
       "bounce_rate": {
-        "current": 0.048,
+        "current": 0.259,
         "previous": 0.0,
         "change_pct": "NEW"
       },
@@ -124,12 +140,12 @@
     {
       "page": "/products/iphone-14-bundle",
       "sessions": {
-        "current": 20,
+        "current": 23,
         "previous": 0,
         "change_pct": "NEW"
       },
       "bounce_rate": {
-        "current": 0.05,
+        "current": 0.174,
         "previous": 0.0,
         "change_pct": "NEW"
       },
@@ -144,7 +160,7 @@
     {
       "source_medium": "(direct) / (none)",
       "sessions": {
-        "current": 163,
+        "current": 178,
         "previous": 0,
         "change_pct": "NEW"
       },
@@ -157,7 +173,20 @@
     {
       "source_medium": "google / organic",
       "sessions": {
-        "current": 51,
+        "current": 59,
+        "previous": 0,
+        "change_pct": "NEW"
+      },
+      "conversion_rate": {
+        "current": 0.0,
+        "previous": 0.0,
+        "change_pct": "NO_DATA"
+      }
+    },
+    {
+      "source_medium": "(not set) / (not set)",
+      "sessions": {
+        "current": 17,
         "previous": 0,
         "change_pct": "NEW"
       },
@@ -172,45 +201,65 @@
     "top_queries": [
       {
         "query": "gadget geeks pro",
-        "clicks": 6,
-        "impressions": 14,
-        "ctr": 42.86,
-        "position": 1.0,
+        "clicks": 7,
+        "impressions": 18,
+        "ctr": 38.89,
+        "position": 1.1,
         "change_vs_previous": "NEW"
       },
       {
         "query": "computer repair tucson",
         "clicks": 0,
-        "impressions": 31,
+        "impressions": 32,
         "ctr": 0.0,
-        "position": 4.9,
+        "position": 5.1,
+        "change_vs_previous": "NEW"
+      },
+      {
+        "query": "smart home automation",
+        "clicks": 0,
+        "impressions": 118,
+        "ctr": 0.0,
+        "position": 16.9,
         "change_vs_previous": "NEW"
       }
     ],
     "new_keywords": [
       "computer repair tucson",
-      "cell phone repairs near me",
       "smart home automation",
-      "electronics repair tucson"
+      "cell phone repairs near me",
+      "electronics repair tucson",
+      "audio video installation",
+      "gadget geeks",
+      "home theater installation tucson"
     ],
     "high_impression_low_ctr": [
       {
         "query": "computer repair tucson",
-        "impressions": 31,
+        "impressions": 32,
         "clicks": 0,
         "ctr": 0.0,
-        "position": 4.9,
+        "position": 5.1,
         "page": "https://gadgetgeekspro.com/",
-        "recommendation": "Rewrite homepage meta - currently ranking for repair but selling refurbished phones"
+        "recommendation": "Homepage ranking for repair but selling refurbished phones - major meta rewrite needed"
       },
       {
         "query": "smart home automation",
-        "impressions": 104,
+        "impressions": 118,
         "clicks": 0,
         "ctr": 0.0,
-        "position": 17.5,
+        "position": 16.9,
         "page": "https://gadgetgeekspro.com/smart-home-automation/",
-        "recommendation": "Optimize smart home page meta title and description for higher CTR"
+        "recommendation": "Page exists but meta not compelling - rewrite for higher CTR"
+      },
+      {
+        "query": "cell phone battery replacement near me",
+        "impressions": 2,
+        "clicks": 0,
+        "ctr": 0.0,
+        "position": 1.5,
+        "page": "https://gadgetgeekspro.com/2019/02/do-you-need-charger-port-repair-or-a-full-battery-replacement/",
+        "recommendation": "Top ranking but old blog post - update with current refurbished phone alternative"
       }
     ]
   },
@@ -222,19 +271,34 @@
         "sessions": 11,
         "bounce_rate": 0.091,
         "avg_session_duration": 259.2,
-        "status": "Strong performer - high engagement"
+        "status": "Excellent engagement - amplify this content"
+      },
+      {
+        "page": "/blogs/news",
+        "sessions": 27,
+        "bounce_rate": 0.259,
+        "avg_session_duration": 189.2,
+        "status": "Good traffic driver for new site"
       }
     ],
     "flatliners": [],
-    "declining": []
+    "declining": [
+      {
+        "page": "/blogs/news/avoid-activation-lock-buying-used-phones-online",
+        "sessions": 7,
+        "bounce_rate": 0.571,
+        "avg_session_duration": 46.7,
+        "status": "High bounce rate - needs content review"
+      }
+    ]
   },
   "device_breakdown": {
     "desktop": {
-      "sessions": 155,
+      "sessions": 173,
       "conversion_rate": 0.0
     },
     "mobile": {
-      "sessions": 74,
+      "sessions": 81,
       "conversion_rate": 0.0
     },
     "tablet": {

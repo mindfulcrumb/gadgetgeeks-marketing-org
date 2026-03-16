@@ -242,6 +242,24 @@
       "reply_content": "Exactly right. Refurbished flagship vs new entry model isn't even close - you get Pro cameras, better display, premium build for similar price.",
       "reason": "Tweet getting traction (4 likes, 2 RTs) reinforcing our core value messaging",
       "id": "x_intel_20260316_080534"
+    },
+    {
+      "issue": "GA4 shows 0 conversions despite 251 sessions including product page visits",
+      "urgency": "critical",
+      "possible_causes": [
+        "GA4 e-commerce tracking not implemented",
+        "Shopify conversion events not firing",
+        "GA4 purchase event configuration error",
+        "Checkout funnel broken or untested"
+      ],
+      "investigation_needed": [
+        "Test complete checkout flow",
+        "Verify GA4 enhanced e-commerce setup",
+        "Check Shopify Analytics integration",
+        "Review GA4 conversion event configuration"
+      ],
+      "impact": "Cannot measure ROI or optimize without conversion data",
+      "id": "analytics_20260316_083811"
     }
   ],
   "approved": [],

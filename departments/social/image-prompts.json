@@ -22,7 +22,10 @@
         "iphone headphone jack",
         "iphone 13 music"
       ],
-      "recommended_tool": "midjourney"
+      "recommended_tool": "midjourney",
+      "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/818cea1a-1e7b-4f44-8db2-5ac547be8f20/gg-prompt_20260316_001.png",
+      "generated_at": "2026-03-16T09:49:38.764083+00:00",
+      "generation_status": "done"
     },
     {
       "id": "prompt_20260316_002",
@@ -45,7 +48,10 @@
         "phone dispute resolution",
         "refurbished phone evidence"
       ],
-      "recommended_tool": "midjourney"
+      "recommended_tool": "midjourney",
+      "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/3ba91da1-eca3-457c-ae4c-2f952ada53cb/gg-prompt_20260316_002.png",
+      "generated_at": "2026-03-16T09:51:09.958290+00:00",
+      "generation_status": "done"
     },
     {
       "id": "prompt_20260316_003",
@@ -68,7 +74,10 @@
         "galaxy s25 vs s24",
         "samsung galaxy comparison"
       ],
-      "recommended_tool": "midjourney"
+      "recommended_tool": "midjourney",
+      "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/404ae83e-21b5-4623-9f2a-d0f8b2427bce/gg-prompt_20260316_003.png",
+      "generated_at": "2026-03-16T09:50:40.921746+00:00",
+      "generation_status": "done"
     },
     {
       "id": "prompt_20260316_004",
@@ -92,7 +101,10 @@
         "student phone deals arizona",
         "university of arizona phones"
       ],
-      "recommended_tool": "midjourney"
+      "recommended_tool": "midjourney",
+      "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/0bebd4b6-4923-46bd-95a3-80202347eccd/gg-prompt_20260316_004.png",
+      "generated_at": "2026-03-16T09:50:13.603636+00:00",
+      "generation_status": "done"
     },
     {
       "id": "prompt_20260316_005",
@@ -139,7 +151,10 @@
         "phone customer service",
         "refurbished phone returns"
       ],
-      "recommended_tool": "midjourney"
+      "recommended_tool": "midjourney",
+      "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/ca80548c-8b55-41ff-bbf3-533d7af7ef5f/gg-prompt_20260316_006.png",
+      "generated_at": "2026-03-16T09:51:43.466905+00:00",
+      "generation_status": "done"
     },
     {
       "id": "prompt_20260316_007",
@@ -162,7 +177,10 @@
         "phone bundle deals weekend",
         "premium phone accessories"
       ],
-      "recommended_tool": "midjourney"
+      "recommended_tool": "midjourney",
+      "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/8c850066-3965-48d6-9165-8d971be7989d/gg-prompt_20260316_007.png",
+      "generated_at": "2026-03-16T09:53:11.031864+00:00",
+      "generation_status": "done"
     },
     {
       "id": "prompt_20260316_008",
@@ -185,7 +203,10 @@
         "budget phone guide 2026",
         "best phones under 400"
       ],
-      "recommended_tool": "midjourney"
+      "recommended_tool": "midjourney",
+      "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/58dcac86-ad50-4214-8ae3-3c0da90522b7/gg-prompt_20260316_008.png",
+      "generated_at": "2026-03-16T09:52:34.716267+00:00",
+      "generation_status": "done"
     },
     {
       "id": "prompt_20260316_009",
@@ -208,7 +229,9 @@
         "phone condition grading",
         "refurbished phone quality"
       ],
-      "recommended_tool": "midjourney"
+      "recommended_tool": "midjourney",
+      "generation_status": "error",
+      "generation_error": "Both Gemini and DALL-E failed. DALL-E error: DALL-E 500: {\n  \"error\": {\n    \"message\": \"The server had an error processing your request. Sorry about that! You can retry your request, or contact us through our help center at help.openai.com if you keep seeing this error. (Please include the request I"
     },
     {
       "id": "prompt_20260316_010",

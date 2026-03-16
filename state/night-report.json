@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-03-16T03:00:00Z",
-  "run_type": "predawn_check",
+  "timestamp": "2026-03-16T05:10:00Z",
+  "run_type": "morning_prep",
   "api_health": {
     "shopify": "ok",
     "gemini": "down",
@@ -9,25 +9,25 @@
     "vapi": "unknown"
   },
   "workflow_health": {
-    "scheduled_today": 15,
-    "ran_successfully": 12,
+    "scheduled_today": 18,
+    "ran_successfully": 15,
     "failed": 0,
     "missed": 3,
     "details": [
       {
         "workflow": "intel",
-        "status": "offline",
-        "error": "GitHub Actions not triggering - offline 79+ hours"
+        "status": "missed",
+        "error": "GitHub Actions not triggering since 2026-03-11"
       },
       {
         "workflow": "email",
-        "status": "offline",
-        "error": "GitHub Actions not triggering - offline 79+ hours"
+        "status": "missed",
+        "error": "GitHub Actions not triggering since 2026-03-11"
       },
       {
         "workflow": "cro",
-        "status": "offline",
-        "error": "GitHub Actions not triggering - offline 79+ hours"
+        "status": "missed",
+        "error": "GitHub Actions not triggering since 2026-03-11"
       }
     ]
   },
@@ -36,12 +36,12 @@
     "stale_items": [
       {
         "id": "seo_20260313_071521",
-        "pending_hours": 67,
+        "pending_hours": 70,
         "urgency": "high"
       },
       {
-        "id": "social_afternoon_20260313_171041",
-        "pending_hours": 60,
+        "id": "gm_queue_20260315_191951",
+        "pending_hours": 38,
         "urgency": "high"
       }
     ],
@@ -52,13 +52,13 @@
     "critical_open": 0,
     "oldest_open": {
       "id": "INC-006",
-      "age_hours": 36
+      "age_hours": 38
     }
   },
   "pipeline_health": {
     "blogs_stuck": [],
     "images_stuck": [
-      "All image generation blocked by Gemini 403 errors"
+      "All image generation blocked - Gemini API 403 errors"
     ],
     "emails_stuck": [
       "Email department offline - no campaigns possible"

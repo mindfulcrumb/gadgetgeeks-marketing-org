@@ -1,63 +1,52 @@
 {
-  "from_shift": "evening",
-  "to_shift": "night",
-  "timestamp": "2026-03-15T20:39:00Z",
-  "emergency_handoff": false,
-  "overnight_summary": "Infrastructure crisis ongoing but some progress made. Blog production pipeline unblocked, social maintaining TikTok presence, GM actively managing crisis. 3 critical departments still offline 79+ hours requiring immediate GitHub Actions intervention.",
+  "from_shift": "night",
+  "to_shift": "morning",
+  "timestamp": "2026-03-16T05:10:00Z",
+  "overnight_summary": "Night shift stable with no new failures. Core infrastructure crisis continues - 3 departments offline 79+ hours due to GitHub Actions workflow failure. SEO brief pending 70+ hours needs immediate pickup. Image generation still blocked by Gemini API 403 errors. Queue management active but infrastructure fixes awaiting approval.",
   "issues_found": [
-    "CRITICAL: GitHub Actions workflows still not triggering - 6 departments missed schedules since 2026-03-11",
-    "CRITICAL: Gemini API still down 48+ hours with 403 errors - need alternative",
-    "CRITICAL: Social platforms except TikTok disconnected - 80% capacity loss",
-    "URGENT: Image pipeline completely exhausted - no unused visuals remaining",
-    "URGENT: Charbel call pending 52+ hours (boss requested twice)",
-    "URGENT: 7 queue items awaiting processing including infrastructure fixes"
+    "CRITICAL: GitHub Actions workflows still broken - intel, email, cro offline 79+ hours",
+    "CRITICAL: Gemini API down 48+ hours - all image generation blocked",
+    "URGENT: SEO brief seo_20260313_071521 pending 70+ hours - needs SCRIBE pickup",
+    "URGENT: 7 infrastructure queue items awaiting boss approval",
+    "DEGRADED: Social platforms disconnected except TikTok"
   ],
-  "alerts_sent": [
-    "None - monitoring continues"
-  ],
+  "alerts_sent": [],
   "pending_approvals": [
-    "EMERGENCY: GitHub Actions restart for intel, email, cro departments",
-    "EMERGENCY: Resolve Gemini API 403 or implement OpenAI DALL-E fallback",
-    "EMERGENCY: Reconnect Twitter, Instagram, Facebook, LinkedIn at app.postiz.com",
-    "CRITICAL: Process Charbel call approval (52+ hours pending)",
-    "HIGH: Generate emergency image batch for visual pipeline"
+    "EMERGENCY: GitHub Actions manual restart for intel, email, cro departments",
+    "EMERGENCY: Resolve Gemini API 403 errors or implement DALL-E fallback",
+    "EMERGENCY: Reconnect social platforms at app.postiz.com",
+    "CRITICAL: Process SEO brief seo_20260313_071521 - 70+ hours overdue",
+    "HIGH: Process remaining infrastructure queue items"
   ],
   "api_health": {
     "shopify": "ok",
-    "gemini": "down - 403 errors blocking all image generation 48+ hours",
+    "gemini": "down",
     "telegram": "ok",
-    "postiz": "degraded - only TikTok connected of 5 required platforms",
-    "github_actions": "broken - workflows not triggering since 2026-03-11",
+    "postiz": "degraded",
+    "github_actions": "broken",
     "vapi": "unknown"
   },
-  "recommendations_for_night": [
-    "Monitor active departments for any additional failures",
-    "Test Gemini API periodically - watch for error resolution",
-    "Check GitHub Actions overnight - see if any workflows trigger",
-    "Alert immediately if remaining 12 active departments show issues",
-    "Continue monitoring TikTok posting - only functional social platform"
-  ],
-  "progress_made_today": [
-    "Blog 'What Secure Packaging Actually Looks Like' unblocked and ready to publish",
-    "GM queue management active - cleared stale items, flagged priorities",
-    "Maintained TikTok social presence despite platform disconnections",
-    "Infrastructure issues clearly documented and prioritized for resolution"
+  "recommendations_for_morning": [
+    "SCRIBE should immediately pick up SEO brief seo_20260313_071521 - 70 hours overdue",
+    "CHIEF morning standup should prioritize GitHub Actions workflow restart",
+    "Boss approval needed for all infrastructure queue items to restore full operations",
+    "Monitor remaining 15 active departments - no new failures detected overnight"
   ],
   "metrics_snapshot": {
     "blogs_in_pipeline": {
-      "brief_ready": 0,
+      "brief_ready": 1,
       "draft_ready": 0,
-      "qa_passed": 1,
+      "qa_passed": 0,
       "blocked": 0
     },
     "queue_depth": {
-      "pending": 7,
+      "pending": 9,
       "approved": 0
     },
     "incidents_open": 1,
-    "departments_active": 12,
-    "departments_offline": 6,
+    "departments_active": 15,
+    "departments_offline": 3,
     "health_score": "35/100",
-    "system_status": "CRITICAL_INFRASTRUCTURE_FAILURE"
+    "system_status": "CRITICAL_INFRASTRUCTURE_FAILURE_STABLE"
   }
 }

@@ -1,7 +1,7 @@
 {
   "_docs": "Canva Post Design Pipeline — tracks image-to-finished-post conversion. The Canva department takes generated images from departments/social/image-prompts.json and creates finished social media posts using Canva.",
   "_created": "2026-03-12",
-  "_last_run": "2026-03-15T09:53:23.091509+00:00",
+  "_last_run": "2026-03-16T10:34:13.942783+00:00",
   "_WARNING": "RULE 25: Only designs with source='real_product_photo' may be posted. AI-generated images (shopify-staged-uploads) are BURNED. See config/operations-rulebook.json Rule 25.",
   "designs": [
     {
@@ -370,6 +370,168 @@
       },
       "status": "exported",
       "created_at": "2026-03-15T09:53:23.091457+00:00"
+    },
+    {
+      "id": "canva_20260316_103322_001",
+      "source_prompt_id": "prompt_20260316_005",
+      "source_image_url": "",
+      "canva_design_id": "DAHEGvQ78Yg",
+      "canva_edit_url": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc2MjQ5MjAyNTUwfQ..UhoGOu00WLUWOhn0.avsFr6kby_qQE6Zo_bNmUIhlt2cgDLHA-PAAPuk89S8GNzzq4-7wy8qFptopgwxPd1cb4-HMgL8rSdHyUajK3HX2226zeGjpIZ07YmTYaHrM08c.vLIHN8RMHRVIYAKmx6D6sA/edit?utm_source=OC-AZziwCpO4uv4&utm_medium=referral&utm_term=a9171b41-c697-4630-b8f7-e2d3cceef858&utm_campaign=public_api_create_design_clicked_hyperlink",
+      "export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/ef5e3360-dc8e-445b-a3db-1140e033be2c/canva-instagram-prompt_20260316_005-20260316_103316.png",
+      "platform": "instagram",
+      "dimensions": "1080x1080",
+      "design_type": "product_spotlight",
+      "text_overlay": {
+        "headline": "Premium Refurbished",
+        "subline": "65-Point Inspected. Like New.",
+        "cta": "Shop Now"
+      },
+      "status": "exported",
+      "created_at": "2026-03-16T10:33:22.589562+00:00"
+    },
+    {
+      "id": "canva_20260316_103327_002",
+      "source_prompt_id": "prompt_20260316_010",
+      "source_image_url": "",
+      "canva_design_id": "DAHEGs-7unI",
+      "canva_edit_url": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc2MjQ5MjA3Njk2fQ..o0pXyLdsP1H_8tk0.vYi0DaJFOv5jO_NkHIJvMsoFhVDbJJTHuTOPtULDIjRTsU5fiq7Qm-yVdq6Z0fecjCyrG2N6E2uv4cAKPxt2xL38vcOsBoeDA-hNcIIDWtRUHwk.wsQ0QbspXBhaIh9tITYSPA/edit?utm_source=OC-AZziwCpO4uv4&utm_medium=referral&utm_term=5e4378e1-4d5a-49a8-995c-9ca54b048dbf&utm_campaign=public_api_create_design_clicked_hyperlink",
+      "export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/a3f0105c-4403-4e94-a318-8c1f5958a775/canva-facebook-prompt_20260316_010-20260316_103322.png",
+      "platform": "facebook",
+      "dimensions": "1200x630",
+      "design_type": "product_spotlight",
+      "text_overlay": {
+        "headline": "Premium Refurbished",
+        "subline": "65-Point Inspected. Like New.",
+        "cta": "Shop Now"
+      },
+      "status": "exported",
+      "created_at": "2026-03-16T10:33:27.741133+00:00"
+    },
+    {
+      "id": "canva_20260316_103334_003",
+      "source_prompt_id": "prompt_20260316_001",
+      "source_image_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/818cea1a-1e7b-4f44-8db2-5ac547be8f20/gg-prompt_20260316_001.png",
+      "canva_design_id": "DAHEGqqiV-8",
+      "canva_edit_url": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc2MjQ5MjE0NzkzfQ..gppGPY6MVY2o7W6O.GejamkZORuxe_Vjie7TFBci9eB4py8ZHd8X1ib6u_6cGia_D0hoQCu0GNFZvERm5-sE0NImrcNaHkLvzniZpRPoGQbmlQJrimMCS49zgKvI1MyU.nzLRuesvsnMya4Xy9MlfmQ/edit?utm_source=OC-AZziwCpO4uv4&utm_medium=referral&utm_term=bb0f9da4-3b02-4d58-b508-da07ab23799d&utm_campaign=public_api_create_design_clicked_hyperlink",
+      "export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/14c8bb86-274c-406d-87b5-ff8f7978a8cb/canva-tiktok-prompt_20260316_001-20260316_103327.png",
+      "platform": "tiktok",
+      "dimensions": "1080x1920",
+      "design_type": "lifestyle",
+      "text_overlay": {
+        "headline": "iphone headphone jack",
+        "subline": "Refurbished. Inspected. Guaranteed.",
+        "cta": "Find Yours"
+      },
+      "status": "exported",
+      "created_at": "2026-03-16T10:33:34.837628+00:00"
+    },
+    {
+      "id": "canva_20260316_103342_004",
+      "source_prompt_id": "prompt_20260316_004",
+      "source_image_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/0bebd4b6-4923-46bd-95a3-80202347eccd/gg-prompt_20260316_004.png",
+      "canva_design_id": "DAHEGnNE3nY",
+      "canva_edit_url": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc2MjQ5MjIyNTUwfQ..iXjGg26xtTuituZm.N6-s0kYTxiQP-QcrdUzq5yrVijO6two_5nOEDP2mnwmO5aLFKHM43PVpnjcFQwHyD9yVPe0axQqbHfWhAuNvRI7HGVhOifxqddftoTSCIqN8iG4.wsxod88U-vNZ7jI2RPO-jg/edit?utm_source=OC-AZziwCpO4uv4&utm_medium=referral&utm_term=a971f27c-e30c-43c4-99bf-b5219340c3f5&utm_campaign=public_api_create_design_clicked_hyperlink",
+      "export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/423ffaa9-b1ce-446c-b676-ef73409e7a39/canva-tiktok-prompt_20260316_004-20260316_103334.png",
+      "platform": "tiktok",
+      "dimensions": "1080x1920",
+      "design_type": "lifestyle",
+      "text_overlay": {
+        "headline": "student phone deals arizona",
+        "subline": "Refurbished. Inspected. Guaranteed.",
+        "cta": "Find Yours"
+      },
+      "status": "exported",
+      "created_at": "2026-03-16T10:33:42.629396+00:00"
+    },
+    {
+      "id": "canva_20260316_103348_005",
+      "source_prompt_id": "prompt_20260316_003",
+      "source_image_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/404ae83e-21b5-4623-9f2a-d0f8b2427bce/gg-prompt_20260316_003.png",
+      "canva_design_id": "DAHEGuNgjgA",
+      "canva_edit_url": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc2MjQ5MjI4MzkzfQ..Et6P5KPL4TeZJqCj.eUrYXZFORHku66BeEfNCs9nF5Jpkib8jVwUvzYK3aHe2aDuefnS5TI-Uf0fN6Y0ZFxrUfeEXyZH5zGOrRjKcnUKuOW8UKDu11IqTEx2EOIcJEUo.MbWYvpSsKmDMjq1ezwjcbA/edit?utm_source=OC-AZziwCpO4uv4&utm_medium=referral&utm_term=e49e3570-6d97-49e8-a617-0186827988d7&utm_campaign=public_api_create_design_clicked_hyperlink",
+      "export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/8b37ddce-ef2d-4c92-887b-12ddeaa78dd1/canva-instagram-prompt_20260316_003-20260316_103342.png",
+      "platform": "instagram",
+      "dimensions": "1080x1080",
+      "design_type": "comparison",
+      "text_overlay": {
+        "headline": "New vs Refurbished",
+        "subline": "Same specs. Half the price.",
+        "cta": "See the Savings"
+      },
+      "status": "exported",
+      "created_at": "2026-03-16T10:33:48.468025+00:00"
+    },
+    {
+      "id": "canva_20260316_103354_006",
+      "source_prompt_id": "prompt_20260316_002",
+      "source_image_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/3ba91da1-eca3-457c-ae4c-2f952ada53cb/gg-prompt_20260316_002.png",
+      "canva_design_id": "DAHEGqYIq1Y",
+      "canva_edit_url": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc2MjQ5MjM0OTE0fQ..aqt4X94RHANMy9MH.knPhMLKMD3ms4tohWnUwjDtkl9nY0I6bBSb9qHRPntSo0rqxZr2S7R-2Hi7mRTRs-K4msbxeEEDqd2pqRQn9IzmQxKHWE1kk93owQxoXdztYaQQ.mc5cnuskmPflOHSHYlIYUA/edit?utm_source=OC-AZziwCpO4uv4&utm_medium=referral&utm_term=59232f1a-dd57-4650-bb2e-5a257c2bd167&utm_campaign=public_api_create_design_clicked_hyperlink",
+      "export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/892eaf41-1fe8-47a6-8fe1-426a33e94b3e/canva-tiktok-prompt_20260316_002-20260316_103348.png",
+      "platform": "tiktok",
+      "dimensions": "1080x1920",
+      "design_type": "lifestyle",
+      "text_overlay": {
+        "headline": "phone dispute resolution",
+        "subline": "Refurbished. Inspected. Guaranteed.",
+        "cta": "Find Yours"
+      },
+      "status": "exported",
+      "created_at": "2026-03-16T10:33:54.956326+00:00"
+    },
+    {
+      "id": "canva_20260316_103401_007",
+      "source_prompt_id": "prompt_20260316_006",
+      "source_image_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/ca80548c-8b55-41ff-bbf3-533d7af7ef5f/gg-prompt_20260316_006.png",
+      "canva_design_id": "DAHEGhiYBgk",
+      "canva_edit_url": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc2MjQ5MjQxMzg2fQ..THaumXkR8qFXseXY.Mri_BFh96tzzzdCu2sXhqyyNEFaJCFfPNESdrwySXwSP82N9qKQAcR1_BBR25ddeQcUBY4ASaqlvd5CWJEuUb0BzMQe2TrmMkJsJ3go1XhGYME0.FTNP8Jrz36S1kTuweGH0aw/edit?utm_source=OC-AZziwCpO4uv4&utm_medium=referral&utm_term=1c25ae3e-db0a-4226-9ec6-cea47efcefbf&utm_campaign=public_api_create_design_clicked_hyperlink",
+      "export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/8ed135d3-77e0-450b-902a-46eb01cf7fe8/canva-tiktok-prompt_20260316_006-20260316_103354.png",
+      "platform": "tiktok",
+      "dimensions": "1080x1920",
+      "design_type": "lifestyle",
+      "text_overlay": {
+        "headline": "phone customer service",
+        "subline": "Refurbished. Inspected. Guaranteed.",
+        "cta": "Find Yours"
+      },
+      "status": "exported",
+      "created_at": "2026-03-16T10:34:01.430874+00:00"
+    },
+    {
+      "id": "canva_20260316_103407_008",
+      "source_prompt_id": "prompt_20260316_008",
+      "source_image_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/58dcac86-ad50-4214-8ae3-3c0da90522b7/gg-prompt_20260316_008.png",
+      "canva_design_id": "DAHEGroxqMU",
+      "canva_edit_url": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc2MjQ5MjQ3MjkyfQ..u-EhNNjolVFqgNQo.6bdQaI91gptpp-NRKyPBbApT_85SUKmpC8CUjDyP3wDFk2I1bxDwdelo2OOa6O-m0yvi5If24_8SNcSoaZANtNzAjsoHBR4-G0MD8xMfnWwChQU.qnXxm3O70kE5avB0DfvlQg/edit?utm_source=OC-AZziwCpO4uv4&utm_medium=referral&utm_term=e405c3aa-1e3b-4978-8dbc-ff99b8c17179&utm_campaign=public_api_create_design_clicked_hyperlink",
+      "export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/9d54a5a7-7102-47e9-b336-4c2a478cbbb5/canva-instagram-prompt_20260316_008-20260316_103401.png",
+      "platform": "instagram",
+      "dimensions": "1080x1080",
+      "design_type": "lifestyle",
+      "text_overlay": {
+        "headline": "budget phone guide 2026",
+        "subline": "Refurbished. Inspected. Guaranteed.",
+        "cta": "Find Yours"
+      },
+      "status": "exported",
+      "created_at": "2026-03-16T10:34:07.336371+00:00"
+    },
+    {
+      "id": "canva_20260316_103413_009",
+      "source_prompt_id": "prompt_20260316_007",
+      "source_image_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/8c850066-3965-48d6-9165-8d971be7989d/gg-prompt_20260316_007.png",
+      "canva_design_id": "DAHEGrt3dQY",
+      "canva_edit_url": "https://www.canva.com/api/design/eyJhbGciOiJkaXIiLCJlbmMiOiJBMjU2R0NNIiwiZXhwaXJ5IjoxNzc2MjQ5MjUzODc4fQ..ZkRINbpbisJcG6L5.NoaC5n_HHQLnbSwbogkUyetCw9dWbHiizOYyXcVh94HsjGjtWpTuYK7lGjFwU_jUa7VvVv2FkkzsJEtURPYTMfg3IePkECsun2QXiirmEs6luPM.hd7WvLeIeVKJelCmyq1jbA/edit?utm_source=OC-AZziwCpO4uv4&utm_medium=referral&utm_term=90ea79ef-623d-4d23-9410-e2a9657d15ab&utm_campaign=public_api_create_design_clicked_hyperlink",
+      "export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/abb0956d-4711-491c-9494-f4a13f2287c1/canva-tiktok-prompt_20260316_007-20260316_103407.png",
+      "platform": "tiktok",
+      "dimensions": "1080x1920",
+      "design_type": "deal_urgency",
+      "text_overlay": {
+        "headline": "Flash Deal",
+        "subline": "Save 40-60% vs Retail",
+        "cta": "Check Price"
+      },
+      "status": "exported",
+      "created_at": "2026-03-16T10:34:13.942739+00:00"
     }
   ],
   "templates": {
@@ -440,8 +602,8 @@
     ]
   },
   "stats": {
-    "total_designs": 20,
-    "designs_today": 7,
-    "last_design_at": "2026-03-15T09:53:23.091505+00:00"
+    "total_designs": 29,
+    "designs_today": 9,
+    "last_design_at": "2026-03-16T10:34:13.942779+00:00"
   }
 }

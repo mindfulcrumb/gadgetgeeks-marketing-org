@@ -19,7 +19,17 @@
       "status": "queued",
       "created": "2026-03-12 09:30 UTC",
       "hypothesis": "Loss aversion framing (A) vs social proof/identity (B)"
+    },
+    {
+      "id": "bundle-subject-001",
+      "campaign_id": "bundle-complete-001",
+      "element": "subject_line",
+      "variant_a": "Don't pay extra for what should be included",
+      "variant_b": "iPhone 12 + everything you actually need",
+      "status": "queued",
+      "created": "2026-03-17 09:41 UTC",
+      "hypothesis": "Loss aversion/hidden costs (A) vs feature completeness (B)"
     }
   ],
-  "last_updated": "2026-03-12 09:30 UTC"
+  "last_updated": "2026-03-17 09:41 UTC"
 }

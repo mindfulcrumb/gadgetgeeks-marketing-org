@@ -384,6 +384,25 @@
       ],
       "business_impact": "Could be losing $500-2000+ daily if checkout is broken vs just tracking",
       "id": "analytics_20260317_080811"
+    },
+    {
+      "campaign_id": "bundle-complete-001",
+      "subject_line_a": "Don't pay extra for what should be included",
+      "subject_line_b": "iPhone 12 + everything you actually need",
+      "segment": "cart_abandoners",
+      "preview_text": "Your cart's still waiting. And honestly? Good call on hesitating.",
+      "key_offer": "iPhone 12 Bundle (Grade A) - $349 complete",
+      "cta": "Complete Your Bundle - $349",
+      "urgency": "Cart expires in 24 hours",
+      "estimated_send_count": "~200-400 customers",
+      "trending_hooks": [
+        "Headphone jack preservation",
+        "Bundle transparency",
+        "Hidden costs avoidance"
+      ],
+      "mobile_optimized": true,
+      "unsubscribe_reminder": "Standard Resend footer included",
+      "id": "email_20260317_094217"
     }
   ],
   "approved": [],

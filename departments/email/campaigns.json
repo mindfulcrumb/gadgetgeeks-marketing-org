@@ -19,7 +19,17 @@
       "created": "2026-03-12 09:30 UTC",
       "theme": "Investment protection + Environmental responsibility",
       "estimated_send_count": "~300-500 customers"
+    },
+    {
+      "id": "bundle-complete-001",
+      "name": "Complete Package Bundle - Cart Recovery",
+      "type": "bundle_promo",
+      "status": "queued_for_approval",
+      "segment": "cart_abandoners",
+      "created": "2026-03-17 09:41 UTC",
+      "theme": "Feature preservation + Bundle value + Transparency",
+      "estimated_send_count": "~200-400 customers"
     }
   ],
-  "last_updated": "2026-03-12 09:30 UTC"
+  "last_updated": "2026-03-17 09:41 UTC"
 }

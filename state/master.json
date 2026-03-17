@@ -21,9 +21,9 @@
       "runs_total": 4
     },
     "email": {
-      "last_run": "2026-03-11T19:12:01.917392+00:00",
-      "status": "CRITICAL - offline 124+ hours (5+ DAYS) - URGENT RESTART REQUIRED",
-      "runs_total": 1
+      "last_run": "2026-03-17T09:42:17.873237+00:00",
+      "status": "ok",
+      "runs_total": 2
     },
     "social_morning": {
       "last_run": "2026-03-16T10:41:25.018474+00:00",

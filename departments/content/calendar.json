@@ -1,13 +1,11 @@
 {
-  "scheduled": [
-    {
-      "date": "2026-03-17",
-      "time": "09:30",
-      "type": "blog",
-      "title": "Back Market Sells 'Excellent' Phones With Greasy Handprints",
-      "blog_id": "blog_20260316_002",
+  "2026-03-17": {
+    "blog_20260317_001": {
+      "title": "What 'Excellent Condition' Actually Means (Photos Don't Lie)",
       "status": "scheduled",
-      "department": "blog_writer"
+      "type": "blog",
+      "scheduled_time": "16:00 UTC",
+      "category": "trending"
     }
-  ]
+  }
 }

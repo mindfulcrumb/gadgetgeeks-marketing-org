@@ -315,6 +315,11 @@
       "reasoning": "High volume posting reduces per-post engagement, platform algorithm penalties for spam-like behavior",
       "implementation": "Focus on top-performing content types: iPhone 17e comparisons, customer testimonials with dollar amounts, Back Market crisis differentiation",
       "id": "social_afternoon_20260316_174118"
+    },
+    {
+      "alert_type": "CRITICAL",
+      "message": "🚨 SENTINEL PRE-DAWN ALERT — 04:47 UTC\nType: CRITICAL INFRASTRUCTURE FAILURE\nIssue: Email & CRO departments offline 124+ hours (5+ DAYS)\nImpact: Zero email campaigns, zero conversion optimization - REVENUE CRITICAL\nAction needed: Immediate GitHub Actions restart required\n\nSecondary issues:\n• Gemini API down 48+ hours (no images)\n• SEO brief stuck 73+ hours\n• Social platforms 80% disconnected\n\nBusiness operating at <30% capacity",
+      "id": "night_ops_20260317_044752"
     }
   ],
   "approved": [],

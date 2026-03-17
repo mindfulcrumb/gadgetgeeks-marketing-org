@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-17T02:41:00Z",
+  "timestamp": "2026-03-17T04:47:00Z",
   "run_type": "predawn_check",
   "api_health": {
     "shopify": "ok",
@@ -9,20 +9,15 @@
     "vapi": "unknown"
   },
   "workflow_health": {
-    "scheduled_yesterday": 15,
-    "ran_successfully": 13,
+    "scheduled_today": "N/A - weekend",
+    "ran_successfully": 0,
     "failed": 0,
-    "missed": 2,
+    "missed": "Unable to determine - run history shows gap since March 13",
     "details": [
       {
-        "workflow": "email",
-        "status": "offline_5_days",
-        "error": "department offline 124+ hours"
-      },
-      {
-        "workflow": "cro",
-        "status": "offline_5_days",
-        "error": "department offline 124+ hours"
+        "workflow": "Multiple departments",
+        "status": "stale_data",
+        "error": "Last recorded runs from March 13, current date March 17 - significant data gap"
       }
     ]
   },
@@ -31,29 +26,37 @@
     "stale_items": [
       {
         "id": "seo_20260313_071521",
-        "pending_hours": 75,
-        "urgency": "critical"
+        "pending_hours": 73,
+        "urgency": "high"
       }
     ],
-    "oldest_pending": "2026-03-13T07:15:21Z"
+    "oldest_pending": "2026-03-12T17:29:52Z"
   },
   "incidents": {
     "open_count": 1,
     "critical_open": 0,
     "oldest_open": {
       "id": "INC-006",
-      "age_hours": 36
+      "age_hours": 47
     }
   },
   "pipeline_health": {
     "blogs_stuck": [],
-    "images_stuck": [],
-    "emails_stuck": []
+    "images_stuck": [
+      "Gemini API down - no image generation"
+    ],
+    "emails_stuck": [
+      "Email department offline 5+ days"
+    ]
   },
   "idle_departments": [
-    "email",
-    "cro"
+    "email (offline 124+ hours)",
+    "cro (offline 124+ hours)"
   ],
-  "alerts_triggered": [],
-  "status": "ISSUES_FOUND"
+  "alerts_triggered": [
+    "2 departments offline >120 hours - CRITICAL REVENUE IMPACT",
+    "SEO brief pending 73+ hours - workflow blocked",
+    "Gemini API down 48+ hours - content pipeline affected"
+  ],
+  "status": "CRITICAL"
 }

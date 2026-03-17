@@ -139,10 +139,10 @@ jobs:
               print(f"Staged upload failed: {json.dumps(stage_result)[:500]}")
               exit(1)
 
-          target_info = targets[0]
-          upload_url = target_info["url"]
-          resource_url = target_info["resourceUrl"]
-          params = {p["name"]: p["value"] for p in target_info["parameters"]}
+          staged = targets[0]
+          upload_url = staged["url"]
+          resource_url = staged["resourceUrl"]
+          params = {p["name"]: p["value"] for p in staged["parameters"]}
 
           # Upload the file
           files = {"file": ("blog-header-iphone-12-13-headphone-jack.png", img_bytes, mime_type)}

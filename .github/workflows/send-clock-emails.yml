@@ -11,37 +11,79 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Install resend SDK
+        run: pip install resend
       - name: Send clock-in emails to all employees
         env:
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
         run: |
           python3 << 'PYEOF'
-          import json, os
-          from urllib.request import Request, urlopen
-          from urllib.error import HTTPError
+          import resend, os
 
-          key = os.environ.get("RESEND_API_KEY", "")
-          print(f"Key length: {len(key)}, starts with: {key[:5]}..." if key else "NO KEY FOUND")
+          resend.api_key = os.environ["RESEND_API_KEY"]
 
-          # Test with a simple email first
-          data = json.dumps({
-              "from": "Gadget Geeks Pro <noreply@gadgetgeekspro.com>",
-              "to": ["nathaniela520@gmail.com"],
-              "subject": "Test",
-              "html": "<p>Test</p>",
-          }).encode("utf-8")
+          employees = [
+              ("nathaniel.allen", "nathaniela520@gmail.com", "Nathaniel", "Nathaniel6044!"),
+              ("frany.calvo", "fjcalvo.02@gmail.com", "Frany", "Frany4340!"),
+              ("diego.garcia", "diovancia@gmail.com", "Diego", "Diego3302!"),
+              ("fiori.gomez", "fefeeg11@gmail.com", "Fiori", "Fiori9142!"),
+              ("nickie.martinez", "martineznic00@hotmail.com", "Nickie", "Nickie9232!"),
+              ("luis.merino", "merino.az@icloud.com", "Luis", "Luis8595!"),
+              ("ramon.tarazon", "Tarazon520@gmail.com", "Ramon", "Ramon3448!"),
+              ("bianca.velderrain", "velderrainb@gmail.com", "Bianca", "Bianca7253!"),
+          ]
 
-          req = Request("https://api.resend.com/emails", data=data, headers={
-              "Authorization": f"Bearer {key}",
-              "Content-Type": "application/json",
-          }, method="POST")
+          for username, email, first_name, temp_pw in employees:
+              html = f"""
+              <div style="font-family: -apple-system, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+                <div style="background: #9c2471; padding: 20px; border-radius: 12px 12px 0 0; text-align: center;">
+                  <h1 style="color: white; margin: 0; font-size: 22px;">Gadget Geeks Pro</h1>
+                  <p style="color: rgba(255,255,255,0.8); margin: 5px 0 0;">New Clock-In System</p>
+                </div>
+                <div style="background: white; padding: 30px; border: 1px solid #f0d5e8; border-top: none; border-radius: 0 0 12px 12px;">
+                  <p style="font-size: 16px;">Hi {first_name},</p>
+                  <p>We have a new digital clock-in system. Starting now, please use the app below to clock in and out at the beginning and end of each shift.</p>
+                  
+                  <div style="background: #fdf2f8; border: 2px solid #C72F8F; border-radius: 10px; padding: 20px; margin: 20px 0; text-align: center;">
+                    <p style="margin: 0 0 10px; font-weight: 700; color: #9c2471;">CLOCK-IN APP</p>
+                    <a href="https://clock.gadgetgeekspro.com" style="display: inline-block; background: #C72F8F; color: white; padding: 12px 30px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 16px;">Open Clock App</a>
+                  </div>
+                  
+                  <div style="background: #f9fafb; border-radius: 8px; padding: 15px; margin: 20px 0;">
+                    <p style="margin: 0 0 8px; font-weight: 700;">Your Login:</p>
+                    <p style="margin: 0; font-family: monospace; font-size: 15px;">Username: <strong>{username}</strong></p>
+                    <p style="margin: 5px 0 0; font-family: monospace; font-size: 15px;">Password: <strong>{temp_pw}</strong></p>
+                  </div>
+                  
+                  <p style="color: #6b7280; font-size: 14px;">Please change your password after your first login.</p>
+                  
+                  <h3 style="margin: 25px 0 10px;">How it works:</h3>
+                  <ul style="color: #374151; line-height: 1.8;">
+                    <li>Open the app on your phone when you arrive at the shop</li>
+                    <li>Allow location access when prompted</li>
+                    <li>Tap <strong>Clock In</strong> to start your shift</li>
+                    <li>Tap <strong>Clock Out</strong> when your shift ends</li>
+                    <li>View your hours, pay period totals, and time-off balances anytime</li>
+                  </ul>
+                  
+                  <div style="background: #fef3c7; border-radius: 8px; padding: 12px; margin: 20px 0;">
+                    <p style="margin: 0; font-size: 14px;"><strong>Tip:</strong> Save the app to your home screen for quick access. No app download needed.</p>
+                  </div>
+                  
+                  <p>If you have trouble logging in, let management know.</p>
+                  <p style="margin-top: 25px;">Thanks,<br><strong>Management — Gadget Geeks Pro</strong></p>
+                </div>
+              </div>
+              """
 
-          try:
-              with urlopen(req, timeout=30) as resp:
-                  print(f"SUCCESS: {resp.read().decode()}")
-          except HTTPError as e:
-              body = e.read().decode() if e.fp else "no body"
-              print(f"ERROR {e.code}: {body}")
-          except Exception as e:
-              print(f"EXCEPTION: {e}")
+              try:
+                  r = resend.Emails.send({
+                      "from": "Gadget Geeks Pro <noreply@gadgetgeekspro.com>",
+                      "to": [email],
+                      "subject": "Your New Clock-In App Login — Action Required",
+                      "html": html,
+                  })
+                  print(f"✓ Sent to {first_name} ({email}) — ID: {r.get('id', r)}")
+              except Exception as e:
+                  print(f"✗ FAILED {first_name} ({email}): {e}")
           PYEOF

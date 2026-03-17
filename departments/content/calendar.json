@@ -1,11 +1,31 @@
 {
   "2026-03-17": {
-    "blog_20260317_001": {
-      "title": "What 'Excellent Condition' Actually Means (Photos Don't Lie)",
-      "status": "scheduled",
-      "type": "blog",
-      "scheduled_time": "16:00 UTC",
-      "category": "trending"
-    }
+    "posts": [
+      {
+        "blog_id": "blog_20260317_001",
+        "title": "What 'Excellent Condition' Actually Means (Photos Don't Lie)",
+        "status": "queued_for_publish",
+        "type": "blog",
+        "scheduled_time": "16:00 UTC"
+      },
+      {
+        "blog_id": "blog_20260317_002",
+        "title": "When Disputes Happen, Evidence Rules Everything",
+        "status": "draft_ready",
+        "type": "blog",
+        "scheduled_time": "09:30 UTC"
+      }
+    ]
+  },
+  "2026-03-19": {
+    "posts": [
+      {
+        "blog_id": "blog_20260317_002",
+        "title": "When Disputes Happen, Evidence Rules Everything",
+        "status": "scheduled",
+        "type": "blog",
+        "scheduled_time": "09:30 UTC"
+      }
+    ]
   }
 }

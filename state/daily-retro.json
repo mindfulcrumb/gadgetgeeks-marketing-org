@@ -1,132 +1,71 @@
 {
-  "date": "2026-03-16",
+  "date": "2026-03-17",
   "shift": "evening",
-  "shipped_today": [
-    {
-      "type": "blog_content",
-      "title": "Back Market Sells 'Excellent' Phones With Greasy Handprints",
-      "status": "draft_ready",
-      "word_count": 687,
-      "scheduled_publish": "2026-03-17T09:30:00Z",
-      "department": "blog_writer",
-      "note": "Addresses trending Back Market crisis, includes FAQ schema"
-    },
-    {
-      "type": "social_posts",
-      "count": "Multiple TikTok posts using real product photos",
-      "platforms": [
-        "tiktok"
-      ],
-      "department": "social_afternoon",
-      "note": "iPhone 13/14 bundles, sustainability messaging"
-    },
-    {
-      "type": "seo_brief",
-      "title": "Battery Health Percentage Explained",
-      "target_keyword": "battery health percentage phones",
-      "department": "seo",
-      "status": "queued_for_scribe"
-    }
-  ],
+  "shipped_today": {
+    "content": [
+      {
+        "title": "When Disputes Happen, Evidence Rules Everything",
+        "word_count": 598,
+        "status": "draft_ready",
+        "scheduled_publish": "2026-03-19T09:30:00Z"
+      }
+    ],
+    "social": [
+      "Social afternoon ran but blocked by zero unused images"
+    ],
+    "email": [
+      "Bundle campaign ready for approval (cart abandoners)"
+    ],
+    "operations": [
+      "Queue processed - 41 pending, 0 approved items"
+    ]
+  },
   "in_progress": [
-    {
-      "type": "queue_items",
-      "count": 22,
-      "status": "pending_boss_approval",
-      "critical_items": [
-        "GitHub Actions restart for email/cro departments",
-        "Gemini API fix or DALL-E fallback",
-        "Social platform reconnection",
-        "GA4 conversion tracking investigation"
-      ]
-    },
-    {
-      "type": "dialer_setup",
-      "status": "blocked_awaiting_data_sources",
-      "department": "dialer",
-      "note": "Cannot build call lists without customer data access"
-    }
+    "Blog scheduled for March 19 publication",
+    "Email campaign awaiting approval",
+    "Social posts blocked pending image generation",
+    "41 queue items pending boss review"
   ],
   "failed_blocked": [
     {
-      "issue": "Email department offline 124+ hours",
-      "impact": "No email campaigns possible",
-      "severity": "critical",
-      "revenue_impact": true
+      "item": "CRO department",
+      "duration": "131+ hours offline",
+      "impact": "No conversion optimization for 5+ days",
+      "priority": "P0 EMERGENCY"
     },
     {
-      "issue": "CRO department offline 124+ hours",
-      "impact": "No conversion optimization",
-      "severity": "critical",
-      "revenue_impact": true
+      "item": "Image generation API",
+      "duration": "48+ hours",
+      "impact": "Social media completely blocked",
+      "priority": "P1 CRITICAL"
     },
     {
-      "issue": "Gemini API 403 errors for 48+ hours",
-      "impact": "All image generation blocked",
-      "severity": "critical",
-      "workaround": "Using pre-made real product photos only"
-    },
-    {
-      "issue": "Social platforms disconnected",
-      "impact": "Limited to TikTok only",
-      "severity": "high",
-      "note": "Missing Twitter, Instagram, Facebook, LinkedIn"
-    },
-    {
-      "issue": "Image pipeline exhausted",
-      "impact": "Zero unused images remaining",
-      "severity": "high",
-      "note": "34 posts in 3 days depleted all visuals"
-    },
-    {
-      "issue": "GA4 showing zero conversions",
-      "impact": "Cannot measure ROI or optimize",
-      "severity": "critical",
-      "note": "251 sessions but no conversion tracking"
+      "item": "GA4 conversion tracking",
+      "duration": "7+ days",
+      "impact": "Zero conversions recorded despite 284 sessions",
+      "priority": "P1 CRITICAL"
     }
   ],
   "metrics": {
     "content": {
       "blogs_written": 1,
-      "words_written": 687,
-      "blogs_published": 0,
-      "seo_briefs_created": 1
-    },
-    "visual": {
-      "images_generated": 0,
-      "designs_created": 0,
-      "prompts_attempted": "Unknown (blocked by API)"
+      "words_written": 598,
+      "status": "draft_ready"
     },
     "social": {
-      "posts": "Multiple on TikTok",
-      "platforms_active": 1,
-      "platforms_total": 5,
-      "engagement_rate": "Unknown (limited tracking)"
+      "posts": 0,
+      "blocked_reason": "zero unused images remaining"
     },
     "email": {
-      "campaigns_sent": 0,
-      "status": "Department offline 5+ days"
-    },
-    "dialer": {
-      "calls_made": 0,
-      "status": "Blocked awaiting data sources"
+      "campaigns_ready": 1,
+      "status": "awaiting approval"
     },
     "queue": {
-      "processed": 0,
-      "pending": 22,
-      "critical_pending": 7
-    }
+      "processed": 41,
+      "approved": 0,
+      "pending": 41
+    },
+    "health_score": "30/100 - CRITICAL"
   },
-  "health_assessment": {
-    "score": "30/100",
-    "status": "CRITICAL_INFRASTRUCTURE_FAILURE_STABLE",
-    "trending": "DETERIORATING - more systems failing than recovering",
-    "primary_issues": [
-      "2 revenue departments offline 5+ days",
-      "Image generation completely blocked",
-      "Social reach limited to 20% of platforms",
-      "Zero conversion tracking = blind optimization"
-    ]
-  },
-  "telegram_summary": "📊 DAY RECAP: Blog ready (Back Market crisis), TikTok posting active, but CRITICAL: Email/CRO offline 5+ days, image generation dead, GA4 shows 0 conversions despite traffic. Operating at 30% capacity. 22 items need approval."
+  "telegram_summary": "🚨 DAY 6 WITHOUT CRO (P0 EMERGENCY) • Content: 1 blog ready for March 19 • Social: BLOCKED (zero images left) • Email: 1 campaign awaiting approval • Queue: 41 pending • GA4: Still zero conversions • Health: 30/100 CRITICAL"
 }

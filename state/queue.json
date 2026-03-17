@@ -456,6 +456,20 @@
       },
       "header_image_prompt_id": null,
       "id": "blog_publish_20260317_153752"
+    },
+    {
+      "issue": "Completely exhausted all unused images from ready-to-post collection",
+      "impact": "Cannot create any new social posts until LENS generates fresh content",
+      "recommendation": "LENS must generate 10+ new real product photo prompts for iPhone 13/14 immediately",
+      "rule_25_concern": "Many AI-generated images were used despite being marked as BURNED - need compliance review",
+      "id": "social_afternoon_20260317_173941"
+    },
+    {
+      "current_volume": "31 posts in 3 days (Mar 12-14)",
+      "recommended_volume": "8-10 posts per day maximum",
+      "rationale": "Heavy volume may be reducing individual post engagement quality",
+      "focus": "Quality over quantity - prioritize top performing content types (customer testimonials, reality check format)",
+      "id": "social_afternoon_20260317_173941"
     }
   ],
   "approved": [],

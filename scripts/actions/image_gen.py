@@ -12,14 +12,82 @@ DALL-E fallback was removed 2026-03-16. Gemini-only. No exceptions.
 import base64
 import json
 import os
+import time
 import requests
 from datetime import datetime, timezone
+from pathlib import Path
 
 
 GEMINI_API_BASE = "https://generativelanguage.googleapis.com/v1beta"
-GEMINI_IMAGE_MODEL = "gemini-2.5-flash-image"
+GEMINI_IMAGE_MODEL = "gemini-2.0-flash-exp"
 
 # DALL-E is BANNED — removed 2026-03-16. Gemini only.
+
+# Max retries before falling back to pre-uploaded fallback images
+GEMINI_MAX_RETRIES = 2
+GEMINI_RETRY_DELAY_SECONDS = 3
+
+# Fallback images config path
+FALLBACK_IMAGES_PATH = Path(__file__).parent.parent.parent / "config" / "fallback-images.json"
+
+
+# ---------------------------------------------------------------------------
+# Fallback image loader
+# ---------------------------------------------------------------------------
+
+def _load_fallback_images() -> dict:
+    """Load fallback images config from config/fallback-images.json."""
+    if not FALLBACK_IMAGES_PATH.exists():
+        return {}
+    try:
+        data = json.loads(FALLBACK_IMAGES_PATH.read_text(encoding="utf-8"))
+        return data.get("categories", {})
+    except Exception as e:
+        print(f"    [Fallback] WARNING: Could not load fallback images config: {e}")
+        return {}
+
+
+def get_fallback_image(category: str) -> dict | None:
+    """Get a fallback image for the given blog category.
+
+    Downloads the pre-uploaded Shopify CDN image and returns it in the
+    same format as generate_image().
+
+    Returns None if no fallback is available or download fails.
+    """
+    categories = _load_fallback_images()
+    if not categories:
+        print("    [Fallback] No fallback images config found")
+        return None
+
+    # Normalize category to match config keys
+    cat_key = category.lower().replace(" ", "-").strip()
+    fallback = categories.get(cat_key) or categories.get("default")
+    if not fallback:
+        print(f"    [Fallback] No fallback image for category '{category}'")
+        return None
+
+    url = fallback.get("url", "")
+    if not url:
+        print(f"    [Fallback] Fallback entry for '{cat_key}' has no URL")
+        return None
+
+    try:
+        resp = requests.get(url, timeout=30)
+        if resp.ok:
+            print(f"    [Fallback] Using fallback image for category '{cat_key}': {url}")
+            return {
+                "image_bytes": resp.content,
+                "mime_type": resp.headers.get("Content-Type", "image/png"),
+                "provider": "fallback_cdn",
+                "fallback_url": url,
+            }
+        else:
+            print(f"    [Fallback] CDN download failed ({resp.status_code}) for: {url}")
+            return None
+    except Exception as e:
+        print(f"    [Fallback] CDN download error: {e}")
+        return None
 
 
 # ---------------------------------------------------------------------------

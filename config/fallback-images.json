@@ -1,0 +1,36 @@
+{
+  "_docs": "Fallback header images for blog publishing when Gemini image generation fails. These are generic, on-brand images already on Shopify CDN that work as blog headers. DALL-E is BANNED — these are pre-uploaded real photos, not AI-generated.",
+  "_last_updated": "2026-03-17",
+  "categories": {
+    "product": {
+      "label": "Product-focused blogs (reviews, spotlights, comparisons)",
+      "url": "https://cdn.shopify.com/s/files/1/0664/1664/0251/files/apple-iphone-14-desktop.png",
+      "alt": "Refurbished iPhone product showcase"
+    },
+    "lifestyle": {
+      "label": "Lifestyle blogs (daily use, student, professional)",
+      "url": "https://cdn.shopify.com/s/files/1/0664/1664/0251/files/apple-iphone-13-pos1-floating_074be56b-89cc-46d2-a70a-69f2e1e25b7c.png?v=1773615063",
+      "alt": "iPhone 13 lifestyle product shot"
+    },
+    "how-to": {
+      "label": "How-to guides (setup, tips, troubleshooting)",
+      "url": "https://cdn.shopify.com/s/files/1/0664/1664/0251/files/apple-iphone-12-pos1-floating_583ba2cf-31e5-4a1e-abc0-b203bcb0b4f8.png?v=1773615636",
+      "alt": "iPhone 12 how-to guide header"
+    },
+    "buying-guide": {
+      "label": "Buying guides (comparisons, best-of, budget picks)",
+      "url": "https://cdn.shopify.com/s/files/1/0664/1664/0251/files/apple-iphone-14-desktop.png",
+      "alt": "Refurbished phone buying guide header"
+    },
+    "news": {
+      "label": "Industry news and trending topics",
+      "url": "https://cdn.shopify.com/s/files/1/0664/1664/0251/files/apple-iphone-13-pos1-floating_074be56b-89cc-46d2-a70a-69f2e1e25b7c.png?v=1773615063",
+      "alt": "Tech industry news header"
+    },
+    "default": {
+      "label": "Default fallback for any uncategorized blog",
+      "url": "https://cdn.shopify.com/s/files/1/0664/1664/0251/files/apple-iphone-14-desktop.png",
+      "alt": "Gadget Geeks Pro blog header"
+    }
+  }
+}

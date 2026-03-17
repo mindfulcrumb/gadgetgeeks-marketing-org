@@ -1,66 +1,226 @@
 name: Fix Blog Image
+
 on:
   workflow_dispatch:
-    inputs:
-      blog_handle:
-        description: 'Blog handle (slug) or "all" to fix all published blogs missing images'
-        required: true
-        default: 'cheap-refurbished-phones-guide'
-
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   fix-image:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      - name: Get fresh Shopify token
-        id: shopify
-        run: |
-          RESPONSE=$(curl -s -X POST "https://gadgetgeekspro.myshopify.com/admin/oauth/access_token" \
-            -H "Content-Type: application/x-www-form-urlencoded" \
-            -d "grant_type=client_credentials" \
-            -d "client_id=${{ secrets.SHOPIFY_CLIENT_ID }}" \
-            -d "client_secret=${{ secrets.SHOPIFY_CLIENT_SECRET }}")
-          TOKEN=$(echo "$RESPONSE" | python3 -c "import sys,json; print(json.load(sys.stdin)['access_token'])")
-          echo "::add-mask::$TOKEN"
-          echo "token=$TOKEN" >> "$GITHUB_OUTPUT"
-
-      - name: Generate and attach blog header image
+      - name: Install deps
+        run: pip install requests
+      - name: Generate image and update blog
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          SHOPIFY_ACCESS_TOKEN: ${{ steps.shopify.outputs.token }}
           SHOPIFY_CLIENT_ID: ${{ secrets.SHOPIFY_CLIENT_ID }}
           SHOPIFY_CLIENT_SECRET: ${{ secrets.SHOPIFY_CLIENT_SECRET }}
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          BLOG_HANDLE: ${{ github.event.inputs.blog_handle }}
         run: |
-          cd scripts/actions
-          python3 -c "
-          from telegram_bot import _cmd_fix_image, send_message
-          result = _cmd_fix_image(['${{ github.event.inputs.blog_handle }}'])
-          print(result)
-          "
+          python3 << 'PYEOF'
+          import json, os, base64, time, requests
 
-      - name: Push changes
-        run: |
-          git config user.name "Marketing Org Bot"
-          git config user.email "bot@gadgetgeekspro.com"
-          git add -A
-          git diff --cached --quiet || git commit -m "[fix-image] ${{ github.event.inputs.blog_handle }} — $(date -u '+%Y-%m-%d %H:%M UTC')"
-          for i in 1 2 3; do
-            git pull --rebase origin main || { git rebase --abort 2>/dev/null; git pull origin main --no-edit; }
-            git push && break || sleep 5
-          done
+          GEMINI_KEY = os.environ["GEMINI_API_KEY"]
+          SHOP_ID = os.environ["SHOPIFY_CLIENT_ID"]
+          SHOP_SECRET = os.environ["SHOPIFY_CLIENT_SECRET"]
+          STORE = "gadgetgeekspro.myshopify.com"
+
+          # Step 1: Get Shopify token
+          print("Getting Shopify token...")
+          token_resp = requests.post(
+              f"https://{STORE}/admin/oauth/access_token",
+              json={"client_id": SHOP_ID, "client_secret": SHOP_SECRET, "grant_type": "client_credentials"},
+              timeout=15
+          )
+          token = token_resp.json().get("access_token")
+          print(f"Token: {'OK' if token else 'FAILED'}")
+
+          headers = {"Content-Type": "application/json", "X-Shopify-Access-Token": token}
+          gql = lambda q: requests.post(f"https://{STORE}/admin/api/2026-01/graphql.json", json={"query": q}, headers=headers, timeout=30).json()
+
+          # Step 2: Find the iPhone 12/13 blog article
+          print("\nFinding blog articles...")
+          result = gql('''{
+            articles(first: 20, reverse: true) {
+              edges { node { id title handle image { url } } }
+            }
+          }''')
+          
+          articles = result.get("data", {}).get("articles", {}).get("edges", [])
+          target = None
+          for a in articles:
+              node = a["node"]
+              print(f"  {node['title'][:60]} — Image: {'YES' if node.get('image') else 'NO'}")
+              if "12" in node["title"] and "13" in node["title"]:
+                  target = node
+              elif "headphone" in node["title"].lower():
+                  target = node
+          
+          if not target:
+              # Try broader match
+              for a in articles:
+                  node = a["node"]
+                  if "iphone" in node["title"].lower():
+                      target = node
+                      break
+          
+          if not target:
+              print("ERROR: Could not find the iPhone 12/13 blog article")
+              exit(1)
+          
+          print(f"\nTarget: {target['title']}")
+          print(f"ID: {target['id']}")
+          print(f"Current image: {target.get('image', {}).get('url', 'NONE')}")
+
+          # Step 3: Generate header image with Gemini
+          print("\nGenerating header image with Gemini...")
+          prompt = (
+              "Professional product photography of an iPhone 12 and iPhone 13 side by side on a clean white surface. "
+              "Both phones have their screens facing up showing colorful wallpapers. "
+              "A pair of premium wired earbuds with a 3.5mm headphone jack adapter is artfully placed between them. "
+              "Soft studio lighting, shallow depth of field, 16:9 aspect ratio, "
+              "photorealistic, high-end tech blog header aesthetic. "
+              "Clean minimal background with subtle gradient. No text overlays, no watermarks."
+          )
+
+          gen_url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image:generateContent?key={GEMINI_KEY}"
+          gen_payload = {
+              "contents": [{"parts": [{"text": f"Generate: {prompt}"}]}],
+              "generationConfig": {"responseModalities": ["TEXT", "IMAGE"]}
+          }
+
+          img_bytes = None
+          mime_type = "image/png"
+          for attempt in range(3):
+              try:
+                  resp = requests.post(gen_url, json=gen_payload, timeout=60)
+                  resp.raise_for_status()
+                  data = resp.json()
+                  parts = data.get("candidates", [{}])[0].get("content", {}).get("parts", [])
+                  for p in parts:
+                      if "inlineData" in p:
+                          img_bytes = base64.b64decode(p["inlineData"]["data"])
+                          mime_type = p["inlineData"].get("mimeType", "image/png")
+                          print(f"  Image generated! ({len(img_bytes)} bytes, {mime_type})")
+                          break
+                  if img_bytes:
+                      break
+              except Exception as e:
+                  print(f"  Attempt {attempt+1} failed: {e}")
+                  time.sleep(3)
+
+          if not img_bytes:
+              print("ERROR: Could not generate image after 3 attempts")
+              exit(1)
+
+          # Step 4: Upload to Shopify via staged upload
+          print("\nUploading to Shopify CDN...")
+          stage_query = '''mutation {
+            stagedUploadsCreate(input: [{
+              resource: FILE
+              filename: "blog-header-iphone-12-13-headphone-jack.png"
+              mimeType: "image/png"
+              httpMethod: POST
+            }]) {
+              stagedTargets {
+                url
+                resourceUrl
+                parameters { name value }
+              }
+              userErrors { field message }
+            }
+          }'''
+
+          stage_result = gql(stage_query)
+          targets = stage_result.get("data", {}).get("stagedUploadsCreate", {}).get("stagedTargets", [])
+          if not targets:
+              print(f"Staged upload failed: {json.dumps(stage_result)[:500]}")
+              exit(1)
+
+          target_info = targets[0]
+          upload_url = target_info["url"]
+          resource_url = target_info["resourceUrl"]
+          params = {p["name"]: p["value"] for p in target_info["parameters"]}
+
+          # Upload the file
+          files = {"file": ("blog-header-iphone-12-13-headphone-jack.png", img_bytes, mime_type)}
+          upload_resp = requests.post(upload_url, data=params, files=files, timeout=60)
+          print(f"  Upload status: {upload_resp.status_code}")
+
+          # Create file in Shopify
+          file_query = f'''mutation {{
+            fileCreate(files: [{{
+              originalSource: "{resource_url}"
+              contentType: IMAGE
+            }}]) {{
+              files {{ ... on MediaImage {{ id image {{ url }} }} }}
+              userErrors {{ field message }}
+            }}
+          }}'''
+
+          file_result = gql(file_query)
+          files_created = file_result.get("data", {}).get("fileCreate", {}).get("files", [])
+          
+          # Wait for processing
+          time.sleep(5)
+          
+          # Get the CDN URL
+          cdn_url = ""
+          if files_created:
+              img_data = files_created[0].get("image", {})
+              cdn_url = img_data.get("url", "")
+          
+          if not cdn_url:
+              # Use the resource URL directly
+              cdn_url = resource_url
+          
+          print(f"  CDN URL: {cdn_url}")
+
+          # Step 5: Update the article with the new image
+          print("\nUpdating blog article with new image...")
+          article_gid = target["id"]
+          
+          update_query = f'''mutation {{
+            articleUpdate(article: {{
+              id: "{article_gid}"
+              image: {{
+                url: "{cdn_url}"
+                altText: "iPhone 12 and iPhone 13 with headphone jack adapter - the last great iPhones with wired audio"
+              }}
+            }}) {{
+              article {{
+                id
+                title
+                image {{ url altText }}
+              }}
+              userErrors {{ field message }}
+            }}
+          }}'''
+
+          update_result = gql(update_query)
+          updated = update_result.get("data", {}).get("articleUpdate", {})
+          errors = updated.get("userErrors", [])
+          
+          if errors:
+              print(f"  Update errors: {errors}")
+              # Try alternative approach - update via REST
+              print("  Trying REST API fallback...")
+              article_numeric_id = article_gid.split("/")[-1]
+              rest_resp = requests.put(
+                  f"https://{STORE}/admin/api/2026-01/articles/{article_numeric_id}.json",
+                  json={"article": {"id": int(article_numeric_id), "image": {"src": cdn_url, "alt": "iPhone 12 and iPhone 13 with headphone jack adapter"}}},
+                  headers=headers,
+                  timeout=30
+              )
+              print(f"  REST update status: {rest_resp.status_code}")
+              if rest_resp.ok:
+                  print(f"  REST update response: {rest_resp.json().get('article', {}).get('image', {}).get('src', 'no image')[:100]}")
+          else:
+              article = updated.get("article", {})
+              new_img = article.get("image", {})
+              print(f"  Updated! New image: {new_img.get('url', 'NONE')[:100]}")
+          
+          print("\nDone!")
+          PYEOF

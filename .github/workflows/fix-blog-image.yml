@@ -149,78 +149,26 @@ jobs:
           upload_resp = requests.post(upload_url, data=params, files=files, timeout=60)
           print(f"  Upload status: {upload_resp.status_code}")
 
-          # Create file in Shopify
-          file_query = f'''mutation {{
-            fileCreate(files: [{{
-              originalSource: "{resource_url}"
-              contentType: IMAGE
-            }}]) {{
-              files {{ ... on MediaImage {{ id image {{ url }} }} }}
-              userErrors {{ field message }}
-            }}
-          }}'''
-
-          file_result = gql(file_query)
-          files_created = file_result.get("data", {}).get("fileCreate", {}).get("files", [])
-          
-          # Wait for processing
-          time.sleep(5)
-          
-          # Get the CDN URL
-          cdn_url = ""
-          if files_created:
-              img_data = files_created[0].get("image", {})
-              cdn_url = img_data.get("url", "")
-          
-          if not cdn_url:
-              # Use the resource URL directly
-              cdn_url = resource_url
-          
-          print(f"  CDN URL: {cdn_url}")
-
-          # Step 5: Update the article with the new image
-          print("\nUpdating blog article with new image...")
+          # Step 5: Update article image directly via REST API (most reliable)
+          print("\nUpdating blog article with new image via REST...")
           article_gid = target["id"]
-          
-          update_query = f'''mutation {{
-            articleUpdate(article: {{
-              id: "{article_gid}"
-              image: {{
-                url: "{cdn_url}"
-                altText: "iPhone 12 and iPhone 13 with headphone jack adapter - the last great iPhones with wired audio"
-              }}
-            }}) {{
-              article {{
-                id
-                title
-                image {{ url altText }}
-              }}
-              userErrors {{ field message }}
-            }}
-          }}'''
+          article_numeric_id = article_gid.split("/")[-1]
 
-          update_result = gql(update_query)
-          updated = update_result.get("data", {}).get("articleUpdate", {})
-          errors = updated.get("userErrors", [])
-          
-          if errors:
-              print(f"  Update errors: {errors}")
-              # Try alternative approach - update via REST
-              print("  Trying REST API fallback...")
-              article_numeric_id = article_gid.split("/")[-1]
-              rest_resp = requests.put(
-                  f"https://{STORE}/admin/api/2026-01/articles/{article_numeric_id}.json",
-                  json={"article": {"id": int(article_numeric_id), "image": {"src": cdn_url, "alt": "iPhone 12 and iPhone 13 with headphone jack adapter"}}},
-                  headers=headers,
-                  timeout=30
-              )
-              print(f"  REST update status: {rest_resp.status_code}")
-              if rest_resp.ok:
-                  print(f"  REST update response: {rest_resp.json().get('article', {}).get('image', {}).get('src', 'no image')[:100]}")
+          # Use resource_url from staged upload — Shopify resolves it to CDN
+          print(f"  Resource URL: {resource_url}")
+
+          rest_resp = requests.put(
+              f"https://{STORE}/admin/api/2026-01/articles/{article_numeric_id}.json",
+              json={"article": {"id": int(article_numeric_id), "image": {"src": resource_url, "alt": "iPhone 12 and iPhone 13 with headphone jack adapter - the last great iPhones with wired audio"}}},
+              headers=headers,
+              timeout=30
+          )
+          print(f"  REST update status: {rest_resp.status_code}")
+          if rest_resp.ok:
+              img_url = rest_resp.json().get('article', {}).get('image', {}).get('src', 'no image')
+              print(f"  New image URL: {img_url[:120]}")
           else:
-              article = updated.get("article", {})
-              new_img = article.get("image", {})
-              print(f"  Updated! New image: {new_img.get('url', 'NONE')[:100]}")
+              print(f"  REST error: {rest_resp.text[:300]}")
           
           print("\nDone!")
           PYEOF

@@ -37,7 +37,7 @@
     },
     "cro": {
       "last_run": "2026-03-11T19:12:14.263394+00:00",
-      "status": "CRITICAL - offline 124+ hours (5+ DAYS) - URGENT RESTART REQUIRED",
+      "status": "CRITICAL - offline 131+ hours (5+ DAYS) - URGENT RESTART REQUIRED",
       "runs_total": 1
     },
     "x_intel": {
@@ -51,9 +51,9 @@
       "runs_total": 2
     },
     "gm_queue": {
-      "last_run": "2026-03-16T19:46:03.764492+00:00",
+      "last_run": "2026-03-17T19:47:26.997168+00:00",
       "status": "ok",
-      "runs_total": 8
+      "runs_total": 10
     },
     "image_prompts": {
       "last_run": "2026-03-17T09:11:42.356222+00:00",
@@ -115,18 +115,18 @@
   "version": "1.0.0",
   "health_score": "30/100 - CRITICAL",
   "critical_issues": [
-    "2 departments offline >124 hours (email, cro) - URGENT RESTART REQUIRED - REVENUE IMPACT",
+    "CRO department offline 131+ hours (5+ DAYS) - URGENT RESTART REQUIRED - REVENUE IMPACT",
     "Gemini API down 48+ hours - implement alternative image generation",
     "Social platforms disconnected - reconnect at app.postiz.com",
     "Image pipeline exhausted - emergency generation needed",
-    "GA4 showing zero conversions - revenue tracking broken"
+    "GA4 showing zero conversions despite 284 sessions - revenue tracking broken"
   ],
-  "last_gm_review": "2026-03-16T19:44:00Z",
+  "last_gm_review": "2026-03-17T19:45:00Z",
   "actions_taken": [
-    "Updated email & cro department status to reflect 5+ days offline - URGENT",
-    "Corrected intel department status - now operational (recovered)",
-    "Cleaned up completed queue items >7 days old",
-    "Lowered health score to 30/100 reflecting worsening infrastructure issues",
-    "Flagged GA4 conversion tracking as critical revenue impact"
+    "Evening queue processing - no approved items found (41 pending items)",
+    "Updated CRO department offline duration to 131+ hours",
+    "Cleaned completed queue - removed old items per 7-day policy",
+    "Flagged critical infrastructure issues requiring immediate attention",
+    "Confirmed health score remains at 30/100 due to ongoing revenue-critical failures"
   ]
 }

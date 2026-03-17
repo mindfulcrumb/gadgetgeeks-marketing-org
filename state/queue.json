@@ -83,17 +83,6 @@
       "id": "social_afternoon_20260313_171041"
     },
     {
-      "departments_down": [
-        "email",
-        "cro"
-      ],
-      "offline_duration": "124+ hours since 2026-03-11 (ESCALATED - 5+ DAYS)",
-      "business_impact": "No email campaigns, no conversion optimization - REVENUE IMPACT CRITICAL",
-      "suggested_action": "IMMEDIATE GitHub Actions restart required - departments offline 5+ days",
-      "priority": "P0 - CRITICAL REVENUE FUNCTIONS OFFLINE 5+ DAYS",
-      "id": "gm_queue_20260315_191951"
-    },
-    {
       "issue": "imagen-4.0-generate-001 API returning 403 errors for 48+ hours",
       "impact": "All blog publications blocked, social media limited to text-only",
       "suggested_solutions": [
@@ -134,11 +123,6 @@
       ],
       "impact": "Cannot measure ROI or optimize without conversion data",
       "id": "analytics_20260316_083811"
-    },
-    {
-      "alert_type": "OPERATIONAL",
-      "message": "🌅 SENTINEL MORNING HANDOFF — 06:21 UTC\n\nType: LATE HANDOFF DELIVERED\nStatus: Morning shift can now proceed\n\nCRITICAL FOR TODAY:\n• SEO brief seo_20260313_071521 - 73 hours overdue - SCRIBE pickup needed\n• 3 departments offline 79+ hours - GitHub Actions restart required\n• 7 infrastructure approvals pending\n\nCHIEF: Standup data package ready. Sorry for 21-minute delay.\n\nHealth: 35/100 - Infrastructure failure stable",
-      "id": "night_ops_20260316_062244"
     },
     {
       "action": "Add structured FAQ schema to product collection pages",
@@ -187,18 +171,6 @@
       ],
       "priority": "medium",
       "id": "seo_weekly_20260316_065157"
-    },
-    {
-      "actions_required": [
-        "URGENT: Restart email & cro departments - 5+ days offline - REVENUE IMPACT",
-        "Fix Gemini API 403 errors or implement OpenAI DALL-E 3 fallback",
-        "Reconnect social platforms at app.postiz.com (Twitter, Instagram, Facebook, LinkedIn)",
-        "Investigate GA4 conversion tracking - zero conversions despite good traffic"
-      ],
-      "business_impact": "Operating at 30% capacity - no email campaigns (5+ days), no CRO (5+ days), limited social media",
-      "offline_duration": "124+ hours for critical revenue departments",
-      "priority": "P0 - CRITICAL REVENUE FUNCTIONS OFFLINE 5+ DAYS",
-      "id": "standup_20260316_071524"
     },
     {
       "page": "/blogs/guides/battery-health-percentage-refurbished-phones-explained",
@@ -315,41 +287,6 @@
       "reasoning": "High volume posting reduces per-post engagement, platform algorithm penalties for spam-like behavior",
       "implementation": "Focus on top-performing content types: iPhone 17e comparisons, customer testimonials with dollar amounts, Back Market crisis differentiation",
       "id": "social_afternoon_20260316_174118"
-    },
-    {
-      "alert_type": "CRITICAL",
-      "message": "🚨 SENTINEL PRE-DAWN ALERT — 04:47 UTC\nType: CRITICAL INFRASTRUCTURE FAILURE\nIssue: Email & CRO departments offline 124+ hours (5+ DAYS)\nImpact: Zero email campaigns, zero conversion optimization - REVENUE CRITICAL\nAction needed: Immediate GitHub Actions restart required\n\nSecondary issues:\n• Gemini API down 48+ hours (no images)\n• SEO brief stuck 73+ hours\n• Social platforms 80% disconnected\n\nBusiness operating at <30% capacity",
-      "id": "night_ops_20260317_044752"
-    },
-    {
-      "departments": [
-        "email",
-        "cro"
-      ],
-      "offline_duration": "124+ hours since 2026-03-11",
-      "business_impact": "CRITICAL REVENUE IMPACT - no email campaigns, no conversion optimization for 5+ days",
-      "action": "Immediate GitHub Actions restart required",
-      "priority": "P0 - EMERGENCY",
-      "id": "standup_20260317_070409"
-    },
-    {
-      "brief_id": "seo_20260313_071521",
-      "stuck_duration": "89 hours",
-      "brief_title": "How to Buy Used Phones Online Safely: 2026 Expert Guide",
-      "action": "SCRIBE department must pick up and process brief immediately",
-      "impact": "Content pipeline completely broken, breaks all SLA commitments",
-      "id": "standup_20260317_070409"
-    },
-    {
-      "issue": "Gemini API returning 403 errors for 48+ hours",
-      "impact": "Zero image generation - social media blocked, blog headers missing",
-      "solutions": [
-        "Fix Gemini API access and billing",
-        "Implement OpenAI DALL-E 3 as fallback",
-        "Temporary manual image upload workflow"
-      ],
-      "urgency": "Social pipeline completely exhausted - cannot post without images",
-      "id": "standup_20260317_070409"
     },
     {
       "page_url": "/pages/phone-accessory-compatibility-guide",
@@ -470,18 +407,20 @@
       "rationale": "Heavy volume may be reducing individual post engagement quality",
       "focus": "Quality over quantity - prioritize top performing content types (customer testimonials, reality check format)",
       "id": "social_afternoon_20260317_173941"
+    },
+    {
+      "priority": "P0 - EMERGENCY",
+      "issue": "CRO department offline since 2026-03-11 (131+ hours)",
+      "business_impact": "CRITICAL REVENUE IMPACT - no conversion optimization for 5+ days",
+      "action_required": "Immediate GitHub Actions restart for CRO department",
+      "estimated_revenue_loss": "Potential $2000-5000+ daily loss without conversion optimization",
+      "urgency": "IMMEDIATE - every hour increases revenue impact",
+      "id": "gm_queue_20260317_194726"
     }
   ],
   "approved": [],
   "rejected": [],
   "completed": [
-    {
-      "title": "Best Refurbished iPhone in 2026 (Tested & Ranked)",
-      "handle": "best-refurbished-iphone-2026-tested-ranked",
-      "id": "blog_publish_20260314_120000",
-      "status": "published",
-      "shopify_article_id": "gid://shopify/Article/597531033851"
-    },
     {
       "alert_type": "CRITICAL",
       "message": "🚨 PRESS CRITICAL ALERT — 14:53 UTC - RESOLVED VIA MANUAL PUBLISH\nType: PUBLICATION BLOCKED - NOW RESOLVED\nIssue: Scheduled blog manual publish executed\n\nRESOLUTION:\n• 'What Secure Packaging Actually Looks Like' published without header image\n• Blog writer recommendation for immediate manual publish followed\n• Content stands alone, addresses trending Back Market crisis\n\nSTATUS: Blog publication unblocked. Infrastructure issues remain.\n\nNext: Fix image generation API for future publications.",

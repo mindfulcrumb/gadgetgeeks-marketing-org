@@ -1,0 +1,85 @@
+name: Get Product Images from Shopify
+on:
+  workflow_dispatch:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  get-images:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - run: pip install requests
+
+      - name: Get Shopify token
+        id: shopify
+        run: |
+          RESPONSE=$(curl -s -X POST "https://gadgetgeekspro.myshopify.com/admin/oauth/access_token" \
+            -H "Content-Type: application/x-www-form-urlencoded" \
+            -d "grant_type=client_credentials" \
+            -d "client_id=${{ secrets.SHOPIFY_CLIENT_ID }}" \
+            -d "client_secret=${{ secrets.SHOPIFY_CLIENT_SECRET }}")
+          TOKEN=$(echo "$RESPONSE" | python3 -c "import sys,json; print(json.load(sys.stdin)['access_token'])")
+          echo "::add-mask::$TOKEN"
+          echo "token=$TOKEN" >> "$GITHUB_OUTPUT"
+
+      - name: Pull iPhone 12 and 13 product images
+        env:
+          SHOPIFY_ACCESS_TOKEN: ${{ steps.shopify.outputs.token }}
+        run: |
+          python3 << 'PYEOF'
+          import os, json, requests
+
+          token = os.environ["SHOPIFY_ACCESS_TOKEN"]
+          url = "https://gadgetgeekspro.myshopify.com/admin/api/2026-01/graphql.json"
+          headers = {"Content-Type": "application/json", "X-Shopify-Access-Token": token}
+
+          query = """
+          {
+            iphone12: productByHandle(handle: "apple-iphone-12") {
+              title
+              featuredImage { url altText width height }
+              images(first: 5) {
+                edges { node { url altText width height } }
+              }
+            }
+            iphone13: productByHandle(handle: "apple-iphone-13") {
+              title
+              featuredImage { url altText width height }
+              images(first: 5) {
+                edges { node { url altText width height } }
+              }
+            }
+          }
+          """
+
+          resp = requests.post(url, headers=headers, json={"query": query}, timeout=30)
+          data = resp.json().get("data", {})
+
+          for key in ["iphone12", "iphone13"]:
+              product = data.get(key, {})
+              if not product:
+                  print(f"\n{key}: NOT FOUND")
+                  continue
+              print(f"\n{'='*60}")
+              print(f"  {product['title']}")
+              print(f"{'='*60}")
+              feat = product.get("featuredImage", {})
+              if feat:
+                  print(f"  Featured: {feat.get('url', 'none')}")
+                  print(f"    Size: {feat.get('width')}x{feat.get('height')}")
+                  print(f"    Alt: {feat.get('altText', 'none')}")
+              for i, edge in enumerate(product.get("images", {}).get("edges", [])):
+                  img = edge["node"]
+                  print(f"  Image {i+1}: {img.get('url', 'none')}")
+                  print(f"    Size: {img.get('width')}x{img.get('height')}")
+                  print(f"    Alt: {img.get('altText', 'none')}")
+          PYEOF

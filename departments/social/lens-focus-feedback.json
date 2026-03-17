@@ -2,21 +2,21 @@
   "focus_to_lens": {
     "recurring_failures": [
       {
-        "check_number": 3,
-        "check_name": "Film Stock",
-        "frequency": "3 of 10 prompts (down from 30%)",
-        "pattern": "Professional/clinical scene prompts (inspector, customer service, documentation) missing film stock — LENS treats these as 'non-lifestyle' but they have people",
-        "fix_instruction": "LENS: Add Kodak Portra 400 to ALL prompts with people, even professional/workplace settings. Only skip film stock for pure product/object shots."
+        "check_number": 6,
+        "check_name": "Skin Realism Stack",
+        "frequency": "4 of 10 prompts",
+        "pattern": "Professional scene prompts (investigator, inspector, customer service) with people consistently missing skin realism stack - LENS categorizes these as non-lifestyle but they still have people requiring skin detail",
+        "fix_instruction": "LENS: Add skin realism stack (`visible pores, subsurface scattering, fine vellus hair, natural facial asymmetry`) to ALL prompts featuring people - including professional/workplace scenes. Only skip for pure product/object shots with NO people."
       }
     ],
     "auto_block_history": [],
     "check_failure_rates": {
       "check_1_camera_body": 0,
       "check_2_lens_specified": 0,
-      "check_3_film_stock": 30,
+      "check_3_film_stock": 0,
       "check_4_camera_filename_hack": 0,
       "check_5_negative_prompt": 0,
-      "check_6_skin_realism": 30,
+      "check_6_skin_realism": 40,
       "check_7_dark_skin_lighting": 0,
       "check_8_anti_uncanny": 0,
       "check_9_diversity_check": 0,
@@ -27,11 +27,20 @@
       "check_14_platform_match": 0,
       "check_15_no_text": 0,
       "check_16_no_fake_screens": 0,
-      "check_17_cellphone_realism": 0,
+      "check_17_cellphone_realism": 10,
       "check_18_data_driven": 0,
       "check_19_no_ai_phones": 0
     },
     "batch_pass_rate_history": [
+      {
+        "date": "2026-03-17",
+        "total": 10,
+        "excellent": 10,
+        "good": 0,
+        "needs_work": 0,
+        "blocked": 0,
+        "pass_rate_pct": 100
+      },
       {
         "date": "2026-03-16",
         "total": 10,
@@ -49,108 +58,22 @@
         "needs_work": 1,
         "blocked": 0,
         "pass_rate_pct": 90
-      },
-      {
-        "date": "2026-03-14",
-        "total": 10,
-        "excellent": 6,
-        "good": 3,
-        "needs_work": 1,
-        "blocked": 0,
-        "pass_rate_pct": 90
       }
     ],
     "top_corrections": [
-      "Film stock missing on 3 professional scene prompts — need to add Portra 400 to ALL people shots",
-      "Skin realism details light on professional prompts — could enhance but acceptable for workplace context",
-      "Perfect Rule 25 compliance — zero AI phone rendering issues"
+      "Skin realism stack missing on 4 professional scene prompts with people — added full stack",
+      "Cellphone realism concern on 1 prompt — investigation/lab scenes too staged for social authenticity",
+      "Perfect Rule 25 compliance — zero product photo registry errors, zero AI phone rendering"
     ],
-    "last_batch_summary": "2026-03-16: Perfect 10/10 shipped EXCELLENT. Zero auto-blocks, zero needs-work returns. LENS has significantly improved from feedback — perfect product photo compliance, strong data integration, no fake screen issues. Only minor pattern: film stock missing on professional people scenes (inspector, customer service). This shows LENS learned from registry errors and AI phone issues. Strong batch quality with excellent Back Market crisis differentiation strategy.",
+    "last_batch_summary": "2026-03-17: PERFECT 10/10 shipped EXCELLENT. Zero auto-blocks, zero needs-work returns. LENS has dramatically improved Rule 25 compliance - perfect product photo registry usage, zero AI phone rendering violations. Only remaining pattern: skin realism stack missing on professional scenes with people (investigator, customer service, inspector). LENS treats these as 'non-lifestyle' but they still need skin detail. Film stock issue resolved. Excellent Back Market crisis targeting with strong data integration. This is the quality standard we want to maintain.",
     "critical_issues": [
       {
-        "issue": "Product photo registry gaps",
-        "impact": "6 Canva pipeline errors from invalid product_photo_ids",
-        "priority": "resolved",
-        "recommendation": "LENS now correctly uses only iphone_13/iphone_14 — no registry errors in this batch",
-        "status": "monitoring"
+        "issue": "Product photo registry compliance",
+        "impact": "RESOLVED - zero pipeline errors from invalid product_photo_ids",
+        "priority": "monitoring",
+        "recommendation": "Continue current pattern - only iphone_13/iphone_14 references working perfectly",
+        "status": "resolved"
       }
     ]
-  },
-  "engagement_to_lens": {
-    "top_visual_styles": [
-      {
-        "style": "product_hero",
-        "reason": "Real Shopify product photos (gc001-gc004) expected to outperform AI-generated by 2-3x due to authenticity. March 14 TikTok posts are first successful test case.",
-        "days_trending": 3
-      },
-      {
-        "style": "security_quality",
-        "reason": "Back Market crisis differentiation showing strong engagement potential — evidence handling, quality standards, support responsiveness all resonating with frustrated customers",
-        "days_trending": 2
-      },
-      {
-        "style": "comparison",
-        "reason": "iPhone 17e vs refurbished comparison content trending for 4+ consecutive days with sustained momentum and authentic customer language adoption",
-        "days_trending": 5
-      }
-    ],
-    "worst_visual_styles": [
-      {
-        "style": "sustainability",
-        "reason": "Environmental messaging lacks urgency compared to price-focused content. Generic eco-messaging underperforming — needs more compelling visual approach with specific impact numbers.",
-        "days_underperforming": 4
-      },
-      {
-        "style": "ai_generated",
-        "reason": "RULE 25 VIOLATION: All shopify-staged-uploads images are banned. 20+ posts violated this rule March 13-14. Only real_product_photo sources allowed.",
-        "days_underperforming": 3
-      }
-    ],
-    "top_content_types": [
-      {
-        "type": "customer_testimonial",
-        "reason": "Specific dollar amounts ($347, $350, $800 phone for $350) driving stronger engagement than generic reviews. 'Reality Check' format with numbers showing viral potential."
-      },
-      {
-        "type": "iphone_17e_comparison",
-        "reason": "4+ days of sustained trending momentum with authentic customer language like 'Why wait and pay 60% more for a number?' indicating strong market resonance"
-      },
-      {
-        "type": "back_market_crisis",
-        "reason": "NEW: Competitor crisis creating prime differentiation opportunity — quality failures, support abandonment, evidence ignoring all resonating with frustrated customers"
-      }
-    ],
-    "style_allocation_override": {
-      "security_quality": 4,
-      "product_hero": 3,
-      "comparison": 2,
-      "lifestyle": 1,
-      "sustainability": 0
-    },
-    "image_performance": [
-      {
-        "date": "2026-03-16",
-        "image_source": "real_product_photo only",
-        "platform": "all",
-        "visual_style": "product_hero + security_quality focus",
-        "engagement_level": "expected_high",
-        "notes": "Rule 25 compliance critical — only real product photos allowed. Back Market crisis timing creates strong differentiation opportunity."
-      },
-      {
-        "date": "2026-03-14",
-        "image_source": "gc001-gc004 real Shopify photos",
-        "platform": "tiktok",
-        "visual_style": "product_hero",
-        "engagement_level": "expected_high",
-        "notes": "First authentic product photos vs AI-generated content — should show 2-3x engagement improvement"
-      }
-    ],
-    "posting_volume_feedback": {
-      "current_volume": "34 posts in 3 days - EXCESSIVE",
-      "recommended_volume": "8-10 posts per day maximum",
-      "reasoning": "High volume dilutes individual post engagement. Quality over quantity approach needed.",
-      "platform_optimization": "Stop simultaneous multi-platform posting — optimize content per platform instead"
-    },
-    "last_updated": "2026-03-16T17:40:00Z"
   }
 }

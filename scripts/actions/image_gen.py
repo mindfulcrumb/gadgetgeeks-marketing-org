@@ -1,12 +1,14 @@
 """
 Image generation wrapper for GadgetGeeks Marketing Organization.
 
-Primary: Google Gemini API for image generation.
-Fallback: NONE — DALL-E is BANNED. If Gemini fails, generation fails. No silent fallback.
+Primary: Google Gemini API for image generation (with 2 retries).
+Fallback: Pre-uploaded Shopify CDN images from config/fallback-images.json.
+          DALL-E is BANNED. Fallback is real product photos, not AI from another provider.
 Hosting: Shopify staged uploads for CDN hosting.
 
 RULE: OpenAI DALL-E produces cartoonish/stylized images that damage brand credibility.
-DALL-E fallback was removed 2026-03-16. Gemini-only. No exceptions.
+DALL-E fallback was removed 2026-03-16. Gemini-only for AI generation. No exceptions.
+Fallback CDN images added 2026-03-17 to prevent pipeline stops when Gemini has outages.
 """
 
 import base64

@@ -544,5 +544,28 @@
       "Violation of this rule = content must be pulled and rewritten. No exceptions."
     ],
     "incident_reference": "March 16, 2026 — Blog and social content included UK customer complaints (Royal Mail disputes, UK Back Market users). Boss corrected this for the 10th time. US market ONLY. Non-negotiable."
+  },
+
+  "rule_31_image_hard_block": {
+    "description": "Blog publishing MUST include a validated header image. If image generation fails and no fallback is available, the blog is BLOCKED and an alert is sent to Telegram. Manual override is NOT allowed.",
+    "enforcement": {
+      "gemini_retries": "Gemini image generation retries 2 times with 3-second delay before failing",
+      "fallback_system": "If Gemini fails after retries, system loads a pre-uploaded CDN image from config/fallback-images.json based on blog category (product, lifestyle, how-to, buying-guide, news, default)",
+      "url_validation": "After image generation/upload, a HEAD request validates the URL actually resolves. Empty or unreachable URLs = publication blocked.",
+      "hard_block": "If header_image_url is empty, None, or missing after all attempts, _auto_publish_blog() returns an error and does NOT call articleCreate. Blog status stays at 'approved', not 'published'.",
+      "telegram_preview": "Blog approval notifications include an image preview so the human can visually verify before approving. No more blind approvals.",
+      "incident_logging": "Every image failure is logged as a CRITICAL incident in state/incident-log.json with full error details."
+    },
+    "rules": [
+      "Gemini is the primary image provider. DALL-E is BANNED (Rule 29).",
+      "Gemini gets 2 retry attempts before fallback kicks in.",
+      "Fallback images are pre-uploaded real product photos on Shopify CDN — NOT AI-generated.",
+      "If both Gemini AND fallback fail, publication is BLOCKED. No exceptions. No manual override.",
+      "Every blog approval notification in Telegram includes an image preview for visual verification.",
+      "The image URL is validated via HEAD request before being used in articleCreate.",
+      "An empty/None image URL after generation triggers a CRITICAL incident and blocks publication.",
+      "config/fallback-images.json is the source of truth for fallback images. Keep it updated."
+    ],
+    "incident_reference": "March 14-17, 2026 — Blogs published without images due to Gemini 403 errors. Pipeline had no fallback and no hard block. Fixed with retry + fallback + hard block + preview system."
   }
 }

@@ -233,6 +233,90 @@ def notify_queue_item(item: dict):
         _send_blog_image_preview(item)
 
 
+def _send_blog_image_preview(item: dict):
+    """For blog approval items, generate a preview image and send it to Telegram.
+
+    This lets the human approver visually verify the header image BEFORE
+    approving the blog for publication. No more approving blind.
+    """
+    handle = item.get("handle", item.get("slug", ""))
+    title = item.get("title", item.get("summary", "Blog"))
+
+    # Check if the blog already has a header image URL in the pipeline
+    bp_path = REPO_ROOT / "departments" / "content" / "blog-pipeline.json"
+    if not bp_path.exists():
+        return
+
+    try:
+        bp = json.loads(bp_path.read_text(encoding="utf-8"))
+        blog = None
+        for b in bp.get("blogs", []):
+            if b.get("slug") == handle or b.get("handle") == handle:
+                blog = b
+                break
+
+        if not blog:
+            return
+
+        # Try to find an existing image URL from the pipeline or product photos
+        blog_title = blog.get("title", title)
+        blog_topic = blog.get("category", "refurbished phones")
+
+        # Check for product-specific CDN images first (no generation needed)
+        title_lower = blog_title.lower()
+        topic_lower = blog_topic.lower()
+        combined = f"{title_lower} {topic_lower}"
+
+        product_photo_cdn = {
+            "iphone 14": "https://cdn.shopify.com/s/files/1/0664/1664/0251/files/apple-iphone-14-desktop.png",
+            "iphone 13": "https://cdn.shopify.com/s/files/1/0664/1664/0251/files/apple-iphone-13-pos1-floating_074be56b-89cc-46d2-a70a-69f2e1e25b7c.png?v=1773615063",
+            "iphone 12": "https://cdn.shopify.com/s/files/1/0664/1664/0251/files/apple-iphone-12-pos1-floating_583ba2cf-31e5-4a1e-abc0-b203bcb0b4f8.png?v=1773615636",
+        }
+
+        preview_url = None
+        for keyword, cdn_url in product_photo_cdn.items():
+            if keyword in combined:
+                preview_url = cdn_url
+                break
+
+        # If no product match, try fallback images config for a preview
+        if not preview_url:
+            fallback_path = REPO_ROOT / "config" / "fallback-images.json"
+            if fallback_path.exists():
+                try:
+                    fb_data = json.loads(fallback_path.read_text(encoding="utf-8"))
+                    cats = fb_data.get("categories", {})
+                    fb = cats.get(blog_topic.lower().replace(" ", "-"), cats.get("default", {}))
+                    preview_url = fb.get("url", "")
+                except Exception:
+                    pass
+
+        if preview_url:
+            send_photo(
+                preview_url,
+                caption=(
+                    f"Preview header for: {blog_title[:80]}\n"
+                    f"(Actual image will be generated on approval. "
+                    f"This shows the expected style.)"
+                )
+            )
+            send_message(
+                f"\ud83d\uddbc <b>Image preview sent above</b>\n"
+                f"The actual header image will be AI-generated via Gemini when you /approve.\n"
+                f"If Gemini fails, a fallback CDN image will be used automatically."
+            )
+        else:
+            send_message(
+                f"\u26a0\ufe0f <b>No image preview available</b>\n"
+                f"Header image will be generated via Gemini on approval.\n"
+                f"If Gemini fails, a fallback CDN image will be used."
+            )
+
+    except Exception as e:
+        # Non-critical — don't break the approval flow
+        print(f"    [Blog Preview] Error sending image preview: {e}")
+
+
 def notify_error(department: str, error: str):
     """Send error alert."""
     emoji = DEPT_EMOJI.get(department, "\u2699\ufe0f")

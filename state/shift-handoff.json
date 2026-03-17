@@ -1,54 +1,43 @@
 {
-  "from_shift": "day",
-  "to_shift": "night",
-  "timestamp": "2026-03-16T20:51:00Z",
-  "day_summary": "Mixed productivity with content creation active but major infrastructure failures persisting. Blog pipeline produced Back Market crisis content. Social media limited to TikTok due to platform disconnections. Two critical revenue departments remain offline for fifth consecutive day.",
-  "completed_items": [
-    "Blog: 'Back Market Sells Excellent Phones With Greasy Handprints' written (687 words, scheduled 09:30 UTC tomorrow)",
-    "SEO brief: Battery health percentage guide created",
-    "Social posts: Multiple TikTok posts using real product photos (iPhone 13/14 bundles)",
-    "Queue management: 22 items catalogued, priorities identified"
+  "from_shift": "night",
+  "to_shift": "morning",
+  "timestamp": "2026-03-17T06:03:00Z",
+  "overnight_summary": "Critical infrastructure failure continues stable. No new incidents overnight. SEO brief now 89 hours overdue - content pipeline breakdown. Image generation remains blocked. Two revenue departments offline fifth consecutive day.",
+  "issues_found": [
+    "SEO brief seo_20260313_071521 now 89 hours overdue - SCRIBE has not picked up",
+    "Email & CRO departments offline 124+ hours - no recovery attempts detected",
+    "Image pipeline exhausted - social media blocked",
+    "Gemini API down 48+ hours - no fallback implemented"
   ],
-  "in_progress_items": [
-    "Blog publish: Back Market article scheduled for 2026-03-17T09:30:00Z",
-    "Queue items: 22 pending boss approval (7 critical infrastructure items)",
-    "Dialer setup: Blocked awaiting customer data sources"
-  ],
-  "blockers_for_tomorrow": [
-    "CRITICAL: Email department offline 124+ hours - no campaigns possible until GitHub Actions restart",
-    "CRITICAL: CRO department offline 124+ hours - no optimization experiments until restart",
-    "CRITICAL: Gemini API down 48+ hours - no new images until API fixed or DALL-E implemented",
-    "HIGH: Social platforms disconnected - only TikTok working, missing 80% reach",
-    "HIGH: Image pipeline exhausted - zero unused visuals remaining for social posts",
-    "CRITICAL: GA4 conversion tracking broken - showing 0 conversions despite 251 sessions"
+  "alerts_sent": [
+    "Pre-dawn alert sent 04:47 UTC - critical infrastructure failure flagged"
   ],
   "pending_approvals": [
-    "P0 CRITICAL: Manual GitHub Actions restart for email & cro departments (5+ days offline)",
-    "P0 CRITICAL: Fix Gemini API 403 errors OR implement OpenAI DALL-E 3 fallback",
-    "P0 CRITICAL: Investigate GA4 conversion tracking (zero conversions = blind optimization)",
-    "P1 HIGH: Reconnect social platforms at app.postiz.com (Twitter, Instagram, Facebook, LinkedIn)",
-    "P1 HIGH: Process SEO brief 'battery health percentage phones' (now pending pickup by SCRIBE)",
-    "P2 MEDIUM: Provide customer data sources for DIALER department call list building",
-    "P2 MEDIUM: Generate new image batch for social media (pipeline completely exhausted)"
-  ],
-  "urgent_items_for_sentinel": [
-    "Monitor for any GitHub Actions workflow recoveries overnight",
-    "Watch for Gemini API status changes",
-    "Alert if any queue items require immediate escalation",
-    "Track blog publish scheduled for 09:30 UTC tomorrow"
+    "P0 CRITICAL: Manual GitHub Actions restart for email & cro (5+ days offline)",
+    "P0 CRITICAL: Process SEO brief - 89 hours overdue breaks content SLA",
+    "P0 CRITICAL: Fix Gemini API OR implement OpenAI DALL-E 3 fallback",
+    "P1 HIGH: Reconnect social platforms (Twitter, Instagram, Facebook, LinkedIn)",
+    "P1 HIGH: Generate new image batch - social pipeline exhausted"
   ],
   "api_health": {
-    "shopify": "ok - blog publishing working",
-    "gemini": "down - 403 errors for 48+ hours",
-    "telegram": "ok - notifications working",
-    "postiz": "degraded - only TikTok connected",
-    "github_actions": "broken - 3 departments offline",
-    "vapi": "unknown - dialer awaiting setup"
+    "shopify": "ok",
+    "gemini": "down",
+    "telegram": "ok",
+    "postiz": "degraded",
+    "github_actions": "broken",
+    "vapi": "unknown"
   },
+  "recommendations_for_morning": [
+    "URGENT: SCRIBE must pick up SEO brief seo_20260313_071521 - 89 hours overdue breaks all SLAs",
+    "URGENT: Process infrastructure queue items - cannot deteriorate further",
+    "Blog scheduled: Back Market article publishes 09:30 UTC - monitor",
+    "Social strategy: Reduce posting volume as recommended (34 posts in 3 days degrading engagement)",
+    "Queue processing: 22 items pending with 7 critical - morning standup must address"
+  ],
   "metrics_snapshot": {
     "blogs_in_pipeline": {
       "brief_ready": 1,
-      "draft_ready": 1,
+      "draft_ready": 0,
       "qa_passed": 0,
       "scheduled": 1
     },
@@ -58,16 +47,9 @@
       "critical": 7
     },
     "incidents_open": 1,
-    "departments_active": 15,
+    "departments_active": 17,
     "departments_offline": 2,
     "health_score": "30/100",
     "system_status": "CRITICAL_INFRASTRUCTURE_FAILURE_STABLE"
-  },
-  "recommendations_for_morning": [
-    "URGENT: Process all 7 critical queue items - infrastructure cannot deteriorate further",
-    "Blog publish: Monitor Back Market article scheduled for 09:30 UTC",
-    "SCRIBE pickup: Battery health SEO brief ready for content creation",
-    "Social strategy: Reduce posting volume to 8-10/day for better engagement (currently 34 posts in 3 days)",
-    "Image generation: Priority request needed - social pipeline completely exhausted"
-  ]
+  }
 }

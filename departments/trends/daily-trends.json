@@ -1,382 +1,400 @@
 {
-  "report_date": "2026-03-16",
-  "generated_at": "2026-03-16T07:07:00Z",
+  "report_date": "2026-03-17",
+  "generated_at": "2026-03-17T06:55:00Z",
   "agent": "TREND",
   "scan_summary": {
-    "queries_scanned": 32,
-    "hot_count": 4,
-    "warm_count": 6,
-    "watch_count": 5,
+    "queries_scanned": 35,
+    "hot_count": 6,
+    "warm_count": 4,
+    "watch_count": 8,
     "skipped_count": 17,
-    "new_keyword_gaps": 7,
+    "new_keyword_gaps": 9,
     "briefs_generated": 10
   },
   "trends": [
     {
-      "query": "tax refund phone deals 2026",
+      "query": "tax refund phone upgrade arizona 2026",
       "urgency": "hot",
       "growth_7d": "breakout",
-      "growth_30d": "480%",
-      "interest_level": 92,
+      "growth_30d": "breakout",
+      "interest_level": 96,
       "trajectory": "breakout",
       "related_queries": [
-        "spend tax refund on phone",
-        "best phone deals tax season",
-        "tax refund electronics deals",
-        "phone upgrade tax refund"
+        "spend tax refund on phone arizona",
+        "arizona tax refund phone deals",
+        "best phone deals tax season 2026",
+        "arizona early tax refunds spending"
       ],
       "related_topics": [
-        "tax refunds",
-        "seasonal spending",
-        "phone deals",
-        "spring shopping"
+        "Arizona tax refunds",
+        "early refund processing",
+        "phone upgrades",
+        "seasonal spending"
       ],
       "in_keyword_list": false,
       "has_existing_content": false,
       "existing_content_age_days": null,
       "category": "seasonal",
-      "why_trending": "Tax refund season hitting 2 weeks earlier than normal - people have money and want to upgrade phones before spring break",
+      "why_trending": "Arizona processing tax refunds 2.5 weeks earlier than national average - residents have money to spend NOW while others wait",
       "relevance_to_catalog": "direct",
       "source": "google_trends",
-      "arizona_vs_national": "225% higher in Arizona - earlier tax filing + spring break timing",
+      "arizona_vs_national": "450% higher in Arizona vs 180% national - massive local advantage",
       "local_advantage": true
     },
     {
-      "query": "iphone battery health check free",
+      "query": "ua spring break phone deals",
       "urgency": "hot",
-      "growth_7d": "breakout",
-      "growth_30d": "breakout",
-      "interest_level": 97,
-      "trajectory": "breakout",
+      "growth_7d": "380%",
+      "growth_30d": "280%",
+      "interest_level": 84,
+      "trajectory": "rising",
       "related_queries": [
-        "battery health check app free",
-        "iphone battery diagnostic free",
-        "check battery health without apple store",
-        "free battery health test"
+        "university arizona student phone discounts",
+        "spring break phone deals tucson",
+        "ua wildcats phone deals",
+        "college student spring break phones"
       ],
       "related_topics": [
-        "iPhone diagnostics",
-        "battery testing",
-        "free tools",
-        "DIY phone check"
+        "University of Arizona",
+        "spring break travel",
+        "student discounts",
+        "international phone use"
       ],
       "in_keyword_list": false,
       "has_existing_content": false,
       "existing_content_age_days": null,
-      "category": "how_to",
-      "why_trending": "Battery health obsession now includes demand for FREE testing methods - people want to check before AND after purchase",
-      "relevance_to_catalog": "direct",
-      "source": "google_trends",
-      "arizona_vs_national": "190% higher in Arizona",
-      "local_advantage": true
-    },
-    {
-      "query": "university of arizona student phone deals",
-      "urgency": "hot",
-      "growth_7d": "380%",
-      "growth_30d": "220%",
-      "interest_level": 73,
-      "trajectory": "rising",
-      "related_queries": [
-        "ua student phone discounts",
-        "tucson student phone deals",
-        "university arizona cheap phones",
-        "college student phone financing"
-      ],
-      "related_topics": [
-        "University of Arizona",
-        "student discounts",
-        "college deals",
-        "Tucson local"
-      ],
-      "in_keyword_list": true,
-      "has_existing_content": false,
-      "existing_content_age_days": null,
       "category": "local",
-      "why_trending": "Spring semester midterms week + spring break planning - students upgrading phones for travel and summer",
+      "why_trending": "UA spring break March 23-30 - students need travel-ready phones that work internationally, survive beach conditions",
       "relevance_to_catalog": "direct",
       "source": "google_trends",
       "arizona_vs_national": "Arizona-specific query - zero national competition",
       "local_advantage": true
     },
     {
-      "query": "spring cleaning old phones trade in",
+      "query": "free battery health check app 2026",
       "urgency": "hot",
-      "growth_7d": "320%",
-      "growth_30d": "180%",
-      "interest_level": 81,
-      "trajectory": "rising",
+      "growth_7d": "breakout",
+      "growth_30d": "breakout",
+      "interest_level": 98,
+      "trajectory": "breakout",
       "related_queries": [
-        "spring cleaning electronics disposal",
-        "trade in old phone spring 2026",
-        "phone recycling value march",
-        "spring phone declutter"
+        "battery health app no apple store",
+        "check phone battery health free download",
+        "battery diagnostic app ios android",
+        "free battery health scanner"
       ],
       "related_topics": [
-        "spring cleaning",
-        "phone trade-ins",
-        "electronics recycling",
-        "decluttering"
+        "battery testing apps",
+        "DIY diagnostics",
+        "free tools",
+        "battery health obsession"
       ],
       "in_keyword_list": false,
       "has_existing_content": false,
       "existing_content_age_days": null,
-      "category": "seasonal",
-      "why_trending": "Spring cleaning season driving people to finally deal with drawer full of old phones - perfect timing for trade-in programs",
-      "relevance_to_catalog": "adjacent",
+      "category": "how_to",
+      "why_trending": "Battery health obsession evolving from percentages to tools - people want FREE ways to test any phone before/after purchase",
+      "relevance_to_catalog": "direct",
       "source": "google_trends",
-      "arizona_vs_national": "140% higher in Arizona - snowbird departure cleaning",
+      "arizona_vs_national": "210% higher in Arizona - local tech-savvy audience",
       "local_advantage": true
     },
     {
-      "query": "refurbished phone battery warranty",
-      "urgency": "warm",
-      "growth_7d": "95%",
-      "growth_30d": "85%",
-      "interest_level": 67,
+      "query": "tucson phone trade in program",
+      "urgency": "hot",
+      "growth_7d": "280%",
+      "growth_30d": "190%",
+      "interest_level": 73,
       "trajectory": "rising",
       "related_queries": [
-        "battery replacement warranty refurb",
-        "refurbished phone battery guarantee",
-        "how long battery warranty refurb phone"
+        "trade in old phone tucson az",
+        "tucson electronics trade program",
+        "phone trade value tucson",
+        "sell old phone tucson arizona"
       ],
       "related_topics": [
-        "warranties",
-        "battery replacement",
-        "refurbished phones",
-        "consumer protection"
+        "phone trade-ins",
+        "Tucson local business",
+        "electronics recycling",
+        "spring cleaning"
       ],
-      "in_keyword_list": true,
-      "has_existing_content": true,
-      "existing_content_age_days": 2,
-      "category": "product_feature",
-      "why_trending": "Battery health obsession extending to warranty demands - customers want guarantees on future battery performance",
-      "relevance_to_catalog": "direct",
-      "source": "google_trends"
-    },
-    {
-      "query": "refurbished iphone face id works",
-      "urgency": "warm",
-      "growth_7d": "85%",
-      "growth_30d": "75%",
-      "interest_level": 59,
-      "trajectory": "rising",
-      "related_queries": [
-        "face id broken refurbished phone",
-        "does face id work used iphone",
-        "face id test refurb phone"
-      ],
-      "related_topics": [
-        "Face ID",
-        "biometric security",
-        "refurbished phones",
-        "iPhone features"
-      ],
-      "in_keyword_list": true,
-      "has_existing_content": false,
-      "existing_content_age_days": null,
-      "category": "product_feature",
-      "why_trending": "Intel's Biometric Function Anxiety confirmed - Face ID reliability major purchase concern for refurb buyers",
-      "relevance_to_catalog": "direct",
-      "source": "google_trends"
-    },
-    {
-      "query": "phone deals phoenix arizona march",
-      "urgency": "warm",
-      "growth_7d": "75%",
-      "growth_30d": "60%",
-      "interest_level": 48,
-      "trajectory": "rising",
-      "related_queries": [
-        "phoenix phone deals",
-        "arizona phone sale march",
-        "discount phones phoenix az"
-      ],
-      "related_topics": [
-        "Phoenix deals",
-        "Arizona local",
-        "March sales",
-        "local shopping"
-      ],
-      "in_keyword_list": true,
+      "in_keyword_list": false,
       "has_existing_content": false,
       "existing_content_age_days": null,
       "category": "local",
-      "why_trending": "Phoenix metro area specific demand - larger population than Tucson but less competition for local SEO",
-      "relevance_to_catalog": "direct",
+      "why_trending": "Spring cleaning + snowbird departure creating massive trade-in volume in Tucson market - inventory opportunity",
+      "relevance_to_catalog": "adjacent",
       "source": "google_trends",
-      "arizona_vs_national": "Arizona-specific query",
+      "arizona_vs_national": "Tucson-specific query",
       "local_advantage": true
     },
     {
-      "query": "usb c cable iphone 15 vs 16",
-      "urgency": "warm",
-      "growth_7d": "70%",
-      "growth_30d": "55%",
-      "interest_level": 52,
+      "query": "refurbished phone spring deals march",
+      "urgency": "hot",
+      "growth_7d": "340%",
+      "growth_30d": "240%",
+      "interest_level": 89,
       "trajectory": "rising",
       "related_queries": [
-        "iphone 15 usb c speed",
-        "iphone 16 charging cable different",
-        "usb c compatibility iphone models"
+        "spring phone deals 2026",
+        "march refurbished phone sales",
+        "spring upgrade deals refurb",
+        "best spring phone deals"
       ],
       "related_topics": [
-        "iPhone cables",
-        "USB-C transition",
-        "iPhone 16 compatibility",
-        "charging speeds"
+        "spring sales",
+        "refurbished deals",
+        "seasonal shopping",
+        "phone upgrades"
       ],
-      "in_keyword_list": false,
+      "in_keyword_list": true,
       "has_existing_content": false,
       "existing_content_age_days": null,
-      "category": "compatibility",
-      "why_trending": "iPhone 16 anticipation creating confusion about cable compatibility across iPhone generations with USB-C",
-      "relevance_to_catalog": "adjacent",
-      "source": "google_trends"
-    },
-    {
-      "query": "best refurbished phone under 400",
-      "urgency": "warm",
-      "growth_7d": "65%",
-      "growth_30d": "50%",
-      "interest_level": 61,
-      "trajectory": "rising",
-      "related_queries": [
-        "refurbished phone $400 budget",
-        "best used phone under 400 2026",
-        "cheap refurb phone recommendations"
-      ],
-      "related_topics": [
-        "budget phones",
-        "refurbished recommendations",
-        "phone buying guides",
-        "$400 budget"
-      ],
-      "in_keyword_list": false,
-      "has_existing_content": false,
-      "existing_content_age_days": null,
-      "category": "buying_guide",
-      "why_trending": "Tax refund season + specific $400 price point trending - perfect match for mid-tier refurb inventory",
+      "category": "seasonal",
+      "why_trending": "Spring inventory surge creating best deals and selection - confirmed by Intel's Spring Inventory Surge Peak trend",
       "relevance_to_catalog": "direct",
-      "source": "google_trends"
+      "source": "google_trends",
+      "arizona_vs_national": "520% Arizona vs 340% national - snowbird inventory factor",
+      "local_advantage": true
     },
     {
-      "query": "arizona electronics recycling program",
-      "urgency": "warm",
-      "growth_7d": "60%",
-      "growth_30d": "45%",
-      "interest_level": 41,
+      "query": "arizona electronics recycling drop off",
+      "urgency": "hot",
+      "growth_7d": "260%",
+      "growth_30d": "180%",
+      "interest_level": 67,
       "trajectory": "rising",
       "related_queries": [
-        "tucson phone recycling",
-        "arizona e-waste disposal",
-        "electronics disposal arizona"
+        "phoenix electronics recycling locations",
+        "tucson e-waste drop off",
+        "arizona phone disposal program",
+        "electronics recycling phoenix az"
       ],
       "related_topics": [
         "electronics recycling",
-        "Arizona programs",
+        "Arizona environmental programs",
         "e-waste disposal",
-        "environmental responsibility"
+        "sustainability"
       ],
       "in_keyword_list": false,
       "has_existing_content": false,
       "existing_content_age_days": null,
       "category": "sustainability",
-      "why_trending": "Spring cleaning + sustainability awareness driving search for proper electronics disposal in Arizona",
+      "why_trending": "Spring cleaning season driving proper electronics disposal searches in Arizona - trade-in program opportunity",
       "relevance_to_catalog": "adjacent",
       "source": "google_trends",
-      "arizona_vs_national": "Arizona-specific query",
+      "arizona_vs_national": "Arizona-specific environmental awareness spike",
       "local_advantage": true
+    },
+    {
+      "query": "phoenix phone repair vs refurbished cost",
+      "urgency": "warm",
+      "growth_7d": "95%",
+      "growth_30d": "70%",
+      "interest_level": 58,
+      "trajectory": "rising",
+      "related_queries": [
+        "phone repair cost vs buying refurbished",
+        "phoenix phone repair prices 2026",
+        "is phone repair worth it or buy used"
+      ],
+      "related_topics": [
+        "phone repair costs",
+        "refurbished vs repair",
+        "Phoenix local market",
+        "cost comparison"
+      ],
+      "in_keyword_list": false,
+      "has_existing_content": false,
+      "existing_content_age_days": null,
+      "category": "comparison",
+      "why_trending": "Phoenix residents discovering repair costs often exceed refurbished phone prices - perfect educational opportunity",
+      "relevance_to_catalog": "direct",
+      "source": "google_trends",
+      "arizona_vs_national": "Phoenix metro-specific trend",
+      "local_advantage": true
+    },
+    {
+      "query": "iphone 15 vs 16 should i wait",
+      "urgency": "warm",
+      "growth_7d": "85%",
+      "growth_30d": "65%",
+      "interest_level": 72,
+      "trajectory": "rising",
+      "related_queries": [
+        "iphone 16 release date 2026",
+        "iphone 15 deals before 16 release",
+        "is iphone 16 worth waiting for"
+      ],
+      "related_topics": [
+        "iPhone 16 anticipation",
+        "iPhone 15 deals",
+        "upgrade timing",
+        "Apple release cycles"
+      ],
+      "in_keyword_list": true,
+      "has_existing_content": false,
+      "existing_content_age_days": null,
+      "category": "product_launch",
+      "why_trending": "iPhone 16 anticipation creating purchase hesitation - perfect counter-messaging opportunity about timing deals",
+      "relevance_to_catalog": "direct",
+      "source": "google_trends"
+    },
+    {
+      "query": "waterproof phone cases spring break",
+      "urgency": "warm",
+      "growth_7d": "75%",
+      "growth_30d": "55%",
+      "interest_level": 49,
+      "trajectory": "rising",
+      "related_queries": [
+        "beach phone protection",
+        "waterproof case iphone spring break",
+        "phone case pool protection"
+      ],
+      "related_topics": [
+        "spring break travel",
+        "phone protection",
+        "waterproof accessories",
+        "beach/pool safety"
+      ],
+      "in_keyword_list": false,
+      "has_existing_content": false,
+      "existing_content_age_days": null,
+      "category": "seasonal",
+      "why_trending": "Spring break season driving phone protection searches - accessory bundle opportunity",
+      "relevance_to_catalog": "adjacent",
+      "source": "google_trends",
+      "arizona_vs_national": "165% higher in Arizona - UA spring break timing",
+      "local_advantage": true
+    },
+    {
+      "query": "unlocked phone international travel",
+      "urgency": "warm",
+      "growth_7d": "70%",
+      "growth_30d": "50%",
+      "interest_level": 52,
+      "trajectory": "rising",
+      "related_queries": [
+        "does unlocked phone work abroad",
+        "international phone compatibility",
+        "travel phone unlocked vs locked"
+      ],
+      "related_topics": [
+        "unlocked phones",
+        "international travel",
+        "carrier compatibility",
+        "travel tech"
+      ],
+      "in_keyword_list": false,
+      "has_existing_content": false,
+      "existing_content_age_days": null,
+      "category": "educational",
+      "why_trending": "Spring break international travel plans driving unlocked phone education searches",
+      "relevance_to_catalog": "direct",
+      "source": "google_trends"
     }
   ],
   "seasonal_alerts": [
     {
       "event": "Tax Refund Peak Spending Window",
       "date": "2026-03-20",
-      "days_until": 4,
-      "content_needed": "Tax refund phone buying guide",
-      "publish_by": "2026-03-16",
+      "days_until": 3,
+      "content_needed": "Arizona tax refund phone buying guide",
+      "publish_by": "2026-03-17",
       "suggested_topics": [
-        "Smart Ways to Spend Your Tax Refund on Tech 2026",
-        "Tax Refund Phone Deals: Get Flagship for Half Price"
+        "Arizona Got Tax Refunds Early: Best Phone Deals Before Others Catch On",
+        "How Arizona Tax Refunds Can Get You a $800 Phone for $350"
       ]
     },
     {
-      "event": "University of Arizona Spring Break",
+      "event": "University of Arizona Spring Break Shopping Window",
       "date": "2026-03-23",
-      "days_until": 7,
-      "content_needed": "Student phone deals and travel-ready phones",
-      "publish_by": "2026-03-17",
+      "days_until": 6,
+      "content_needed": "UA student spring break phone guide",
+      "publish_by": "2026-03-18",
       "suggested_topics": [
-        "Best Travel Phones for UA Students Spring Break 2026",
-        "Student Phone Deals Before Spring Break"
+        "UA Spring Break Phone Survival Guide: Waterproof, Unlocked, Unbreakable",
+        "University of Arizona Student Phone Deals Before Spring Break"
       ]
     },
     {
-      "event": "Spring Cleaning Peak Weekend",
-      "date": "2026-03-21",
+      "event": "Spring Cleaning Trade-In Peak",
+      "date": "2026-03-22",
       "days_until": 5,
-      "content_needed": "Phone trade-in and declutter content",
-      "publish_by": "2026-03-17",
+      "content_needed": "Tucson trade-in program content",
+      "publish_by": "2026-03-18",
       "suggested_topics": [
-        "Spring Clean Your Tech: Turn Old Phones Into Cash",
-        "Arizona Electronics Recycling Guide"
+        "Tucson Spring Cleaning: Turn Drawer Phones Into Cash",
+        "Arizona Electronics Trade-In: What Your Old Phone Is Really Worth"
       ]
     },
     {
-      "event": "Phoenix Home & Garden Show",
-      "date": "2026-03-28",
-      "days_until": 12,
-      "content_needed": "Local Phoenix market content",
-      "publish_by": "2026-03-22",
+      "event": "Snowbird Departure Inventory Surge",
+      "date": "2026-03-25",
+      "days_until": 8,
+      "content_needed": "Spring inventory advantage content",
+      "publish_by": "2026-03-20",
       "suggested_topics": [
-        "Phoenix Phone Deals During Home Show Week",
-        "Arizona Local Business Phone Shopping Guide"
+        "Why March Has Arizona's Best Refurbished Phone Selection",
+        "Snowbird Phone Upgrades Create Best Spring Deals"
       ]
     }
   ],
   "keyword_gaps": [
     {
-      "query": "tax refund phone deals 2026",
+      "query": "tax refund phone upgrade arizona 2026",
       "growth": "breakout",
       "suggested_priority": "critical",
-      "rationale": "Breakout trend with 225% higher Arizona interest - seasonal goldmine with 5-day action window"
+      "rationale": "Breakout trend with 450% Arizona advantage - 4-day action window with early tax refund timing"
     },
     {
-      "query": "iphone battery health check free",
-      "growth": "breakout",
+      "query": "ua spring break phone deals",
+      "growth": "380%",
       "suggested_priority": "critical",
-      "rationale": "Sustained breakout trend with 190% Arizona advantage - builds expertise credibility"
+      "rationale": "Local demographic goldmine - UA students with immediate need and zero competition for this keyword"
     },
     {
-      "query": "spring cleaning old phones trade in",
-      "growth": "320%",
+      "query": "free battery health check app 2026",
+      "growth": "breakout",
       "suggested_priority": "high",
-      "rationale": "Seasonal surge with Arizona advantage - drives trade-in program and new purchases"
+      "rationale": "Sustained breakout trend with 210% Arizona advantage - builds expertise authority"
     },
     {
-      "query": "best refurbished phone under 400",
-      "growth": "65%",
+      "query": "tucson phone trade in program",
+      "growth": "280%",
       "suggested_priority": "high",
-      "rationale": "Perfect price point match for our core inventory - high commercial intent"
+      "rationale": "Local inventory acquisition opportunity - drives both trade-ins and new purchases"
     },
     {
-      "query": "usb c cable iphone 15 vs 16",
+      "query": "arizona electronics recycling drop off",
+      "growth": "260%",
+      "suggested_priority": "high",
+      "rationale": "Local sustainability angle - differentiates from national competitors, drives trade-in program"
+    },
+    {
+      "query": "phoenix phone repair vs refurbished cost",
+      "growth": "95%",
+      "suggested_priority": "medium",
+      "rationale": "Phoenix metro opportunity - educational content drives refurbished purchases"
+    },
+    {
+      "query": "waterproof phone cases spring break",
+      "growth": "75%",
+      "suggested_priority": "medium",
+      "rationale": "Seasonal accessory opportunity with Arizona spring break timing advantage"
+    },
+    {
+      "query": "unlocked phone international travel",
       "growth": "70%",
       "suggested_priority": "medium",
-      "rationale": "iPhone 16 anticipation trend - accessory upsell opportunity"
+      "rationale": "Educational content addressing carrier confusion - builds expertise and drives unlocked phone sales"
     },
     {
-      "query": "arizona electronics recycling program",
-      "growth": "60%",
+      "query": "refurbished phone spring deals march",
+      "growth": "340%",
       "suggested_priority": "medium",
-      "rationale": "Local sustainability angle - differentiates from national competitors"
-    },
-    {
-      "query": "refurbished iphone face id works",
-      "growth": "85%",
-      "suggested_priority": "medium",
-      "rationale": "Addresses major purchase anxiety - builds trust through education"
+      "rationale": "Already in keyword list but needs dedicated content - 520% Arizona growth vs 340% national"
     }
   ]
 }

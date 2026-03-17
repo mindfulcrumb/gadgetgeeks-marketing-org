@@ -194,7 +194,11 @@ def notify_department_complete(department: str, success: bool,
 
 
 def notify_queue_item(item: dict):
-    """Send notification for a new queue item that needs approval."""
+    """Send notification for a new queue item that needs approval.
+
+    For blog_publish items, includes a preview of the header image
+    (if available) so the approver can visually verify before approving.
+    """
     dept = item.get("department", "unknown")
     emoji = DEPT_EMOJI.get(dept, "\u2699\ufe0f")
     summary = item.get("summary", "No description")
@@ -208,10 +212,10 @@ def notify_queue_item(item: dict):
         if k in skip_keys:
             continue
         if isinstance(v, str) and len(v) > 200:
-            v = v[:200] + "…"
+            v = v[:200] + "\u2026"
         elif isinstance(v, (list, dict)):
             v = json.dumps(v, ensure_ascii=False)[:200]
-        detail_lines.append(f"  • <b>{k}</b>: {v}")
+        detail_lines.append(f"  \u2022 <b>{k}</b>: {v}")
     details = "\n".join(detail_lines[:8])  # max 8 fields
 
     send_message(
@@ -223,6 +227,10 @@ def notify_queue_item(item: dict):
         f"\ud83c\udd94 <code>{item_id}</code>\n"
         f"Reply:\n/approve {item_id}\n/reject {item_id}"
     )
+
+    # --- For blog_publish items: show image preview if available ---
+    if item_type == "blog_publish" or "handle" in item:
+        _send_blog_image_preview(item)
 
 
 def notify_error(department: str, error: str):
@@ -654,6 +662,32 @@ def _auto_publish_blog(item: dict) -> str:
             img_result["image_bytes"], filename, img_result.get("mime_type", "image/png")
         )
         send_message(f"\u2705 Header image uploaded to Shopify CDN")
+
+        # --- Validate image URL resolves (HEAD request) ---
+        if header_image_url:
+            try:
+                head_resp = requests.head(header_image_url, timeout=15, allow_redirects=True)
+                if not head_resp.ok:
+                    print(f"    [Image Validate] HEAD check failed: {head_resp.status_code} for {header_image_url}")
+                    # URL doesn't resolve — treat as failure
+                    header_image_url = ""
+                else:
+                    print(f"    [Image Validate] URL confirmed reachable: {head_resp.status_code}")
+            except Exception as val_err:
+                print(f"    [Image Validate] HEAD request error: {val_err}")
+                # Don't blank out URL for timeout — Shopify CDN may be slow but valid
+                pass
+
+        # --- Send image preview to Telegram for visual verification ---
+        if header_image_url:
+            try:
+                send_photo(
+                    header_image_url,
+                    caption=f"Header image for: {blog['title'][:80]}"
+                )
+            except Exception:
+                pass  # Non-critical — don't block publish for preview failure
+
     except Exception as img_err:
         # INC-005 preventive rule: NEVER publish without image — block and log incident
         _log_incident(
@@ -675,6 +709,28 @@ def _auto_publish_blog(item: dict) -> str:
             f"Fix the issue and re-approve."
         )
         return f"\u274c Publication blocked — image generation failed: {img_err}"
+
+    # --- HARD BLOCK: No image = No publish. Period. (Rule 11) ---
+    if not header_image_url or not header_image_url.strip():
+        _log_incident(
+            severity="critical",
+            department="content",
+            agents_involved=["PRESS (telegram_bot.py)"],
+            title=f"HARD BLOCK: Blog has no header image URL after generation: {blog['title'][:50]}",
+            what_happened="Image generation completed but returned empty/None URL. Publication blocked.",
+            root_cause="Image generation or upload returned no valid URL",
+            fix_applied="Publication blocked. Blog status NOT changed to published.",
+            lesson="Always validate image URL is non-empty before publishing.",
+            preventive_rule="Rule 11: HARD BLOCK — empty image URL = no publish.",
+        )
+        send_message(
+            f"\u274c <b>PUBLISH BLOCKED (Rule 11)</b>\n\n"
+            f"Blog <b>{blog['title'][:60]}</b> has NO valid header image URL.\n"
+            f"Image generation may have succeeded but returned an empty URL.\n\n"
+            f"Blog will NOT publish without a validated header image.\n"
+            f"Fix the issue and re-approve."
+        )
+        return f"\u274c Publication blocked — no valid header image URL after generation."
 
     # --- Build FAQ schema script tag ---
     faq_schema = blog.get("faq_schema")

@@ -160,27 +160,55 @@ def _generate_gemini(prompt: str, aspect_ratio: str = "16:9") -> dict:
 # Main generate function — tries Gemini, falls back to DALL-E
 # ---------------------------------------------------------------------------
 
-def generate_image(prompt: str, aspect_ratio: str = "16:9") -> dict:
-    """Generate an image using Gemini ONLY. No fallback. No DALL-E.
+def generate_image(prompt: str, aspect_ratio: str = "16:9",
+                    category: str = "default") -> dict:
+    """Generate an image using Gemini with retries. Falls back to pre-uploaded
+    CDN images if Gemini fails after GEMINI_MAX_RETRIES attempts.
 
-    If Gemini fails, generation fails. This is intentional — DALL-E produces
-    cartoonish output that damages brand credibility. Better to skip an image
-    than post garbage.
+    DALL-E is BANNED. The only fallback is pre-uploaded Shopify CDN images
+    from config/fallback-images.json — real product photos, not AI slop.
 
     Args:
         prompt:       Text description of the image to generate.
         aspect_ratio: "1:1", "16:9", "9:16", "4:5", "4:3", or "3:4".
+        category:     Blog category for fallback image selection.
 
     Returns:
         {"image_bytes": bytes, "mime_type": str, "provider": str}
     """
     gemini_key = os.environ.get("GEMINI_API_KEY", "")
     if not gemini_key:
-        raise ValueError("GEMINI_API_KEY not set. DALL-E is BANNED — Gemini is the only image provider.")
+        print("    [Gemini] GEMINI_API_KEY not set — trying fallback images")
+        fallback = get_fallback_image(category)
+        if fallback:
+            return fallback
+        raise ValueError("GEMINI_API_KEY not set and no fallback image available.")
 
-    result = _generate_gemini(prompt, aspect_ratio)
-    print(f"    [Gemini] Success")
-    return result
+    last_error = None
+    for attempt in range(1, GEMINI_MAX_RETRIES + 1):
+        try:
+            result = _generate_gemini(prompt, aspect_ratio)
+            print(f"    [Gemini] Success on attempt {attempt}")
+            return result
+        except Exception as e:
+            last_error = e
+            print(f"    [Gemini] Attempt {attempt}/{GEMINI_MAX_RETRIES} failed: {e}")
+            if attempt < GEMINI_MAX_RETRIES:
+                print(f"    [Gemini] Retrying in {GEMINI_RETRY_DELAY_SECONDS}s...")
+                time.sleep(GEMINI_RETRY_DELAY_SECONDS)
+
+    # All retries exhausted — try fallback CDN image
+    print(f"    [Gemini] All {GEMINI_MAX_RETRIES} attempts failed. Trying fallback image for category '{category}'...")
+    fallback = get_fallback_image(category)
+    if fallback:
+        print(f"    [Fallback] Using pre-uploaded CDN image instead of AI generation")
+        return fallback
+
+    # No fallback available — raise the last error
+    raise RuntimeError(
+        f"Gemini failed after {GEMINI_MAX_RETRIES} retries and no fallback image available. "
+        f"Last error: {last_error}"
+    )
 
 
 # ---------------------------------------------------------------------------
@@ -236,7 +264,19 @@ def generate_blog_header(blog_title: str, blog_topic: str) -> dict:
         f"Fine organic grain, natural color, editorial magazine quality. "
         f"Wide 16:9 composition. IMG_7291.CR3 unedited RAW photograph."
     )
-    return generate_image(prompt, aspect_ratio="16:9")
+    # Map blog_topic to a fallback category for the CDN fallback system
+    category = "default"
+    if any(kw in topic_lower for kw in ("guide", "buying", "best", "top", "comparison")):
+        category = "buying-guide"
+    elif any(kw in topic_lower for kw in ("how", "setup", "tip", "fix", "troubleshoot")):
+        category = "how-to"
+    elif any(kw in topic_lower for kw in ("review", "spotlight", "product")):
+        category = "product"
+    elif any(kw in topic_lower for kw in ("lifestyle", "daily", "student", "work")):
+        category = "lifestyle"
+    elif any(kw in topic_lower for kw in ("news", "trend", "update", "announce")):
+        category = "news"
+    return generate_image(prompt, aspect_ratio="16:9", category=category)
 
 
 # ---------------------------------------------------------------------------

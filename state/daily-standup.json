@@ -1,78 +1,94 @@
 {
-  "date": "2026-03-16",
-  "day_theme": "Sunday — PLAN & PREP",
+  "date": "2026-03-17",
+  "day_theme": "Monday — DISCOVER & PLAN",
   "shift": "morning",
-  "standup_time": "07:14 UTC (21 minutes late due to delayed night handoff)",
-  "infrastructure_status": "CRITICAL - 35/100 health score",
-  "overnight_summary": "SENTINEL completed stable monitoring with no new failures but ran 21 minutes late. Core infrastructure crisis persists - 3 departments offline 79+ hours due to GitHub Actions failure. SEO brief now critically overdue at 73+ hours.",
+  "week": "Week of March 17, 2026",
+  "overnight_summary": "CRITICAL infrastructure failure continues stable. No new incidents overnight. Email & CRO departments now offline 124+ hours (5+ days). SEO brief seo_20260313_071521 stuck 89 hours without SCRIBE pickup. Image pipeline completely exhausted. System operating at <30% capacity.",
   "departments": {
     "intel": {
-      "status": "CRITICAL - offline 79+ hours - RESTART REQUIRED",
-      "yesterday": "DID NOT RUN - GitHub Actions broken since 2026-03-11",
-      "today": "BLOCKED - requires manual GitHub Actions restart",
-      "signal": "NO COMPETITIVE INTELLIGENCE - flying blind on market trends"
+      "status": "OPERATIONAL",
+      "yesterday": "SCOUT & ECHO both ran - market intelligence gathering active",
+      "today": "Continue trend monitoring, focus on competitive landscape",
+      "signal": "iPhone 17e comparisons gaining momentum, Back Market crisis continues across multiple countries",
+      "last_run": "2026-03-16T11:37:00Z"
     },
     "seo": {
-      "status": "ok - ran 2026-03-15",
-      "yesterday": "Generated brief for 'How to Buy Used Phones Online Safely'",
-      "today": "Weekly SEO audit completed at 06:51 UTC",
-      "feeds": "CRITICAL HANDOFF NEEDED: Brief seo_20260313_071521 pending 73+ hours - SCRIBE must pick up immediately"
+      "status": "OPERATIONAL BUT BLOCKED",
+      "yesterday": "PIXEL created brief for 'How to Buy Used Phones Online Safely' guide",
+      "today": "Brief seo_20260313_071521 STUCK 89 HOURS - SCRIBE must pick up immediately",
+      "feeds": "Content (URGENT brief pickup needed), Social (keyword angles ready)",
+      "last_run": "2026-03-16T07:53:11Z"
     },
     "content": {
-      "pipeline": "1 brief_ready (CRITICALLY OVERDUE) | 0 draft_ready | 0 qa_passed | 0 approved",
-      "yesterday": "Published 'What Secure Packaging Actually Looks Like' despite image generation failures",
-      "today": "MUST pick up overdue SEO brief seo_20260313_071521 - 73 hours overdue",
-      "blockers": "Gemini API down 48+ hours blocking header images for future blogs"
+      "status": "PARTIALLY BLOCKED",
+      "pipeline": "1 brief_ready (89h overdue) | 0 draft_ready | 0 qa_passed | 1 published_yesterday",
+      "yesterday": "PRESS published 'iPhone 12 & 13: The Last Great iPhones With Headphone Jacks' successfully",
+      "today": "MUST pickup SEO brief seo_20260313_071521 immediately - 89 hours overdue breaks all SLAs",
+      "blockers": "SEO brief stuck at SCRIBE for 89 hours - critical pipeline failure",
+      "last_run": "2026-03-16T18:56:36Z"
     },
     "visual": {
-      "status": "LIMITED - Gemini API down 48+ hours",
-      "yesterday": "Generated 0 new images - API returning 403 errors",
-      "today": "BLOCKED - cannot generate images until API fixed or DALL-E fallback implemented",
-      "feeds": "Social has exhausted all unused images - NO NEW VISUALS AVAILABLE"
+      "status": "BLOCKED - API DOWN",
+      "yesterday": "No new image generation - Gemini API 403 errors continue",
+      "today": "Image pipeline EXHAUSTED - social media blocked",
+      "feeds": "Social (ZERO designs available - pipeline empty)",
+      "blocker": "Gemini API down 48+ hours, no fallback implemented",
+      "last_run": "2026-03-16T09:51:29Z"
     },
     "social": {
-      "status": "DEGRADED - only TikTok connected",
-      "yesterday": "Posted 4 TikTok videos using last remaining iPhone 13/14 hero images",
-      "today": "BLOCKED - zero unused images remaining, need immediate visual generation",
-      "needs": "URGENT: Image generation for visual content, reconnect platforms at app.postiz.com"
+      "status": "DEGRADED - PLATFORMS DOWN",
+      "yesterday": "Posted 4 TikTok videos using last available real product photos",
+      "today": "BLOCKED - zero unused images remaining, only TikTok connected",
+      "needs_from": "Visual (URGENT image generation), Infrastructure (reconnect Twitter/Instagram/Facebook/LinkedIn)",
+      "platform_status": "TikTok: OK | Twitter: DISCONNECTED | Instagram: DISCONNECTED | Facebook: DISCONNECTED | LinkedIn: DISCONNECTED",
+      "last_run": "2026-03-16T17:41:18Z"
     },
     "email": {
-      "status": "CRITICAL - offline 72+ hours - RESTART REQUIRED",
-      "yesterday": "DID NOT RUN - GitHub Actions broken since 2026-03-11",
-      "today": "BLOCKED - requires manual restart",
-      "impact": "NO EMAIL CAMPAIGNS running - complete communication breakdown"
+      "status": "CRITICAL - OFFLINE 124+ HOURS (5+ DAYS)",
+      "yesterday": "NO RUNS - department completely offline",
+      "today": "REVENUE IMPACT CRITICAL - no email campaigns for 5+ days",
+      "action_needed": "IMMEDIATE GitHub Actions restart required",
+      "last_run": "2026-03-11T19:12:01Z"
     },
     "cro": {
-      "status": "CRITICAL - offline 72+ hours - RESTART REQUIRED",
-      "yesterday": "DID NOT RUN - GitHub Actions broken since 2026-03-11",
-      "today": "BLOCKED - requires manual restart",
-      "impact": "NO CONVERSION OPTIMIZATION - cannot measure or improve funnel"
+      "status": "CRITICAL - OFFLINE 124+ HOURS (5+ DAYS)",
+      "yesterday": "NO RUNS - department completely offline",
+      "today": "NO CONVERSION OPTIMIZATION - revenue impact critical",
+      "action_needed": "IMMEDIATE GitHub Actions restart required",
+      "last_run": "2026-03-11T19:12:14Z"
+    },
+    "dialer": {
+      "status": "WAITING FOR DATA",
+      "yesterday": "XAVIER ready but cannot build call lists without customer data access",
+      "today": "Blocked until data sources and incident log access provided",
+      "needs_from": "Infrastructure (customer data access, GA4 integration)",
+      "last_run": "2026-03-16T15:18:31Z"
     },
     "operations": {
-      "queue_depth": "10 pending (7 infrastructure items), 0 approved",
-      "overdue_items": "SEO brief seo_20260313_071521 - 73+ hours overdue",
-      "open_incidents": "1 high-severity incident: Blog publication blocked",
-      "critical_approvals": "GitHub Actions restart, Gemini API fix, platform reconnection"
+      "status": "MANAGING CRISIS",
+      "queue_depth": "22 pending, 0 approved, 7 critical priority",
+      "overdue_items": "SEO brief 89 hours, infrastructure restarts 124+ hours",
+      "last_run": "2026-03-16T19:46:03Z"
     }
   },
   "escalations": [
-    "P0 EMERGENCY: GitHub Actions manual restart required for intel, email, cro departments - 79+ hours offline",
-    "P0 EMERGENCY: Gemini API returning 403 errors for 48+ hours - implement DALL-E fallback or fix billing",
-    "P0 EMERGENCY: Reconnect social platforms at app.postiz.com - only TikTok working",
-    "P1 CRITICAL: Process SEO brief seo_20260313_071521 - now 73+ hours overdue, blocking content pipeline",
-    "P1 CRITICAL: Analytics showing zero conversions despite good traffic - investigate GA4 tracking"
+    "P0 CRITICAL: Email & CRO departments offline 124+ hours (5+ days) - IMMEDIATE GitHub Actions restart required - REVENUE IMPACT",
+    "P0 CRITICAL: SEO brief seo_20260313_071521 stuck 89 hours - SCRIBE must pick up immediately - breaks all content SLAs",
+    "P0 CRITICAL: Gemini API down 48+ hours - implement OpenAI DALL-E 3 fallback OR fix API access",
+    "P1 HIGH: Social platforms disconnected - reconnect Twitter, Instagram, Facebook, LinkedIn at app.postiz.com",
+    "P1 HIGH: GA4 showing zero conversions despite good traffic - revenue tracking broken"
   ],
   "priorities": [
-    "SCRIBE MUST pick up SEO brief seo_20260313_071521 IMMEDIATELY - 73+ hours overdue",
-    "Boss approval needed on all 7 infrastructure queue items to restore 3 offline departments",
-    "Emergency image generation or DALL-E fallback - social media completely blocked without visuals"
+    "RESTART email & cro departments immediately - 5+ days offline causing revenue impact",
+    "SCRIBE must process SEO brief seo_20260313_071521 - 89 hours overdue",
+    "Fix image generation (Gemini API OR implement DALL-E 3 fallback) - social pipeline empty"
   ],
   "cross_department_handoffs": [
-    "SEO → CONTENT: Brief seo_20260313_071521 ready for pickup (73+ hours overdue)",
-    "VISUAL → SOCIAL: Zero unused images remaining - URGENT generation needed",
-    "NIGHT_OPS → MORNING: Infrastructure stable but 3 departments require manual restart",
-    "GM → BOSS: 7 infrastructure approvals pending immediate action"
+    "SEO → CONTENT: Brief seo_20260313_071521 MUST be picked up by SCRIBE today (89h overdue)",
+    "INFRASTRUCTURE → EMAIL/CRO: GitHub Actions restart required immediately",
+    "INFRASTRUCTURE → VISUAL: Fix Gemini API OR implement OpenAI fallback",
+    "INFRASTRUCTURE → SOCIAL: Reconnect all platforms except TikTok",
+    "VISUAL → SOCIAL: Generate new image batch (pipeline completely empty)"
   ],
-  "business_impact": "SEVERE - No competitive intel, no email marketing, no conversion optimization, limited social media, content pipeline backed up. Operating at ~40% capacity.",
-  "telegram_summary": "🚨 INFRASTRUCTURE CRISIS - 3 departments offline 79+ hours, SEO brief 73+ hours overdue, social media out of images. Need GitHub restart + API fixes URGENTLY. Health: 35/100"
+  "telegram_summary": "🚨 CRITICAL ORG STATUS - Operating at <30% capacity\n• Email & CRO offline 124+ hours (5 DAYS) - REVENUE IMPACT\n• SEO brief stuck 89h - content pipeline broken\n• Image generation down 48h - social blocked\n• Need immediate infrastructure intervention\n\nTop Priority: Restart offline departments NOW"
 }

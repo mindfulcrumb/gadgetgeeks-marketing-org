@@ -320,6 +320,36 @@
       "alert_type": "CRITICAL",
       "message": "🚨 SENTINEL PRE-DAWN ALERT — 04:47 UTC\nType: CRITICAL INFRASTRUCTURE FAILURE\nIssue: Email & CRO departments offline 124+ hours (5+ DAYS)\nImpact: Zero email campaigns, zero conversion optimization - REVENUE CRITICAL\nAction needed: Immediate GitHub Actions restart required\n\nSecondary issues:\n• Gemini API down 48+ hours (no images)\n• SEO brief stuck 73+ hours\n• Social platforms 80% disconnected\n\nBusiness operating at <30% capacity",
       "id": "night_ops_20260317_044752"
+    },
+    {
+      "departments": [
+        "email",
+        "cro"
+      ],
+      "offline_duration": "124+ hours since 2026-03-11",
+      "business_impact": "CRITICAL REVENUE IMPACT - no email campaigns, no conversion optimization for 5+ days",
+      "action": "Immediate GitHub Actions restart required",
+      "priority": "P0 - EMERGENCY",
+      "id": "standup_20260317_070409"
+    },
+    {
+      "brief_id": "seo_20260313_071521",
+      "stuck_duration": "89 hours",
+      "brief_title": "How to Buy Used Phones Online Safely: 2026 Expert Guide",
+      "action": "SCRIBE department must pick up and process brief immediately",
+      "impact": "Content pipeline completely broken, breaks all SLA commitments",
+      "id": "standup_20260317_070409"
+    },
+    {
+      "issue": "Gemini API returning 403 errors for 48+ hours",
+      "impact": "Zero image generation - social media blocked, blog headers missing",
+      "solutions": [
+        "Fix Gemini API access and billing",
+        "Implement OpenAI DALL-E 3 as fallback",
+        "Temporary manual image upload workflow"
+      ],
+      "urgency": "Social pipeline completely exhausted - cannot post without images",
+      "id": "standup_20260317_070409"
     }
   ],
   "approved": [],

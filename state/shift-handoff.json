@@ -1,55 +1,21 @@
 {
-  "from_shift": "night",
-  "to_shift": "morning",
-  "timestamp": "2026-03-17T06:03:00Z",
-  "overnight_summary": "Critical infrastructure failure continues stable. No new incidents overnight. SEO brief now 89 hours overdue - content pipeline breakdown. Image generation remains blocked. Two revenue departments offline fifth consecutive day.",
-  "issues_found": [
-    "SEO brief seo_20260313_071521 now 89 hours overdue - SCRIBE has not picked up",
-    "Email & CRO departments offline 124+ hours - no recovery attempts detected",
-    "Image pipeline exhausted - social media blocked",
-    "Gemini API down 48+ hours - no fallback implemented"
+  "from_shift": "morning",
+  "to_shift": "evening",
+  "timestamp": "2026-03-17T07:02:00Z",
+  "morning_standup_completed": true,
+  "critical_actions_needed": [
+    "URGENT: Restart email & cro departments - cannot wait another day",
+    "URGENT: SCRIBE must process SEO brief seo_20260313_071521 - 89 hours overdue",
+    "URGENT: Fix image generation API or implement DALL-E 3 fallback"
   ],
-  "alerts_sent": [
-    "Pre-dawn alert sent 04:47 UTC - critical infrastructure failure flagged"
+  "departments_offline": [
+    "email",
+    "cro"
   ],
-  "pending_approvals": [
-    "P0 CRITICAL: Manual GitHub Actions restart for email & cro (5+ days offline)",
-    "P0 CRITICAL: Process SEO brief - 89 hours overdue breaks content SLA",
-    "P0 CRITICAL: Fix Gemini API OR implement OpenAI DALL-E 3 fallback",
-    "P1 HIGH: Reconnect social platforms (Twitter, Instagram, Facebook, LinkedIn)",
-    "P1 HIGH: Generate new image batch - social pipeline exhausted"
+  "departments_blocked": [
+    "visual",
+    "social"
   ],
-  "api_health": {
-    "shopify": "ok",
-    "gemini": "down",
-    "telegram": "ok",
-    "postiz": "degraded",
-    "github_actions": "broken",
-    "vapi": "unknown"
-  },
-  "recommendations_for_morning": [
-    "URGENT: SCRIBE must pick up SEO brief seo_20260313_071521 - 89 hours overdue breaks all SLAs",
-    "URGENT: Process infrastructure queue items - cannot deteriorate further",
-    "Blog scheduled: Back Market article publishes 09:30 UTC - monitor",
-    "Social strategy: Reduce posting volume as recommended (34 posts in 3 days degrading engagement)",
-    "Queue processing: 22 items pending with 7 critical - morning standup must address"
-  ],
-  "metrics_snapshot": {
-    "blogs_in_pipeline": {
-      "brief_ready": 1,
-      "draft_ready": 0,
-      "qa_passed": 0,
-      "scheduled": 1
-    },
-    "queue_depth": {
-      "pending": 22,
-      "approved": 0,
-      "critical": 7
-    },
-    "incidents_open": 1,
-    "departments_active": 17,
-    "departments_offline": 2,
-    "health_score": "30/100",
-    "system_status": "CRITICAL_INFRASTRUCTURE_FAILURE_STABLE"
-  }
+  "system_health": "30/100 - CRITICAL",
+  "revenue_impact": "No email campaigns (5+ days), no conversion optimization (5+ days), limited social reach"
 }

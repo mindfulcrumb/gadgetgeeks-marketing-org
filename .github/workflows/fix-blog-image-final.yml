@@ -1,0 +1,79 @@
+name: Fix Blog Image — Real Store Product Photo
+on:
+  workflow_dispatch:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: pip install requests
+
+      - name: Get Shopify token
+        id: shopify
+        run: |
+          RESPONSE=$(curl -s -X POST "https://gadgetgeekspro.myshopify.com/admin/oauth/access_token" \
+            -H "Content-Type: application/x-www-form-urlencoded" \
+            -d "grant_type=client_credentials" \
+            -d "client_id=${{ secrets.SHOPIFY_CLIENT_ID }}" \
+            -d "client_secret=${{ secrets.SHOPIFY_CLIENT_SECRET }}")
+          TOKEN=$(echo "$RESPONSE" | python3 -c "import sys,json; print(json.load(sys.stdin)['access_token'])")
+          echo "::add-mask::$TOKEN"
+          echo "token=$TOKEN" >> "$GITHUB_OUTPUT"
+
+      - name: Update blog article image to real product photo
+        env:
+          SHOPIFY_ACCESS_TOKEN: ${{ steps.shopify.outputs.token }}
+        run: |
+          python3 << 'PYEOF'
+          import os, json, requests
+
+          token = os.environ["SHOPIFY_ACCESS_TOKEN"]
+          url = "https://gadgetgeekspro.myshopify.com/admin/api/2026-01/graphql.json"
+          headers = {"Content-Type": "application/json", "X-Shopify-Access-Token": token}
+
+          # Use the real iPhone 13 product photo already on Shopify CDN
+          image_url = "https://cdn.shopify.com/s/files/1/0664/1664/0251/files/apple-iphone-13-pos1-floating_074be56b-89cc-46d2-a70a-69f2e1e25b7c.png?v=1773615063"
+
+          mutation = """
+          mutation articleUpdate($id: ID!, $article: ArticleUpdateInput!) {
+            articleUpdate(id: $id, article: $article) {
+              article {
+                id
+                title
+                image { url }
+              }
+              userErrors { field message }
+            }
+          }
+          """
+
+          variables = {
+              "id": "gid://shopify/Article/597538996475",
+              "article": {
+                  "image": {
+                      "url": image_url,
+                      "altText": "Refurbished iPhone 13 in Pink — front and back view"
+                  }
+              }
+          }
+
+          resp = requests.post(url, headers=headers, json={"query": mutation, "variables": variables}, timeout=30)
+          data = resp.json().get("data", {})
+          print(json.dumps(data, indent=2))
+
+          errors = data.get("articleUpdate", {}).get("userErrors", [])
+          if errors:
+              print(f"ERRORS: {errors}")
+              exit(1)
+
+          article = data.get("articleUpdate", {}).get("article", {})
+          print(f"\nDONE — {article.get('title')}")
+          print(f"Image: {article.get('image', {}).get('url')}")
+          PYEOF

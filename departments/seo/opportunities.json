@@ -199,23 +199,14 @@
       "completed": "2026-03-16 07:51 UTC"
     },
     {
-      "id": "local-arizona-phone-guide",
-      "priority": "high",
-      "keyword": "refurbished phones Tucson",
-      "type": "content_gap",
-      "page": "/blogs/local/best-places-buy-refurbished-phones-tucson-arizona",
-      "status": "pending",
-      "content_type": "local buying guide"
-    },
-    {
       "id": "compatibility-guide-hub",
-      "priority": "high",
+      "priority": "critical",
       "keyword": "USB-C vs Lightning compatibility guide",
       "type": "content_gap",
       "page": "/pages/phone-accessory-compatibility-guide",
-      "status": "pending",
+      "status": "completed",
       "content_type": "compatibility hub",
-      "meta_title": "Phone Compatibility Guide: USB-C vs Lightning, Cases, Wireless Charging | 2026",
+      "meta_title": "USB-C vs Lightning Guide: Phone Compatibility Made Simple | Gadget Geeks Pro",
       "meta_description": "End the confusion. Which cables, cases, and chargers work with your phone model. iPhone, Samsung, iPad compatibility checker. No returns needed.",
       "h1": "Phone Accessory Compatibility Guide: End the USB-C vs Lightning Confusion",
       "content_outline": [
@@ -236,9 +227,21 @@
         "Reduces returns from incompatible accessories",
         "Positions as compatibility experts vs competitors",
         "Interactive elements for specific model lookup",
-        "Drives bundle purchases through education"
+        "Drives bundle purchases through education",
+        "Addresses peak compatibility confusion trend",
+        "Uses customer language 'end the confusion' and 'no returns needed'"
       ],
-      "structured_data": "FAQ schema + Table schema for compatibility matrix + Product schema for recommended bundles"
+      "structured_data": "FAQ schema + Table schema for compatibility matrix + Product schema for recommended bundles + HowTo schema for checking compatibility",
+      "completed": "2026-03-17 07:33 UTC"
+    },
+    {
+      "id": "local-arizona-phone-guide",
+      "priority": "high",
+      "keyword": "refurbished phones Tucson",
+      "type": "content_gap",
+      "page": "/blogs/local/best-places-buy-refurbished-phones-tucson-arizona",
+      "status": "pending",
+      "content_type": "local buying guide"
     },
     {
       "id": "university-arizona-student-guide",
@@ -305,7 +308,40 @@
         "Positions as expert timing advice vs reactive selling"
       ],
       "structured_data": "Article schema + FAQ schema for timing questions + Comparison schema for iPhone models"
+    },
+    {
+      "id": "face-id-verification-guide",
+      "priority": "high",
+      "keyword": "Face ID works refurbished phones",
+      "type": "content_gap",
+      "page": "/blogs/guides/face-id-touch-id-refurbished-phones-testing",
+      "status": "pending",
+      "content_type": "technical verification guide",
+      "meta_title": "Face ID & Touch ID on Refurbished Phones: How to Test & Verify They Work",
+      "meta_description": "Face ID works perfectly on quality refurbished phones. Test with masks, different angles, and low light. Verify Touch ID sensitivity. Get the checklist.",
+      "h1": "Face ID & Touch ID Testing Guide: Verify Biometric Functions on Refurbished Phones",
+      "content_outline": [
+        "Why Face ID/Touch ID reliability matters for refurbished phones",
+        "Face ID testing checklist: masks, sunglasses, different angles, low light",
+        "Touch ID sensitivity test: wet fingers, different pressure levels",
+        "Common Face ID issues on refurbished phones (and red flags)",
+        "Depth sensor integrity: how to verify the TrueDepth camera works",
+        "Face ID with masks: 2026 compatibility testing",
+        "When biometric functions indicate internal damage",
+        "Warranty coverage for biometric function failures",
+        "How we test Face ID/Touch ID before selling",
+        "What to do if biometrics stop working after purchase",
+        "CTA: Shop phones with verified biometric function testing"
+      ],
+      "improvements": [
+        "Addresses growing biometric anxiety trend",
+        "Provides specific testing methodology for customer confidence",
+        "Covers mask compatibility - major 2026 concern",
+        "Positions as quality assurance experts",
+        "Educational approach builds trust in refurbished quality"
+      ],
+      "structured_data": "HowTo schema for testing process + FAQ schema for biometric concerns + Product schema for tested devices"
     }
   ],
-  "last_updated": "2026-03-16 07:51 UTC"
+  "last_updated": "2026-03-17 07:33 UTC"
 }

@@ -350,6 +350,26 @@
       ],
       "urgency": "Social pipeline completely exhausted - cannot post without images",
       "id": "standup_20260317_070409"
+    },
+    {
+      "page_url": "/pages/phone-accessory-compatibility-guide",
+      "meta_title": "USB-C vs Lightning Guide: Phone Compatibility Made Simple | Gadget Geeks Pro",
+      "meta_description": "End the confusion. Which cables, cases, and chargers work with your phone model. iPhone, Samsung, iPad compatibility checker. No returns needed.",
+      "priority": "critical",
+      "reason": "Addresses major customer pain point causing purchase hesitation and returns",
+      "structured_data_needed": [
+        "FAQ schema for compatibility questions",
+        "Table schema for compatibility matrices",
+        "Product schema for recommended bundles",
+        "HowTo schema for checking compatibility"
+      ],
+      "content_features": [
+        "Interactive phone model lookup tool",
+        "Visual compatibility matrices for quick reference",
+        "Bundle recommendations based on specific phone models",
+        "Future-proofing advice for accessory purchases"
+      ],
+      "id": "seo_20260317_073521"
     }
   ],
   "approved": [],

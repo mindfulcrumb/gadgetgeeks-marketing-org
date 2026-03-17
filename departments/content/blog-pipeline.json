@@ -72,7 +72,34 @@
   ],
   "word_count": 647,
   "category": "trending",
-  "status": "draft_ready",
+  "status": "qa_approved",
+  "qa_score": {
+    "rating": "EXCELLENT",
+    "total_flags": 1,
+    "critical_violations": 0,
+    "warnings": 1,
+    "tier1_banned_words": 0,
+    "banned_phrases": 0,
+    "structural_flags": 0,
+    "rhythm_sd": 8.2,
+    "burstiness_ratio": "4:2",
+    "contraction_rate": 85,
+    "passive_count": 1,
+    "customer_language_phrases": 6,
+    "seo_pass": true,
+    "internal_links": 3,
+    "word_count": 647
+  },
+  "qa_feedback": [
+    {
+      "check_id": 17,
+      "check_name": "Loss Aversion Framing",
+      "severity": "warning",
+      "location": "Throughout piece",
+      "issue": "Could strengthen loss aversion framing in a few spots",
+      "fix": "Consider phrases like 'Stop getting cheated by inflated grades' or 'Don't waste money on fake excellent phones' - but this is minor as the content is already strong"
+    }
+  ],
   "anti_ai_audit": {
     "banned_words": 0,
     "structural_tells": 0,
@@ -84,5 +111,7 @@
     "result": "PASS"
   },
   "created": "2026-03-17T13:09:00Z",
-  "scheduled_publish": "2026-03-17T16:00:00Z"
+  "scheduled_publish": "2026-03-17T16:00:00Z",
+  "qa_reviewed_at": "2026-03-17T14:19:00Z",
+  "qa_reviewed_by": "QUILL"
 }

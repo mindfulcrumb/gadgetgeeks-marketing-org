@@ -403,6 +403,20 @@
       "mobile_optimized": true,
       "unsubscribe_reminder": "Standard Resend footer included",
       "id": "email_20260317_094217"
+    },
+    {
+      "required_data_sources": [
+        "Shopify abandoned cart data (last 48 hours, $300+ value)",
+        "Customer purchase history (60+ days inactive for win-back)",
+        "Recent orders (7-14 days for review requests)",
+        "B2B leads database",
+        "Previous call outcomes/do-not-call list",
+        "state/incident-log.json file"
+      ],
+      "reason": "Cannot build compliant call lists without customer data access",
+      "infrastructure_concern": "GA4 showing 0 conversions suggests broader data collection issues that may affect customer data availability",
+      "compliance_note": "Will not make any calls until proper data sources and incident log are available for compliance checking",
+      "id": "dialer_20260317_151632"
     }
   ],
   "approved": [],

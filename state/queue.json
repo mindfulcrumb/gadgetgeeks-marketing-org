@@ -417,6 +417,45 @@
       "infrastructure_concern": "GA4 showing 0 conversions suggests broader data collection issues that may affect customer data availability",
       "compliance_note": "Will not make any calls until proper data sources and incident log are available for compliance checking",
       "id": "dialer_20260317_151632"
+    },
+    {
+      "title": "What 'Excellent Condition' Actually Means (Photos Don't Lie)",
+      "excerpt": "A customer just complained about getting a phone with \"greasy handprints\" that was sold as \"excellent condition.\" That's not excellent. That's not even good.",
+      "handle": "excellent-condition-refurbished-phones-real-meaning",
+      "author": "Gadget Geeks Team",
+      "tags": [
+        "refurbished-phones",
+        "phone-grading",
+        "buying-guide",
+        "iphone",
+        "quality-control",
+        "certified-refurbished"
+      ],
+      "product_links": [
+        {
+          "anchor": "iPhone 14 Pro",
+          "url": "/products/apple-iphone-14-pro"
+        },
+        {
+          "anchor": "iPhone 13",
+          "url": "/products/apple-iphone-13"
+        }
+      ],
+      "collection_links": [],
+      "related_products": [
+        "apple-iphone-14-pro",
+        "apple-iphone-13",
+        "apple-iphone-12",
+        "samsung-galaxy-s23"
+      ],
+      "seo": {
+        "title_tag": "What 'Excellent Condition' Really Means - Refurbished Phones",
+        "description_tag": "Greasy handprints sold as 'excellent'? Here's what condition grades actually mean and how to spot sellers who tell the truth about phone quality.",
+        "og_title": "What 'Excellent Condition' Actually Means (Photos Don't Lie)",
+        "og_description": "Stop getting cheated by inflated phone grades. Real condition standards decoded."
+      },
+      "header_image_prompt_id": null,
+      "id": "blog_publish_20260317_153752"
     }
   ],
   "approved": [],

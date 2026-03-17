@@ -72,7 +72,10 @@
   ],
   "word_count": 647,
   "category": "trending",
-  "status": "qa_approved",
+  "status": "queued_for_publish",
+  "queue_item_id": "blog_publish_20260317_153600",
+  "prepared_at": "2026-03-17T15:36:00Z",
+  "prepared_by": "PRESS",
   "qa_score": {
     "rating": "EXCELLENT",
     "total_flags": 1,

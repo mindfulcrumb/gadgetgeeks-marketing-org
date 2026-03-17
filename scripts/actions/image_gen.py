@@ -138,29 +138,24 @@ def generate_blog_header(blog_title: str, blog_topic: str) -> dict:
     topic_lower = blog_topic.lower()
     combined = f"{title_lower} {topic_lower}"
 
-    # --- Check for product-specific blogs: use REAL product photos ---
-    product_photo_map = {
-        "iphone 14": "assets/product-photos/iphone-14-desktop.png",
-        "iphone 13": "assets/product-photos/iphone-13-desktop.png",
-        "iphone 12": "assets/product-photos/iphone-13-desktop.png",  # closest match
+    # --- Check for product-specific blogs: use REAL product photos from Shopify CDN ---
+    product_photo_cdn = {
+        "iphone 14": "https://cdn.shopify.com/s/files/1/0664/1664/0251/files/apple-iphone-14-desktop.png",
+        "iphone 13": "https://cdn.shopify.com/s/files/1/0664/1664/0251/files/apple-iphone-13-pos1-floating_074be56b-89cc-46d2-a70a-69f2e1e25b7c.png?v=1773615063",
+        "iphone 12": "https://cdn.shopify.com/s/files/1/0664/1664/0251/files/apple-iphone-12-pos1-floating_583ba2cf-31e5-4a1e-abc0-b203bcb0b4f8.png?v=1773615636",
     }
 
-    for keyword, photo_path in product_photo_map.items():
+    for keyword, cdn_url in product_photo_cdn.items():
         if keyword in combined:
-            # Use real product photo — resolve path relative to repo root
-            import pathlib
-            # Try multiple base paths
-            for base in [pathlib.Path("."), pathlib.Path(__file__).parent.parent.parent]:
-                full_path = base / photo_path
-                if full_path.exists():
-                    print(f"    [Blog Header] Using REAL product photo: {photo_path}")
-                    with open(full_path, "rb") as f:
-                        return {
-                            "image_bytes": f.read(),
-                            "mime_type": "image/png",
-                            "provider": "real_product_photo",
-                        }
-            print(f"    [Blog Header] WARNING: Product photo not found at {photo_path}, falling back to AI scene")
+            print(f"    [Blog Header] Using REAL product photo from Shopify CDN: {keyword}")
+            resp = requests.get(cdn_url, timeout=30)
+            if resp.ok:
+                return {
+                    "image_bytes": resp.content,
+                    "mime_type": "image/png",
+                    "provider": "real_product_photo",
+                }
+            print(f"    [Blog Header] WARNING: CDN fetch failed ({resp.status_code}), falling back to AI scene")
             break
 
     # --- Non-product blog: generate a relevant AI scene (NO devices) ---

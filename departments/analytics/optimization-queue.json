@@ -1,9 +1,9 @@
 {
-  "last_updated": "2026-03-16",
+  "last_updated": "2026-03-17",
   "recommendations": [
     {
-      "id": "OPT-20260316-001",
-      "date_added": "2026-03-16",
+      "id": "OPT-20260317-001",
+      "date_added": "2026-03-17",
       "priority_score": 10,
       "impact": 5,
       "effort": 5,
@@ -12,32 +12,32 @@
       "page_url": "site_wide",
       "query": "conversion_setup",
       "current_metrics": {
-        "sessions": 251,
+        "sessions": 284,
         "conversions": 0,
         "conversion_rate": 0.0
       },
-      "recommendation": "CRITICAL: Zero conversions across 251 sessions indicates broken GA4 conversion tracking or checkout funnel. Test purchase flow and verify GA4 e-commerce events immediately.",
+      "recommendation": "CRITICAL: Zero conversions across 284 sessions indicates broken GA4 conversion tracking or checkout funnel. Test purchase flow, verify GA4 e-commerce events, check Shopify integration immediately.",
       "status": "pending",
       "assigned_to": "metric",
       "completed_date": null
     },
     {
-      "id": "OPT-20260316-002",
-      "date_added": "2026-03-16",
+      "id": "OPT-20260317-002",
+      "date_added": "2026-03-17",
       "priority_score": 9,
-      "impact": 4,
-      "effort": 5,
+      "impact": 5,
+      "effort": 4,
       "type": "meta_rewrite",
       "target_department": "seo",
       "page_url": "https://gadgetgeekspro.com/",
       "query": "computer repair tucson",
       "current_metrics": {
-        "impressions": 32,
+        "impressions": 34,
         "clicks": 0,
         "ctr": 0.0,
-        "position": 5.1
+        "position": 4.9
       },
-      "recommendation": "Homepage ranking #5 for 'computer repair tucson' but getting 0 clicks. Site sells refurbished phones, not repair. Rewrite meta to capture phone buyers instead.",
+      "recommendation": "Homepage ranking #4.9 for 'computer repair tucson' with 34 impressions but 0 clicks. Major content mismatch - site sells refurbished phones, not repair. Rewrite meta to capture phone buyers instead.",
       "suggested_meta_title": "Refurbished iPhones Tucson AZ - Battery Health 80%+ Guaranteed",
       "suggested_meta_description": "Shop certified refurbished iPhones in Tucson. Battery health 80%+ guaranteed, looks brand new. Save $400+ vs new with warranty. Local Arizona business.",
       "status": "pending",
@@ -45,8 +45,8 @@
       "completed_date": null
     },
     {
-      "id": "OPT-20260316-003",
-      "date_added": "2026-03-16",
+      "id": "OPT-20260317-003",
+      "date_added": "2026-03-17",
       "priority_score": 8,
       "impact": 4,
       "effort": 4,
@@ -55,12 +55,12 @@
       "page_url": "https://gadgetgeekspro.com/smart-home-automation/",
       "query": "smart home automation",
       "current_metrics": {
-        "impressions": 118,
+        "impressions": 133,
         "clicks": 0,
         "ctr": 0.0,
-        "position": 16.9
+        "position": 16.4
       },
-      "recommendation": "Smart home automation page getting 118 impressions but 0 clicks at position 16.9. Meta rewrite needed for higher CTR.",
+      "recommendation": "Smart home automation page getting 133 impressions but 0 clicks at position 16.4. Meta completely invisible to searchers - urgent rewrite needed.",
       "suggested_meta_title": "Smart Home Setup Tucson AZ - Professional Installation & Support",
       "suggested_meta_description": "Expert smart home automation in Tucson. Professional device setup, WiFi optimization, ongoing support. Transform your home with local Arizona tech experts.",
       "status": "pending",
@@ -68,29 +68,50 @@
       "completed_date": null
     },
     {
-      "id": "OPT-20260316-004",
-      "date_added": "2026-03-16",
+      "id": "OPT-20260317-004",
+      "date_added": "2026-03-17",
+      "priority_score": 8,
+      "impact": 4,
+      "effort": 4,
+      "type": "content_refresh",
+      "target_department": "content",
+      "page_url": "https://gadgetgeekspro.com/2019/01/how-to-know-if-your-cell-phone-speakers-need-to-be-replaced/",
+      "query": "cell phone speakers need replacement",
+      "current_metrics": {
+        "impressions": 301,
+        "clicks": 0,
+        "ctr": 0.0,
+        "position": 2.1
+      },
+      "recommendation": "Ranking #2.1 with 301 impressions but 0 clicks - massive wasted opportunity. Update 2019 content to bridge speaker repair costs to refurbished phone alternatives.",
+      "status": "pending",
+      "assigned_to": "scribe",
+      "completed_date": null
+    },
+    {
+      "id": "OPT-20260317-005",
+      "date_added": "2026-03-17",
       "priority_score": 8,
       "impact": 4,
       "effort": 4,
       "type": "content_refresh",
       "target_department": "content",
       "page_url": "https://gadgetgeekspro.com/2019/02/do-you-need-charger-port-repair-or-a-full-battery-replacement/",
-      "query": "cell phone battery replacement near me",
+      "query": "charger port repair battery replacement",
       "current_metrics": {
-        "impressions": 2,
+        "impressions": 115,
         "clicks": 0,
         "ctr": 0.0,
-        "position": 1.5
+        "position": 3.7
       },
-      "recommendation": "Ranking #1-2 for 'cell phone battery replacement near me' but it's old repair content. Update to connect battery issues with refurbished phone alternatives.",
+      "recommendation": "Position #3.7 with 115 impressions, 0 clicks. Update to connect repair costs ($150-200) with refurbished phone alternatives ($250-350).",
       "status": "pending",
       "assigned_to": "scribe",
       "completed_date": null
     },
     {
-      "id": "OPT-20260316-005",
-      "date_added": "2026-03-16",
+      "id": "OPT-20260317-006",
+      "date_added": "2026-03-17",
       "priority_score": 7,
       "impact": 3,
       "effort": 4,
@@ -104,16 +125,16 @@
         "ctr": 0.0,
         "position": 0
       },
-      "recommendation": "Create content bridging repair searches to refurbished sales. 'iPhone Screen Repair $200 vs Refurbished iPhone 14 $350 - Smart Math'",
+      "recommendation": "Create content bridging repair searches to refurbished sales. Target: 'iPhone Screen Repair $200 vs Refurbished iPhone 14 $350 - Smart Math'",
       "status": "pending",
       "assigned_to": "scribe",
       "completed_date": null
     },
     {
-      "id": "OPT-20260316-006",
-      "date_added": "2026-03-16",
-      "priority_score": 6,
-      "impact": 3,
+      "id": "OPT-20260317-007",
+      "date_added": "2026-03-17",
+      "priority_score": 7,
+      "impact": 4,
       "effort": 3,
       "type": "internal_linking",
       "target_department": "seo",
@@ -124,27 +145,47 @@
         "bounce_rate": 0.091,
         "avg_session_duration": 259.2
       },
-      "recommendation": "High-performing blog post (4+ min engagement, 9% bounce). Link to this content from homepage and product pages to boost ranking power.",
+      "recommendation": "Exceptional performing content (9% bounce rate, 4+ min engagement). Link to this article from homepage and product pages to boost its ranking power.",
       "status": "pending",
       "assigned_to": "pixel",
       "completed_date": null
     },
     {
-      "id": "OPT-20260316-007",
-      "date_added": "2026-03-16",
-      "priority_score": 5,
-      "impact": 2,
+      "id": "OPT-20260317-008",
+      "date_added": "2026-03-17",
+      "priority_score": 6,
+      "impact": 3,
       "effort": 3,
       "type": "content_refresh",
       "target_department": "content",
       "page_url": "/blogs/news/avoid-activation-lock-buying-used-phones-online",
       "query": "activation lock",
       "current_metrics": {
-        "sessions": 7,
-        "bounce_rate": 0.571,
-        "avg_session_duration": 46.7
+        "sessions": 8,
+        "bounce_rate": 0.5,
+        "avg_session_duration": 217.9
       },
-      "recommendation": "High bounce rate (57%) and low engagement (47 sec) on activation lock article. Update content to better address customer concerns.",
+      "recommendation": "50% bounce rate indicates content not meeting expectations. Update to better address activation lock concerns and connect to guaranteed unlocked refurb phones.",
+      "status": "pending",
+      "assigned_to": "scribe",
+      "completed_date": null
+    },
+    {
+      "id": "OPT-20260317-009",
+      "date_added": "2026-03-17",
+      "priority_score": 5,
+      "impact": 2,
+      "effort": 3,
+      "type": "content_refresh",
+      "target_department": "content",
+      "page_url": "/blogs/news/secure-refurbished-phone-packaging-standards",
+      "query": "secure packaging",
+      "current_metrics": {
+        "sessions": 4,
+        "bounce_rate": 0.25,
+        "avg_session_duration": 24.1
+      },
+      "recommendation": "Very low engagement time (24 seconds) suggests thin content. Expand with specific packaging details, photos, or consolidate into broader guide.",
       "status": "pending",
       "assigned_to": "scribe",
       "completed_date": null

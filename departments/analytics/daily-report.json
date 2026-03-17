@@ -1,12 +1,12 @@
 {
-  "report_date": "2026-03-16",
+  "report_date": "2026-03-17",
   "period": {
-    "current": "2026-03-09 to 2026-03-15",
-    "previous": "2026-03-02 to 2026-03-08"
+    "current": "2026-03-10 to 2026-03-16",
+    "previous": "2026-03-03 to 2026-03-09"
   },
   "summary": {
     "total_sessions": {
-      "current": 251,
+      "current": 284,
       "previous": 0,
       "change_pct": "NEW_SITE"
     },
@@ -21,12 +21,12 @@
       "change_pct": "NO_DATA"
     },
     "organic_sessions": {
-      "current": 59,
+      "current": 66,
       "previous": 0,
       "change_pct": "NEW_SITE"
     },
     "avg_bounce_rate": {
-      "current": 0.251,
+      "current": 0.2355,
       "previous": 0.0,
       "change_pct": "NEW_SITE"
     }
@@ -35,46 +35,57 @@
     {
       "severity": "critical",
       "type": "conversion_drop",
-      "message": "Zero conversions across 251 sessions - conversion tracking or checkout funnel critical failure",
+      "message": "Zero conversions across 284 sessions - conversion tracking or checkout funnel critical failure",
       "page_or_query": "site_wide",
       "metric": "conversions",
       "current_value": 0,
       "previous_value": 0,
       "change_pct": 0,
-      "recommended_action": "URGENT: Verify GA4 e-commerce tracking, test checkout flow, check Shopify integration immediately"
+      "recommended_action": "URGENT: Verify GA4 e-commerce tracking, test checkout flow, check Shopify purchase events immediately"
     },
     {
       "severity": "high",
       "type": "ctr_drop",
-      "message": "Homepage ranking #5 for 'computer repair tucson' (32 impressions) but 0 clicks - content mismatch",
+      "message": "Homepage ranking #4.9 for 'computer repair tucson' (34 impressions) but 0 clicks - massive content mismatch",
       "page_or_query": "computer repair tucson",
       "metric": "ctr",
       "current_value": 0,
       "previous_value": 0,
       "change_pct": 0,
-      "recommended_action": "Rewrite homepage meta to target refurbished phone buyers, not repair seekers"
+      "recommended_action": "Rewrite homepage meta to target refurbished phone buyers, not repair seekers - misaligned content losing traffic"
     },
     {
       "severity": "high",
       "type": "ctr_drop",
-      "message": "Smart home automation page: 104 impressions, 0 clicks at position 16.9 - meta optimization needed",
+      "message": "Smart home automation page: 133 impressions, 0 clicks at position 16.4 - urgent meta optimization needed",
       "page_or_query": "smart home automation",
       "metric": "ctr",
       "current_value": 0,
       "previous_value": 0,
       "change_pct": 0,
-      "recommended_action": "Optimize smart home page meta title and description for higher CTR"
+      "recommended_action": "Optimize smart home page meta title and description - currently invisible to searchers"
+    },
+    {
+      "severity": "high",
+      "type": "ctr_drop",
+      "message": "Cell phone speakers article: 301 impressions at position 2.1 but 0 clicks - wasted authority",
+      "page_or_query": "cell phone speakers need replacement",
+      "metric": "ctr",
+      "current_value": 0,
+      "previous_value": 0,
+      "change_pct": 0,
+      "recommended_action": "Update 2019 article to bridge repair costs to refurbished alternatives with compelling meta"
     },
     {
       "severity": "medium",
       "type": "content_gap",
-      "message": "Ranking well for repair queries but selling refurbished phones - need content bridge",
+      "message": "Strong rankings for repair queries but selling refurbished phones - need content bridge strategy",
       "page_or_query": "repair_service_disconnect",
       "metric": "relevance",
       "current_value": "mismatch",
       "previous_value": "unknown",
       "change_pct": "NO_DATA",
-      "recommended_action": "Create content connecting repair costs to refurbished alternatives"
+      "recommended_action": "Create content connecting repair costs to refurbished alternatives - 'iPhone Screen Repair $200 vs Refurbished iPhone $350'"
     }
   ],
   "top_pages": [
@@ -86,7 +97,7 @@
         "change_pct": "NEW"
       },
       "bounce_rate": {
-        "current": 0.202,
+        "current": 0.153,
         "previous": 0.0,
         "change_pct": "NEW"
       },
@@ -96,7 +107,7 @@
         "change_pct": "NO_DATA"
       },
       "avg_session_duration": {
-        "current": 394.0,
+        "current": 295.0,
         "previous": 0.0,
         "change_pct": "NEW"
       }
@@ -109,7 +120,7 @@
         "change_pct": "NEW"
       },
       "bounce_rate": {
-        "current": 0.152,
+        "current": 0.061,
         "previous": 0.0,
         "change_pct": "NEW"
       },
@@ -122,12 +133,12 @@
     {
       "page": "/blogs/news",
       "sessions": {
-        "current": 27,
+        "current": 29,
         "previous": 0,
         "change_pct": "NEW"
       },
       "bounce_rate": {
-        "current": 0.259,
+        "current": 0.103,
         "previous": 0.0,
         "change_pct": "NEW"
       },
@@ -140,12 +151,12 @@
     {
       "page": "/products/iphone-14-bundle",
       "sessions": {
-        "current": 23,
+        "current": 24,
         "previous": 0,
         "change_pct": "NEW"
       },
       "bounce_rate": {
-        "current": 0.174,
+        "current": 0.125,
         "previous": 0.0,
         "change_pct": "NEW"
       },
@@ -160,7 +171,7 @@
     {
       "source_medium": "(direct) / (none)",
       "sessions": {
-        "current": 178,
+        "current": 192,
         "previous": 0,
         "change_pct": "NEW"
       },
@@ -173,7 +184,7 @@
     {
       "source_medium": "google / organic",
       "sessions": {
-        "current": 59,
+        "current": 66,
         "previous": 0,
         "change_pct": "NEW"
       },
@@ -186,7 +197,7 @@
     {
       "source_medium": "(not set) / (not set)",
       "sessions": {
-        "current": 17,
+        "current": 16,
         "previous": 0,
         "change_pct": "NEW"
       },
@@ -201,26 +212,26 @@
     "top_queries": [
       {
         "query": "gadget geeks pro",
-        "clicks": 7,
-        "impressions": 18,
-        "ctr": 38.89,
+        "clicks": 8,
+        "impressions": 21,
+        "ctr": 38.1,
         "position": 1.1,
         "change_vs_previous": "NEW"
       },
       {
         "query": "computer repair tucson",
         "clicks": 0,
-        "impressions": 32,
+        "impressions": 34,
         "ctr": 0.0,
-        "position": 5.1,
+        "position": 4.9,
         "change_vs_previous": "NEW"
       },
       {
-        "query": "smart home automation",
-        "clicks": 0,
-        "impressions": 118,
-        "ctr": 0.0,
-        "position": 16.9,
+        "query": "gadget geeks",
+        "clicks": 3,
+        "impressions": 31,
+        "ctr": 9.7,
+        "position": 8.4,
         "change_vs_previous": "NEW"
       }
     ],
@@ -228,38 +239,49 @@
       "computer repair tucson",
       "smart home automation",
       "cell phone repairs near me",
-      "electronics repair tucson",
       "audio video installation",
-      "gadget geeks",
-      "home theater installation tucson"
+      "home theater installation tucson",
+      "iphone repair tucson",
+      "cell phone battery replacement near me",
+      "computer technicians",
+      "places that fix electronics"
     ],
     "high_impression_low_ctr": [
       {
         "query": "computer repair tucson",
-        "impressions": 32,
+        "impressions": 34,
         "clicks": 0,
         "ctr": 0.0,
-        "position": 5.1,
+        "position": 4.9,
         "page": "https://gadgetgeekspro.com/",
-        "recommendation": "Homepage ranking for repair but selling refurbished phones - major meta rewrite needed"
+        "recommendation": "Homepage ranking for repair but selling refurbished phones - urgent meta rewrite to target phone buyers instead"
       },
       {
         "query": "smart home automation",
-        "impressions": 118,
+        "impressions": 133,
         "clicks": 0,
         "ctr": 0.0,
-        "position": 16.9,
+        "position": 16.4,
         "page": "https://gadgetgeekspro.com/smart-home-automation/",
-        "recommendation": "Page exists but meta not compelling - rewrite for higher CTR"
+        "recommendation": "Page exists but meta completely invisible to searchers - needs compelling rewrite"
       },
       {
-        "query": "cell phone battery replacement near me",
-        "impressions": 2,
+        "query": "how to know if your cell phone speakers need to be replaced",
+        "impressions": 301,
         "clicks": 0,
         "ctr": 0.0,
-        "position": 1.5,
+        "position": 2.1,
+        "page": "https://gadgetgeekspro.com/2019/01/how-to-know-if-your-cell-phone-speakers-need-to-be-replaced/",
+        "recommendation": "Position #2 with 301 impressions but 0 clicks - update 2019 content to bridge to refurbished alternatives"
+      },
+      {
+        "query": "do you need charger port repair or a full battery replacement",
+        "impressions": 115,
+        "clicks": 0,
+        "ctr": 0.0,
+        "position": 3.7,
         "page": "https://gadgetgeekspro.com/2019/02/do-you-need-charger-port-repair-or-a-full-battery-replacement/",
-        "recommendation": "Top ranking but old blog post - update with current refurbished phone alternative"
+        "recommendation": "Top 4 ranking for repair query - update to connect repair costs with refurbished phone alternatives"
       }
     ]
   },
@@ -271,34 +293,41 @@
         "sessions": 11,
         "bounce_rate": 0.091,
         "avg_session_duration": 259.2,
-        "status": "Excellent engagement - amplify this content"
+        "status": "Exceptional engagement - 4+ minutes, 9% bounce rate. Link boost this content immediately."
       },
       {
         "page": "/blogs/news",
-        "sessions": 27,
-        "bounce_rate": 0.259,
-        "avg_session_duration": 189.2,
-        "status": "Good traffic driver for new site"
+        "sessions": 29,
+        "bounce_rate": 0.103,
+        "avg_session_duration": 145.5,
+        "status": "Strong traffic driver and low bounce rate for blog hub"
       }
     ],
     "flatliners": [],
     "declining": [
       {
         "page": "/blogs/news/avoid-activation-lock-buying-used-phones-online",
-        "sessions": 7,
-        "bounce_rate": 0.571,
-        "avg_session_duration": 46.7,
-        "status": "High bounce rate - needs content review"
+        "sessions": 8,
+        "bounce_rate": 0.5,
+        "avg_session_duration": 217.9,
+        "status": "50% bounce rate indicates content not meeting expectations - needs review"
+      },
+      {
+        "page": "/blogs/news/secure-refurbished-phone-packaging-standards",
+        "sessions": 4,
+        "bounce_rate": 0.25,
+        "avg_session_duration": 24.1,
+        "status": "Very low engagement time suggests thin content - expand or consolidate"
       }
     ]
   },
   "device_breakdown": {
     "desktop": {
-      "sessions": 173,
+      "sessions": 188,
       "conversion_rate": 0.0
     },
     "mobile": {
-      "sessions": 81,
+      "sessions": 87,
       "conversion_rate": 0.0
     },
     "tablet": {

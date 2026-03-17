@@ -370,6 +370,20 @@
         "Future-proofing advice for accessory purchases"
       ],
       "id": "seo_20260317_073521"
+    },
+    {
+      "issue": "GA4 showing zero conversions despite strong traffic (284 sessions March 10-16)",
+      "urgency": "Critical - potential revenue loss",
+      "sessions_affected": 284,
+      "traffic_sources": "68% direct traffic, 23% organic - high-intent visitors not converting",
+      "required_checks": [
+        "Test Shopify checkout flow end-to-end",
+        "Verify GA4 e-commerce tracking events firing",
+        "Check Shopify-GA4 integration configuration",
+        "Confirm purchase confirmation page tracking"
+      ],
+      "business_impact": "Could be losing $500-2000+ daily if checkout is broken vs just tracking",
+      "id": "analytics_20260317_080811"
     }
   ],
   "approved": [],

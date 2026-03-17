@@ -1,19 +1,19 @@
 {
-  "fetch_time": "2026-03-16T08:36:55.751155+00:00",
+  "fetch_time": "2026-03-17T08:06:42.253691+00:00",
   "ga4": {
     "property_id": "527689586",
-    "current_period": "2026-03-09 to 2026-03-15",
-    "previous_period": "2026-03-02 to 2026-03-08",
+    "current_period": "2026-03-10 to 2026-03-16",
+    "previous_period": "2026-03-03 to 2026-03-09",
     "top_pages": [
       {
         "page": "/",
         "current": {
           "sessions": 183,
-          "bounce_rate": 0.2022,
-          "avg_session_duration": 394.0,
+          "bounce_rate": 0.153,
+          "avg_session_duration": 295.0,
           "conversions": 0,
           "revenue": 0.0,
-          "pageviews": 696
+          "pageviews": 678
         },
         "previous": {
           "sessions": 0,
@@ -28,11 +28,11 @@
         "page": "/collections/sale",
         "current": {
           "sessions": 33,
-          "bounce_rate": 0.1515,
-          "avg_session_duration": 209.1,
+          "bounce_rate": 0.0606,
+          "avg_session_duration": 165.5,
           "conversions": 0,
           "revenue": 0.0,
-          "pageviews": 109
+          "pageviews": 110
         },
         "previous": {
           "sessions": 0,
@@ -46,12 +46,12 @@
       {
         "page": "/blogs/news",
         "current": {
-          "sessions": 27,
-          "bounce_rate": 0.2593,
-          "avg_session_duration": 189.2,
+          "sessions": 29,
+          "bounce_rate": 0.1034,
+          "avg_session_duration": 145.5,
           "conversions": 0,
           "revenue": 0.0,
-          "pageviews": 128
+          "pageviews": 135
         },
         "previous": {
           "sessions": 0,
@@ -65,12 +65,12 @@
       {
         "page": "/products/iphone-14-bundle",
         "current": {
-          "sessions": 23,
-          "bounce_rate": 0.1739,
-          "avg_session_duration": 336.5,
+          "sessions": 24,
+          "bounce_rate": 0.125,
+          "avg_session_duration": 238.7,
           "conversions": 0,
           "revenue": 0.0,
-          "pageviews": 68
+          "pageviews": 71
         },
         "previous": {
           "sessions": 0,
@@ -84,31 +84,12 @@
       {
         "page": "/collections/iphones",
         "current": {
-          "sessions": 20,
-          "bounce_rate": 0.25,
-          "avg_session_duration": 150.8,
-          "conversions": 0,
-          "revenue": 0.0,
-          "pageviews": 72
-        },
-        "previous": {
-          "sessions": 0,
+          "sessions": 19,
           "bounce_rate": 0.0,
-          "avg_session_duration": 0.0,
+          "avg_session_duration": 46.9,
           "conversions": 0,
           "revenue": 0.0,
-          "pageviews": 0
-        }
-      },
-      {
-        "page": "/products/apple-iphone-14",
-        "current": {
-          "sessions": 17,
-          "bounce_rate": 0.0588,
-          "avg_session_duration": 140.6,
-          "conversions": 0,
-          "revenue": 0.0,
-          "pageviews": 49
+          "pageviews": 73
         },
         "previous": {
           "sessions": 0,
@@ -123,11 +104,49 @@
         "page": "/products/apple-iphone-13",
         "current": {
           "sessions": 16,
-          "bounce_rate": 0.25,
-          "avg_session_duration": 57.5,
+          "bounce_rate": 0.0625,
+          "avg_session_duration": 38.2,
           "conversions": 0,
           "revenue": 0.0,
-          "pageviews": 30
+          "pageviews": 29
+        },
+        "previous": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        }
+      },
+      {
+        "page": "/products/apple-iphone-14",
+        "current": {
+          "sessions": 16,
+          "bounce_rate": 0.0625,
+          "avg_session_duration": 149.1,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 47
+        },
+        "previous": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        }
+      },
+      {
+        "page": "/",
+        "current": {
+          "sessions": 11,
+          "bounce_rate": 0.2727,
+          "avg_session_duration": 160.7,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 42
         },
         "previous": {
           "sessions": 0,
@@ -158,11 +177,30 @@
         }
       },
       {
-        "page": "/products/clear-screen-protector",
+        "page": "/blogs/news/avoid-activation-lock-buying-used-phones-online",
         "current": {
           "sessions": 8,
-          "bounce_rate": 0.25,
-          "avg_session_duration": 78.0,
+          "bounce_rate": 0.5,
+          "avg_session_duration": 217.9,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 13
+        },
+        "previous": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        }
+      },
+      {
+        "page": "/pages/about-us",
+        "current": {
+          "sessions": 8,
+          "bounce_rate": 0.125,
+          "avg_session_duration": 77.5,
           "conversions": 0,
           "revenue": 0.0,
           "pageviews": 16
@@ -177,14 +215,14 @@
         }
       },
       {
-        "page": "/blogs/news/avoid-activation-lock-buying-used-phones-online",
+        "page": "/products/clear-case-with-magsafe",
         "current": {
-          "sessions": 7,
-          "bounce_rate": 0.5714,
-          "avg_session_duration": 46.7,
+          "sessions": 8,
+          "bounce_rate": 0.25,
+          "avg_session_duration": 145.9,
           "conversions": 0,
           "revenue": 0.0,
-          "pageviews": 11
+          "pageviews": 16
         },
         "previous": {
           "sessions": 0,
@@ -196,14 +234,14 @@
         }
       },
       {
-        "page": "/pages/about-us",
+        "page": "/products/clear-screen-protector",
         "current": {
-          "sessions": 7,
-          "bounce_rate": 0.0,
-          "avg_session_duration": 85.7,
+          "sessions": 8,
+          "bounce_rate": 0.25,
+          "avg_session_duration": 78.0,
           "conversions": 0,
           "revenue": 0.0,
-          "pageviews": 14
+          "pageviews": 16
         },
         "previous": {
           "sessions": 0,
@@ -234,33 +272,14 @@
         }
       },
       {
-        "page": "/products/clear-case-with-magsafe",
-        "current": {
-          "sessions": 7,
-          "bounce_rate": 0.1429,
-          "avg_session_duration": 166.8,
-          "conversions": 0,
-          "revenue": 0.0,
-          "pageviews": 15
-        },
-        "previous": {
-          "sessions": 0,
-          "bounce_rate": 0.0,
-          "avg_session_duration": 0.0,
-          "conversions": 0,
-          "revenue": 0.0,
-          "pageviews": 0
-        }
-      },
-      {
-        "page": "/products/apple-iphone-14-pro",
+        "page": "/pages/terms-condtions",
         "current": {
           "sessions": 6,
-          "bounce_rate": 0.5,
-          "avg_session_duration": 187.6,
+          "bounce_rate": 0.3333,
+          "avg_session_duration": 7.4,
           "conversions": 0,
           "revenue": 0.0,
-          "pageviews": 10
+          "pageviews": 9
         },
         "previous": {
           "sessions": 0,
@@ -272,14 +291,14 @@
         }
       },
       {
-        "page": "/pages/terms-condtions",
+        "page": "/collections/samsung",
         "current": {
           "sessions": 5,
           "bounce_rate": 0.2,
-          "avg_session_duration": 8.9,
+          "avg_session_duration": 69.7,
           "conversions": 0,
           "revenue": 0.0,
-          "pageviews": 8
+          "pageviews": 7
         },
         "previous": {
           "sessions": 0,
@@ -310,68 +329,11 @@
         }
       },
       {
-        "page": "/products/apple-iphone-14-plus",
-        "current": {
-          "sessions": 5,
-          "bounce_rate": 0.0,
-          "avg_session_duration": 266.6,
-          "conversions": 0,
-          "revenue": 0.0,
-          "pageviews": 20
-        },
-        "previous": {
-          "sessions": 0,
-          "bounce_rate": 0.0,
-          "avg_session_duration": 0.0,
-          "conversions": 0,
-          "revenue": 0.0,
-          "pageviews": 0
-        }
-      },
-      {
-        "page": "/products/iphone-13-bundle",
-        "current": {
-          "sessions": 5,
-          "bounce_rate": 0.2,
-          "avg_session_duration": 5.1,
-          "conversions": 0,
-          "revenue": 0.0,
-          "pageviews": 10
-        },
-        "previous": {
-          "sessions": 0,
-          "bounce_rate": 0.0,
-          "avg_session_duration": 0.0,
-          "conversions": 0,
-          "revenue": 0.0,
-          "pageviews": 0
-        }
-      },
-      {
-        "page": "/collections/samsung",
-        "current": {
-          "sessions": 4,
-          "bounce_rate": 0.0,
-          "avg_session_duration": 83.5,
-          "conversions": 0,
-          "revenue": 0.0,
-          "pageviews": 6
-        },
-        "previous": {
-          "sessions": 0,
-          "bounce_rate": 0.0,
-          "avg_session_duration": 0.0,
-          "conversions": 0,
-          "revenue": 0.0,
-          "pageviews": 0
-        }
-      },
-      {
         "page": "/products/camera-lens-cover",
         "current": {
-          "sessions": 4,
-          "bounce_rate": 0.25,
-          "avg_session_duration": 34.9,
+          "sessions": 5,
+          "bounce_rate": 0.4,
+          "avg_session_duration": 27.9,
           "conversions": 0,
           "revenue": 0.0,
           "pageviews": 7
@@ -386,14 +348,14 @@
         }
       },
       {
-        "page": "/blogs/news/best-refurbished-iphone-2026-tested-ranked",
+        "page": "/products/iphone-13-bundle",
         "current": {
-          "sessions": 3,
-          "bounce_rate": 0.3333,
-          "avg_session_duration": 18.4,
+          "sessions": 5,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 12.1,
           "conversions": 0,
           "revenue": 0.0,
-          "pageviews": 9
+          "pageviews": 10
         },
         "previous": {
           "sessions": 0,
@@ -407,12 +369,12 @@
       {
         "page": "/blogs/news/secure-refurbished-phone-packaging-standards",
         "current": {
-          "sessions": 3,
-          "bounce_rate": 1.0,
-          "avg_session_duration": 419.4,
+          "sessions": 4,
+          "bounce_rate": 0.25,
+          "avg_session_duration": 24.1,
           "conversions": 0,
           "revenue": 0.0,
-          "pageviews": 5
+          "pageviews": 7
         },
         "previous": {
           "sessions": 0,
@@ -424,14 +386,90 @@
         }
       },
       {
-        "page": "/collections/ipads",
+        "page": "/pages/contact",
         "current": {
-          "sessions": 3,
+          "sessions": 4,
+          "bounce_rate": 0.25,
+          "avg_session_duration": 51.5,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 8
+        },
+        "previous": {
+          "sessions": 0,
           "bounce_rate": 0.0,
-          "avg_session_duration": 25.7,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        }
+      },
+      {
+        "page": "/products/apple-iphone-14-plus",
+        "current": {
+          "sessions": 4,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 31.3,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 8
+        },
+        "previous": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        }
+      },
+      {
+        "page": "/products/apple-iphone-14-pro",
+        "current": {
+          "sessions": 4,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 15.6,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 7
+        },
+        "previous": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        }
+      },
+      {
+        "page": "/products/privacy-screen-protector",
+        "current": {
+          "sessions": 4,
+          "bounce_rate": 0.5,
+          "avg_session_duration": 9.8,
           "conversions": 0,
           "revenue": 0.0,
           "pageviews": 6
+        },
+        "previous": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        }
+      },
+      {
+        "page": "/video-audio/",
+        "current": {
+          "sessions": 4,
+          "bounce_rate": 0.25,
+          "avg_session_duration": 23.7,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 8
         },
         "previous": {
           "sessions": 0,
@@ -447,7 +485,7 @@
         "current": {
           "sessions": 3,
           "bounce_rate": 0.3333,
-          "avg_session_duration": 33.1,
+          "avg_session_duration": 36.4,
           "conversions": 0,
           "revenue": 0.0,
           "pageviews": 4
@@ -462,14 +500,451 @@
         }
       },
       {
-        "page": "/pages/contact",
+        "page": "/products/apple-iphone-14-pro",
         "current": {
-          "sessions": 3,
+          "sessions": 2,
           "bounce_rate": 0.0,
-          "avg_session_duration": 41.6,
+          "avg_session_duration": 15.2,
           "conversions": 0,
           "revenue": 0.0,
-          "pageviews": 6
+          "pageviews": 3
+        },
+        "previous": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        }
+      },
+      {
+        "page": "/collections/iphones",
+        "current": {
+          "sessions": 1,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 77.8,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 1
+        },
+        "previous": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        }
+      },
+      {
+        "page": "/landing-page27073546",
+        "current": {
+          "sessions": 1,
+          "bounce_rate": 1.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 1
+        },
+        "previous": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        }
+      },
+      {
+        "page": "/products/apple-iphone-13",
+        "current": {
+          "sessions": 1,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 81.3,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 2
+        },
+        "previous": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        }
+      },
+      {
+        "page": "/products/apple-iphone-14",
+        "current": {
+          "sessions": 1,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 3.7,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 2
+        },
+        "previous": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        }
+      },
+      {
+        "page": "/products/apple-iphone-14-plus",
+        "current": {
+          "sessions": 1,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 1207.6,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 12
+        },
+        "previous": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        }
+      },
+      {
+        "page": "/blogs/news",
+        "current": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        },
+        "previous": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        }
+      },
+      {
+        "page": "/blogs/news/avoid-activation-lock-buying-used-phones-online",
+        "current": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        },
+        "previous": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        }
+      },
+      {
+        "page": "/blogs/news/cheap-refurbished-phones-guide",
+        "current": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        },
+        "previous": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        }
+      },
+      {
+        "page": "/blogs/news/secure-refurbished-phone-packaging-standards",
+        "current": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        },
+        "previous": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        }
+      },
+      {
+        "page": "/collections/sale",
+        "current": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        },
+        "previous": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        }
+      },
+      {
+        "page": "/collections/samsung",
+        "current": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        },
+        "previous": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        }
+      },
+      {
+        "page": "/pages/about-us",
+        "current": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        },
+        "previous": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        }
+      },
+      {
+        "page": "/pages/contact",
+        "current": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        },
+        "previous": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        }
+      },
+      {
+        "page": "/pages/terms-condtions",
+        "current": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        },
+        "previous": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        }
+      },
+      {
+        "page": "/policies/refund-policy",
+        "current": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        },
+        "previous": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        }
+      },
+      {
+        "page": "/products/apple-iphone-se-2nd-gen",
+        "current": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        },
+        "previous": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        }
+      },
+      {
+        "page": "/products/camera-lens-cover",
+        "current": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        },
+        "previous": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        }
+      },
+      {
+        "page": "/products/clear-case-with-magsafe",
+        "current": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        },
+        "previous": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        }
+      },
+      {
+        "page": "/products/clear-screen-protector",
+        "current": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        },
+        "previous": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        }
+      },
+      {
+        "page": "/products/iphone-13-bundle",
+        "current": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        },
+        "previous": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        }
+      },
+      {
+        "page": "/products/iphone-14-bundle",
+        "current": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        },
+        "previous": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        }
+      },
+      {
+        "page": "/products/privacy-screen-protector",
+        "current": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        },
+        "previous": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
+        }
+      },
+      {
+        "page": "/video-audio/",
+        "current": {
+          "sessions": 0,
+          "bounce_rate": 0.0,
+          "avg_session_duration": 0.0,
+          "conversions": 0,
+          "revenue": 0.0,
+          "pageviews": 0
         },
         "previous": {
           "sessions": 0,
@@ -485,7 +960,7 @@
       {
         "source_medium": "(direct) / (none)",
         "current": {
-          "sessions": 178,
+          "sessions": 179,
           "conversions": 0,
           "revenue": 0.0
         },
@@ -498,7 +973,7 @@
       {
         "source_medium": "google / organic",
         "current": {
-          "sessions": 59,
+          "sessions": 66,
           "conversions": 0,
           "revenue": 0.0
         },
@@ -511,7 +986,20 @@
       {
         "source_medium": "(not set) / (not set)",
         "current": {
-          "sessions": 17,
+          "sessions": 16,
+          "conversions": 0,
+          "revenue": 0.0
+        },
+        "previous": {
+          "sessions": 0,
+          "conversions": 0,
+          "revenue": 0.0
+        }
+      },
+      {
+        "source_medium": "(direct) / (none)",
+        "current": {
+          "sessions": 13,
           "conversions": 0,
           "revenue": 0.0
         },
@@ -572,15 +1060,93 @@
           "conversions": 0,
           "revenue": 0.0
         }
+      },
+      {
+        "source_medium": "(not set) / (not set)",
+        "current": {
+          "sessions": 0,
+          "conversions": 0,
+          "revenue": 0.0
+        },
+        "previous": {
+          "sessions": 0,
+          "conversions": 0,
+          "revenue": 0.0
+        }
+      },
+      {
+        "source_medium": "brex.lightning.force.com / referral",
+        "current": {
+          "sessions": 0,
+          "conversions": 0,
+          "revenue": 0.0
+        },
+        "previous": {
+          "sessions": 0,
+          "conversions": 0,
+          "revenue": 0.0
+        }
+      },
+      {
+        "source_medium": "dashboard.gowildfire.com / referral",
+        "current": {
+          "sessions": 0,
+          "conversions": 0,
+          "revenue": 0.0
+        },
+        "previous": {
+          "sessions": 0,
+          "conversions": 0,
+          "revenue": 0.0
+        }
+      },
+      {
+        "source_medium": "gadgetgeekspro.myshopify.com / referral",
+        "current": {
+          "sessions": 0,
+          "conversions": 0,
+          "revenue": 0.0
+        },
+        "previous": {
+          "sessions": 0,
+          "conversions": 0,
+          "revenue": 0.0
+        }
+      },
+      {
+        "source_medium": "google / organic",
+        "current": {
+          "sessions": 0,
+          "conversions": 0,
+          "revenue": 0.0
+        },
+        "previous": {
+          "sessions": 0,
+          "conversions": 0,
+          "revenue": 0.0
+        }
+      },
+      {
+        "source_medium": "mcatrack.com / referral",
+        "current": {
+          "sessions": 0,
+          "conversions": 0,
+          "revenue": 0.0
+        },
+        "previous": {
+          "sessions": 0,
+          "conversions": 0,
+          "revenue": 0.0
+        }
       }
     ],
     "device_breakdown": [
       {
         "device": "desktop",
         "current": {
-          "sessions": 173,
+          "sessions": 179,
           "conversions": 0,
-          "active_users": 102
+          "active_users": 110
         },
         "previous": {
           "sessions": 0,
@@ -591,9 +1157,35 @@
       {
         "device": "mobile",
         "current": {
-          "sessions": 81,
+          "sessions": 83,
           "conversions": 0,
           "active_users": 58
+        },
+        "previous": {
+          "sessions": 0,
+          "conversions": 0,
+          "active_users": 0
+        }
+      },
+      {
+        "device": "desktop",
+        "current": {
+          "sessions": 9,
+          "conversions": 0,
+          "active_users": 9
+        },
+        "previous": {
+          "sessions": 0,
+          "conversions": 0,
+          "active_users": 0
+        }
+      },
+      {
+        "device": "mobile",
+        "current": {
+          "sessions": 4,
+          "conversions": 0,
+          "active_users": 3
         },
         "previous": {
           "sessions": 0,
@@ -604,11 +1196,11 @@
     ],
     "overall_metrics": {
       "current": {
-        "sessions": 251,
-        "total_users": 157,
+        "sessions": 259,
+        "total_users": 166,
         "new_users": 159,
-        "bounce_rate": 0.251,
-        "avg_session_duration": 464.7,
+        "bounce_rate": 0.2355,
+        "avg_session_duration": 340.8,
         "conversions": 0,
         "revenue": 0.0
       },
@@ -625,29 +1217,29 @@
   },
   "gsc": {
     "site_url": "sc-domain:gadgetgeekspro.com",
-    "current_period": "2026-03-06 to 2026-03-13",
-    "previous_period": "2026-02-27 to 2026-03-06",
+    "current_period": "2026-03-07 to 2026-03-14",
+    "previous_period": "2026-02-28 to 2026-03-07",
     "top_queries": [
       {
         "query": "gadget geeks pro",
-        "clicks": 7,
-        "impressions": 18,
-        "ctr": 0.3889,
+        "clicks": 8,
+        "impressions": 21,
+        "ctr": 0.381,
         "position": 1.1
       },
       {
         "query": "gadget geeks",
         "clicks": 3,
-        "impressions": 25,
-        "ctr": 0.12,
-        "position": 8.6
+        "impressions": 31,
+        "ctr": 0.0968,
+        "position": 8.4
       },
       {
         "query": "cell phone repair near me",
         "clicks": 2,
-        "impressions": 7,
-        "ctr": 0.2857,
-        "position": 3.4
+        "impressions": 8,
+        "ctr": 0.25,
+        "position": 3.8
       },
       {
         "query": "gadget geeks pro llc",
@@ -678,6 +1270,13 @@
         "position": 15.5
       },
       {
+        "query": "mini ipad screen repair",
+        "clicks": 1,
+        "impressions": 1,
+        "ctr": 1,
+        "position": 1
+      },
+      {
         "query": "places that fix electronics",
         "clicks": 1,
         "impressions": 4,
@@ -686,6 +1285,13 @@
       },
       {
         "query": "3 geeks gadget",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 11
+      },
+      {
+        "query": "3 geeks gadgets",
         "clicks": 0,
         "impressions": 1,
         "ctr": 0,
@@ -706,11 +1312,18 @@
         "position": 33
       },
       {
+        "query": "apple computer repair near me",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 1
+      },
+      {
         "query": "audio video home installation",
         "clicks": 0,
-        "impressions": 7,
+        "impressions": 8,
         "ctr": 0,
-        "position": 8
+        "position": 8.1
       },
       {
         "query": "audio video installation company tucson az",
@@ -718,6 +1331,13 @@
         "impressions": 1,
         "ctr": 0,
         "position": 19
+      },
+      {
+        "query": "audio video installation oro valley, az",
+        "clicks": 0,
+        "impressions": 2,
+        "ctr": 0,
+        "position": 67.5
       },
       {
         "query": "audio video installation tucson, az",
@@ -736,9 +1356,9 @@
       {
         "query": "av installation tucson",
         "clicks": 0,
-        "impressions": 2,
+        "impressions": 3,
         "ctr": 0,
-        "position": 19
+        "position": 19.3
       },
       {
         "query": "best phone service providers",
@@ -757,7 +1377,7 @@
       {
         "query": "can a phone speaker be fixed",
         "clicks": 0,
-        "impressions": 2,
+        "impressions": 3,
         "ctr": 0,
         "position": 1
       },
@@ -811,6 +1431,13 @@
         "position": 1
       },
       {
+        "query": "certified apple repair shop near me",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 2
+      },
+      {
         "query": "cheap phone fix",
         "clicks": 0,
         "impressions": 1,
@@ -848,21 +1475,21 @@
       {
         "query": "computer repair",
         "clicks": 0,
-        "impressions": 1,
+        "impressions": 6,
         "ctr": 0,
-        "position": 20
+        "position": 4.2
       },
       {
         "query": "computer repair near me",
         "clicks": 0,
-        "impressions": 7,
+        "impressions": 9,
         "ctr": 0,
-        "position": 9.3
+        "position": 7.8
       },
       {
         "query": "computer repair service",
         "clicks": 0,
-        "impressions": 4,
+        "impressions": 5,
         "ctr": 0,
         "position": 1
       },
@@ -876,9 +1503,16 @@
       {
         "query": "computer repair tucson",
         "clicks": 0,
-        "impressions": 32,
+        "impressions": 34,
         "ctr": 0,
-        "position": 5.1
+        "position": 4.9
+      },
+      {
+        "query": "computer repair tucson az",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 10
       },
       {
         "query": "computer repair tucson eastside",
@@ -900,6 +1534,13 @@
         "impressions": 1,
         "ctr": 0,
         "position": 3
+      },
+      {
+        "query": "computer services near me",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 1
       },
       {
         "query": "computer store near me",
@@ -928,141 +1569,99 @@
         "impressions": 3,
         "ctr": 0,
         "position": 5.7
-      },
-      {
-        "query": "console repair",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr": 0,
-        "position": 1
-      },
-      {
-        "query": "electronic repair tucson",
-        "clicks": 0,
-        "impressions": 2,
-        "ctr": 0,
-        "position": 2.5
-      },
-      {
-        "query": "electronic store near me",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr": 0,
-        "position": 4
-      },
-      {
-        "query": "electronic stores near me",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr": 0,
-        "position": 10
-      },
-      {
-        "query": "electronics repair tucson",
-        "clicks": 0,
-        "impressions": 3,
-        "ctr": 0,
-        "position": 2.7
-      },
-      {
-        "query": "entertainment system installation near me",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr": 0,
-        "position": 69
-      },
-      {
-        "query": "exit device repair tucson az",
-        "clicks": 0,
-        "impressions": 1,
-        "ctr": 0,
-        "position": 1
       }
     ],
     "top_pages": [
       {
         "page": "https://gadgetgeekspro.com/",
-        "clicks": 30,
-        "impressions": 581,
-        "ctr": 0.0516,
-        "position": 6.8
+        "clicks": 38,
+        "impressions": 732,
+        "ctr": 0.0519,
+        "position": 6.5
       },
       {
         "page": "https://gadgetgeekspro.com/video-audio/",
         "clicks": 4,
-        "impressions": 111,
-        "ctr": 0.036,
-        "position": 14.2
+        "impressions": 127,
+        "ctr": 0.0315,
+        "position": 15.2
       },
       {
         "page": "https://gadgetgeekspro.com/reviews/",
         "clicks": 1,
-        "impressions": 35,
-        "ctr": 0.0286,
-        "position": 3.7
+        "impressions": 50,
+        "ctr": 0.02,
+        "position": 4.0
       },
       {
         "page": "https://gadgetgeekspro.com/2018/12/what-to-do-with-your-cracked-cell-phone-screen-until-repair/",
         "clicks": 0,
-        "impressions": 3,
+        "impressions": 5,
         "ctr": 0,
-        "position": 8.7
+        "position": 8.8
       },
       {
         "page": "https://gadgetgeekspro.com/2019/01/how-to-know-if-your-cell-phone-speakers-need-to-be-replaced/",
         "clicks": 0,
-        "impressions": 257,
+        "impressions": 301,
         "ctr": 0,
-        "position": 1.9
+        "position": 2.1
       },
       {
         "page": "https://gadgetgeekspro.com/2019/02/do-you-need-charger-port-repair-or-a-full-battery-replacement/",
         "clicks": 0,
-        "impressions": 98,
+        "impressions": 115,
         "ctr": 0,
-        "position": 3.6
+        "position": 3.7
       },
       {
         "page": "https://gadgetgeekspro.com/2019/02/signs-that-you-need-to-replace-your-cell-phone-camera-in-tucson-az/",
         "clicks": 0,
-        "impressions": 3,
+        "impressions": 4,
         "ctr": 0,
-        "position": 13
+        "position": 11.8
       },
       {
         "page": "https://gadgetgeekspro.com/2019/03/when-and-how-often-should-you-reinstall-an-operating-system/",
         "clicks": 0,
-        "impressions": 6,
+        "impressions": 7,
         "ctr": 0,
-        "position": 9.8
+        "position": 9.7
       },
       {
         "page": "https://gadgetgeekspro.com/2019/04/questions-to-ask-before-choosing-a-smart-home-security-system/",
         "clicks": 0,
-        "impressions": 12,
+        "impressions": 13,
         "ctr": 0,
-        "position": 35.1
+        "position": 34.8
       },
       {
         "page": "https://gadgetgeekspro.com/about/",
         "clicks": 0,
-        "impressions": 58,
+        "impressions": 77,
         "ctr": 0,
-        "position": 5.9
+        "position": 5.0
       },
       {
         "page": "https://gadgetgeekspro.com/blog/",
         "clicks": 0,
-        "impressions": 6,
+        "impressions": 8,
         "ctr": 0,
-        "position": 3.8
+        "position": 4.6
       },
       {
         "page": "https://gadgetgeekspro.com/blogs/news",
         "clicks": 0,
-        "impressions": 8,
+        "impressions": 10,
         "ctr": 0,
-        "position": 3.6
+        "position": 3.2
+      },
+      {
+        "page": "https://gadgetgeekspro.com/category/cracked-phone-screen/",
+        "clicks": 0,
+        "impressions": 1,
+        "ctr": 0,
+        "position": 9
       },
       {
         "page": "https://gadgetgeekspro.com/category/phone-repair/",
@@ -1074,23 +1673,23 @@
       {
         "page": "https://gadgetgeekspro.com/computers/",
         "clicks": 0,
-        "impressions": 42,
+        "impressions": 56,
         "ctr": 0,
-        "position": 26.2
+        "position": 22.3
       },
       {
         "page": "https://gadgetgeekspro.com/contact-us/",
         "clicks": 0,
-        "impressions": 88,
+        "impressions": 92,
         "ctr": 0,
-        "position": 6.5
+        "position": 6.4
       },
       {
         "page": "https://gadgetgeekspro.com/device-insurance-plans/",
         "clicks": 0,
-        "impressions": 21,
+        "impressions": 27,
         "ctr": 0,
-        "position": 10.9
+        "position": 8.8
       },
       {
         "page": "https://gadgetgeekspro.com/feedback/",
@@ -1102,44 +1701,51 @@
       {
         "page": "https://gadgetgeekspro.com/home-security-system/",
         "clicks": 0,
-        "impressions": 25,
+        "impressions": 27,
         "ctr": 0,
-        "position": 36.4
+        "position": 34.7
+      },
+      {
+        "page": "https://gadgetgeekspro.com/products/apple-ipad-5th-gen",
+        "clicks": 0,
+        "impressions": 3,
+        "ctr": 0,
+        "position": 2
       },
       {
         "page": "https://gadgetgeekspro.com/products/apple-ipad-mini-2",
         "clicks": 0,
-        "impressions": 5,
+        "impressions": 7,
         "ctr": 0,
-        "position": 2.6
+        "position": 2.3
       },
       {
         "page": "https://gadgetgeekspro.com/products/apple-iphone-14",
         "clicks": 0,
-        "impressions": 5,
+        "impressions": 7,
         "ctr": 0,
-        "position": 2.6
+        "position": 2.3
       },
       {
         "page": "https://gadgetgeekspro.com/products/apple-macbook-air-13-inch-2018",
         "clicks": 0,
-        "impressions": 5,
+        "impressions": 7,
         "ctr": 0,
-        "position": 2.6
+        "position": 2.3
       },
       {
         "page": "https://gadgetgeekspro.com/products/apple-watch-series-4",
         "clicks": 0,
-        "impressions": 2,
+        "impressions": 4,
         "ctr": 0,
-        "position": 5
+        "position": 3.2
       },
       {
         "page": "https://gadgetgeekspro.com/products/camera-lens-cover",
         "clicks": 0,
-        "impressions": 1,
+        "impressions": 3,
         "ctr": 0,
-        "position": 2
+        "position": 1.7
       },
       {
         "page": "https://gadgetgeekspro.com/products/clear-case-with-magsafe-iphone-15-14-13",
@@ -1151,23 +1757,23 @@
       {
         "page": "https://gadgetgeekspro.com/products/samsung-galaxy-note-20",
         "clicks": 0,
-        "impressions": 5,
+        "impressions": 7,
         "ctr": 0,
-        "position": 2.6
+        "position": 2.3
       },
       {
         "page": "https://gadgetgeekspro.com/remote-access-plans/",
         "clicks": 0,
-        "impressions": 19,
+        "impressions": 22,
         "ctr": 0,
-        "position": 22.3
+        "position": 19.8
       },
       {
         "page": "https://gadgetgeekspro.com/smart-home-automation/",
         "clicks": 0,
-        "impressions": 118,
+        "impressions": 133,
         "ctr": 0,
-        "position": 16.9
+        "position": 16.4
       },
       {
         "page": "https://gadgetgeekspro.com/smartphones/",
@@ -1175,20 +1781,6 @@
         "impressions": 32,
         "ctr": 0,
         "position": 28
-      },
-      {
-        "page": "https://gadgetgeekspro.com/tablets/",
-        "clicks": 0,
-        "impressions": 13,
-        "ctr": 0,
-        "position": 10.7
-      },
-      {
-        "page": "https://gadgetgeekspro.com/terms-and-conditions/",
-        "clicks": 0,
-        "impressions": 8,
-        "ctr": 0,
-        "position": 9.5
       }
     ],
     "previous_queries": {},

@@ -1,335 +1,273 @@
 {
   "prompts": [
     {
-      "id": "prompt_20260316_001",
-      "use_case": "lifestyle",
-      "source": "ai_generated",
-      "platform": "tiktok",
-      "aspect_ratio": "9:16",
-      "prompt": "Person with pulled-back hair wearing vintage band t-shirt sitting at wooden desk with wired over-ear headphones connected to laptop. Hands positioned naturally near small headphone jack adapter on desk surface. NO phone visible in frame - natural hand positioning suggests phone use nearby. Multiple music equipment visible: vinyl records, small speakers, audio cables. Warm afternoon light streaming through window onto music setup. Natural skin with authentic expression of music enjoyment. Canon EOS R5, 85mm f/1.2, shallow depth of field, subject sharp, music gear softly blurred. Kodak Portra 400 film emulation, warm natural grade. Documentary style, candid music moment. IMG_4832.CR3 unedited.",
-      "negative_prompt": "NO phone, NO device, NO screen, NO plastic skin, NO mannequin, NO CGI, NO airbrushed, NO cartoon, NO age specification",
-      "composite_product": "iphone_13",
-      "design_instructions": "AI generates music lover scene. CANVAS composites iPhone 13 in natural hand position and adds messaging about headphone jack feature.",
-      "text_overlay": {
-        "headline": "Last Great iPhone With Headphone Jack",
-        "subline": "iPhone 13 refurbished — modern performance + the port Apple removed",
-        "cta": "Perfect for Music Lovers"
-      },
-      "driven_by": "x-intel trending HIGH: Headphone Jack Nostalgia Rising - @m00nshadowelf frustrated newer phones lack jacks",
-      "platform_params": "--ar 9:16 --style raw --s 250",
-      "notes": "NEW trending topic - positions iPhone 13 as last great iPhone with headphone jack for music lovers",
-      "keywords_targeted": [
-        "iphone headphone jack",
-        "iphone 13 music"
-      ],
-      "recommended_tool": "midjourney",
-      "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/818cea1a-1e7b-4f44-8db2-5ac547be8f20/gg-prompt_20260316_001.png",
-      "generated_at": "2026-03-16T09:49:38.764083+00:00",
-      "generation_status": "done",
-      "canva_design_status": "designed",
-      "canva_design_id": "DAHEGqqiV-8",
-      "canva_export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/14c8bb86-274c-406d-87b5-ff8f7978a8cb/canva-tiktok-prompt_20260316_001-20260316_103327.png"
-    },
-    {
-      "id": "prompt_20260316_002",
+      "id": "prompt_20260317_001",
       "use_case": "security_quality",
       "source": "ai_generated",
       "platform": "tiktok",
       "aspect_ratio": "9:16",
-      "prompt": "Professional quality control inspector at clean workstation examining shipping documentation with magnifying glass. Multiple evidence documents spread on white table: Royal Mail receipts, package weight certificates, tracking printouts, photo documentation. Professional hands with nitrile gloves carefully organizing evidence files. NO phones visible - focus on documentation integrity and investigation process. Bright commercial lighting highlighting paper details and professional setup. Quality assurance environment with scales, measuring tools, documentation equipment. Canon EOS R5, 100mm macro f/2.8, sharp focus on documentation details. Clean commercial photography style, documentary approach. IMG_7891.CR3 professional documentation.",
-      "negative_prompt": "NO phone, NO device, NO screen, NO damaged documents, NO amateur setup, cartoon, CGI, blurry text",
-      "design_instructions": "AI generates evidence documentation scene. CANVAS adds messaging about transparent dispute resolution and investigative standards, contrasting with Back Market crisis.",
+      "prompt": "Professional evidence analyst at clean investigation desk examining shipping documentation with magnifying lens. Royal Mail delivery receipt, package weight certificate showing 1.2kg, tracking printout, photo evidence spread on white surface. Person wearing nitrile gloves carefully cross-referencing multiple documents. Professional lighting highlighting paper details and systematic approach. Clear focus on documentation integrity and thorough investigation process. NO phone visible - focus on evidence handling expertise. Canon EOS R5, 100mm macro f/2.8, sharp focus on documentation details. Kodak Portra 400 film emulation, professional documentation grade. Clean commercial investigation photography. IMG_7892.CR3 evidence documentation.",
+      "negative_prompt": "NO phone, NO device, NO amateur setup, NO damaged documents, cartoon, CGI, blurry text",
+      "design_instructions": "AI generates professional evidence analysis scene. CANVAS adds messaging about thorough investigation standards and evidence-based resolution processes.",
       "text_overlay": {
-        "headline": "When Evidence Actually Matters",
-        "subline": "Royal Mail receipts. Photo proof. Real investigation.",
+        "headline": "When Evidence Actually Gets Reviewed",
+        "subline": "Royal Mail receipts. Weight certificates. Photo proof. Real investigation.",
         "cta": "Disputes Done Right"
       },
-      "driven_by": "x-intel competitor crisis: @OneOptimusPrice UK crisis escalating - Royal Mail proof ignored by Back Market for month+",
+      "driven_by": "x-intel competitor crisis: @OneOptimusPrice Royal Mail weight proof ignored for month+ by Back Market",
       "platform_params": "--ar 9:16 --style raw --s 250",
-      "notes": "Addresses Back Market evidence-ignoring crisis with professional investigation standards",
+      "notes": "Addresses competitor evidence dismissal crisis with professional investigation standards",
       "keywords_targeted": [
         "phone dispute resolution",
         "refurbished phone evidence"
       ],
-      "recommended_tool": "midjourney",
-      "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/3ba91da1-eca3-457c-ae4c-2f952ada53cb/gg-prompt_20260316_002.png",
-      "generated_at": "2026-03-16T09:51:09.958290+00:00",
-      "generation_status": "done",
-      "canva_design_status": "designed",
-      "canva_design_id": "DAHEGqYIq1Y",
-      "canva_export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/892eaf41-1fe8-47a6-8fe1-426a33e94b3e/canva-tiktok-prompt_20260316_002-20260316_103348.png"
+      "recommended_tool": "midjourney"
     },
     {
-      "id": "prompt_20260316_003",
-      "use_case": "comparison",
-      "source": "ai_generated",
-      "platform": "instagram",
-      "aspect_ratio": "1:1",
-      "prompt": "Split comparison layout showing two price scenarios. Left side: Stack of crisp hundred dollar bills with 'S25 ULTRA NEW $1,299' price tag prominently displayed. Right side: Same amount of cash but spread showing 'S24 ULTRA REFURBISHED $799' with remaining bills labeled 'YOUR SAVINGS $500'. NO phones visible - pure financial comparison. Professional commercial photography setup, clean white background, sharp focus on cash and price tags. Phase One IQ4 150MP, 100mm macro f/2.8, perfect detail on currency and text. Clean digital rendering, commercial catalog style. IMG_6543.CR3 financial comparison shoot.",
-      "negative_prompt": "NO phones, NO devices, NO screens, NO people, cartoon, CGI, blurry text, fake money",
-      "design_instructions": "AI generates price comparison scene. CANVAS adds Samsung Galaxy S25 Ultra vs S24 Ultra refurbished comparison with feature parity messaging.",
-      "text_overlay": {
-        "headline": "S25 Ultra vs S24 Ultra Refurbished",
-        "subline": "Same flagship performance. $500 less.",
-        "cta": "Get S24 Ultra Now"
-      },
-      "driven_by": "x-intel trending: Galaxy S25 Ultra giveaway surge continues with 50-90+ likes showing premium Samsung demand",
-      "platform_params": "--ar 1:1 --style raw --s 250",
-      "notes": "Capitalizes on sustained S25 Ultra interest with smart refurbished alternative positioning",
-      "keywords_targeted": [
-        "galaxy s25 vs s24",
-        "samsung galaxy comparison"
-      ],
-      "recommended_tool": "midjourney",
-      "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/404ae83e-21b5-4623-9f2a-d0f8b2427bce/gg-prompt_20260316_003.png",
-      "generated_at": "2026-03-16T09:50:40.921746+00:00",
-      "generation_status": "done",
-      "canva_design_status": "designed",
-      "canva_design_id": "DAHEGuNgjgA",
-      "canva_export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/8b37ddce-ef2d-4c92-887b-12ddeaa78dd1/canva-instagram-prompt_20260316_003-20260316_103342.png"
-    },
-    {
-      "id": "prompt_20260316_004",
-      "use_case": "lifestyle",
+      "id": "prompt_20260317_002",
+      "use_case": "security_quality",
       "source": "ai_generated",
       "platform": "tiktok",
       "aspect_ratio": "9:16",
-      "prompt": "Person with curly hair wearing casual hoodie at campus coffee shop table with textbooks and laptop open. Hands positioned naturally around ceramic mug with small notebook nearby. NO phone visible in frame - natural positioning suggests texting break from studying. University environment with other students softly blurred in background. Warm café lighting with pendant lamps and window light mixing naturally. Natural skin texture, relaxed student expression. College-age energy without specifying exact age. Canon EOS R5, 50mm f/1.4, shallow depth of field, subject sharp, café background bokeh. Kodak Portra 400 film emulation, warm natural grade. Documentary campus life style. IMG_3821.CR3 authentic student moment.",
-      "negative_prompt": "NO phone, NO device, NO screen, NO plastic skin, NO mannequin, NO CGI, NO specific age mention",
-      "composite_product": "iphone_13",
-      "design_instructions": "AI generates student café scene. CANVAS composites iPhone 13 and adds budget-friendly student messaging.",
+      "prompt": "Quality control inspector in pristine white lab coat using magnifying glass to examine device surface for any imperfections. Clean inspection station with bright LED lighting, measurement tools, grading checklist visible. Person with nitrile gloves checking for fingerprints, scratches, or marks with professional precision. NO phone visible - focus on thorough inspection process and cleanliness standards. Laboratory-grade environment with quality control documentation and grading standards posted. Multiple inspection tools: lint-free cloths, cleaning solutions, precision measurement devices. Canon EOS R5, 100mm macro f/2.8, sharp focus on inspection process. Kodak Portra 400 film emulation, clean commercial photography. Professional quality assurance documentation. IMG_9877.CR3 inspection standards.",
+      "negative_prompt": "NO phone, NO device, NO greasy surfaces, NO dirty hands, NO amateur setup, cartoon, CGI",
+      "design_instructions": "AI generates professional quality inspection scene. CANVAS adds messaging about rigorous grading accuracy and cleanliness standards.",
       "text_overlay": {
-        "headline": "Perfect Student Phone Deal",
-        "subline": "iPhone 13 refurbished — flagship performance, textbook budget",
-        "cta": "Student Special $349"
+        "headline": "What 'Excellent' Actually Means",
+        "subline": "No fingerprints. No false grading. Photo-accurate condition.",
+        "cta": "Grading You Can Trust"
       },
-      "driven_by": "x-intel trending: Budget phone guidance demand sustained @taqd33z at 39 likes + local University of Arizona student opportunity",
+      "driven_by": "x-intel competitor crisis: @DavinderS27038 Back Market selling items with greasy handprints as 'excellent condition'",
       "platform_params": "--ar 9:16 --style raw --s 250",
-      "notes": "Targets sustained budget guidance demand with University of Arizona student angle",
+      "notes": "Addresses competitor quality control failures with professional grading standards",
       "keywords_targeted": [
-        "student phone deals arizona",
-        "university of arizona phones"
+        "phone condition grading",
+        "excellent condition refurbished"
       ],
-      "recommended_tool": "midjourney",
-      "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/0bebd4b6-4923-46bd-95a3-80202347eccd/gg-prompt_20260316_004.png",
-      "generated_at": "2026-03-16T09:50:13.603636+00:00",
-      "generation_status": "done",
-      "canva_design_status": "designed",
-      "canva_design_id": "DAHEGnNE3nY",
-      "canva_export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/423ffaa9-b1ce-446c-b676-ef73409e7a39/canva-tiktok-prompt_20260316_004-20260316_103334.png"
+      "recommended_tool": "midjourney"
     },
     {
-      "id": "prompt_20260316_005",
+      "id": "prompt_20260317_003",
+      "use_case": "security_quality",
+      "source": "ai_generated",
+      "platform": "tiktok",
+      "aspect_ratio": "9:16",
+      "prompt": "Customer support representative at modern office desk with dual monitors showing active support tickets and live chat windows. Person wearing professional headset typing detailed responses with focused attention. Clean workspace with multiple communication channels visible: email queue, chat support, phone system all actively managed. NO phone visible - focus on responsive support infrastructure and consistent communication. Natural office lighting with colleagues working collaboratively in background. Authentic workplace environment showing engaged, helpful support team. Canon EOS R5, 85mm f/1.2, shallow depth of field, subject sharp, office softly blurred. Kodak Portra 400 film emulation, natural workplace grade. Documentary customer service photography. IMG_5468.CR3 responsive support.",
+      "negative_prompt": "NO phone, NO device focus, NO empty desks, NO staged poses, cartoon, CGI, mannequin",
+      "design_instructions": "AI generates responsive customer service scene. CANVAS adds messaging about consistent support throughout entire process.",
+      "text_overlay": {
+        "headline": "Support That Doesn't Vanish",
+        "subline": "Every email answered. Every step explained. Until resolved.",
+        "cta": "No Ghosting Guarantee"
+      },
+      "driven_by": "x-intel competitor crisis: @mrs_johnson909 Back Market one reply then complete silence on return process",
+      "platform_params": "--ar 9:16 --style raw --s 250",
+      "notes": "Addresses competitor support abandonment with consistent communication promise",
+      "keywords_targeted": [
+        "phone customer service",
+        "refurbished phone support"
+      ],
+      "recommended_tool": "midjourney"
+    },
+    {
+      "id": "prompt_20260317_004",
+      "use_case": "security_quality",
+      "source": "ai_generated",
+      "platform": "instagram",
+      "aspect_ratio": "1:1",
+      "prompt": "Side-by-side comparison showing two different quality standards. Left side: Professional cleaning station with lint-free cloths, cleaning solutions, precision tools, and detailed grading checklist. Right side: Casual, unprofessional setup with generic cleaning supplies and basic standards. NO phones visible - focus on contrasting quality control approaches and professional standards. Bright, even commercial lighting highlighting the difference in attention to detail and professionalism. Clean white background emphasizing the quality gap between professional and amateur approaches. Canon EOS R5, 100mm macro f/2.8, sharp focus on both setups. Clean digital commercial photography style. Professional documentation comparison. IMG_8765.CR3 quality standards.",
+      "negative_prompt": "NO phones, NO devices, NO screens, NO text overlays, cartoon, CGI, blurry details",
+      "design_instructions": "AI generates quality standards comparison. CANVAS adds messaging contrasting professional vs amateur grading approaches.",
+      "text_overlay": {
+        "headline": "Quality Standards: Us vs Them",
+        "subline": "Professional grading vs whatever-passes inspection",
+        "cta": "Choose Real Standards"
+      },
+      "driven_by": "x-intel trending: Quality grading accuracy expectations rising + competitor systematic quality failures",
+      "platform_params": "--ar 1:1 --style raw --s 250",
+      "notes": "Comprehensive comparison addressing quality grading accuracy trend",
+      "keywords_targeted": [
+        "refurbished phone quality standards",
+        "phone grading accuracy"
+      ],
+      "recommended_tool": "midjourney"
+    },
+    {
+      "id": "prompt_20260317_005",
+      "use_case": "product_hero",
+      "source": "product_photo",
+      "platform": "tiktok",
+      "aspect_ratio": "9:16",
+      "prompt": null,
+      "product_photo_id": "iphone_13",
+      "design_instructions": "Use real iPhone 13 product photo. CANVAS applies: dark gradient background with subtle spotlight, emphasizing headphone jack feature for music lovers and nostalgic users.",
+      "text_overlay": {
+        "headline": "Last iPhone With Everything You Need",
+        "subline": "Modern iOS + Headphone Jack Apple Removed 🎧",
+        "cta": "Complete Package $349"
+      },
+      "background_style": "dark gradient with subtle spotlight effect",
+      "driven_by": "x-intel trending HIGH: Headphone Jack Nostalgia Sustained - @m00nshadowelf trend continuing with high engagement",
+      "platform_params": "--ar 9:16 --style raw --s 250",
+      "notes": "Targets sustained headphone jack nostalgia trend with iPhone 13 perfect match",
+      "keywords_targeted": [
+        "iphone 13 headphone jack",
+        "last iphone with headphone jack"
+      ],
+      "recommended_tool": "product_photo_reference"
+    },
+    {
+      "id": "prompt_20260317_006",
       "use_case": "product_hero",
       "source": "product_photo",
       "platform": "instagram",
       "aspect_ratio": "4:5",
       "prompt": null,
       "product_photo_id": "iphone_14",
-      "design_instructions": "Use real iPhone 14 product photo. CANVAS applies: premium dark background with subtle spotlight effect, positioning against iPhone 17e with immediate availability angle.",
+      "design_instructions": "Use real iPhone 14 product photo. CANVAS applies: premium white background with subtle reflection, positioning against iPhone 17e with value messaging.",
       "text_overlay": {
         "headline": "iPhone 17e vs iPhone 14 Refurbished",
-        "subline": "Why wait 8 months for entry-level features?",
-        "cta": "Get Pro Features Now"
+        "subline": "Why wait 8 months to pay more for less?",
+        "cta": "Pro Features Now $449"
       },
-      "background_style": "premium dark spotlight background",
-      "driven_by": "x-intel trending: iPhone 17e vs refurbished flagship discussion - @mantech_ug getting 4 likes, 2 RTs",
+      "background_style": "premium white with subtle product reflection",
+      "driven_by": "x-intel trending: Refurbished Flagship vs New Entry Model - @mantech_ug message maintaining engagement",
       "platform_params": "--ar 4:5 --style raw --s 250",
-      "notes": "Continues sustained iPhone 17e vs refurbished positioning with Instagram portrait format",
+      "notes": "Continues iPhone 17e vs refurbished flagship positioning trend",
       "keywords_targeted": [
         "iphone 17e vs refurbished",
         "iphone 14 refurbished"
       ],
-      "recommended_tool": "product_photo_reference",
-      "canva_design_status": "designed",
-      "canva_design_id": "DAHEGvQ78Yg",
-      "canva_export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/ef5e3360-dc8e-445b-a3db-1140e033be2c/canva-instagram-prompt_20260316_005-20260316_103316.png"
+      "recommended_tool": "product_photo_reference"
     },
     {
-      "id": "prompt_20260316_006",
-      "use_case": "security_quality",
-      "source": "ai_generated",
-      "platform": "tiktok",
-      "aspect_ratio": "9:16",
-      "prompt": "Customer service representative at modern desk with dual monitors displaying live chat windows and support tickets. Person wearing professional headset typing responses with genuine focus and care. Clean, well-lit office environment with team collaboration visible in background. NO phones visible - focus on responsive support infrastructure. Natural workplace lighting with overhead and desk lamps creating professional atmosphere. Authentic office worker appearance, engaged and helpful expression. Multiple support channels visible: email, chat, phone system actively in use. Canon EOS R5, 85mm f/1.2, shallow depth of field, subject sharp, office background softly blurred. Documentary workplace style. IMG_5467.CR3 authentic customer service.",
-      "negative_prompt": "NO phone, NO device focus, NO plastic skin, NO staged poses, NO empty desks, cartoon, CGI",
-      "design_instructions": "AI generates responsive customer service scene. CANVAS adds messaging about consistent support throughout return process, contrasting with Back Market abandonment.",
-      "text_overlay": {
-        "headline": "Returns: We Don't Ghost You",
-        "subline": "Every email answered. Every step explained. Every time.",
-        "cta": "Support That Actually Supports"
-      },
-      "driven_by": "x-intel competitor crisis: @mrs_johnson909 Back Market one reply then complete silence on return details - AVOID AT ALL COSTS warning",
-      "platform_params": "--ar 9:16 --style raw --s 250",
-      "notes": "Addresses Back Market support abandonment crisis with responsive service differentiation",
-      "keywords_targeted": [
-        "phone customer service",
-        "refurbished phone returns"
-      ],
-      "recommended_tool": "midjourney",
-      "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/ca80548c-8b55-41ff-bbf3-533d7af7ef5f/gg-prompt_20260316_006.png",
-      "generated_at": "2026-03-16T09:51:43.466905+00:00",
-      "generation_status": "done",
-      "canva_design_status": "designed",
-      "canva_design_id": "DAHEGhiYBgk",
-      "canva_export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/8ed135d3-77e0-450b-902a-46eb01cf7fe8/canva-tiktok-prompt_20260316_006-20260316_103354.png"
-    },
-    {
-      "id": "prompt_20260316_007",
-      "use_case": "deal_urgency",
-      "source": "ai_generated",
-      "platform": "tiktok",
-      "aspect_ratio": "9:16",
-      "prompt": "Dynamic overhead shot of hands arranging tech bundle accessories on clean white surface. Multiple premium accessories being unboxed simultaneously: leather phone cases, wireless charging pad, premium USB-C cables, screen protectors in packaging. NO phone visible - focus on accessory value and abundance. Dramatic directional lighting creating dynamic shadows and highlighting accessory quality. Hands with simple watch and natural nails suggesting authentic unboxing experience. 'BUNDLE DEAL' and price tags visible among accessories. Canon EOS R5, 50mm f/1.4, shallow depth of field focusing on hands and premium accessories. Commercial unboxing photography with energy. IMG_8234.CR3 bundle value showcase.",
-      "negative_prompt": "NO phone, NO device screens, NO text overlays, NO cheap accessories, plastic skin, mannequin hands, CGI",
-      "design_instructions": "AI generates premium bundle unboxing scene. CANVAS adds urgency messaging and bundle pricing with weekend deadline.",
-      "text_overlay": {
-        "headline": "Weekend Bundle Blowout",
-        "subline": "Phone + Premium Case + Wireless Charger + Protection",
-        "cta": "Complete Bundle $349"
-      },
-      "driven_by": "calendar analysis: Need deal urgency content missing from recent posts + spring supply surge opportunity per trends",
-      "platform_params": "--ar 9:16 --style raw --s 250",
-      "notes": "Creates weekend urgency for premium bundles during spring supply surge period",
-      "keywords_targeted": [
-        "phone bundle deals weekend",
-        "premium phone accessories"
-      ],
-      "recommended_tool": "midjourney",
-      "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/8c850066-3965-48d6-9165-8d971be7989d/gg-prompt_20260316_007.png",
-      "generated_at": "2026-03-16T09:53:11.031864+00:00",
-      "generation_status": "done",
-      "canva_design_status": "designed",
-      "canva_design_id": "DAHEGrt3dQY",
-      "canva_export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/abb0956d-4711-491c-9494-f4a13f2287c1/canva-tiktok-prompt_20260316_007-20260316_103407.png"
-    },
-    {
-      "id": "prompt_20260316_008",
-      "use_case": "budget_guidance",
-      "source": "ai_generated",
-      "platform": "instagram",
-      "aspect_ratio": "1:1",
-      "prompt": "Clean educational layout showing three price tiers with tech accessories representing different budget levels. $200 tier: basic accessories and price tags. $400 tier: mid-range accessories with better packaging. $600 tier: premium accessories with luxury packaging. NO phones visible - pure budget education through accessory quality comparison. Professional product catalog photography, bright even lighting, white background. Multiple price points clearly displayed with quality indicators. Phase One IQ4 150MP, 100mm macro f/2.8, sharp focus on all price tags and quality details. Commercial educational photography style. IMG_7654.CR3 budget guide documentation.",
-      "negative_prompt": "NO phones, NO devices, NO screens, NO people, cartoon, CGI, blurry text, unclear pricing",
-      "design_instructions": "AI generates budget tier comparison scene. CANVAS adds specific phone recommendations for each price tier with model names and features.",
-      "text_overlay": {
-        "headline": "Budget Phone Guide 2026",
-        "subline": "$349 iPhone 13 | $289 Galaxy S22 | $449 iPhone 14",
-        "cta": "Find Your Perfect Match"
-      },
-      "driven_by": "x-intel trending: Budget phone guidance demand sustained - @taqd33z request still at 39 likes showing high demand",
-      "platform_params": "--ar 1:1 --style raw --s 250",
-      "notes": "Responds to sustained high-engagement budget guidance demand with specific recommendations",
-      "keywords_targeted": [
-        "budget phone guide 2026",
-        "best phones under 400"
-      ],
-      "recommended_tool": "midjourney",
-      "generated_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/58dcac86-ad50-4214-8ae3-3c0da90522b7/gg-prompt_20260316_008.png",
-      "generated_at": "2026-03-16T09:52:34.716267+00:00",
-      "generation_status": "done",
-      "canva_design_status": "designed",
-      "canva_design_id": "DAHEGroxqMU",
-      "canva_export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/9d54a5a7-7102-47e9-b336-4c2a478cbbb5/canva-instagram-prompt_20260316_008-20260316_103401.png"
-    },
-    {
-      "id": "prompt_20260316_009",
-      "use_case": "quality_control",
-      "source": "ai_generated",
-      "platform": "tiktok",
-      "aspect_ratio": "9:16",
-      "prompt": "Professional quality inspector wearing clean white lab coat and nitrile gloves examining device with magnifying glass and inspection tools. Clean white inspection table with multiple quality control checklists, measurement tools, and documentation forms visible. NO phone visible - focus on thorough inspection process and professional standards. Bright commercial lighting setup highlighting inspection details and cleanliness standards. Professional laboratory environment with inspection equipment, cameras for documentation, quality control standards posted on walls. Canon EOS R5, 100mm macro f/2.8, sharp focus on inspection tools and documentation. Commercial quality assurance photography. IMG_9876.CR3 professional inspection.",
-      "negative_prompt": "NO phone, NO device, NO greasy surfaces, NO dirty hands, NO amateur setup, cartoon, CGI",
-      "design_instructions": "AI generates professional quality inspection scene. CANVAS adds messaging about rigorous grading standards and cleanliness, contrasting with Back Market quality failures.",
-      "text_overlay": {
-        "headline": "What 'Excellent Condition' Actually Means",
-        "subline": "No greasy handprints. No false grading. Photo proof included.",
-        "cta": "Quality You Can See"
-      },
-      "driven_by": "x-intel competitor crisis: @DavinderS27038 Back Market selling items with greasy handprints as 'excellent condition'",
-      "platform_params": "--ar 9:16 --style raw --s 250",
-      "notes": "Addresses Back Market quality control failures with professional grading standards",
-      "keywords_targeted": [
-        "phone condition grading",
-        "refurbished phone quality"
-      ],
-      "recommended_tool": "midjourney",
-      "generation_status": "error",
-      "generation_error": "Both Gemini and DALL-E failed. DALL-E error: DALL-E 500: {\n  \"error\": {\n    \"message\": \"The server had an error processing your request. Sorry about that! You can retry your request, or contact us through our help center at help.openai.com if you keep seeing this error. (Please include the request I"
-    },
-    {
-      "id": "prompt_20260316_010",
+      "id": "prompt_20260317_007",
       "use_case": "product_hero",
       "source": "product_photo",
       "platform": "facebook",
       "aspect_ratio": "16:9",
       "prompt": null,
       "product_photo_id": "iphone_13",
-      "design_instructions": "Use real iPhone 13 product photo. CANVAS applies: clean white background with subtle reflection, highlighting headphone jack messaging for music lovers and nostalgic users.",
+      "design_instructions": "Use real iPhone 13 product photo. CANVAS applies: clean white background with dynamic lighting, emphasizing budget-friendly flagship performance.",
       "text_overlay": {
-        "headline": "The Last iPhone With Everything",
-        "subline": "iPhone 13 — Modern iOS + Headphone Jack Apple Removed",
-        "cta": "Get Both Worlds $349"
+        "headline": "Flagship Performance, Budget Price",
+        "subline": "iPhone 13 Refurbished — All Pro Features, Half the Cost",
+        "cta": "Arizona's Best Deal $349"
       },
-      "background_style": "clean white with subtle product reflection",
-      "driven_by": "x-intel trending HIGH: Headphone Jack Nostalgia Rising - perfect product match for iPhone 13 positioning",
+      "background_style": "clean white with dynamic product lighting",
+      "driven_by": "x-intel trending: Budget Phone Guidance Demand Peak - multiple high-engagement requests showing sustained demand",
       "platform_params": "--ar 16:9 --style raw --s 250",
-      "notes": "Second angle on headphone jack trend with product hero approach for Facebook landscape format",
+      "notes": "Targets budget guidance demand with flagship value positioning",
       "keywords_targeted": [
-        "iphone 13 headphone jack",
-        "last iphone with headphone jack"
+        "budget flagship phone arizona",
+        "iphone 13 refurbished deal"
       ],
-      "recommended_tool": "product_photo_reference",
-      "canva_design_status": "designed",
-      "canva_design_id": "DAHEGs-7unI",
-      "canva_export_url": "https://shopify-staged-uploads.storage.googleapis.com/tmp/66416640251/files/a3f0105c-4403-4e94-a318-8c1f5958a775/canva-facebook-prompt_20260316_010-20260316_103322.png"
+      "recommended_tool": "product_photo_reference"
+    },
+    {
+      "id": "prompt_20260317_008",
+      "use_case": "comparison",
+      "source": "ai_generated",
+      "platform": "instagram",
+      "aspect_ratio": "1:1",
+      "prompt": "Educational split layout comparing two purchase scenarios. Left side: Stack of cash with 'IPHONE 17e - SEPTEMBER RELEASE - $499' price tag and calendar showing long wait time. Right side: Same amount of cash showing 'IPHONE 15 PRO REFURBISHED - AVAILABLE NOW - $499' with checkmark and immediate availability badge. NO phones visible - pure timing and value comparison. Professional commercial photography, bright white background, sharp focus on price tags and availability messaging. Phase One IQ4 150MP, 100mm macro f/2.8, perfect detail on currency and text. Clean commercial catalog style. IMG_6544.CR3 timing comparison.",
+      "negative_prompt": "NO phones, NO devices, NO screens, NO people, cartoon, CGI, blurry text",
+      "design_instructions": "AI generates timing comparison scene. CANVAS adds iPhone 17e vs refurbished flagship messaging with immediate satisfaction angle.",
+      "text_overlay": {
+        "headline": "iPhone 17e vs iPhone 15 Pro Refurbished",
+        "subline": "Same price. 8-month wait vs available now.",
+        "cta": "Why Wait? Get Pro Now"
+      },
+      "driven_by": "x-intel trending: Refurbished Flagship vs New Entry Model Momentum - @mantech_ug message getting continued engagement",
+      "platform_params": "--ar 1:1 --style raw --s 250",
+      "notes": "Amplifies core messaging about refurbished flagship vs new entry model value",
+      "keywords_targeted": [
+        "iphone 17e vs refurbished",
+        "refurbished flagship vs new entry"
+      ],
+      "recommended_tool": "midjourney"
+    },
+    {
+      "id": "prompt_20260317_009",
+      "use_case": "comparison",
+      "source": "ai_generated",
+      "platform": "tiktok",
+      "aspect_ratio": "9:16",
+      "prompt": "Educational budget breakdown showing three spending tiers with clear pricing labels. Top tier: '$600+ NEW FLAGSHIP' with premium packaging and high-end accessories. Middle tier: '$400-500 REFURBISHED FLAGSHIP' with same quality accessories at better value. Bottom tier: '$200-300 BUDGET NEW' with basic accessories and limited features. NO phones visible - focus on pure value comparison through accessory quality and pricing transparency. Professional commercial photography, bright even lighting, white background. Multiple price points clearly displayed with value indicators. Phase One IQ4 150MP, 100mm macro f/2.8, sharp focus on all pricing and quality details. Commercial educational photography style. IMG_7655.CR3 budget education.",
+      "negative_prompt": "NO phones, NO devices, NO screens, NO people, cartoon, CGI, unclear pricing",
+      "design_instructions": "AI generates budget tier educational scene. CANVAS adds specific phone recommendations for each price tier with Arizona business messaging.",
+      "text_overlay": {
+        "headline": "Arizona Phone Budget Guide 2026",
+        "subline": "$349 iPhone 13 | $289 Galaxy S22 | $449 iPhone 14",
+        "cta": "Arizona Business, Real Warranty"
+      },
+      "driven_by": "x-intel trending: Budget Phone Guidance Demand Peak - sustained high engagement showing expert positioning opportunity",
+      "platform_params": "--ar 9:16 --style raw --s 250",
+      "notes": "Responds to sustained budget guidance demand with Arizona local angle",
+      "keywords_targeted": [
+        "budget phone guide arizona",
+        "best refurbished phones 2026"
+      ],
+      "recommended_tool": "midjourney"
+    },
+    {
+      "id": "prompt_20260317_010",
+      "use_case": "lifestyle",
+      "source": "ai_generated",
+      "platform": "tiktok",
+      "aspect_ratio": "9:16",
+      "prompt": "Person with shoulder-length wavy hair wearing vintage band hoodie at music studio desk with professional wired headphones connected to audio interface. Multiple music equipment visible: vinyl records, analog mixer, quality studio monitors, coiled audio cables. Hands positioned naturally near headphone adapter and small audio gear. NO phone visible in frame - natural positioning suggests music production workflow. Warm studio lighting with pendant lamps and natural window light mixing. Authentic musician appearance with focused expression on music creation. Professional studio environment with sound panels and equipment. Canon EOS R5, 85mm f/1.2, shallow depth of field, subject sharp, studio gear softly blurred. Kodak Portra 400 film emulation, warm natural grade. Documentary music production style. IMG_4833.CR3 authentic studio moment.",
+      "negative_prompt": "NO phone, NO device, NO screen, NO plastic skin, NO mannequin, NO CGI, NO specific age mention",
+      "composite_product": "iphone_13",
+      "design_instructions": "AI generates music production scene. CANVAS composites iPhone 13 and adds messaging about headphone jack for serious music creation.",
+      "text_overlay": {
+        "headline": "For Serious Music Creators",
+        "subline": "iPhone 13 — Pro performance + headphone jack for studio work",
+        "cta": "Musicians' Choice $349"
+      },
+      "driven_by": "x-intel trending HIGH: Headphone Jack Nostalgia Sustained - music creators specifically frustrated with removal",
+      "platform_params": "--ar 9:16 --style raw --s 250",
+      "notes": "Second angle on headphone jack trend focusing on music creation audience",
+      "keywords_targeted": [
+        "iphone headphone jack music",
+        "phone music production"
+      ],
+      "recommended_tool": "midjourney"
     }
   ],
   "folders": {
+    "security_quality": {
+      "label": "Security / Quality Assurance",
+      "description": "Back Market crisis differentiation — evidence handling, grading accuracy, support consistency",
+      "prompts": [
+        "prompt_20260317_001",
+        "prompt_20260317_002",
+        "prompt_20260317_003",
+        "prompt_20260317_004"
+      ]
+    },
     "product_hero": {
       "label": "Product Hero Shots",
       "description": "Real product photos with branded backgrounds — iPhone 13/14 only",
       "prompts": [
-        "prompt_20260316_005",
-        "prompt_20260316_010"
-      ]
-    },
-    "lifestyle": {
-      "label": "Lifestyle / Social",
-      "description": "People using phones in real settings — AI scene + composite real phone",
-      "prompts": [
-        "prompt_20260316_001",
-        "prompt_20260316_004"
+        "prompt_20260317_005",
+        "prompt_20260317_006",
+        "prompt_20260317_007"
       ]
     },
     "comparison": {
       "label": "Comparison / Value",
-      "description": "Price and feature comparisons — Data-driven positioning",
+      "description": "iPhone 17e vs refurbished positioning and budget guidance",
       "prompts": [
-        "prompt_20260316_003"
+        "prompt_20260317_008",
+        "prompt_20260317_009"
       ]
     },
-    "security_quality": {
-      "label": "Security / Quality Assurance",
-      "description": "Addresses Back Market crisis — evidence handling, support responsiveness, quality standards",
+    "lifestyle": {
+      "label": "Lifestyle / Social",
+      "description": "Headphone jack nostalgia targeting music creators",
       "prompts": [
-        "prompt_20260316_002",
-        "prompt_20260316_006",
-        "prompt_20260316_009"
-      ]
-    },
-    "budget_guidance": {
-      "label": "Budget Guidance",
-      "description": "Educational content for budget phone shoppers",
-      "prompts": [
-        "prompt_20260316_008"
-      ]
-    },
-    "deal_urgency": {
-      "label": "Deal / Urgency",
-      "description": "Weekend sales and bundle promotions",
-      "prompts": [
-        "prompt_20260316_007"
+        "prompt_20260317_010"
       ]
     }
   },
@@ -340,7 +278,7 @@
     "needs_work": 0,
     "blocked": 0
   },
-  "last_generated": "2026-03-16 09:14 UTC",
+  "last_generated": "2026-03-17 09:09 UTC",
   "last_reviewed": null,
-  "notes": "DATA-DRIVEN batch targeting NEW trending topic (headphone jack nostalgia) + sustained trends (Galaxy S25 demand, iPhone 17e comparison, budget guidance). Addresses critical Back Market crisis differentiation across evidence handling, support abandonment, and quality failures. 7 of 10 are TikTok 9:16 format. Only uses available product photos (iphone_13, iphone_14). Each prompt has specific 'driven_by' data source per Rule 22. Heavy focus on security/quality differentiation (3 prompts) due to competitor crisis opportunity."
+  "notes": "STRATEGIC batch targeting Back Market crisis differentiation (4 security/quality prompts) + sustained trending topics (headphone jack nostalgia, iPhone 17e comparison, budget guidance). Heavy emphasis on competitor crisis opportunity with professional standards messaging. 6 of 10 are TikTok 9:16 format. Perfect Rule 25 compliance using only available product photos (iphone_13, iphone_14). All prompts include Kodak Portra 400 for people scenes per FOCUS feedback. Each prompt has specific 'driven_by' data attribution per Rule 22."
 }

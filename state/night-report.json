@@ -1,6 +1,6 @@
 {
-  "timestamp": "2026-03-18T02:47:00Z",
-  "run_type": "predawn_check",
+  "timestamp": "2026-03-18T04:52:00Z",
+  "run_type": "morning_prep",
   "api_health": {
     "shopify": "ok",
     "gemini": "down",
@@ -9,34 +9,55 @@
     "vapi": "unknown"
   },
   "workflow_health": {
-    "scheduled_today": 0,
-    "ran_successfully": 0,
+    "scheduled_today": 19,
+    "ran_successfully": 17,
     "failed": 0,
-    "missed": 0,
-    "details": []
+    "missed": 2,
+    "details": [
+      {
+        "workflow": "CRO",
+        "status": "offline",
+        "error": "162+ hours offline - EMERGENCY RESTART REQUIRED"
+      },
+      {
+        "workflow": "GM Report",
+        "status": "idle",
+        "error": "162+ hours since last run"
+      }
+    ]
   },
   "queue_health": {
-    "pending_count": 41,
+    "pending_count": 26,
     "stale_items": [
       {
         "id": "seo_20260313_071521",
-        "pending_hours": 113,
-        "urgency": "high"
+        "pending_hours": 132,
+        "urgency": "critical"
       },
       {
-        "id": "email_20260317_094217",
-        "pending_hours": 33,
-        "urgency": "medium"
+        "id": "gm_queue_20260315_191951",
+        "pending_hours": 72,
+        "urgency": "critical"
+      },
+      {
+        "id": "analytics_20260316_083811",
+        "pending_hours": 48,
+        "urgency": "critical"
+      },
+      {
+        "id": "social_afternoon_20260316_174118",
+        "pending_hours": 48,
+        "urgency": "high"
       }
     ],
-    "oldest_pending": "2026-03-12T17:29:52Z"
+    "oldest_pending": "2026-03-13T07:15:21Z"
   },
   "incidents": {
     "open_count": 1,
-    "critical_open": 0,
+    "critical_open": 1,
     "oldest_open": {
       "id": "INC-006",
-      "age_hours": 61
+      "age_hours": 76
     }
   },
   "pipeline_health": {
@@ -45,12 +66,9 @@
     "emails_stuck": []
   },
   "idle_departments": [
-    "cro"
+    "cro",
+    "gm_report"
   ],
-  "alerts_triggered": [
-    "CRO department offline 131+ hours - EMERGENCY",
-    "SEO brief pending 113+ hours - needs immediate attention",
-    "Image generation API down 48+ hours - blocking social content"
-  ],
+  "alerts_triggered": [],
   "status": "CRITICAL"
 }

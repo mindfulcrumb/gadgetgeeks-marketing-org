@@ -1,43 +1,46 @@
 {
-  "from_shift": "evening",
-  "to_shift": "night",
-  "timestamp": "2026-03-17T20:51:00Z",
-  "evening_retro_completed": true,
-  "critical_actions_for_night": [
-    "MONITOR: CRO department status - day 6 offline (P0 EMERGENCY)",
-    "MONITOR: Image generation API - social completely blocked",
-    "MONITOR: GA4 conversion tracking - potential revenue loss",
-    "CHECK: Any approved queue items for morning processing"
+  "from_shift": "night",
+  "to_shift": "morning",
+  "timestamp": "2026-03-18T04:52:00Z",
+  "overnight_summary": "Night shift monitored critical system failures. CRO department remains offline for 6+ days causing revenue impact. Multiple P0 queue items aging beyond 48-72 hour thresholds. Gemini image API down blocking content pipeline. No new incidents detected overnight.",
+  "issues_found": [
+    "CRO department offline 162+ hours - P0 EMERGENCY restart required",
+    "GM Report department idle 162+ hours - missed scheduled runs",
+    "Gemini Image API down 48+ hours blocking social media content",
+    "GA4 showing zero conversions despite 284 sessions - potential revenue loss",
+    "4 critical queue items pending 48+ hours requiring immediate attention"
   ],
-  "completed_items": [
-    "Blog draft ready: 'When Disputes Happen, Evidence Rules Everything' (598 words)",
-    "Email campaign ready: bundle deal for cart abandoners",
-    "Queue processed: 41 items pending approval",
-    "Evening retro compiled"
+  "alerts_sent": [],
+  "pending_approvals": [
+    "seo_20260313_071521 - SEO guide pending 132+ hours",
+    "gm_queue_20260315_191951 - CRO emergency restart pending 72+ hours",
+    "analytics_20260316_083811 - GA4 conversion investigation pending 48+ hours",
+    "social_afternoon_20260316_174118 - Image generation crisis pending 48+ hours"
   ],
-  "in_progress_items": [
-    "Blog scheduled for March 19 publication",
-    "Email campaign awaiting approval",
-    "41 queue items pending boss review"
-  ],
-  "blockers_for_tomorrow": [
-    "CRO department offline 131+ hours - EMERGENCY RESTART REQUIRED",
-    "Social media blocked by exhausted image inventory",
-    "Image generation API down 48+ hours",
-    "GA4 showing zero conversions despite 284 sessions"
-  ],
-  "pending_approvals": 41,
-  "api_health_status": {
-    "gemini_image_api": "DOWN - 403 errors for 48+ hours",
-    "shopify_api": "OPERATIONAL",
-    "ga4_api": "OPERATIONAL but zero conversions recorded",
-    "postiz_api": "OPERATIONAL"
+  "api_health": {
+    "shopify": "ok",
+    "gemini": "down",
+    "telegram": "ok",
+    "canva": "unknown",
+    "vapi": "unknown"
   },
-  "urgent_items_for_sentinel": [
-    "CRO department restart - day 6 offline",
-    "Implement DALL-E 3 fallback for image generation",
-    "Investigate GA4 conversion tracking failure"
+  "recommendations_for_morning": [
+    "EMERGENCY: Restart CRO department immediately - 6+ days offline causing revenue impact",
+    "URGENT: Process critical queue items aging 48-72+ hours",
+    "Implement DALL-E 3 fallback for Gemini image generation",
+    "Investigate GA4 conversion tracking - potential checkout issues",
+    "Approve SEO guide seo_20260313_071521 - waiting 5.5 days"
   ],
-  "system_health": "30/100 - CRITICAL",
-  "revenue_impact": "SEVERE - No conversion optimization (6 days), potential checkout issues (zero conversions), limited social reach"
+  "metrics_snapshot": {
+    "blogs_in_pipeline": {
+      "brief_ready": 0,
+      "draft_ready": 1,
+      "qa_passed": 0
+    },
+    "queue_depth": {
+      "pending": 26,
+      "approved": 0
+    },
+    "incidents_open": 1
+  }
 }

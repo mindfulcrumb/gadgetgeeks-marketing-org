@@ -1,8 +1,8 @@
 {
-  "report_date": "2026-03-17",
+  "report_date": "2026-03-18",
   "period": {
-    "current": "2026-03-10 to 2026-03-16",
-    "previous": "2026-03-03 to 2026-03-09"
+    "current": "2026-03-11 to 2026-03-17",
+    "previous": "2026-03-04 to 2026-03-10"
   },
   "summary": {
     "total_sessions": {
@@ -13,20 +13,20 @@
     "total_conversions": {
       "current": 0,
       "previous": 0,
-      "change_pct": "NO_DATA"
+      "change_pct": "CRITICAL_ISSUE"
     },
     "total_revenue": {
       "current": 0.0,
       "previous": 0.0,
-      "change_pct": "NO_DATA"
+      "change_pct": "CRITICAL_ISSUE"
     },
     "organic_sessions": {
-      "current": 66,
+      "current": 77,
       "previous": 0,
       "change_pct": "NEW_SITE"
     },
     "avg_bounce_rate": {
-      "current": 0.2355,
+      "current": 0.231,
       "previous": 0.0,
       "change_pct": "NEW_SITE"
     }
@@ -44,37 +44,48 @@
       "recommended_action": "URGENT: Verify GA4 e-commerce tracking, test checkout flow, check Shopify purchase events immediately"
     },
     {
-      "severity": "high",
+      "severity": "critical",
       "type": "ctr_drop",
       "message": "Homepage ranking #4.9 for 'computer repair tucson' (34 impressions) but 0 clicks - massive content mismatch",
       "page_or_query": "computer repair tucson",
       "metric": "ctr",
-      "current_value": 0,
-      "previous_value": 0,
+      "current_value": 0.0,
+      "previous_value": 0.0,
       "change_pct": 0,
       "recommended_action": "Rewrite homepage meta to target refurbished phone buyers, not repair seekers - misaligned content losing traffic"
     },
     {
-      "severity": "high",
+      "severity": "critical",
       "type": "ctr_drop",
       "message": "Smart home automation page: 133 impressions, 0 clicks at position 16.4 - urgent meta optimization needed",
       "page_or_query": "smart home automation",
       "metric": "ctr",
-      "current_value": 0,
-      "previous_value": 0,
+      "current_value": 0.0,
+      "previous_value": 0.0,
       "change_pct": 0,
       "recommended_action": "Optimize smart home page meta title and description - currently invisible to searchers"
     },
     {
-      "severity": "high",
+      "severity": "critical",
       "type": "ctr_drop",
       "message": "Cell phone speakers article: 301 impressions at position 2.1 but 0 clicks - wasted authority",
       "page_or_query": "cell phone speakers need replacement",
       "metric": "ctr",
-      "current_value": 0,
-      "previous_value": 0,
+      "current_value": 0.0,
+      "previous_value": 0.0,
       "change_pct": 0,
       "recommended_action": "Update 2019 article to bridge repair costs to refurbished alternatives with compelling meta"
+    },
+    {
+      "severity": "high",
+      "type": "ctr_drop",
+      "message": "Charger port repair article: 115 impressions at position 3.7 but 0 clicks - major opportunity loss",
+      "page_or_query": "charger port repair battery replacement",
+      "metric": "ctr",
+      "current_value": 0.0,
+      "previous_value": 0.0,
+      "change_pct": 0,
+      "recommended_action": "Update article to connect repair costs ($150-200) with refurbished phone alternatives ($250-350)"
     },
     {
       "severity": "medium",
@@ -84,86 +95,86 @@
       "metric": "relevance",
       "current_value": "mismatch",
       "previous_value": "unknown",
-      "change_pct": "NO_DATA",
-      "recommended_action": "Create content connecting repair costs to refurbished alternatives - 'iPhone Screen Repair $200 vs Refurbished iPhone $350'"
+      "change_pct": 0,
+      "recommended_action": "Create content connecting repair costs to refurbished alternatives"
     }
   ],
   "top_pages": [
     {
       "page": "/",
       "sessions": {
-        "current": 183,
+        "current": 212,
         "previous": 0,
         "change_pct": "NEW"
       },
       "bounce_rate": {
-        "current": 0.153,
+        "current": 0.189,
         "previous": 0.0,
         "change_pct": "NEW"
       },
       "conversions": {
         "current": 0,
         "previous": 0,
-        "change_pct": "NO_DATA"
+        "change_pct": "CRITICAL_ISSUE"
       },
       "avg_session_duration": {
-        "current": 295.0,
+        "current": 299.8,
         "previous": 0.0,
         "change_pct": "NEW"
-      }
-    },
-    {
-      "page": "/collections/sale",
-      "sessions": {
-        "current": 33,
-        "previous": 0,
-        "change_pct": "NEW"
-      },
-      "bounce_rate": {
-        "current": 0.061,
-        "previous": 0.0,
-        "change_pct": "NEW"
-      },
-      "conversions": {
-        "current": 0,
-        "previous": 0,
-        "change_pct": "NO_DATA"
       }
     },
     {
       "page": "/blogs/news",
       "sessions": {
-        "current": 29,
+        "current": 32,
         "previous": 0,
         "change_pct": "NEW"
       },
       "bounce_rate": {
-        "current": 0.103,
+        "current": 0.094,
         "previous": 0.0,
         "change_pct": "NEW"
       },
       "conversions": {
         "current": 0,
         "previous": 0,
-        "change_pct": "NO_DATA"
+        "change_pct": "CRITICAL_ISSUE"
+      }
+    },
+    {
+      "page": "/collections/sale",
+      "sessions": {
+        "current": 34,
+        "previous": 0,
+        "change_pct": "NEW"
+      },
+      "bounce_rate": {
+        "current": 0.088,
+        "previous": 0.0,
+        "change_pct": "NEW"
+      },
+      "conversions": {
+        "current": 0,
+        "previous": 0,
+        "change_pct": "CRITICAL_ISSUE"
       }
     },
     {
       "page": "/products/iphone-14-bundle",
       "sessions": {
-        "current": 24,
+        "current": 26,
         "previous": 0,
         "change_pct": "NEW"
       },
       "bounce_rate": {
-        "current": 0.125,
+        "current": 0.192,
         "previous": 0.0,
         "change_pct": "NEW"
       },
       "conversions": {
         "current": 0,
         "previous": 0,
-        "change_pct": "NO_DATA"
+        "change_pct": "CRITICAL_ISSUE"
       }
     }
   ],
@@ -171,27 +182,27 @@
     {
       "source_medium": "(direct) / (none)",
       "sessions": {
-        "current": 192,
+        "current": 212,
         "previous": 0,
         "change_pct": "NEW"
       },
       "conversion_rate": {
         "current": 0.0,
         "previous": 0.0,
-        "change_pct": "NO_DATA"
+        "change_pct": "CRITICAL_ISSUE"
       }
     },
     {
       "source_medium": "google / organic",
       "sessions": {
-        "current": 66,
+        "current": 77,
         "previous": 0,
         "change_pct": "NEW"
       },
       "conversion_rate": {
         "current": 0.0,
         "previous": 0.0,
-        "change_pct": "NO_DATA"
+        "change_pct": "CRITICAL_ISSUE"
       }
     },
     {
@@ -204,7 +215,7 @@
       "conversion_rate": {
         "current": 0.0,
         "previous": 0.0,
-        "change_pct": "NO_DATA"
+        "change_pct": "CRITICAL_ISSUE"
       }
     }
   ],
@@ -244,17 +255,21 @@
       "iphone repair tucson",
       "cell phone battery replacement near me",
       "computer technicians",
-      "places that fix electronics"
+      "places that fix electronics",
+      "cell phone repair near me",
+      "gadget geeks pro llc",
+      "ipad pro screen repair",
+      "mini ipad screen repair"
     ],
     "high_impression_low_ctr": [
       {
-        "query": "computer repair tucson",
-        "impressions": 34,
+        "query": "how to know if your cell phone speakers need to be replaced",
+        "impressions": 301,
         "clicks": 0,
         "ctr": 0.0,
-        "position": 4.9,
-        "page": "https://gadgetgeekspro.com/",
-        "recommendation": "Homepage ranking for repair but selling refurbished phones - urgent meta rewrite to target phone buyers instead"
+        "position": 2.1,
+        "page": "https://gadgetgeekspro.com/2019/01/how-to-know-if-your-cell-phone-speakers-need-to-be-replaced/",
+        "recommendation": "Position #2 with 301 impressions but 0 clicks - update 2019 content to bridge to refurbished alternatives"
       },
       {
         "query": "smart home automation",
@@ -266,15 +281,6 @@
         "recommendation": "Page exists but meta completely invisible to searchers - needs compelling rewrite"
       },
       {
-        "query": "how to know if your cell phone speakers need to be replaced",
-        "impressions": 301,
-        "clicks": 0,
-        "ctr": 0.0,
-        "position": 2.1,
-        "page": "https://gadgetgeekspro.com/2019/01/how-to-know-if-your-cell-phone-speakers-need-to-be-replaced/",
-        "recommendation": "Position #2 with 301 impressions but 0 clicks - update 2019 content to bridge to refurbished alternatives"
-      },
-      {
         "query": "do you need charger port repair or a full battery replacement",
         "impressions": 115,
         "clicks": 0,
@@ -282,6 +288,15 @@
         "position": 3.7,
         "page": "https://gadgetgeekspro.com/2019/02/do-you-need-charger-port-repair-or-a-full-battery-replacement/",
         "recommendation": "Top 4 ranking for repair query - update to connect repair costs with refurbished phone alternatives"
+      },
+      {
+        "query": "computer repair tucson",
+        "impressions": 34,
+        "clicks": 0,
+        "ctr": 0.0,
+        "position": 4.9,
+        "page": "https://gadgetgeekspro.com/",
+        "recommendation": "Homepage ranking for repair but selling refurbished phones - urgent meta rewrite to target phone buyers instead"
       }
     ]
   },
@@ -297,9 +312,9 @@
       },
       {
         "page": "/blogs/news",
-        "sessions": 29,
-        "bounce_rate": 0.103,
-        "avg_session_duration": 145.5,
+        "sessions": 32,
+        "bounce_rate": 0.094,
+        "avg_session_duration": 135.3,
         "status": "Strong traffic driver and low bounce rate for blog hub"
       }
     ],
@@ -308,26 +323,26 @@
       {
         "page": "/blogs/news/avoid-activation-lock-buying-used-phones-online",
         "sessions": 8,
-        "bounce_rate": 0.5,
-        "avg_session_duration": 217.9,
-        "status": "50% bounce rate indicates content not meeting expectations - needs review"
+        "bounce_rate": 0.375,
+        "avg_session_duration": 218.9,
+        "status": "37.5% bounce rate higher than site average - content not meeting expectations"
       },
       {
-        "page": "/blogs/news/secure-refurbished-phone-packaging-standards",
+        "page": "/blogs/news/iphone-12-13-last-headphone-jack-refurbished",
         "sessions": 4,
-        "bounce_rate": 0.25,
-        "avg_session_duration": 24.1,
-        "status": "Very low engagement time suggests thin content - expand or consolidate"
+        "bounce_rate": 0.5,
+        "avg_session_duration": 225.9,
+        "status": "50% bounce rate indicates content relevance issues"
       }
     ]
   },
   "device_breakdown": {
     "desktop": {
-      "sessions": 188,
+      "sessions": 219,
       "conversion_rate": 0.0
     },
     "mobile": {
-      "sessions": 87,
+      "sessions": 90,
       "conversion_rate": 0.0
     },
     "tablet": {

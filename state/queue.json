@@ -500,6 +500,23 @@
       "timing": "immediate",
       "target": "@nicholasnlawton seeking Back Market contact for bulk deal",
       "id": "x_intel_20260318_074947"
+    },
+    {
+      "issue": "GA4 showing 0 conversions despite 284 site sessions and product page traffic",
+      "sessions": 284,
+      "conversions": 0,
+      "conversion_rate": 0.0,
+      "product_sessions": 89,
+      "urgency": "CRITICAL",
+      "potential_causes": [
+        "GA4 e-commerce events not firing on Shopify checkout",
+        "GA4 conversion goals not configured properly",
+        "Shopify-GA4 integration broken",
+        "Checkout funnel technical issues preventing completion",
+        "Payment processor integration problems"
+      ],
+      "action_required": "Immediate technical audit of conversion tracking and checkout flow",
+      "id": "analytics_20260318_080647"
     }
   ],
   "approved": [],

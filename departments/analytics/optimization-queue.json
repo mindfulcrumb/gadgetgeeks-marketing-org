@@ -1,9 +1,9 @@
 {
-  "last_updated": "2026-03-17",
+  "last_updated": "2026-03-18",
   "recommendations": [
     {
-      "id": "OPT-20260317-001",
-      "date_added": "2026-03-17",
+      "id": "OPT-20260318-001",
+      "date_added": "2026-03-18",
       "priority_score": 10,
       "impact": 5,
       "effort": 5,
@@ -22,33 +22,33 @@
       "completed_date": null
     },
     {
-      "id": "OPT-20260317-002",
-      "date_added": "2026-03-17",
-      "priority_score": 9,
+      "id": "OPT-20260318-002",
+      "date_added": "2026-03-18",
+      "priority_score": 10,
       "impact": 5,
-      "effort": 4,
+      "effort": 5,
       "type": "meta_rewrite",
       "target_department": "seo",
-      "page_url": "https://gadgetgeekspro.com/",
-      "query": "computer repair tucson",
+      "page_url": "https://gadgetgeekspro.com/2019/01/how-to-know-if-your-cell-phone-speakers-need-to-be-replaced/",
+      "query": "cell phone speakers need replacement",
       "current_metrics": {
-        "impressions": 34,
+        "impressions": 301,
         "clicks": 0,
         "ctr": 0.0,
-        "position": 4.9
+        "position": 2.1
       },
-      "recommendation": "Homepage ranking #4.9 for 'computer repair tucson' with 34 impressions but 0 clicks. Major content mismatch - site sells refurbished phones, not repair. Rewrite meta to capture phone buyers instead.",
-      "suggested_meta_title": "Refurbished iPhones Tucson AZ - Battery Health 80%+ Guaranteed",
-      "suggested_meta_description": "Shop certified refurbished iPhones in Tucson. Battery health 80%+ guaranteed, looks brand new. Save $400+ vs new with warranty. Local Arizona business.",
+      "recommendation": "URGENT: Position #2.1 with 301 impressions but 0 clicks - massive wasted opportunity. Update 2019 content to bridge speaker repair costs to refurbished phone alternatives.",
+      "suggested_meta_title": "Phone Speaker Repair $150 vs Refurbished Phone $300 - The Math",
+      "suggested_meta_description": "Speaker repair costs $100-150. Quality refurbished phone costs $250-350. Better battery, camera, everything new. Smart buyers choose the upgrade.",
       "status": "pending",
       "assigned_to": "pixel",
       "completed_date": null
     },
     {
-      "id": "OPT-20260317-003",
-      "date_added": "2026-03-17",
-      "priority_score": 8,
-      "impact": 4,
+      "id": "OPT-20260318-003",
+      "date_added": "2026-03-18",
+      "priority_score": 9,
+      "impact": 5,
       "effort": 4,
       "type": "meta_rewrite",
       "target_department": "seo",
@@ -68,34 +68,13 @@
       "completed_date": null
     },
     {
-      "id": "OPT-20260317-004",
-      "date_added": "2026-03-17",
-      "priority_score": 8,
-      "impact": 4,
+      "id": "OPT-20260318-004",
+      "date_added": "2026-03-18",
+      "priority_score": 9,
+      "impact": 5,
       "effort": 4,
-      "type": "content_refresh",
-      "target_department": "content",
-      "page_url": "https://gadgetgeekspro.com/2019/01/how-to-know-if-your-cell-phone-speakers-need-to-be-replaced/",
-      "query": "cell phone speakers need replacement",
-      "current_metrics": {
-        "impressions": 301,
-        "clicks": 0,
-        "ctr": 0.0,
-        "position": 2.1
-      },
-      "recommendation": "Ranking #2.1 with 301 impressions but 0 clicks - massive wasted opportunity. Update 2019 content to bridge speaker repair costs to refurbished phone alternatives.",
-      "status": "pending",
-      "assigned_to": "scribe",
-      "completed_date": null
-    },
-    {
-      "id": "OPT-20260317-005",
-      "date_added": "2026-03-17",
-      "priority_score": 8,
-      "impact": 4,
-      "effort": 4,
-      "type": "content_refresh",
-      "target_department": "content",
+      "type": "meta_rewrite",
+      "target_department": "seo",
       "page_url": "https://gadgetgeekspro.com/2019/02/do-you-need-charger-port-repair-or-a-full-battery-replacement/",
       "query": "charger port repair battery replacement",
       "current_metrics": {
@@ -105,37 +84,41 @@
         "position": 3.7
       },
       "recommendation": "Position #3.7 with 115 impressions, 0 clicks. Update to connect repair costs ($150-200) with refurbished phone alternatives ($250-350).",
+      "suggested_meta_title": "Charger Port Repair $180 vs Refurbished iPhone $350 - Smart Math",
+      "suggested_meta_description": "Charging port repair costs $120-180. Quality refurbished iPhone costs $250-350. Fresh battery, perfect charging port, warranty included. Do the math.",
       "status": "pending",
-      "assigned_to": "scribe",
+      "assigned_to": "pixel",
       "completed_date": null
     },
     {
-      "id": "OPT-20260317-006",
-      "date_added": "2026-03-17",
-      "priority_score": 7,
-      "impact": 3,
+      "id": "OPT-20260318-005",
+      "date_added": "2026-03-18",
+      "priority_score": 9,
+      "impact": 5,
       "effort": 4,
-      "type": "new_content",
-      "target_department": "content",
-      "page_url": "/blogs/guides/",
-      "query": "phone repair vs refurbished cost comparison",
+      "type": "meta_rewrite",
+      "target_department": "seo",
+      "page_url": "https://gadgetgeekspro.com/",
+      "query": "computer repair tucson",
       "current_metrics": {
-        "impressions": 0,
+        "impressions": 34,
         "clicks": 0,
         "ctr": 0.0,
-        "position": 0
+        "position": 4.9
       },
-      "recommendation": "Create content bridging repair searches to refurbished sales. Target: 'iPhone Screen Repair $200 vs Refurbished iPhone 14 $350 - Smart Math'",
+      "recommendation": "Homepage ranking #4.9 for 'computer repair tucson' with 34 impressions but 0 clicks. Major content mismatch - site sells refurbished phones, not repair. Rewrite meta to capture phone buyers instead.",
+      "suggested_meta_title": "Refurbished Phones Tucson AZ - Battery Health 80%+ Guaranteed",
+      "suggested_meta_description": "Shop certified refurbished phones in Tucson. Battery health 80%+ guaranteed, looks brand new. Save $400+ vs new with warranty. Local Arizona business.",
       "status": "pending",
-      "assigned_to": "scribe",
+      "assigned_to": "pixel",
       "completed_date": null
     },
     {
-      "id": "OPT-20260317-007",
-      "date_added": "2026-03-17",
-      "priority_score": 7,
+      "id": "OPT-20260318-006",
+      "date_added": "2026-03-18",
+      "priority_score": 8,
       "impact": 4,
-      "effort": 3,
+      "effort": 4,
       "type": "internal_linking",
       "target_department": "seo",
       "page_url": "/blogs/news/cheap-refurbished-phones-guide",
@@ -151,8 +134,29 @@
       "completed_date": null
     },
     {
-      "id": "OPT-20260317-008",
-      "date_added": "2026-03-17",
+      "id": "OPT-20260318-007",
+      "date_added": "2026-03-18",
+      "priority_score": 7,
+      "impact": 3,
+      "effort": 4,
+      "type": "new_content",
+      "target_department": "content",
+      "page_url": "/blogs/guides/",
+      "query": "phone repair vs refurbished cost comparison",
+      "current_metrics": {
+        "impressions": 0,
+        "clicks": 0,
+        "ctr": 0.0,
+        "position": 0
+      },
+      "recommendation": "Create content bridging repair searches to refurbished sales. Target: 'Phone Repair vs Refurbished: The Smart Money Move in 2026'",
+      "status": "pending",
+      "assigned_to": "scribe",
+      "completed_date": null
+    },
+    {
+      "id": "OPT-20260318-008",
+      "date_added": "2026-03-18",
       "priority_score": 6,
       "impact": 3,
       "effort": 3,
@@ -162,32 +166,55 @@
       "query": "activation lock",
       "current_metrics": {
         "sessions": 8,
-        "bounce_rate": 0.5,
-        "avg_session_duration": 217.9
+        "bounce_rate": 0.375,
+        "avg_session_duration": 218.9
       },
-      "recommendation": "50% bounce rate indicates content not meeting expectations. Update to better address activation lock concerns and connect to guaranteed unlocked refurb phones.",
+      "recommendation": "37.5% bounce rate indicates content not meeting expectations. Update to better address activation lock concerns and connect to guaranteed unlocked refurb phones.",
       "status": "pending",
       "assigned_to": "scribe",
       "completed_date": null
     },
     {
-      "id": "OPT-20260317-009",
-      "date_added": "2026-03-17",
-      "priority_score": 5,
-      "impact": 2,
+      "id": "OPT-20260318-009",
+      "date_added": "2026-03-18",
+      "priority_score": 6,
+      "impact": 3,
       "effort": 3,
       "type": "content_refresh",
       "target_department": "content",
-      "page_url": "/blogs/news/secure-refurbished-phone-packaging-standards",
-      "query": "secure packaging",
+      "page_url": "/blogs/news/iphone-12-13-last-headphone-jack-refurbished",
+      "query": "headphone jack iphone",
       "current_metrics": {
         "sessions": 4,
-        "bounce_rate": 0.25,
-        "avg_session_duration": 24.1
+        "bounce_rate": 0.5,
+        "avg_session_duration": 225.9
       },
-      "recommendation": "Very low engagement time (24 seconds) suggests thin content. Expand with specific packaging details, photos, or consolidate into broader guide.",
+      "recommendation": "50% bounce rate indicates content relevance issues. Update to focus on refurbished iPhone models with/without headphone jack, connect to current inventory.",
       "status": "pending",
       "assigned_to": "scribe",
+      "completed_date": null
+    },
+    {
+      "id": "OPT-20260318-010",
+      "date_added": "2026-03-18",
+      "priority_score": 8,
+      "impact": 4,
+      "effort": 4,
+      "type": "new_content",
+      "target_department": "seo",
+      "page_url": "/pages/tucson-refurbished-phone-buyers-guide",
+      "query": "refurbished phones tucson",
+      "current_metrics": {
+        "impressions": 0,
+        "clicks": 0,
+        "ctr": 0.0,
+        "position": 0
+      },
+      "recommendation": "Create local landing page targeting 'refurbished phones Tucson' - major untapped local opportunity with University of Arizona students and local market.",
+      "suggested_meta_title": "Refurbished Phones Tucson AZ - Local Business, Guaranteed Quality",
+      "suggested_meta_description": "Tucson's trusted source for refurbished phones. UA student deals, battery health guaranteed, local pickup available. Arizona business since 2019.",
+      "status": "pending",
+      "assigned_to": "pixel",
       "completed_date": null
     }
   ]

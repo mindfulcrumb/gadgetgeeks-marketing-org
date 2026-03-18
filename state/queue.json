@@ -473,6 +473,33 @@
       "content_length": "800-1200 words with clear sections",
       "call_to_action": "Shop with confidence - warranty backed by local Arizona business",
       "id": "seo_20260318_073535"
+    },
+    {
+      "content": "iPhone 13 refurbished: Modern A15 chip performance + headphone jack + included charger. Everything Apple removed later, all in one complete package 🎧📱",
+      "platforms": [
+        "twitter"
+      ],
+      "timing": "immediate",
+      "engagement_target": "@m00nshadowelf headphone jack frustration thread",
+      "id": "x_intel_20260318_074947"
+    },
+    {
+      "content": "Our quote is our promise. No 'problems found' after you ship. No surprise deductions. Transparent evaluation, guaranteed pricing. Arizona business, Arizona values 🤝",
+      "platforms": [
+        "twitter"
+      ],
+      "timing": "today",
+      "context": "Response to Gazelle bait-and-switch warning from @fodder4skeptics",
+      "id": "x_intel_20260318_074947"
+    },
+    {
+      "content": "@nicholasnlawton Arizona-based refurb business here - handle volume orders with creator program discounts. Local support, bulk pricing, 90-day warranties. DM for details! 📱",
+      "platforms": [
+        "twitter"
+      ],
+      "timing": "immediate",
+      "target": "@nicholasnlawton seeking Back Market contact for bulk deal",
+      "id": "x_intel_20260318_074947"
     }
   ],
   "approved": [],

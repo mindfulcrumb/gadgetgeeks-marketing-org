@@ -1,7 +1,6 @@
 {
-  "timestamp": "2026-03-17T06:03:00Z",
-  "run_type": "morning_prep",
-  "run_late_by_minutes": 21,
+  "timestamp": "2026-03-18T02:47:00Z",
+  "run_type": "predawn_check",
   "api_health": {
     "shopify": "ok",
     "gemini": "down",
@@ -10,63 +9,48 @@
     "vapi": "unknown"
   },
   "workflow_health": {
-    "scheduled_today": 18,
-    "ran_successfully": 18,
+    "scheduled_today": 0,
+    "ran_successfully": 0,
     "failed": 0,
     "missed": 0,
     "details": []
   },
   "queue_health": {
-    "pending_count": 22,
+    "pending_count": 41,
     "stale_items": [
       {
         "id": "seo_20260313_071521",
-        "pending_hours": 89,
-        "urgency": "critical",
-        "details": "SEO brief for 'How to Buy Used Phones Online Safely' - 89 hours overdue for SCRIBE pickup"
+        "pending_hours": 113,
+        "urgency": "high"
       },
       {
-        "id": "gm_queue_20260315_191951",
-        "pending_hours": 38,
-        "urgency": "critical",
-        "details": "Infrastructure restart request - email & cro departments offline 5+ days"
+        "id": "email_20260317_094217",
+        "pending_hours": 33,
+        "urgency": "medium"
       }
     ],
-    "oldest_pending": "2026-03-13T07:15:21Z"
+    "oldest_pending": "2026-03-12T17:29:52Z"
   },
   "incidents": {
     "open_count": 1,
-    "critical_open": 1,
+    "critical_open": 0,
     "oldest_open": {
       "id": "INC-006",
-      "age_hours": 39,
-      "type": "publication_blocked"
+      "age_hours": 61
     }
   },
   "pipeline_health": {
     "blogs_stuck": [],
-    "images_stuck": [
-      "Image pipeline exhausted - zero unused images remaining"
-    ],
-    "emails_stuck": [
-      "Email department offline 124+ hours"
-    ]
+    "images_stuck": [],
+    "emails_stuck": []
   },
   "idle_departments": [
-    {
-      "department": "email",
-      "idle_hours": 124,
-      "status": "CRITICAL - offline 5+ days"
-    },
-    {
-      "department": "cro",
-      "idle_hours": 124,
-      "status": "CRITICAL - offline 5+ days"
-    }
+    "cro"
   ],
   "alerts_triggered": [
-    "SEO brief 89 hours overdue - content pipeline breakdown",
-    "Infrastructure departments offline 5+ days - revenue impact critical"
+    "CRO department offline 131+ hours - EMERGENCY",
+    "SEO brief pending 113+ hours - needs immediate attention",
+    "Image generation API down 48+ hours - blocking social content"
   ],
   "status": "CRITICAL"
 }

@@ -235,6 +235,43 @@
       "completed": "2026-03-17 07:33 UTC"
     },
     {
+      "id": "homepage-optimization",
+      "priority": "critical",
+      "keyword": "refurbished phones",
+      "type": "page_optimization",
+      "page": "/",
+      "status": "completed",
+      "content_type": "homepage optimization",
+      "meta_title": "Refurbished Phones Arizona - Certified Quality, 80%+ Battery Health | Gadget Geeks Pro",
+      "meta_description": "Shop certified refurbished phones in Arizona. Battery health 80%+ guaranteed, looks brand new. Tucson-based business serves Phoenix metro. Save $400+ with warranty now.",
+      "improvements": [
+        "Led with geo-modified primary keyword for local SEO dominance",
+        "Incorporated Arizona/Tucson local trust signals prominently",
+        "Used customer language 'looks brand new' with specific battery guarantee",
+        "Emphasized local business advantage over faceless competitors",
+        "Specific savings amount '$400+' for credibility and motivation",
+        "Strong immediate CTA 'now' for conversion optimization"
+      ],
+      "h1": "Arizona's Trusted Source for Certified Refurbished Phones",
+      "key_elements": [
+        "Prominent battery health guarantee display (80%+ minimum)",
+        "Local trust signals (Tucson address, serves Arizona metro)",
+        "Grade A/B/C explanation with customer language",
+        "Featured customer testimonials using authentic phrases",
+        "Clear warranty and return policy links",
+        "Local service area emphasis (Phoenix, Mesa, Tucson, Scottsdale)"
+      ],
+      "structured_data": "LocalBusiness schema with Tucson address + service area (Arizona) + Product schema for featured phones + Review schema + FAQ schema for refurbished concerns",
+      "local_seo_elements": [
+        "Arizona business registration display",
+        "Service area coverage map",
+        "Local customer testimonials",
+        "Arizona-specific phone model availability",
+        "Local delivery/pickup options emphasis"
+      ],
+      "completed": "2026-03-18 07:33 UTC"
+    },
+    {
       "id": "local-arizona-phone-guide",
       "priority": "high",
       "keyword": "refurbished phones Tucson",
@@ -341,7 +378,41 @@
         "Educational approach builds trust in refurbished quality"
       ],
       "structured_data": "HowTo schema for testing process + FAQ schema for biometric concerns + Product schema for tested devices"
+    },
+    {
+      "id": "refurbished-phone-warranty-guide",
+      "priority": "high",
+      "keyword": "refurbished phone warranty",
+      "type": "content_gap",
+      "page": "/pages/refurbished-phone-warranty-return-policy",
+      "status": "pending",
+      "content_type": "trust/policy page",
+      "meta_title": "Refurbished Phone Warranty & Return Policy - 30-Day Guarantee | Gadget Geeks Pro",
+      "meta_description": "Real warranty coverage for refurbished phones. 30-day returns, battery replacement guarantee, Face ID protection. Arizona business you can trust.",
+      "h1": "Refurbished Phone Warranty & Return Policy: Real Protection, Not Fine Print",
+      "content_outline": [
+        "What our warranty actually covers (no confusing fine print)",
+        "30-day return policy: test everything, keep only if perfect",
+        "Battery health guarantee: what happens if it drops below 80%",
+        "Face ID/Touch ID protection: covered if biometrics fail",
+        "Charging port and button warranty coverage",
+        "Screen condition guarantee and replacement policy",
+        "What's NOT covered (and why we're upfront about it)",
+        "How to file warranty claims (simple process, not runaround)",
+        "Local advantage: real Arizona business vs online warranty nightmares",
+        "Customer testimonials about warranty experience",
+        "CTA: Shop with confidence - warranty backed by local business"
+      ],
+      "improvements": [
+        "Addresses major trust barrier for refurbished purchases",
+        "Uses customer language 'real protection, not fine print'",
+        "Emphasizes local business advantage for warranty support",
+        "Specific coverage details build confidence vs vague promises",
+        "Proactively addresses common warranty concerns",
+        "Positions as trustworthy vs competitors with weak warranties"
+      ],
+      "structured_data": "LocalBusiness schema with warranty service + FAQ schema for warranty questions + Service schema for repair/replacement services"
     }
   ],
-  "last_updated": "2026-03-17 07:33 UTC"
+  "last_updated": "2026-03-18 07:33 UTC"
 }

@@ -437,6 +437,42 @@
       "business_impact": "Complete marketing automation failure, no conversion optimization, no operational oversight, content pipeline blocked",
       "estimated_total_loss": "$12,000-30,000+ over 6 days of CRO downtime",
       "id": "standup_20260318_070119"
+    },
+    {
+      "page": "Homepage (/)",
+      "meta_title": "Refurbished Phones Arizona - Certified Quality, 80%+ Battery Health | Gadget Geeks Pro",
+      "meta_description": "Shop certified refurbished phones in Arizona. Battery health 80%+ guaranteed, looks brand new. Tucson-based business serves Phoenix metro. Save $400+ with warranty now.",
+      "h1_update": "Arizona's Trusted Source for Certified Refurbished Phones",
+      "structured_data_needed": [
+        "LocalBusiness schema with Tucson address and Arizona service area",
+        "Product schema for featured phones with battery health data",
+        "Review schema for customer testimonials",
+        "FAQ schema for common refurbished phone questions"
+      ],
+      "trust_elements_to_add": [
+        "Prominent '80%+ Battery Health Guaranteed' banner",
+        "Tucson, Arizona business address display",
+        "Service area map (Phoenix, Mesa, Scottsdale, Tucson)",
+        "Customer testimonials using authentic language",
+        "Clear warranty/return policy links",
+        "Arizona business registration/certification display"
+      ],
+      "local_seo_priority": "Critical - homepage is entry point for all local traffic",
+      "id": "seo_20260318_073535"
+    },
+    {
+      "page_to_create": "/pages/refurbished-phone-warranty-return-policy",
+      "target_keyword": "refurbished phone warranty",
+      "customer_concerns_to_address": [
+        "What happens if battery health drops?",
+        "Face ID stops working coverage",
+        "How to actually file warranty claims",
+        "Local business vs online warranty support"
+      ],
+      "trust_building_focus": "Transparent policy vs competitors' fine print",
+      "content_length": "800-1200 words with clear sections",
+      "call_to_action": "Shop with confidence - warranty backed by local Arizona business",
+      "id": "seo_20260318_073535"
     }
   ],
   "approved": [],

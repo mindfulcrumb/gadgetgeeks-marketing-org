@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-03-18T04:52:00Z",
+  "timestamp": "2026-03-18T06:06:00Z",
   "run_type": "morning_prep",
   "api_health": {
     "shopify": "ok",
@@ -9,20 +9,20 @@
     "vapi": "unknown"
   },
   "workflow_health": {
-    "scheduled_today": 19,
-    "ran_successfully": 17,
+    "scheduled_today": 0,
+    "ran_successfully": 0,
     "failed": 0,
     "missed": 2,
     "details": [
       {
         "workflow": "CRO",
-        "status": "offline",
-        "error": "162+ hours offline - EMERGENCY RESTART REQUIRED"
+        "status": "offline_162_hours",
+        "error": "Department offline since 2026-03-11 - EMERGENCY RESTART REQUIRED"
       },
       {
-        "workflow": "GM Report",
-        "status": "idle",
-        "error": "162+ hours since last run"
+        "workflow": "GM_Report",
+        "status": "idle_162_hours",
+        "error": "No runs since 2026-03-11 - scheduled reporting missed"
       }
     ]
   },
@@ -37,7 +37,7 @@
       {
         "id": "gm_queue_20260315_191951",
         "pending_hours": 72,
-        "urgency": "critical"
+        "urgency": "emergency"
       },
       {
         "id": "analytics_20260316_083811",
@@ -57,18 +57,25 @@
     "critical_open": 1,
     "oldest_open": {
       "id": "INC-006",
-      "age_hours": 76
+      "age_hours": 64
     }
   },
   "pipeline_health": {
     "blogs_stuck": [],
-    "images_stuck": [],
+    "images_stuck": [
+      "All image generation blocked - Gemini API down 48+ hours"
+    ],
     "emails_stuck": []
   },
   "idle_departments": [
     "cro",
     "gm_report"
   ],
-  "alerts_triggered": [],
+  "alerts_triggered": [
+    "CRO department offline 162+ hours - P0 EMERGENCY",
+    "GM Report missed scheduled runs - 162+ hours idle",
+    "Queue items aging beyond 48-72 hour thresholds",
+    "Gemini API blocking all image/social content creation"
+  ],
   "status": "CRITICAL"
 }

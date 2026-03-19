@@ -1,7 +1,7 @@
 {
   "_docs": "Canva Post Design Pipeline — tracks image-to-finished-post conversion. The Canva department takes generated images from departments/social/image-prompts.json and creates finished social media posts using Canva.",
   "_created": "2026-03-12",
-  "_last_run": "2026-03-18T10:14:34.537301+00:00",
+  "_last_run": "2026-03-19T10:03:46.022850+00:00",
   "_WARNING": "RULE 25: Only designs with source='real_product_photo' may be posted. AI-generated images (shopify-staged-uploads) are BURNED. See config/operations-rulebook.json Rule 25.",
   "designs": [
     {
@@ -604,6 +604,6 @@
   "stats": {
     "total_designs": 29,
     "designs_today": 0,
-    "last_design_at": "2026-03-18T10:14:34.537291+00:00"
+    "last_design_at": "2026-03-19T10:03:46.022836+00:00"
   }
 }

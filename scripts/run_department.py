@@ -23,6 +23,13 @@ from actions.resend_email import send_email
 from actions.shopify_api import query_shopify
 from actions.x_api import run_niche_scan, get_tweet, parse_tweet_url
 
+# Google Sheets logging — optional, fails silently if not configured
+_sheets = None
+try:
+    from sheets_helper import sheets as _sheets
+except Exception:
+    pass
+
 try:
     import anthropic
 except ImportError:
@@ -846,6 +853,11 @@ def main():
     except Exception as e:
         print(f"ERROR calling Claude API: {e}")
         update_master_state(department, False)
+        if _sheets:
+            try:
+                _sheets.log_agent_action(department, department, f"API Error: {str(e)[:100]}", "error")
+            except Exception:
+                pass
         sys.exit(1)
 
     # 4. Parse and execute actions
@@ -857,9 +869,25 @@ def main():
 
     execute_actions(department, parsed)
 
-    # 5. Update master state and commit
+    # 5. Update master state, log to Sheets, and commit
     print("[5/5] Updating state and committing...")
     update_master_state(department, True)
+
+    # Log to Google Sheets Command Center
+    if _sheets:
+        try:
+            _sheets.log_agent_action(
+                agent_name=department,
+                department=department,
+                action=f"Automated run: {len(parsed['file_updates'])} files, {len(parsed['queue_items'])} queued, {len(parsed['social_posts'])} posts",
+                status="success",
+                details=parsed["analysis"][:200] if parsed.get("analysis") else "",
+                tokens=message.usage.output_tokens if message else 0,
+            )
+            print("  Logged to Google Sheets.")
+        except Exception as e:
+            print(f"  Sheets logging skipped: {e}")
+
     commit_changes(f"[{department}] Automated run — {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC')}")
 
     print(f"\n{'='*60}")

@@ -1,14 +1,17 @@
-name: General Manager — Daily Queue Processing
+name: Google Sheets Command Center Setup
 on:
-  schedule:
-    - cron: '51 18 * * *'  # Daily 6:51 PM UTC
   workflow_dispatch:
+    inputs:
+      share_email:
+        description: 'Your personal Gmail to share the sheet with'
+        required: true
+        type: string
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
-  run-gm-queue:
+  setup-sheets:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -22,21 +25,22 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Run GM Queue Processing
+      - name: Create Google Sheet and seed data
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
-          POSTIZ_API_KEY: ${{ secrets.POSTIZ_API_KEY }}
           GOOGLE_SERVICE_ACCOUNT_KEY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}
-        run: python scripts/run_department.py gm_queue
+        run: python scripts/sheets_setup.py
 
-      - name: Push changes
+      - name: Share with user
+        env:
+          GOOGLE_SERVICE_ACCOUNT_KEY: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_KEY }}
+        run: python scripts/sheets_helper.py share "${{ github.event.inputs.share_email }}"
+
+      - name: Commit sheet config
         run: |
           git config user.name "Marketing Org Bot"
           git config user.email "bot@gadgetgeekspro.com"
-          git add -A
-          git diff --cached --quiet || git commit -m "[gm] Queue processing — $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git add config/sheets-config.json
+          git diff --cached --quiet || git commit -m "[sheets] Command Center created — $(date -u '+%Y-%m-%d %H:%M UTC')"
           for i in 1 2 3; do
             git pull --rebase origin main || { git rebase --abort 2>/dev/null; git pull origin main --no-edit; }
             git push && break || sleep 5
